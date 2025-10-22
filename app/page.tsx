@@ -4,6 +4,7 @@ import type React from "react";
 
 import { useState, useEffect, useRef } from "react";
 import Logo from "../components/Logo";
+import ComparisonSection from "../components/ComparisonSection";
 import SmartSimpleBrilliant from "../components/smart-simple-brilliant";
 import YourWorkInSync from "../components/your-work-in-sync";
 import EffortlessIntegration from "../components/effortless-integration-updated";
@@ -193,52 +194,7 @@ export default function LandingPage() {
                   <div className="self-stretch flex-1 flex justify-start items-start">
                     {/* Main Content */}
                     <div className="w-full h-full flex items-center justify-center">
-                      <div className="relative w-full h-full overflow-hidden">
-                        {/* Product Image 1 - Plan your schedules */}
-                        <div
-                          className={`absolute inset-0 transition-all duration-500 ease-in-out ${
-                            activeCard === 0
-                              ? "opacity-100 scale-100 blur-0"
-                              : "opacity-0 scale-95 blur-sm"
-                          }`}
-                        >
-                          <img
-                            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dsadsadsa.jpg-xTHS4hGwCWp2H5bTj8np6DXZUyrxX7.jpeg"
-                            alt="Schedules Dashboard - Customer Subscription Management"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-
-                        {/* Product Image 2 - Data to insights */}
-                        <div
-                          className={`absolute inset-0 transition-all duration-500 ease-in-out ${
-                            activeCard === 1
-                              ? "opacity-100 scale-100 blur-0"
-                              : "opacity-0 scale-95 blur-sm"
-                          }`}
-                        >
-                          <img
-                            src="/analytics-dashboard-with-charts-graphs-and-data-vi.jpg"
-                            alt="Analytics Dashboard"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-
-                        {/* Product Image 3 - Data visualization */}
-                        <div
-                          className={`absolute inset-0 transition-all duration-500 ease-in-out ${
-                            activeCard === 2
-                              ? "opacity-100 scale-100 blur-0"
-                              : "opacity-0 scale-95 blur-sm"
-                          }`}
-                        >
-                          <img
-                            src="/data-visualization-dashboard-with-interactive-char.jpg"
-                            alt="Data Visualization Dashboard"
-                            className="w-full h-full object-contain" // Changed from object-cover to object-contain to preserve landscape aspect ratio
-                          />
-                        </div>
-                      </div>
+                      <ComparisonSection />
                     </div>
                   </div>
                 </div>
