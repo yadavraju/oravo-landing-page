@@ -3,7 +3,95 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
-const emailText = "Hey Marvin, let's meet on Friday at 2 PM... oh, wait";
+const keyboardText = "Hey Marvin, let's meet on Friday at 2 PM... oh, wait";
+const voiceText = `Hey Marvin, let's meet Friday at 2 PM for the quarterly review.
+
+Best,
+Mark`;
+
+// Morphing Voice Waveform Component (small version for below progress bar)
+function MiniVoiceWaveform() {
+  const bars = 12;
+
+  return (
+    <div className="relative flex items-center justify-center">
+      {/* Glow effect */}
+      <motion.div
+        className="absolute inset-0 blur-lg opacity-40"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.2, 0.4, 0.2],
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        <div className="w-full h-full bg-gradient-to-r from-blue-400 via-violet-400 to-purple-400 rounded-full" />
+      </motion.div>
+
+      {/* Waveform bars */}
+      <div className="relative flex items-center justify-center gap-[2px] px-4 py-1.5 bg-white/5 backdrop-blur-sm rounded-full border border-white/10">
+        {Array.from({ length: bars }).map((_, i) => {
+          const normalizedIndex = i / bars;
+          const phase = Math.sin(normalizedIndex * Math.PI);
+
+          return (
+            <motion.div
+              key={i}
+              className="w-[2px] bg-gradient-to-t from-blue-300 via-violet-300 to-purple-300 rounded-full"
+              animate={{
+                height: [6 + phase * 4, 12 + phase * 6, 6 + phase * 4],
+                opacity: [0.7, 1, 0.7],
+              }}
+              transition={{
+                duration: 0.5 + normalizedIndex * 0.2,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.04,
+              }}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// Typing Character Animation (A, B, C...)
+function TypingCharacters() {
+  const [currentChar, setCurrentChar] = useState(0);
+  const chars = ["A", "B", "C", "D", "E"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentChar((prev) => (prev + 1) % chars.length);
+    }, 300);
+
+    return () => clearInterval(interval);
+  }, [chars.length]);
+
+  return (
+    <div className="flex items-center gap-2">
+      {chars.map((char, i) => (
+        <motion.div
+          key={char}
+          className="w-8 h-8 rounded flex items-center justify-center bg-[#E8E6E3]/40 border border-[#78716C]/20"
+          animate={{
+            scale: currentChar === i ? [1, 1.1, 1] : 1,
+            opacity: currentChar === i ? 1 : 0.4,
+          }}
+          transition={{
+            duration: 0.3,
+          }}
+        >
+          <span className="text-xs font-semibold text-[#292524]">{char}</span>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
 
 // Character-by-character typing component (slow keyboard)
 function KeyboardTyping() {
@@ -12,11 +100,11 @@ function KeyboardTyping() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (currentIndex < emailText.length) {
+    if (currentIndex < keyboardText.length) {
       const timer = setTimeout(() => {
-        setDisplayedText(emailText.substring(0, currentIndex + 1));
+        setDisplayedText(keyboardText.substring(0, currentIndex + 1));
         setCurrentIndex(currentIndex + 1);
-        setProgress(((currentIndex + 1) / emailText.length) * 100);
+        setProgress(((currentIndex + 1) / keyboardText.length) * 100);
       }, 120); // Slow typing speed (120ms per character)
 
       return () => clearTimeout(timer);
@@ -35,7 +123,7 @@ function KeyboardTyping() {
   return (
     <div className="space-y-4">
       {/* Email UI */}
-      <div className="bg-white/90 backdrop-blur-sm rounded-lg p-4 sm:p-5 shadow-sm border border-[#E8E6E3]/60 min-h-[180px] sm:min-h-[200px]">
+      <div className="bg-white/90 backdrop-blur-sm rounded-lg p-4 sm:p-5 shadow-sm border border-[#E8E6E3]/60 min-h-[140px] sm:min-h-[160px]">
         <div className="space-y-3">
           {/* Email Header */}
           <div className="flex items-center gap-2 text-xs text-[#78716C]">
@@ -46,11 +134,16 @@ function KeyboardTyping() {
             </div>
           </div>
 
-          <div className="text-xs text-[#78716C] font-medium">Mark Watson</div>
+          <div className="text-xs text-[#78716C] font-medium">
+            Kevin Pietersen
+          </div>
 
           {/* Typing Area */}
-          <div className="min-h-[80px] sm:min-h-[100px]">
-            <p className="text-sm sm:text-base text-[#292524] font-normal leading-relaxed">
+          <div className="h-[130px] sm:h-[140px]">
+            <p
+              className="text-sm sm:text-base text-[#292524] font-normal"
+              style={{ lineHeight: "1.6" }}
+            >
               {displayedText}
               <motion.span
                 className="inline-block w-[2px] h-4 sm:h-5 bg-[#292524] ml-[1px]"
@@ -85,16 +178,41 @@ function VoiceStreaming() {
   const [displayedText, setDisplayedText] = useState("");
   const [progress, setProgress] = useState(0);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const words = emailText.split(" ");
+  const words = voiceText.split(/\s+/); // Split by whitespace including newlines
 
   useEffect(() => {
     if (currentWordIndex < words.length) {
       const timer = setTimeout(() => {
-        const newText = words.slice(0, currentWordIndex + 1).join(" ");
-        setDisplayedText(newText);
+        // Reconstruct text with proper line breaks
+        const wordsToShow = words.slice(0, currentWordIndex + 1);
+        let reconstructedText = "";
+        let wordCount = 0;
+
+        // Rebuild text preserving structure
+        const lines = voiceText.split("\n");
+        for (const line of lines) {
+          const lineWords = line.trim().split(/\s+/);
+          const lineWordsToShow = wordsToShow.slice(
+            wordCount,
+            wordCount + lineWords.length
+          );
+          if (lineWordsToShow.length > 0) {
+            reconstructedText += lineWordsToShow.join(" ");
+            if (
+              lineWordsToShow.length === lineWords.length &&
+              wordCount + lineWords.length < words.length
+            ) {
+              reconstructedText += "\n";
+            }
+          }
+          wordCount += lineWords.length;
+          if (wordCount >= currentWordIndex + 1) break;
+        }
+
+        setDisplayedText(reconstructedText);
         setCurrentWordIndex(currentWordIndex + 1);
         setProgress(((currentWordIndex + 1) / words.length) * 100);
-      }, 180); // Fast streaming (180ms per word)
+      }, 150); // Fast streaming (150ms per word)
 
       return () => clearTimeout(timer);
     } else {
@@ -112,7 +230,7 @@ function VoiceStreaming() {
   return (
     <div className="space-y-4">
       {/* Email UI */}
-      <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 sm:p-5 shadow-lg border border-white/10 min-h-[180px] sm:min-h-[200px]">
+      <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 sm:p-5 shadow-lg border border-white/10 min-h-[140px] sm:min-h-[160px]">
         <div className="space-y-3">
           {/* Email Header */}
           <div className="flex items-center gap-2 text-xs text-white/50">
@@ -126,8 +244,11 @@ function VoiceStreaming() {
           <div className="text-xs text-white/60 font-medium">Mark Watson</div>
 
           {/* Streaming Area */}
-          <div className="min-h-[80px] sm:min-h-[100px]">
-            <p className="text-sm sm:text-base text-white font-normal leading-relaxed">
+          <div className="h-[130px] sm:h-[140px]">
+            <p
+              className="text-sm sm:text-base text-white font-normal whitespace-pre-wrap"
+              style={{ lineHeight: "1.6" }}
+            >
               {displayedText}
               <motion.span
                 className="inline-block w-[2px] h-4 sm:h-5 bg-white ml-[1px]"
@@ -182,30 +303,54 @@ export default function EmailComparisonSection() {
             delay: 0.2,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="relative overflow-hidden rounded-[20px] sm:rounded-[24px] bg-gradient-to-br from-[#FAF9F6] via-[#F5F3F0] to-[#EBE9E6] shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6 sm:p-8 group h-full min-h-[380px] sm:min-h-[420px]"
+          className="relative overflow-hidden rounded-[20px] sm:rounded-[24px] bg-gradient-to-br from-[#FAF9F6] via-[#F5F3F0] to-[#EBE9E6] shadow-[0_4px_24px_rgba(0,0,0,0.08)] group h-full min-h-[320px] sm:min-h-[380px]"
         >
-          {/* Header */}
-          <div className="mb-6 sm:mb-8">
-            <p className="text-[10px] sm:text-xs text-[#78716C] font-semibold uppercase tracking-[0.2em] mb-3">
-              Keyboard
-            </p>
-            <div className="flex items-baseline gap-2">
-              <h3 className="text-4xl sm:text-5xl md:text-6xl font-serif text-[#292524]">
-                45
-              </h3>
-              <span className="text-sm sm:text-base text-[#44403C] font-medium">
-                wpm
-              </span>
-            </div>
-            <p className="text-xs sm:text-sm text-[#78716C] mt-2 leading-relaxed">
-              Typing everything out, fixing mistakes,
-              <br />
-              formatting manually.
-            </p>
+          {/* Keyboard Image Background */}
+          <div className="absolute inset-0">
+            <img
+              src="/keyboard.avif"
+              alt="Keyboard"
+              className="w-full h-full object-cover"
+              style={{
+                opacity: 0.7,
+                filter: "brightness(1.2) contrast(1.05) saturate(0.85)",
+              }}
+            />
           </div>
 
-          {/* Keyboard Typing Animation */}
-          <KeyboardTyping />
+          {/* Lighter gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F6]/10 via-[#FAF9F6]/50 to-[#FAF9F6]/85" />
+
+          {/* Content */}
+          <div className="relative z-10 p-6 sm:p-8 h-full flex flex-col">
+            {/* Header */}
+            <div className="mb-6 sm:mb-8">
+              <p className="text-[10px] sm:text-xs text-[#78716C] font-semibold uppercase tracking-[0.2em] mb-3">
+                Keyboard
+              </p>
+              <div className="flex items-baseline gap-2">
+                <h3 className="text-4xl sm:text-5xl md:text-6xl font-serif text-[#292524]">
+                  45
+                </h3>
+                <span className="text-sm sm:text-base text-[#44403C] font-medium">
+                  wpm
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-[#78716C] mt-2 leading-relaxed">
+                Typing everything out, fixing mistakes,
+                <br />
+                formatting manually.
+              </p>
+            </div>
+
+            {/* Keyboard Typing Animation */}
+            <KeyboardTyping />
+          </div>
+
+          {/* Typing Characters at Bottom */}
+          <div className="absolute bottom-6 left-0 right-0 flex justify-center z-10">
+            <TypingCharacters />
+          </div>
 
           {/* Border */}
           <div className="absolute inset-0 rounded-[20px] sm:rounded-[24px] ring-1 ring-inset ring-black/[0.08] group-hover:ring-black/[0.12] transition-all duration-500" />
@@ -220,7 +365,7 @@ export default function EmailComparisonSection() {
             delay: 0.3,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="relative overflow-hidden rounded-[20px] sm:rounded-[24px] shadow-[0_8px_48px_rgba(0,0,0,0.2)] p-6 sm:p-8 group h-full min-h-[380px] sm:min-h-[420px]"
+          className="relative overflow-hidden rounded-[20px] sm:rounded-[24px] shadow-[0_8px_48px_rgba(0,0,0,0.2)] group h-full min-h-[320px] sm:min-h-[380px]"
         >
           {/* Animated gradient background */}
           <motion.div
@@ -253,7 +398,7 @@ export default function EmailComparisonSection() {
           />
 
           {/* Content */}
-          <div className="relative z-10">
+          <div className="relative z-10 p-6 sm:p-8 h-full flex flex-col">
             {/* Header */}
             <div className="mb-6 sm:mb-8">
               <p className="text-[10px] sm:text-xs text-white/60 font-semibold uppercase tracking-[0.2em] mb-3">
@@ -268,7 +413,10 @@ export default function EmailComparisonSection() {
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-white/70 mt-2 leading-relaxed">
-                <span className="text-violet-300 font-semibold">Just speak.</span> Oravo does the rest,
+                <span className="text-violet-300 font-semibold">
+                  Just speak.
+                </span>{" "}
+                Oravo does the rest,
                 <br />
                 polished and in your style
               </p>
@@ -276,6 +424,11 @@ export default function EmailComparisonSection() {
 
             {/* Voice Streaming Animation */}
             <VoiceStreaming />
+          </div>
+
+          {/* Voice Waveform at Bottom */}
+          <div className="absolute bottom-6 left-0 right-0 flex justify-center z-10">
+            <MiniVoiceWaveform />
           </div>
 
           {/* Border */}
