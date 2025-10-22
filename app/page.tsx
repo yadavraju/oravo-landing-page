@@ -5,6 +5,7 @@ import type React from "react";
 import { useState, useEffect, useRef } from "react";
 import Logo from "../components/Logo";
 import ComparisonSection from "../components/ComparisonSection";
+import EmailComparisonSection from "../components/EmailComparisonSection";
 import SmartSimpleBrilliant from "../components/smart-simple-brilliant";
 import YourWorkInSync from "../components/your-work-in-sync";
 import EffortlessIntegration from "../components/effortless-integration-updated";
@@ -195,6 +196,17 @@ export default function LandingPage() {
                     {/* Main Content */}
                     <div className="w-full h-full flex items-center justify-center">
                       <ComparisonSection />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Email Comparison Section */}
+              <div className="w-full max-w-[960px] lg:w-[960px] pt-2 sm:pt-4 pb-6 sm:pb-8 md:pb-10 px-2 sm:px-4 md:px-6 lg:px-11 flex flex-col justify-center items-center gap-2 relative z-5 my-8 sm:my-12 md:my-16 lg:my-16">
+                <div className="w-full max-w-[960px] lg:w-[960px] h-[200px] sm:h-[280px] md:h-[500px] lg:h-[550px] bg-white shadow-[0px_0px_0px_0.9056603908538818px_rgba(0,0,0,0.08)] overflow-hidden rounded-[6px] sm:rounded-[8px] lg:rounded-[9.06px] flex flex-col justify-start items-start">
+                  <div className="self-stretch flex-1 flex justify-start items-start">
+                    <div className="w-full h-full flex items-center justify-center">
+                      <EmailComparisonSection />
                     </div>
                   </div>
                 </div>
