@@ -567,7 +567,7 @@ export default function LandingPage() {
                           perfectly
                         </p>
                       </div>
-                      <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex overflow-hidden text-right items-center justify-center">
+                      <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex overflow-hidden text-right items-center justify-center relative">
                         <YourWorkInSync
                           width="400"
                           height="250"
