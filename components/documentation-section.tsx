@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from "react";
 import type React from "react";
+import AutoFormattingAnimation from "./AutoFormattingAnimation";
+import PersonalizationAnimation from "./PersonalizationAnimation";
+import ContextAwarenessAnimation from "./ContextAwarenessAnimation";
 
 // Badge component for consistency
 function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
@@ -25,20 +28,20 @@ export default function DocumentationSection() {
     {
       title: "Auto formatting",
       description:
-        "Clean, consistent formatting tailored to what you’re writing and what’s on your screen.",
-      image: "/auto_formate.avif",
+        "Clean, consistent formatting tailored to what you're writing and what's on your screen.",
+      component: AutoFormattingAnimation,
     },
     {
       title: "Personalization",
       description:
         "It learns and adapts to your tone, formality, and natural style on any platform.",
-      image: "/analytics-dashboard.png",
+      component: PersonalizationAnimation,
     },
     {
       title: "Context awareness",
       description:
-        "oravo gets unique terms and names right using contextual cues. You don’t have to go back and correct the spelling.",
-      image: "/team-collaboration-interface-with-shared-workspace.jpg",
+        "oravo gets unique terms and names right using contextual cues. You don't have to go back and correct the spelling.",
+      component: ContextAwarenessAnimation,
     },
   ];
 
@@ -119,23 +122,22 @@ export default function DocumentationSection() {
             })}
           </div>
 
-          {/* Right Column - Image */}
+          {/* Right Column - Animated Component */}
           <div className="w-full md:w-auto rounded-lg flex flex-col justify-center items-center gap-2 order-1 md:order-2 md:px-0 px-[00]">
-            <div className="w-full md:w-[580px] h-[250px] md:h-[420px] bg-white shadow-[0px_0px_0px_0.9056603908538818px_rgba(0,0,0,0.08)] overflow-hidden rounded-lg flex flex-col justify-start items-start relative">
-              {cards.map((card, index) => (
-                <div
-                  key={index}
-                  className={`absolute inset-0 transition-opacity duration-500 ${
-                    activeCard === index ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
+            <div className="w-full md:w-[580px] h-[250px] md:h-[420px] bg-white shadow-[0px_0px_0px_0.9056603908538818px_rgba(0,0,0,0.08)] overflow-hidden rounded-lg relative">
+              {cards.map((card, index) => {
+                const Component = card.component;
+                return (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-500 ${
+                      activeCard === index ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    <Component />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
