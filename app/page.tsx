@@ -5,7 +5,9 @@ import type React from "react";
 import { useState, useEffect, useRef } from "react";
 import Logo from "../components/Logo";
 import ComparisonSection from "../components/ComparisonSection";
-import EmailComparisonSection from "../components/EmailComparisonSection";
+import EmailComparisonSection, {
+  MiniVoiceWaveform,
+} from "../components/EmailComparisonSection";
 import SmartSimpleBrilliant from "../components/smart-simple-brilliant";
 import YourWorkInSync from "../components/your-work-in-sync";
 import EffortlessIntegration from "../components/effortless-integration-updated";
@@ -16,6 +18,7 @@ import FAQSection from "../components/faq-section";
 import PricingSection from "../components/pricing-section";
 import CTASection from "../components/cta-section";
 import FooterSection from "../components/footer-section";
+import LanguageFlags from "@/components/LanguageFlags";
 
 // Reusable Badge Component
 function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
@@ -217,22 +220,22 @@ export default function LandingPage() {
                 <div className="flex-1 px-0 sm:px-2 md:px-0 flex flex-col md:flex-row justify-center items-stretch gap-0">
                   {/* Feature Cards */}
                   <FeatureCard
-                    title="Plan your schedules"
-                    description="Streamline customer subscriptions and billing with automated scheduling tools."
+                    title="Contextual Understanding"
+                    description="Understands names, dates, and other contextual information to ensure accurate transcriptions."
                     isActive={activeCard === 0}
                     progress={activeCard === 0 ? progress : 0}
                     onClick={() => handleCardClick(0)}
                   />
                   <FeatureCard
-                    title="Analytics & insights"
-                    description="Transform your business data into actionable insights with real-time analytics."
+                    title="Multi-Language Support"
+                    description="Dictate in multiple languages with ease, making it perfect for global teams."
                     isActive={activeCard === 1}
                     progress={activeCard === 1 ? progress : 0}
                     onClick={() => handleCardClick(1)}
                   />
                   <FeatureCard
-                    title="Collaborate seamlessly"
-                    description="Keep your team aligned with shared dashboards and collaborative workflows."
+                    title="Custom Vocabulary"
+                    description="Add your own custom words and phrases to improve accuracy for specialized terminology."
                     isActive={activeCard === 2}
                     progress={activeCard === 2 ? progress : 0}
                     onClick={() => handleCardClick(2)}
@@ -535,11 +538,11 @@ export default function LandingPage() {
                     <div className="border-b border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-start items-start gap-4 sm:gap-6">
                       <div className="flex flex-col gap-2">
                         <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
-                          Smart. Simple. Brilliant.
+                          AI-Powered Dictation
                         </h3>
                         <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                          Your data is beautifully organized so you see
-                          everything clearly without the clutter.
+                          oravo uses advanced AI to accurately transcribe your
+                          speech into text, even in noisy environments.
                         </p>
                       </div>
                       <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex items-center justify-center overflow-hidden">
@@ -552,15 +555,16 @@ export default function LandingPage() {
                       </div>
                     </div>
 
-                    {/* Top Right - Your work, in sync */}
+                    {/* Top Right - Smart Formatting */}
                     <div className="border-b border-[rgba(55,50,47,0.12)] p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-start items-start gap-4 sm:gap-6">
                       <div className="flex flex-col gap-2">
                         <h3 className="text-[#37322F] font-semibold leading-tight font-sans text-lg sm:text-xl">
-                          Your work, in sync
+                          Smart Formatting
                         </h3>
                         <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                          Every update flows instantly across your team and
-                          keeps collaboration effortless and fast.
+                          Say goodbye to manual editing. oravo understands
+                          natural speech patterns and formats everything
+                          perfectly
                         </p>
                       </div>
                       <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex overflow-hidden text-right items-center justify-center">
@@ -571,17 +575,20 @@ export default function LandingPage() {
                           className="scale-60 sm:scale-75 md:scale-90"
                         />
                       </div>
+                      <div className="bottom-6 left-0 right-0 flex justify-center z-10">
+                        <MiniVoiceWaveform />
+                      </div>
                     </div>
 
                     {/* Bottom Left - Effortless integration */}
                     <div className="border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-start items-start gap-4 sm:gap-6 bg-transparent">
                       <div className="flex flex-col gap-2">
                         <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
-                          Effortless integration
+                          Seamless Integration
                         </h3>
                         <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                          All your favorite tools connect in one place and work
-                          together seamlessly by design.
+                          Works with all your favorite apps and platforms,
+                          including Slack, Gmail, and iMessage.
                         </p>
                       </div>
                       <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex overflow-hidden justify-center items-center relative bg-transparent">
@@ -601,32 +608,17 @@ export default function LandingPage() {
                     <div className="p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-start items-start gap-4 sm:gap-6">
                       <div className="flex flex-col gap-2">
                         <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
-                          Numbers that speak
+                          100+ languages supported
                         </h3>
                         <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                          Track growth with precision and turn raw data into
-                          confident decisions you can trust.
+                          Dictate in multiple languages with ease, making it
+                          perfect for global teams.
                         </p>
                       </div>
+
                       <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex overflow-hidden items-center justify-center relative">
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <NumbersThatSpeak
-                            width="100%"
-                            height="100%"
-                            theme="light"
-                            className="w-full h-full object-contain"
-                          />
-                        </div>
-                        {/* Gradient mask for soft bottom edge */}
-                        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#F7F5F3] to-transparent pointer-events-none"></div>
-                        {/* Fallback content if component doesn't render */}
-                        <div className="absolute inset-0 flex items-center justify-center opacity-20 hidden">
-                          <div className="flex flex-col items-center gap-2 p-4">
-                            <div className="w-3/4 h-full bg-green-500 rounded-full"></div>
-                          </div>
-                          <div className="text-sm text-green-600">
-                            Growth Rate
-                          </div>
+                          <LanguageFlags></LanguageFlags>
                         </div>
                       </div>
                     </div>

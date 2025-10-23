@@ -1,31 +1,36 @@
-import type React from "react"
+import type React from "react";
+import Logo from "./Logo";
 
 interface EffortlessIntegrationProps {
   /** Fixed width from Figma: 482px */
-  width?: number | string
+  width?: number | string;
   /** Fixed height from Figma: 300px */
-  height?: number | string
+  height?: number | string;
   /** Optional className to pass to root */
-  className?: string
+  className?: string;
 }
 
 /**
  * Effortless Integration – Service integration constellation
  * Three concentric rings with logos positioned on ring axes
  */
-const EffortlessIntegration: React.FC<EffortlessIntegrationProps> = ({ width = 482, height = 300, className = "" }) => {
-  const centerX = 250
-  const centerY = 179
+const EffortlessIntegration: React.FC<EffortlessIntegrationProps> = ({
+  width = 482,
+  height = 300,
+  className = "",
+}) => {
+  const centerX = 250;
+  const centerY = 179;
   const rings = [
     { radius: 80, logos: 2 }, // Inner ring - 2 logos
     { radius: 120, logos: 3 }, // Middle ring - 3 logos
     { radius: 160, logos: 2 }, // Outer ring - 2 logos
-  ]
+  ];
 
   const getPositionOnRing = (ringRadius: number, angle: number) => ({
     x: centerX + ringRadius * Math.cos(angle),
     y: centerY + ringRadius * Math.sin(angle),
-  })
+  });
 
   return (
     <div
@@ -35,8 +40,10 @@ const EffortlessIntegration: React.FC<EffortlessIntegrationProps> = ({ width = 4
         height,
         position: "relative",
         overflow: "hidden",
-        maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
-        WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+        maskImage:
+          "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+        WebkitMaskImage:
+          "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
       }}
     >
       <div
@@ -127,7 +134,9 @@ const EffortlessIntegration: React.FC<EffortlessIntegrationProps> = ({ width = 4
             color: "#ffffff",
           }}
         >
-          b
+          <div style={{ filter: "brightness(0) invert(1)" }}>
+            <Logo />
+          </div>
         </div>
 
         {/* GitHub - 180° (left) */}
@@ -200,7 +209,7 @@ const EffortlessIntegration: React.FC<EffortlessIntegrationProps> = ({ width = 4
           }}
         >
           <img
-            src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/figma.svg"
+            src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/replit.svg"
             alt="Figma"
             style={{
               width: "16px",
@@ -279,7 +288,7 @@ const EffortlessIntegration: React.FC<EffortlessIntegrationProps> = ({ width = 4
           }}
         >
           <img
-            src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/stripe.svg"
+            src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg"
             alt="Stripe"
             style={{
               width: "18px",
@@ -306,7 +315,7 @@ const EffortlessIntegration: React.FC<EffortlessIntegrationProps> = ({ width = 4
           }}
         >
           <img
-            src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/framer.svg"
+            src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googledocs.svg"
             alt="Framer"
             style={{
               width: "16px",
@@ -326,7 +335,13 @@ const EffortlessIntegration: React.FC<EffortlessIntegrationProps> = ({ width = 4
           }}
         >
           <defs>
-            <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient
+              id="connectionGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="rgba(55, 50, 47, 0.1)" />
               <stop offset="50%" stopColor="rgba(55, 50, 47, 0.05)" />
               <stop offset="100%" stopColor="rgba(55, 50, 47, 0.1)" />
@@ -404,7 +419,7 @@ const EffortlessIntegration: React.FC<EffortlessIntegrationProps> = ({ width = 4
         </svg>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default EffortlessIntegration
+export default EffortlessIntegration;

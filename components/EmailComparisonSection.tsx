@@ -3,14 +3,14 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
-const keyboardText = "Hey Marvin, let's meet on Friday at 2 PM... oh, wait";
-const voiceText = `Hey Marvin, let's meet Friday at 2 PM for the quarterly review.
+const keyboardText = "Hey Kevin, let's meet on Friday at 2 PM... oh, wait";
+const voiceText = `Hey Kevin, let's meet Friday at 2 PM for the quarterly review.
 
 Best,
-Mark`;
+John`;
 
 // Morphing Voice Waveform Component (small version for below progress bar)
-function MiniVoiceWaveform() {
+export function MiniVoiceWaveform() {
   const bars = 12;
 
   return (
@@ -161,7 +161,12 @@ function KeyboardTyping() {
           <motion.div
             className="h-full bg-gradient-to-r from-[#78716C] to-[#57534E] rounded-full"
             style={{ width: `${progress}%` }}
-            transition={{ duration: 0.1 }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              damping: 20,
+              mass: 0.5,
+            }}
           />
         </div>
         <div className="flex justify-between items-center text-xs text-[#78716C]">
@@ -241,7 +246,9 @@ function VoiceStreaming() {
             </div>
           </div>
 
-          <div className="text-xs text-white/60 font-medium">Mark Watson</div>
+          <div className="text-xs text-white/60 font-medium">
+            Kevin Pietersen
+          </div>
 
           {/* Streaming Area */}
           <div className="h-[130px] sm:h-[140px]">
@@ -266,7 +273,12 @@ function VoiceStreaming() {
           <motion.div
             className="h-full bg-gradient-to-r from-blue-400 via-violet-400 to-purple-400 rounded-full"
             style={{ width: `${progress}%` }}
-            transition={{ duration: 0.1 }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              damping: 20,
+              mass: 0.5,
+            }}
           />
         </div>
         <div className="flex justify-between items-center text-xs text-white/60">
