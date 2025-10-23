@@ -2,23 +2,21 @@
 
 import type React from "react";
 
-import { useState, useEffect, useRef } from "react";
-import Logo from "../components/Logo";
-import ComparisonSection from "../components/ComparisonSection";
+import LanguageFlags from "@/components/LanguageFlags";
+import { useEffect, useRef, useState } from "react";
+import CTASection from "../components/cta-section";
+import DocumentationSection from "../components/documentation-section";
+import EffortlessIntegration from "../components/effortless-integration-updated";
 import EmailComparisonSection, {
   MiniVoiceWaveform,
 } from "../components/EmailComparisonSection";
-import SmartSimpleBrilliant from "../components/smart-simple-brilliant";
-import YourWorkInSync from "../components/your-work-in-sync";
-import EffortlessIntegration from "../components/effortless-integration-updated";
-import NumbersThatSpeak from "../components/numbers-that-speak";
-import DocumentationSection from "../components/documentation-section";
-import TestimonialsSection from "../components/testimonials-section";
 import FAQSection from "../components/faq-section";
-import PricingSection from "../components/pricing-section";
-import CTASection from "../components/cta-section";
 import FooterSection from "../components/footer-section";
-import LanguageFlags from "@/components/LanguageFlags";
+import Logo from "../components/Logo";
+import PricingSection from "../components/pricing-section";
+import SmartSimpleBrilliant from "../components/smart-simple-brilliant";
+import TestimonialsSection from "../components/testimonials-section";
+import YourWorkInSync from "../components/your-work-in-sync";
 
 // Reusable Badge Component
 function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {

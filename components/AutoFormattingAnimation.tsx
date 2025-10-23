@@ -4,8 +4,21 @@ import { motion } from "framer-motion";
 
 export default function AutoFormattingAnimation() {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center p-8">
-      <div className="w-full max-w-md space-y-4">
+    <div className="w-full h-full bg-[#F7F5F3] flex items-center justify-center p-8 relative overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <img
+          src="/keyboard.avif"
+          alt="Keyboard"
+          className="w-full h-full object-contain"
+          style={{
+            opacity: 0.7,
+            filter: "brightness(1.2) contrast(1.05) saturate(0.85)",
+          }}
+        />
+      </div>
+
+      <div className="w-full max-w-md space-y-4 relative z-10">
         {/* Before text - messy */}
         <motion.div
           initial={{ opacity: 1 }}
