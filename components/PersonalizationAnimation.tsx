@@ -25,7 +25,7 @@ export default function PersonalizationAnimation() {
   }, []);
 
   return (
-    <div className="w-full h-full bg-gradient-to-br from-purple-50 to-pink-100 flex items-center justify-center p-8">
+    <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center p-8">
       <div className="w-full max-w-md space-y-6">
         {/* Tone selector */}
         <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg">

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function AutoFormattingAnimation() {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-8">
+    <div className="w-full h-full bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center p-8">
       <div className="w-full max-w-md space-y-4">
         {/* Before text - messy */}
         <motion.div
