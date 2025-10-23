@@ -1,20 +1,20 @@
-import type React from "react"
+"use client";
+
+import type React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { MiniVoiceWaveform } from "./EmailComparisonSection";
 
 interface SmartSimpleBrilliantProps {
-  /** Fixed width from Figma: 482px */
-  width?: number | string
-  /** Fixed height from Figma: 300px */
-  height?: number | string
-  /** Optional className to pass to root */
-  className?: string
-  /** Theme palette */
-  theme?: "light" | "dark"
+  width?: number | string;
+  height?: number | string;
+  className?: string;
+  theme?: "light" | "dark";
 }
 
 /**
- * Smart · Simple · Brilliant – Calendar cards
- * Generated from Figma via MCP with exact measurements (482×300px)
- * Single-file component following the v0-ready pattern used in this repo.
+ * Voice Processing Visualization
+ * Shows text flowing through waveform with processing notifications
  */
 const SmartSimpleBrilliant: React.FC<SmartSimpleBrilliantProps> = ({
   width = 482,
@@ -22,315 +22,204 @@ const SmartSimpleBrilliant: React.FC<SmartSimpleBrilliantProps> = ({
   className = "",
   theme = "dark",
 }) => {
-  // Design tokens (derived from Figma local variables)
-  const themeVars =
-    theme === "light"
-      ? {
-          "--ssb-surface": "#ffffff",
-          "--ssb-text": "#1b1919",
-          "--ssb-border": "rgba(0,0,0,0.08)",
-          "--ssb-inner-border": "rgba(0,0,0,0.12)",
-          "--ssb-shadow": "rgba(0,0,0,0.12)",
-        }
-      : ({
-          "--ssb-surface": "#333937",
-          "--ssb-text": "#f8f8f8",
-          "--ssb-border": "rgba(255,255,255,0.16)",
-          "--ssb-inner-border": "rgba(255,255,255,0.12)",
-          "--ssb-shadow": "rgba(0,0,0,0.28)",
-        } as React.CSSProperties)
+  const [currentToast, setCurrentToast] = useState<string | null>(null);
 
-  // Figma-exported SVG assets used for small icons
-  const img = "http://localhost:3845/assets/1b1e60b441119fb176db990a3c7fe2670a764855.svg"
-  const img1 = "http://localhost:3845/assets/a502f04ccfc3811f304b58a3a982a5b6fa070e91.svg"
-  const img2 = "http://localhost:3845/assets/9c07375bf3b9f1f1d8a0a24447829eb6f54fa928.svg"
-  const img3 = "http://localhost:3845/assets/19500d66798ef5ea9dc9d5f971cd0e9c29674bd3.svg"
+  // Processing notifications that appear
+  const notifications = ["Split sentence", "Filler removed", "Fixed spelling"];
+
+  // Sample text with filler words and repetition that flows through in sine wave
+  const flowingText =
+    "So uhh... I was, you know, talking to umm the team about, like, the project and we had, you know, a really really good start and I think, umm, we should continue with, like, this approach";
+  const words = flowingText.split(" ");
+
+  useEffect(() => {
+    // Cycle through notifications
+    let notificationIndex = 0;
+    const notificationInterval = setInterval(() => {
+      setCurrentToast(notifications[notificationIndex]);
+      setTimeout(() => setCurrentToast(null), 1500);
+      notificationIndex = (notificationIndex + 1) % notifications.length;
+    }, 3000);
+
+    return () => {
+      clearInterval(notificationInterval);
+    };
+  }, []);
+
+  const isDark = theme === "dark";
 
   return (
     <div
       className={className}
-      style={
-        {
-          width,
-          height,
-          position: "relative",
-          background: "transparent",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          ...themeVars,
-        } as React.CSSProperties
-      }
+      style={{
+        width,
+        height,
+        position: "relative",
+        background: "transparent",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
       role="img"
-      aria-label="Two calendar cards with colored event rows"
+      aria-label="Voice processing visualization with real-time editing"
     >
-      <div
-        style={{
-          position: "relative",
-          width: "295.297px",
-          height: "212.272px",
-          transform: "scale(1.2)", // Added 1.2x scale transform
-        }}
-      >
-        {/* Left tilted card group */}
-        <div style={{ position: "absolute", left: "123.248px", top: "0px", width: 0, height: 0 }}>
-          <div style={{ transform: "rotate(5deg)", transformOrigin: "center" }}>
-            <div
+      <div className="relative w-full h-full flex flex-col items-center justify-center px-4 overflow-hidden">
+        {/* Toast Notifications */}
+        <AnimatePresence>
+          {currentToast && (
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.9 }}
+              className="absolute top-4 z-20 px-4 py-2 rounded-full shadow-lg border"
               style={{
-                width: "155.25px",
-                background: "#ffffff",
-                borderRadius: "9px",
-                padding: "6px",
-                boxShadow: "0px 0px 0px 1px rgba(0,0,0,0.08), 0px 2px 4px rgba(0,0,0,0.07)",
+                background: isDark
+                  ? "rgba(30, 30, 30, 0.95)"
+                  : "rgba(255, 255, 255, 0.95)",
+                borderColor: isDark
+                  ? "rgba(255, 255, 255, 0.1)"
+                  : "rgba(0, 0, 0, 0.1)",
+                backdropFilter: "blur(10px)",
               }}
             >
-              {/* Amber event */}
-              <div
-                style={{
-                  width: "100%",
-                  height: "51px",
-                  borderRadius: "4px",
-                  overflow: "hidden",
-                  background: "rgba(245,158,11,0.1)",
-                  display: "flex",
-                }}
-              >
-                <div style={{ width: "2.25px", background: "#F59E0B" }} />
-                <div style={{ padding: "4.5px", width: "100%" }}>
-                  <div style={{ display: "flex", gap: "3px", alignItems: "center" }}>
-                    <span
-                      style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: "9px", color: "#92400E" }}
-                    >
-                      2:00
-                    </span>
-                    <span
-                      style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: "9px", color: "#92400E" }}
-                    >
-                      PM
-                    </span>
-                    <div style={{ background: "#92400E", padding: "1.5px", borderRadius: "100px" }}>
-                      <div style={{ width: "8px", height: "8px", overflow: "hidden", position: "relative" }}>
-                        <img
-                          src={img || "/placeholder.svg"}
-                          alt="video"
-                          style={{ position: "absolute", inset: "20% 10% 20% 10%" }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "9px", color: "#92400E" }}>
-                    1:1 with Heather
-                  </div>
-                </div>
+              <div className="flex items-center gap-2">
+                <motion.div
+                  className="w-1.5 h-1.5 rounded-full bg-green-500"
+                  animate={{
+                    scale: [1, 1.3, 1],
+                    opacity: [1, 0.6, 1],
+                  }}
+                  transition={{
+                    duration: 1,
+                    repeat: Infinity,
+                  }}
+                />
+                <span
+                  className={`text-xs font-medium ${
+                    isDark ? "text-gray-200" : "text-gray-800"
+                  }`}
+                >
+                  {currentToast}
+                </span>
               </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-              {/* Sky event */}
-              <div
-                style={{
-                  width: "100%",
-                  height: "79.5px",
-                  borderRadius: "4px",
-                  overflow: "hidden",
-                  background: "rgba(14,165,233,0.1)",
-                  marginTop: "3px",
-                  display: "flex",
-                }}
-              >
-                <div style={{ width: "2.25px", background: "#0EA5E9" }} />
-                <div style={{ padding: "4.5px", width: "100%" }}>
-                  <div style={{ display: "flex", gap: "3px", alignItems: "center" }}>
-                    <span
-                      style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: "9px", color: "#0C4A6E" }}
-                    >
-                      2:00
-                    </span>
-                    <span
-                      style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: "9px", color: "#0C4A6E" }}
-                    >
-                      PM
-                    </span>
-                    <div style={{ background: "#0C4A6E", padding: "1.5px", borderRadius: "100px" }}>
-                      <div style={{ width: "8px", height: "8px", overflow: "hidden", position: "relative" }}>
-                        <img
-                          src={img1 || "/placeholder.svg"}
-                          alt="video"
-                          style={{ position: "absolute", inset: "20% 10% 20% 10%" }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "9px", color: "#0C4A6E" }}>
-                    Concept Design Review II
-                  </div>
-                </div>
-              </div>
+        {/* Central Waveform with flowing text */}
+        <div className="relative w-full h-32 flex items-center justify-center">
+          {/* Flowing text in straight line - continuous marquee (left to right) */}
+          <div className="absolute inset-0 flex items-center overflow-hidden">
+            {/* First instance of scrolling text */}
+            <motion.div
+              className="flex whitespace-nowrap absolute"
+              initial={{ x: "-100%" }}
+              animate={{ x: "100%" }}
+              transition={{
+                duration: 60,
+                repeat: Infinity,
+                ease: "linear",
+                repeatType: "loop",
+              }}
+            >
+              {words.map((word, wordIndex) => {
+                const totalWords = words.length;
+                const progress = (wordIndex / totalWords) * 100;
 
-              {/* Emerald event */}
-              <div
-                style={{
-                  width: "100%",
-                  height: "51px",
-                  borderRadius: "4px",
-                  overflow: "hidden",
-                  background: "rgba(16,185,129,0.1)",
-                  marginTop: "3px",
-                  display: "flex",
-                }}
-              >
-                <div style={{ width: "2.25px", background: "#10B981" }} />
-                <div style={{ padding: "4.5px", width: "100%" }}>
-                  <div style={{ display: "flex", gap: "3px", alignItems: "center" }}>
-                    <span
-                      style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: "9px", color: "#064E3B" }}
-                    >
-                      9:00
-                    </span>
-                    <span
-                      style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: "9px", color: "#064E3B" }}
-                    >
-                      AM
-                    </span>
-                  </div>
-                  <div style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "9px", color: "#064E3B" }}>
-                    Webinar: Figma ...
-                  </div>
-                </div>
-              </div>
-            </div>
+                return (
+                  <span
+                    key={`first-${wordIndex}`}
+                    className="inline-block mx-2 text-lg font-medium"
+                    style={{
+                      color: isDark
+                        ? progress < 30
+                          ? "rgb(107, 114, 128)"
+                          : progress > 70
+                          ? "rgb(255, 255, 255)"
+                          : "rgb(156, 163, 175)"
+                        : progress < 30
+                        ? "rgb(156, 163, 175)"
+                        : progress > 70
+                        ? "rgb(17, 24, 39)"
+                        : "rgb(107, 114, 128)",
+                      textShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                      filter: progress > 45 && progress < 55 ? "blur(2px)" : "blur(0px)",
+                      opacity: progress > 47 && progress < 53 ? 0.5 : 1,
+                      transform: progress > 47 && progress < 53 ? "scale(0.9)" : "scale(1)",
+                      transition: "filter 0.5s, opacity 0.5s, transform 0.5s",
+                    }}
+                  >
+                    {word}
+                  </span>
+                );
+              })}
+            </motion.div>
+
+            {/* Second instance for seamless loop - offset by 100% */}
+            <motion.div
+              className="flex whitespace-nowrap absolute"
+              initial={{ x: "0%" }}
+              animate={{ x: "200%" }}
+              transition={{
+                duration: 60,
+                repeat: Infinity,
+                ease: "linear",
+                repeatType: "loop",
+              }}
+            >
+              {words.map((word, wordIndex) => {
+                const totalWords = words.length;
+                const progress = (wordIndex / totalWords) * 100;
+
+                return (
+                  <span
+                    key={`second-${wordIndex}`}
+                    className="inline-block mx-2 text-lg font-medium"
+                    style={{
+                      color: isDark
+                        ? progress < 30
+                          ? "rgb(107, 114, 128)"
+                          : progress > 70
+                          ? "rgb(255, 255, 255)"
+                          : "rgb(156, 163, 175)"
+                        : progress < 30
+                        ? "rgb(156, 163, 175)"
+                        : progress > 70
+                        ? "rgb(17, 24, 39)"
+                        : "rgb(107, 114, 128)",
+                      textShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                      filter: progress > 45 && progress < 55 ? "blur(2px)" : "blur(0px)",
+                      opacity: progress > 47 && progress < 53 ? 0.5 : 1,
+                      transform: progress > 47 && progress < 53 ? "scale(0.9)" : "scale(1)",
+                      transition: "filter 0.5s, opacity 0.5s, transform 0.5s",
+                    }}
+                  >
+                    {word}
+                  </span>
+                );
+              })}
+            </motion.div>
+          </div>
+
+          {/* MiniVoiceWaveform in the center - using actual component */}
+          <div className="relative z-30 scale-150">
+            <MiniVoiceWaveform />
           </div>
         </div>
 
-        {/* Right card */}
-        <div style={{ position: "absolute", left: "0px", top: "6.075px", width: "155.25px" }}>
-          <div style={{ transform: "rotate(-5deg)", transformOrigin: "center" }}>
-            <div
-              style={{
-                width: "155.25px",
-                background: "#ffffff",
-                borderRadius: "9px",
-                padding: "6px",
-                boxShadow:
-                  "-8px 6px 11.3px rgba(0,0,0,0.12), 0px 0px 0px 1px rgba(0,0,0,0.08), 0px 2px 4px rgba(0,0,0,0.06)",
-              }}
-            >
-              {/* Violet event */}
-              <div
-                style={{
-                  width: "100%",
-                  height: "51px",
-                  borderRadius: "4px",
-                  overflow: "hidden",
-                  background: "rgba(139,92,246,0.1)",
-                  display: "flex",
-                }}
-              >
-                <div style={{ width: "2.25px", background: "#8B5CF6" }} />
-                <div style={{ padding: "4.5px", width: "100%" }}>
-                  <div style={{ display: "flex", gap: "3px", alignItems: "center" }}>
-                    <span
-                      style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: "9px", color: "#581C87" }}
-                    >
-                      11:00
-                    </span>
-                    <span
-                      style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: "9px", color: "#581C87" }}
-                    >
-                      AM
-                    </span>
-                    <div style={{ background: "#581C87", padding: "1.5px", borderRadius: "100px" }}>
-                      <div style={{ width: "8px", height: "8px", overflow: "hidden", position: "relative" }}>
-                        <img
-                          src={img2 || "/placeholder.svg"}
-                          alt="video"
-                          style={{ position: "absolute", inset: "20% 10% 20% 10%" }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "9px", color: "#581C87" }}>
-                    Onboarding Presentation
-                  </div>
-                </div>
-              </div>
-
-              {/* Rose event */}
-              <div
-                style={{
-                  width: "100%",
-                  height: "51px",
-                  borderRadius: "4px",
-                  overflow: "hidden",
-                  background: "#FFE4E6",
-                  display: "flex",
-                  marginTop: "3px",
-                }}
-              >
-                <div style={{ width: "2.25px", background: "#F43F5E" }} />
-                <div style={{ padding: "4.5px", width: "100%" }}>
-                  <div style={{ display: "flex", gap: "3px", alignItems: "center" }}>
-                    <span
-                      style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: "9px", color: "#BE123C" }}
-                    >
-                      4:00
-                    </span>
-                    <span
-                      style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: "9px", color: "#BE123C" }}
-                    >
-                      PM
-                    </span>
-                    <div style={{ background: "#BE123C", padding: "1.5px", borderRadius: "100px" }}>
-                      <div style={{ width: "8px", height: "8px", overflow: "hidden", position: "relative" }}>
-                        <img
-                          src={img3 || "/placeholder.svg"}
-                          alt="video"
-                          style={{ position: "absolute", inset: "20% 10% 20% 10%" }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "9px", color: "#BE123C" }}>
-                    🍷 Happy Hour
-                  </div>
-                </div>
-              </div>
-
-              {/* Violet tall event */}
-              <div
-                style={{
-                  width: "100%",
-                  height: "79.5px",
-                  borderRadius: "4px",
-                  overflow: "hidden",
-                  background: "rgba(139,92,246,0.1)",
-                  display: "flex",
-                  marginTop: "3px",
-                }}
-              >
-                <div style={{ width: "2.25px", background: "#8B5CF6" }} />
-                <div style={{ padding: "4.5px", width: "100%" }}>
-                  <div style={{ display: "flex", gap: "3px", alignItems: "center" }}>
-                    <span
-                      style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: "9px", color: "#581C87" }}
-                    >
-                      11:00
-                    </span>
-                    <span
-                      style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: "9px", color: "#581C87" }}
-                    >
-                      AM
-                    </span>
-                  </div>
-                  <div style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "9px", color: "#581C87" }}>
-                    🍔 New Employee Welcome Lunch!
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Bottom label */}
+        <div className="absolute bottom-4">
+          <p
+            className={`text-xs font-medium ${
+              isDark ? "text-gray-500" : "text-gray-400"
+            }`}
+          >
+            Processing in real-time
+          </p>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SmartSimpleBrilliant
+export default SmartSimpleBrilliant;
