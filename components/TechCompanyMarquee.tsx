@@ -18,6 +18,14 @@ import {
   siStripe,
   siShopify,
   siAirbnb,
+  siDropbox,
+  siReddit,
+  siGithub,
+  siDiscord,
+  siTwitch,
+  siDuolingo,
+  siCoursera,
+  siYale,
 } from "simple-icons";
 
 type Company = {
@@ -37,6 +45,11 @@ const techCompanies = {
     { name: "Netflix", icon: siNetflix },
     { name: "Spotify", icon: siSpotify },
     { name: "Uber", icon: siUber },
+    { name: "Dropbox", icon: siDropbox },
+    { name: "GitHub", icon: siGithub },
+    { name: "Discord", icon: siDiscord },
+    { name: "Crate&Barrel", imageSrc: "/crateandbarrel-gray.webp" },
+    { name: "Yale", icon: siYale },
   ],
   row2: [
     { name: "Salesforce", icon: siSalesforce },
@@ -48,6 +61,10 @@ const techCompanies = {
     { name: "Stripe", icon: siStripe },
     { name: "Shopify", icon: siShopify },
     { name: "Airbnb", icon: siAirbnb },
+    { name: "Reddit", icon: siReddit },
+    { name: "Twitch", icon: siTwitch },
+    { name: "Duolingo", icon: siDuolingo },
+    { name: "Coursera", icon: siCoursera },
   ],
 };
 
