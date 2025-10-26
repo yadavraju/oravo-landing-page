@@ -198,7 +198,7 @@ export default function MadeForYou() {
               transition={{ duration: 0.3 }}
               className="flex flex-col gap-6 text-center"
             >
-              <h3 className="text-[#49423D] text-3xl md:text-4xl lg:text-5xl font-semibold font-serif leading-tight">
+              <h3 className="text-[#49423D] text-3xl md:text-4xl lg:text-5xl font-normal font-serif leading-tight">
                 {currentUseCase.title}
               </h3>
               <p className="text-[#605A57] text-lg md:text-xl font-normal leading-relaxed font-sans max-w-[600px]">
