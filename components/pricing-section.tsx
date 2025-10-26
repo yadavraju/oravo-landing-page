@@ -4,21 +4,21 @@ import { useState } from "react";
 
 export default function PricingSection() {
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "annually">(
-    "annually"
+    "monthly"
   );
 
   const pricing = {
     starter: {
-      monthly: 0,
-      annually: 0,
+      monthly: "Free",
+      annually: "Free",
     },
     professional: {
-      monthly: 20,
-      annually: 16, // 20% discount for annual
+      monthly: 9.99,
+      annually: 99.99,
     },
     enterprise: {
-      monthly: 200,
-      annually: 160, // 20% discount for annual
+      monthly: 8.99,
+      annually: 89.99,
     },
   };
 
@@ -134,119 +134,87 @@ export default function PricingSection() {
           </div>
 
           {/* Pricing Cards Container */}
-          <div className="flex-1 flex flex-col md:flex-row justify-center items-center gap-6 py-12 md:py-0">
+          <div className="flex-1 flex flex-col md:flex-row justify-center items-stretch gap-6 py-12 md:py-0">
             {/* Starter Plan */}
-            <div className="flex-1 max-w-full md:max-w-none self-stretch px-6 py-5 border border-[rgba(50,45,43,0.12)] border-[#E0DEDB] overflow-hidden flex flex-col justify-start items-start gap-12 bg-[rgba(255,255,255,0)]">
-              {/* Plan Header */}
-              <div className="self-stretch flex flex-col justify-start items-center gap-9">
+            <div className="flex-1 max-w-full md:max-w-none px-6 py-5 border border-[rgba(50,45,43,0.12)] border-[#E0DEDB] overflow-hidden flex flex-col justify-between items-start gap-6 bg-[rgba(255,255,255,0)]">
+              <div className="self-stretch flex flex-col gap-6">
+                {/* Plan Header and Price */}
                 <div className="self-stretch flex flex-col justify-start items-start gap-2">
                   <div className="text-[rgba(55,50,47,0.90)] text-lg font-medium leading-7 font-sans">
                     Starter
                   </div>
                   <div className="w-full max-w-[242px] text-[rgba(41,37,35,0.70)] text-sm font-normal leading-5 font-sans">
-                    Perfect for individuals and small teams getting started.
+                    Free — No credit card required
                   </div>
                 </div>
 
                 <div className="self-stretch flex flex-col justify-start items-start gap-2">
                   <div className="flex flex-col justify-start items-start gap-1">
                     <div className="relative h-[60px] flex items-center text-[#37322F] text-5xl font-medium leading-[60px] font-serif">
-                      <span className="invisible">
-                        ${pricing.starter[billingPeriod]}
-                      </span>
-                      <span
-                        className="absolute inset-0 flex items-center transition-all duration-500"
-                        style={{
-                          opacity: billingPeriod === "annually" ? 1 : 0,
-                          transform: `scale(${
-                            billingPeriod === "annually" ? 1 : 0.8
-                          })`,
-                          filter: `blur(${
-                            billingPeriod === "annually" ? 0 : 4
-                          }px)`,
-                        }}
-                        aria-hidden={billingPeriod !== "annually"}
-                      >
-                        ${pricing.starter.annually}
-                      </span>
-                      <span
-                        className="absolute inset-0 flex items-center transition-all duration-500"
-                        style={{
-                          opacity: billingPeriod === "monthly" ? 1 : 0,
-                          transform: `scale(${
-                            billingPeriod === "monthly" ? 1 : 0.8
-                          })`,
-                          filter: `blur(${
-                            billingPeriod === "monthly" ? 0 : 4
-                          }px)`,
-                        }}
-                        aria-hidden={billingPeriod !== "monthly"}
-                      >
-                        ${pricing.starter.monthly}
-                      </span>
+                      Free
                     </div>
                     <div className="text-[#847971] text-sm font-medium font-sans">
-                      per {billingPeriod === "monthly" ? "month" : "year"}, per
-                      user.
+                      2,000 words per week
                     </div>
                   </div>
                 </div>
 
-                <div className="self-stretch px-4 py-[10px] relative bg-[#37322F] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center">
-                  <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0.20)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
-                  <div className="max-w-[108px] flex justify-center flex-col text-[#FBFAF9] text-[13px] font-medium leading-5 font-sans">
-                    Start for free
-                  </div>
+                {/* Features List */}
+                <div className="self-stretch flex flex-col justify-start items-start gap-2">
+                  {[
+                    "Instant dictation & smart formatting",
+                    "Works anywhere (Slack, Gmail, Notion, etc.)",
+                    "Custom vocabulary support",
+                    "Context-aware suggestions",
+                  ].map((feature, index) => (
+                    <div
+                      key={index}
+                      className="self-stretch flex justify-start items-center gap-[13px]"
+                    >
+                      <div className="w-4 h-4 relative flex items-center justify-center">
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 12 12"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M10 3L4.5 8.5L2 6"
+                            stroke="#9CA3AF"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                      <div className="flex-1 text-[rgba(55,50,47,0.80)] text-[12.5px] font-normal leading-5 font-sans">
+                        {feature}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="self-stretch flex flex-col justify-start items-start gap-2">
-                {[
-                  "Up to 3 projects",
-                  "Basic documentation tools",
-                  "Community support",
-                  "Standard templates",
-                  "Basic analytics",
-                ].map((feature, index) => (
-                  <div
-                    key={index}
-                    className="self-stretch flex justify-start items-center gap-[13px]"
-                  >
-                    <div className="w-4 h-4 relative flex items-center justify-center">
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="#9CA3AF"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <div className="flex-1 text-[rgba(55,50,47,0.80)] text-[12.5px] font-normal leading-5 font-sans">
-                      {feature}
-                    </div>
-                  </div>
-                ))}
+              {/* CTA Button */}
+              <div className="self-stretch px-4 py-[10px] relative bg-[#37322F] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center">
+                <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0.20)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
+                <div className="flex justify-center flex-col text-[#FBFAF9] text-[13px] font-medium leading-5 font-sans">
+                  Get Started Free
+                </div>
               </div>
             </div>
 
             {/* Professional Plan (Featured) */}
-            <div className="flex-1 max-w-full md:max-w-none self-stretch px-6 py-5 bg-[#37322F] border border-[rgba(50,45,43,0.12)] border-[rgba(55,50,47,0.12)] overflow-hidden flex flex-col justify-start items-start gap-12">
-              {/* Plan Header */}
-              <div className="self-stretch flex flex-col justify-start items-center gap-9">
+            <div className="flex-1 max-w-full md:max-w-none px-6 py-5 bg-[#37322F] border border-[rgba(50,45,43,0.12)] border-[rgba(55,50,47,0.12)] overflow-hidden flex flex-col justify-between items-start gap-6">
+              <div className="self-stretch flex flex-col gap-6">
+                {/* Plan Header */}
                 <div className="self-stretch flex flex-col justify-start items-start gap-2">
                   <div className="text-[#FBFAF9] text-lg font-medium leading-7 font-sans">
                     Professional
                   </div>
                   <div className="w-full max-w-[242px] text-[#B2AEA9] text-sm font-normal leading-5 font-sans">
-                    Advanced features for growing teams and businesses.
+                    Everything in Starter, plus unlimited
                   </div>
                 </div>
 
@@ -288,71 +256,69 @@ export default function PricingSection() {
                       </span>
                     </div>
                     <div className="text-[#D2C6BF] text-sm font-medium font-sans">
-                      per {billingPeriod === "monthly" ? "month" : "year"}, per
-                      user.
+                      per {billingPeriod === "monthly" ? "month" : "year"}
                     </div>
                   </div>
                 </div>
 
-                {/* CTA Button */}
-                <div className="self-stretch px-4 py-[10px] relative bg-[#FBFAF9] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center">
-                  <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
-                  <div className="max-w-[108px] flex justify-center flex-col text-[#37322F] text-[13px] font-medium leading-5 font-sans">
-                    Get started
-                  </div>
+                {/* Features */}
+                <div className="self-stretch flex flex-col justify-start items-start gap-2">
+                  {[
+                    "Unlimited words",
+                    "Full personalization across apps",
+                    "Smart memory of your writing style",
+                    "Optimized performance & reliability",
+                    "Priority customer support",
+                    "Early access to new features",
+                  ].map((feature, index) => (
+                    <div
+                      key={index}
+                      className="self-stretch flex justify-start items-center gap-[13px]"
+                    >
+                      <div className="w-4 h-4 relative flex items-center justify-center">
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 12 12"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M10 3L4.5 8.5L2 6"
+                            stroke="#FF8000"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                      <div className="flex-1 text-[#F0EFEE] text-[12.5px] font-normal leading-5 font-sans">
+                        {feature}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="self-stretch flex flex-col justify-start items-start gap-2">
-                {[
-                  "Unlimited projects",
-                  "Advanced documentation tools",
-                  "Priority support",
-                  "Custom templates",
-                  "Advanced analytics",
-                  "Team collaboration",
-                  "API access",
-                  "Custom integrations",
-                ].map((feature, index) => (
-                  <div
-                    key={index}
-                    className="self-stretch flex justify-start items-center gap-[13px]"
-                  >
-                    <div className="w-4 h-4 relative flex items-center justify-center">
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="#FF8000"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <div className="flex-1 text-[#F0EFEE] text-[12.5px] font-normal leading-5 font-sans">
-                      {feature}
-                    </div>
-                  </div>
-                ))}
+              {/* CTA Button */}
+              <div className="self-stretch px-4 py-[10px] relative bg-[#FBFAF9] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center">
+                <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
+                <div className="flex justify-center flex-col text-[#37322F] text-[13px] font-medium leading-5 font-sans">
+                  Upgrade to Pro
+                </div>
               </div>
             </div>
 
             {/* Enterprise Plan */}
-            <div className="flex-1 max-w-full md:max-w-none self-stretch px-6 py-5 bg-white border border-[#E0DEDB] overflow-hidden flex flex-col justify-start items-start gap-12">
-              {/* Plan Header */}
-              <div className="self-stretch flex flex-col justify-start items-center gap-9">
+            <div className="flex-1 max-w-full md:max-w-none px-6 py-5 bg-white border border-[#E0DEDB] overflow-hidden flex flex-col justify-between items-start gap-6">
+              <div className="self-stretch flex flex-col gap-6">
+                {/* Plan Header */}
                 <div className="self-stretch flex flex-col justify-start items-start gap-2">
                   <div className="text-[rgba(55,50,47,0.90)] text-lg font-medium leading-7 font-sans">
                     Enterprise
                   </div>
                   <div className="w-full max-w-[242px] text-[rgba(41,37,35,0.70)] text-sm font-normal leading-5 font-sans">
-                    Complete solution for large organizations and enterprises.
+                    Everything in Professional, plus team features (Minimum 3 users)
                   </div>
                 </div>
 
@@ -394,57 +360,55 @@ export default function PricingSection() {
                       </span>
                     </div>
                     <div className="text-[#847971] text-sm font-medium font-sans">
-                      per {billingPeriod === "monthly" ? "month" : "year"}, per
-                      user.
+                      per user/{billingPeriod === "monthly" ? "month" : "year"}
                     </div>
                   </div>
                 </div>
 
-                <div className="self-stretch px-4 py-[10px] relative bg-[#37322F] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center">
-                  <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0.20)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
-                  <div className="max-w-[108px] flex justify-center flex-col text-[#FBFAF9] text-[13px] font-medium leading-5 font-sans">
-                    Contact sales
-                  </div>
+                {/* Features */}
+                <div className="self-stretch flex flex-col justify-start items-start gap-2">
+                  {[
+                    "Centralized billing",
+                    "Administrative controls",
+                    "Team-wide personalization",
+                    "Dedicated account manager",
+                    "Priority onboarding and support",
+                  ].map((feature, index) => (
+                    <div
+                      key={index}
+                      className="self-stretch flex justify-start items-center gap-[13px]"
+                    >
+                      <div className="w-4 h-4 relative flex items-center justify-center">
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 12 12"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M10 3L4.5 8.5L2 6"
+                            stroke="#9CA3AF"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                      <div className="flex-1 text-[rgba(55,50,47,0.80)] text-[12.5px] font-normal leading-5 font-sans">
+                        {feature}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="self-stretch flex flex-col justify-start items-start gap-2">
-                {[
-                  "Everything in Professional",
-                  "Dedicated account manager",
-                  "24/7 phone support",
-                  "Custom onboarding",
-                  "Advanced security features",
-                  "SSO integration",
-                  "Custom contracts",
-                  "White-label options",
-                ].map((feature, index) => (
-                  <div
-                    key={index}
-                    className="self-stretch flex justify-start items-center gap-[13px]"
-                  >
-                    <div className="w-4 h-4 relative flex items-center justify-center">
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="#9CA3AF"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <div className="flex-1 text-[rgba(55,50,47,0.80)] text-[12.5px] font-normal leading-5 font-sans">
-                      {feature}
-                    </div>
-                  </div>
-                ))}
+              {/* CTA Button */}
+              <div className="self-stretch px-4 py-[10px] relative bg-[#37322F] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center">
+                <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0.20)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
+                <div className="flex justify-center flex-col text-[#FBFAF9] text-[13px] font-medium leading-5 font-sans">
+                  Contact Sales
+                </div>
               </div>
             </div>
           </div>
