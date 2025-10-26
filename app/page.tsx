@@ -14,6 +14,7 @@ import EmailComparisonSection, {
 import FAQSection from "../components/faq-section";
 import FooterSection from "../components/footer-section";
 import Logo from "../components/Logo";
+import MadeForYou from "../components/MadeForYou";
 import PricingSection from "../components/pricing-section";
 import SmartSimpleBrilliant from "../components/smart-simple-brilliant";
 import TestimonialsSection from "../components/testimonials-section";
@@ -632,6 +633,9 @@ export default function LandingPage() {
 
               {/* Documentation Section */}
               <DocumentationSection />
+
+              {/* Made For You Section */}
+              <MadeForYou />
 
               {/* Testimonials Section */}
               <TestimonialsSection />
