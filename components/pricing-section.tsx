@@ -166,6 +166,10 @@ export default function PricingSection() {
                     "Works anywhere (Slack, Gmail, Notion, etc.)",
                     "Custom vocabulary support",
                     "Context-aware suggestions",
+                    "Basic punctuation commands",
+                    "Voice-activated editing",
+                    "Multi-language support",
+                    "Secure cloud sync",
                   ].map((feature, index) => (
                     <div
                       key={index}
@@ -270,6 +274,10 @@ export default function PricingSection() {
                     "Optimized performance & reliability",
                     "Priority customer support",
                     "Early access to new features",
+                    "Advanced voice commands",
+                    "Custom macros & shortcuts",
+                    "Offline dictation mode",
+                    "Export & backup options",
                   ].map((feature, index) => (
                     <div
                       key={index}
@@ -373,6 +381,11 @@ export default function PricingSection() {
                     "Team-wide personalization",
                     "Dedicated account manager",
                     "Priority onboarding and support",
+                    "Custom integrations & API access",
+                    "Advanced analytics & reporting",
+                    "SLA guarantees",
+                    "SSO & security compliance",
+                    "Volume discounts available",
                   ].map((feature, index) => (
                     <div
                       key={index}
