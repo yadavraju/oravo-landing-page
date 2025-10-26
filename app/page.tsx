@@ -519,9 +519,9 @@ export default function LandingPage() {
                       Trusted by professional at
                     </div>
                     <div className="self-stretch text-center text-[#605A57] text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
-                      Our customers achieve more each day
+                      The Most productive Individuals, Leaders
                       <br className="hidden sm:block" />
-                      because their tools are simple, powerful, and clear.
+                      writers, Developers, Founders etc use Oravo.
                     </div>
                   </div>
                 </div>

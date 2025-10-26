@@ -1,3 +1,5 @@
+import Logo from "./Logo";
+
 export default function FooterSection() {
   return (
     <div className="w-full pt-10 flex flex-col justify-start items-start">
@@ -5,13 +7,14 @@ export default function FooterSection() {
       <div className="self-stretch h-auto flex flex-col md:flex-row justify-between items-stretch pr-0 pb-8 pt-0">
         <div className="h-auto p-4 md:p-8 flex flex-col justify-start items-start gap-8">
           {/* Brand Section */}
-          <div className="self-stretch flex justify-start items-center gap-3">
+          <div className="self-stretch flex justify-start items-center gap-1">
+            <Logo />
             <div className="text-center text-[#49423D] text-xl font-semibold leading-4 font-sans">
-              Brillance
+              oravo
             </div>
           </div>
           <div className="text-[rgba(73,66,61,0.90)] text-sm font-medium leading-[18px] font-sans">
-            Coding made effortless
+            Voice is your new keyboard.
           </div>
 
           {/* Social Media Icons */}

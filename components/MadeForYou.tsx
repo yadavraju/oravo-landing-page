@@ -1,8 +1,7 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import DownloadButtons from "./DownloadButtons";
 
 const roles = [
   "Accessibility",
@@ -198,7 +197,7 @@ export default function MadeForYou() {
               transition={{ duration: 0.3 }}
               className="flex flex-col gap-6 text-center"
             >
-              <h3 className="text-[#49423D] text-3xl md:text-4xl lg:text-5xl font-normal font-serif leading-tight">
+              <h3 className="text-[#49423D] text-xl md:text-2xl lg:text-3xl font-stretch-semi-condensed font-serif leading-tight">
                 {currentUseCase.title}
               </h3>
               <p className="text-[#605A57] text-lg md:text-xl font-normal leading-relaxed font-sans max-w-[600px]">
@@ -206,8 +205,6 @@ export default function MadeForYou() {
               </p>
             </motion.div>
           </AnimatePresence>
-
-          <DownloadButtons />
         </div>
       </div>
     </div>
