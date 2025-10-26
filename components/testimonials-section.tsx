@@ -22,25 +22,25 @@ export default function TestimonialsSection() {
   const testimonials = [
     {
       quote:
-        "In just a few minutes, we transformed our data into actionable insights. The process was seamless and incredibly efficient!",
-      name: "Jamie Marshall",
-      company: "Co-founder, Exponent",
+        "I've been using Oravo for a couple of weeks, and it honestly feels like magic. As someone who's always juggling scripts, notes, and reviews, being able to dictate emails and Slack messages this fast is a total game changer. It's like having a Disney-level productivity superpower in my day.",
+      name: "Sarah M.",
+      company: "Product Designer at Disney",
       image:
         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Sep%2011%2C%202025%2C%2011_35_19%20AM-z4zSRLsbOQDp7MJS1t8EXmGNB6Al9Z.png",
     },
     {
       quote:
-        "Brillance has revolutionized how we handle custom contracts. The automation saves us hours every week and eliminates errors completely.",
-      name: "Sarah Chen",
-      company: "VP Operations, TechFlow",
+        "We test and analyze so much data daily at CareDx — Oravo has cut my writing time in half. I just speak my thoughts and it formats everything perfectly in my reports and Jira tickets. It's surprisingly accurate even with medical terms. Couldn't imagine going back.",
+      name: "James K.",
+      company: "Data Analyst at CareDx",
       image:
         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Sep%2011%2C%202025%2C%2010_54_18%20AM-nbiecp92QNdTudmCrHr97uekrIPzCP.png",
     },
     {
       quote:
-        "The billing automation is a game-changer. What used to take our team days now happens automatically with perfect accuracy.",
-      name: "Marcus Rodriguez",
-      company: "Finance Director, InnovateCorp",
+        "I spend most of my day documenting customer feedback and product notes. Oravo's dictation speed and clarity blew me away. It's smoother than any speech tool I've tried and feels built for people who live in Slack and email all day. Worth every cent.",
+      name: "Alicia T.",
+      company: "Customer Success Manager at Salesforce",
       image:
         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Sep%2011%2C%202025%2C%2011_01_05%20AM-TBOe92trRxKn4G5So1m9D2h7LRH4PG.png",
     },
@@ -96,7 +96,7 @@ export default function TestimonialsSection() {
                   transition: "filter 0.7s ease-in-out",
                 }}
               >
-                "{testimonials[activeTestimonial].quote}"
+                {testimonials[activeTestimonial].quote}
               </div>
               <div
                 className="self-stretch flex flex-col justify-start items-start gap-1 transition-all duration-700 ease-in-out"

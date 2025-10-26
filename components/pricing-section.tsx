@@ -201,12 +201,13 @@ export default function PricingSection() {
               </div>
 
               {/* CTA Button */}
-              <div className="self-stretch px-4 py-[10px] relative bg-[#37322F] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center">
-                <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0.20)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
-                <div className="flex justify-center flex-col text-[#FBFAF9] text-[13px] font-medium leading-5 font-sans">
+              <button className="group self-stretch px-6 py-3 relative bg-gradient-to-b from-[#37322F] to-[#2A2522] shadow-[0px_1px_2px_rgba(0,0,0,0.05),0px_0px_0px_1px_rgba(255,255,255,0.08)_inset,0px_8px_16px_rgba(0,0,0,0.15)] overflow-hidden rounded-[99px] flex justify-center items-center transition-all duration-300 hover:shadow-[0px_2px_4px_rgba(0,0,0,0.08),0px_0px_0px_1px_rgba(255,255,255,0.12)_inset,0px_12px_24px_rgba(0,0,0,0.2)] hover:scale-[1.02] active:scale-[0.98]">
+                <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/20 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.1),transparent_50%)] pointer-events-none"></div>
+                <div className="relative flex justify-center flex-col text-[#FBFAF9] text-[14px] font-semibold leading-5 font-sans tracking-wide">
                   Get Started Free
                 </div>
-              </div>
+              </button>
             </div>
 
             {/* Professional Plan (Featured) */}
@@ -309,12 +310,14 @@ export default function PricingSection() {
               </div>
 
               {/* CTA Button */}
-              <div className="self-stretch px-4 py-[10px] relative bg-[#FBFAF9] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center">
-                <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
-                <div className="flex justify-center flex-col text-[#37322F] text-[13px] font-medium leading-5 font-sans">
+              <button className="group self-stretch px-6 py-3 relative bg-gradient-to-b from-[#FF8C42] to-[#FF6B1A] shadow-[0px_1px_2px_rgba(0,0,0,0.1),0px_0px_0px_1px_rgba(255,255,255,0.25)_inset,0px_8px_20px_rgba(255,107,26,0.35)] overflow-hidden rounded-[99px] flex justify-center items-center transition-all duration-300 hover:shadow-[0px_2px_4px_rgba(0,0,0,0.15),0px_0px_0px_1px_rgba(255,255,255,0.35)_inset,0px_12px_28px_rgba(255,107,26,0.45)] hover:scale-[1.02] active:scale-[0.98]">
+                <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-black/20 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.4),transparent_60%)] pointer-events-none"></div>
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-opacity duration-500 pointer-events-none"></div>
+                <div className="relative flex justify-center flex-col text-white text-[14px] font-bold leading-5 font-sans tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
                   Upgrade to Pro
                 </div>
-              </div>
+              </button>
             </div>
 
             {/* Enterprise Plan */}
@@ -417,12 +420,13 @@ export default function PricingSection() {
               </div>
 
               {/* CTA Button */}
-              <div className="self-stretch px-4 py-[10px] relative bg-[#37322F] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center">
-                <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0.20)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
-                <div className="flex justify-center flex-col text-[#FBFAF9] text-[13px] font-medium leading-5 font-sans">
+              <button className="group self-stretch px-6 py-3 relative bg-gradient-to-b from-[#37322F] to-[#2A2522] shadow-[0px_1px_2px_rgba(0,0,0,0.05),0px_0px_0px_1px_rgba(255,255,255,0.08)_inset,0px_8px_16px_rgba(0,0,0,0.15)] overflow-hidden rounded-[99px] flex justify-center items-center transition-all duration-300 hover:shadow-[0px_2px_4px_rgba(0,0,0,0.08),0px_0px_0px_1px_rgba(255,255,255,0.12)_inset,0px_12px_24px_rgba(0,0,0,0.2)] hover:scale-[1.02] active:scale-[0.98]">
+                <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/20 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.1),transparent_50%)] pointer-events-none"></div>
+                <div className="relative flex justify-center flex-col text-[#FBFAF9] text-[14px] font-semibold leading-5 font-sans tracking-wide">
                   Contact Sales
                 </div>
-              </div>
+              </button>
             </div>
           </div>
 

@@ -9,34 +9,24 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: "What is Brillance and who is it for?",
+    question: "Can I try Oravo for free?",
     answer:
-      "Brillance is a comprehensive billing automation platform designed for businesses that need custom contract management. It's perfect for SaaS companies, service providers, and enterprises looking to streamline their billing processes.",
+      "Yes! You can try Oravo completely free—no credit card required. Just download the app and start dictating instantly to experience how fast and effortless it feels.",
   },
   {
-    question: "How does the custom contract billing work?",
+    question: "Is Oravo secure and private?",
     answer:
-      "Our platform automatically processes your custom contracts, calculates billing amounts based on your specific terms, and generates invoices. You can set up complex pricing structures, usage-based billing, and custom billing cycles.",
+      "Absolutely. Privacy and security are at the heart of everything we do. Your transcripts are never collected or stored on our servers—they remain local to your device. You can optionally opt in to share anonymized data to help improve Oravo's models, but by default, your data stays private and secure. All processing is handled using enterprise-grade encryption and security standards. Oravo is SOC 2 and HIPAA compliant.",
   },
   {
-    question: "Can I integrate Brillance with my existing tools?",
+    question: "Is there a mobile app?",
     answer:
-      "Yes! Brillance integrates seamlessly with popular CRM systems, accounting software, and payment processors. We support APIs and webhooks for custom integrations with your existing workflow.",
+      "Not yet—but it's coming soon! Right now, we're focused on delivering the best native experience for macOS, Windows, and Linux. Our iOS and Android apps are already on the roadmap.",
   },
   {
-    question: "What kind of support do you provide?",
+    question: "Do you support languages other than English?",
     answer:
-      "We offer 24/7 customer support, dedicated account managers for enterprise clients, comprehensive documentation, and onboarding assistance to help you get started quickly.",
-  },
-  {
-    question: "Is my data secure with Brillance?",
-    answer:
-      "Absolutely. We use enterprise-grade security measures including end-to-end encryption, SOC 2 compliance, and regular security audits. Your data is stored in secure, redundant data centers.",
-  },
-  {
-    question: "How do I get started with Brillance?",
-    answer:
-      "Getting started is simple! Sign up for our free trial, connect your existing systems, and our onboarding team will help you set up your first custom billing workflow within 24 hours.",
+      "Yes! Oravo supports over 50 languages. You can speak naturally in your preferred language, and Oravo will accurately transcribe and format your text as if you were writing it yourself.",
   },
 ];
 
