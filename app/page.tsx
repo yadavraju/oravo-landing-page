@@ -73,6 +73,19 @@ export default function LandingPage() {
     setProgress(0);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
       <div className="relative flex flex-col justify-start items-center w-full">
@@ -98,18 +111,18 @@ export default function LandingPage() {
                     </div>
                   </div>
                   <div className="pl-3 sm:pl-4 md:pl-5 lg:pl-5 justify-start items-start hidden sm:flex flex-row gap-2 sm:gap-3 md:gap-4 lg:gap-4">
-                    <div className="flex justify-start items-center">
-                      <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans">
+                    <div onClick={() => scrollToSection('made-for-you')} className="flex justify-start items-center cursor-pointer">
+                      <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
                         Products
                       </div>
                     </div>
-                    <div className="flex justify-start items-center">
-                      <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans">
+                    <div onClick={() => scrollToSection('pricing-section')} className="flex justify-start items-center cursor-pointer">
+                      <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
                         Pricing
                       </div>
                     </div>
-                    <div className="flex justify-start items-center">
-                      <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans">
+                    <div onClick={() => scrollToSection('made-for-you')} className="flex justify-start items-center cursor-pointer">
+                      <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
                         Business
                       </div>
                     </div>
