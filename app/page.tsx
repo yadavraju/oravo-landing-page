@@ -81,7 +81,7 @@ export default function LandingPage() {
       const offsetPosition = elementPosition + window.pageYOffset - offset;
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
@@ -111,17 +111,26 @@ export default function LandingPage() {
                     </div>
                   </div>
                   <div className="pl-3 sm:pl-4 md:pl-5 lg:pl-5 justify-start items-start hidden sm:flex flex-row gap-2 sm:gap-3 md:gap-4 lg:gap-4">
-                    <div onClick={() => scrollToSection('made-for-you')} className="flex justify-start items-center cursor-pointer">
+                    <div
+                      onClick={() => scrollToSection("made-for-you")}
+                      className="flex justify-start items-center cursor-pointer"
+                    >
                       <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
                         Products
                       </div>
                     </div>
-                    <div onClick={() => scrollToSection('pricing-section')} className="flex justify-start items-center cursor-pointer">
+                    <div
+                      onClick={() => scrollToSection("pricing-section")}
+                      className="flex justify-start items-center cursor-pointer"
+                    >
                       <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
                         Pricing
                       </div>
                     </div>
-                    <div onClick={() => scrollToSection('made-for-you')} className="flex justify-start items-center cursor-pointer">
+                    <div
+                      onClick={() => scrollToSection("made-for-you")}
+                      className="flex justify-start items-center cursor-pointer"
+                    >
                       <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
                         Business
                       </div>
@@ -142,7 +151,7 @@ export default function LandingPage() {
             <div className="pt-12 sm:pt-16 md:pt-20 lg:pt-[180px] pb-8 sm:pb-12 md:pb-16 flex flex-col justify-start items-center px-2 sm:px-4 md:px-8 lg:px-0 w-full sm:pl-0 sm:pr-0 pl-0 pr-0">
               <div className="w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
                 <div className="self-stretch rounded-[3px] flex flex-col justify-center items-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
-                  <h1 className="w-full text-center text-[#37322F] text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[80px] font-normal leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-4 sm:px-6 md:px-0 mt-6 sm:mt-8 md:mt-4 lg:mt-0">
+                  <h1 className="w-full text-center text-[#37322F] text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[80px] font-stretch-semi-condensed font-medium leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-4 sm:px-6 md:px-0 mt-6 sm:mt-8 md:mt-4 lg:mt-0">
                     Type with your voice
                     <br />
                     faster than ever.
@@ -282,13 +291,13 @@ export default function LandingPage() {
                       text="Feature Highlights"
                     />
 
-                    <h2 className="w-full text-center text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-normal leading-tight md:leading-[60px] font-serif px-4">
-                      Smart, fast, and secure voice typing
+                    <h2 className="w-full text-center text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-stretch-semi-condensed font-medium leading-tight md:leading-[60px] font-serif px-4">
+                      Smart, Fast, and Secure
                     </h2>
                     <div className="self-stretch text-center text-[#605A57] text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
-                      Speak naturally Oravo converts your words into clean
+                      Speak naturally Oravo converts your words into
                       <br />
-                      and polished text across all your favorite apps.
+                      clean polished text across all your favorite apps.
                     </div>
                   </div>
                 </div>
@@ -520,7 +529,7 @@ export default function LandingPage() {
                       }
                       text="Social Proof"
                     />
-                    <h2 className="w-full text-center text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-normal leading-tight md:leading-[60px] font-serif px-4">
+                    <h2 className="w-full text-center text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-stretch-semi-condensed font-medium leading-tight md:leading-[60px] font-serif px-4">
                       Trusted by professional at
                     </h2>
                     <div className="self-stretch text-center text-[#605A57] text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">

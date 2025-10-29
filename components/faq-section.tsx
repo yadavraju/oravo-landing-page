@@ -65,15 +65,10 @@ export default function FAQSection() {
       <div className="flex-1 px-4 md:px-12 py-16 md:py-20 flex flex-col lg:flex-row justify-start items-start gap-6 lg:gap-12">
         {/* Left Column - Header */}
         <div className="w-full lg:flex-1 flex flex-col justify-center items-start gap-4 lg:py-5">
-          {/* <div className="w-full flex flex-col justify-center text-[#49423D] font-semibold leading-tight md:leading-[44px] font-sans text-4xl tracking-tight">
+          <h2 className="w-full text-left text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-stretch-semi-condensed font-medium leading-tight md:leading-[60px] font-serif px-4 lg:px-0">
             Frequently Asked Questions
-          </div> */}
-          <h2 className="w-full text-center text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-normal leading-tight md:leading-[60px] font-serif px-4">
-            Frequently Asked
-            <br />
-            Questions
           </h2>
-          <div className="w-full text-[#605A57] text-base font-normal leading-7 font-sans">
+          <div className="w-full text-left text-[#605A57] text-base font-normal leading-7 font-sans px-4 lg:px-0">
             Seamless speech-to-text that understands
             <br />
             your voice, your flow and your apps.

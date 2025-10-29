@@ -70,8 +70,8 @@ export default function DocumentationSection() {
             }
             text="Platform Features"
           />
-          <h2 className="w-full text-center text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-normal leading-tight md:leading-[60px] font-serif px-4">
-            Let your voice do the writing.
+          <h2 className="w-full text-center text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-stretch-semi-condensed font-medium leading-tight md:leading-[60px] font-serif px-4">
+            Speak better, not harder.
           </h2>
 
           <div className="self-stretch text-center text-[#605A57] text-base font-normal leading-7 font-sans">
