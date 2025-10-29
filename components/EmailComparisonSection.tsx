@@ -305,9 +305,9 @@ export default function EmailComparisonSection() {
       }}
       className="w-full py-8 sm:py-12 md:py-16"
     >
-      {/* Mobile: Horizontal Scroll */}
-      <div className="lg:hidden overflow-x-auto scrollbar-hide px-4">
-        <div className="flex gap-4 pb-4" style={{ width: 'fit-content' }}>
+      {/* Mobile & Tablet: Vertical Stack */}
+      <div className="lg:hidden px-4">
+        <div className="flex flex-col gap-6 sm:gap-8">
           {/* Left Card - Keyboard Typing (Slow) - Mobile */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -317,8 +317,7 @@ export default function EmailComparisonSection() {
               delay: 0.2,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#FAF9F6] via-[#F5F3F0] to-[#EBE9E6] shadow-[0_4px_24px_rgba(0,0,0,0.08)] group"
-            style={{ width: '85vw', maxWidth: '400px' }}
+            className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#FAF9F6] via-[#F5F3F0] to-[#EBE9E6] shadow-[0_4px_24px_rgba(0,0,0,0.08)] group w-full"
           >
             {/* Keyboard Image Background */}
             <div className="absolute inset-0">
@@ -337,22 +336,22 @@ export default function EmailComparisonSection() {
             <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F6]/10 via-[#FAF9F6]/50 to-[#FAF9F6]/85" />
 
             {/* Content */}
-            <div className="relative z-10 p-5 flex flex-col" style={{ minHeight: '420px' }}>
+            <div className="relative z-10 p-5 sm:p-6 flex flex-col min-h-[380px] sm:min-h-[420px]">
               {/* Header */}
               <div className="mb-4 flex-shrink-0">
-                <p className="text-[9px] text-[#78716C] font-semibold uppercase tracking-[0.15em] mb-2">
+                <p className="text-[9px] sm:text-[10px] text-[#78716C] font-semibold uppercase tracking-[0.15em] mb-2">
                   Keyboard
                 </p>
-                <div className="flex items-baseline gap-1.5">
-                  <h3 className="text-4xl font-serif text-[#292524]">
+                <div className="flex items-baseline gap-1.5 sm:gap-2">
+                  <h3 className="text-4xl sm:text-5xl font-serif text-[#292524]">
                     45
                   </h3>
-                  <span className="text-xs text-[#44403C] font-medium">
+                  <span className="text-xs sm:text-sm text-[#44403C] font-medium">
                     wpm
                   </span>
                 </div>
-                <p className="text-[11px] text-[#78716C] mt-1.5 leading-relaxed">
-                  Typing everything out, fixing mistakes, formatting manually.
+                <p className="text-[11px] sm:text-xs text-[#78716C] mt-1.5 leading-relaxed">
+                  Typing everything out, fixing mistakes,<br className="hidden sm:inline" /> formatting manually.
                 </p>
               </div>
 
@@ -380,8 +379,7 @@ export default function EmailComparisonSection() {
               delay: 0.3,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="relative overflow-hidden rounded-2xl shadow-[0_8px_48px_rgba(0,0,0,0.2)] group"
-            style={{ width: '85vw', maxWidth: '400px' }}
+            className="relative overflow-hidden rounded-2xl shadow-[0_8px_48px_rgba(0,0,0,0.2)] group w-full"
           >
             {/* Animated gradient background */}
             <motion.div
@@ -414,25 +412,25 @@ export default function EmailComparisonSection() {
             />
 
             {/* Content */}
-            <div className="relative z-10 p-5 flex flex-col" style={{ minHeight: '420px' }}>
+            <div className="relative z-10 p-5 sm:p-6 flex flex-col min-h-[380px] sm:min-h-[420px]">
               {/* Header */}
               <div className="mb-4 flex-shrink-0">
-                <p className="text-[9px] text-white/60 font-semibold uppercase tracking-[0.15em] mb-2">
+                <p className="text-[9px] sm:text-[10px] text-white/60 font-semibold uppercase tracking-[0.15em] mb-2">
                   Oravo
                 </p>
-                <div className="flex items-baseline gap-1.5">
-                  <h3 className="text-4xl font-serif text-white">
+                <div className="flex items-baseline gap-1.5 sm:gap-2">
+                  <h3 className="text-4xl sm:text-5xl font-serif text-white">
                     220
                   </h3>
-                  <span className="text-xs text-white/90 font-medium">
+                  <span className="text-xs sm:text-sm text-white/90 font-medium">
                     wpm
                   </span>
                 </div>
-                <p className="text-[11px] text-white/70 mt-1.5 leading-relaxed">
+                <p className="text-[11px] sm:text-xs text-white/70 mt-1.5 leading-relaxed">
                   <span className="text-violet-300 font-semibold">
                     Just speak.
                   </span>{" "}
-                  Oravo does the rest, polished and in your style
+                  Oravo does the rest,<br className="hidden sm:inline" /> polished and in your style
                 </p>
               </div>
 
