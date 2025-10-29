@@ -153,7 +153,7 @@ export default function MadeForYou() {
       {/* Header Section */}
       <div className="self-stretch px-6 md:px-24 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)] flex justify-center items-center">
         <div className="w-full max-w-[800px] flex flex-col justify-start items-center gap-8">
-          <h2 className="text-[#49423D] text-xl sm:text-2xl md:text-3xl lg:text-5xl font-normal leading-tight md:leading-[60px] font-serif text-center">
+          <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-normal leading-tight md:leading-[60px] font-serif text-center px-4">
             Oravo is made for you
           </h2>
 

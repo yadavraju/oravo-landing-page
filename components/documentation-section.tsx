@@ -70,9 +70,9 @@ export default function DocumentationSection() {
             }
             text="Platform Features"
           />
-          <div className="w-full max-w-[598.06px] lg:w-[598.06px] text-center flex justify-center flex-col text-[#49423D] text-xl sm:text-2xl md:text-3xl lg:text-5xl font-normal leading-tight md:leading-[60px] font-serif">
+          <h2 className="w-full text-center text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-normal leading-tight md:leading-[60px] font-serif px-4">
             Let your voice do the writing.
-          </div>
+          </h2>
 
           <div className="self-stretch text-center text-[#605A57] text-base font-normal leading-7 font-sans">
             Lightning-fast AI dictation that works across all your favorite
