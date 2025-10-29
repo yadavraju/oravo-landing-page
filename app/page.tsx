@@ -139,14 +139,14 @@ export default function LandingPage() {
             </div>
 
             {/* Hero Section */}
-            <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-[216px] pb-8 sm:pb-12 md:pb-16 flex flex-col justify-start items-center px-2 sm:px-4 md:px-8 lg:px-0 w-full sm:pl-0 sm:pr-0 pl-0 pr-0">
+            <div className="pt-12 sm:pt-16 md:pt-20 lg:pt-[180px] pb-8 sm:pb-12 md:pb-16 flex flex-col justify-start items-center px-2 sm:px-4 md:px-8 lg:px-0 w-full sm:pl-0 sm:pr-0 pl-0 pr-0">
               <div className="w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
                 <div className="self-stretch rounded-[3px] flex flex-col justify-center items-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
-                  <div className="w-full max-w-[748.71px] lg:w-[748.71px] text-center flex justify-center flex-col text-[#37322F] text-[24px] xs:text-[28px] sm:text-[36px] md:text-[52px] lg:text-[80px] font-normal leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-2 sm:px-4 md:px-0">
+                  <h1 className="w-full text-center text-[#37322F] text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[80px] font-normal leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-4 sm:px-6 md:px-0">
                     Type with your voice
                     <br />
                     faster than ever.
-                  </div>
+                  </h1>
                   <div className="w-full max-w-[506.08px] lg:w-[506.08px] text-center flex justify-center flex-col text-[rgba(55,50,47,0.80)] sm:text-lg md:text-xl leading-[1.4] sm:leading-[1.45] md:leading-[1.5] lg:leading-7 font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-medium text-sm">
                     AI-powered voice typing that turns your speech
                     <br className="hidden sm:block" />
@@ -230,7 +230,7 @@ export default function LandingPage() {
               {/* Bento Grid Section */}
               <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
                 {/* Header Section */}
-                <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] py-8 sm:py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)] flex justify-center items-center gap-6">
+                <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] pt-6 sm:pt-10 md:pt-12 pb-8 sm:pb-12 md:pb-16 border-b border-[rgba(55,50,47,0.12)] flex justify-center items-center gap-6">
                   <div className="w-full max-w-[616px] lg:w-[616px] px-4 sm:px-6 py-4 sm:py-5 shadow-[0px_2px_4px_rgba(50,45,43,0.06)] overflow-hidden rounded-lg flex flex-col justify-start items-center gap-3 sm:gap-4 shadow-none">
                     <Badge
                       icon={
@@ -282,9 +282,9 @@ export default function LandingPage() {
                       text="Feature Highlights"
                     />
 
-                    <div className="w-full max-w-[598.06px] lg:w-[598.06px] text-center flex justify-center flex-col text-[#49423D] text-xl sm:text-2xl md:text-3xl lg:text-5xl font-normal leading-tight md:leading-[60px] font-serif">
+                    <h2 className="w-full text-center text-[#49423D] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal leading-tight md:leading-[60px] font-serif px-4">
                       Smart, fast, and secure voice typing
-                    </div>
+                    </h2>
                     <div className="self-stretch text-center text-[#605A57] text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
                       Speak naturally Oravo converts your words into clean
                       <br />
@@ -417,7 +417,7 @@ export default function LandingPage() {
 
               {/* Social Proof Section */}
               <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
-                <div className="self-stretch px-4 sm:px-6 md:px-24 py-8 sm:py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)] flex justify-center items-center gap-6">
+                <div className="self-stretch px-4 sm:px-6 md:px-24 pt-6 sm:pt-10 md:pt-12 pb-8 sm:pb-12 md:pb-16 border-b border-[rgba(55,50,47,0.12)] flex justify-center items-center gap-6">
                   <div className="w-full max-w-[586px] px-4 sm:px-6 py-4 sm:py-5 shadow-[0px_2px_4px_rgba(50,45,43,0.06)] overflow-hidden rounded-lg flex flex-col justify-start items-center gap-3 sm:gap-4 shadow-none">
                     <Badge
                       icon={
@@ -520,9 +520,9 @@ export default function LandingPage() {
                       }
                       text="Social Proof"
                     />
-                    <div className="w-full max-w-[598.06px] lg:w-[598.06px] text-center flex justify-center flex-col text-[#49423D] text-xl sm:text-2xl md:text-3xl lg:text-5xl font-normal leading-tight md:leading-[60px] font-serif">
+                    <h2 className="w-full text-center text-[#49423D] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal leading-tight md:leading-[60px] font-serif px-4">
                       Trusted by professional at
-                    </div>
+                    </h2>
                     <div className="self-stretch text-center text-[#605A57] text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
                       The Most productive Individuals, Leaders
                       <br className="hidden sm:block" />
