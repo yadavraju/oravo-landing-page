@@ -26,12 +26,12 @@ export default function CTASection() {
         <div className="w-full max-w-[586px] px-6 py-5 md:py-8 overflow-hidden rounded-lg flex flex-col justify-start items-center gap-6 relative z-20">
           <div className="self-stretch flex flex-col justify-start items-start gap-3">
             <div className="self-stretch rounded-[3px] flex flex-col justify-center items-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
-              <div className="w-full max-w-[748.71px] lg:w-[748.71px] text-center flex justify-center flex-col text-[#37322F] text-[24px] xs:text-[28px] sm:text-[36px] md:text-[52px] lg:text-[80px] font-normal leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-2 sm:px-4 md:px-0">
+              <h2 className="w-full text-center text-[#37322F] text-[28px] sm:text-[36px] md:text-[52px] lg:text-[80px] font-stretch-semi-condensed font-medium leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-4 sm:px-6 md:px-0">
                 5x faster than typing
-              </div>
+              </h2>
             </div>
             <div className="self-stretch text-center text-[#605A57] text-base leading-7 font-sans font-medium">
-              Try oravo for your next email, Slack, or AI prompt
+              Try in your next email, Slack, AI prompt
               <br />
               it's free and kinda magic ✨.
             </div>

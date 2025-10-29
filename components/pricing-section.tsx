@@ -23,7 +23,10 @@ export default function PricingSection() {
   };
 
   return (
-    <div id="pricing-section" className="w-full flex flex-col justify-center items-center gap-2">
+    <div
+      id="pricing-section"
+      className="w-full flex flex-col justify-center items-center gap-2"
+    >
       {/* Header Section */}
       <div className="self-stretch px-6 md:px-24 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)] flex justify-center items-center gap-6">
         <div className="w-full max-w-[586px] px-6 py-5 shadow-[0px_2px_4px_rgba(50,45,43,0.06)] overflow-hidden rounded-lg flex flex-col justify-start items-center gap-4 shadow-none">
@@ -52,15 +55,15 @@ export default function PricingSection() {
           </div>
 
           {/* Title */}
-          <div className="w-full max-w-[598.06px] lg:w-[598.06px] text-center flex justify-center flex-col text-[#49423D] text-xl sm:text-2xl md:text-3xl lg:text-5xl font-normal leading-tight md:leading-[60px] font-serif">
+          <h2 className="w-full text-center text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-stretch-semi-condensed font-medium leading-tight md:leading-[60px] font-serif px-4">
             Choose the perfect plan
-          </div>
+          </h2>
 
           {/* Description */}
           <div className="self-stretch text-center text-[#605A57] text-base font-normal leading-7 font-sans">
-            Download the app to get started for free.
+            Download the app to get started
             <br />
-            No credit card required.
+            for free No credit card required.
           </div>
         </div>
       </div>
@@ -329,7 +332,8 @@ export default function PricingSection() {
                     Enterprise
                   </div>
                   <div className="w-full max-w-[242px] text-[rgba(41,37,35,0.70)] text-sm font-normal leading-5 font-sans">
-                    Everything in Professional, plus team features (Minimum 3 users)
+                    Everything in Professional, plus team features (Minimum 3
+                    users)
                   </div>
                 </div>
 

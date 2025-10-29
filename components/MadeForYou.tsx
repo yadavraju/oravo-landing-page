@@ -149,11 +149,14 @@ export default function MadeForYou() {
   const currentUseCase = useCases[selectedRole];
 
   return (
-    <div id="made-for-you" className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center bg-[#F7F5F3]">
+    <div
+      id="made-for-you"
+      className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center bg-[#F7F5F3]"
+    >
       {/* Header Section */}
       <div className="self-stretch px-6 md:px-24 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)] flex justify-center items-center">
         <div className="w-full max-w-[800px] flex flex-col justify-start items-center gap-8">
-          <h2 className="text-[#49423D] text-xl sm:text-2xl md:text-3xl lg:text-5xl font-normal leading-tight md:leading-[60px] font-serif text-center">
+          <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-stretch-semi-condensed font-medium leading-tight md:leading-[60px] font-serif text-center px-4">
             Oravo is made for you
           </h2>
 
@@ -197,7 +200,7 @@ export default function MadeForYou() {
               transition={{ duration: 0.3 }}
               className="flex flex-col gap-6 text-center"
             >
-              <h3 className="text-[#49423D] text-xl md:text-2xl lg:text-3xl font-stretch-semi-condensed font-serif leading-tight">
+              <h3 className="text-[#49423D] text-xl md:text-2xl lg:text-3xl font-stretch-semi-condensed font-serif leading-tight font-medium">
                 {currentUseCase.title}
               </h3>
               <p className="text-[#605A57] text-lg md:text-xl font-normal leading-relaxed font-sans max-w-[600px]">
