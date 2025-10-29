@@ -86,7 +86,9 @@ function TypingCharacters() {
             duration: 0.3,
           }}
         >
-          <span className="text-[10px] sm:text-xs font-semibold text-[#292524]">{char}</span>
+          <span className="text-[10px] sm:text-xs font-semibold text-[#292524]">
+            {char}
+          </span>
         </motion.div>
       ))}
     </div>
@@ -351,7 +353,8 @@ export default function EmailComparisonSection() {
                   </span>
                 </div>
                 <p className="text-[11px] sm:text-xs text-[#78716C] mt-1.5 leading-relaxed">
-                  Typing everything out, fixing mistakes,<br className="hidden sm:inline" /> formatting manually.
+                  Typing everything out, fixing mistakes,
+                  <br className="hidden sm:inline" /> formatting manually.
                 </p>
               </div>
 
@@ -412,25 +415,24 @@ export default function EmailComparisonSection() {
             />
 
             {/* Content */}
-            <div className="relative z-10 p-5 sm:p-6 flex flex-col min-h-[380px] sm:min-h-[420px]">
+            <div
+              className="relative z-10 p-5 flex flex-col"
+              style={{ minHeight: "420px" }}
+            >
               {/* Header */}
               <div className="mb-4 flex-shrink-0">
-                <p className="text-[9px] sm:text-[10px] text-white/60 font-semibold uppercase tracking-[0.15em] mb-2">
+                <p className="text-[9px] text-white/60 font-semibold uppercase tracking-[0.15em] mb-2">
                   Oravo
                 </p>
-                <div className="flex items-baseline gap-1.5 sm:gap-2">
-                  <h3 className="text-4xl sm:text-5xl font-serif text-white">
-                    220
-                  </h3>
-                  <span className="text-xs sm:text-sm text-white/90 font-medium">
-                    wpm
-                  </span>
+                <div className="flex items-baseline gap-1.5">
+                  <h3 className="text-4xl font-serif text-white">220</h3>
+                  <span className="text-xs text-white/90 font-medium">wpm</span>
                 </div>
-                <p className="text-[11px] sm:text-xs text-white/70 mt-1.5 leading-relaxed">
+                <p className="text-[11px] text-white/70 mt-1.5 leading-relaxed">
                   <span className="text-violet-300 font-semibold">
                     Just speak.
                   </span>{" "}
-                  Oravo does the rest,<br className="hidden sm:inline" /> polished and in your style
+                  Oravo does the rest, polished and in your style
                 </p>
               </div>
 
@@ -489,9 +491,7 @@ export default function EmailComparisonSection() {
                   Keyboard
                 </p>
                 <div className="flex items-baseline gap-2">
-                  <h3 className="text-6xl font-serif text-[#292524]">
-                    45
-                  </h3>
+                  <h3 className="text-6xl font-serif text-[#292524]">45</h3>
                   <span className="text-base text-[#44403C] font-medium">
                     wpm
                   </span>
@@ -567,9 +567,7 @@ export default function EmailComparisonSection() {
                   Oravo
                 </p>
                 <div className="flex items-baseline gap-2">
-                  <h3 className="text-6xl font-serif text-white">
-                    220
-                  </h3>
+                  <h3 className="text-6xl font-serif text-white">220</h3>
                   <span className="text-base text-white/90 font-medium">
                     wpm
                   </span>
