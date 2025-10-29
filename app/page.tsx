@@ -169,7 +169,7 @@ export default function LandingPage() {
                 />
               </div>
 
-              <div className="w-full max-w-[960px] lg:w-[960px] flex flex-col justify-center items-center relative z-5 my-8 sm:my-12 md:my-16 lg:my-16">
+              <div className="w-full max-w-[960px] lg:w-[960px] flex flex-col justify-center items-center relative z-5 mb-8 sm:mb-12 md:mb-16 lg:mb-16">
                 <EmailComparisonSection />
               </div>
 
