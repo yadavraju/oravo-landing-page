@@ -13,7 +13,7 @@ import EmailComparisonSection, {
 } from "../components/EmailComparisonSection";
 import FAQSection from "../components/faq-section";
 import FooterSection from "../components/footer-section";
-import Logo from "../components/Logo";
+import { Header } from "../components/header";
 import MadeForYou from "../components/MadeForYou";
 import PricingSection from "../components/pricing-section";
 import SmartSimpleBrilliant from "../components/smart-simple-brilliant";
@@ -99,53 +99,7 @@ export default function LandingPage() {
 
           <div className="self-stretch pt-[9px] overflow-hidden border-b border-[rgba(55,50,47,0.06)] flex flex-col justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-[66px] relative z-10">
             {/* Navigation */}
-            <div className="w-full h-12 sm:h-14 md:h-16 lg:h-[84px] absolute left-0 top-0 flex justify-center items-center z-20 px-6 sm:px-8 md:px-12 lg:px-0">
-              <div className="w-full h-0 absolute left-0 top-6 sm:top-7 md:top-8 lg:top-[42px] border-t border-[rgba(55,50,47,0.12)] shadow-[0px_1px_0px_white]"></div>
-
-              <div className="w-full max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] md:max-w-[calc(100%-64px)] lg:max-w-[700px] lg:w-[700px] h-10 sm:h-11 md:h-12 py-1.5 sm:py-2 px-3 sm:px-4 md:px-4 pr-2 sm:pr-3 bg-[#F7F5F3] backdrop-blur-sm shadow-[0px_0px_0px_2px_white] overflow-hidden rounded-[50px] flex justify-between items-center relative z-30">
-                <div className="flex justify-center items-center">
-                  <div className="flex justify-start items-center gap-1">
-                    <Logo />
-                    <div className="flex flex-col justify-center text-[#2F3037] text-sm sm:text-base md:text-lg lg:text-xl font-semibold leading-5 font-sans">
-                      oravo
-                    </div>
-                  </div>
-                  <div className="pl-3 sm:pl-4 md:pl-5 lg:pl-5 justify-start items-start hidden sm:flex flex-row gap-2 sm:gap-3 md:gap-4 lg:gap-4">
-                    <div
-                      onClick={() => scrollToSection("made-for-you")}
-                      className="flex justify-start items-center cursor-pointer"
-                    >
-                      <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
-                        Products
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => scrollToSection("pricing-section")}
-                      className="flex justify-start items-center cursor-pointer"
-                    >
-                      <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
-                        Pricing
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => scrollToSection("made-for-you")}
-                      className="flex justify-start items-center cursor-pointer"
-                    >
-                      <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
-                        Business
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="h-6 sm:h-7 md:h-8 flex justify-start items-start gap-2 sm:gap-3">
-                  <div className="px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-gradient-to-b from-[#6366F1] to-[#4F46E5] hover:from-[#5558E3] hover:to-[#4338CA] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(99,102,241,0.4)] overflow-hidden rounded-full flex justify-center items-center transition-all duration-300 hover:scale-105 active:scale-95">
-                    <div className="flex flex-col justify-center text-[#FFF] text-xs md:text-[13px] font-medium leading-5 font-sans">
-                      Download
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Header />
 
             {/* Hero Section */}
             <div className="pt-12 sm:pt-16 md:pt-20 lg:pt-[180px] pb-8 sm:pb-12 md:pb-16 flex flex-col justify-start items-center px-2 sm:px-4 md:px-8 lg:px-0 w-full sm:pl-0 sm:pr-0 pl-0 pr-0">
@@ -163,7 +117,7 @@ export default function LandingPage() {
                   </div>
                 </div>
               </div>
-              <div className="mt-2 sm:mt-4 md:mt-6 lg:mt-8">
+              <div id="download-section" className="mt-2 sm:mt-4 md:mt-6 lg:mt-8">
                 <DownloadButtons />
               </div>
 

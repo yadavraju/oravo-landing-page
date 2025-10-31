@@ -5,12 +5,12 @@ export default function DownloadButtons() {
     <div className="w-full max-w-[650px] lg:w-[650px] flex flex-col justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 relative z-10">
       <div className="backdrop-blur-[8.25px] flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
         {/* Mac Download Button */}
-        <button className="group relative h-12 px-8 bg-gradient-to-b from-[#6366F1] to-[#4F46E5] hover:from-[#5558E3] hover:to-[#4338CA] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(99,102,241,0.4)] overflow-hidden rounded-full flex items-center gap-3 transition-all duration-300 hover:scale-105 active:scale-95">
+        <button className="group relative h-12 w-full sm:w-[260px] px-6 bg-gradient-to-b from-[#6366F1] to-[#4F46E5] hover:from-[#5558E3] hover:to-[#4338CA] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(99,102,241,0.4)] overflow-hidden rounded-full flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap">
           {/* Glossy overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/10 pointer-events-none"></div>
           {/* Apple logo */}
           <svg
-            className="w-5 h-5 relative z-10"
+            className="w-5 h-5 relative z-10 flex-shrink-0"
             viewBox="0 0 24 24"
             fill="white"
           >
@@ -22,12 +22,12 @@ export default function DownloadButtons() {
         </button>
 
         {/* Windows Download Button */}
-        <button className="group relative h-12 px-8 bg-gradient-to-b from-white to-gray-100 hover:from-gray-50 hover:to-gray-200 shadow-[0px_0px_0px_2.5px_rgba(0,0,0,0.05)_inset,0px_4px_12px_rgba(0,0,0,0.1)] overflow-hidden rounded-full flex items-center gap-3 transition-all duration-300 hover:scale-105 active:scale-95 border border-gray-200">
+        <button className="group relative h-12 w-full sm:w-[260px] px-6 bg-gradient-to-b from-white to-gray-100 hover:from-gray-50 hover:to-gray-200 shadow-[0px_0px_0px_2.5px_rgba(0,0,0,0.05)_inset,0px_4px_12px_rgba(0,0,0,0.1)] overflow-hidden rounded-full flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 active:scale-95 border border-gray-200 whitespace-nowrap">
           {/* Glossy overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-black/5 pointer-events-none"></div>
           {/* Windows logo */}
           <svg
-            className="w-5 h-5 relative z-10"
+            className="w-5 h-5 relative z-10 flex-shrink-0"
             viewBox="0 0 24 24"
             fill="#0078D4"
           >
