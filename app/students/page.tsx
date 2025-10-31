@@ -22,7 +22,7 @@ export default function StudentsPage() {
               {/* Title Section */}
               <div className="mb-12">
                 <h1 className="text-[#37322F] text-4xl md:text-5xl lg:text-6xl font-normal leading-tight font-serif mb-6">
-                  Flow Pro for Students
+                  Oravo Pro for Students
                 </h1>
                 <p className="text-[#605A57] text-xl md:text-2xl leading-relaxed font-sans mb-6">
                   Get started for free
