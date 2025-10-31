@@ -387,9 +387,14 @@ export default function EmailComparisonSection() {
             {/* Animated gradient background */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-br from-[#3B4A5C] via-[#2A3647] to-[#1F2937]"
-              animate={{
-                scale: [1, 1.05, 1],
-              }}
+              style={{ willChange: "transform" }}
+              animate={
+                isInView
+                  ? {
+                      scale: [1, 1.05, 1],
+                    }
+                  : {}
+              }
               transition={{
                 duration: 10,
                 repeat: Infinity,
@@ -400,13 +405,18 @@ export default function EmailComparisonSection() {
             {/* Flowing gradient overlay */}
             <motion.div
               className="absolute inset-0"
-              animate={{
-                background: [
-                  "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
-                  "radial-gradient(circle at 70% 60%, rgba(168, 85, 247, 0.25) 0%, transparent 60%)",
-                  "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
-                ],
-              }}
+              style={{ willChange: "background" }}
+              animate={
+                isInView
+                  ? {
+                      background: [
+                        "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
+                        "radial-gradient(circle at 70% 60%, rgba(168, 85, 247, 0.25) 0%, transparent 60%)",
+                        "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
+                      ],
+                    }
+                  : {}
+              }
               transition={{
                 duration: 12,
                 repeat: Infinity,
@@ -532,9 +542,14 @@ export default function EmailComparisonSection() {
             {/* Animated gradient background */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-br from-[#3B4A5C] via-[#2A3647] to-[#1F2937]"
-              animate={{
-                scale: [1, 1.05, 1],
-              }}
+              style={{ willChange: "transform" }}
+              animate={
+                isInView
+                  ? {
+                      scale: [1, 1.05, 1],
+                    }
+                  : {}
+              }
               transition={{
                 duration: 10,
                 repeat: Infinity,
@@ -545,13 +560,18 @@ export default function EmailComparisonSection() {
             {/* Flowing gradient overlay */}
             <motion.div
               className="absolute inset-0"
-              animate={{
-                background: [
-                  "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
-                  "radial-gradient(circle at 70% 60%, rgba(168, 85, 247, 0.25) 0%, transparent 60%)",
-                  "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
-                ],
-              }}
+              style={{ willChange: "background" }}
+              animate={
+                isInView
+                  ? {
+                      background: [
+                        "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
+                        "radial-gradient(circle at 70% 60%, rgba(168, 85, 247, 0.25) 0%, transparent 60%)",
+                        "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
+                      ],
+                    }
+                  : {}
+              }
               transition={{
                 duration: 12,
                 repeat: Infinity,
