@@ -180,59 +180,32 @@ function KeyboardTyping() {
   );
 }
 
-// Word-by-word streaming component (fast voice)
+// Character-by-character streaming component (fast voice - 220 wpm)
 function VoiceStreaming() {
   const [displayedText, setDisplayedText] = useState("");
   const [progress, setProgress] = useState(0);
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const words = voiceText.split(/\s+/); // Split by whitespace including newlines
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (currentWordIndex < words.length) {
+    if (currentIndex < voiceText.length) {
       const timer = setTimeout(() => {
-        // Reconstruct text with proper line breaks
-        const wordsToShow = words.slice(0, currentWordIndex + 1);
-        let reconstructedText = "";
-        let wordCount = 0;
-
-        // Rebuild text preserving structure
-        const lines = voiceText.split("\n");
-        for (const line of lines) {
-          const lineWords = line.trim().split(/\s+/);
-          const lineWordsToShow = wordsToShow.slice(
-            wordCount,
-            wordCount + lineWords.length
-          );
-          if (lineWordsToShow.length > 0) {
-            reconstructedText += lineWordsToShow.join(" ");
-            if (
-              lineWordsToShow.length === lineWords.length &&
-              wordCount + lineWords.length < words.length
-            ) {
-              reconstructedText += "\n";
-            }
-          }
-          wordCount += lineWords.length;
-          if (wordCount >= currentWordIndex + 1) break;
-        }
-
-        setDisplayedText(reconstructedText);
-        setCurrentWordIndex(currentWordIndex + 1);
-        setProgress(((currentWordIndex + 1) / words.length) * 100);
-      }, 150); // Fast streaming (150ms per word)
+        setDisplayedText(voiceText.substring(0, currentIndex + 1));
+        setCurrentIndex(currentIndex + 1);
+        setProgress(((currentIndex + 1) / voiceText.length) * 100);
+      }, 25); // Fast typing speed (25ms per character - approximately 220 wpm)
 
       return () => clearTimeout(timer);
     } else {
       // Reset after completion
       const resetTimer = setTimeout(() => {
         setDisplayedText("");
-        setCurrentWordIndex(0);
+        setCurrentIndex(0);
         setProgress(0);
       }, 2000);
 
       return () => clearTimeout(resetTimer);
     }
-  }, [currentWordIndex, words]);
+  }, [currentIndex]);
 
   return (
     <div className="space-y-3 sm:space-y-4">
@@ -255,7 +228,7 @@ function VoiceStreaming() {
           {/* Streaming Area */}
           <div className="h-[70px] sm:h-[110px] md:h-[130px]">
             <p
-              className="text-xs sm:text-sm md:text-base text-white font-normal whitespace-pre-wrap"
+              className="text-xs sm:text-sm md:text-base text-white font-normal whitespace-pre-line"
               style={{ lineHeight: "1.5" }}
             >
               {displayedText}
@@ -388,13 +361,9 @@ export default function EmailComparisonSection() {
             <motion.div
               className="absolute inset-0 bg-gradient-to-br from-[#3B4A5C] via-[#2A3647] to-[#1F2937]"
               style={{ willChange: "transform" }}
-              animate={
-                isInView
-                  ? {
-                      scale: [1, 1.05, 1],
-                    }
-                  : {}
-              }
+              animate={{
+                scale: [1, 1.05, 1],
+              }}
               transition={{
                 duration: 10,
                 repeat: Infinity,
@@ -406,17 +375,13 @@ export default function EmailComparisonSection() {
             <motion.div
               className="absolute inset-0"
               style={{ willChange: "background" }}
-              animate={
-                isInView
-                  ? {
-                      background: [
-                        "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
-                        "radial-gradient(circle at 70% 60%, rgba(168, 85, 247, 0.25) 0%, transparent 60%)",
-                        "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
-                      ],
-                    }
-                  : {}
-              }
+              animate={{
+                background: [
+                  "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
+                  "radial-gradient(circle at 70% 60%, rgba(168, 85, 247, 0.25) 0%, transparent 60%)",
+                  "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
+                ],
+              }}
               transition={{
                 duration: 12,
                 repeat: Infinity,
@@ -543,13 +508,9 @@ export default function EmailComparisonSection() {
             <motion.div
               className="absolute inset-0 bg-gradient-to-br from-[#3B4A5C] via-[#2A3647] to-[#1F2937]"
               style={{ willChange: "transform" }}
-              animate={
-                isInView
-                  ? {
-                      scale: [1, 1.05, 1],
-                    }
-                  : {}
-              }
+              animate={{
+                scale: [1, 1.05, 1],
+              }}
               transition={{
                 duration: 10,
                 repeat: Infinity,
@@ -561,17 +522,13 @@ export default function EmailComparisonSection() {
             <motion.div
               className="absolute inset-0"
               style={{ willChange: "background" }}
-              animate={
-                isInView
-                  ? {
-                      background: [
-                        "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
-                        "radial-gradient(circle at 70% 60%, rgba(168, 85, 247, 0.25) 0%, transparent 60%)",
-                        "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
-                      ],
-                    }
-                  : {}
-              }
+              animate={{
+                background: [
+                  "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
+                  "radial-gradient(circle at 70% 60%, rgba(168, 85, 247, 0.25) 0%, transparent 60%)",
+                  "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
+                ],
+              }}
               transition={{
                 duration: 12,
                 repeat: Infinity,
