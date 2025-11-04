@@ -1,6 +1,6 @@
 "use client";
 
-import type React from "react";
+import React from "react";
 
 import LanguageFlags from "@/components/LanguageFlags";
 import { useEffect, useRef, useState } from "react";
@@ -117,7 +117,10 @@ export default function LandingPage() {
                   </div>
                 </div>
               </div>
-              <div id="download-section" className="mt-2 sm:mt-4 md:mt-6 lg:mt-8">
+              <div
+                id="download-section"
+                className="mt-2 sm:mt-4 md:mt-6 lg:mt-8"
+              >
                 <DownloadButtons />
               </div>
 
