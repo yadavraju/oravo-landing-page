@@ -95,7 +95,7 @@ export const metadata: Metadata = {
         type: "image/png",
       },
       {
-        url: "/og-image-square.png",
+        url: "/og-image.png",
         width: 1200,
         height: 1200,
         alt: "Oravo.ai Logo",
@@ -127,15 +127,22 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico" },
-      { url: "/icon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/icon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
     other: [
       {
-        rel: "mask-icon",
-        url: "/safari-pinned-tab.svg",
+        rel: "icon",
+        url: "/favicon.ico",
+        sizes: "16x16 32x32",
       },
     ],
   },
@@ -460,10 +467,7 @@ export default function RootLayout({
 
         {/* Theme Color for Mobile Browser */}
         <meta name="theme-color" content="#3B4A5C" />
-        <meta
-          name="msapplication-TileColor"
-          content="#3B4A5C"
-        />
+        <meta name="msapplication-TileColor" content="#3B4A5C" />
 
         {/* Apple Mobile Web App */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -471,10 +475,7 @@ export default function RootLayout({
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
-        <meta
-          name="apple-mobile-web-app-title"
-          content="Oravo.ai"
-        />
+        <meta name="apple-mobile-web-app-title" content="Oravo.ai" />
 
         {/* Microsoft Application */}
         <meta name="application-name" content="Oravo.ai" />
@@ -497,10 +498,7 @@ export default function RootLayout({
         {/* Security Headers */}
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
         <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
-        <meta
-          httpEquiv="X-XSS-Protection"
-          content="1; mode=block"
-        />
+        <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
       </head>
       <body className="font-sans antialiased">{children}</body>
     </html>
