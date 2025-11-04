@@ -310,69 +310,6 @@ export default function EmailComparisonSection() {
       {/* Mobile & Tablet: Vertical Stack */}
       <div className="lg:hidden px-4">
         <div className="flex flex-col gap-6 sm:gap-8">
-          {/* Left Card - Keyboard Typing (Slow) - Mobile */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-            transition={{
-              duration: 0.7,
-              delay: 0.2,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#FAF9F6] via-[#F5F3F0] to-[#EBE9E6] shadow-[0_4px_24px_rgba(0,0,0,0.08)] group w-full"
-          >
-            {/* Keyboard Image Background */}
-            <div className="absolute inset-0">
-              <img
-                src="/keyboard.avif"
-                alt="Keyboard"
-                className="w-full h-full object-cover"
-                style={{
-                  opacity: 0.7,
-                  filter: "brightness(1.2) contrast(1.05) saturate(0.85)",
-                }}
-              />
-            </div>
-
-            {/* Lighter gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F6]/10 via-[#FAF9F6]/50 to-[#FAF9F6]/85" />
-
-            {/* Content */}
-            <div className="relative z-10 p-5 sm:p-6 flex flex-col min-h-[380px] sm:min-h-[420px]">
-              {/* Header */}
-              <div className="mb-4 flex-shrink-0">
-                <p className="text-[9px] sm:text-[10px] text-[#78716C] font-semibold uppercase tracking-[0.15em] mb-2">
-                  Keyboard
-                </p>
-                <div className="flex items-baseline gap-1.5 sm:gap-2">
-                  <h3 className="text-4xl sm:text-5xl font-serif text-[#292524]">
-                    45
-                  </h3>
-                  <span className="text-xs sm:text-sm text-[#44403C] font-medium">
-                    wpm
-                  </span>
-                </div>
-                <p className="text-[11px] sm:text-xs text-[#78716C] mt-1.5 leading-relaxed">
-                  Typing everything out, fixing mistakes,
-                  <br className="hidden sm:inline" /> formatting manually.
-                </p>
-              </div>
-
-              {/* Keyboard Typing Animation */}
-              <div className="flex-grow flex flex-col justify-center pb-14">
-                <KeyboardTyping />
-              </div>
-            </div>
-
-            {/* Typing Characters at Bottom */}
-            <div className="absolute bottom-4 left-0 right-0 flex justify-center z-10">
-              <TypingCharacters />
-            </div>
-
-            {/* Border */}
-            <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/[0.08] group-hover:ring-black/[0.12] transition-all duration-500" />
-          </motion.div>
-
           {/* Right Card - Voice Dictation (Fast) - Mobile */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
@@ -460,13 +397,7 @@ export default function EmailComparisonSection() {
             {/* Border */}
             <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />
           </motion.div>
-        </div>
-      </div>
-
-      {/* Desktop: Grid Layout */}
-      <div className="hidden lg:block px-4">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 gap-6 xl:gap-8">
-          {/* Left Card - Keyboard Typing (Slow) - Desktop */}
+          {/* Left Card - Keyboard Typing (Slow) - Mobile */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
@@ -475,7 +406,7 @@ export default function EmailComparisonSection() {
               delay: 0.2,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#FAF9F6] via-[#F5F3F0] to-[#EBE9E6] shadow-[0_4px_24px_rgba(0,0,0,0.08)] group min-h-[500px]"
+            className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#FAF9F6] via-[#F5F3F0] to-[#EBE9E6] shadow-[0_4px_24px_rgba(0,0,0,0.08)] group w-full"
           >
             {/* Keyboard Image Background */}
             <div className="absolute inset-0">
@@ -494,22 +425,23 @@ export default function EmailComparisonSection() {
             <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F6]/10 via-[#FAF9F6]/50 to-[#FAF9F6]/85" />
 
             {/* Content */}
-            <div className="relative z-10 p-8 h-full flex flex-col justify-between">
+            <div className="relative z-10 p-5 sm:p-6 flex flex-col min-h-[380px] sm:min-h-[420px]">
               {/* Header */}
-              <div className="mb-8 flex-shrink-0">
-                <p className="text-xs text-[#78716C] font-semibold uppercase tracking-[0.2em] mb-3">
+              <div className="mb-4 flex-shrink-0">
+                <p className="text-[9px] sm:text-[10px] text-[#78716C] font-semibold uppercase tracking-[0.15em] mb-2">
                   Keyboard
                 </p>
-                <div className="flex items-baseline gap-2">
-                  <h3 className="text-6xl font-serif text-[#292524]">45</h3>
-                  <span className="text-base text-[#44403C] font-medium">
+                <div className="flex items-baseline gap-1.5 sm:gap-2">
+                  <h3 className="text-4xl sm:text-5xl font-serif text-[#292524]">
+                    45
+                  </h3>
+                  <span className="text-xs sm:text-sm text-[#44403C] font-medium">
                     wpm
                   </span>
                 </div>
-                <p className="text-sm text-[#78716C] mt-2 leading-relaxed">
+                <p className="text-[11px] sm:text-xs text-[#78716C] mt-1.5 leading-relaxed">
                   Typing everything out, fixing mistakes,
-                  <br />
-                  formatting manually.
+                  <br className="hidden sm:inline" /> formatting manually.
                 </p>
               </div>
 
@@ -520,14 +452,19 @@ export default function EmailComparisonSection() {
             </div>
 
             {/* Typing Characters at Bottom */}
-            <div className="absolute bottom-6 left-0 right-0 flex justify-center z-10">
+            <div className="absolute bottom-4 left-0 right-0 flex justify-center z-10">
               <TypingCharacters />
             </div>
 
             {/* Border */}
-            <div className="absolute inset-0 rounded-[24px] ring-1 ring-inset ring-black/[0.08] group-hover:ring-black/[0.12] transition-all duration-500" />
+            <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/[0.08] group-hover:ring-black/[0.12] transition-all duration-500" />
           </motion.div>
+        </div>
+      </div>
 
+      {/* Desktop: Grid Layout */}
+      <div className="hidden lg:block px-4">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 gap-6 xl:gap-8">
           {/* Right Card - Voice Dictation (Fast) - Desktop */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
@@ -615,6 +552,68 @@ export default function EmailComparisonSection() {
 
             {/* Border */}
             <div className="absolute inset-0 rounded-[24px] ring-1 ring-inset ring-white/10" />
+          </motion.div>
+
+          {/* Left Card - Keyboard Typing (Slow) - Desktop */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+            transition={{
+              duration: 0.7,
+              delay: 0.2,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#FAF9F6] via-[#F5F3F0] to-[#EBE9E6] shadow-[0_4px_24px_rgba(0,0,0,0.08)] group min-h-[500px]"
+          >
+            {/* Keyboard Image Background */}
+            <div className="absolute inset-0">
+              <img
+                src="/keyboard.avif"
+                alt="Keyboard"
+                className="w-full h-full object-cover"
+                style={{
+                  opacity: 0.7,
+                  filter: "brightness(1.2) contrast(1.05) saturate(0.85)",
+                }}
+              />
+            </div>
+
+            {/* Lighter gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F6]/10 via-[#FAF9F6]/50 to-[#FAF9F6]/85" />
+
+            {/* Content */}
+            <div className="relative z-10 p-8 h-full flex flex-col justify-between">
+              {/* Header */}
+              <div className="mb-8 flex-shrink-0">
+                <p className="text-xs text-[#78716C] font-semibold uppercase tracking-[0.2em] mb-3">
+                  Keyboard
+                </p>
+                <div className="flex items-baseline gap-2">
+                  <h3 className="text-6xl font-serif text-[#292524]">45</h3>
+                  <span className="text-base text-[#44403C] font-medium">
+                    wpm
+                  </span>
+                </div>
+                <p className="text-sm text-[#78716C] mt-2 leading-relaxed">
+                  Typing everything out, fixing mistakes,
+                  <br />
+                  formatting manually.
+                </p>
+              </div>
+
+              {/* Keyboard Typing Animation */}
+              <div className="flex-grow flex flex-col justify-center pb-14">
+                <KeyboardTyping />
+              </div>
+            </div>
+
+            {/* Typing Characters at Bottom */}
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center z-10">
+              <TypingCharacters />
+            </div>
+
+            {/* Border */}
+            <div className="absolute inset-0 rounded-[24px] ring-1 ring-inset ring-black/[0.08] group-hover:ring-black/[0.12] transition-all duration-500" />
           </motion.div>
         </div>
       </div>
