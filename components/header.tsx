@@ -20,17 +20,26 @@ export function Header() {
           </a>
           {/* Desktop Navigation Links */}
           <div className="pl-3 sm:pl-4 md:pl-5 lg:pl-5 justify-start items-start hidden sm:flex flex-row gap-2 sm:gap-3 md:gap-4 lg:gap-4">
-            <a href="/#made-for-you" className="flex justify-start items-center">
+            <a
+              href="/#made-for-you"
+              className="flex justify-start items-center"
+            >
               <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
                 Products
               </div>
             </a>
-            <a href="/#pricing-section" className="flex justify-start items-center">
+            <a
+              href="/#pricing-section"
+              className="flex justify-start items-center"
+            >
               <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
                 Pricing
               </div>
             </a>
-            <a href="/#made-for-you" className="flex justify-start items-center">
+            <a
+              href="/#made-for-you"
+              className="flex justify-start items-center"
+            >
               <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
                 Business
               </div>
@@ -44,18 +53,30 @@ export function Header() {
             className="sm:hidden w-8 h-8 flex flex-col justify-center items-center gap-1 cursor-pointer"
             aria-label="Toggle menu"
           >
-            <span className={`w-4 h-0.5 bg-[#37322F] transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-            <span className={`w-4 h-0.5 bg-[#37322F] transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`w-4 h-0.5 bg-[#37322F] transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+            <span
+              className={`w-4 h-0.5 bg-[#37322F] transition-all duration-300 ${
+                isMobileMenuOpen ? "rotate-45 translate-y-1.5" : ""
+              }`}
+            ></span>
+            <span
+              className={`w-4 h-0.5 bg-[#37322F] transition-all duration-300 ${
+                isMobileMenuOpen ? "opacity-0" : ""
+              }`}
+            ></span>
+            <span
+              className={`w-4 h-0.5 bg-[#37322F] transition-all duration-300 ${
+                isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
+              }`}
+            ></span>
           </button>
 
           {/* Download Button - Hidden on Mobile */}
           <a
-            href="/#download-section"
+            href="https://ij4tehkvbg.zite.so/"
             className="hidden sm:flex px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-gradient-to-b from-[#6366F1] to-[#4F46E5] hover:from-[#5558E3] hover:to-[#4338CA] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(99,102,241,0.4)] overflow-hidden rounded-full justify-center items-center transition-all duration-300 hover:scale-105 active:scale-95"
           >
             <div className="flex flex-col justify-center text-[#FFF] text-xs md:text-[13px] font-medium leading-5 font-sans">
-              Download
+              Join Waitlist
             </div>
           </a>
         </div>
