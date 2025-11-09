@@ -484,15 +484,15 @@ export default function LandingPage() {
                           />
                         </svg>
                       }
-                      text="Social Proof"
+                      text="Social Proof (Closed Beta)"
                     />
                     <h2 className="w-full text-center text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-stretch-semi-condensed font-medium leading-tight md:leading-[60px] font-serif px-4">
-                      Trusted by professional at
+                      Used by professional at
                     </h2>
                     <div className="self-stretch text-center text-[#605A57] text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
                       The Most productive Individuals, Leaders
                       <br className="hidden sm:block" />
-                      writers, Developers, Founders etc use Oravo.
+                      Writers, Developers, Founders use Oravo.
                     </div>
                   </div>
                 </div>
