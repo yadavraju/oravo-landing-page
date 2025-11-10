@@ -1,6 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -500,7 +501,22 @@ export default function RootLayout({
         <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
         <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
       </head>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-BXXZJF9LRR"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-BXXZJF9LRR');
+          `}
+        </Script>
+        {children}
+      </body>
     </html>
   );
 }
