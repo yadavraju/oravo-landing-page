@@ -31,7 +31,7 @@ export default function AnimatedRoleText() {
 
     const interval = setInterval(() => {
       setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-    }, 5000); // Change every 5 seconds
+    }, 3000); // Change every 5 seconds
 
     return () => clearInterval(interval);
   }, [isClient]);
@@ -49,18 +49,19 @@ export default function AnimatedRoleText() {
           animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
           exit={{ y: -20, opacity: 0, filter: "blur(8px)" }}
           transition={{
-            duration: 0.6,
-            ease: [0.23, 1, 0.32, 1], // Custom easing for smooth animation
+            duration: 0.8,
+            ease: [0.16, 1, 0.3, 1], // Smooth fade easing
           }}
           className="whitespace-nowrap"
           style={{
-            background: "linear-gradient(135deg, #37322F 0%, #605A57 100%)",
+            background:
+              "linear-gradient(to bottom right, #FF8C42 0%, #FF6B1A 50%, #1F2937 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
           }}
         >
-          for {roles[currentRoleIndex]}.
+          for {roles[currentRoleIndex]}
         </motion.span>
       </AnimatePresence>
     </span>
