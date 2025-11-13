@@ -28,7 +28,7 @@ const roles = [
   "Writers",
 ];
 
-const useCases = {
+export const useCases = {
   Accessibility: {
     title: "Oravo for Accessibility",
     description:
