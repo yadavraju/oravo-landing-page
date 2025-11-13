@@ -1,20 +1,40 @@
 import { MetadataRoute } from "next";
 import { client } from "@/sanity/lib/client";
-import { postsQuery } from "@/sanity/lib/queries";
 import fs from "fs";
 import path from "path";
 
 // Configuration for page priorities and update frequencies
+// Optimized for target audience: content creators, journalists, healthcare, legal professionals
 const PAGE_CONFIG: Record<
   string,
   { priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }
 > = {
+  // Core pages - highest priority
   "/": { priority: 1.0, changeFrequency: "daily" },
-  "/blog": { priority: 0.9, changeFrequency: "weekly" },
-  "/students": { priority: 0.8, changeFrequency: "monthly" },
+
+  // High-value conversion pages
+  "/students": { priority: 0.9, changeFrequency: "weekly" },
+
+  // Content hub - frequently updated
+  "/blog": { priority: 0.85, changeFrequency: "daily" },
+
+  // Common landing pages (add as you create them)
+  "/pricing": { priority: 0.85, changeFrequency: "weekly" },
+  "/features": { priority: 0.85, changeFrequency: "weekly" },
+  "/about": { priority: 0.75, changeFrequency: "monthly" },
+  "/contact": { priority: 0.75, changeFrequency: "monthly" },
+
+  // Use case pages (high-value for SEO targeting specific audiences)
+  "/for-healthcare": { priority: 0.8, changeFrequency: "monthly" },
+  "/for-legal": { priority: 0.8, changeFrequency: "monthly" },
+  "/for-journalists": { priority: 0.8, changeFrequency: "monthly" },
+  "/for-content-creators": { priority: 0.8, changeFrequency: "monthly" },
+
+  // Legal pages - required but lower priority
   "/privacy": { priority: 0.3, changeFrequency: "yearly" },
   "/terms": { priority: 0.3, changeFrequency: "yearly" },
   "/subprocessors": { priority: 0.3, changeFrequency: "yearly" },
+
   // Default for any other pages not specified
   default: { priority: 0.7, changeFrequency: "monthly" },
 };
@@ -89,24 +109,44 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  // Fetch dynamic blog posts from Sanity
+  // Fetch dynamic blog posts from Sanity with enhanced metadata
   let blogPostRoutes: MetadataRoute.Sitemap = [];
 
   try {
-    const posts = await client.fetch(postsQuery);
+    // Enhanced query to include _updatedAt for accurate lastModified dates
+    const enhancedPostsQuery = `*[_type == "post" && defined(slug.current)] | order(_createdAt desc) {
+      _id,
+      slug,
+      _updatedAt,
+      _createdAt,
+      publishedAt
+    }`;
+
+    const posts = await client.fetch(enhancedPostsQuery);
 
     if (posts && posts.length > 0) {
-      blogPostRoutes = posts.map((post: any) => ({
-        url: `${baseUrl}/blog/${post.slug.current}`,
-        lastModified: post._updatedAt ? new Date(post._updatedAt) : new Date(),
-        changeFrequency: "monthly" as const,
-        priority: 0.7,
-      }));
+      blogPostRoutes = posts.map((post: any) => {
+        // Use the most recent date available for lastModified
+        const lastModified = post._updatedAt || post.publishedAt || post._createdAt;
+
+        return {
+          url: `${baseUrl}/blog/${post.slug.current}`,
+          lastModified: lastModified ? new Date(lastModified) : new Date(),
+          // Blog posts are high-value content, update frequency based on recency
+          changeFrequency: "weekly" as const,
+          priority: 0.75, // Higher priority than default pages - blog content drives SEO
+        };
+      });
     }
   } catch (error) {
     console.error("Error fetching blog posts for sitemap:", error);
     // Continue without blog posts if there's an error
   }
 
-  return [...staticRoutes, ...blogPostRoutes];
+  // Sort by priority (highest first) for better crawling optimization
+  const allRoutes = [...staticRoutes, ...blogPostRoutes].sort(
+    (a, b) => (b.priority || 0) - (a.priority || 0)
+  );
+
+  return allRoutes;
 }

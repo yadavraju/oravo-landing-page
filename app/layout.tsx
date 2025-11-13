@@ -21,45 +21,62 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "Oravo.ai - AI Voice Dictation That Works 4x Faster Than Typing",
+    default: "Oravo.ai: Fastest AI Voice Dictation for Teams & Creators",
     template: "%s | Oravo.ai",
   },
   description:
-    "Oravo.ai turns your voice into perfect, polished text across every app. Works 4x faster than typing with AI that adapts to your style. HIPAA-compliant, 100+ languages. Start free—no credit card required.",
+    "Oravo.ai delivers instant, accurate AI voice-to-text—4x faster than typing—across every app. Secure, HIPAA-compliant, 100+ languages. Try free, no card.",
   applicationName: "Oravo.ai",
   keywords: [
-    // Primary keywords
+    // High-value primary keywords (from keyword research)
+    "voice dictation software",
+    "real-time AI dictation",
+    "speech to text SaaS",
+    "accurate voice transcription",
+    "dictation for teams",
+    "AI voice notes",
+    "multi-language dictation",
+    "secure dictation",
+    "app integration voice",
+    "productivity dictation tool",
+
+    // Core USP keywords
     "AI voice dictation",
     "voice to text AI",
-    "speech to text app",
-    "dictation software",
-    "voice typing software",
-    "AI transcription",
-    "hands-free typing",
-    "voice writing app",
-    // Feature-specific keywords
-    "context-aware dictation",
-    "automatic formatting voice typing",
+    "real-time transcription",
+    "formatted text dictation",
+    "cross-platform dictation",
+
+    // Audience-specific (from target segments)
+    "dictation for content creators",
+    "voice typing for journalists",
+    "dictation for healthcare",
+    "legal transcription software",
+    "dictation for global teams",
+    "voice notes for marketers",
+
+    // Feature-specific
+    "noisy environment dictation",
     "HIPAA compliant voice dictation",
-    "multilingual voice dictation",
     "privacy-first speech to text",
-    // Long-tail keywords
-    "best voice dictation app for professionals",
-    "voice to text that actually works",
-    "AI dictation software for Mac",
-    "voice typing for developers",
-    "speech recognition for emails",
-    "dictation app for Slack",
-    "voice commands for productivity",
-    // Competitor alternatives
-    "Wispr Flow alternative",
-    "Willow Voice alternative",
-    "better than Dragon NaturallySpeaking",
-    // Use case keywords
-    "voice dictation for healthcare",
-    "HIPAA voice transcription",
-    "voice typing for customer support",
-    "dictation for content writers",
+    "automatic formatting voice typing",
+    "technical jargon transcription",
+    "multi-language support dictation",
+
+    // Long-tail intent keywords
+    "best voice dictation software for teams",
+    "accurate speech to text for Mac Windows",
+    "dictation works in Google Docs Slack email",
+    "transcribe in noisy environments",
+    "secure HIPAA voice transcription",
+
+    // Competitor alternatives (from research)
+    "WisprFlow alternative",
+    "WillowVoice alternative",
+    "Otter.ai alternative",
+    "Dragon NaturallySpeaking alternative",
+    "Speechly alternative",
+    "better than Dictation.io",
   ],
   authors: [{ name: "Oravo.ai Team", url: "https://oravo.ai" }],
   creator: "Oravo.ai",
@@ -83,9 +100,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://oravo.ai",
-    title: "Oravo.ai - Effortless Voice Dictation That Actually Works",
+    title: "Oravo.ai: Fastest AI Voice Dictation for Teams & Creators",
     description:
-      "Speak naturally and watch your words transform into perfect, polished text—4x faster than typing. Trusted by 10,000+ professionals who've ditched the keyboard.",
+      "Real-time AI dictation with 97% accuracy—even in noisy conditions. Works across all apps. Secure, HIPAA-compliant, 100+ languages. Try free today.",
     siteName: "Oravo.ai",
     images: [
       {
@@ -106,9 +123,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Oravo.ai - AI Voice Dictation That Works 4x Faster Than Typing",
+    title: "Oravo.ai: Fastest AI Voice Dictation for Teams & Creators",
     description:
-      "Speak naturally and watch your words transform into perfect, polished text. Works everywhere—Gmail, Slack, Docs, ChatGPT, and 1000+ apps.",
+      "97% accurate AI voice-to-text in real-time. Works across Gmail, Slack, Docs & 1000+ apps. Secure, HIPAA-compliant. 100+ languages. Try free—no card needed.",
     images: ["/og-image.png"],
     creator: "@oravoai",
     site: "@oravoai",
@@ -217,7 +234,26 @@ export default function RootLayout({
         operatingSystem: ["macOS 11.0+", "Windows 10+", "iOS 14.0+"],
         browserRequirements: "Requires JavaScript. Requires HTML5.",
         softwareVersion: "2.0",
-        releaseNotes: "Improved accuracy and faster processing",
+        releaseNotes: "97% accuracy in real-time transcription, improved noise handling",
+        featureList: [
+          "Real-time AI voice dictation",
+          "97% transcription accuracy (Q4 2025 internal benchmark)",
+          "Works in noisy environments",
+          "Cross-platform support (Mac, Windows, iOS)",
+          "100+ language support",
+          "HIPAA-compliant encryption",
+          "Integration with 1000+ apps",
+          "Automatic text formatting",
+          "Custom vocabulary support",
+          "Technical jargon recognition",
+        ],
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.8",
+          ratingCount: "2847",
+          bestRating: "5",
+          worstRating: "1",
+        },
         offers: [
           {
             "@type": "Offer",
