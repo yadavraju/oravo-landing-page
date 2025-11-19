@@ -6,6 +6,21 @@ import Logo from "./Logo";
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 100; // Offset for header height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+    setIsMobileMenuOpen(false); // Close mobile menu after clicking
+  };
+
   return (
     <div className="w-full h-12 sm:h-14 md:h-16 lg:h-[84px] absolute left-0 top-0 flex justify-center items-center z-20 px-6 sm:px-8 md:px-12 lg:px-0">
       <div className="w-full h-0 absolute left-0 top-6 sm:top-7 md:top-8 lg:top-[42px] border-t border-[rgba(55,50,47,0.12)] shadow-[0px_1px_0px_white]"></div>
@@ -20,30 +35,30 @@ export function Header() {
           </a>
           {/* Desktop Navigation Links */}
           <div className="pl-3 sm:pl-4 md:pl-5 lg:pl-5 justify-start items-start hidden sm:flex flex-row gap-2 sm:gap-3 md:gap-4 lg:gap-4">
-            <a
-              href="/#made-for-you"
-              className="flex justify-start items-center"
+            <button
+              onClick={() => scrollToSection("made-for-you")}
+              className="flex justify-start items-center cursor-pointer"
             >
               <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
                 Products
               </div>
-            </a>
-            <a
-              href="/#pricing-section"
-              className="flex justify-start items-center"
+            </button>
+            <button
+              onClick={() => scrollToSection("pricing-section")}
+              className="flex justify-start items-center cursor-pointer"
             >
               <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
                 Pricing
               </div>
-            </a>
-            <a
-              href="/#made-for-you"
-              className="flex justify-start items-center"
+            </button>
+            <button
+              onClick={() => scrollToSection("made-for-you")}
+              className="flex justify-start items-center cursor-pointer"
             >
               <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
-                Business
+                Individuals
               </div>
-            </a>
+            </button>
           </div>
         </div>
         <div className="h-6 sm:h-7 md:h-8 flex justify-start items-start gap-2 sm:gap-3">
@@ -84,27 +99,24 @@ export function Header() {
         {/* Mobile Menu Dropdown */}
         {isMobileMenuOpen && (
           <div className="absolute top-full left-0 right-0 mt-2 bg-[#F7F5F3] backdrop-blur-sm shadow-[0px_0px_0px_2px_white] rounded-2xl p-4 flex flex-col gap-3 sm:hidden">
-            <a
-              href="/#made-for-you"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2"
+            <button
+              onClick={() => scrollToSection("made-for-you")}
+              className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer"
             >
               Products
-            </a>
-            <a
-              href="/#pricing-section"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2"
+            </button>
+            <button
+              onClick={() => scrollToSection("pricing-section")}
+              className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer"
             >
               Pricing
-            </a>
-            <a
-              href="/#made-for-you"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2"
+            </button>
+            <button
+              onClick={() => scrollToSection("made-for-you")}
+              className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer"
             >
               Business
-            </a>
+            </button>
           </div>
         )}
       </div>

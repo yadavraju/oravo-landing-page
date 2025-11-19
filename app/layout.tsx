@@ -21,11 +21,11 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "Oravo.ai: Fastest AI Voice Dictation for Teams & Creators",
-    template: "%s | Oravo.ai",
+    default: "AI Speech to Text for Mac, Windows, Linux | Oravo",
+    template: "%s | Oravo",
   },
   description:
-    "Oravo.ai delivers instant, accurate AI voice-to-text—4x faster than typing—across every app. Secure, HIPAA-compliant, 100+ languages. Try free, no card.",
+    "Privacy-focused AI speech-to-text for emails, docs, Cursor & messaging. Voice dictation with context-aware AI and custom dictionaries. Fast, accurate, secure.",
   applicationName: "Oravo.ai",
   keywords: [
     // High-value primary keywords (from keyword research)
@@ -100,10 +100,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://oravo.ai",
-    title: "Oravo.ai: Fastest AI Voice Dictation for Teams & Creators",
+    title: "AI Speech to Text for Mac, Windows, Linux | Oravo",
     description:
-      "Real-time AI dictation with 97% accuracy—even in noisy conditions. Works across all apps. Secure, HIPAA-compliant, 100+ languages. Try free today.",
-    siteName: "Oravo.ai",
+      "Privacy-focused AI speech-to-text for emails, docs, Cursor & messaging. Voice dictation with context-aware AI and custom dictionaries. Fast, accurate, secure.",
+    siteName: "Oravo",
     images: [
       {
         url: "/og-image.png",
@@ -123,9 +123,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Oravo.ai: Fastest AI Voice Dictation for Teams & Creators",
+    title: "AI Speech to Text for Mac, Windows, Linux | Oravo",
     description:
-      "97% accurate AI voice-to-text in real-time. Works across Gmail, Slack, Docs & 1000+ apps. Secure, HIPAA-compliant. 100+ languages. Try free—no card needed.",
+      "Privacy-focused AI speech-to-text with voice dictation for emails, docs, Cursor & more. Context-aware AI. Fast, accurate, secure. Try free.",
     images: ["/og-image.png"],
     creator: "@oravoai",
     site: "@oravoai",
@@ -234,7 +234,8 @@ export default function RootLayout({
         operatingSystem: ["macOS 11.0+", "Windows 10+", "iOS 14.0+"],
         browserRequirements: "Requires JavaScript. Requires HTML5.",
         softwareVersion: "2.0",
-        releaseNotes: "97% accuracy in real-time transcription, improved noise handling",
+        releaseNotes:
+          "97% accuracy in real-time transcription, improved noise handling",
         featureList: [
           "Real-time AI voice dictation",
           "97% transcription accuracy (Q4 2025 internal benchmark)",
