@@ -67,7 +67,7 @@ export function Header() {
               className="flex justify-start items-center cursor-pointer"
             >
               <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
-                Individuals
+                Use Cases
               </div>
             </button>
           </div>
