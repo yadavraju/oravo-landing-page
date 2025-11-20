@@ -175,10 +175,10 @@ export default async function BlogPost({ params }: Props) {
                 )}
               </div>
             </div>
-          </div>
 
-          {/* Footer */}
-          <FooterSection />
+            {/* Footer */}
+            <FooterSection />
+          </div>
         </div>
       </div>
     </article>

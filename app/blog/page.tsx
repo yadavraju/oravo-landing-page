@@ -110,10 +110,10 @@ export default async function BlogPage() {
                 </div>
               ) : null}
             </div>
-          </div>
 
-          {/* Footer */}
-          <FooterSection />
+            {/* Footer */}
+            <FooterSection />
+          </div>
         </div>
       </div>
     </div>
