@@ -76,9 +76,9 @@ export default function TestimonialsSection() {
       {/* Testimonial Content */}
       <div className="self-stretch px-2 overflow-hidden flex justify-start items-center bg-background border border-b border-l-0 border-r-0 border-t-0">
         <div className="flex-1 py-16 md:py-17 flex flex-col md:flex-row justify-center items-end gap-6">
-          <div className="self-auto px-3 md:px-12 justify-center items-start gap-4 flex flex-col md:flex-row">
+          <div className="self-stretch px-3 md:px-12 justify-center items-start gap-4 flex flex-col md:flex-row">
             <img
-              className="w-48 h-50 md:w-48 md:h-50 rounded-lg object-cover transition-all duration-700 ease-in-out"
+              className="w-48 h-50 md:w-48 md:h-50 rounded-lg object-contain transition-all duration-700 ease-in-out"
               style={{
                 opacity: isTransitioning ? 0.6 : 1,
                 transform: isTransitioning ? "scale(0.95)" : "scale(1)",
