@@ -111,9 +111,12 @@ export default function FooterSection() {
               >
                 Manifesto
               </a>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
+              <a
+                href="/affiliate"
+                className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors"
+              >
                 Become an Affiliate
-              </div>
+              </a>
             </div>
           </div>
 
