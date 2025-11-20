@@ -4,6 +4,7 @@ import { BlogCard } from "@/components/blog/BlogCard";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
+import FooterSection from "@/components/footer-section";
 
 export const metadata: Metadata = {
   title: "Blog - Oravo.ai",
@@ -110,6 +111,9 @@ export default async function BlogPage() {
               ) : null}
             </div>
           </div>
+
+          {/* Footer */}
+          <FooterSection />
         </div>
       </div>
     </div>

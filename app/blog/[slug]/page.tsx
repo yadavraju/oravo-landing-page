@@ -8,6 +8,7 @@ import { format } from 'date-fns'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Header } from '@/components/header'
+import FooterSection from '@/components/footer-section'
 
 type Props = {
   params: { slug: string }
@@ -175,6 +176,9 @@ export default async function BlogPost({ params }: Props) {
               </div>
             </div>
           </div>
+
+          {/* Footer */}
+          <FooterSection />
         </div>
       </div>
     </article>

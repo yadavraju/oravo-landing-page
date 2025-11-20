@@ -1,12 +1,23 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import Logo from "./Logo";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const scrollToSection = (sectionId: string) => {
+    // If not on homepage, navigate to homepage first
+    if (pathname !== "/") {
+      router.push(`/#${sectionId}`);
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
+    // If on homepage, scroll to section
     const element = document.getElementById(sectionId);
     if (element) {
       const offset = 100; // Offset for header height

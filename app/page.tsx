@@ -41,6 +41,27 @@ export default function LandingPage() {
   const [progress, setProgress] = useState(0);
   const mountedRef = useRef(true);
 
+  // Handle hash navigation from other pages
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      // Wait for page to fully load before scrolling
+      setTimeout(() => {
+        const sectionId = hash.replace('#', '');
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const offset = 100;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+          });
+        }
+      }, 100);
+    }
+  }, []);
+
   useEffect(() => {
     const progressInterval = setInterval(() => {
       if (!mountedRef.current) return;
