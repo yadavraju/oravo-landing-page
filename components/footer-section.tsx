@@ -89,15 +89,6 @@ export default function FooterSection() {
               >
                 Manifesto
               </a>
-              <a
-                href="/blog"
-                className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors"
-              >
-                Blog
-              </a>
-              {/* <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Blog
-              </div> */}
               <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
                 Become an Affiliate
               </div>
@@ -110,21 +101,24 @@ export default function FooterSection() {
               Product
             </div>
             <div className="flex flex-col justify-start items-start gap-2">
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                What's New
-              </div>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
+              <a
+                href="/blog"
+                className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors"
+              >
+                Blog
+              </a>
+              <a
+                href="/#made-for-you"
+                className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors"
+              >
                 Use Cases
-              </div>
+              </a>
               <a
                 href="/students"
                 className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors"
               >
                 For Students
               </a>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                For Non-Profits
-              </div>
             </div>
           </div>
 
