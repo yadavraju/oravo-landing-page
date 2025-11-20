@@ -3,6 +3,7 @@ import { postsQuery } from "@/sanity/lib/queries";
 import { BlogCard } from "@/components/blog/BlogCard";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Header } from "@/components/header";
 
 export const metadata: Metadata = {
   title: "Blog - Oravo.ai",
@@ -36,23 +37,10 @@ export default async function BlogPage() {
           {/* Right vertical line */}
           <div className="w-px h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0"></div>
 
-          <div className="self-stretch pt-[9px] overflow-hidden border-b border-[rgba(55,50,47,0.06)] flex flex-col justify-start items-start gap-8 relative z-10">
-            {/* Navigation */}
-            <div className="w-full px-4 sm:px-6 lg:px-12 py-4 border-b border-[rgba(55,50,47,0.06)] flex justify-between items-center">
-              <Link
-                href="/"
-                className="text-[#37322F] text-lg font-semibold font-sans hover:text-[#605A57] transition-colors"
-              >
-                Oravo.ai
-              </Link>
-              <Link
-                href="/"
-                className="text-[#605A57] text-sm font-medium font-sans hover:text-[#37322F] transition-colors"
-              >
-                ← Back to Home
-              </Link>
-            </div>
+          {/* Header */}
+          <Header />
 
+          <div className="self-stretch pt-[9px] overflow-hidden border-b border-[rgba(55,50,47,0.06)] flex flex-col justify-start items-start gap-8 relative z-10 mt-20 md:mt-24 lg:mt-28">
             {/* Hero Section */}
             <div className="w-full px-4 sm:px-6 lg:px-12 pt-12 pb-16 flex flex-col justify-center items-center gap-4">
               <div className="w-full max-w-[720px] flex flex-col justify-center items-center gap-4">
