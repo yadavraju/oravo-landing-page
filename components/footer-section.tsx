@@ -72,6 +72,28 @@ export default function FooterSection() {
                 </svg>
               </div>
             </div>
+
+            {/* Email Icon */}
+            <a
+              href="mailto:hello@oravo.ai"
+              className="w-6 h-6 relative overflow-hidden hover:opacity-70 transition-opacity"
+              aria-label="Contact Support"
+            >
+              <div className="w-6 h-6 left-0 top-0 absolute flex items-center justify-center">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                    fill="#49423D"
+                  />
+                </svg>
+              </div>
+            </a>
           </div>
         </div>
 
@@ -83,21 +105,18 @@ export default function FooterSection() {
               Company
             </div>
             <div className="flex flex-col justify-start items-start gap-2">
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Manifesto
-              </div>
               <a
-                href="/blog"
+                href="/manifesto"
                 className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors"
               >
-                Blog
+                Manifesto
               </a>
-              {/* <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Blog
-              </div> */}
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
+              <a
+                href="/affiliate"
+                className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors"
+              >
                 Become an Affiliate
-              </div>
+              </a>
             </div>
           </div>
 
@@ -107,21 +126,18 @@ export default function FooterSection() {
               Product
             </div>
             <div className="flex flex-col justify-start items-start gap-2">
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                What's New
-              </div>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Use Cases
-              </div>
+              <a
+                href="/blog"
+                className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors"
+              >
+                Blog
+              </a>
               <a
                 href="/students"
                 className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors"
               >
                 For Students
               </a>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                For Non-Profits
-              </div>
             </div>
           </div>
 
@@ -149,9 +165,6 @@ export default function FooterSection() {
               >
                 Subprocessors
               </a>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Talk to Support
-              </div>
             </div>
           </div>
         </div>

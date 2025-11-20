@@ -41,6 +41,27 @@ export default function LandingPage() {
   const [progress, setProgress] = useState(0);
   const mountedRef = useRef(true);
 
+  // Handle hash navigation from other pages
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      // Wait for page to fully load before scrolling
+      setTimeout(() => {
+        const sectionId = hash.replace('#', '');
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const offset = 100;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+          });
+        }
+      }, 100);
+    }
+  }, []);
+
   useEffect(() => {
     const progressInterval = setInterval(() => {
       if (!mountedRef.current) return;
@@ -111,11 +132,12 @@ export default function LandingPage() {
                     <br />
                     <AnimatedRoleText />
                   </h1>
-                  <div className="w-full max-w-[506.08px] lg:w-[506.08px] text-center flex justify-center flex-col text-[rgba(55,50,47,0.80)] sm:text-lg md:text-xl leading-[1.4] sm:leading-[1.45] md:leading-[1.5] lg:leading-7 font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-medium text-sm">
-                    Oravo.ai delivers instant, accurate AI voice-to-text 5x
-                    faster than typing across every app and supports
+                  <div className="w-full max-w-[720px] lg:w-[720px] text-center flex justify-center flex-col text-[rgba(55,50,47,0.80)] sm:text-lg md:text-xl leading-[1.4] sm:leading-[1.45] md:leading-[1.5] lg:leading-7 font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-medium text-sm">
+                    Privacy-focused AI speech-to-text for emails, docs, Cursor &
+                    messaging. AI powered voice dictation with context awareness
+                    faster, smarter, more secure.
                     <br className="hidden sm:block" />
-                    100+ languages. Try free, no card.
+                    Supports 100+ languages. Try free, no card.
                   </div>
                 </div>
               </div>

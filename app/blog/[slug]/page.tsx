@@ -7,6 +7,8 @@ import Link from 'next/link'
 import { format } from 'date-fns'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { Header } from '@/components/header'
+import FooterSection from '@/components/footer-section'
 
 type Props = {
   params: { slug: string }
@@ -74,23 +76,10 @@ export default async function BlogPost({ params }: Props) {
           {/* Right vertical line */}
           <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0"></div>
 
-          <div className="self-stretch pt-[9px] overflow-hidden flex flex-col justify-start items-start gap-0 relative z-10">
-            {/* Navigation */}
-            <div className="w-full px-4 sm:px-6 lg:px-12 py-4 border-b border-[rgba(55,50,47,0.06)] flex justify-between items-center">
-              <Link
-                href="/"
-                className="text-[#37322F] text-lg font-semibold font-sans hover:text-[#605A57] transition-colors"
-              >
-                Oravo.ai
-              </Link>
-              <Link
-                href="/blog"
-                className="text-[#605A57] text-sm font-medium font-sans hover:text-[#37322F] transition-colors"
-              >
-                ← Back to Blog
-              </Link>
-            </div>
+          {/* Header */}
+          <Header />
 
+          <div className="self-stretch pt-[9px] overflow-hidden flex flex-col justify-start items-start gap-0 relative z-10 mt-20 md:mt-24 lg:mt-28">
             {/* Header Section */}
             <div className="w-full px-4 sm:px-6 lg:px-20 pt-12 pb-8 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center gap-6">
               <div className="w-full max-w-[720px] flex flex-col justify-start items-start gap-4">
@@ -186,6 +175,9 @@ export default async function BlogPost({ params }: Props) {
                 )}
               </div>
             </div>
+
+            {/* Footer */}
+            <FooterSection />
           </div>
         </div>
       </div>
