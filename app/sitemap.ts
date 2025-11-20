@@ -14,6 +14,7 @@ const PAGE_CONFIG: Record<
 
   // High-value conversion pages
   "/students": { priority: 0.9, changeFrequency: "weekly" },
+  "/manifesto": { priority: 0.85, changeFrequency: "monthly" },
 
   // Content hub - frequently updated
   "/blog": { priority: 0.85, changeFrequency: "daily" },

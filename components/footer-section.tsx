@@ -83,9 +83,12 @@ export default function FooterSection() {
               Company
             </div>
             <div className="flex flex-col justify-start items-start gap-2">
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
+              <a
+                href="/manifesto"
+                className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors"
+              >
                 Manifesto
-              </div>
+              </a>
               <a
                 href="/blog"
                 className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors"
