@@ -483,6 +483,13 @@ export default function RootLayout({
       className={`${inter.variable} ${instrumentSerif.variable} antialiased`}
     >
       <head>
+        {/* Favicon - Explicit Links for Better Browser Support */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+        <link rel="icon" href="/icon-512.png" type="image/png" sizes="512x512" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+
         {/* DNS Prefetch & Preconnect for Performance */}
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
