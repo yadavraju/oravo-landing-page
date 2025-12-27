@@ -96,13 +96,13 @@ export function Header() {
             ></span>
           </button>
 
-          {/* Download Button - Hidden on Mobile */}
+          {/* How to use Button - Hidden on Mobile */}
           <a
-            href="https://ij4tehkvbg.zite.so/"
+            href="/how-to-use"
             className="hidden sm:flex px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-gradient-to-b from-[#6366F1] to-[#4F46E5] hover:from-[#5558E3] hover:to-[#4338CA] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(99,102,241,0.4)] overflow-hidden rounded-full justify-center items-center transition-all duration-300 hover:scale-105 active:scale-95"
           >
             <div className="flex flex-col justify-center text-[#FFF] text-xs md:text-[13px] font-medium leading-5 font-sans">
-              Join Waitlist
+              How to use
             </div>
           </a>
         </div>
@@ -128,6 +128,14 @@ export function Header() {
             >
               Business
             </button>
+            <div className="border-t border-[rgba(55,50,47,0.12)] my-2"></div>
+            <a
+              href="/download"
+              className="text-[#6366F1] text-sm font-semibold leading-5 font-sans hover:text-[#4F46E5] transition-colors py-2 text-left"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Download
+            </a>
           </div>
         )}
       </div>

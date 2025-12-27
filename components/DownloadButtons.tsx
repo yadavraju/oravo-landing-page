@@ -1,11 +1,13 @@
 "use client";
 
+import Link from 'next/link';
+
 export default function DownloadButtons() {
   return (
     <div className="w-full max-w-[650px] lg:w-[650px] flex flex-col justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 relative z-10">
       <div className="backdrop-blur-[8.25px] flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
         {/* Mac Download Button */}
-        <button className="group relative h-12 w-full sm:w-[260px] px-6 bg-gradient-to-b from-[#6366F1] to-[#4F46E5] hover:from-[#5558E3] hover:to-[#4338CA] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(99,102,241,0.4)] overflow-hidden rounded-full flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap">
+        <Link href="/download" className="group relative h-12 w-full sm:w-[260px] px-6 bg-gradient-to-b from-[#6366F1] to-[#4F46E5] hover:from-[#5558E3] hover:to-[#4338CA] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(99,102,241,0.4)] overflow-hidden rounded-full flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap">
           {/* Glossy overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/10 pointer-events-none"></div>
           {/* Apple logo */}
@@ -19,10 +21,10 @@ export default function DownloadButtons() {
           <span className="text-white text-base font-medium leading-5 font-sans relative z-10">
             Download for Mac
           </span>
-        </button>
+        </Link>
 
         {/* Windows Download Button */}
-        <button className="group relative h-12 w-full sm:w-[260px] px-6 bg-gradient-to-b from-white to-gray-100 hover:from-gray-50 hover:to-gray-200 shadow-[0px_0px_0px_2.5px_rgba(0,0,0,0.05)_inset,0px_4px_12px_rgba(0,0,0,0.1)] overflow-hidden rounded-full flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 active:scale-95 border border-gray-200 whitespace-nowrap">
+        <Link href="/download" className="group relative h-12 w-full sm:w-[260px] px-6 bg-gradient-to-b from-white to-gray-100 hover:from-gray-50 hover:to-gray-200 shadow-[0px_0px_0px_2.5px_rgba(0,0,0,0.05)_inset,0px_4px_12px_rgba(0,0,0,0.1)] overflow-hidden rounded-full flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 active:scale-95 border border-gray-200 whitespace-nowrap">
           {/* Glossy overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-black/5 pointer-events-none"></div>
           {/* Windows logo */}
@@ -36,7 +38,7 @@ export default function DownloadButtons() {
           <span className="text-gray-800 text-base font-medium leading-5 font-sans relative z-10">
             Download for Windows
           </span>
-        </button>
+        </Link>
       </div>
     </div>
   );
