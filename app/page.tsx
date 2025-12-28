@@ -13,6 +13,7 @@ import EmailComparisonSection, {
   MiniVoiceWaveform,
 } from "../components/EmailComparisonSection";
 import FAQSection from "../components/faq-section";
+import AskAISection from "../components/ask-ai-section";
 import FooterSection from "../components/footer-section";
 import { Header } from "../components/header";
 import MadeForYou from "../components/MadeForYou";
@@ -47,7 +48,7 @@ export default function LandingPage() {
     if (hash) {
       // Wait for page to fully load before scrolling
       setTimeout(() => {
-        const sectionId = hash.replace('#', '');
+        const sectionId = hash.replace("#", "");
         const element = document.getElementById(sectionId);
         if (element) {
           const offset = 100;
@@ -55,7 +56,7 @@ export default function LandingPage() {
           const offsetPosition = elementPosition + window.pageYOffset - offset;
           window.scrollTo({
             top: offsetPosition,
-            behavior: 'smooth',
+            behavior: "smooth",
           });
         }
       }, 100);
@@ -128,16 +129,16 @@ export default function LandingPage() {
               <div className="w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
                 <div className="self-stretch rounded-[3px] flex flex-col justify-center items-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
                   <h1 className="w-full text-center text-[#37322F] text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[80px] font-stretch-semi-condensed font-medium leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-4 sm:px-6 md:px-0 mt-6 sm:mt-8 md:mt-4 lg:mt-0">
-                    Fastest AI Voice Dictation
+                    Fastest AI Voice Typing
                     <br />
                     <AnimatedRoleText />
                   </h1>
                   <div className="w-full max-w-[720px] lg:w-[720px] text-center flex justify-center flex-col text-[rgba(55,50,47,0.80)] sm:text-lg md:text-xl leading-[1.4] sm:leading-[1.45] md:leading-[1.5] lg:leading-7 font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-medium text-sm">
-                    Privacy-focused AI speech-to-text for emails, docs, Cursor &
-                    messaging. AI powered voice dictation with context awareness
-                    faster, smarter, more secure.
-                    <br className="hidden sm:block" />
-                    Supports 100+ languages. Try free, no card.
+                    Privacy-first AI voice typing & speech-to-text that's 4x
+                    faster than keyboard typing. Secure, with zero data
+                    retention. HIPAA-ready voice dictation. Works in Google
+                    Docs, Gmail, Slack & all apps. 100+ languages. Try free, no
+                    card required.
                   </div>
                 </div>
               </div>
@@ -146,6 +147,102 @@ export default function LandingPage() {
                 className="mt-2 sm:mt-4 md:mt-6 lg:mt-8"
               >
                 <DownloadButtons />
+              </div>
+
+              {/* Security & Privacy Trust Badges */}
+              <div className="mt-6 sm:mt-8 flex flex-wrap justify-center items-center gap-3 sm:gap-4 px-4 sm:px-0 relative z-10">
+                <Badge
+                  icon={
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7 1L2 3.5V7C2 9.76 4.24 12.26 7 13C9.76 12.26 12 9.76 12 7V3.5L7 1Z"
+                        stroke="#37322F"
+                        strokeWidth="1"
+                        fill="none"
+                      />
+                      <path
+                        d="M5.5 7L6.5 8L8.5 6"
+                        stroke="#37322F"
+                        strokeWidth="1"
+                        fill="none"
+                      />
+                    </svg>
+                  }
+                  text="Zero Data Retention"
+                />
+                <Badge
+                  icon={
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="3"
+                        y="6"
+                        width="8"
+                        height="6"
+                        rx="1"
+                        stroke="#37322F"
+                        strokeWidth="1"
+                        fill="none"
+                      />
+                      <path
+                        d="M5 6V4C5 2.9 5.9 2 7 2C8.1 2 9 2.9 9 4V6"
+                        stroke="#37322F"
+                        strokeWidth="1"
+                        fill="none"
+                      />
+                    </svg>
+                  }
+                  text="Open Source models"
+                />
+                <Badge
+                  icon={
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7 1L2 3.5V7C2 9.76 4.24 12.26 7 13C9.76 12.26 12 9.76 12 7V3.5L7 1Z"
+                        stroke="#37322F"
+                        strokeWidth="1"
+                        fill="none"
+                      />
+                    </svg>
+                  }
+                  text="HIPAA-Ready"
+                />
+                <Badge
+                  icon={
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7 2L9 6H13L9.5 9L11 13L7 10L3 13L4.5 9L1 6H5L7 2Z"
+                        stroke="#37322F"
+                        strokeWidth="1"
+                        fill="none"
+                      />
+                    </svg>
+                  }
+                  text="SOC 2 Type II"
+                />
               </div>
 
               <div className="absolute top-[232px] sm:top-[248px] md:top-[264px] lg:top-[320px] left-1/2 transform -translate-x-1/2 z-0 pointer-events-none">
@@ -179,22 +276,22 @@ export default function LandingPage() {
                 <div className="flex-1 px-0 sm:px-2 md:px-0 flex flex-col md:flex-row justify-center items-stretch gap-0">
                   {/* Feature Cards */}
                   <FeatureCard
-                    title="Contextual Understanding"
-                    description="Understands names, dates, and other contextual information to ensure accurate transcriptions."
+                    title="40% More Accurate Than Built-in Tools"
+                    description="AI learns your writing style, recognizes names, dates, and technical terms automatically. No more fixing typos in medical records or legal documents."
                     isActive={activeCard === 1}
                     progress={activeCard === 0 ? progress : 0}
                     onClick={() => handleCardClick(0)}
                   />
                   <FeatureCard
-                    title="Multi-Language Support"
-                    description="Dictate in multiple languages with ease, making it perfect for global teams."
+                    title="100+ Languages Including Rare Dialects"
+                    description="Speak in Spanish, switch to Mandarin mid-sentence, or use regional dialects. Real-time multilingual support for global teams and content creators."
                     isActive={activeCard === 1}
                     progress={activeCard === 1 ? progress : 0}
                     onClick={() => handleCardClick(1)}
                   />
                   <FeatureCard
-                    title="Custom Vocabulary"
-                    description="Add your own custom words and phrases to improve accuracy for specialized terminology."
+                    title="Learns Your Industry Jargon in Seconds"
+                    description="Medical terminology, legal phrases, tech acronyms - Oravo memorizes your specialized vocabulary after hearing it once. Works for healthcare, law, engineering, and finance."
                     isActive={activeCard === 1}
                     progress={activeCard === 2 ? progress : 0}
                     onClick={() => handleCardClick(2)}
@@ -533,6 +630,9 @@ export default function LandingPage() {
 
               {/* FAQ Section */}
               <FAQSection />
+
+              {/* Ask AI Section */}
+              <AskAISection />
 
               {/* CTA Section */}
               <CTASection />

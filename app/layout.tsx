@@ -21,24 +21,118 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "AI Speech to Text for Mac, Windows, Linux | Oravo",
+    default: "Oravo - Fastest Voice Typing App | Secure AI Speech-to-Text for Mac, Windows & iOS",
     template: "%s | Oravo",
   },
   description:
-    "Privacy-focused AI speech-to-text for emails, docs, Cursor & messaging. Voice dictation with context-aware AI and custom dictionaries. Fast, accurate, secure.",
+    "The fastest voice typing app - 4x faster than keyboard typing. Secure AI speech-to-text with zero data retention. Works in Google Docs, Gmail, Slack & 1000+ apps. HIPAA-ready, end-to-end encrypted. 100+ languages. Try free, no card required.",
   applicationName: "Oravo.ai",
   keywords: [
-    // High-value primary keywords (from keyword research)
-    "voice dictation software",
-    "real-time AI dictation",
+    // PRIMARY: Consumer-focused "voice typing" keywords (highest search volume)
+    "voice typing",
+    "voice typing app",
+    "best voice typing app",
+    "fastest voice typing app",
+    "voice typing for Mac",
+    "voice typing for Windows",
+    "voice typing Chrome",
+    "voice typing Google Docs",
+    "voice typing software",
+    "voice typing for iPhone",
+    "free voice typing app",
+    "AI voice typing",
+    "voice typing extension",
+    "voice typing online",
+    "secure voice typing app",
+
+    // Speed-focused keywords (BOTH voice typing AND dictation)
+    "fastest voice typing",
+    "fastest dictation software",
+    "fast voice typing",
+    "fast AI dictation",
+    "4x faster than typing",
+    "real-time voice typing",
+    "real-time voice dictation",
+    "instant voice typing",
+    "instant speech to text",
+    "quick voice typing",
+    "high-speed dictation",
+    "fastest AI voice app",
+    "real-time AI transcription",
+
+    // Security-focused keywords (BOTH voice typing AND dictation)
+    "secure voice typing",
+    "secure voice typing app",
+    "private voice typing",
+    "privacy-first voice typing",
+    "privacy-first dictation",
+    "HIPAA compliant voice typing",
+    "HIPAA compliant dictation",
+    "encrypted voice typing",
+    "encrypted voice dictation",
+    "zero data retention voice typing",
+    "zero data retention dictation",
+    "private voice to text",
+    "secure speech to text",
+    "privacy-focused dictation app",
+    "end-to-end encrypted dictation",
+    "end-to-end encrypted voice typing",
+    "GDPR compliant voice typing",
+    "secure dictation",
+
+    // Speech-to-text variations (also high volume)
+    "speech to text",
+    "speech to text app",
+    "speech to text software",
+    "AI speech to text",
+    "secure speech to text",
+    "real-time speech to text",
+    "speech to text for Mac",
     "speech to text SaaS",
     "accurate voice transcription",
+
+    // Voice-to-text variations
+    "voice to text",
+    "voice to text app",
+    "voice to text free",
+    "best voice to text app",
+    "AI voice to text",
+    "voice to text AI",
+
+    // Professional "voice dictation" keywords (B2B/enterprise)
+    "voice dictation",
+    "voice dictation software",
+    "best dictation app",
+    "dictation app",
+    "dictation software",
+    "medical dictation software",
+    "legal dictation software",
+    "dictation app for professionals",
+    "AI voice dictation",
+    "voice recorder app",
+    "voice note app",
+    "best voice dictation app",
+
+    // Meeting & transcription keywords
+    "meeting notes app",
+    "AI meeting notes app",
+    "AI transcription app",
+    "meeting recorder app",
+    "AI meeting recorder",
+    "automatic meeting notes app",
+    "voice assistant app",
+    "voice memo app",
+
+    // Use case specific (consumer + professional)
+    "voice typing for writers",
+    "voice typing for students",
+    "voice typing for emails",
+    "voice typing for content creators",
+    "voice typing for journalists",
+    "dictation for healthcare",
+    "dictation for legal",
+    "dictation for content creators",
     "dictation for teams",
-    "AI voice notes",
-    "multi-language dictation",
-    "secure dictation",
-    "app integration voice",
-    "productivity dictation tool",
 
     // Core USP keywords
     "AI voice dictation",
@@ -71,12 +165,22 @@ export const metadata: Metadata = {
     "secure HIPAA voice transcription",
 
     // Competitor alternatives (from research)
+    "Wispr Flow alternative",
     "WisprFlow alternative",
-    "WillowVoice alternative",
+    "Granola AI alternative",
     "Otter.ai alternative",
+    "Fireflies alternative",
+    "Grain alternative",
     "Dragon NaturallySpeaking alternative",
+    "Dragon alternative",
     "Speechly alternative",
+    "Descript alternative",
+    "Trint alternative",
+    "Rev alternative",
     "better than Dictation.io",
+    "better than Google Voice Typing",
+    "better than Mac dictation",
+    "better than Windows speech recognition",
   ],
   authors: [{ name: "Oravo.ai Team", url: "https://oravo.ai" }],
   creator: "Oravo.ai",
@@ -88,21 +192,21 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://oravo.ai"),
   alternates: {
-    canonical: "/",
+    canonical: "https://oravo.ai",
     languages: {
-      "en-US": "/",
-      "es-ES": "/es",
-      "fr-FR": "/fr",
-      "de-DE": "/de",
+      "en-US": "https://oravo.ai",
+      "es-ES": "https://oravo.ai/es",
+      "fr-FR": "https://oravo.ai/fr",
+      "de-DE": "https://oravo.ai/de",
     },
   },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://oravo.ai",
-    title: "AI Speech to Text for Mac, Windows, Linux | Oravo",
+    title: "Oravo - Fastest Voice Typing App | Secure AI Speech-to-Text",
     description:
-      "Privacy-focused AI speech-to-text for emails, docs, Cursor & messaging. Voice dictation with context-aware AI and custom dictionaries. Fast, accurate, secure.",
+      "The fastest voice typing app - 4x faster than keyboard typing. Secure AI speech-to-text with zero data retention. Works in Google Docs, Gmail, Slack & 1000+ apps. HIPAA-ready, encrypted. 100+ languages.",
     siteName: "Oravo",
     images: [
       {
@@ -123,9 +227,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Speech to Text for Mac, Windows, Linux | Oravo",
+    title: "Oravo - Fastest Voice Typing App",
     description:
-      "Privacy-focused AI speech-to-text with voice dictation for emails, docs, Cursor & more. Context-aware AI. Fast, accurate, secure. Try free.",
+      "AI voice typing 4x faster than keyboard typing. Secure speech-to-text with zero data retention. Works in Google Docs, Gmail, Slack & all apps. HIPAA-ready, encrypted. Try free.",
     images: ["/og-image.png"],
     creator: "@oravoai",
     site: "@oravoai",
@@ -191,8 +295,9 @@ export default function RootLayout({
           height: 512,
         },
         description:
-          "AI-powered voice dictation software that transforms speech into perfect text 4x faster than typing.",
+          "The fastest AI voice typing app with zero data retention and end-to-end encryption. Secure speech-to-text that works 4x faster than keyboard typing across all your apps.",
         foundingDate: "2024",
+        slogan: "Fastest Voice Typing - Secure, Private, 4x Faster",
         sameAs: [
           "https://twitter.com/oravoai",
           "https://linkedin.com/company/oravo-ai",
@@ -228,25 +333,29 @@ export default function RootLayout({
       {
         "@type": "SoftwareApplication",
         "@id": "https://oravo.ai/#app",
-        name: "Oravo.ai Voice Dictation",
+        name: "Oravo.ai Voice Typing",
         applicationCategory: "ProductivityApplication",
-        applicationSubCategory: "Voice Recognition Software",
+        applicationSubCategory: "Voice Typing Software",
         operatingSystem: ["macOS 11.0+", "Windows 10+", "iOS 14.0+"],
         browserRequirements: "Requires JavaScript. Requires HTML5.",
         softwareVersion: "2.0",
         releaseNotes:
           "97% accuracy in real-time transcription, improved noise handling",
         featureList: [
-          "Real-time AI voice dictation",
+          "4x faster than keyboard typing (220 WPM vs 45 WPM)",
+          "Real-time AI voice typing with <1 second latency",
+          "Works in Google Docs, Gmail, Slack & 1000+ apps",
+          "Zero data retention - your voice stays private",
+          "End-to-end encryption for maximum security",
+          "HIPAA-ready and SOC 2 Type II compliant",
           "97% transcription accuracy (Q4 2025 internal benchmark)",
           "Works in noisy environments",
           "Cross-platform support (Mac, Windows, iOS)",
           "100+ language support",
-          "HIPAA-compliant encryption",
-          "Integration with 1000+ apps",
           "Automatic text formatting",
           "Custom vocabulary support",
           "Technical jargon recognition",
+          "Privacy-first architecture - no cloud storage",
         ],
         aggregateRating: {
           "@type": "AggregateRating",
@@ -292,13 +401,6 @@ export default function RootLayout({
             eligibleRegion: "US",
           },
         ],
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "4.8",
-          ratingCount: "10000",
-          bestRating: "5",
-          worstRating: "1",
-        },
         review: [
           {
             "@type": "Review",
@@ -313,23 +415,8 @@ export default function RootLayout({
               bestRating: "5",
             },
             reviewBody:
-              "I've doubled my productivity with Oravo.ai. Emails, docs, messages—everything is faster. Best dictation tool I've used.",
+              "I've doubled my productivity with Oravo.ai. Voice typing and meeting notes - everything is faster. Best AI voice tool I've used.",
           },
-        ],
-        description:
-          "AI-powered voice dictation that works 4x faster than typing. Context-aware AI adapts to your style across 1000+ apps with HIPAA compliance.",
-        featureList: [
-          "AI Voice Dictation - 220 WPM",
-          "Works in 1000+ apps (Gmail, Slack, Docs, ChatGPT)",
-          "HIPAA Compliant & SOC 2 Type II",
-          "100+ Languages Support",
-          "Context-Aware AI",
-          "Auto-Formatting & Punctuation",
-          "Personal Dictionary",
-          "Tone Adaptation",
-          "Privacy-First (Zero Data Retention)",
-          "Sub-1 Second Processing",
-          "40% More Accurate Than Built-in Tools",
         ],
         screenshot: "https://oravo.ai/screenshot.png",
         video: {
@@ -346,34 +433,58 @@ export default function RootLayout({
         mainEntity: [
           {
             "@type": "Question",
-            name: "What is the best voice dictation app for professionals?",
+            name: "Is Oravo.ai secure and privacy-focused?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Oravo.ai is a leading AI voice dictation app that works 4x faster than typing (220 WPM vs 45 WPM). It features context-aware AI that adapts to your style across 1000+ apps including Gmail, Slack, Google Docs, and ChatGPT. With HIPAA compliance, 100+ language support, and sub-1 second processing, it's trusted by 10,000+ professionals.",
+              text: "Yes. Oravo.ai is built with privacy-first architecture and zero data retention. All voice data is processed with end-to-end encryption and immediately deleted after transcription. We never store your voice recordings or personal data. We are HIPAA-ready and SOC 2 Type II certified, ensuring the highest security standards for professionals in healthcare, legal, and enterprise environments.",
             },
           },
           {
             "@type": "Question",
-            name: "How does AI voice typing work in Oravo.ai?",
+            name: "What is the fastest voice typing app?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Oravo.ai uses advanced AI to convert your speech to text in real-time. It automatically formats text, adds punctuation, removes filler words, and adapts to your tone and context. The AI learns your vocabulary, acronyms, and technical terms, making it 40% more accurate than built-in dictation tools.",
+              text: "Oravo.ai is the fastest voice typing app, enabling you to type at 220 words per minute using your voice - that's 4x faster than average keyboard typing speed of 45 WPM. With sub-1 second latency and real-time AI transcription, your words appear instantly as you speak. Works in Google Docs, Gmail, Slack, and all your favorite apps with 97% accuracy, even in noisy environments.",
             },
           },
           {
             "@type": "Question",
-            name: "Is Oravo.ai HIPAA compliant?",
+            name: "What is the best voice typing app?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes, Oravo.ai is HIPAA-ready with zero data retention and SOC 2 Type II compliance, ensuring your voice data stays private and secure. Perfect for healthcare professionals needing compliant clinical documentation and patient notes.",
+              text: "Oravo.ai is the best voice typing app that works 4x faster than keyboard typing (220 WPM vs 45 WPM). It features secure, privacy-first AI that adapts to your style across 1000+ apps including Google Docs, Gmail, Slack, and ChatGPT. With zero data retention, HIPAA compliance, 100+ language support, and sub-1 second processing, it's trusted by 10,000+ users worldwide.",
             },
           },
           {
             "@type": "Question",
-            name: "Does Oravo.ai work in every app?",
+            name: "How does voice typing work in Oravo.ai?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes! Oravo.ai works universally across 1000+ applications including Gmail, Slack, Notion, ChatGPT, Cursor, VS Code, Figma, Google Docs, WhatsApp, and any other app. Simply press a hotkey, speak, and perfect text appears instantly—no switching required.",
+              text: "Oravo.ai uses advanced AI to convert your speech to text in real-time as you speak. It automatically formats text, adds punctuation, removes filler words, and adapts to your tone and context. The AI learns your vocabulary, acronyms, and technical terms. Works in Google Docs, Gmail, Slack, and all apps - just press a hotkey and start speaking.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is Oravo.ai HIPAA compliant and does it store my data?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes, Oravo.ai is HIPAA-ready with zero data retention and SOC 2 Type II compliance. We never store your voice recordings or transcription data. All processing happens with end-to-end encryption and data is immediately deleted after transcription. Your voice data stays completely private and secure. Perfect for healthcare professionals needing compliant clinical documentation and patient notes.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How does Oravo.ai protect my privacy?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Oravo.ai uses a privacy-first architecture with three layers of protection: (1) Zero data retention - we never store your voice recordings or personal data, (2) End-to-end encryption for all voice processing, and (3) No cloud storage - your data is never uploaded to third-party servers. We are SOC 2 Type II certified and HIPAA-ready, making us the most secure voice typing solution for professionals who value privacy.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Does voice typing work in Google Docs and other apps?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes! Oravo.ai voice typing works universally across 1000+ applications including Google Docs, Gmail, Slack, Notion, ChatGPT, Cursor, VS Code, Figma, WhatsApp, and any other app. Simply press a hotkey, speak, and perfect text appears instantly in any app—no switching required. Works on Mac, Windows, and iOS.",
             },
           },
           {
@@ -412,9 +523,9 @@ export default function RootLayout({
       },
       {
         "@type": "HowTo",
-        name: "How to Use Oravo.ai Voice Dictation",
+        name: "How to Use Oravo.ai Voice Typing",
         description:
-          "Get started with Oravo.ai in 2 minutes and start dictating 4x faster than typing",
+          "Get started with Oravo.ai voice typing in 2 minutes and start typing 4x faster using your voice",
         step: [
           {
             "@type": "HowToStep",
@@ -432,8 +543,8 @@ export default function RootLayout({
           {
             "@type": "HowToStep",
             position: 3,
-            name: "Start Dictating",
-            text: "Press your hotkey, speak naturally, and watch your words transform into perfect, polished text instantly",
+            name: "Start Voice Typing",
+            text: "Press your hotkey, speak naturally, and watch your words transform into perfect text instantly in any app - Google Docs, Gmail, Slack, and more",
           },
         ],
         totalTime: "PT2M",
@@ -441,14 +552,14 @@ export default function RootLayout({
       {
         "@type": "Product",
         "@id": "https://oravo.ai/#product",
-        name: "Oravo.ai Voice Dictation Software",
+        name: "Oravo.ai Voice Typing Software",
         brand: {
           "@type": "Brand",
           name: "Oravo.ai",
         },
         description:
-          "Professional AI voice dictation software. 4x faster than typing with context-aware AI.",
-        category: "Software > Productivity Software > Voice Recognition",
+          "The fastest voice typing app. 4x faster than keyboard typing with secure, privacy-first AI. Works in Google Docs, Gmail, Slack & all apps.",
+        category: "Software > Productivity Software > Voice Typing",
         offers: {
           "@type": "AggregateOffer",
           lowPrice: "0",

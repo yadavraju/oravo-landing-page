@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function PricingSection() {
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "annually">(
@@ -204,13 +205,13 @@ export default function PricingSection() {
               </div>
 
               {/* CTA Button */}
-              <button className="group self-stretch px-6 py-3 relative bg-gradient-to-b from-[#37322F] to-[#2A2522] shadow-[0px_1px_2px_rgba(0,0,0,0.05),0px_0px_0px_1px_rgba(255,255,255,0.08)_inset,0px_8px_16px_rgba(0,0,0,0.15)] overflow-hidden rounded-[99px] flex justify-center items-center transition-all duration-300 hover:shadow-[0px_2px_4px_rgba(0,0,0,0.08),0px_0px_0px_1px_rgba(255,255,255,0.12)_inset,0px_12px_24px_rgba(0,0,0,0.2)] hover:scale-[1.02] active:scale-[0.98]">
+              <Link href="/download" className="group self-stretch px-6 py-3 relative bg-gradient-to-b from-[#37322F] to-[#2A2522] shadow-[0px_1px_2px_rgba(0,0,0,0.05),0px_0px_0px_1px_rgba(255,255,255,0.08)_inset,0px_8px_16px_rgba(0,0,0,0.15)] overflow-hidden rounded-[99px] flex justify-center items-center transition-all duration-300 hover:shadow-[0px_2px_4px_rgba(0,0,0,0.08),0px_0px_0px_1px_rgba(255,255,255,0.12)_inset,0px_12px_24px_rgba(0,0,0,0.2)] hover:scale-[1.02] active:scale-[0.98]">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/20 pointer-events-none"></div>
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.1),transparent_50%)] pointer-events-none"></div>
                 <div className="relative flex justify-center flex-col text-[#FBFAF9] text-[14px] font-semibold leading-5 font-sans tracking-wide">
                   Get Started Free
                 </div>
-              </button>
+              </Link>
             </div>
 
             {/* Professional Plan (Featured) */}
@@ -313,14 +314,14 @@ export default function PricingSection() {
               </div>
 
               {/* CTA Button */}
-              <button className="group self-stretch px-6 py-3 relative bg-gradient-to-b from-[#FF8C42] to-[#FF6B1A] shadow-[0px_1px_2px_rgba(0,0,0,0.1),0px_0px_0px_1px_rgba(255,255,255,0.25)_inset,0px_8px_20px_rgba(255,107,26,0.35)] overflow-hidden rounded-[99px] flex justify-center items-center transition-all duration-300 hover:shadow-[0px_2px_4px_rgba(0,0,0,0.15),0px_0px_0px_1px_rgba(255,255,255,0.35)_inset,0px_12px_28px_rgba(255,107,26,0.45)] hover:scale-[1.02] active:scale-[0.98]">
+              <Link href="/download" className="group self-stretch px-6 py-3 relative bg-gradient-to-b from-[#FF8C42] to-[#FF6B1A] shadow-[0px_1px_2px_rgba(0,0,0,0.1),0px_0px_0px_1px_rgba(255,255,255,0.25)_inset,0px_8px_20px_rgba(255,107,26,0.35)] overflow-hidden rounded-[99px] flex justify-center items-center transition-all duration-300 hover:shadow-[0px_2px_4px_rgba(0,0,0,0.15),0px_0px_0px_1px_rgba(255,255,255,0.35)_inset,0px_12px_28px_rgba(255,107,26,0.45)] hover:scale-[1.02] active:scale-[0.98]">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-black/20 pointer-events-none"></div>
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.4),transparent_60%)] pointer-events-none"></div>
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-opacity duration-500 pointer-events-none"></div>
                 <div className="relative flex justify-center flex-col text-white text-[14px] font-bold leading-5 font-sans tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
                   Upgrade to Pro
                 </div>
-              </button>
+              </Link>
             </div>
 
             {/* Enterprise Plan */}
@@ -390,7 +391,6 @@ export default function PricingSection() {
                     "Priority onboarding and support",
                     "Custom integrations & API access",
                     "Advanced analytics & reporting",
-                    "SLA guarantees",
                     "SSO & security compliance",
                     "Volume discounts available",
                   ].map((feature, index) => (
@@ -424,13 +424,13 @@ export default function PricingSection() {
               </div>
 
               {/* CTA Button */}
-              <button className="group self-stretch px-6 py-3 relative bg-gradient-to-b from-[#37322F] to-[#2A2522] shadow-[0px_1px_2px_rgba(0,0,0,0.05),0px_0px_0px_1px_rgba(255,255,255,0.08)_inset,0px_8px_16px_rgba(0,0,0,0.15)] overflow-hidden rounded-[99px] flex justify-center items-center transition-all duration-300 hover:shadow-[0px_2px_4px_rgba(0,0,0,0.08),0px_0px_0px_1px_rgba(255,255,255,0.12)_inset,0px_12px_24px_rgba(0,0,0,0.2)] hover:scale-[1.02] active:scale-[0.98]">
+              <Link href="/download" className="group self-stretch px-6 py-3 relative bg-gradient-to-b from-[#37322F] to-[#2A2522] shadow-[0px_1px_2px_rgba(0,0,0,0.05),0px_0px_0px_1px_rgba(255,255,255,0.08)_inset,0px_8px_16px_rgba(0,0,0,0.15)] overflow-hidden rounded-[99px] flex justify-center items-center transition-all duration-300 hover:shadow-[0px_2px_4px_rgba(0,0,0,0.08),0px_0px_0px_1px_rgba(255,255,255,0.12)_inset,0px_12px_24px_rgba(0,0,0,0.2)] hover:scale-[1.02] active:scale-[0.98]">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/20 pointer-events-none"></div>
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.1),transparent_50%)] pointer-events-none"></div>
                 <div className="relative flex justify-center flex-col text-[#FBFAF9] text-[14px] font-semibold leading-5 font-sans tracking-wide">
                   Contact Sales
                 </div>
-              </button>
+              </Link>
             </div>
           </div>
 

@@ -1,30 +1,36 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const DownloadIcon = () => (
   <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
-    <path d="M8.5 1.5v9.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 11.293V1.5a.5.5 0 0 1 1 0z"/>
-    <path d="M2 13.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+    <path d="M8.5 1.5v9.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 11.293V1.5a.5.5 0 0 1 1 0z" />
+    <path d="M2 13.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
   </svg>
 );
 
 const ChevronIcon = ({ isExpanded }: { isExpanded: boolean }) => (
   <svg
-    className={`w-5 h-5 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+    className={`w-5 h-5 transition-transform duration-200 ${
+      isExpanded ? "rotate-180" : ""
+    }`}
     viewBox="0 0 20 20"
     fill="currentColor"
   >
-    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+    <path
+      fillRule="evenodd"
+      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+      clipRule="evenodd"
+    />
   </svg>
 );
 
 function getArchitectureLabel(architecture: string): string {
   const labels: Record<string, string> = {
-    'arm64': 'Mac (ARM64)',
-    'Intel_x86_64': 'Mac (x64)',
-    'x64': 'Windows (x64) (System)',
-    'x86_64': 'Linux .deb (ARM64)',
+    arm64: "Mac Silicon(ARM64)",
+    Intel_x86_64: "Mac Intel (x64)",
+    x64: "Windows (x64) (System)",
+    x86_64: "Linux .deb (ARM64)",
   };
   return labels[architecture] || architecture;
 }
@@ -61,7 +67,9 @@ export function PlatformSection({
             <div
               key={download.id}
               className={`px-6 py-4 flex items-center justify-between hover:bg-[#F7F5F3] transition-colors ${
-                index !== downloads.length - 1 ? 'border-b border-[rgba(55,50,47,0.06)]' : ''
+                index !== downloads.length - 1
+                  ? "border-b border-[rgba(55,50,47,0.06)]"
+                  : ""
               }`}
             >
               <div className="flex-1">

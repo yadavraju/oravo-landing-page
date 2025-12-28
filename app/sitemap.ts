@@ -57,13 +57,14 @@ function getAppRoutes(): string[] {
         const itemPath = path.join(dir, item.name);
         const relativePath = basePath ? `${basePath}/${item.name}` : item.name;
 
-        // Skip certain directories
+        // Skip certain directories (including transactional pages that should not be indexed)
         if (
           item.isDirectory() &&
           !item.name.startsWith("_") &&
           !item.name.startsWith(".") &&
           item.name !== "api" &&
-          item.name !== "studio"
+          item.name !== "studio" &&
+          item.name !== "payment-success" // Transactional page - noindex
         ) {
           // Check if this directory has a page.tsx
           const pagePath = path.join(itemPath, "page.tsx");

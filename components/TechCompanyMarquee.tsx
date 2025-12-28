@@ -1,32 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  siMeta,
-  siGoogle,
-  siX,
-  siApple,
-  siTesla,
-  siNetflix,
-  siSpotify,
-  siUber,
-  siSalesforce,
-  siSlack,
-  siZoom,
-  siFigma,
-  siNotion,
-  siStripe,
-  siShopify,
-  siAirbnb,
-  siDropbox,
-  siReddit,
-  siGithub,
-  siDiscord,
-  siTwitch,
-  siDuolingo,
-  siCoursera,
-  siYale,
-} from "simple-icons";
+import { siMeta, siSalesforce } from "simple-icons";
 
 type Company = {
   name: string;
@@ -41,20 +16,13 @@ const techCompanies = {
     { name: "CareDx", imageSrc: "/caredx.png" },
     { name: "OSU", imageSrc: "/osu.svg" },
     { name: "uco", imageSrc: "/uco.png" },
-    { name: "uco", imageSrc: "/pits.jpg" },
-    { name: "Meta", icon: siMeta },
   ],
   row2: [
     { name: "Salesforce", icon: siSalesforce },
-    { name: "Slack", icon: siSlack },
-    { name: "Zoom", icon: siZoom },
-    { name: "Figma", icon: siFigma },
-    { name: "Notion", icon: siNotion },
-    { name: "Apple", icon: siApple },
-    { name: "Tesla", icon: siTesla },
-    { name: "Uber", icon: siUber },
     { name: "globant", imageSrc: "/globant.svg" },
     { name: "ntt", imageSrc: "/ntt.jpg" },
+    { name: "uco", imageSrc: "/pits.jpg" },
+    { name: "Meta", icon: siMeta },
   ],
 };
 
