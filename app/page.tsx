@@ -133,10 +133,11 @@ export default function LandingPage() {
                     <AnimatedRoleText />
                   </h1>
                   <div className="w-full max-w-[720px] lg:w-[720px] text-center flex justify-center flex-col text-[rgba(55,50,47,0.80)] sm:text-lg md:text-xl leading-[1.4] sm:leading-[1.45] md:leading-[1.5] lg:leading-7 font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-medium text-sm">
-                    AI voice typing that's 4x faster than keyboard typing.
-                    Secure, private, with zero data retention. speech-to-text,
-                    Works in Google Docs, Gmail, Slack & all apps. 100+
-                    languages. Try free, no card required.
+                    Privacy-first AI voice typing & speech-to-text that's 4x
+                    faster than keyboard typing. Secure, with zero data
+                    retention. HIPAA-ready voice dictation. Works in Google
+                    Docs, Gmail, Slack & all apps. 100+ languages. Try free, no
+                    card required.
                   </div>
                 </div>
               </div>
@@ -201,7 +202,7 @@ export default function LandingPage() {
                       />
                     </svg>
                   }
-                  text="End-to-End Encrypted"
+                  text="Open Source models"
                 />
                 <Badge
                   icon={

@@ -45,29 +45,51 @@ export const metadata: Metadata = {
     "voice typing online",
     "secure voice typing app",
 
-    // Speed & performance keywords
-    "fast voice typing",
+    // Speed-focused keywords (BOTH voice typing AND dictation)
     "fastest voice typing",
+    "fastest dictation software",
+    "fast voice typing",
+    "fast AI dictation",
     "4x faster than typing",
     "real-time voice typing",
+    "real-time voice dictation",
     "instant voice typing",
+    "instant speech to text",
     "quick voice typing",
+    "high-speed dictation",
+    "fastest AI voice app",
+    "real-time AI transcription",
 
-    // Security-focused voice typing keywords
+    // Security-focused keywords (BOTH voice typing AND dictation)
     "secure voice typing",
+    "secure voice typing app",
     "private voice typing",
-    "HIPAA compliant voice typing",
-    "encrypted voice typing",
     "privacy-first voice typing",
+    "privacy-first dictation",
+    "HIPAA compliant voice typing",
+    "HIPAA compliant dictation",
+    "encrypted voice typing",
+    "encrypted voice dictation",
     "zero data retention voice typing",
+    "zero data retention dictation",
+    "private voice to text",
+    "secure speech to text",
+    "privacy-focused dictation app",
+    "end-to-end encrypted dictation",
+    "end-to-end encrypted voice typing",
+    "GDPR compliant voice typing",
+    "secure dictation",
 
     // Speech-to-text variations (also high volume)
+    "speech to text",
     "speech to text app",
     "speech to text software",
     "AI speech to text",
     "secure speech to text",
     "real-time speech to text",
     "speech to text for Mac",
+    "speech to text SaaS",
+    "accurate voice transcription",
 
     // Voice-to-text variations
     "voice to text",
@@ -75,27 +97,42 @@ export const metadata: Metadata = {
     "voice to text free",
     "best voice to text app",
     "AI voice to text",
+    "voice to text AI",
 
-    // SECONDARY: Professional "voice dictation" keywords (B2B/enterprise)
+    // Professional "voice dictation" keywords (B2B/enterprise)
     "voice dictation",
     "voice dictation software",
     "best dictation app",
     "dictation app",
+    "dictation software",
     "medical dictation software",
     "legal dictation software",
     "dictation app for professionals",
-    "HIPAA compliant dictation",
-    "encrypted voice dictation",
-    "privacy-first dictation",
+    "AI voice dictation",
+    "voice recorder app",
+    "voice note app",
+    "best voice dictation app",
+
+    // Meeting & transcription keywords
+    "meeting notes app",
+    "AI meeting notes app",
+    "AI transcription app",
+    "meeting recorder app",
+    "AI meeting recorder",
+    "automatic meeting notes app",
+    "voice assistant app",
+    "voice memo app",
 
     // Use case specific (consumer + professional)
     "voice typing for writers",
     "voice typing for students",
     "voice typing for emails",
-    "dictation for healthcare",
-    "dictation for legal",
     "voice typing for content creators",
     "voice typing for journalists",
+    "dictation for healthcare",
+    "dictation for legal",
+    "dictation for content creators",
+    "dictation for teams",
 
     // Core USP keywords
     "AI voice dictation",

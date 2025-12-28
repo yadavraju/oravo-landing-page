@@ -390,7 +390,6 @@ export default function PricingSection() {
                     "Priority onboarding and support",
                     "Custom integrations & API access",
                     "Advanced analytics & reporting",
-                    "SLA guarantees",
                     "SSO & security compliance",
                     "Volume discounts available",
                   ].map((feature, index) => (

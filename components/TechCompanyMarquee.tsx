@@ -41,20 +41,13 @@ const techCompanies = {
     { name: "CareDx", imageSrc: "/caredx.png" },
     { name: "OSU", imageSrc: "/osu.svg" },
     { name: "uco", imageSrc: "/uco.png" },
-    { name: "uco", imageSrc: "/pits.jpg" },
-    { name: "Meta", icon: siMeta },
   ],
   row2: [
     { name: "Salesforce", icon: siSalesforce },
-    { name: "Slack", icon: siSlack },
-    { name: "Zoom", icon: siZoom },
-    { name: "Figma", icon: siFigma },
-    { name: "Notion", icon: siNotion },
-    { name: "Apple", icon: siApple },
-    { name: "Tesla", icon: siTesla },
-    { name: "Uber", icon: siUber },
     { name: "globant", imageSrc: "/globant.svg" },
     { name: "ntt", imageSrc: "/ntt.jpg" },
+    { name: "uco", imageSrc: "/pits.jpg" },
+    { name: "Meta", icon: siMeta },
   ],
 };
 
