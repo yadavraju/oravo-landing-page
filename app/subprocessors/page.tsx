@@ -119,6 +119,27 @@ export default function SubprocessorsPage() {
                     </tr>
                     <tr className="border-b border-[rgba(55,50,47,0.12)]">
                       <td className="py-4 px-4 text-[#605A57] text-base font-sans">
+                        Groq
+                      </td>
+                      <td className="py-4 px-4 text-[#605A57] text-base font-sans">
+                        AI inference and processing services
+                      </td>
+                      <td className="py-4 px-4 text-[#605A57] text-base font-sans">
+                        United States
+                      </td>
+                      <td className="py-4 px-4 text-[#605A57] text-base font-sans">
+                        <a
+                          href="https://groq.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#49423D] hover:underline"
+                        >
+                          https://groq.com
+                        </a>
+                      </td>
+                    </tr>
+                    <tr className="border-b border-[rgba(55,50,47,0.12)]">
+                      <td className="py-4 px-4 text-[#605A57] text-base font-sans">
                         Grok
                       </td>
                       <td className="py-4 px-4 text-[#605A57] text-base font-sans">

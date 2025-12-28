@@ -5,7 +5,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "How to Use Oravo - Voice Typing + AI Meeting Notes Setup Guide",
-  description: "Learn how to use Oravo AI voice assistant. Complete setup guide for voice typing and AI meeting notes, keyboard shortcuts, troubleshooting tips for 100+ languages.",
+  description:
+    "Learn how to use Oravo AI voice assistant. Complete setup guide for voice typing and AI meeting notes, keyboard shortcuts, troubleshooting tips for 100+ languages.",
   keywords: [
     "how to use voice dictation",
     "Oravo tutorial",
@@ -20,14 +21,16 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "How to Use Oravo - Voice Typing + Meeting Notes Guide",
-    description: "Complete guide to using Oravo: Voice typing + AI meeting notes setup, shortcuts, and tips for 100+ languages.",
+    description:
+      "Complete guide to using Oravo: Voice typing + AI meeting notes setup, shortcuts, and tips for 100+ languages.",
     url: "https://oravo.ai/how-to-use",
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
     title: "How to Use Oravo - Complete Setup Guide",
-    description: "Master Oravo voice typing and AI meeting notes with our complete guide.",
+    description:
+      "Master Oravo voice typing and AI meeting notes with our complete guide.",
   },
   alternates: {
     canonical: "https://oravo.ai/how-to-use",
@@ -55,7 +58,7 @@ export default function HowToUsePage() {
               {/* Title Section */}
               <div className="mb-12">
                 <h1 className="text-[#37322F] text-4xl md:text-5xl lg:text-6xl font-normal leading-tight font-serif mb-6">
-                  Your first Dictation on Desktop
+                  How to do voice typing with Oravo
                 </h1>
                 <p className="text-[#605A57] text-xl md:text-2xl leading-relaxed font-sans">
                   Learn how to use Oravo Desktop
@@ -68,12 +71,15 @@ export default function HowToUsePage() {
                   Oravo on Desktop
                 </h2>
                 <p className="text-white/90 text-base leading-7 font-sans mb-6">
-                  Once you've downloaded and installed the Oravo app on your desktop, you're ready to go.
+                  Once you've downloaded and installed the Oravo app on your
+                  desktop, you're ready to go.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-                      <span className="text-white text-sm font-semibold">1</span>
+                      <span className="text-white text-sm font-semibold">
+                        1
+                      </span>
                     </div>
                     <p className="text-white/90 text-base leading-7 font-sans pt-1">
                       Put your cursor in a text box
@@ -81,7 +87,9 @@ export default function HowToUsePage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-                      <span className="text-white text-sm font-semibold">2</span>
+                      <span className="text-white text-sm font-semibold">
+                        2
+                      </span>
                     </div>
                     <p className="text-white/90 text-base leading-7 font-sans pt-1">
                       Press and hold your hotkey
@@ -89,7 +97,9 @@ export default function HowToUsePage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-                      <span className="text-white text-sm font-semibold">3</span>
+                      <span className="text-white text-sm font-semibold">
+                        3
+                      </span>
                     </div>
                     <p className="text-white/90 text-base leading-7 font-sans pt-1">
                       Speak freely
@@ -97,7 +107,9 @@ export default function HowToUsePage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-                      <span className="text-white text-sm font-semibold">4</span>
+                      <span className="text-white text-sm font-semibold">
+                        4
+                      </span>
                     </div>
                     <p className="text-white/90 text-base leading-7 font-sans pt-1">
                       Let go of the hotkey to see your formatted transcript
@@ -114,9 +126,10 @@ export default function HowToUsePage() {
                     1. Put your cursor in a text box
                   </h3>
                   <p className="text-[#605A57] text-base leading-7 font-sans">
-                    For Oravo to know where you want to transcribe, your cursor must be in a textbox.
-                    This can be in any application on your computer—Slack, Microsoft Teams, Google Docs,
-                    Notion, you name it. Just look for the flashing cursor.
+                    For Oravo to know where you want to transcribe, your cursor
+                    must be in a textbox. This can be in any application on your
+                    computer—Slack, Microsoft Teams, Google Docs, Notion, you
+                    name it. Just look for the flashing cursor.
                   </p>
                 </div>
 
@@ -134,7 +147,8 @@ export default function HowToUsePage() {
                     </span>
                   </div>
                   <p className="text-[#605A57] text-base leading-7 font-sans">
-                    Once you hear Oravo's signature ping or see the white bars start moving, you can start dictating.
+                    Once you hear Oravo's signature ping or see the white bars
+                    start moving, you can start dictating.
                   </p>
                 </div>
 
@@ -144,13 +158,19 @@ export default function HowToUsePage() {
                     3. Let go of your hotkey
                   </h3>
                   <p className="text-[#605A57] text-base leading-7 font-sans mb-4">
-                    To paste the text, let go of the hotkey to paste in the text box you're in. Ta-da,
-                    Oravo should have pasted your dictation in the textbox. If not, please let us know.
+                    To paste the text, let go of the hotkey to paste in the text
+                    box you're in. Ta-da, Oravo should have pasted your
+                    dictation in the textbox. If not, please let us know.
                   </p>
                   <div className="bg-[#F7F5F3] rounded-lg p-4 border-l-4 border-[#6366F1]">
                     <p className="text-[#605A57] text-sm leading-6 font-sans">
-                      <strong className="text-[#37322F]">P.S.</strong> If you click <kbd className="px-2 py-1 bg-white rounded border border-[rgba(55,50,47,0.12)] text-xs font-medium">Esc</kbd>,
-                      your transcript will be canceled, but don't worry—you can still find it in the Recent Activity page.
+                      <strong className="text-[#37322F]">P.S.</strong> If you
+                      click{" "}
+                      <kbd className="px-2 py-1 bg-white rounded border border-[rgba(55,50,47,0.12)] text-xs font-medium">
+                        Esc
+                      </kbd>
+                      , your transcript will be canceled, but don't worry—you
+                      can still find it in the Recent Activity page.
                     </p>
                   </div>
                 </div>
@@ -163,22 +183,56 @@ export default function HowToUsePage() {
                 </h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <svg className="w-6 h-6 text-[#6366F1] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                    <svg
+                      className="w-6 h-6 text-[#6366F1] flex-shrink-0 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+                      />
                     </svg>
                     <p className="text-[#605A57] text-base leading-7 font-sans">
                       Click on your Oravo bar in the center of your screen
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
-                    <svg className="w-6 h-6 text-[#6366F1] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    <svg
+                      className="w-6 h-6 text-[#6366F1] flex-shrink-0 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                      />
                     </svg>
                     <div className="flex-1">
                       <p className="text-[#605A57] text-base leading-7 font-sans">
-                        Press <kbd className="px-2 py-1 bg-white rounded border border-[rgba(55,50,47,0.12)] text-xs font-medium">Fn + Space</kbd> (Mac)
-                        or <kbd className="px-2 py-1 bg-white rounded border border-[rgba(55,50,47,0.12)] text-xs font-medium">Ctrl + Win + Space</kbd> (Windows)
-                        to go hands-free mode, then <kbd className="px-2 py-1 bg-white rounded border border-[rgba(55,50,47,0.12)] text-xs font-medium">Fn</kbd> or <kbd className="px-2 py-1 bg-white rounded border border-[rgba(55,50,47,0.12)] text-xs font-medium">Ctrl</kbd> to paste
+                        Press{" "}
+                        <kbd className="px-2 py-1 bg-white rounded border border-[rgba(55,50,47,0.12)] text-xs font-medium">
+                          Fn + Space
+                        </kbd>{" "}
+                        (Mac) or{" "}
+                        <kbd className="px-2 py-1 bg-white rounded border border-[rgba(55,50,47,0.12)] text-xs font-medium">
+                          Ctrl + Win + Space
+                        </kbd>{" "}
+                        (Windows) to go hands-free mode, then{" "}
+                        <kbd className="px-2 py-1 bg-white rounded border border-[rgba(55,50,47,0.12)] text-xs font-medium">
+                          Fn
+                        </kbd>{" "}
+                        or{" "}
+                        <kbd className="px-2 py-1 bg-white rounded border border-[rgba(55,50,47,0.12)] text-xs font-medium">
+                          Ctrl
+                        </kbd>{" "}
+                        to paste
                       </p>
                     </div>
                   </div>
@@ -191,7 +245,8 @@ export default function HowToUsePage() {
                   Troubleshooting: Microphone Not Detected
                 </h2>
                 <p className="text-[#605A57] text-base leading-7 font-sans mb-8">
-                  If Oravo isn't detecting your microphone or you're not seeing any transcription, try these steps:
+                  If Oravo isn't detecting your microphone or you're not seeing
+                  any transcription, try these steps:
                 </p>
 
                 <div className="space-y-6">
@@ -210,7 +265,8 @@ export default function HowToUsePage() {
                       <li className="flex items-start gap-3">
                         <span className="text-[#6366F1] mt-1.5">•</span>
                         <span className="text-[#605A57] text-base leading-7 font-sans">
-                          Select your specific microphone instead of "Built-in mic" or "Auto-Detect"
+                          Select your specific microphone instead of "Built-in
+                          mic" or "Auto-Detect"
                         </span>
                       </li>
                       <li className="flex items-start gap-3">
@@ -222,7 +278,8 @@ export default function HowToUsePage() {
                       <li className="flex items-start gap-3">
                         <span className="text-[#6366F1] mt-1.5">•</span>
                         <span className="text-[#605A57] text-base leading-7 font-sans">
-                          If your mic isn't listed, quit and reopen the app to refresh the list
+                          If your mic isn't listed, quit and reopen the app to
+                          refresh the list
                         </span>
                       </li>
                     </ul>
@@ -235,15 +292,22 @@ export default function HowToUsePage() {
                     </h4>
                     <ul className="space-y-3 list-none">
                       <li className="flex items-start gap-3">
-                        <span className="text-[#6366F1] mt-1.5 font-semibold">Mac:</span>
+                        <span className="text-[#6366F1] mt-1.5 font-semibold">
+                          Mac:
+                        </span>
                         <span className="text-[#605A57] text-base leading-7 font-sans">
-                          Go to System Settings → Privacy & Security → Microphone and ensure Oravo is allowed access
+                          Go to System Settings → Privacy & Security →
+                          Microphone and ensure Oravo is allowed access
                         </span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <span className="text-[#6366F1] mt-1.5 font-semibold">Windows:</span>
+                        <span className="text-[#6366F1] mt-1.5 font-semibold">
+                          Windows:
+                        </span>
                         <span className="text-[#605A57] text-base leading-7 font-sans">
-                          Go to Start → Settings → Privacy & security → Microphone and make sure Microphone access is on and apps can use your mic
+                          Go to Start → Settings → Privacy & security →
+                          Microphone and make sure Microphone access is on and
+                          apps can use your mic
                         </span>
                       </li>
                     </ul>
@@ -256,15 +320,22 @@ export default function HowToUsePage() {
                     </h4>
                     <ul className="space-y-3 list-none">
                       <li className="flex items-start gap-3">
-                        <span className="text-[#6366F1] mt-1.5 font-semibold">Mac:</span>
+                        <span className="text-[#6366F1] mt-1.5 font-semibold">
+                          Mac:
+                        </span>
                         <span className="text-[#605A57] text-base leading-7 font-sans">
-                          Open System Settings → Sound → Input and ensure the microphone is not muted with proper input volume
+                          Open System Settings → Sound → Input and ensure the
+                          microphone is not muted with proper input volume
                         </span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <span className="text-[#6366F1] mt-1.5 font-semibold">Windows:</span>
+                        <span className="text-[#6366F1] mt-1.5 font-semibold">
+                          Windows:
+                        </span>
                         <span className="text-[#605A57] text-base leading-7 font-sans">
-                          Right-click the speaker icon and select Open Sound settings → Input to adjust input volume and check mute status
+                          Right-click the speaker icon and select Open Sound
+                          settings → Input to adjust input volume and check mute
+                          status
                         </span>
                       </li>
                     </ul>
@@ -279,13 +350,15 @@ export default function HowToUsePage() {
                       <li className="flex items-start gap-3">
                         <span className="text-[#6366F1] mt-1.5">•</span>
                         <span className="text-[#605A57] text-base leading-7 font-sans">
-                          Use the Oravo bar to speak and check if text appears in Recent Activity
+                          Use the Oravo bar to speak and check if text appears
+                          in Recent Activity
                         </span>
                       </li>
                       <li className="flex items-start gap-3">
                         <span className="text-[#6366F1] mt-1.5">•</span>
                         <span className="text-[#605A57] text-base leading-7 font-sans">
-                          If no text appears, download the audio file to verify if sound was recorded
+                          If no text appears, download the audio file to verify
+                          if sound was recorded
                         </span>
                       </li>
                     </ul>
@@ -300,7 +373,8 @@ export default function HowToUsePage() {
                       <li className="flex items-start gap-3">
                         <span className="text-[#6366F1] mt-1.5">•</span>
                         <span className="text-[#605A57] text-base leading-7 font-sans">
-                          Confirm your mic isn't muted (check hardware mute keys)
+                          Confirm your mic isn't muted (check hardware mute
+                          keys)
                         </span>
                       </li>
                       <li className="flex items-start gap-3">
@@ -312,7 +386,8 @@ export default function HowToUsePage() {
                       <li className="flex items-start gap-3">
                         <span className="text-[#6366F1] mt-1.5">•</span>
                         <span className="text-[#605A57] text-base leading-7 font-sans">
-                          Temporarily disable VPNs, firewalls, or proxies that might block the app
+                          Temporarily disable VPNs, firewalls, or proxies that
+                          might block the app
                         </span>
                       </li>
                     </ul>
@@ -322,14 +397,18 @@ export default function HowToUsePage() {
                 {/* Warning */}
                 <div className="mt-8 bg-[#FFF7ED] border-l-4 border-[#F59E0B] rounded-lg p-6">
                   <p className="text-[#92400E] text-base leading-7 font-sans">
-                    <strong className="font-semibold">Note:</strong> Bluetooth microphones often cause delays and lower audio quality.
-                    We recommend using a built-in or wired microphone for the best experience.
+                    <strong className="font-semibold">Note:</strong> Bluetooth
+                    microphones often cause delays and lower audio quality. We
+                    recommend using a built-in or wired microphone for the best
+                    experience.
                   </p>
                 </div>
 
                 <div className="mt-8 bg-[#EFF6FF] border-l-4 border-[#6366F1] rounded-lg p-6">
                   <p className="text-[#1E3A8A] text-base leading-7 font-sans">
-                    If these steps don't resolve the issue, use the "Report an issue" feature in the app with details about what you've tried.
+                    If these steps don't resolve the issue, use the "Report an
+                    issue" feature in the app with details about what you've
+                    tried.
                   </p>
                 </div>
               </div>

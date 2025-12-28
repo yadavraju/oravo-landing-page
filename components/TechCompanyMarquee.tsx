@@ -1,32 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  siMeta,
-  siGoogle,
-  siX,
-  siApple,
-  siTesla,
-  siNetflix,
-  siSpotify,
-  siUber,
-  siSalesforce,
-  siSlack,
-  siZoom,
-  siFigma,
-  siNotion,
-  siStripe,
-  siShopify,
-  siAirbnb,
-  siDropbox,
-  siReddit,
-  siGithub,
-  siDiscord,
-  siTwitch,
-  siDuolingo,
-  siCoursera,
-  siYale,
-} from "simple-icons";
+import { siMeta, siSalesforce } from "simple-icons";
 
 type Company = {
   name: string;

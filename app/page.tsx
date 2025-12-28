@@ -13,6 +13,7 @@ import EmailComparisonSection, {
   MiniVoiceWaveform,
 } from "../components/EmailComparisonSection";
 import FAQSection from "../components/faq-section";
+import AskAISection from "../components/ask-ai-section";
 import FooterSection from "../components/footer-section";
 import { Header } from "../components/header";
 import MadeForYou from "../components/MadeForYou";
@@ -275,22 +276,22 @@ export default function LandingPage() {
                 <div className="flex-1 px-0 sm:px-2 md:px-0 flex flex-col md:flex-row justify-center items-stretch gap-0">
                   {/* Feature Cards */}
                   <FeatureCard
-                    title="Contextual Understanding"
-                    description="Understands names, dates, and other contextual information to ensure accurate transcriptions."
+                    title="40% More Accurate Than Built-in Tools"
+                    description="AI learns your writing style, recognizes names, dates, and technical terms automatically. No more fixing typos in medical records or legal documents."
                     isActive={activeCard === 1}
                     progress={activeCard === 0 ? progress : 0}
                     onClick={() => handleCardClick(0)}
                   />
                   <FeatureCard
-                    title="Multi-Language Support"
-                    description="Dictate in multiple languages with ease, making it perfect for global teams."
+                    title="100+ Languages Including Rare Dialects"
+                    description="Speak in Spanish, switch to Mandarin mid-sentence, or use regional dialects. Real-time multilingual support for global teams and content creators."
                     isActive={activeCard === 1}
                     progress={activeCard === 1 ? progress : 0}
                     onClick={() => handleCardClick(1)}
                   />
                   <FeatureCard
-                    title="Custom Vocabulary"
-                    description="Add your own custom words and phrases to improve accuracy for specialized terminology."
+                    title="Learns Your Industry Jargon in Seconds"
+                    description="Medical terminology, legal phrases, tech acronyms - Oravo memorizes your specialized vocabulary after hearing it once. Works for healthcare, law, engineering, and finance."
                     isActive={activeCard === 1}
                     progress={activeCard === 2 ? progress : 0}
                     onClick={() => handleCardClick(2)}
@@ -629,6 +630,9 @@ export default function LandingPage() {
 
               {/* FAQ Section */}
               <FAQSection />
+
+              {/* Ask AI Section */}
+              <AskAISection />
 
               {/* CTA Section */}
               <CTASection />
