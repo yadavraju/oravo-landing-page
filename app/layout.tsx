@@ -21,13 +21,59 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "AI Speech to Text for Mac, Windows, Linux | Oravo",
+    default: "Oravo - Fastest & Most Secure AI Voice Typing App | Privacy-First Dictation",
     template: "%s | Oravo",
   },
   description:
-    "Privacy-focused AI speech-to-text for emails, docs, Cursor & messaging. Voice dictation with context-aware AI and custom dictionaries. Fast, accurate, secure.",
+    "The fastest and most secure voice typing app with zero data retention. Privacy-first AI dictation that's 4x faster than typing. HIPAA-ready, end-to-end encrypted. Works in 100+ languages across all apps. Try free, no card required.",
   applicationName: "Oravo.ai",
   keywords: [
+    // Security-first positioning keywords
+    "secure voice typing app",
+    "privacy-first dictation",
+    "HIPAA compliant voice typing",
+    "encrypted voice dictation",
+    "zero data retention dictation",
+    "private voice to text",
+    "secure speech to text",
+    "privacy-focused dictation app",
+    "end-to-end encrypted dictation",
+    "GDPR compliant voice typing",
+
+    // Speed-focused keywords
+    "fastest voice typing app",
+    "fastest dictation software",
+    "real-time voice dictation",
+    "instant speech to text",
+    "fast AI dictation",
+    "4x faster than typing",
+    "quick voice typing",
+    "high-speed dictation",
+    "fastest AI voice app",
+    "real-time AI transcription",
+
+    // People-focused search terms (what real users search)
+    "voice typing app",
+    "dictation app",
+    "speech to text app",
+    "voice recorder app",
+    "meeting notes app",
+    "voice assistant app",
+    "AI transcription app",
+    "voice memo app",
+    "dictation software",
+    "voice note app",
+    "best dictation app",
+    "best voice typing app",
+    "best AI meeting notes app",
+    "voice to text app free",
+    "meeting recorder app",
+    "voice typing for Mac",
+    "voice typing for Windows",
+    "dictation app for professionals",
+    "AI meeting recorder",
+    "automatic meeting notes app",
+
     // High-value primary keywords (from keyword research)
     "voice dictation software",
     "real-time AI dictation",
@@ -71,12 +117,22 @@ export const metadata: Metadata = {
     "secure HIPAA voice transcription",
 
     // Competitor alternatives (from research)
+    "Wispr Flow alternative",
     "WisprFlow alternative",
-    "WillowVoice alternative",
+    "Granola AI alternative",
     "Otter.ai alternative",
+    "Fireflies alternative",
+    "Grain alternative",
     "Dragon NaturallySpeaking alternative",
+    "Dragon alternative",
     "Speechly alternative",
+    "Descript alternative",
+    "Trint alternative",
+    "Rev alternative",
     "better than Dictation.io",
+    "better than Google Voice Typing",
+    "better than Mac dictation",
+    "better than Windows speech recognition",
   ],
   authors: [{ name: "Oravo.ai Team", url: "https://oravo.ai" }],
   creator: "Oravo.ai",
@@ -88,21 +144,21 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://oravo.ai"),
   alternates: {
-    canonical: "/",
+    canonical: "https://oravo.ai",
     languages: {
-      "en-US": "/",
-      "es-ES": "/es",
-      "fr-FR": "/fr",
-      "de-DE": "/de",
+      "en-US": "https://oravo.ai",
+      "es-ES": "https://oravo.ai/es",
+      "fr-FR": "https://oravo.ai/fr",
+      "de-DE": "https://oravo.ai/de",
     },
   },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://oravo.ai",
-    title: "AI Speech to Text for Mac, Windows, Linux | Oravo",
+    title: "Oravo - Fastest & Most Secure AI Voice Typing | Privacy-First Dictation",
     description:
-      "Privacy-focused AI speech-to-text for emails, docs, Cursor & messaging. Voice dictation with context-aware AI and custom dictionaries. Fast, accurate, secure.",
+      "The fastest and most secure voice typing app with zero data retention. 4x faster than typing, HIPAA-ready, end-to-end encrypted. Privacy-first AI dictation that works in 100+ languages.",
     siteName: "Oravo",
     images: [
       {
@@ -123,9 +179,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Speech to Text for Mac, Windows, Linux | Oravo",
+    title: "Oravo - Fastest & Most Secure AI Voice Typing",
     description:
-      "Privacy-focused AI speech-to-text with voice dictation for emails, docs, Cursor & more. Context-aware AI. Fast, accurate, secure. Try free.",
+      "Privacy-first AI dictation with zero data retention. 4x faster than typing, HIPAA-ready, end-to-end encrypted. Works in 100+ languages. Try free, no card.",
     images: ["/og-image.png"],
     creator: "@oravoai",
     site: "@oravoai",
@@ -191,8 +247,9 @@ export default function RootLayout({
           height: 512,
         },
         description:
-          "AI-powered voice dictation software that transforms speech into perfect text 4x faster than typing.",
+          "The fastest and most secure AI-powered voice dictation software with zero data retention and end-to-end encryption. Transforms speech into perfect text 4x faster than typing.",
         foundingDate: "2024",
+        slogan: "Privacy-First AI Voice Dictation - Zero Data Retention",
         sameAs: [
           "https://twitter.com/oravoai",
           "https://linkedin.com/company/oravo-ai",
@@ -237,16 +294,20 @@ export default function RootLayout({
         releaseNotes:
           "97% accuracy in real-time transcription, improved noise handling",
         featureList: [
-          "Real-time AI voice dictation",
+          "Zero data retention - your voice stays private",
+          "End-to-end encryption for maximum security",
+          "HIPAA-ready and SOC 2 Type II compliant",
+          "4x faster than typing (220 WPM vs 45 WPM)",
+          "Real-time AI voice dictation with <1 second latency",
           "97% transcription accuracy (Q4 2025 internal benchmark)",
           "Works in noisy environments",
           "Cross-platform support (Mac, Windows, iOS)",
           "100+ language support",
-          "HIPAA-compliant encryption",
           "Integration with 1000+ apps",
           "Automatic text formatting",
           "Custom vocabulary support",
           "Technical jargon recognition",
+          "Privacy-first architecture - no cloud storage",
         ],
         aggregateRating: {
           "@type": "AggregateRating",
@@ -292,13 +353,6 @@ export default function RootLayout({
             eligibleRegion: "US",
           },
         ],
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "4.8",
-          ratingCount: "10000",
-          bestRating: "5",
-          worstRating: "1",
-        },
         review: [
           {
             "@type": "Review",
@@ -313,23 +367,8 @@ export default function RootLayout({
               bestRating: "5",
             },
             reviewBody:
-              "I've doubled my productivity with Oravo.ai. Emails, docs, messages—everything is faster. Best dictation tool I've used.",
+              "I've doubled my productivity with Oravo.ai. Voice typing and meeting notes - everything is faster. Best AI voice tool I've used.",
           },
-        ],
-        description:
-          "AI-powered voice dictation that works 4x faster than typing. Context-aware AI adapts to your style across 1000+ apps with HIPAA compliance.",
-        featureList: [
-          "AI Voice Dictation - 220 WPM",
-          "Works in 1000+ apps (Gmail, Slack, Docs, ChatGPT)",
-          "HIPAA Compliant & SOC 2 Type II",
-          "100+ Languages Support",
-          "Context-Aware AI",
-          "Auto-Formatting & Punctuation",
-          "Personal Dictionary",
-          "Tone Adaptation",
-          "Privacy-First (Zero Data Retention)",
-          "Sub-1 Second Processing",
-          "40% More Accurate Than Built-in Tools",
         ],
         screenshot: "https://oravo.ai/screenshot.png",
         video: {
@@ -346,10 +385,26 @@ export default function RootLayout({
         mainEntity: [
           {
             "@type": "Question",
+            name: "Is Oravo.ai secure and privacy-focused?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. Oravo.ai is built with privacy-first architecture and zero data retention. All voice data is processed with end-to-end encryption and immediately deleted after transcription. We never store your voice recordings or personal data. We are HIPAA-ready and SOC 2 Type II certified, ensuring the highest security standards for professionals in healthcare, legal, and enterprise environments.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What is the fastest voice dictation app?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Oravo.ai is the fastest AI voice dictation app, enabling you to dictate at 220 words per minute - that's 4x faster than the average typing speed of 45 WPM. With sub-1 second latency and real-time transcription, your words appear instantly as you speak. The AI processes your speech in real-time with 97% accuracy, even in noisy environments.",
+            },
+          },
+          {
+            "@type": "Question",
             name: "What is the best voice dictation app for professionals?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Oravo.ai is a leading AI voice dictation app that works 4x faster than typing (220 WPM vs 45 WPM). It features context-aware AI that adapts to your style across 1000+ apps including Gmail, Slack, Google Docs, and ChatGPT. With HIPAA compliance, 100+ language support, and sub-1 second processing, it's trusted by 10,000+ professionals.",
+              text: "Oravo.ai is a leading privacy-first AI voice dictation app that works 4x faster than typing (220 WPM vs 45 WPM). It features context-aware AI that adapts to your style across 1000+ apps including Gmail, Slack, Google Docs, and ChatGPT. With zero data retention, HIPAA compliance, 100+ language support, and sub-1 second processing, it's trusted by 10,000+ professionals.",
             },
           },
           {
@@ -362,10 +417,18 @@ export default function RootLayout({
           },
           {
             "@type": "Question",
-            name: "Is Oravo.ai HIPAA compliant?",
+            name: "Is Oravo.ai HIPAA compliant and does it store my data?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes, Oravo.ai is HIPAA-ready with zero data retention and SOC 2 Type II compliance, ensuring your voice data stays private and secure. Perfect for healthcare professionals needing compliant clinical documentation and patient notes.",
+              text: "Yes, Oravo.ai is HIPAA-ready with zero data retention and SOC 2 Type II compliance. We never store your voice recordings or transcription data. All processing happens with end-to-end encryption and data is immediately deleted after transcription. Your voice data stays completely private and secure. Perfect for healthcare professionals needing compliant clinical documentation and patient notes.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How does Oravo.ai protect my privacy?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Oravo.ai uses a privacy-first architecture with three layers of protection: (1) Zero data retention - we never store your voice recordings or personal data, (2) End-to-end encryption for all voice processing, and (3) No cloud storage - your data is never uploaded to third-party servers. We are SOC 2 Type II certified and HIPAA-ready, making us the most secure voice typing solution for professionals who value privacy.",
             },
           },
           {

@@ -1,6 +1,38 @@
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "How to Use Oravo - Voice Typing + AI Meeting Notes Setup Guide",
+  description: "Learn how to use Oravo AI voice assistant. Complete setup guide for voice typing and AI meeting notes, keyboard shortcuts, troubleshooting tips for 100+ languages.",
+  keywords: [
+    "how to use voice dictation",
+    "Oravo tutorial",
+    "voice dictation guide",
+    "AI dictation setup",
+    "meeting notes setup",
+    "speech to text tutorial",
+    "voice typing how to",
+    "AI meeting recorder guide",
+    "dictation keyboard shortcuts",
+    "microphone setup guide",
+  ],
+  openGraph: {
+    title: "How to Use Oravo - Voice Typing + Meeting Notes Guide",
+    description: "Complete guide to using Oravo: Voice typing + AI meeting notes setup, shortcuts, and tips for 100+ languages.",
+    url: "https://oravo.ai/how-to-use",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How to Use Oravo - Complete Setup Guide",
+    description: "Master Oravo voice typing and AI meeting notes with our complete guide.",
+  },
+  alternates: {
+    canonical: "https://oravo.ai/how-to-use",
+  },
+};
 
 export default function HowToUsePage() {
   return (

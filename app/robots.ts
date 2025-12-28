@@ -8,7 +8,11 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/studio/", "/api/"],
+        disallow: [
+          "/studio/",
+          "/api/",
+          "/payment-success/", // Transactional page - should not be indexed
+        ],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
