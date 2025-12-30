@@ -134,11 +134,10 @@ export default function LandingPage() {
                     <AnimatedRoleText />
                   </h1>
                   <div className="w-full max-w-[720px] lg:w-[720px] text-center flex justify-center flex-col text-[rgba(55,50,47,0.80)] sm:text-lg md:text-xl leading-[1.4] sm:leading-[1.45] md:leading-[1.5] lg:leading-7 font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-medium text-sm">
-                    Privacy-first AI voice typing & speech-to-text that's 4x
-                    faster than keyboard typing. Secure, with zero data
-                    retention. HIPAA-ready voice dictation. Works in Google
-                    Docs, Gmail, Slack & all apps. 100+ languages. Try free, no
-                    card required.
+                    Privacy-first AI voice typing with real-time translation.
+                    Speak in any language, get output in English. 4x faster
+                    than typing. Secure, zero data retention, HIPAA-ready.
+                    Works in Google Docs, Gmail, Slack & all apps. Try free.
                   </div>
                 </div>
               </div>
@@ -283,8 +282,8 @@ export default function LandingPage() {
                     onClick={() => handleCardClick(0)}
                   />
                   <FeatureCard
-                    title="100+ Languages Including Rare Dialects"
-                    description="Speak in Spanish, switch to Mandarin mid-sentence, or use regional dialects. Real-time multilingual support for global teams and content creators."
+                    title="Speak Any Language, Type in English"
+                    description="Real-time translation while you dictate. Speak in Spanish, Hindi, or Mandarin - Oravo transcribes and translates to English (or any language) instantly. Perfect for multilingual professionals."
                     isActive={activeCard === 1}
                     progress={activeCard === 1 ? progress : 0}
                     onClick={() => handleCardClick(1)}
@@ -465,15 +464,16 @@ export default function LandingPage() {
                       </div>
                     </div>
 
-                    {/* Bottom Right - Numbers that speak */}
+                    {/* Bottom Right - Real-time Translation */}
                     <div className="p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-start items-start gap-4 sm:gap-6">
                       <div className="flex flex-col gap-2">
                         <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
-                          100+ languages supported
+                          Dictate + Translate in Real-Time
                         </h3>
                         <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                          Dictate in multiple languages with ease, making it
-                          perfect for global teams.
+                          Speak in your native language, get output in English.
+                          Write emails, documents, and messages without typing a
+                          single word in a foreign language.
                         </p>
                       </div>
 

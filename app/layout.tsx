@@ -99,6 +99,23 @@ export const metadata: Metadata = {
     "AI voice to text",
     "voice to text AI",
 
+    // Real-time translation keywords (NEW - dictate and translate)
+    "voice typing with translation",
+    "dictate and translate",
+    "real-time voice translation",
+    "speak Spanish type English",
+    "voice typing translation app",
+    "multilingual voice typing",
+    "translate while dictating",
+    "speech to text translation",
+    "voice translator app",
+    "dictation with translation",
+    "speak in any language type in English",
+    "real-time speech translation",
+    "voice typing multilingual",
+    "translate speech to text",
+    "dictate in Spanish get English",
+
     // Professional "voice dictation" keywords (B2B/enterprise)
     "voice dictation",
     "voice dictation software",
