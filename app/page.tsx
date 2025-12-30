@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import LanguageFlags from "@/components/LanguageFlags";
+import TranslationDemo from "@/components/TranslationDemo";
 import { useEffect, useRef, useState } from "react";
 import AnimatedRoleText from "@/components/AnimatedRoleText";
 import CTASection from "../components/cta-section";
@@ -244,6 +244,19 @@ export default function LandingPage() {
                 />
               </div>
 
+              {/* Language Support Indicator */}
+              <div className="mt-4 sm:mt-6 flex flex-wrap justify-center items-center gap-2 px-4 sm:px-0 relative z-10">
+                <span className="text-[#847971] text-xs font-medium uppercase tracking-wide">
+                  100+ Languages Supported
+                </span>
+                <div className="flex items-center gap-1">
+                  {["🇺🇸", "🇪🇸", "🇫🇷", "🇩🇪", "🇯🇵", "🇨🇳", "🇮🇳", "🇧🇷", "🇰🇷", "🇮🇹"].map((flag, i) => (
+                    <span key={i} className="text-base sm:text-lg">{flag}</span>
+                  ))}
+                  <span className="text-[#847971] text-xs ml-1">+90 more</span>
+                </div>
+              </div>
+
               <div className="absolute top-[232px] sm:top-[248px] md:top-[264px] lg:top-[320px] left-1/2 transform -translate-x-1/2 z-0 pointer-events-none">
                 <img
                   src="/mask-group-pattern.svg"
@@ -282,8 +295,8 @@ export default function LandingPage() {
                     onClick={() => handleCardClick(0)}
                   />
                   <FeatureCard
-                    title="Speak Any Language, Type in English"
-                    description="Real-time translation while you dictate. Speak in Spanish, Hindi, or Mandarin - Oravo transcribes and translates to English (or any language) instantly. Perfect for multilingual professionals."
+                    title="Dictate & Translate Instantly"
+                    description="Speak in Spanish, type in English. Real-time translation while you dictate. Choose any input and output language. Write emails globally without learning new languages."
                     isActive={activeCard === 1}
                     progress={activeCard === 1 ? progress : 0}
                     onClick={() => handleCardClick(1)}
@@ -465,22 +478,19 @@ export default function LandingPage() {
                     </div>
 
                     {/* Bottom Right - Real-time Translation */}
-                    <div className="p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-start items-start gap-4 sm:gap-6">
+                    <div className="p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-start items-start gap-4 sm:gap-6 bg-gradient-to-br from-[#FEFDFB] to-[#F7F5F3] relative overflow-hidden">
                       <div className="flex flex-col gap-2">
                         <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
                           Dictate + Translate in Real-Time
                         </h3>
                         <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                          Speak in your native language, get output in English.
-                          Write emails, documents, and messages without typing a
-                          single word in a foreign language.
+                          Speak in your language, get text in any language you
+                          choose. Real-time translation while you dictate.
                         </p>
                       </div>
 
-                      <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex overflow-hidden items-center justify-center relative">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <LanguageFlags></LanguageFlags>
-                        </div>
+                      <div className="w-full h-[250px] sm:h-[300px] md:h-[350px] rounded-xl flex overflow-hidden items-center justify-center relative bg-[#F7F5F3]">
+                        <TranslationDemo />
                       </div>
                     </div>
                   </div>
