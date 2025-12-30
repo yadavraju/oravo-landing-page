@@ -321,10 +321,7 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              {/* Made For You Section */}
-              <MadeForYou />
-
-              {/* Bento Grid Section */}
+              {/* Bento Grid Section - Feature Highlights */}
               <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
                 {/* Header Section */}
                 <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] pt-6 sm:pt-10 md:pt-12 pb-8 sm:pb-12 md:pb-16 border-b border-[rgba(55,50,47,0.12)] flex justify-center items-center gap-6">
@@ -493,6 +490,9 @@ export default function LandingPage() {
                   </div>
                 </div>
               </div>
+
+              {/* Made For You Section */}
+              <MadeForYou />
 
               {/* Documentation Section */}
               <DocumentationSection />
