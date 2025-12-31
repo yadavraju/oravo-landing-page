@@ -4,146 +4,161 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 export default function PersonalizationAnimation() {
-  const [selectedTone, setSelectedTone] = useState(0);
-  const tones = [
-    { label: "Professional", color: "bg-blue-500" },
-    { label: "Casual", color: "bg-purple-500" },
-    { label: "Friendly", color: "bg-pink-500" },
-  ];
+  const [activeStyle, setActiveStyle] = useState(0);
 
-  const messages = [
-    "I hope this email finds you well. I would like to schedule a meeting.",
-    "Hey! Want to grab coffee and chat about the project?",
-    "Hi there! I'd love to catch up and discuss our plans.",
+  const styles = [
+    {
+      name: "Professional",
+      color: "#3B82F6",
+      bgColor: "#EFF6FF",
+      input: "tell mike about the meeting",
+      output: "Hi Mike,\n\nI wanted to follow up regarding our upcoming meeting. Please let me know your availability.\n\nBest regards,",
+    },
+    {
+      name: "Casual",
+      color: "#8B5CF6",
+      bgColor: "#F5F3FF",
+      input: "tell mike about the meeting",
+      output: "Hey Mike!\n\nJust wanted to check in about our meeting. When works for you?\n\nCheers!",
+    },
+    {
+      name: "Friendly",
+      color: "#EC4899",
+      bgColor: "#FDF2F8",
+      input: "tell mike about the meeting",
+      output: "Hi Mike! 👋\n\nHope you're doing well! Quick note about our meeting - excited to catch up!\n\nTalk soon!",
+    },
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSelectedTone((prev) => (prev + 1) % tones.length);
-    }, 3000);
+      setActiveStyle((prev) => (prev + 1) % styles.length);
+    }, 3500);
     return () => clearInterval(interval);
   }, []);
 
-  return (
-    <div className="w-full h-full bg-[#F7F5F3] flex items-center justify-center p-8 relative overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <img
-          src="/keyboard.avif"
-          alt="Keyboard"
-          className="w-full h-full object-contain"
-          style={{
-            opacity: 0.7,
-            filter: "brightness(1.2) contrast(1.05) saturate(0.85)",
-          }}
-        />
-      </div>
+  const current = styles[activeStyle];
 
-      <div className="w-full max-w-md space-y-6 relative z-10">
-        {/* Tone selector */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg">
-          <p className="text-xs text-gray-500 mb-3 font-medium">
-            Select your tone
-          </p>
-          <div className="flex gap-2">
-            {tones.map((tone, i) => (
-              <motion.button
-                key={tone.label}
-                animate={{
-                  scale: selectedTone === i ? 1.05 : 1,
-                  opacity: selectedTone === i ? 1 : 0.5,
+  return (
+    <div className="w-full h-full bg-gradient-to-br from-[#FAFAF9] to-[#F0EEEC] flex flex-col p-6 relative overflow-hidden">
+      {/* Header - Oravo listening indicator */}
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2 px-3 py-1.5 bg-[#37322F] rounded-full">
+          {/* Animated white bars */}
+          <div className="flex items-center gap-0.5 h-4">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <motion.div
+                key={i}
+                animate={{ height: ["40%", "100%", "40%"] }}
+                transition={{
+                  duration: 0.8,
+                  repeat: Infinity,
+                  delay: i * 0.1,
                 }}
-                transition={{ duration: 0.3 }}
-                className={`flex-1 px-3 py-2 rounded-lg ${tone.color} text-white text-xs font-medium transition-all`}
-              >
-                {tone.label}
-              </motion.button>
+                className="w-0.5 bg-white rounded-full"
+                style={{ height: "40%" }}
+              />
             ))}
           </div>
+          <span className="text-xs font-medium text-white ml-1">Listening...</span>
+        </div>
+        <span className="text-xs text-[#847971]">Your Writing Style</span>
+      </div>
+
+      {/* Style selector */}
+      <div className="flex gap-2 mb-4">
+        {styles.map((style, i) => (
+          <motion.button
+            key={style.name}
+            onClick={() => setActiveStyle(i)}
+            animate={{
+              scale: activeStyle === i ? 1 : 0.95,
+              opacity: activeStyle === i ? 1 : 0.5,
+            }}
+            className="flex-1 py-2 px-3 rounded-lg text-xs font-medium transition-all"
+            style={{
+              backgroundColor: activeStyle === i ? style.color : "#F7F5F3",
+              color: activeStyle === i ? "white" : "#605A57",
+            }}
+          >
+            {style.name}
+          </motion.button>
+        ))}
+      </div>
+
+      {/* Input section */}
+      <div className="bg-white rounded-xl p-4 border border-[#E0DEDB] shadow-sm mb-3">
+        <div className="flex items-center gap-2 mb-2">
+          <motion.div
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="w-2.5 h-2.5 bg-red-500 rounded-full"
+          />
+          <span className="text-xs text-[#847971] font-medium">You said:</span>
+        </div>
+        <p className="text-sm text-[#605A57] italic">"{current.input}"</p>
+      </div>
+
+      {/* Arrow */}
+      <div className="flex justify-center mb-3">
+        <motion.div
+          animate={{ y: [0, 4, 0] }}
+          transition={{ duration: 1, repeat: Infinity }}
+          className="w-8 h-8 rounded-full flex items-center justify-center shadow-lg"
+          style={{ backgroundColor: current.color }}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
+            <path d="M12 5v14M19 12l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </motion.div>
+      </div>
+
+      {/* Output section */}
+      <motion.div
+        key={activeStyle}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex-1 rounded-xl p-4 border-2 shadow-sm"
+        style={{
+          backgroundColor: current.bgColor,
+          borderColor: `${current.color}40`,
+        }}
+      >
+        <div className="flex items-center gap-2 mb-3">
+          <motion.div
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            className="w-4 h-4 rounded-full flex items-center justify-center"
+            style={{ backgroundColor: current.color }}
+          >
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+            </svg>
+          </motion.div>
+          <span className="text-xs font-medium" style={{ color: current.color }}>
+            {current.name} style applied
+          </span>
         </div>
 
-        {/* Message output with typing effect */}
-        <motion.div
-          key={selectedTone}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-xl p-5 shadow-xl border-2 border-purple-200 relative"
-        >
-          {/* Animated pulse indicator */}
-          <motion.div
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.5, 1, 0.5],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-            }}
-            className={`absolute -top-1 -right-1 w-3 h-3 ${tones[selectedTone].color} rounded-full`}
-          />
-
-          <motion.p
-            key={selectedTone}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="text-sm text-gray-800 leading-relaxed"
-          >
-            {messages[selectedTone]}
-          </motion.p>
-        </motion.div>
-
-        {/* AI learning indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="flex items-center justify-center gap-2 text-xs text-gray-600"
+          transition={{ delay: 0.3 }}
+          className="text-sm text-[#37322F] whitespace-pre-line leading-relaxed"
         >
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            className="w-4 h-4"
-          >
-            <svg viewBox="0 0 24 24" fill="none" className="text-purple-500">
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
-                fill="currentColor"
-                opacity="0.3"
-              />
-              <path
-                d="M12 6v6l4 2"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          </motion.div>
-          <span>AI adapting to your style...</span>
+          {current.output}
         </motion.div>
+      </motion.div>
 
-        {/* Style metrics */}
-        <div className="grid grid-cols-3 gap-2">
-          {[
-            { label: "Formality", value: selectedTone === 0 ? 90 : 40 },
-            { label: "Warmth", value: selectedTone === 2 ? 85 : 50 },
-            { label: "Brevity", value: selectedTone === 1 ? 95 : 60 },
-          ].map((metric) => (
-            <div
-              key={metric.label}
-              className="bg-white/70 rounded-lg p-2 text-center"
-            >
-              <motion.div
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 1, repeat: Infinity }}
-                className="text-lg font-bold text-purple-600"
-              >
-                {metric.value}%
-              </motion.div>
-              <div className="text-[10px] text-gray-600">{metric.label}</div>
-            </div>
-          ))}
-        </div>
+      {/* Bottom indicator */}
+      <div className="flex items-center justify-center gap-2 mt-4">
+        <motion.div
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-2 h-2 rounded-full"
+          style={{ backgroundColor: current.color }}
+        />
+        <span className="text-xs text-[#847971]">AI learns your preferences over time</span>
       </div>
     </div>
   );
