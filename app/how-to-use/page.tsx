@@ -66,7 +66,7 @@ export default function HowToUsePage() {
               </div>
 
               {/* Overview Section */}
-              <div className="mb-16 bg-gradient-to-br from-[#6366F1] to-[#4F46E5] rounded-3xl p-8 md:p-10 shadow-[0_8px_48px_rgba(99,102,241,0.3)]">
+              <div className="mb-16 bg-gradient-to-br from-[#1877F2] to-[#166FE5] rounded-3xl p-8 md:p-10 shadow-[0_8px_48px_rgba(24,119,242,0.3)]">
                 <h2 className="text-white text-2xl md:text-3xl font-normal font-serif mb-6">
                   Oravo on Desktop
                 </h2>
@@ -414,7 +414,7 @@ export default function HowToUsePage() {
               </div>
 
               {/* CTA Section */}
-              <div className="text-center bg-gradient-to-br from-[#6366F1] to-[#4F46E5] rounded-3xl p-8 md:p-10 shadow-[0_8px_48px_rgba(99,102,241,0.3)]">
+              <div className="text-center bg-gradient-to-br from-[#1877F2] to-[#166FE5] rounded-3xl p-8 md:p-10 shadow-[0_8px_48px_rgba(24,119,242,0.3)]">
                 <h3 className="text-white text-2xl md:text-3xl font-normal font-serif mb-4">
                   Ready to get started?
                 </h3>
@@ -423,7 +423,7 @@ export default function HowToUsePage() {
                 </p>
                 <Link
                   href="/download"
-                  className="inline-flex h-14 px-8 bg-white hover:bg-gray-50 text-[#4F46E5] text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg items-center justify-center"
+                  className="inline-flex h-14 px-8 bg-white hover:bg-gray-50 text-[#1877F2] text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg items-center justify-center"
                 >
                   Download Oravo
                 </Link>

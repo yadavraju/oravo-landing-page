@@ -1,6 +1,63 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+// Detect user's Mac architecture
+function useDetectedArchitecture() {
+  const [detectedArch, setDetectedArch] = useState<"arm64" | "x64" | null>(null);
+
+  useEffect(() => {
+    // Check if running on macOS
+    const isMac = navigator.platform.toLowerCase().includes("mac");
+    if (!isMac) {
+      setDetectedArch(null);
+      return;
+    }
+
+    // Try to detect Apple Silicon vs Intel
+    // Method 1: Check WebGL renderer (most reliable)
+    try {
+      const canvas = document.createElement("canvas");
+      const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+      if (gl) {
+        const debugInfo = (gl as WebGLRenderingContext).getExtension("WEBGL_debug_renderer_info");
+        if (debugInfo) {
+          const renderer = (gl as WebGLRenderingContext).getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+          // Apple Silicon GPUs contain "Apple" in their name
+          if (renderer && (renderer.includes("Apple M") || renderer.includes("Apple GPU"))) {
+            setDetectedArch("arm64");
+            return;
+          }
+          // Intel GPUs on Mac
+          if (renderer && (renderer.includes("Intel") || renderer.includes("AMD") || renderer.includes("Radeon"))) {
+            setDetectedArch("x64");
+            return;
+          }
+        }
+      }
+    } catch (e) {
+      // WebGL detection failed, try other methods
+    }
+
+    // Method 2: Check userAgentData (newer browsers)
+    if ("userAgentData" in navigator) {
+      (navigator as any).userAgentData?.getHighEntropyValues(["architecture"]).then((data: any) => {
+        if (data.architecture === "arm") {
+          setDetectedArch("arm64");
+        } else if (data.architecture) {
+          setDetectedArch("x64");
+        }
+        // If no architecture data, leave as null (no recommendation)
+      }).catch(() => {
+        // Can't detect reliably, don't show recommendation
+        setDetectedArch(null);
+      });
+    }
+    // If userAgentData not available and WebGL didn't work, don't show recommendation
+  }, []);
+
+  return detectedArch;
+}
 
 const DownloadIcon = () => (
   <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
@@ -95,9 +152,19 @@ export function PlatformSection({
   downloads: any[];
 }) {
   const [isExpanded, setIsExpanded] = useState(true);
+  const detectedArch = useDetectedArchitecture();
 
   // For macOS, show special chip-based layout
   if (platform === "macos" && downloads.length > 0) {
+    // Sort downloads so the recommended one appears first (only if we detected architecture)
+    const sortedDownloads = detectedArch
+      ? [...downloads].sort((a, b) => {
+          const aIsRecommended = detectedArch === "arm64" ? a.architecture === "arm64" : a.architecture !== "arm64";
+          const bIsRecommended = detectedArch === "arm64" ? b.architecture === "arm64" : b.architecture !== "arm64";
+          return bIsRecommended ? 1 : aIsRecommended ? -1 : 0;
+        })
+      : downloads; // Keep original order if no detection
+
     return (
       <div className="border border-[rgba(55,50,47,0.12)] rounded-xl overflow-hidden">
         <button
@@ -117,9 +184,15 @@ export function PlatformSection({
               Choose your Mac processor type:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-              {downloads.map((download) => {
+              {sortedDownloads.map((download) => {
                 const info = getArchitectureInfo(platform, download.architecture);
                 const isSilicon = download.architecture === "arm64";
+
+                // Show recommended badge based on detected architecture
+                const isRecommended = detectedArch !== null && (
+                  (detectedArch === "arm64" && isSilicon) ||
+                  (detectedArch === "x64" && !isSilicon)
+                );
 
                 return (
                   <a
@@ -129,8 +202,8 @@ export function PlatformSection({
                     rel="noopener noreferrer"
                     className={`group p-4 sm:p-5 rounded-xl border-2 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${
                       isSilicon
-                        ? "border-[#FF8C42]/30 bg-linear-to-br from-[#FFF7ED] to-[#FFEDD5] hover:border-[#FF8C42]"
-                        : "border-[#6366F1]/30 bg-linear-to-br from-[#EEF2FF] to-[#E0E7FF] hover:border-[#6366F1]"
+                        ? "border-[#FF8C42]/30 bg-gradient-to-br from-[#FFF7ED] to-[#FFEDD5] hover:border-[#FF8C42]"
+                        : "border-[#1877F2]/30 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] hover:border-[#1877F2]"
                     }`}
                   >
                     <div className="flex items-start gap-3 sm:gap-4">
@@ -139,7 +212,7 @@ export function PlatformSection({
                         className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0 ${
                           isSilicon
                             ? "bg-[#FF8C42]/20 text-[#FF8C42]"
-                            : "bg-[#6366F1]/20 text-[#6366F1]"
+                            : "bg-[#1877F2]/20 text-[#1877F2]"
                         }`}
                       >
                         <ChipIcon type={info.chipType!} />
@@ -149,12 +222,16 @@ export function PlatformSection({
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
                           <h4 className={`font-semibold text-base sm:text-lg ${
-                            isSilicon ? "text-[#C2410C]" : "text-[#4338CA]"
+                            isSilicon ? "text-[#C2410C]" : "text-[#1565C0]"
                           }`}>
                             {info.label}
                           </h4>
-                          {isSilicon && (
-                            <span className="px-2 py-0.5 bg-[#FF8C42]/20 text-[#FF8C42] text-xs font-medium rounded-full">
+                          {isRecommended && (
+                            <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${
+                              isSilicon
+                                ? "bg-[#FF8C42]/20 text-[#FF8C42]"
+                                : "bg-[#1877F2]/20 text-[#1877F2]"
+                            }`}>
                               Recommended
                             </span>
                           )}
@@ -174,7 +251,7 @@ export function PlatformSection({
                         className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 transition-colors ${
                           isSilicon
                             ? "bg-[#FF8C42] text-white group-hover:bg-[#EA580C]"
-                            : "bg-[#6366F1] text-white group-hover:bg-[#4F46E5]"
+                            : "bg-[#1877F2] text-white group-hover:bg-[#166FE5]"
                         }`}
                       >
                         <DownloadIcon />
@@ -271,7 +348,7 @@ export function PlatformSection({
                   href={download.file_path}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-4 py-2.5 bg-linear-to-b from-[#6366F1] to-[#4F46E5] hover:from-[#5558E3] hover:to-[#4338CA] text-white text-sm font-medium rounded-lg flex items-center justify-center gap-2 shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(99,102,241,0.4)] transition-all duration-300 hover:scale-105 active:scale-95"
+                  className="w-full sm:w-auto px-4 py-2.5 bg-gradient-to-b from-[#1877F2] to-[#166FE5] hover:from-[#1570E8] hover:to-[#1466D8] text-white text-sm font-medium rounded-lg flex items-center justify-center gap-2 shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(24,119,242,0.4)] transition-all duration-300 hover:scale-105 active:scale-95"
                 >
                   <DownloadIcon />
                   Download

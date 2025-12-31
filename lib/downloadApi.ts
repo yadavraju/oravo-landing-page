@@ -75,3 +75,13 @@ export function getLatestVersion(data: DownloadData[]): string {
 
   return sorted[0]?.version || '1.0.0';
 }
+
+// Get only the latest version downloads for each platform/architecture
+export function getLatestDownloads(data: DownloadData[]): DownloadData[] {
+  if (data.length === 0) return [];
+
+  const latestVersion = getLatestVersion(data);
+
+  // Filter to only include downloads with the latest version
+  return data.filter((d) => d.version === latestVersion);
+}

@@ -179,7 +179,7 @@ export default function ManifestoPage() {
                 </section>
 
                 {/* Privacy & Speed */}
-                <section className="mb-16 bg-gradient-to-br from-[#6366F1]/5 to-[#4F46E5]/5 rounded-2xl p-8 md:p-10 border border-[rgba(99,102,241,0.1)]">
+                <section className="mb-16 bg-gradient-to-br from-[#1877F2]/5 to-[#166FE5]/5 rounded-2xl p-8 md:p-10 border border-[rgba(24,119,242,0.1)]">
                   <h3 className="text-[#49423D] text-2xl md:text-3xl font-normal font-serif mb-6">
                     Privacy-Focused. Lightning-Fast.
                   </h3>

@@ -72,7 +72,25 @@ export function Header() {
             </button>
           </div>
         </div>
-        <div className="h-6 sm:h-7 md:h-8 flex justify-start items-start gap-2 sm:gap-3">
+        <div className="h-6 sm:h-7 md:h-8 flex justify-start items-center gap-2 sm:gap-3">
+          {/* Desktop Download Link - Goes to download page */}
+          <a
+            href="/download"
+            className="hidden sm:flex px-3 md:px-4 py-1 sm:py-[6px] bg-white border border-[#E0DEDB] hover:bg-[#F7F5F3] overflow-hidden rounded-full justify-center items-center transition-all duration-300 hover:scale-105 active:scale-95"
+          >
+            <span className="text-[#37322F] text-xs md:text-[13px] font-medium leading-5 font-sans">
+              Download
+            </span>
+          </a>
+          {/* How to use Button - Hidden on Mobile */}
+          <a
+            href="/how-to-use"
+            className="hidden sm:flex px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-gradient-to-b from-[#1877F2] to-[#166FE5] hover:from-[#1570E8] hover:to-[#1466D8] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(24,119,242,0.4)] overflow-hidden rounded-full justify-center items-center transition-all duration-300 hover:scale-105 active:scale-95"
+          >
+            <span className="text-[#FFF] text-xs md:text-[13px] font-medium leading-5 font-sans">
+              How to use
+            </span>
+          </a>
           {/* Hamburger Menu Button - Mobile Only */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -96,15 +114,6 @@ export function Header() {
             ></span>
           </button>
 
-          {/* How to use Button - Hidden on Mobile */}
-          <a
-            href="/how-to-use"
-            className="hidden sm:flex px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-gradient-to-b from-[#6366F1] to-[#4F46E5] hover:from-[#5558E3] hover:to-[#4338CA] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(99,102,241,0.4)] overflow-hidden rounded-full justify-center items-center transition-all duration-300 hover:scale-105 active:scale-95"
-          >
-            <div className="flex flex-col justify-center text-[#FFF] text-xs md:text-[13px] font-medium leading-5 font-sans">
-              How to use
-            </div>
-          </a>
         </div>
 
         {/* Mobile Menu Dropdown */}
@@ -131,10 +140,17 @@ export function Header() {
             <div className="border-t border-[rgba(55,50,47,0.12)] my-2"></div>
             <a
               href="/download"
-              className="text-[#6366F1] text-sm font-semibold leading-5 font-sans hover:text-[#4F46E5] transition-colors py-2 text-left"
+              className="text-[#6366F1] text-sm font-semibold leading-5 font-sans hover:text-[#4F46E5] transition-colors py-2 text-left block"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Download
+            </a>
+            <a
+              href="/how-to-use"
+              className="w-full px-4 py-2.5 text-sm mt-2 bg-gradient-to-b from-[#1877F2] to-[#166FE5] text-white font-medium rounded-full text-center block"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              How to use
             </a>
           </div>
         )}

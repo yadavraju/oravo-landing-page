@@ -33,7 +33,7 @@ export default function StudentsPage() {
               </div>
 
               {/* Pricing Card */}
-              <div className="mb-16 bg-gradient-to-br from-[#6366F1] to-[#4F46E5] rounded-3xl p-8 md:p-10 shadow-[0_8px_48px_rgba(99,102,241,0.3)]">
+              <div className="mb-16 bg-gradient-to-br from-[#1877F2] to-[#166FE5] rounded-3xl p-8 md:p-10 shadow-[0_8px_48px_rgba(24,119,242,0.3)]">
                 <div className="text-white/90 text-sm font-semibold uppercase tracking-wider mb-4">
                   Flow Pro for Students
                 </div>
@@ -55,7 +55,7 @@ export default function StudentsPage() {
                     Start your free trail today
                   </p>
                 </div>
-                <button className="w-full h-14 bg-white hover:bg-gray-50 text-[#4F46E5] text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg">
+                <button className="w-full h-14 bg-white hover:bg-gray-50 text-[#1877F2] text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg">
                   Start Today for Free
                 </button>
               </div>
@@ -69,7 +69,7 @@ export default function StudentsPage() {
                 <div className="space-y-8">
                   {/* Step 1 */}
                   <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#6366F1] to-[#4F46E5] flex items-center justify-center">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#1877F2] to-[#166FE5] flex items-center justify-center">
                       <span className="text-white text-xl font-semibold">
                         1
                       </span>
@@ -87,7 +87,7 @@ export default function StudentsPage() {
 
                   {/* Step 2 */}
                   <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#6366F1] to-[#4F46E5] flex items-center justify-center">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#1877F2] to-[#166FE5] flex items-center justify-center">
                       <span className="text-white text-xl font-semibold">
                         2
                       </span>
@@ -105,7 +105,7 @@ export default function StudentsPage() {
 
                   {/* Step 3 */}
                   <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#6366F1] to-[#4F46E5] flex items-center justify-center">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#1877F2] to-[#166FE5] flex items-center justify-center">
                       <span className="text-white text-xl font-semibold">
                         3
                       </span>

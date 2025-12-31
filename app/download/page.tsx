@@ -109,11 +109,11 @@ export default async function DownloadPage() {
                     <h2 className="text-2xl lg:text-3xl font-normal text-[#37322F] font-serif">
                       {latestVersion}
                     </h2>
-                    <span className="px-3 py-1 bg-gradient-to-b from-[#6366F1] to-[#4F46E5] text-white text-xs font-semibold rounded-full">
+                    <span className="px-3 py-1 bg-gradient-to-b from-[#1877F2] to-[#166FE5] text-white text-xs font-semibold rounded-full">
                       Latest
                     </span>
                   </div>
-                  <button className="text-[#6366F1] text-sm font-semibold hover:text-[#4F46E5] transition-colors flex items-center gap-1 self-start sm:self-auto">
+                  <button className="text-[#1877F2] text-sm font-semibold hover:text-[#166FE5] transition-colors flex items-center gap-1 self-start sm:self-auto">
                     View release notes
                     <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
                       <path fillRule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
