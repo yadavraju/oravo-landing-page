@@ -203,7 +203,7 @@ export function PlatformSection({
                     className={`group p-4 sm:p-5 rounded-xl border-2 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${
                       isSilicon
                         ? "border-[#FF8C42]/30 bg-gradient-to-br from-[#FFF7ED] to-[#FFEDD5] hover:border-[#FF8C42]"
-                        : "border-[#6366F1]/30 bg-gradient-to-br from-[#EEF2FF] to-[#E0E7FF] hover:border-[#6366F1]"
+                        : "border-[#1877F2]/30 bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] hover:border-[#1877F2]"
                     }`}
                   >
                     <div className="flex items-start gap-3 sm:gap-4">
@@ -212,7 +212,7 @@ export function PlatformSection({
                         className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0 ${
                           isSilicon
                             ? "bg-[#FF8C42]/20 text-[#FF8C42]"
-                            : "bg-[#6366F1]/20 text-[#6366F1]"
+                            : "bg-[#1877F2]/20 text-[#1877F2]"
                         }`}
                       >
                         <ChipIcon type={info.chipType!} />
@@ -222,7 +222,7 @@ export function PlatformSection({
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
                           <h4 className={`font-semibold text-base sm:text-lg ${
-                            isSilicon ? "text-[#C2410C]" : "text-[#4338CA]"
+                            isSilicon ? "text-[#C2410C]" : "text-[#1565C0]"
                           }`}>
                             {info.label}
                           </h4>
@@ -230,7 +230,7 @@ export function PlatformSection({
                             <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${
                               isSilicon
                                 ? "bg-[#FF8C42]/20 text-[#FF8C42]"
-                                : "bg-[#6366F1]/20 text-[#6366F1]"
+                                : "bg-[#1877F2]/20 text-[#1877F2]"
                             }`}>
                               Recommended
                             </span>
@@ -251,7 +251,7 @@ export function PlatformSection({
                         className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 transition-colors ${
                           isSilicon
                             ? "bg-[#FF8C42] text-white group-hover:bg-[#EA580C]"
-                            : "bg-[#6366F1] text-white group-hover:bg-[#4F46E5]"
+                            : "bg-[#1877F2] text-white group-hover:bg-[#166FE5]"
                         }`}
                       >
                         <DownloadIcon />
@@ -348,7 +348,7 @@ export function PlatformSection({
                   href={download.file_path}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-4 py-2.5 bg-linear-to-b from-[#6366F1] to-[#4F46E5] hover:from-[#5558E3] hover:to-[#4338CA] text-white text-sm font-medium rounded-lg flex items-center justify-center gap-2 shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(99,102,241,0.4)] transition-all duration-300 hover:scale-105 active:scale-95"
+                  className="w-full sm:w-auto px-4 py-2.5 bg-gradient-to-b from-[#1877F2] to-[#166FE5] hover:from-[#1570E8] hover:to-[#1466D8] text-white text-sm font-medium rounded-lg flex items-center justify-center gap-2 shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(24,119,242,0.4)] transition-all duration-300 hover:scale-105 active:scale-95"
                 >
                   <DownloadIcon />
                   Download

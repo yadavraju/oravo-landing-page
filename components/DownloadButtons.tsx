@@ -129,7 +129,7 @@ export default function DownloadButtons() {
         <button
           onClick={handleMacDownload}
           disabled={loadingPlatform !== null}
-          className="group relative h-12 w-full sm:w-[260px] px-6 bg-gradient-to-b from-[#6366F1] to-[#4F46E5] hover:from-[#5558E3] hover:to-[#4338CA] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(99,102,241,0.4)] overflow-hidden rounded-full flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="group relative h-12 w-full sm:w-[260px] px-6 bg-gradient-to-b from-[#1877F2] to-[#166FE5] hover:from-[#1570E8] hover:to-[#1466D8] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(24,119,242,0.4)] overflow-hidden rounded-full flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
         >
           {/* Glossy overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/10 pointer-events-none"></div>

@@ -85,7 +85,7 @@ export function Header() {
           {/* How to use Button - Hidden on Mobile */}
           <a
             href="/how-to-use"
-            className="hidden sm:flex px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-gradient-to-b from-[#6366F1] to-[#4F46E5] hover:from-[#5558E3] hover:to-[#4338CA] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(99,102,241,0.4)] overflow-hidden rounded-full justify-center items-center transition-all duration-300 hover:scale-105 active:scale-95"
+            className="hidden sm:flex px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-gradient-to-b from-[#1877F2] to-[#166FE5] hover:from-[#1570E8] hover:to-[#1466D8] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(24,119,242,0.4)] overflow-hidden rounded-full justify-center items-center transition-all duration-300 hover:scale-105 active:scale-95"
           >
             <span className="text-[#FFF] text-xs md:text-[13px] font-medium leading-5 font-sans">
               How to use
@@ -147,7 +147,7 @@ export function Header() {
             </a>
             <a
               href="/how-to-use"
-              className="w-full px-4 py-2.5 text-sm mt-2 bg-gradient-to-b from-[#6366F1] to-[#4F46E5] text-white font-medium rounded-full text-center block"
+              className="w-full px-4 py-2.5 text-sm mt-2 bg-gradient-to-b from-[#1877F2] to-[#166FE5] text-white font-medium rounded-full text-center block"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               How to use

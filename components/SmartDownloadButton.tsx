@@ -148,10 +148,10 @@ export function SmartDownloadButton({
 
   const baseStyles = {
     primary:
-      "bg-gradient-to-b from-[#6366F1] to-[#4F46E5] hover:from-[#5558E3] hover:to-[#4338CA] text-white shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(99,102,241,0.4)]",
+      "bg-gradient-to-b from-[#1877F2] to-[#166FE5] hover:from-[#1570E8] hover:to-[#1466D8] text-white shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(24,119,242,0.4)]",
     secondary:
       "bg-white border border-[#E0DEDB] text-[#37322F] hover:bg-[#F7F5F3]",
-    text: "text-[#6366F1] hover:text-[#4F46E5]",
+    text: "text-[#1877F2] hover:text-[#166FE5]",
   };
 
   const DownloadIcon = () => (
