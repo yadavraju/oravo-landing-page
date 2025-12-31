@@ -82,22 +82,83 @@ export default function DocumentationSection() {
 
   return (
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
-      {/* Header Section - UNCHANGED */}
-      <div className="self-stretch px-6 md:px-24 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)] flex justify-center items-center gap-6">
-        <div className="w-full max-w-[586px] px-6 py-5 overflow-hidden rounded-lg flex flex-col justify-start items-center gap-4 shadow-none">
+      {/* Header Section - Enhanced UI */}
+      <div className="self-stretch px-6 md:px-24 py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex justify-center items-center relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-[#FF8C42]/5 via-transparent to-transparent rounded-full blur-3xl" />
+        </div>
+
+        <div className="w-full max-w-[700px] px-6 py-5 overflow-hidden rounded-lg flex flex-col justify-start items-center gap-5 relative z-10">
           <Badge
             icon={
               <div className="w-[10.50px] h-[10.50px] outline-[1.17px] outline-[#37322F] outline-offset-[-0.58px] rounded-full"></div>
             }
             text="Platform Features"
           />
-          <h2 className="w-full text-center text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-stretch-semi-condensed font-medium leading-tight md:leading-[60px] font-serif px-4">
-            Speak better, not harder.
-          </h2>
 
-          <div className="self-stretch text-center text-[#605A57] text-base font-normal leading-7 font-sans">
-            Lightning-fast AI dictation that works across all your favorite
-            apps.
+          {/* Main heading with gradient accent */}
+          <div className="relative">
+            <h2 className="text-center text-[#49423D] text-[32px] sm:text-4xl md:text-5xl lg:text-[56px] font-medium leading-tight md:leading-[1.15] font-serif">
+              Speak{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10">better</span>
+                <svg className="absolute -bottom-1 left-0 w-full h-3 text-[#FF8C42]/30" viewBox="0 0 100 12" preserveAspectRatio="none">
+                  <path d="M0 6 Q 25 0, 50 6 T 100 6" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round"/>
+                </svg>
+              </span>
+              , not harder.
+            </h2>
+          </div>
+
+          {/* Subtitle with app icons */}
+          <div className="flex flex-col items-center gap-4">
+            <p className="text-center text-[#605A57] text-lg md:text-xl font-normal leading-relaxed font-sans max-w-[500px]">
+              Lightning-fast AI dictation that works across all your favorite apps.
+            </p>
+
+            {/* App icons row */}
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-[#847971] mr-1">Works with</span>
+              <div className="flex items-center -space-x-1">
+                {/* Gmail */}
+                <div className="w-7 h-7 rounded-lg bg-white shadow-sm border border-[#E0DEDB] flex items-center justify-center">
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 18H4V8L12 13L20 8V18Z" fill="#EA4335"/>
+                    <path d="M20 6H4L12 11L20 6Z" fill="#34A853"/>
+                    <path d="M4 6V8L12 13L20 8V6H4Z" fill="#4285F4"/>
+                    <path d="M4 8V18H6V10L12 13L18 10V18H20V8L12 13L4 8Z" fill="#FBBC05"/>
+                  </svg>
+                </div>
+                {/* Slack */}
+                <div className="w-7 h-7 rounded-lg bg-white shadow-sm border border-[#E0DEDB] flex items-center justify-center">
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 15a2 2 0 01-2-2 2 2 0 012-2h2v2a2 2 0 01-2 2zM10 15a2 2 0 01-2-2V7a2 2 0 114 0v6a2 2 0 01-2 2z" fill="#E01E5A"/>
+                    <path d="M10 6a2 2 0 01-2-2 2 2 0 012-2 2 2 0 012 2v2h-2zM10 10a2 2 0 012-2h6a2 2 0 110 4h-6a2 2 0 01-2-2z" fill="#36C5F0"/>
+                    <path d="M20 10a2 2 0 01-2 2 2 2 0 01-2-2V8h2a2 2 0 012 2zM16 10a2 2 0 01-2 2v6a2 2 0 104 0v-6a2 2 0 00-2-2z" fill="#2EB67D"/>
+                    <path d="M16 20a2 2 0 01-2-2 2 2 0 012-2h2v2a2 2 0 01-2 2zM16 14a2 2 0 01-2 2H8a2 2 0 110-4h6a2 2 0 012 2z" fill="#ECB22E"/>
+                  </svg>
+                </div>
+                {/* Notion */}
+                <div className="w-7 h-7 rounded-lg bg-white shadow-sm border border-[#E0DEDB] flex items-center justify-center">
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="#37322F">
+                    <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 2.122c-.42-.326-.98-.7-2.055-.607L3.01 2.795c-.467.047-.56.28-.374.466l1.823.947zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.84-.046.933-.56.933-1.167V6.354c0-.606-.233-.933-.746-.886l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.747 0-.933-.234-1.494-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.187 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.14c-.093-.514.28-.886.747-.933l3.222-.187zM2.778 1.4L16.1.066c1.634-.14 2.055-.047 3.082.7l4.25 2.986c.7.513.933.653.933 1.213v16.138c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.046-1.448-.094-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.986c0-.84.374-1.54 1.448-1.586z"/>
+                  </svg>
+                </div>
+                {/* VS Code */}
+                <div className="w-7 h-7 rounded-lg bg-white shadow-sm border border-[#E0DEDB] flex items-center justify-center">
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                    <path d="M17 3L7 9L3 6V18L7 15L17 21V3Z" fill="#0078D4"/>
+                    <path d="M17 3L7 9V15L17 21V3Z" fill="#0065C3"/>
+                    <path d="M7 9L3 12L7 15V9Z" fill="#1F9CF0"/>
+                  </svg>
+                </div>
+                {/* More indicator */}
+                <div className="w-7 h-7 rounded-lg bg-[#F7F5F3] border border-[#E0DEDB] flex items-center justify-center">
+                  <span className="text-[10px] font-medium text-[#605A57]">+50</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
