@@ -2,16 +2,14 @@
 
 import React from "react";
 
-import LanguageFlags from "@/components/LanguageFlags";
+import TranslationDemo from "@/components/TranslationDemo";
 import { useEffect, useRef, useState } from "react";
 import AnimatedRoleText from "@/components/AnimatedRoleText";
 import CTASection from "../components/cta-section";
 import DocumentationSection from "../components/documentation-section";
 import DownloadButtons from "../components/DownloadButtons";
 import EffortlessIntegration from "../components/effortless-integration-updated";
-import EmailComparisonSection, {
-  MiniVoiceWaveform,
-} from "../components/EmailComparisonSection";
+import EmailComparisonSection from "../components/EmailComparisonSection";
 import FAQSection from "../components/faq-section";
 import AskAISection from "../components/ask-ai-section";
 import FooterSection from "../components/footer-section";
@@ -134,11 +132,10 @@ export default function LandingPage() {
                     <AnimatedRoleText />
                   </h1>
                   <div className="w-full max-w-[720px] lg:w-[720px] text-center flex justify-center flex-col text-[rgba(55,50,47,0.80)] sm:text-lg md:text-xl leading-[1.4] sm:leading-[1.45] md:leading-[1.5] lg:leading-7 font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-medium text-sm">
-                    Privacy-first AI voice typing & speech-to-text that's 4x
-                    faster than keyboard typing. Secure, with zero data
-                    retention. HIPAA-ready voice dictation. Works in Google
-                    Docs, Gmail, Slack & all apps. 100+ languages. Try free, no
-                    card required.
+                    Privacy-first AI voice typing with real-time translation.
+                    Speak in any language, get output in English. 4x faster
+                    than typing. Secure, zero data retention, HIPAA-ready.
+                    Works in Google Docs, Gmail, Slack & all apps. Try free.
                   </div>
                 </div>
               </div>
@@ -245,6 +242,19 @@ export default function LandingPage() {
                 />
               </div>
 
+              {/* Language Support Indicator */}
+              <div className="mt-4 sm:mt-6 flex flex-wrap justify-center items-center gap-2 px-4 sm:px-0 relative z-10">
+                <span className="text-[#847971] text-xs font-medium uppercase tracking-wide">
+                  100+ Languages Supported
+                </span>
+                <div className="flex items-center gap-1">
+                  {["🇺🇸", "🇪🇸", "🇫🇷", "🇩🇪", "🇯🇵", "🇨🇳", "🇮🇳", "🇧🇷", "🇰🇷", "🇮🇹"].map((flag, i) => (
+                    <span key={i} className="text-base sm:text-lg">{flag}</span>
+                  ))}
+                  <span className="text-[#847971] text-xs ml-1">+90 more</span>
+                </div>
+              </div>
+
               <div className="absolute top-[232px] sm:top-[248px] md:top-[264px] lg:top-[320px] left-1/2 transform -translate-x-1/2 z-0 pointer-events-none">
                 <img
                   src="/mask-group-pattern.svg"
@@ -283,8 +293,8 @@ export default function LandingPage() {
                     onClick={() => handleCardClick(0)}
                   />
                   <FeatureCard
-                    title="100+ Languages Including Rare Dialects"
-                    description="Speak in Spanish, switch to Mandarin mid-sentence, or use regional dialects. Real-time multilingual support for global teams and content creators."
+                    title="Dictate & Translate Instantly"
+                    description="Speak in Spanish, type in English. Real-time translation while you dictate. Choose any input and output language. Write emails globally without learning new languages."
                     isActive={activeCard === 1}
                     progress={activeCard === 1 ? progress : 0}
                     onClick={() => handleCardClick(1)}
@@ -311,10 +321,7 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              {/* Made For You Section */}
-              <MadeForYou />
-
-              {/* Bento Grid Section */}
+              {/* Bento Grid Section - Feature Highlights */}
               <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
                 {/* Header Section */}
                 <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] pt-6 sm:pt-10 md:pt-12 pb-8 sm:pb-12 md:pb-16 border-b border-[rgba(55,50,47,0.12)] flex justify-center items-center gap-6">
@@ -370,17 +377,17 @@ export default function LandingPage() {
                     />
 
                     <h2 className="w-full text-center text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-stretch-semi-condensed font-medium leading-tight md:leading-[60px] font-serif px-4">
-                      Smart, Fast, and Secure
+                      Voice to Text, Perfected
                     </h2>
                     <div className="self-stretch text-center text-[#605A57] text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
-                      Speak naturally Oravo converts your words into
-                      <br />
-                      clean polished text across all your favorite apps.
+                      Speak naturally. Oravo transcribes, formats, and translates
+                      <br className="hidden sm:block" />
+                      your words into polished text — in any app, any language.
                     </div>
                   </div>
                 </div>
 
-                {/* Bento Grid Content */}
+                {/* Bento Grid Content - Clean 2x2 Layout */}
                 <div className="self-stretch flex justify-center items-start">
                   <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden">
                     {/* Left decorative pattern */}
@@ -395,92 +402,77 @@ export default function LandingPage() {
                   </div>
 
                   <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-0 border-l border-r border-[rgba(55,50,47,0.12)]">
-                    {/* Top Left - Smart. Simple. Brilliant. */}
-                    <div className="border-b border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-start items-start gap-4 sm:gap-6">
-                      <div className="flex flex-col gap-2">
+                    {/* Card 1 - Translation */}
+                    <div className="border-b border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col gap-5">
+                      <div className="flex flex-col gap-3">
                         <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
-                          AI-Powered Dictation
+                          Dictate + Translate
                         </h3>
-                        <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                          oravo uses advanced AI to accurately transcribe your
-                          speech into text, even in noisy environments.
+                        <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
+                          Speak in Spanish, get text in English. Write emails in any language without learning it.
                         </p>
                       </div>
-                      <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex items-center justify-center overflow-hidden">
+                      <div className="w-full h-[280px] sm:h-[320px] rounded-xl flex overflow-hidden items-center justify-center relative bg-[#F7F5F3]">
+                        <TranslationDemo />
+                      </div>
+                    </div>
+
+                    {/* Card 2 - Accuracy */}
+                    <div className="border-b border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col gap-5">
+                      <div className="flex flex-col gap-3">
+                        <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
+                          Incredibly Accurate
+                        </h3>
+                        <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
+                          AI that understands context, accents, and technical jargon. Works in noisy environments.
+                        </p>
+                      </div>
+                      <div className="w-full h-[280px] sm:h-[320px] rounded-xl flex items-center justify-center overflow-hidden">
                         <SmartSimpleBrilliant
                           width="100%"
                           height="100%"
                           theme="light"
-                          className="scale-50 sm:scale-65 md:scale-75 lg:scale-90"
+                          className="scale-65 sm:scale-75 md:scale-85"
                         />
                       </div>
                     </div>
 
-                    {/* Top Right - Smart Formatting */}
-                    <div className="border-b border-[rgba(55,50,47,0.12)] p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-start items-start gap-4 sm:gap-6">
-                      <div className="flex flex-col gap-2">
-                        <h3 className="text-[#37322F] font-semibold leading-tight font-sans text-lg sm:text-xl">
-                          Smart Formatting
+                    {/* Card 3 - Auto-Format */}
+                    <div className="border-b md:border-b-0 border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col gap-5">
+                      <div className="flex flex-col gap-3">
+                        <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
+                          Auto-Format as You Speak
                         </h3>
-                        <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                          Say goodbye to manual editing. oravo understands
-                          natural speech patterns and formats everything
-                          perfectly
+                        <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
+                          Punctuation, paragraphs, and capitalization added automatically. Just speak naturally.
                         </p>
                       </div>
-                      <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex overflow-hidden text-right items-center justify-center relative">
+                      <div className="w-full h-[280px] sm:h-[320px] rounded-xl flex overflow-hidden items-center justify-center relative">
                         <YourWorkInSync
                           width="400"
-                          height="250"
+                          height="280"
                           theme="light"
-                          className="scale-60 sm:scale-75 md:scale-90"
+                          className="scale-80 sm:scale-90"
                         />
                       </div>
-                      <div className="bottom-6 left-0 right-0 flex justify-center z-10">
-                        <MiniVoiceWaveform />
-                      </div>
                     </div>
 
-                    {/* Bottom Left - Effortless integration */}
-                    <div className="border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-start items-start gap-4 sm:gap-6 bg-transparent">
-                      <div className="flex flex-col gap-2">
+                    {/* Card 4 - Works Everywhere */}
+                    <div className="p-6 sm:p-8 md:p-10 flex flex-col gap-5">
+                      <div className="flex flex-col gap-3">
                         <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
-                          Seamless Integration
+                          Works Everywhere
                         </h3>
-                        <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                          Works with all your favorite apps and platforms,
-                          including Slack, Gmail, and iMessage.
+                        <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
+                          Gmail, Slack, Notion, Google Docs — type anywhere with your voice on Mac.
                         </p>
                       </div>
-                      <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex overflow-hidden justify-center items-center relative bg-transparent">
-                        <div className="w-full h-full flex items-center justify-center bg-transparent">
-                          <EffortlessIntegration
-                            width={400}
-                            height={250}
-                            className="max-w-full max-h-full"
-                          />
-                        </div>
-                        {/* Gradient mask for soft bottom edge */}
-                        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#F7F5F3] to-transparent pointer-events-none"></div>
-                      </div>
-                    </div>
-
-                    {/* Bottom Right - Numbers that speak */}
-                    <div className="p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-start items-start gap-4 sm:gap-6">
-                      <div className="flex flex-col gap-2">
-                        <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
-                          100+ languages supported
-                        </h3>
-                        <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                          Dictate in multiple languages with ease, making it
-                          perfect for global teams.
-                        </p>
-                      </div>
-
-                      <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex overflow-hidden items-center justify-center relative">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <LanguageFlags></LanguageFlags>
-                        </div>
+                      <div className="w-full h-[280px] sm:h-[320px] rounded-xl flex overflow-hidden justify-center items-center relative bg-transparent">
+                        <EffortlessIntegration
+                          width={400}
+                          height={280}
+                          className="max-w-full max-h-full"
+                        />
                       </div>
                     </div>
                   </div>
@@ -498,6 +490,9 @@ export default function LandingPage() {
                   </div>
                 </div>
               </div>
+
+              {/* Made For You Section */}
+              <MadeForYou />
 
               {/* Documentation Section */}
               <DocumentationSection />
