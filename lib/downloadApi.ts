@@ -85,3 +85,35 @@ export function getLatestDownloads(data: DownloadData[]): DownloadData[] {
   // Filter to only include downloads with the latest version
   return data.filter((d) => d.version === latestVersion);
 }
+
+// Group downloads by version and sort versions (latest first)
+export function groupDownloadsByVersion(data: DownloadData[]): { version: string; downloads: DownloadData[]; isLatest: boolean }[] {
+  if (data.length === 0) return [];
+
+  // Group by version
+  const versionMap = new Map<string, DownloadData[]>();
+
+  data.forEach((item) => {
+    const existing = versionMap.get(item.version) || [];
+    existing.push(item);
+    versionMap.set(item.version, existing);
+  });
+
+  // Convert to array and sort by release_date (latest first)
+  const versions = Array.from(versionMap.entries()).map(([version, downloads]) => ({
+    version,
+    downloads,
+    // Get the latest release date for this version
+    releaseDate: Math.max(...downloads.map(d => new Date(d.release_date).getTime())),
+  }));
+
+  versions.sort((a, b) => b.releaseDate - a.releaseDate);
+
+  const latestVersion = versions[0]?.version;
+
+  return versions.map(({ version, downloads }) => ({
+    version,
+    downloads,
+    isLatest: version === latestVersion,
+  }));
+}

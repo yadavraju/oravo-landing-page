@@ -1,8 +1,8 @@
-import { fetchDownloadUrls, groupDownloadsByPlatform, getLatestVersion } from '@/lib/downloadApi';
+import { fetchDownloadUrls, groupDownloadsByVersion } from '@/lib/downloadApi';
 import { Header } from '@/components/header';
 import FooterSection from '@/components/footer-section';
 import Logo from '@/components/Logo';
-import { PlatformSection } from '@/components/download/PlatformSection';
+import { VersionSection } from '@/components/download/VersionSection';
 import type { Metadata } from 'next';
 
 // Force dynamic rendering for API calls
@@ -39,33 +39,12 @@ export const metadata: Metadata = {
   },
 };
 
-// Icons for platforms
-const AppleIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
-  </svg>
-);
-
-const WindowsIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M3 5.45v6.38l8.04.87V5.45zm8.04 7.38L3 13.7v6.38l8.04 1.17zm.96-7.69v7.31L21.96 13V3zm0 15.73V13.7L21.96 13v10z"/>
-  </svg>
-);
-
 export default async function DownloadPage() {
-  let downloadData;
-  let latestVersion = '1.0.0';
-  let groupedDownloads: Record<string, any[]> = {
-    macos: [],
-    windows: [],
-    linux: [],
-  };
+  let versionGroups: { version: string; downloads: any[]; isLatest: boolean }[] = [];
 
   try {
     const response = await fetchDownloadUrls();
-    downloadData = response.data;
-    latestVersion = getLatestVersion(downloadData);
-    groupedDownloads = groupDownloadsByPlatform(downloadData);
+    versionGroups = groupDownloadsByVersion(response.data);
   } catch (error) {
     console.error('Failed to load download data:', error);
   }
@@ -102,62 +81,17 @@ export default async function DownloadPage() {
                 </p>
               </div>
 
-              {/* Version Section */}
-              <div className="bg-white/60 backdrop-blur-sm rounded-2xl border border-[rgba(55,50,47,0.12)] p-6 md:p-8 mb-8">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
-                  <div className="flex items-center gap-3">
-                    <h2 className="text-2xl lg:text-3xl font-normal text-[#37322F] font-serif">
-                      {latestVersion}
-                    </h2>
-                    <span className="px-3 py-1 bg-gradient-to-b from-[#1877F2] to-[#166FE5] text-white text-xs font-semibold rounded-full">
-                      Latest
-                    </span>
-                  </div>
-                  <button className="text-[#1877F2] text-sm font-semibold hover:text-[#166FE5] transition-colors flex items-center gap-1 self-start sm:self-auto">
-                    View release notes
-                    <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
-                      <path fillRule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
-                      <path fillRule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
-                    </svg>
-                  </button>
-                </div>
-
-                {/* Download Sections */}
-                <div className="space-y-4">
-                  {/* macOS Section */}
-                  {groupedDownloads.macos.length > 0 && (
-                    <PlatformSection
-                      platform="macos"
-                      label="macOS"
-                      icon={<AppleIcon />}
-                      downloads={groupedDownloads.macos}
-                    />
-                  )}
-
-                  {/* Windows Section */}
-                  {groupedDownloads.windows.length > 0 && (
-                    <PlatformSection
-                      platform="windows"
-                      label="Windows"
-                      icon={<WindowsIcon />}
-                      downloads={groupedDownloads.windows}
-                    />
-                  )}
-                </div>
-              </div>
-
-              {/* Previous Versions Link */}
-              <div className="text-center">
-                <button className="text-[#605A57] text-sm hover:text-[#37322F] transition-colors flex items-center gap-2 mx-auto">
-                  <svg
-                    className="w-5 h-5 transition-transform duration-200"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                  <span>View previous versions</span>
-                </button>
+              {/* Version Sections */}
+              <div className="space-y-6">
+                {versionGroups.map((group) => (
+                  <VersionSection
+                    key={group.version}
+                    version={group.version}
+                    downloads={group.downloads}
+                    isLatest={group.isLatest}
+                    defaultExpanded={group.isLatest}
+                  />
+                ))}
               </div>
             </div>
           </main>

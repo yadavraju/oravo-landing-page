@@ -148,7 +148,7 @@ export function PlatformSection({
 }: {
   platform: string;
   label: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   downloads: any[];
 }) {
   const [isExpanded, setIsExpanded] = useState(true);
@@ -290,7 +290,6 @@ export function PlatformSection({
       <div className="border border-[rgba(55,50,47,0.12)] rounded-xl overflow-hidden opacity-75">
         <div className="w-full px-4 sm:px-6 py-4 bg-[#F7F5F3] flex items-center justify-between">
           <div className="flex items-center gap-3 flex-wrap">
-            <div className="text-[#847971]">{icon}</div>
             <h3 className="text-base sm:text-lg font-semibold text-[#847971]">{label}</h3>
             <span className="px-2.5 py-1 bg-[#847971]/10 text-[#847971] text-xs font-medium rounded-full">
               Coming Soon
