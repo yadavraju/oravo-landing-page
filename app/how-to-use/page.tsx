@@ -56,13 +56,25 @@ export default function HowToUsePage() {
           <main className="flex-1 w-full mt-20 md:mt-24 lg:mt-28 relative z-10">
             <div className="max-w-[800px] mx-auto px-6 md:px-12 py-12 md:py-16">
               {/* Title Section */}
-              <div className="mb-12">
+              <div className="mb-8">
                 <h1 className="text-[#37322F] text-4xl md:text-5xl lg:text-6xl font-normal leading-tight font-serif mb-6">
                   How to do voice typing with Oravo
                 </h1>
                 <p className="text-[#605A57] text-xl md:text-2xl leading-relaxed font-sans">
                   Learn how to use Oravo Desktop
                 </p>
+              </div>
+
+              {/* Video Tutorial */}
+              <div className="mb-16 rounded-2xl overflow-hidden shadow-[0_8px_32px_rgba(55,50,47,0.12)] border border-[rgba(55,50,47,0.08)]">
+                <div style={{ position: "relative", paddingBottom: "64.55089820359281%", height: 0 }}>
+                  <iframe
+                    src="https://www.loom.com/embed/d893aa4622244befa684ceeb6cb65935"
+                    frameBorder="0"
+                    allowFullScreen
+                    style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                  />
+                </div>
               </div>
 
               {/* Overview Section */}
