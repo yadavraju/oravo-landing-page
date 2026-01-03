@@ -70,6 +70,42 @@ export default defineType({
       type: 'blockContent',
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'object',
+      fields: [
+        {
+          name: 'metaTitle',
+          title: 'Meta Title',
+          type: 'string',
+          description: 'SEO title (max 60 characters)',
+          validation: (Rule) => Rule.max(60).warning('Meta title should be under 60 characters'),
+        },
+        {
+          name: 'metaDescription',
+          title: 'Meta Description',
+          type: 'text',
+          rows: 3,
+          description: 'SEO description (max 160 characters)',
+          validation: (Rule) => Rule.max(160).warning('Meta description should be under 160 characters'),
+        },
+        {
+          name: 'keywords',
+          title: 'Keywords',
+          type: 'array',
+          of: [{ type: 'string' }],
+          options: {
+            layout: 'tags',
+          },
+          description: 'Add SEO keywords for this post',
+        },
+      ],
+      options: {
+        collapsible: true,
+        collapsed: false,
+      },
+    }),
   ],
 
   preview: {

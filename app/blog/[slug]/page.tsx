@@ -30,12 +30,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? urlForImage(post.mainImage).width(1200).height(630).url()
     : '/og-image.png'
 
+  // Use SEO fields if available, fallback to default values
+  const metaTitle = post.seo?.metaTitle || `${post.title} | Oravo.ai Blog`
+  const metaDescription = post.seo?.metaDescription || post.excerpt
+  const keywords = post.seo?.keywords || []
+
   return {
-    title: `${post.title} | Oravo.ai Blog`,
-    description: post.excerpt,
+    title: metaTitle,
+    description: metaDescription,
+    keywords: keywords,
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title: post.seo?.metaTitle || post.title,
+      description: metaDescription,
       type: 'article',
       publishedTime: post.publishedAt,
       authors: [post.author?.name || 'Oravo Team'],
@@ -43,8 +49,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt,
+      title: post.seo?.metaTitle || post.title,
+      description: metaDescription,
       images: [ogImage],
     },
   }
