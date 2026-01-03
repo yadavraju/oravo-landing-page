@@ -35,6 +35,11 @@ export const postQuery = groq`*[_type == "post" && slug.current == $slug][0] {
   categories[]->{
     _id,
     title
+  },
+  seo {
+    metaTitle,
+    metaDescription,
+    keywords
   }
 }`
 
