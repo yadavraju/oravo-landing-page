@@ -312,7 +312,7 @@ export default function RootLayout({
           height: 512,
         },
         description:
-          "The fastest AI voice typing app with zero data retention and end-to-end encryption. Secure speech-to-text that works 4x faster than keyboard typing across all your apps.",
+          "The fastest AI voice typing app with zero data retention and Secure speech-to-text that works 4x faster than keyboard typing across all your apps.",
         foundingDate: "2024",
         slogan: "Fastest Voice Typing - Secure, Private, 4x Faster",
         sameAs: [
@@ -363,8 +363,7 @@ export default function RootLayout({
           "Real-time AI voice typing with <1 second latency",
           "Works in Google Docs, Gmail, Slack & 1000+ apps",
           "Zero data retention - your voice stays private",
-          "End-to-end encryption for maximum security",
-          "HIPAA-ready and SOC 2 Type II compliant",
+          "HIPAA-ready and SOC 2 Type II ready",
           "97% transcription accuracy (Q4 2025 internal benchmark)",
           "Works in noisy environments",
           "Cross-platform support (Mac, Windows, iOS)",
@@ -453,7 +452,7 @@ export default function RootLayout({
             name: "Is Oravo.ai secure and privacy-focused?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. Oravo.ai is built with privacy-first architecture and zero data retention. All voice data is processed with end-to-end encryption and immediately deleted after transcription. We never store your voice recordings or personal data. We are HIPAA-ready and SOC 2 Type II certified, ensuring the highest security standards for professionals in healthcare, legal, and enterprise environments.",
+              text: "Yes. Oravo.ai is built with privacy-first architecture and zero data retention. All voice data is processed with and immediately deleted after transcription. We never store your voice recordings or personal data. We are HIPAA-ready and SOC 2 Type II certified, ensuring the highest security standards for professionals in healthcare, legal, and enterprise environments.",
             },
           },
           {
@@ -485,7 +484,7 @@ export default function RootLayout({
             name: "Is Oravo.ai HIPAA compliant and does it store my data?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes, Oravo.ai is HIPAA-ready with zero data retention and SOC 2 Type II compliance. We never store your voice recordings or transcription data. All processing happens with end-to-end encryption and data is immediately deleted after transcription. Your voice data stays completely private and secure. Perfect for healthcare professionals needing compliant clinical documentation and patient notes.",
+              text: "Yes, Oravo.ai is HIPAA-ready with zero data retention and SOC 2 Type II compliance. We never store your voice recordings or transcription data. All processing happens with and data is immediately deleted after transcription. Your voice data stays completely private and secure. Perfect for healthcare professionals needing compliant clinical documentation and patient notes.",
             },
           },
           {
@@ -493,7 +492,7 @@ export default function RootLayout({
             name: "How does Oravo.ai protect my privacy?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Oravo.ai uses a privacy-first architecture with three layers of protection: (1) Zero data retention - we never store your voice recordings or personal data, (2) End-to-end encryption for all voice processing, and (3) No cloud storage - your data is never uploaded to third-party servers. We are SOC 2 Type II certified and HIPAA-ready, making us the most secure voice typing solution for professionals who value privacy.",
+              text: "Oravo.ai uses a privacy-first architecture with three layers of protection: (1) Zero data retention - we never store your voice recordings or personal data, (2) for all voice processing, and (3) No cloud storage - your data is never uploaded to third-party servers. We are SOC 2 Type II certified and HIPAA-ready, making us the most secure voice typing solution for professionals who value privacy.",
             },
           },
           {

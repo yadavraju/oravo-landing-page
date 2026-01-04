@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 // Featured personas for SEO - most searched terms
 const featuredPersonas = [
@@ -11,6 +12,7 @@ const featuredPersonas = [
     title: "Voice to Text for Creators",
     description:
       "Dictate video scripts, podcast notes, and social media content at the speed of thought. Keep your creative flow uninterrupted.",
+    href: "/for-creators",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round"/>
@@ -23,6 +25,7 @@ const featuredPersonas = [
     title: "Speech to Text for Healthcare",
     description:
       "Document patient notes and medical reports hands-free. HIPAA-ready with medical terminology recognition built-in.",
+    href: "/for-healthcare",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" strokeLinecap="round" strokeLinejoin="round"/>
@@ -35,6 +38,7 @@ const featuredPersonas = [
     title: "Voice Typing for Writers",
     description:
       "Beat writer's block by speaking your first draft. Get words flowing at the natural pace of human thought.",
+    href: "/for-writers",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" strokeLinecap="round" strokeLinejoin="round"/>
@@ -47,6 +51,7 @@ const featuredPersonas = [
     title: "Dictation App for Students",
     description:
       "Write essays, research papers, and study notes 4x faster. Focus on learning, not typing.",
+    href: "/for-students",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M12 14l9-5-9-5-9 5 9 5z" strokeLinecap="round" strokeLinejoin="round"/>
@@ -61,6 +66,7 @@ const featuredPersonas = [
     title: "Voice to Text for Lawyers",
     description:
       "Dictate legal documents, case notes, and client communications with precision. Understands legal terminology.",
+    href: "/for-lawyers",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" strokeLinecap="round" strokeLinejoin="round"/>
@@ -73,6 +79,7 @@ const featuredPersonas = [
     title: "Dictation for Developers",
     description:
       "Document code, write specs, and update tickets without leaving your IDE. Technical terminology recognized.",
+    href: "/for-developers",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -85,6 +92,7 @@ const featuredPersonas = [
     title: "Voice Typing for Sales Teams",
     description:
       "Follow up faster, close deals quicker. Dictate emails and CRM updates between meetings.",
+    href: "/for-sales",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" strokeLinecap="round" strokeLinejoin="round"/>
@@ -97,6 +105,7 @@ const featuredPersonas = [
     title: "Voice Typing for Accessibility",
     description:
       "Type hands-free with accuracy and independence. Perfect for RSI, mobility challenges, or visual impairments.",
+    href: "/for-accessibility",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <circle cx="12" cy="4" r="2"/>
@@ -125,7 +134,6 @@ const additionalRoles = [
 
 export default function MadeForYou() {
   const [showAll, setShowAll] = useState(false);
-  const [selectedCard, setSelectedCard] = useState<string | null>(null);
 
   return (
     <section
@@ -152,14 +160,10 @@ export default function MadeForYou() {
       <div className="w-full max-w-[1060px] px-4 sm:px-6 md:px-8 pb-8 md:pb-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {featuredPersonas.map((persona) => (
-            <article
+            <Link
               key={persona.id}
-              className={`group p-5 bg-white border border-[#E0DEDB] rounded-xl flex flex-col gap-4 transition-all duration-200 cursor-pointer ${
-                selectedCard === persona.id
-                  ? "ring-2 ring-[#FF8C42] border-transparent"
-                  : "hover:border-[#847971]"
-              }`}
-              onClick={() => setSelectedCard(selectedCard === persona.id ? null : persona.id)}
+              href={persona.href}
+              className="group p-5 bg-white border border-[#E0DEDB] rounded-xl flex flex-col gap-4 transition-all duration-200 hover:border-[#847971]"
             >
               {/* Icon */}
               <div className="w-10 h-10 rounded-lg bg-[#F7F5F3] flex items-center justify-center text-[#605A57] group-hover:text-[#37322F] transition-colors">
@@ -175,7 +179,7 @@ export default function MadeForYou() {
                   {persona.description}
                 </p>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>
