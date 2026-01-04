@@ -359,24 +359,26 @@ export function UseCasePageTemplate({ config }: { config: UseCasePageConfig }) {
             <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
               <div className="max-w-[900px] mx-auto">
                 <div className="text-center mb-12">
-                  <Badge
-                    icon={
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#37322F"
-                        strokeWidth="2"
-                      >
-                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                        <path d="M2 17l10 5 10-5" />
-                        <path d="M2 12l10 5 10-5" />
-                      </svg>
-                    }
-                    text="Features"
-                  />
-                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mt-4 mb-4">
+                  <div className="flex justify-center mb-4">
+                    <Badge
+                      icon={
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#37322F"
+                          strokeWidth="2"
+                        >
+                          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                          <path d="M2 17l10 5 10-5" />
+                          <path d="M2 12l10 5 10-5" />
+                        </svg>
+                      }
+                      text="Features"
+                    />
+                  </div>
+                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mb-4">
                     {config.featuresTitle}
                   </h2>
                   <p className="text-[#605A57] text-base md:text-lg font-sans max-w-[600px] mx-auto">
@@ -402,23 +404,25 @@ export function UseCasePageTemplate({ config }: { config: UseCasePageConfig }) {
             <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
               <div className="max-w-[700px] mx-auto">
                 <div className="text-center mb-12">
-                  <Badge
-                    icon={
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#37322F"
-                        strokeWidth="2"
-                      >
-                        <path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                        <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    }
-                    text="How It Works"
-                  />
-                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mt-4 mb-4">
+                  <div className="flex justify-center mb-4">
+                    <Badge
+                      icon={
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#37322F"
+                          strokeWidth="2"
+                        >
+                          <path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                          <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      }
+                      text="How It Works"
+                    />
+                  </div>
+                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mb-4">
                     {config.howItWorksTitle}
                   </h2>
                   <p className="text-[#605A57] text-base md:text-lg font-sans">
@@ -446,22 +450,24 @@ export function UseCasePageTemplate({ config }: { config: UseCasePageConfig }) {
             <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
               <div className="max-w-[900px] mx-auto">
                 <div className="text-center mb-12">
-                  <Badge
-                    icon={
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#37322F"
-                        strokeWidth="2"
-                      >
-                        <path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                    }
-                    text="Use Cases"
-                  />
-                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mt-4 mb-4">
+                  <div className="flex justify-center mb-4">
+                    <Badge
+                      icon={
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#37322F"
+                          strokeWidth="2"
+                        >
+                          <path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      }
+                      text="Use Cases"
+                    />
+                  </div>
+                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mb-4">
                     {config.useCasesTitle}
                   </h2>
                   <p className="text-[#605A57] text-base md:text-lg font-sans">
@@ -481,22 +487,24 @@ export function UseCasePageTemplate({ config }: { config: UseCasePageConfig }) {
             <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
               <div className="max-w-[800px] mx-auto">
                 <div className="text-center mb-12">
-                  <Badge
-                    icon={
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#37322F"
-                        strokeWidth="2"
-                      >
-                        <path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    }
-                    text="FAQ"
-                  />
-                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mt-4 mb-4">
+                  <div className="flex justify-center mb-4">
+                    <Badge
+                      icon={
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#37322F"
+                          strokeWidth="2"
+                        >
+                          <path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      }
+                      text="FAQ"
+                    />
+                  </div>
+                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mb-4">
                     {config.faqTitle}
                   </h2>
                 </div>
