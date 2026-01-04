@@ -5,17 +5,7 @@ import { useEffect, useState } from "react";
 
 // Import roles from MadeForYou component
 const roles = [
-  "accessibility",
-  "writers",
-  "teams",
-  "creators",
-  "journalists",
-  "healthcare",
-  "lawyers",
-  "students",
-  "consultants",
-  "engineers",
-  "individuals",
+  "Global Speakers"
 ] as const;
 
 export default function AnimatedRoleText() {
@@ -26,18 +16,18 @@ export default function AnimatedRoleText() {
     setIsClient(true);
   }, []);
 
-  useEffect(() => {
-    if (!isClient) return;
+  // useEffect(() => {
+  //   if (!isClient) return;
 
-    const interval = setInterval(() => {
-      setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-    }, 3000); // Change every 5 seconds
+  //   const interval = setInterval(() => {
+  //     setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+  //   }, 3000); // Change every 5 seconds
 
-    return () => clearInterval(interval);
-  }, [isClient]);
+  //   return () => clearInterval(interval);
+  // }, [isClient]);
 
   if (!isClient) {
-    return <span className="inline-block">Teams</span>;
+    return <span className="inline-block">Global Speakers</span>;
   }
 
   return (
@@ -61,7 +51,7 @@ export default function AnimatedRoleText() {
             backgroundClip: "text",
           }}
         >
-          for {roles[currentRoleIndex]}
+          {roles[currentRoleIndex]}
         </motion.span>
       </AnimatePresence>
     </span>
