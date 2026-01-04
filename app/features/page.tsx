@@ -214,37 +214,42 @@ export default function FeaturesPage() {
                   your words into polished text — in any app, any language.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                   <Link
                     href="/download"
-                    className="self-center bg-[#37322F] text-white px-[30px] py-3 rounded-full font-sans text-base font-medium leading-6 hover:bg-[#1877F2] transition-all duration-300 hover:scale-105 flex items-center gap-2 shadow-[0px_1px_2px_rgba(105,81,255,0.05)]"
+                    className="group relative h-12 px-8 bg-gradient-to-b from-[#1877F2] to-[#166FE5] hover:from-[#1570E8] hover:to-[#1466D8] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(24,119,242,0.4)] overflow-hidden rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95"
                   >
-                    Download for Mac
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/10 pointer-events-none"></div>
+                    <span className="text-white text-base font-medium leading-5 font-sans relative z-10">
+                      Download Free
+                    </span>
                     <svg
-                      width="20"
-                      height="20"
+                      className="w-5 h-5 relative z-10"
                       viewBox="0 0 24 24"
                       fill="none"
-                      stroke="currentColor"
+                      stroke="white"
                       strokeWidth="2"
                     >
                       <path d="M12 5v14M5 12l7 7 7-7" />
                     </svg>
                   </Link>
                   <Link
-                    href="/download"
-                    className="self-center bg-white border border-[#E0DEDB] text-[#37322F] px-[30px] py-3 rounded-full font-sans text-base font-medium leading-6 hover:bg-[#F7F5F3] transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                    href="/how-to-use"
+                    className="group relative h-12 px-8 bg-gradient-to-b from-white to-gray-100 hover:from-gray-50 hover:to-gray-200 shadow-[0px_0px_0px_2.5px_rgba(0,0,0,0.05)_inset,0px_4px_12px_rgba(0,0,0,0.1)] overflow-hidden rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95 border border-gray-200"
                   >
-                    Download for Windows
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-black/5 pointer-events-none"></div>
+                    <span className="text-gray-800 text-base font-medium leading-5 font-sans relative z-10">
+                      See How It Works
+                    </span>
                     <svg
-                      width="20"
-                      height="20"
+                      className="w-5 h-5 relative z-10"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="2"
                     >
-                      <path d="M12 5v14M5 12l7 7 7-7" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </Link>
                 </div>
