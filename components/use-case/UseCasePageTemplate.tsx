@@ -110,7 +110,6 @@ function FeatureCard({
   icon,
   title,
   description,
-  accentColor,
 }: {
   icon: ReactNode;
   title: string;
@@ -118,20 +117,19 @@ function FeatureCard({
   accentColor: string;
 }) {
   return (
-    <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-[rgba(55,50,47,0.12)] hover:shadow-[0px_4px_12px_rgba(55,50,47,0.08)] transition-all duration-300">
-      <div
-        className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-        style={{ background: `${accentColor}15` }}
-      >
+    <article className="group p-5 bg-white border border-[#E0DEDB] rounded-xl flex flex-col gap-4 transition-all duration-200 hover:border-[#847971]">
+      <div className="w-10 h-10 rounded-lg bg-[#F7F5F3] flex items-center justify-center text-[#605A57] group-hover:text-[#37322F] transition-colors">
         {icon}
       </div>
-      <h3 className="text-[#37322F] text-lg md:text-xl font-semibold font-sans mb-3">
-        {title}
-      </h3>
-      <p className="text-[#605A57] text-sm md:text-base leading-relaxed font-sans">
-        {description}
-      </p>
-    </div>
+      <div className="flex flex-col gap-2">
+        <h3 className="text-[#37322F] text-base font-semibold leading-tight font-sans">
+          {title}
+        </h3>
+        <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
+          {description}
+        </p>
+      </div>
+    </article>
   );
 }
 
@@ -157,10 +155,10 @@ function StepCard({
         <span className="text-white text-lg font-semibold">{number}</span>
       </div>
       <div className="flex-1">
-        <h4 className="text-[#37322F] text-lg font-semibold font-sans mb-2">
+        <h4 className="text-[#37322F] text-base font-semibold font-sans mb-2">
           {title}
         </h4>
-        <p className="text-[#605A57] text-sm md:text-base leading-relaxed font-sans">
+        <p className="text-[#605A57] text-sm leading-relaxed font-sans">
           {description}
         </p>
       </div>
@@ -177,16 +175,16 @@ function UseCaseCard({
   accentColor,
 }: UseCaseScenario & { accentColor: string }) {
   return (
-    <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-[rgba(55,50,47,0.12)]">
-      <h4 className="text-[#37322F] text-lg font-semibold font-sans mb-4">
+    <article className="group p-5 bg-white border border-[#E0DEDB] rounded-xl flex flex-col gap-3 transition-all duration-200 hover:border-[#847971]">
+      <h4 className="text-[#37322F] text-base font-semibold font-sans">
         {title}
       </h4>
       {scenario && (
-        <p className="text-[#847971] text-sm font-sans mb-3">
+        <p className="text-[#847971] text-sm font-sans">
           <span className="font-medium">Scenario:</span> {scenario}
         </p>
       )}
-      <p className="text-[#605A57] text-sm leading-relaxed font-sans mb-3">
+      <p className="text-[#605A57] text-sm leading-relaxed font-sans">
         <span className="font-medium" style={{ color: accentColor }}>
           With Oravo:
         </span>{" "}
@@ -198,26 +196,26 @@ function UseCaseCard({
         </p>
       )}
       {timeSaved && (
-        <div className="mt-3 inline-block px-3 py-1 bg-[#22C55E]/10 rounded-full">
+        <div className="mt-1 inline-block px-3 py-1 bg-[#22C55E]/10 rounded-full w-fit">
           <span className="text-[#22C55E] text-xs font-semibold">
             Time saved: {timeSaved}
           </span>
         </div>
       )}
-    </div>
+    </article>
   );
 }
 
 function FAQItem({ question, answer }: UseCaseFaq) {
   return (
-    <div className="bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-[rgba(55,50,47,0.12)]">
+    <article className="p-5 bg-white border border-[#E0DEDB] rounded-xl">
       <h4 className="text-[#37322F] text-base font-semibold font-sans mb-2">
         {question}
       </h4>
       <p className="text-[#605A57] text-sm leading-relaxed font-sans">
         {answer}
       </p>
-    </div>
+    </article>
   );
 }
 
@@ -237,7 +235,7 @@ function DefaultFeatureIcon({ color }: { color: string }) {
       fill="none"
       viewBox="0 0 24 24"
       stroke={color}
-      strokeWidth={2}
+      strokeWidth={1.5}
     >
       <path
         strokeLinecap="round"
@@ -288,22 +286,44 @@ export function UseCasePageTemplate({ config }: { config: UseCasePageConfig }) {
                   {config.heroDescription}
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                   <Link
                     href={config.ctaPrimaryHref}
-                    className="inline-flex h-14 px-8 text-white text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0px_4px_12px_rgba(55,50,47,0.18)] items-center justify-center"
-                    style={{
-                      background: `linear-gradient(to bottom, ${accent}, ${accent})`,
-                    }}
+                    className="group relative h-12 px-8 bg-gradient-to-b from-[#1877F2] to-[#166FE5] hover:from-[#1570E8] hover:to-[#1466D8] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(24,119,242,0.4)] overflow-hidden rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95"
                   >
-                    {config.ctaPrimaryText}
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/10 pointer-events-none"></div>
+                    <span className="text-white text-base font-medium leading-5 font-sans relative z-10">
+                      {config.ctaPrimaryText}
+                    </span>
+                    <svg
+                      className="w-5 h-5 relative z-10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="2"
+                    >
+                      <path d="M12 5v14M5 12l7 7 7-7" />
+                    </svg>
                   </Link>
                   {config.ctaSecondaryHref && config.ctaSecondaryText ? (
                     <Link
                       href={config.ctaSecondaryHref}
-                      className="inline-flex h-14 px-8 bg-white border border-[#E0DEDB] text-[#37322F] text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 active:scale-95 hover:bg-[#F7F5F3] items-center justify-center"
+                      className="group relative h-12 px-8 bg-gradient-to-b from-white to-gray-100 hover:from-gray-50 hover:to-gray-200 shadow-[0px_0px_0px_2.5px_rgba(0,0,0,0.05)_inset,0px_4px_12px_rgba(0,0,0,0.1)] overflow-hidden rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95 border border-gray-200"
                     >
-                      {config.ctaSecondaryText}
+                      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-black/5 pointer-events-none"></div>
+                      <span className="text-gray-800 text-base font-medium leading-5 font-sans relative z-10">
+                        {config.ctaSecondaryText}
+                      </span>
+                      <svg
+                        className="w-5 h-5 relative z-10"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
                     </Link>
                   ) : null}
                 </div>
@@ -378,7 +398,7 @@ export function UseCasePageTemplate({ config }: { config: UseCasePageConfig }) {
                       text="Features"
                     />
                   </div>
-                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mb-4">
+                  <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-stretch-semi-condensed font-medium leading-tight font-serif mb-4">
                     {config.featuresTitle}
                   </h2>
                   <p className="text-[#605A57] text-base md:text-lg font-sans max-w-[600px] mx-auto">
@@ -386,7 +406,7 @@ export function UseCasePageTemplate({ config }: { config: UseCasePageConfig }) {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {config.features.map((f) => (
                     <FeatureCard
                       key={f.title}
@@ -422,7 +442,7 @@ export function UseCasePageTemplate({ config }: { config: UseCasePageConfig }) {
                       text="How It Works"
                     />
                   </div>
-                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mb-4">
+                  <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-stretch-semi-condensed font-medium leading-tight font-serif mb-4">
                     {config.howItWorksTitle}
                   </h2>
                   <p className="text-[#605A57] text-base md:text-lg font-sans">
@@ -430,8 +450,8 @@ export function UseCasePageTemplate({ config }: { config: UseCasePageConfig }) {
                   </p>
                 </div>
 
-                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 md:p-10 border border-[rgba(55,50,47,0.12)]">
-                  <div className="space-y-8">
+                <div className="p-6 md:p-8 bg-white border border-[#E0DEDB] rounded-xl">
+                  <div className="space-y-6">
                     {config.steps.map((s, idx) => (
                       <StepCard
                         key={s.title}
@@ -467,7 +487,7 @@ export function UseCasePageTemplate({ config }: { config: UseCasePageConfig }) {
                       text="Use Cases"
                     />
                   </div>
-                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mb-4">
+                  <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-stretch-semi-condensed font-medium leading-tight font-serif mb-4">
                     {config.useCasesTitle}
                   </h2>
                   <p className="text-[#605A57] text-base md:text-lg font-sans">
@@ -475,7 +495,7 @@ export function UseCasePageTemplate({ config }: { config: UseCasePageConfig }) {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {config.useCases.map((c) => (
                     <UseCaseCard key={c.title} {...c} accentColor={accent} />
                   ))}
@@ -504,7 +524,7 @@ export function UseCasePageTemplate({ config }: { config: UseCasePageConfig }) {
                       text="FAQ"
                     />
                   </div>
-                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mb-4">
+                  <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-stretch-semi-condensed font-medium leading-tight font-serif mb-4">
                     {config.faqTitle}
                   </h2>
                 </div>
@@ -536,9 +556,21 @@ export function UseCasePageTemplate({ config }: { config: UseCasePageConfig }) {
                   <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
                     <Link
                       href={config.ctaPrimaryHref}
-                      className="inline-flex h-14 px-8 bg-white hover:bg-gray-50 text-[#37322F] text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg items-center justify-center"
+                      className="group relative h-12 px-8 bg-gradient-to-b from-white to-gray-100 hover:from-gray-50 hover:to-gray-200 shadow-[0px_0px_0px_2.5px_rgba(0,0,0,0.05)_inset,0px_4px_12px_rgba(0,0,0,0.1)] overflow-hidden rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95"
                     >
-                      {config.ctaPrimaryText}
+                      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-black/5 pointer-events-none"></div>
+                      <span className="text-gray-800 text-base font-medium leading-5 font-sans relative z-10">
+                        {config.ctaPrimaryText}
+                      </span>
+                      <svg
+                        className="w-5 h-5 relative z-10"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path d="M12 5v14M5 12l7 7 7-7" />
+                      </svg>
                     </Link>
                   </div>
 
@@ -561,5 +593,3 @@ export function UseCasePageTemplate({ config }: { config: UseCasePageConfig }) {
     </div>
   );
 }
-
-
