@@ -202,7 +202,7 @@ export default function FeaturesPage() {
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                       </svg>
                     }
-                    text="Do More With Your Voice"
+                    text="Type More With Your Voice"
                   />
                 </div>
 
@@ -636,16 +636,38 @@ export default function FeaturesPage() {
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                   {[
-                    { name: "macOS", icon: "🍎", desc: "Native Mac app" },
-                    { name: "Windows", icon: "🪟", desc: "Native Windows app" },
-                    { name: "iOS", icon: "📱", desc: "iPhone & iPad" },
-                    { name: "Android", icon: "🤖", desc: "All Android devices" },
+                    { name: "macOS", desc: "Native Mac app", comingSoon: false },
+                    { name: "Windows", desc: "Native Windows app", comingSoon: false },
+                    { name: "iOS", desc: "iPhone & iPad", comingSoon: true },
+                    { name: "Android", desc: "All Android devices", comingSoon: true },
                   ].map((platform) => (
                     <div
                       key={platform.name}
-                      className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-[rgba(55,50,47,0.12)] text-center hover:shadow-[0px_4px_12px_rgba(55,50,47,0.08)] transition-all"
+                      className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-[rgba(55,50,47,0.12)] text-center hover:shadow-[0px_4px_12px_rgba(55,50,47,0.08)] transition-all relative"
                     >
-                      <div className="text-4xl mb-3">{platform.icon}</div>
+                      {platform.comingSoon && (
+                        <span className="absolute top-3 right-3 px-2 py-0.5 bg-[#F59E0B]/10 text-[#F59E0B] text-xs font-semibold rounded-full">
+                          Coming soon
+                        </span>
+                      )}
+                      <div
+                        className="w-12 h-12 rounded-xl flex items-center justify-center mb-3 mx-auto"
+                        style={{ background: "#1877F215" }}
+                      >
+                        <svg
+                          className="w-6 h-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="#1877F2"
+                          strokeWidth={2}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                          />
+                        </svg>
+                      </div>
                       <div className="text-[#37322F] font-semibold font-sans">
                         {platform.name}
                       </div>

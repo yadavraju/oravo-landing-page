@@ -27,10 +27,17 @@ const PAGE_CONFIG: Record<
   "/contact": { priority: 0.75, changeFrequency: "monthly" },
 
   // Use case pages (high-value for SEO targeting specific audiences)
-  "/for-healthcare": { priority: 0.8, changeFrequency: "monthly" },
-  "/for-legal": { priority: 0.8, changeFrequency: "monthly" },
-  "/for-journalists": { priority: 0.8, changeFrequency: "monthly" },
-  "/for-content-creators": { priority: 0.8, changeFrequency: "monthly" },
+  "/for-creators": { priority: 0.85, changeFrequency: "monthly" },
+  "/for-healthcare": { priority: 0.85, changeFrequency: "monthly" },
+  "/for-writers": { priority: 0.85, changeFrequency: "monthly" },
+  "/for-students": { priority: 0.85, changeFrequency: "monthly" },
+  "/for-lawyers": { priority: 0.85, changeFrequency: "monthly" },
+  "/for-developers": { priority: 0.85, changeFrequency: "monthly" },
+  "/for-sales": { priority: 0.85, changeFrequency: "monthly" },
+  "/for-accessibility": { priority: 0.85, changeFrequency: "monthly" },
+
+  // Use cases landing page
+  "/use-cases": { priority: 0.85, changeFrequency: "weekly" },
 
   // Legal pages - required but lower priority
   "/privacy": { priority: 0.3, changeFrequency: "yearly" },

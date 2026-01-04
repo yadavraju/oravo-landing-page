@@ -872,6 +872,58 @@ export default function UseCasesPage() {
               </div>
             </section>
 
+            {/* By Profession Section */}
+            <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[rgba(55,50,47,0.12)]">
+              <div className="max-w-[900px] mx-auto">
+                <div className="text-center mb-10">
+                  <h2 className="text-[#37322F] text-2xl md:text-3xl font-normal font-serif mb-3">
+                    Voice Typing by Profession
+                  </h2>
+                  <p className="text-[#605A57] text-base md:text-lg font-sans max-w-[600px] mx-auto">
+                    See how Oravo is built for your specific workflow and industry needs.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {[
+                    { name: "Creators", href: "/for-creators", desc: "Video scripts & content", color: "#EC4899" },
+                    { name: "Healthcare", href: "/for-healthcare", desc: "Medical documentation", color: "#06B6D4" },
+                    { name: "Writers", href: "/for-writers", desc: "Beat writer's block", color: "#8B5CF6" },
+                    { name: "Students", href: "/for-students", desc: "Essays & research", color: "#F59E0B" },
+                    { name: "Lawyers", href: "/for-lawyers", desc: "Legal documents", color: "#1E3A5F" },
+                    { name: "Developers", href: "/for-developers", desc: "Code documentation", color: "#10B981" },
+                    { name: "Sales Teams", href: "/for-sales", desc: "CRM & follow-ups", color: "#3B82F6" },
+                    { name: "Accessibility", href: "/for-accessibility", desc: "Hands-free typing", color: "#14B8A6" },
+                  ].map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="group bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-[rgba(55,50,47,0.12)] hover:shadow-[0px_4px_12px_rgba(55,50,47,0.08)] transition-all duration-300 hover:border-[rgba(55,50,47,0.2)]"
+                    >
+                      <div
+                        className="w-10 h-10 rounded-lg flex items-center justify-center mb-3"
+                        style={{ background: `${item.color}15` }}
+                      >
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke={item.color}
+                          strokeWidth={2}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-[#37322F] text-base font-semibold font-sans mb-1 group-hover:text-[#1877F2] transition-colors">
+                        For {item.name}
+                      </h3>
+                      <p className="text-[#847971] text-sm font-sans">{item.desc}</p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </section>
+
             {/* CTA Section */}
             <section className="px-6 md:px-12 py-16 md:py-20 border-t border-[rgba(55,50,47,0.12)]">
               <div className="max-w-[700px] mx-auto text-center">
