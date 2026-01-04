@@ -62,14 +62,14 @@ export function Header() {
                 Pricing
               </div>
             </button>
-            <button
-              onClick={() => scrollToSection("made-for-you")}
+            <a
+              href="/use-cases"
               className="flex justify-start items-center cursor-pointer"
             >
               <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
                 Use Cases
               </div>
-            </button>
+            </a>
           </div>
         </div>
         <div className="h-6 sm:h-7 md:h-8 flex justify-start items-center gap-2 sm:gap-3">
@@ -131,12 +131,13 @@ export function Header() {
             >
               Pricing
             </button>
-            <button
-              onClick={() => scrollToSection("made-for-you")}
-              className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer"
+            <a
+              href="/use-cases"
+              className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer block"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
-              Business
-            </button>
+              Use Cases
+            </a>
             <div className="border-t border-[rgba(55,50,47,0.12)] my-2"></div>
             <a
               href="/download"

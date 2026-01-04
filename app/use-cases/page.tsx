@@ -4,6 +4,74 @@ import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
 import { useState } from "react";
+import {
+  siSlack,
+  siDiscord,
+  siGmail,
+  siMicrosoftoutlook,
+  siMicrosoftteams,
+  siWhatsapp,
+  siTelegram,
+  siSignal,
+  siInstagram,
+  siMessenger,
+  siLinkedin,
+  siNotion,
+  siGoogledocs,
+  siEvernote,
+  siObsidian,
+  siGithub,
+  siJira,
+  siLinear,
+  siStackoverflow,
+  siVisualstudiocode,
+  siCanva,
+  siReplit,
+  siTrello,
+  siAsana,
+  siConfluence,
+  siAirtable,
+  siClickup,
+  siArc,
+  siGooglechrome,
+  siPerplexity,
+  siX,
+  siApple,
+  siChatgpt,
+  siClaude,
+  siOpenai,
+  siWarp,
+  siV,
+  siVercel,
+  siMondaydotcom,
+  siFigma,
+  siZoom,
+  siDropbox,
+  siGooglecalendar,
+  siGooglesheets,
+  siMicrosoftword,
+  siMicrosoftexcel,
+  siMicrosoftpowerpoint,
+  siSalesforce,
+  siHubspot,
+  siZendesk,
+  siIntercom,
+  siTwitch,
+  siYoutube,
+  siReddit,
+  siMedium,
+  siWordpress,
+  siGhost,
+  siSubstack,
+  siMailchimp,
+  siStripe,
+  siShopify,
+  siAmazon,
+  siGoogle,
+  siMicrosoft,
+  siMeta,
+} from "simple-icons";
+import Logo from "@/components/Logo";
 
 // Badge component
 function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
@@ -19,20 +87,142 @@ function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
   );
 }
 
+// Simple Icon component using simple-icons
+function SimpleIcon({
+  icon,
+  size = 24,
+  color,
+}: {
+  icon: { path: string; hex: string; title: string } | null;
+  size?: number;
+  color?: string;
+}) {
+  if (!icon) {
+    return <Logo />;
+  }
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill={color || `#${icon.hex}`}
+      role="img"
+      aria-label={icon.title}
+    >
+      <path d={icon.path} />
+    </svg>
+  );
+}
+
+// Icon mapping
+const iconMap: Record<string, { path: string; hex: string; title: string } | null> = {
+  // Communication
+  Slack: siSlack,
+  Discord: siDiscord,
+  Gmail: siGmail,
+  Outlook: siMicrosoftoutlook,
+  "Microsoft Teams": siMicrosoftteams,
+  WhatsApp: siWhatsapp,
+  Telegram: siTelegram,
+  Signal: siSignal,
+  Instagram: siInstagram,
+  Messenger: siMessenger,
+  "Facebook Messenger": siMessenger,
+  LinkedIn: siLinkedin,
+  iMessage: siApple,
+  "Apple Mail": siApple,
+  // Documentation & Notes
+  Notion: siNotion,
+  "Google Docs": siGoogledocs,
+  Evernote: siEvernote,
+  Obsidian: siObsidian,
+  "Apple Notes": siApple,
+  // Developer & Engineering
+  GitHub: siGithub,
+  Jira: siJira,
+  Linear: siLinear,
+  "Stack Overflow": siStackoverflow,
+  "VS Code": siVisualstudiocode,
+  Cursor: null, // No simple-icon, will use Oravo logo
+  Canva: siCanva,
+  Replit: siReplit,
+  Warp: siWarp,
+  v0: siV,
+  Bolt: siVercel, // Using Vercel as Bolt fallback
+  Lovable: null, // No simple-icon, will use Oravo logo
+  // Project Management
+  Trello: siTrello,
+  Asana: siAsana,
+  Confluence: siConfluence,
+  Airtable: siAirtable,
+  ClickUp: siClickup,
+  "Monday.com": siMondaydotcom,
+  Basecamp: null, // No simple-icon, will use Oravo logo
+  Smartsheet: null, // No simple-icon, will use Oravo logo
+  Coda: null, // No simple-icon, will use Oravo logo
+  Wrike: null, // No simple-icon, will use Oravo logo
+  // Browsers
+  Arc: siArc,
+  Chrome: siGooglechrome,
+  // AI Tools
+  ChatGPT: siChatgpt,
+  Claude: siClaude,
+  Perplexity: siPerplexity,
+  OpenAI: siOpenai,
+  // Social
+  X: siX,
+  Twitter: siX,
+  Twitch: siTwitch,
+  YouTube: siYoutube,
+  Reddit: siReddit,
+  // Writing & Publishing
+  Medium: siMedium,
+  WordPress: siWordpress,
+  Ghost: siGhost,
+  Substack: siSubstack,
+  // Design & Productivity
+  Figma: siFigma,
+  Zoom: siZoom,
+  Dropbox: siDropbox,
+  "Google Calendar": siGooglecalendar,
+  "Google Sheets": siGooglesheets,
+  "Microsoft Word": siMicrosoftword,
+  "Microsoft Excel": siMicrosoftexcel,
+  "Microsoft PowerPoint": siMicrosoftpowerpoint,
+  // CRM & Support
+  Salesforce: siSalesforce,
+  HubSpot: siHubspot,
+  Zendesk: siZendesk,
+  Intercom: siIntercom,
+  Superhuman: null, // No simple-icon, will use Oravo logo
+  // E-commerce & Business
+  Mailchimp: siMailchimp,
+  Stripe: siStripe,
+  Shopify: siShopify,
+  Amazon: siAmazon,
+  // Tech Giants
+  Google: siGoogle,
+  Microsoft: siMicrosoft,
+  Meta: siMeta,
+  // Technical Documentation
+  "Technical Documentation": null,
+  "Technical Docs": null,
+};
+
 // App Card Component
 function AppCard({
-  icon,
   name,
   description,
   href,
   color,
 }: {
-  icon: React.ReactNode;
   name: string;
   description: string;
   href: string;
   color: string;
 }) {
+  const icon = iconMap[name];
+  
   return (
     <Link
       href={href}
@@ -43,7 +233,7 @@ function AppCard({
           className="w-12 h-12 rounded-xl flex items-center justify-center"
           style={{ backgroundColor: `${color}15` }}
         >
-          {icon}
+          <SimpleIcon icon={icon} color={color} />
         </div>
         <div className="w-8 h-8 rounded-full border border-[rgba(55,50,47,0.12)] flex items-center justify-center group-hover:bg-[#F7F5F3] transition-colors">
           <svg
@@ -86,7 +276,7 @@ function CategoryTab({
       onClick={onClick}
       className={`px-6 py-3 rounded-full text-sm font-medium font-sans transition-all duration-200 cursor-pointer ${
         isActive
-          ? "bg-[#6366F1] text-white shadow-[0px_4px_12px_rgba(99,102,241,0.3)]"
+          ? "bg-[#1877F2] text-white shadow-[0px_4px_12px_rgba(24,119,242,0.3)]"
           : "bg-white border border-[rgba(55,50,47,0.12)] text-[#605A57] hover:border-[rgba(55,50,47,0.2)] hover:text-[#37322F]"
       }`}
     >
@@ -104,11 +294,6 @@ const categories = {
         "Use voice dictation in Slack to capture task updates and ideas as they come to you.",
       href: "/voice-keyboard-for-slack",
       color: "#E01E5A",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#E01E5A">
-          <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.124 2.521a2.528 2.528 0 0 1 2.52-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.52V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.166 0a2.528 2.528 0 0 1 2.521 2.522v6.312zm-2.521 10.124a2.528 2.528 0 0 1 2.521 2.52A2.528 2.528 0 0 1 15.166 24a2.528 2.528 0 0 1-2.521-2.522v-2.52h2.521zm0-1.271a2.528 2.528 0 0 1-2.521-2.521 2.528 2.528 0 0 1 2.521-2.521h6.312A2.528 2.528 0 0 1 24 15.166a2.528 2.528 0 0 1-2.522 2.521h-6.312z" />
-        </svg>
-      ),
     },
     {
       name: "Microsoft Teams",
@@ -116,11 +301,6 @@ const categories = {
         "Use Oravo voice dictation in Teams to record detailed notes without breaking your flow.",
       href: "/voice-keyboard-for-teams",
       color: "#6264A7",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#6264A7">
-          <path d="M20.625 6.188a2.062 2.062 0 1 0 0-4.125 2.062 2.062 0 0 0 0 4.125zm-5.063.437a2.75 2.75 0 1 0 0-5.5 2.75 2.75 0 0 0 0 5.5zm5.063 1.75h-2.75a2.75 2.75 0 0 0-2.563 1.75h-2.062v-1.5a3.437 3.437 0 0 0-3.438-3.438H5.5A3.437 3.437 0 0 0 2.062 8.625v6.188a.688.688 0 0 0 .688.687h3.438v4.125a.688.688 0 0 0 .687.688h6.188a.688.688 0 0 0 .687-.688V15.5h1.375a2.75 2.75 0 0 0 2.75-2.75v-1.625h2.75a.687.687 0 0 0 .688-.688v-1.374a.687.687 0 0 0-.688-.688z" />
-        </svg>
-      ),
     },
     {
       name: "Notion",
@@ -128,11 +308,6 @@ const categories = {
         "Notion works smoothly with hands-free dictation to record detailed notes without breaking your flow.",
       href: "/voice-keyboard-for-notion",
       color: "#000000",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#000000">
-          <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.934zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952l1.448.327s0 .84-1.168.84l-3.22.186c-.094-.187 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.453-.233 4.764 7.279v-6.44l-1.215-.14c-.093-.514.28-.887.747-.933z" />
-        </svg>
-      ),
     },
     {
       name: "Gmail",
@@ -140,11 +315,6 @@ const categories = {
         "Dictate professional emails in Gmail 4x faster than typing with automatic formatting.",
       href: "/voice-keyboard-for-gmail",
       color: "#EA4335",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#EA4335">
-          <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
-        </svg>
-      ),
     },
     {
       name: "Google Docs",
@@ -152,11 +322,55 @@ const categories = {
         "Better than built-in voice typing. 98%+ accuracy with automatic punctuation.",
       href: "/voice-keyboard-for-google-docs",
       color: "#4285F4",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#4285F4">
-          <path d="M14.727 6.727H14V0H4.91c-.905 0-1.637.732-1.637 1.636v20.728c0 .904.732 1.636 1.636 1.636h14.182c.904 0 1.636-.732 1.636-1.636V6.727h-6zm0 10.91H7.273v-1.455h7.454v1.454zm2.182-2.91H7.273v-1.454h9.636v1.454zm0-2.909H7.273v-1.454h9.636v1.454zM14.727 6h5.455l-5.455-5.455V6z" />
-        </svg>
-      ),
+    },
+    {
+      name: "Asana",
+      description:
+        "Use voice dictation in Asana to capture task updates and ideas as they come to you.",
+      href: "/use-cases",
+      color: "#F06A6A",
+    },
+    {
+      name: "Trello",
+      description:
+        "With speech-to-text, you can easily keep Trello work moving during busy collaboration sessions.",
+      href: "/use-cases",
+      color: "#0052CC",
+    },
+    {
+      name: "Monday.com",
+      description:
+        "Use Oravo voice dictation in Monday.com to record detailed notes without breaking your flow.",
+      href: "/use-cases",
+      color: "#FF3D57",
+    },
+    {
+      name: "ClickUp",
+      description:
+        "With speech-to-text, you can easily add ClickUp context, comments, and tasks much faster.",
+      href: "/use-cases",
+      color: "#7B68EE",
+    },
+    {
+      name: "Jira",
+      description:
+        "Use Oravo voice dictation in Jira to capture ticket updates and ideas as they come.",
+      href: "/use-cases",
+      color: "#0052CC",
+    },
+    {
+      name: "Linear",
+      description:
+        "Linear works smoothly with hands-free dictation to record detailed notes without breaking your flow.",
+      href: "/use-cases",
+      color: "#5E6AD2",
+    },
+    {
+      name: "Airtable",
+      description:
+        "Airtable works smoothly with hands-free dictation to add context, comments, and tasks much faster.",
+      href: "/use-cases",
+      color: "#18BFFF",
     },
   ],
   Developer: [
@@ -166,45 +380,83 @@ const categories = {
         "Write API docs, READMEs, and developer guides 4x faster with technical vocabulary support.",
       href: "/voice-keyboard-for-technical-documentation",
       color: "#10B981",
-      icon: (
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#10B981"
-          strokeWidth="2"
-        >
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-          <polyline points="14 2 14 8 20 8" />
-          <line x1="16" y1="13" x2="8" y2="13" />
-          <line x1="16" y1="17" x2="8" y2="17" />
-        </svg>
-      ),
     },
     {
-      name: "Slack",
+      name: "VS Code",
       description:
-        "Keep up with engineering discussions by speaking your responses in Slack channels.",
-      href: "/voice-keyboard-for-slack",
-      color: "#E01E5A",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#E01E5A">
-          <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z" />
-        </svg>
-      ),
+        "Voice-to-text in VS Code lets you write comments, documentation, and code explanations faster.",
+      href: "/use-cases",
+      color: "#007ACC",
     },
     {
-      name: "Notion",
+      name: "Cursor",
       description:
-        "Build wikis and technical documentation at speaking speed with automatic formatting.",
-      href: "/voice-keyboard-for-notion",
+        "Speak more context to your AI coding assistant and get better results with voice dictation.",
+      href: "/use-cases",
+      color: "#1877F2",
+    },
+    {
+      name: "GitHub",
+      description:
+        "Write detailed PR descriptions, issue comments, and documentation at speaking speed.",
+      href: "/use-cases",
+      color: "#181717",
+    },
+    {
+      name: "Jira",
+      description:
+        "Capture detailed ticket descriptions and comments without breaking your engineering flow.",
+      href: "/use-cases",
+      color: "#0052CC",
+    },
+    {
+      name: "Linear",
+      description:
+        "Issue tracking at speaking speed. Add context and comments to Linear issues effortlessly.",
+      href: "/use-cases",
+      color: "#5E6AD2",
+    },
+    {
+      name: "Stack Overflow",
+      description:
+        "Write detailed questions and answers with technical accuracy using voice-to-text.",
+      href: "/use-cases",
+      color: "#F58025",
+    },
+    {
+      name: "Warp",
+      description:
+        "AI terminal companion works great with voice input for commands and documentation.",
+      href: "/use-cases",
+      color: "#01A4FF",
+    },
+    {
+      name: "Replit",
+      description:
+        "Code and collaborate faster with voice-to-text for comments, docs, and chat.",
+      href: "/use-cases",
+      color: "#F26207",
+    },
+    {
+      name: "v0",
+      description:
+        "Describe your UI components faster with voice to get better AI-generated code.",
+      href: "/use-cases",
       color: "#000000",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#000000">
-          <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466z" />
-        </svg>
-      ),
+    },
+    {
+      name: "Bolt",
+      description:
+        "Voice-first development with AI. Speak your requirements and ship faster.",
+      href: "/use-cases",
+      color: "#000000",
+    },
+    {
+      name: "Lovable",
+      description:
+        "Build full-stack apps by speaking your ideas. Voice dictation for rapid prototyping.",
+      href: "/use-cases",
+      color: "#FF6B6B",
     },
   ],
   Communication: [
@@ -214,11 +466,6 @@ const categories = {
         "Send messages in channels, threads, and DMs at speaking speed.",
       href: "/voice-keyboard-for-slack",
       color: "#E01E5A",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#E01E5A">
-          <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52z" />
-        </svg>
-      ),
     },
     {
       name: "Discord",
@@ -226,11 +473,6 @@ const categories = {
         "Chat in servers and DMs while gaming or multitasking. No typing required.",
       href: "/voice-keyboard-for-discord",
       color: "#5865F2",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#5865F2">
-          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
-        </svg>
-      ),
     },
     {
       name: "Microsoft Teams",
@@ -238,11 +480,6 @@ const categories = {
         "Chat in meetings and channels without unmuting. Stay productive in enterprise.",
       href: "/voice-keyboard-for-teams",
       color: "#6264A7",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#6264A7">
-          <path d="M20.625 6.188a2.062 2.062 0 1 0 0-4.125 2.062 2.062 0 0 0 0 4.125z" />
-        </svg>
-      ),
     },
     {
       name: "Gmail",
@@ -250,11 +487,62 @@ const categories = {
         "Compose and reply to emails 4x faster with professional formatting.",
       href: "/voice-keyboard-for-gmail",
       color: "#EA4335",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#EA4335">
-          <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
-        </svg>
-      ),
+    },
+    {
+      name: "Outlook",
+      description:
+        "Use voice dictation in Outlook to write professional emails efficiently without heavy typing strain.",
+      href: "/use-cases",
+      color: "#0078D4",
+    },
+    {
+      name: "WhatsApp",
+      description:
+        "Use voice typing in WhatsApp Web to stay connected and reply to messages much faster.",
+      href: "/use-cases",
+      color: "#25D366",
+    },
+    {
+      name: "Telegram",
+      description:
+        "Dictate Telegram messages in personal chats and groups to express ideas clearly without typing delays.",
+      href: "/use-cases",
+      color: "#26A5E4",
+    },
+    {
+      name: "Signal",
+      description:
+        "Use speech-to-text in Signal to communicate privately and efficiently with secure encrypted messaging.",
+      href: "/use-cases",
+      color: "#3A76F0",
+    },
+    {
+      name: "Instagram",
+      description:
+        "Use speech-to-text for Instagram messages, comments, and replies to engage faster without typing.",
+      href: "/use-cases",
+      color: "#E4405F",
+    },
+    {
+      name: "Messenger",
+      description:
+        "Speak your Messenger messages instead of typing them for faster and more natural conversations.",
+      href: "/use-cases",
+      color: "#00B2FF",
+    },
+    {
+      name: "LinkedIn",
+      description:
+        "Use speech-to-text to network and communicate faster with professional clarity on LinkedIn.",
+      href: "/use-cases",
+      color: "#0A66C2",
+    },
+    {
+      name: "iMessage",
+      description:
+        "Use accurate voice-to-text in iMessage to stay responsive without typing strain on Mac.",
+      href: "/use-cases",
+      color: "#1DA1F2",
     },
   ],
   Writing: [
@@ -264,11 +552,6 @@ const categories = {
         "Write documents, reports, and content at thinking speed with auto-formatting.",
       href: "/voice-keyboard-for-google-docs",
       color: "#4285F4",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#4285F4">
-          <path d="M14.727 6.727H14V0H4.91c-.905 0-1.637.732-1.637 1.636v20.728c0 .904.732 1.636 1.636 1.636h14.182c.904 0 1.636-.732 1.636-1.636V6.727h-6z" />
-        </svg>
-      ),
     },
     {
       name: "Notion",
@@ -276,23 +559,55 @@ const categories = {
         "Build your second brain at speaking speed. Notes, wikis, and journals.",
       href: "/voice-keyboard-for-notion",
       color: "#000000",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#000000">
-          <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466z" />
-        </svg>
-      ),
     },
     {
-      name: "Gmail",
+      name: "Obsidian",
       description:
-        "Professional email writing with natural speech. Perfect punctuation included.",
-      href: "/voice-keyboard-for-gmail",
-      color: "#EA4335",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#EA4335">
-          <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457z" />
-        </svg>
-      ),
+        "Take notes in your knowledge vault at speaking speed with voice-to-text.",
+      href: "/use-cases",
+      color: "#7C3AED",
+    },
+    {
+      name: "Evernote",
+      description:
+        "Capture notes and ideas as they come with hands-free voice dictation.",
+      href: "/use-cases",
+      color: "#00A82D",
+    },
+    {
+      name: "Apple Notes",
+      description:
+        "Quick voice notes on Mac with seamless iCloud sync across devices.",
+      href: "/use-cases",
+      color: "#000000",
+    },
+    {
+      name: "Medium",
+      description:
+        "Write and publish articles at speaking speed with automatic formatting.",
+      href: "/use-cases",
+      color: "#000000",
+    },
+    {
+      name: "WordPress",
+      description:
+        "Blog faster with voice-to-text. Write posts and content hands-free.",
+      href: "/use-cases",
+      color: "#21759B",
+    },
+    {
+      name: "Substack",
+      description:
+        "Write newsletters at speaking speed. Connect with your audience faster.",
+      href: "/use-cases",
+      color: "#FF6719",
+    },
+    {
+      name: "Ghost",
+      description:
+        "Publish content hands-free. Voice dictation for professional blogging.",
+      href: "/use-cases",
+      color: "#15171A",
     },
     {
       name: "Technical Docs",
@@ -300,19 +615,170 @@ const categories = {
         "API documentation, READMEs, and developer guides with technical accuracy.",
       href: "/voice-keyboard-for-technical-documentation",
       color: "#10B981",
-      icon: (
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#10B981"
-          strokeWidth="2"
-        >
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-          <polyline points="14 2 14 8 20 8" />
-        </svg>
-      ),
+    },
+  ],
+  "AI Tools": [
+    {
+      name: "ChatGPT",
+      description:
+        "Speak longer prompts with more context to get better AI responses.",
+      href: "/use-cases",
+      color: "#10A37F",
+    },
+    {
+      name: "Claude",
+      description:
+        "Voice-first AI conversations. Dictate complex prompts naturally.",
+      href: "/use-cases",
+      color: "#CC9B7A",
+    },
+    {
+      name: "Perplexity",
+      description:
+        "Search and research faster by speaking your questions instead of typing.",
+      href: "/use-cases",
+      color: "#20808D",
+    },
+    {
+      name: "Cursor",
+      description:
+        "AI coding assistant works better with more context. Speak your requirements.",
+      href: "/use-cases",
+      color: "#1877F2",
+    },
+    {
+      name: "v0",
+      description:
+        "Describe your UI at speaking speed. Better prompts, better components.",
+      href: "/use-cases",
+      color: "#000000",
+    },
+    {
+      name: "Bolt",
+      description:
+        "Build full-stack apps by voice. Speak your ideas into reality.",
+      href: "/use-cases",
+      color: "#000000",
+    },
+    {
+      name: "Lovable",
+      description:
+        "Voice-first app development. Describe features and watch them build.",
+      href: "/use-cases",
+      color: "#FF6B6B",
+    },
+    {
+      name: "Replit",
+      description:
+        "Collaborative coding with voice. Speak to build with AI assistance.",
+      href: "/use-cases",
+      color: "#F26207",
+    },
+  ],
+  Design: [
+    {
+      name: "Figma",
+      description:
+        "Add comments, feedback, and documentation in Figma designs faster with voice.",
+      href: "/use-cases",
+      color: "#F24E1E",
+    },
+    {
+      name: "Canva",
+      description:
+        "Add text to your designs faster by speaking instead of typing.",
+      href: "/use-cases",
+      color: "#00C4CC",
+    },
+    {
+      name: "Notion",
+      description:
+        "Design system documentation and specs at speaking speed.",
+      href: "/voice-keyboard-for-notion",
+      color: "#000000",
+    },
+  ],
+  Browsers: [
+    {
+      name: "Chrome",
+      description:
+        "Voice typing works everywhere in Chrome. Forms, searches, and more.",
+      href: "/use-cases",
+      color: "#4285F4",
+    },
+    {
+      name: "Arc",
+      description:
+        "Modern browsing with voice input. Type anywhere at speaking speed.",
+      href: "/use-cases",
+      color: "#FCBFBD",
+    },
+  ],
+  "CRM & Sales": [
+    {
+      name: "Salesforce",
+      description:
+        "Update CRM records and log activities faster with voice dictation.",
+      href: "/use-cases",
+      color: "#00A1E0",
+    },
+    {
+      name: "HubSpot",
+      description:
+        "Log calls, update deals, and write notes at speaking speed.",
+      href: "/use-cases",
+      color: "#FF7A59",
+    },
+    {
+      name: "LinkedIn",
+      description:
+        "Network and outreach faster with voice-to-text messaging.",
+      href: "/use-cases",
+      color: "#0A66C2",
+    },
+    {
+      name: "Gmail",
+      description:
+        "Send professional sales emails 4x faster with voice dictation.",
+      href: "/voice-keyboard-for-gmail",
+      color: "#EA4335",
+    },
+    {
+      name: "Outlook",
+      description:
+        "Enterprise email at speaking speed. Professional communication made easy.",
+      href: "/use-cases",
+      color: "#0078D4",
+    },
+  ],
+  Support: [
+    {
+      name: "Zendesk",
+      description:
+        "Resolve tickets 4x faster with voice-to-text responses.",
+      href: "/use-cases",
+      color: "#03363D",
+    },
+    {
+      name: "Intercom",
+      description:
+        "Customer support at speaking speed. Reply faster, help more.",
+      href: "/use-cases",
+      color: "#6AFDEF",
+    },
+    {
+      name: "Slack",
+      description:
+        "Internal support channels at speaking speed. Help your team faster.",
+      href: "/voice-keyboard-for-slack",
+      color: "#E01E5A",
+    },
+    {
+      name: "Microsoft Teams",
+      description:
+        "Enterprise support communication with voice-to-text efficiency.",
+      href: "/voice-keyboard-for-teams",
+      color: "#6264A7",
     },
   ],
 };
@@ -396,7 +862,6 @@ export default function UseCasesPage() {
                   {categories[activeCategory].map((app) => (
                     <AppCard
                       key={app.name}
-                      icon={app.icon}
                       name={app.name}
                       description={app.description}
                       href={app.href}
