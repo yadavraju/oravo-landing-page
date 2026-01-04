@@ -67,17 +67,19 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-[rgba(55,50,47,0.12)] hover:shadow-[0px_4px_12px_rgba(55,50,47,0.08)] transition-all duration-300">
-      <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-[#EC4899]/10">
+    <article className="group p-5 bg-white border border-[#E0DEDB] rounded-xl flex flex-col gap-4 transition-all duration-200 hover:border-[#847971]">
+      <div className="w-10 h-10 rounded-lg bg-[#F7F5F3] flex items-center justify-center text-[#605A57] group-hover:text-[#37322F] transition-colors">
         {icon}
       </div>
-      <h3 className="text-[#37322F] text-lg md:text-xl font-semibold font-sans mb-3">
-        {title}
-      </h3>
-      <p className="text-[#605A57] text-sm md:text-base leading-relaxed font-sans">
-        {description}
-      </p>
-    </div>
+      <div className="flex flex-col gap-2">
+        <h3 className="text-[#37322F] text-base font-semibold leading-tight font-sans">
+          {title}
+        </h3>
+        <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
+          {description}
+        </p>
+      </div>
+    </article>
   );
 }
 
@@ -91,34 +93,34 @@ function UseCaseCard({
   timeSaved?: string;
 }) {
   return (
-    <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-[rgba(55,50,47,0.12)]">
-      <h4 className="text-[#37322F] text-lg font-semibold font-sans mb-3">
+    <article className="group p-5 bg-white border border-[#E0DEDB] rounded-xl flex flex-col gap-3 transition-all duration-200 hover:border-[#847971]">
+      <h4 className="text-[#37322F] text-base font-semibold font-sans">
         {title}
       </h4>
-      <p className="text-[#605A57] text-sm leading-relaxed font-sans mb-3">
+      <p className="text-[#605A57] text-sm leading-relaxed font-sans">
         {description}
       </p>
       {timeSaved && (
-        <div className="inline-block px-3 py-1 bg-[#22C55E]/10 rounded-full">
+        <div className="inline-block px-3 py-1 bg-[#22C55E]/10 rounded-full w-fit">
           <span className="text-[#22C55E] text-xs font-semibold">
             Time saved: {timeSaved}
           </span>
         </div>
       )}
-    </div>
+    </article>
   );
 }
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   return (
-    <div className="bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-[rgba(55,50,47,0.12)]">
+    <article className="p-5 bg-white border border-[#E0DEDB] rounded-xl">
       <h4 className="text-[#37322F] text-base font-semibold font-sans mb-2">
         {question}
       </h4>
       <p className="text-[#605A57] text-sm leading-relaxed font-sans">
         {answer}
       </p>
-    </div>
+    </article>
   );
 }
 
@@ -157,19 +159,35 @@ export default function ForCreatorsPage() {
                   Dictate video scripts, podcast notes, and social media content at the speed of thought. Keep your creative flow uninterrupted.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                   <Link
                     href="/download"
-                    className="inline-flex h-14 px-8 text-white text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0px_4px_12px_rgba(236,72,153,0.4)] items-center justify-center"
-                    style={{ background: accentColor }}
+                    className="group relative h-12 px-8 overflow-hidden rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95"
+                    style={{
+                      background: `linear-gradient(to bottom, ${accentColor}, ${accentColor})`,
+                      boxShadow: `0px 0px 0px 2.5px rgba(255,255,255,0.08) inset, 0px 4px 12px ${accentColor}66`,
+                    }}
                   >
-                    Download Free
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/10 pointer-events-none"></div>
+                    <span className="text-white text-base font-medium leading-5 font-sans relative z-10">
+                      Download Free
+                    </span>
+                    <svg className="w-5 h-5 relative z-10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                      <path d="M12 5v14M5 12l7 7 7-7" />
+                    </svg>
                   </Link>
                   <Link
                     href="/how-to-use"
-                    className="inline-flex h-14 px-8 bg-white border border-[#E0DEDB] text-[#37322F] text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 active:scale-95 hover:bg-[#F7F5F3] items-center justify-center"
+                    className="group relative h-12 px-8 bg-gradient-to-b from-white to-gray-100 hover:from-gray-50 hover:to-gray-200 shadow-[0px_0px_0px_2.5px_rgba(0,0,0,0.05)_inset,0px_4px_12px_rgba(0,0,0,0.1)] overflow-hidden rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95 border border-gray-200"
                   >
-                    See How It Works
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-black/5 pointer-events-none"></div>
+                    <span className="text-gray-800 text-base font-medium leading-5 font-sans relative z-10">
+                      See How It Works
+                    </span>
+                    <svg className="w-5 h-5 relative z-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                   </Link>
                 </div>
 
@@ -200,7 +218,19 @@ export default function ForCreatorsPage() {
             <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
               <div className="max-w-[900px] mx-auto">
                 <div className="text-center mb-12">
-                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mb-4">
+                  <div className="flex justify-center mb-4">
+                    <Badge
+                      icon={
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#37322F" strokeWidth="2">
+                          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                          <path d="M2 17l10 5 10-5" />
+                          <path d="M2 12l10 5 10-5" />
+                        </svg>
+                      }
+                      text="Features"
+                    />
+                  </div>
+                  <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-stretch-semi-condensed font-medium leading-tight font-serif mb-4">
                     Built for Creative Workflows
                   </h2>
                   <p className="text-[#605A57] text-base md:text-lg font-sans max-w-[600px] mx-auto">
@@ -208,36 +238,36 @@ export default function ForCreatorsPage() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   <FeatureCard
-                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke={accentColor} strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>}
+                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>}
                     title="Video Scripts"
-                    description="Dictate YouTube scripts, TikTok hooks, and video outlines while pacing around your studio. Ideas flow naturally when you're not stuck typing."
+                    description="Dictate YouTube scripts, TikTok hooks, and video outlines while pacing around your studio."
                   />
                   <FeatureCard
-                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke={accentColor} strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>}
+                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>}
                     title="Podcast Notes"
-                    description="Capture episode ideas, show notes, and interview prep at speaking speed. Perfect for planning content on the go."
+                    description="Capture episode ideas, show notes, and interview prep at speaking speed."
                   />
                   <FeatureCard
-                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke={accentColor} strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" /></svg>}
+                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" /></svg>}
                     title="Social Media Content"
-                    description="Draft tweets, LinkedIn posts, and Instagram captions in seconds. Batch content creation becomes effortless."
+                    description="Draft tweets, LinkedIn posts, and Instagram captions in seconds."
                   />
                   <FeatureCard
-                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke={accentColor} strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>}
+                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>}
                     title="Blog Posts"
-                    description="Beat writer's block by speaking your first draft. Edit and polish later—get the ideas down first."
+                    description="Beat writer's block by speaking your first draft. Edit and polish later."
                   />
                   <FeatureCard
-                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke={accentColor} strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>}
+                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>}
                     title="Email Newsletters"
-                    description="Write to your audience like you're talking to a friend. Voice captures your authentic tone perfectly."
+                    description="Write to your audience like you're talking to a friend."
                   />
                   <FeatureCard
-                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke={accentColor} strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>}
+                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>}
                     title="Brainstorming"
-                    description="Capture every idea in a creative session. Speak freely and let Oravo organize your thoughts into text."
+                    description="Capture every idea in a creative session. Speak freely and let Oravo organize."
                   />
                 </div>
               </div>
@@ -247,7 +277,17 @@ export default function ForCreatorsPage() {
             <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
               <div className="max-w-[900px] mx-auto">
                 <div className="text-center mb-12">
-                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mb-4">
+                  <div className="flex justify-center mb-4">
+                    <Badge
+                      icon={
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#37322F" strokeWidth="2">
+                          <path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      }
+                      text="Use Cases"
+                    />
+                  </div>
+                  <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-stretch-semi-condensed font-medium leading-tight font-serif mb-4">
                     Real Creator Workflows
                   </h2>
                   <p className="text-[#605A57] text-base md:text-lg font-sans">
@@ -255,25 +295,25 @@ export default function ForCreatorsPage() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <UseCaseCard
                     title="YouTube Video Production"
-                    description="Outline your video, dictate the full script, and write your description—all by voice. Edit in your video editor, not a text document."
+                    description="Outline your video, dictate the full script, and write your description—all by voice."
                     timeSaved="60-70%"
                   />
                   <UseCaseCard
                     title="Content Batching"
-                    description="Record a week's worth of social posts in one session. Speak your ideas, Oravo formats them, and you schedule them out."
+                    description="Record a week's worth of social posts in one session. Speak your ideas, Oravo formats them."
                     timeSaved="50-60%"
                   />
                   <UseCaseCard
                     title="Podcast Show Notes"
-                    description="Capture timestamps, key points, and resources while listening back. No more pausing to type—just speak and keep listening."
+                    description="Capture timestamps, key points, and resources while listening back."
                     timeSaved="40-50%"
                   />
                   <UseCaseCard
                     title="Course Creation"
-                    description="Outline modules, dictate lesson scripts, and write workbook content at the speed of thought. Create courses faster than ever."
+                    description="Outline modules, dictate lesson scripts, and write workbook content at the speed of thought."
                     timeSaved="50-70%"
                   />
                 </div>
@@ -284,7 +324,17 @@ export default function ForCreatorsPage() {
             <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
               <div className="max-w-[800px] mx-auto">
                 <div className="text-center mb-12">
-                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mb-4">
+                  <div className="flex justify-center mb-4">
+                    <Badge
+                      icon={
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#37322F" strokeWidth="2">
+                          <path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      }
+                      text="FAQ"
+                    />
+                  </div>
+                  <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-stretch-semi-condensed font-medium leading-tight font-serif mb-4">
                     Frequently Asked Questions
                   </h2>
                 </div>
@@ -292,11 +342,11 @@ export default function ForCreatorsPage() {
                 <div className="space-y-4">
                   <FAQItem
                     question="Can I use Oravo while editing video?"
-                    answer="Yes! Oravo works in any app. Dictate into Premiere Pro, Final Cut, DaVinci Resolve—anywhere you can type, Oravo can transcribe."
+                    answer="Yes! Oravo works in any app. Dictate into Premiere Pro, Final Cut, DaVinci Resolve—anywhere you can type."
                   />
                   <FAQItem
                     question="Does it capture my authentic voice and style?"
-                    answer="Absolutely. Oravo transcribes exactly what you say with proper punctuation and formatting. Your voice, your words, your style—just faster."
+                    answer="Absolutely. Oravo transcribes exactly what you say with proper punctuation and formatting."
                   />
                   <FAQItem
                     question="Can I dictate in different languages?"
@@ -321,15 +371,21 @@ export default function ForCreatorsPage() {
                     Create More. Type Less.
                   </h2>
                   <p className="text-white/90 text-base md:text-lg leading-relaxed font-sans mb-8">
-                    Join thousands of creators who produce content 4x faster with Oravo. Your ideas deserve to be heard.
+                    Join thousands of creators who produce content 4x faster with Oravo.
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
                     <Link
                       href="/download"
-                      className="inline-flex h-14 px-8 bg-white hover:bg-gray-50 text-[#37322F] text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg items-center justify-center"
+                      className="group relative h-12 px-8 bg-gradient-to-b from-white to-gray-100 hover:from-gray-50 hover:to-gray-200 shadow-[0px_0px_0px_2.5px_rgba(0,0,0,0.05)_inset,0px_4px_12px_rgba(0,0,0,0.1)] overflow-hidden rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95"
                     >
-                      Download Free
+                      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-black/5 pointer-events-none"></div>
+                      <span className="text-gray-800 text-base font-medium leading-5 font-sans relative z-10">
+                        Download Free
+                      </span>
+                      <svg className="w-5 h-5 relative z-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M12 5v14M5 12l7 7 7-7" />
+                      </svg>
                     </Link>
                   </div>
 
@@ -351,4 +407,3 @@ export default function ForCreatorsPage() {
     </div>
   );
 }
-
