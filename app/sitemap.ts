@@ -39,6 +39,16 @@ const PAGE_CONFIG: Record<
   // Use cases landing page
   "/use-cases": { priority: 0.85, changeFrequency: "weekly" },
 
+  // High-value SEO landing pages (long-tail keywords)
+  "/speech-to-text-mac": { priority: 0.9, changeFrequency: "weekly" },
+  "/speech-to-text-windows": { priority: 0.9, changeFrequency: "weekly" },
+  "/voice-dictation-software": { priority: 0.9, changeFrequency: "weekly" },
+  "/dictation-app": { priority: 0.9, changeFrequency: "weekly" },
+  "/voice-to-text-app": { priority: 0.9, changeFrequency: "weekly" },
+  "/voice-typing-with-translation": { priority: 0.9, changeFrequency: "weekly" },
+  "/voice-typing-for-accents": { priority: 0.9, changeFrequency: "weekly" },
+  "/speech-to-text-spanish": { priority: 0.85, changeFrequency: "weekly" },
+
   // Legal pages - required but lower priority
   "/privacy": { priority: 0.3, changeFrequency: "yearly" },
   "/terms": { priority: 0.3, changeFrequency: "yearly" },
