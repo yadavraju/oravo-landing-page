@@ -872,7 +872,95 @@ export default function UseCasesPage() {
               </div>
             </section>
 
-            {/* By Profession Section */}
+            {/* Features Pillar Link */}
+            <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[rgba(55,50,47,0.12)]">
+              <div className="max-w-[900px] mx-auto">
+                <Link 
+                  href="/features"
+                  className="group block bg-gradient-to-br from-[#1877F2]/5 to-[#1877F2]/10 rounded-2xl p-8 border border-[#1877F2]/20 hover:border-[#1877F2]/40 transition-all duration-300 hover:shadow-[0px_8px_24px_rgba(24,119,242,0.15)]"
+                >
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <svg className="w-5 h-5 text-[#1877F2]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        <span className="text-[#1877F2] text-sm font-semibold uppercase tracking-wide">Pillar Page</span>
+                      </div>
+                      <h2 className="text-[#37322F] text-2xl md:text-3xl font-normal font-serif mb-2">
+                        Voice to Text, Perfected
+                      </h2>
+                      <p className="text-[#605A57] text-base md:text-lg font-sans max-w-[500px]">
+                        Explore all Oravo features: transcription, formatting, translation, and more.
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2 text-[#1877F2] font-semibold group-hover:gap-3 transition-all">
+                      <span>See All Features</span>
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </section>
+
+            {/* Popular Searches / SEO Pages */}
+            <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[rgba(55,50,47,0.12)]">
+              <div className="max-w-[900px] mx-auto">
+                <div className="text-center mb-10">
+                  <h2 className="text-[#37322F] text-2xl md:text-3xl font-normal font-serif mb-3">
+                    Popular Voice Typing Topics
+                  </h2>
+                  <p className="text-[#605A57] text-base md:text-lg font-sans max-w-[600px] mx-auto">
+                    Explore our guides for specific platforms, languages, and use cases.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                  {[
+                    { title: "Speech to Text Mac", href: "/speech-to-text-mac", icon: "🍎", searches: "8,100/mo" },
+                    { title: "Speech to Text Windows", href: "/speech-to-text-windows", icon: "🪟", searches: "6,600/mo" },
+                    { title: "Voice to Text App", href: "/voice-to-text-app", icon: "🎤", searches: "12,100/mo" },
+                    { title: "Dictation App", href: "/dictation-app", icon: "📝", searches: "4,400/mo" },
+                  ].map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="group bg-white rounded-xl p-4 border border-[#E0DEDB] hover:border-[#847971] transition-all duration-200"
+                    >
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="text-2xl">{item.icon}</span>
+                        <span className="text-[#37322F] font-semibold font-sans text-sm group-hover:text-[#1877F2] transition-colors">{item.title}</span>
+                      </div>
+                      <span className="text-[#847971] text-xs font-sans">{item.searches}</span>
+                    </Link>
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {[
+                    { title: "Voice Dictation Software", href: "/voice-dictation-software", icon: "💼" },
+                    { title: "Voice Typing Translation", href: "/voice-typing-with-translation", icon: "🌍" },
+                    { title: "Voice Typing for Accents", href: "/voice-typing-for-accents", icon: "🗣️" },
+                    { title: "Spanish Speech to Text", href: "/speech-to-text-spanish", icon: "🇪🇸" },
+                  ].map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="group bg-white rounded-xl p-4 border border-[#E0DEDB] hover:border-[#847971] transition-all duration-200"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-xl">{item.icon}</span>
+                        <span className="text-[#37322F] font-medium font-sans text-sm group-hover:text-[#1877F2] transition-colors">{item.title}</span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* By Profession Section with Related Apps */}
             <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[rgba(55,50,47,0.12)]">
               <div className="max-w-[900px] mx-auto">
                 <div className="text-center mb-10">
@@ -884,41 +972,142 @@ export default function UseCasesPage() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="space-y-6">
                   {[
-                    { name: "Creators", href: "/for-creators", desc: "Video scripts & content", color: "#EC4899" },
-                    { name: "Healthcare", href: "/for-healthcare", desc: "Medical documentation", color: "#06B6D4" },
-                    { name: "Writers", href: "/for-writers", desc: "Beat writer's block", color: "#8B5CF6" },
-                    { name: "Students", href: "/for-students", desc: "Essays & research", color: "#F59E0B" },
-                    { name: "Lawyers", href: "/for-lawyers", desc: "Legal documents", color: "#1E3A5F" },
-                    { name: "Developers", href: "/for-developers", desc: "Code documentation", color: "#10B981" },
-                    { name: "Sales Teams", href: "/for-sales", desc: "CRM & follow-ups", color: "#3B82F6" },
-                    { name: "Accessibility", href: "/for-accessibility", desc: "Hands-free typing", color: "#14B8A6" },
+                    { 
+                      name: "Healthcare", 
+                      href: "/for-healthcare", 
+                      desc: "Medical documentation & patient notes", 
+                      color: "#06B6D4",
+                      relatedApps: [
+                        { name: "Google Docs", href: "/voice-keyboard-for-google-docs" },
+                        { name: "Notion", href: "/voice-keyboard-for-notion" },
+                        { name: "Outlook", href: "/voice-keyboard-for-outlook" },
+                      ]
+                    },
+                    { 
+                      name: "Lawyers", 
+                      href: "/for-lawyers", 
+                      desc: "Legal documents & case notes", 
+                      color: "#1E3A5F",
+                      relatedApps: [
+                        { name: "Microsoft Word", href: "/voice-keyboard-for-google-docs" },
+                        { name: "Gmail", href: "/voice-keyboard-for-gmail" },
+                        { name: "Salesforce", href: "/voice-keyboard-for-salesforce" },
+                      ]
+                    },
+                    { 
+                      name: "Students", 
+                      href: "/for-students", 
+                      desc: "Essays, research papers & study notes", 
+                      color: "#F59E0B",
+                      relatedApps: [
+                        { name: "Google Docs", href: "/voice-keyboard-for-google-docs" },
+                        { name: "Notion", href: "/voice-keyboard-for-notion" },
+                        { name: "ChatGPT", href: "/voice-keyboard-for-chatgpt" },
+                      ]
+                    },
+                    { 
+                      name: "Developers", 
+                      href: "/for-developers", 
+                      desc: "Code documentation & technical specs", 
+                      color: "#10B981",
+                      relatedApps: [
+                        { name: "VS Code", href: "/voice-keyboard-for-vscode" },
+                        { name: "GitHub", href: "/voice-keyboard-for-github" },
+                        { name: "Cursor", href: "/voice-keyboard-for-cursor" },
+                      ]
+                    },
+                    { 
+                      name: "Sales Teams", 
+                      href: "/for-sales", 
+                      desc: "CRM updates & follow-up emails", 
+                      color: "#3B82F6",
+                      relatedApps: [
+                        { name: "Salesforce", href: "/voice-keyboard-for-salesforce" },
+                        { name: "HubSpot", href: "/voice-keyboard-for-hubspot" },
+                        { name: "Gmail", href: "/voice-keyboard-for-gmail" },
+                      ]
+                    },
+                    { 
+                      name: "Creators", 
+                      href: "/for-creators", 
+                      desc: "Video scripts & social content", 
+                      color: "#EC4899",
+                      relatedApps: [
+                        { name: "Notion", href: "/voice-keyboard-for-notion" },
+                        { name: "Instagram", href: "/voice-keyboard-for-instagram" },
+                        { name: "YouTube", href: "/voice-keyboard-for-canva" },
+                      ]
+                    },
+                    { 
+                      name: "Writers", 
+                      href: "/for-writers", 
+                      desc: "Beat writer's block with voice", 
+                      color: "#8B5CF6",
+                      relatedApps: [
+                        { name: "Google Docs", href: "/voice-keyboard-for-google-docs" },
+                        { name: "Medium", href: "/voice-keyboard-for-medium" },
+                        { name: "Substack", href: "/voice-keyboard-for-substack" },
+                      ]
+                    },
+                    { 
+                      name: "Accessibility", 
+                      href: "/for-accessibility", 
+                      desc: "Hands-free typing for everyone", 
+                      color: "#14B8A6",
+                      relatedApps: [
+                        { name: "Chrome", href: "/voice-keyboard-for-chrome" },
+                        { name: "Slack", href: "/voice-keyboard-for-slack" },
+                        { name: "Gmail", href: "/voice-keyboard-for-gmail" },
+                      ]
+                    },
                   ].map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="group bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-[rgba(55,50,47,0.12)] hover:shadow-[0px_4px_12px_rgba(55,50,47,0.08)] transition-all duration-300 hover:border-[rgba(55,50,47,0.2)]"
-                    >
-                      <div
-                        className="w-10 h-10 rounded-lg flex items-center justify-center mb-3"
-                        style={{ background: `${item.color}15` }}
-                      >
-                        <svg
-                          className="w-5 h-5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke={item.color}
-                          strokeWidth={2}
+                    <div key={item.name} className="bg-white rounded-2xl p-6 border border-[#E0DEDB]">
+                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <Link
+                          href={item.href}
+                          className="group flex items-center gap-4"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
+                          <div
+                            className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                            style={{ background: `${item.color}15` }}
+                          >
+                            <svg
+                              className="w-6 h-6"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke={item.color}
+                              strokeWidth={2}
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h3 className="text-[#37322F] text-lg font-semibold font-sans mb-1 group-hover:text-[#1877F2] transition-colors flex items-center gap-2">
+                              For {item.name}
+                              <svg className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                              </svg>
+                            </h3>
+                            <p className="text-[#847971] text-sm font-sans">{item.desc}</p>
+                          </div>
+                        </Link>
+                        
+                        <div className="flex flex-wrap gap-2 md:justify-end">
+                          <span className="text-[#847971] text-xs font-sans mr-2 self-center">Popular apps:</span>
+                          {item.relatedApps.map((app) => (
+                            <Link
+                              key={app.name}
+                              href={app.href}
+                              className="px-3 py-1.5 bg-[#F7F5F3] rounded-full text-xs font-medium text-[#605A57] hover:text-[#1877F2] hover:bg-[#1877F2]/10 transition-colors"
+                            >
+                              {app.name}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
-                      <h3 className="text-[#37322F] text-base font-semibold font-sans mb-1 group-hover:text-[#1877F2] transition-colors">
-                        For {item.name}
-                      </h3>
-                      <p className="text-[#847971] text-sm font-sans">{item.desc}</p>
-                    </Link>
+                    </div>
                   ))}
                 </div>
               </div>

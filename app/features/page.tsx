@@ -809,6 +809,112 @@ export default function FeaturesPage() {
               </div>
             </section>
 
+            {/* Explore More Section - Internal Links */}
+            <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
+              <div className="max-w-[900px] mx-auto">
+                <div className="text-center mb-10">
+                  <div className="flex justify-center mb-4">
+                    <Badge
+                      icon={
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#37322F" strokeWidth="2">
+                          <path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                        </svg>
+                      }
+                      text="Explore More"
+                    />
+                  </div>
+                  <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-medium leading-tight font-serif mb-4">
+                    Find Your Use Case
+                  </h2>
+                  <p className="text-[#605A57] text-base md:text-lg font-sans max-w-[600px] mx-auto">
+                    Discover how Oravo works for your specific workflow.
+                  </p>
+                </div>
+
+                {/* By Platform */}
+                <div className="mb-8">
+                  <h3 className="text-[#37322F] text-lg font-semibold font-sans mb-4">By Platform</h3>
+                  <div className="flex flex-wrap gap-3">
+                    <Link href="/speech-to-text-mac" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                      Speech to Text Mac
+                    </Link>
+                    <Link href="/speech-to-text-windows" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                      Speech to Text Windows
+                    </Link>
+                    <Link href="/voice-to-text-app" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                      Voice to Text App
+                    </Link>
+                    <Link href="/dictation-app" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                      Dictation App
+                    </Link>
+                    <Link href="/voice-dictation-software" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                      Voice Dictation Software
+                    </Link>
+                  </div>
+                </div>
+
+                {/* By Profession */}
+                <div className="mb-8">
+                  <h3 className="text-[#37322F] text-lg font-semibold font-sans mb-4">By Profession</h3>
+                  <div className="flex flex-wrap gap-3">
+                    <Link href="/for-healthcare" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#06B6D4] hover:text-[#06B6D4] transition-colors">
+                      Healthcare
+                    </Link>
+                    <Link href="/for-lawyers" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1E3A5F] hover:text-[#1E3A5F] transition-colors">
+                      Lawyers
+                    </Link>
+                    <Link href="/for-students" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#F59E0B] hover:text-[#F59E0B] transition-colors">
+                      Students
+                    </Link>
+                    <Link href="/for-developers" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#10B981] hover:text-[#10B981] transition-colors">
+                      Developers
+                    </Link>
+                    <Link href="/for-creators" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#EC4899] hover:text-[#EC4899] transition-colors">
+                      Creators
+                    </Link>
+                    <Link href="/for-writers" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#8B5CF6] hover:text-[#8B5CF6] transition-colors">
+                      Writers
+                    </Link>
+                    <Link href="/for-sales" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#3B82F6] hover:text-[#3B82F6] transition-colors">
+                      Sales Teams
+                    </Link>
+                    <Link href="/for-accessibility" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#14B8A6] hover:text-[#14B8A6] transition-colors">
+                      Accessibility
+                    </Link>
+                  </div>
+                </div>
+
+                {/* By Language/Accent */}
+                <div className="mb-8">
+                  <h3 className="text-[#37322F] text-lg font-semibold font-sans mb-4">By Language & Accent</h3>
+                  <div className="flex flex-wrap gap-3">
+                    <Link href="/voice-typing-with-translation" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#8B5CF6] hover:text-[#8B5CF6] transition-colors">
+                      🌍 Voice Typing with Translation
+                    </Link>
+                    <Link href="/voice-typing-for-accents" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#EF4444] hover:text-[#EF4444] transition-colors">
+                      🗣️ Voice Typing for Accents
+                    </Link>
+                    <Link href="/speech-to-text-spanish" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#DC2626] hover:text-[#DC2626] transition-colors">
+                      🇪🇸 Spanish Speech to Text
+                    </Link>
+                  </div>
+                </div>
+
+                {/* All Use Cases Link */}
+                <div className="text-center">
+                  <Link 
+                    href="/use-cases" 
+                    className="inline-flex items-center gap-2 text-[#1877F2] font-semibold hover:underline"
+                  >
+                    See all 50+ app integrations
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </section>
+
             {/* CTA Section */}
             <section className="px-6 md:px-12 py-16 md:py-20">
               <div className="max-w-[700px] mx-auto text-center">

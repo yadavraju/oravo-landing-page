@@ -291,6 +291,30 @@ export default function VoiceTypingWithTranslationPage() {
               </div>
             </section>
 
+            {/* Related Pages */}
+            <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
+              <div className="max-w-[800px] mx-auto">
+                <h3 className="text-[#37322F] text-lg font-semibold font-sans mb-4">Related Topics</h3>
+                <div className="flex flex-wrap gap-3">
+                  <Link href="/features" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                    All Features
+                  </Link>
+                  <Link href="/voice-typing-for-accents" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                    Voice Typing for Accents
+                  </Link>
+                  <Link href="/speech-to-text-spanish" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                    🇪🇸 Spanish Speech to Text
+                  </Link>
+                  <Link href="/voice-to-text-app" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                    Voice to Text App
+                  </Link>
+                  <Link href="/use-cases" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                    All Use Cases
+                  </Link>
+                </div>
+              </div>
+            </section>
+
             {/* CTA */}
             <section className="px-6 md:px-12 py-16 md:py-20">
               <div className="max-w-[700px] mx-auto text-center">

@@ -225,6 +225,33 @@ export default function VoiceDictationSoftwarePage() {
               </div>
             </section>
 
+            {/* Related Pages */}
+            <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
+              <div className="max-w-[800px] mx-auto">
+                <h3 className="text-[#37322F] text-lg font-semibold font-sans mb-4">Related Topics</h3>
+                <div className="flex flex-wrap gap-3">
+                  <Link href="/features" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                    All Features
+                  </Link>
+                  <Link href="/dictation-app" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                    Best Dictation App
+                  </Link>
+                  <Link href="/voice-to-text-app" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                    Voice to Text App
+                  </Link>
+                  <Link href="/for-healthcare" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                    For Healthcare
+                  </Link>
+                  <Link href="/for-lawyers" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                    For Lawyers
+                  </Link>
+                  <Link href="/use-cases" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                    All Use Cases
+                  </Link>
+                </div>
+              </div>
+            </section>
+
             <section className="px-6 md:px-12 py-16 md:py-20">
               <div className="max-w-[700px] mx-auto text-center">
                 <div className="rounded-3xl p-8 md:p-12 shadow-[0_8px_48px_rgba(55,50,47,0.15)]" style={{ background: accentColor }}>
