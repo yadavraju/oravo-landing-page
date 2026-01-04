@@ -69,19 +69,35 @@ export default function FooterSection() {
             </div>
           </div>
 
-          {/* Fazier Badge */}
-          <a
-            href="https://fazier.com/launches/oravo.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2"
-          >
-            <img
-              src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light"
-              width={120}
-              alt="Fazier badge"
-            />
-          </a>
+          {/* Badges */}
+          <div className="flex items-center gap-4 mt-2">
+            {/* Fazier Badge */}
+            <a
+              href="https://fazier.com/launches/oravo.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light"
+                width={120}
+                alt="Fazier badge"
+              />
+            </a>
+
+            {/* Twelve Tools Badge */}
+            <a
+              href="https://twelve.tools"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://twelve.tools/badge0-white.svg"
+                alt="Featured on Twelve Tools"
+                width={200}
+                height={54}
+              />
+            </a>
+          </div>
         </div>
 
         {/* Navigation Links */}
