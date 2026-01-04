@@ -629,7 +629,7 @@ function makeConfig(seed: AppSeed): UseCasePageConfig {
         {
           question: "Is it private?",
           answer:
-            "Yes—privacy-first architecture and encrypted processing.",
+            "Yes—privacy-first architecture.",
         },
         {
           question: "Does it only work in AI tools?",
@@ -738,7 +738,7 @@ function makeConfig(seed: AppSeed): UseCasePageConfig {
         {
           question: "Is it private?",
           answer:
-            "Yes—privacy-first architecture and encrypted processing.",
+            "Yes—privacy-first architecture.",
         },
       ],
       ctaTitle: `Write Faster with ${appName}`,
@@ -841,7 +841,7 @@ function makeConfig(seed: AppSeed): UseCasePageConfig {
         {
           question: "Is it private?",
           answer:
-            "Yes—privacy-first architecture and encrypted processing.",
+            "Yes—privacy-first architecture.",
         },
       ],
       ctaTitle: `Create Faster Feedback in ${appName}`,
@@ -943,7 +943,7 @@ function makeConfig(seed: AppSeed): UseCasePageConfig {
         {
           question: "Is it secure?",
           answer:
-            "Yes—privacy-first architecture and encrypted processing.",
+            "Yes—privacy-first architecture.",
         },
       ],
       ctaTitle: `Type Anywhere in ${appName} with Your Voice`,

@@ -46,14 +46,14 @@ export function Header() {
           </a>
           {/* Desktop Navigation Links */}
           <div className="pl-3 sm:pl-4 md:pl-5 lg:pl-5 justify-start items-start hidden sm:flex flex-row gap-2 sm:gap-3 md:gap-4 lg:gap-4">
-            <button
-              onClick={() => scrollToSection("made-for-you")}
+            <a
+              href="/features"
               className="flex justify-start items-center cursor-pointer"
             >
               <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
-                Products
+                Features
               </div>
-            </button>
+            </a>
             <button
               onClick={() => scrollToSection("pricing-section")}
               className="flex justify-start items-center cursor-pointer"
@@ -119,12 +119,13 @@ export function Header() {
         {/* Mobile Menu Dropdown */}
         {isMobileMenuOpen && (
           <div className="absolute top-full left-0 right-0 mt-2 bg-[#F7F5F3] backdrop-blur-sm shadow-[0px_0px_0px_2px_white] rounded-2xl p-4 flex flex-col gap-3 sm:hidden">
-            <button
-              onClick={() => scrollToSection("made-for-you")}
-              className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer"
+            <a
+              href="/features"
+              className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer block"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
-              Products
-            </button>
+              Features
+            </a>
             <button
               onClick={() => scrollToSection("pricing-section")}
               className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer"

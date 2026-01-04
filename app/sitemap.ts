@@ -22,7 +22,7 @@ const PAGE_CONFIG: Record<
 
   // Common landing pages (add as you create them)
   "/pricing": { priority: 0.85, changeFrequency: "weekly" },
-  "/features": { priority: 0.85, changeFrequency: "weekly" },
+  "/features": { priority: 0.9, changeFrequency: "weekly" },
   "/about": { priority: 0.75, changeFrequency: "monthly" },
   "/contact": { priority: 0.75, changeFrequency: "monthly" },
 
