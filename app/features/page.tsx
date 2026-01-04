@@ -889,13 +889,13 @@ export default function FeaturesPage() {
                   <h3 className="text-[#37322F] text-lg font-semibold font-sans mb-4">By Language & Accent</h3>
                   <div className="flex flex-wrap gap-3">
                     <Link href="/voice-typing-with-translation" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#8B5CF6] hover:text-[#8B5CF6] transition-colors">
-                      🌍 Voice Typing with Translation
+                      Voice Typing with Translation
                     </Link>
                     <Link href="/voice-typing-for-accents" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#EF4444] hover:text-[#EF4444] transition-colors">
-                      🗣️ Voice Typing for Accents
+                      Voice Typing for Accents
                     </Link>
                     <Link href="/speech-to-text-spanish" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#DC2626] hover:text-[#DC2626] transition-colors">
-                      🇪🇸 Spanish Speech to Text
+                      Spanish Speech to Text
                     </Link>
                   </div>
                 </div>

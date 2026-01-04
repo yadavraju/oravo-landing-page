@@ -917,42 +917,27 @@ export default function UseCasesPage() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                  {[
-                    { title: "Speech to Text Mac", href: "/speech-to-text-mac", icon: "🍎", searches: "8,100/mo" },
-                    { title: "Speech to Text Windows", href: "/speech-to-text-windows", icon: "🪟", searches: "6,600/mo" },
-                    { title: "Voice to Text App", href: "/voice-to-text-app", icon: "🎤", searches: "12,100/mo" },
-                    { title: "Dictation App", href: "/dictation-app", icon: "📝", searches: "4,400/mo" },
-                  ].map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="group bg-white rounded-xl p-4 border border-[#E0DEDB] hover:border-[#847971] transition-all duration-200"
-                    >
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="text-2xl">{item.icon}</span>
-                        <span className="text-[#37322F] font-semibold font-sans text-sm group-hover:text-[#1877F2] transition-colors">{item.title}</span>
-                      </div>
-                      <span className="text-[#847971] text-xs font-sans">{item.searches}</span>
-                    </Link>
-                  ))}
-                </div>
-
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                   {[
-                    { title: "Voice Dictation Software", href: "/voice-dictation-software", icon: "💼" },
-                    { title: "Voice Typing Translation", href: "/voice-typing-with-translation", icon: "🌍" },
-                    { title: "Voice Typing for Accents", href: "/voice-typing-for-accents", icon: "🗣️" },
-                    { title: "Spanish Speech to Text", href: "/speech-to-text-spanish", icon: "🇪🇸" },
+                    { title: "Speech to Text Mac", href: "/speech-to-text-mac" },
+                    { title: "Speech to Text Windows", href: "/speech-to-text-windows" },
+                    { title: "Voice to Text App", href: "/voice-to-text-app" },
+                    { title: "Dictation App", href: "/dictation-app" },
+                    { title: "Voice Dictation Software", href: "/voice-dictation-software" },
+                    { title: "Voice Typing Translation", href: "/voice-typing-with-translation" },
+                    { title: "Voice Typing for Accents", href: "/voice-typing-for-accents" },
+                    { title: "Spanish Speech to Text", href: "/speech-to-text-spanish" },
                   ].map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
                       className="group bg-white rounded-xl p-4 border border-[#E0DEDB] hover:border-[#847971] transition-all duration-200"
                     >
-                      <div className="flex items-center gap-3">
-                        <span className="text-xl">{item.icon}</span>
+                      <div className="flex items-center justify-between">
                         <span className="text-[#37322F] font-medium font-sans text-sm group-hover:text-[#1877F2] transition-colors">{item.title}</span>
+                        <svg className="w-4 h-4 text-[#847971] group-hover:text-[#1877F2] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
                       </div>
                     </Link>
                   ))}

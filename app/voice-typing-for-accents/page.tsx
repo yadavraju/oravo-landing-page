@@ -321,9 +321,9 @@ export default function VoiceTypingForAccentsPage() {
                   <Link href="/voice-typing-with-translation" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
                     Voice Typing Translation
                   </Link>
-                  <Link href="/speech-to-text-spanish" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
-                    🇪🇸 Spanish Speech to Text
-                  </Link>
+                    <Link href="/speech-to-text-spanish" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
+                      Spanish Speech to Text
+                    </Link>
                   <Link href="/voice-to-text-app" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
                     Voice to Text App
                   </Link>
