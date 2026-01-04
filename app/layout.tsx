@@ -21,13 +21,57 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "Oravo - Fastest Voice Typing App | Secure AI Speech-to-Text for Mac, Windows & iOS",
+    default: "Oravo - Voice Typing for Non-Native English Speakers | AI Speech-to-Text with Translation",
     template: "%s | Oravo",
   },
   description:
-    "The fastest voice typing app - 4x faster than keyboard typing. Secure AI speech-to-text with zero data retention. Works in Google Docs, Gmail, Slack & 1000+ apps. HIPAA-ready, end-to-end encrypted. 100+ languages. Try free, no card required.",
+    "The voice typing app that understands every accent. Speak in your native language, type in perfect English—powered by real-time AI translation. Built for non-native English speakers. 4x faster than typing. Secure, zero data retention, HIPAA-ready. Works in Google Docs, Gmail, Slack & 1000+ apps. Try free.",
   applicationName: "Oravo.ai",
   keywords: [
+    // PRIMARY MOAT: Non-native English speaker keywords (UNIQUE POSITIONING)
+    "voice typing for non-native speakers",
+    "voice typing non-native English",
+    "speech to text for non-native speakers",
+    "dictation for non-native English speakers",
+    "voice typing with accent support",
+    "voice typing any accent",
+    "speech recognition for accents",
+    "voice typing for ESL speakers",
+    "dictation app for immigrants",
+    "voice typing for international workers",
+    "best voice typing for foreign accent",
+    "speech to text accent recognition",
+    "voice typing for bilingual speakers",
+    "dictation for multilingual professionals",
+    "voice typing understands my accent",
+
+    // Real-time translation keywords (CORE MOAT FEATURE)
+    "voice typing with translation",
+    "dictate and translate",
+    "real-time voice translation",
+    "speak Spanish type English",
+    "voice typing translation app",
+    "multilingual voice typing",
+    "translate while dictating",
+    "speech to text translation",
+    "voice translator app",
+    "dictation with translation",
+    "speak in any language type in English",
+    "real-time speech translation",
+    "voice typing multilingual",
+    "translate speech to text",
+    "dictate in Spanish get English",
+    "speak Hindi type English",
+    "speak Chinese type English",
+    "speak French type English",
+    "speak German type English",
+    "speak Portuguese type English",
+    "speak Japanese type English",
+    "speak Korean type English",
+    "speak Arabic type English",
+    "voice typing language translation",
+    "AI translation voice typing",
+
     // PRIMARY: Consumer-focused "voice typing" keywords (highest search volume)
     "voice typing",
     "voice typing app",
@@ -99,23 +143,6 @@ export const metadata: Metadata = {
     "AI voice to text",
     "voice to text AI",
 
-    // Real-time translation keywords (NEW - dictate and translate)
-    "voice typing with translation",
-    "dictate and translate",
-    "real-time voice translation",
-    "speak Spanish type English",
-    "voice typing translation app",
-    "multilingual voice typing",
-    "translate while dictating",
-    "speech to text translation",
-    "voice translator app",
-    "dictation with translation",
-    "speak in any language type in English",
-    "real-time speech translation",
-    "voice typing multilingual",
-    "translate speech to text",
-    "dictate in Spanish get English",
-
     // Professional "voice dictation" keywords (B2B/enterprise)
     "voice dictation",
     "voice dictation software",
@@ -165,6 +192,8 @@ export const metadata: Metadata = {
     "legal transcription software",
     "dictation for global teams",
     "voice notes for marketers",
+    "voice typing for remote workers",
+    "dictation for international teams",
 
     // Feature-specific
     "noisy environment dictation",
@@ -173,6 +202,8 @@ export const metadata: Metadata = {
     "automatic formatting voice typing",
     "technical jargon transcription",
     "multi-language support dictation",
+    "100+ languages voice typing",
+    "accent-friendly voice typing",
 
     // Long-tail intent keywords
     "best voice dictation software for teams",
@@ -180,6 +211,9 @@ export const metadata: Metadata = {
     "dictation works in Google Docs Slack email",
     "transcribe in noisy environments",
     "secure HIPAA voice transcription",
+    "voice typing that works with my accent",
+    "best speech to text for foreign accent",
+    "dictation app that understands accents",
 
     // Competitor alternatives (from research)
     "Wispr Flow alternative",
@@ -221,16 +255,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://oravo.ai",
-    title: "Oravo - Fastest Voice Typing App | Secure AI Speech-to-Text",
+    title: "Oravo - Voice Typing for Non-Native English Speakers | AI Translation",
     description:
-      "The fastest voice typing app - 4x faster than keyboard typing. Secure AI speech-to-text with zero data retention. Works in Google Docs, Gmail, Slack & 1000+ apps. HIPAA-ready, encrypted. 100+ languages.",
+      "The voice typing app that understands every accent. Speak in your native language, type in English. Real-time AI translation for non-native speakers. 4x faster. Works in Google Docs, Gmail, Slack & 1000+ apps.",
     siteName: "Oravo",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Oravo.ai - AI Voice Dictation - 4x Faster Than Typing",
+        alt: "Oravo - Voice Typing for Non-Native English Speakers - Speak Any Language, Type English",
         type: "image/png",
       },
       {
@@ -244,9 +278,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Oravo - Fastest Voice Typing App",
+    title: "Oravo - Voice Typing That Understands Your Accent",
     description:
-      "AI voice typing 4x faster than keyboard typing. Secure speech-to-text with zero data retention. Works in Google Docs, Gmail, Slack & all apps. HIPAA-ready, encrypted. Try free.",
+      "Speak in your native language, type in perfect English. AI voice typing built for non-native English speakers. Real-time translation. 4x faster. Works everywhere. Try free.",
     images: ["/og-image.png"],
     creator: "@oravoai",
     site: "@oravoai",
