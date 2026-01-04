@@ -72,7 +72,7 @@ function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
   );
 }
 
-// Feature Card - matching site design
+// Feature Card - matching landing page style
 function FeatureCard({
   icon,
   title,
@@ -83,20 +83,19 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-[rgba(55,50,47,0.12)] hover:shadow-[0px_4px_12px_rgba(55,50,47,0.08)] transition-all duration-300">
-      <div
-        className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-        style={{ background: "#1877F215" }}
-      >
+    <article className="group p-5 bg-white border border-[#E0DEDB] rounded-xl flex flex-col gap-4 transition-all duration-200 hover:border-[#847971]">
+      <div className="w-10 h-10 rounded-lg bg-[#F7F5F3] flex items-center justify-center text-[#605A57] group-hover:text-[#37322F] transition-colors">
         {icon}
       </div>
-      <h3 className="text-[#37322F] text-lg md:text-xl font-semibold font-sans mb-3">
-        {title}
-      </h3>
-      <p className="text-[#605A57] text-sm md:text-base leading-relaxed font-sans">
-        {description}
-      </p>
-    </div>
+      <div className="flex flex-col gap-2">
+        <h3 className="text-[#37322F] text-base font-semibold leading-tight font-sans">
+          {title}
+        </h3>
+        <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
+          {description}
+        </p>
+      </div>
+    </article>
   );
 }
 
@@ -109,7 +108,7 @@ function MiniFeatureCard({
   description: string;
 }) {
   return (
-    <div className="bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-[rgba(55,50,47,0.12)]">
+    <div className="p-5 bg-white border border-[#E0DEDB] rounded-xl">
       <h4 className="text-[#37322F] text-base font-semibold font-sans mb-2">
         {title}
       </h4>
@@ -129,7 +128,7 @@ function FAQItem({
   answer: string;
 }) {
   return (
-    <div className="bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-[rgba(55,50,47,0.12)]">
+    <div className="p-5 bg-white border border-[#E0DEDB] rounded-xl">
       <h4 className="text-[#37322F] text-base font-semibold font-sans mb-2">
         {question}
       </h4>
@@ -147,32 +146,32 @@ export default function FeaturesPage() {
     {
       question: "Does Oravo work in all apps?",
       answer:
-        "Yes. Oravo works anywhere you can type—browsers, desktop apps, documents, emails, chat apps, and more. It's a system-level voice keyboard that works in Notion, Gmail, Google Docs, Slack, WhatsApp, Cursor, and any text field.",
+        "Yes. Oravo works anywhere you can type—browsers, desktop apps, documents, emails, chat apps, and more. It's a system-level voice keyboard that works in Notion, Gmail, Google Docs, Slack, and any text field on your computer.",
     },
     {
-      question: "How accurate is the transcription?",
+      question: "How accurate is Oravo's transcription?",
       answer:
-        "Oravo achieves 98%+ accuracy for most users. It uses advanced AI models trained on diverse speech patterns, understands context to spell names correctly, and continuously improves with your corrections.",
+        "Oravo achieves 40% more accuracy than built-in dictation tools. Our AI learns your writing style, recognizes names, dates, and technical terms automatically. No more fixing typos in medical records or legal documents.",
     },
     {
-      question: "Can I use Oravo in multiple languages?",
+      question: "Can I dictate in languages other than English?",
       answer:
-        "Yes. Oravo supports 100+ languages including Spanish, Hindi, Chinese, Korean, Arabic, and more. You can also translate your speech in real-time to a different language.",
+        "Yes. Oravo supports 100+ languages including Spanish, Hindi, Chinese, Korean, Arabic, French, German, and more. You can also translate your speech in real-time—speak in Spanish, get text in English.",
     },
     {
-      question: "Does Oravo remove filler words automatically?",
+      question: "Does Oravo clean up my speech automatically?",
       answer:
-        "Yes. Oravo automatically removes 'um,' 'uh,' and other filler words so your text is clean and professional. It also handles corrections naturally when you change your mind mid-sentence.",
+        "Yes. Oravo automatically removes filler words like 'um' and 'uh', adds punctuation based on your natural pauses, and handles corrections when you change your mind mid-sentence.",
     },
     {
-      question: "Can I add custom vocabulary and terms?",
+      question: "Can I add industry-specific terminology?",
       answer:
-        "Yes. Oravo learns your words as you go. When you correct a spelling, it's added to your personal dictionary. You can also manually add industry terms, product names, or unique spellings.",
+        "Absolutely. Oravo learns your specialized vocabulary—medical terminology, legal phrases, tech acronyms—after hearing them once. Add terms manually or let Oravo learn from your corrections.",
     },
     {
-      question: "What platforms does Oravo support?",
+      question: "Is my data secure with Oravo?",
       answer:
-        "Oravo is available on macOS, Windows, iOS, and Android. One subscription works across all your devices, keeping your settings and vocabulary in sync.",
+        "Yes. Oravo is privacy-first with zero data retention. Your transcripts are never stored on our servers. We're SOC 2 Type II certified and HIPAA-ready for healthcare professionals.",
     },
   ];
 
@@ -202,7 +201,7 @@ export default function FeaturesPage() {
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                       </svg>
                     }
-                    text="Type More With Your Voice"
+                    text="Feature Highlights"
                   />
                 </div>
 
@@ -218,16 +217,35 @@ export default function FeaturesPage() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
                     href="/download"
-                    className="inline-flex h-14 px-8 text-white text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0px_4px_12px_rgba(24,119,242,0.4)] items-center justify-center"
-                    style={{ background: accentColor }}
+                    className="self-center bg-[#37322F] text-white px-[30px] py-3 rounded-full font-sans text-base font-medium leading-6 hover:bg-[#1877F2] transition-all duration-300 hover:scale-105 flex items-center gap-2 shadow-[0px_1px_2px_rgba(105,81,255,0.05)]"
                   >
-                    Download Free
+                    Download for Mac
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path d="M12 5v14M5 12l7 7 7-7" />
+                    </svg>
                   </Link>
                   <Link
-                    href="/how-to-use"
-                    className="inline-flex h-14 px-8 bg-white border border-[#E0DEDB] text-[#37322F] text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 active:scale-95 hover:bg-[#F7F5F3] items-center justify-center"
+                    href="/download"
+                    className="self-center bg-white border border-[#E0DEDB] text-[#37322F] px-[30px] py-3 rounded-full font-sans text-base font-medium leading-6 hover:bg-[#F7F5F3] transition-all duration-300 hover:scale-105 flex items-center gap-2"
                   >
-                    See How It Works
+                    Download for Windows
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path d="M12 5v14M5 12l7 7 7-7" />
+                    </svg>
                   </Link>
                 </div>
 
@@ -258,7 +276,7 @@ export default function FeaturesPage() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    AI edits built in
+                    40% more accurate
                   </span>
                   <span className="flex items-center gap-2">
                     <svg
@@ -282,273 +300,7 @@ export default function FeaturesPage() {
             <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
               <div className="max-w-[900px] mx-auto">
                 <div className="text-center mb-12">
-                  <Badge
-                    icon={
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#37322F"
-                        strokeWidth="2"
-                      >
-                        <path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-                      </svg>
-                    }
-                    text="Speak"
-                  />
-                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mt-4 mb-4">
-                    Speak Naturally. Oravo Writes It Perfectly.
-                  </h2>
-                  <p className="text-[#605A57] text-base md:text-lg font-sans max-w-[600px] mx-auto">
-                    Oravo works wherever you work. Any app, device, or language.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <FeatureCard
-                    icon={
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke={accentColor}
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                      </svg>
-                    }
-                    title="Speak Into Any App"
-                    description="Oravo works everywhere: Notion, Gmail, Google Docs, Slack, WhatsApp, Cursor, VS Code—anything with a text field. One voice keyboard for your entire workflow."
-                  />
-                  <FeatureCard
-                    icon={
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke={accentColor}
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                    }
-                    title="Spells Names Right"
-                    description="Oravo uses surrounding context to spell uncommon names, technical terms, and product names correctly—so you don't have to fix them later."
-                  />
-                  <FeatureCard
-                    icon={
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke={accentColor}
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
-                        />
-                      </svg>
-                    }
-                    title="100+ Languages"
-                    description="Oravo works in 100+ languages, so you can dictate in Español, हिन्दी, 中文, 한국어, العربية, Français, Deutsch, and more."
-                  />
-                  <FeatureCard
-                    icon={
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke={accentColor}
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.829a5 5 0 010-7.07m7.072 0a5 5 0 010 7.07M13 12a1 1 0 11-2 0 1 1 0 012 0z"
-                        />
-                      </svg>
-                    }
-                    title="Whisper Mode"
-                    description="Oravo works even when you're whispering, so you can keep dictating in shared spaces, quiet offices, or late at night without disturbing anyone."
-                  />
-                </div>
-              </div>
-            </section>
-
-            {/* REFINE Section */}
-            <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
-              <div className="max-w-[900px] mx-auto">
-                <div className="text-center mb-12">
-                  <Badge
-                    icon={
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#37322F"
-                        strokeWidth="2"
-                      >
-                        <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                      </svg>
-                    }
-                    text="Refine"
-                  />
-                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mt-4 mb-4">
-                    Oravo Edits While You Speak
-                  </h2>
-                  <p className="text-[#605A57] text-base md:text-lg font-sans max-w-[600px] mx-auto">
-                    Oravo goes beyond basic dictation: cleaning up filler words, formatting lists, catching punctuation, and understanding corrections in real time.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <MiniFeatureCard
-                    title="Backtrack Corrections"
-                    description="Oravo understands when you change your mind. Say 'Let's meet at 2… actually 3,' and Oravo writes the corrected version instantly. No manual editing needed."
-                  />
-                  <MiniFeatureCard
-                    title="Remove Filler Words"
-                    description="Oravo automatically removes 'um,' 'uh,' 'like,' and other verbal pauses so your text is clean, professional, and natural."
-                  />
-                  <MiniFeatureCard
-                    title="Numbered Lists"
-                    description="Just speak the numbers: 'Going to the store for 1. Apples 2. Bananas 3. Oranges.' Oravo turns it into a properly formatted list."
-                  />
-                  <MiniFeatureCard
-                    title="Auto Punctuation"
-                    description="Oravo detects punctuation naturally from your pauses and tone. You can also dictate marks like 'comma' or 'question mark' for precision when needed."
-                  />
-                </div>
-              </div>
-            </section>
-
-            {/* PERSONALIZE Section */}
-            <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
-              <div className="max-w-[900px] mx-auto">
-                <div className="text-center mb-12">
-                  <Badge
-                    icon={
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#37322F"
-                        strokeWidth="2"
-                      >
-                        <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    }
-                    text="Personalize"
-                  />
-                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mt-4 mb-4">
-                    Oravo Adapts to You
-                  </h2>
-                  <p className="text-[#605A57] text-base md:text-lg font-sans max-w-[600px] mx-auto">
-                    Oravo learns your words, phrases, and tone—and keeps them consistent across every app and device.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-[rgba(55,50,47,0.12)]">
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                      style={{ background: "#1877F215" }}
-                    >
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke={accentColor}
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-[#37322F] text-lg font-semibold font-sans mb-2">
-                      Custom Dictionary
-                    </h3>
-                    <p className="text-[#605A57] text-sm leading-relaxed font-sans">
-                      Oravo learns your words as you go. When you correct a spelling, it's added automatically to your personal dictionary. Add industry terms, names, or unique spellings manually too.
-                    </p>
-                  </div>
-                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-[rgba(55,50,47,0.12)]">
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                      style={{ background: "#1877F215" }}
-                    >
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke={accentColor}
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M13 10V3L4 14h7v7l9-11h-7z"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-[#37322F] text-lg font-semibold font-sans mb-2">
-                      Voice Snippets
-                    </h3>
-                    <p className="text-[#605A57] text-sm leading-relaxed font-sans">
-                      Create voice shortcuts for things you say often—scheduling links, intros, FAQs, email signatures. Just speak the cue, and Oravo pastes the full, formatted text instantly.
-                    </p>
-                  </div>
-                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-[rgba(55,50,47,0.12)]">
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                      style={{ background: "#1877F215" }}
-                    >
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke={accentColor}
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-[#37322F] text-lg font-semibold font-sans mb-2">
-                      Adaptive Styles
-                    </h3>
-                    <p className="text-[#605A57] text-sm leading-relaxed font-sans">
-                      Let Oravo shape your tone based on where you're writing. Go from formal in documents, to casual in messages, to enthusiastic in emails—always sounding like you.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* DEVELOPER Section */}
-            <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
-              <div className="max-w-[900px] mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                  <div>
+                  <div className="flex justify-center mb-4">
                     <Badge
                       icon={
                         <svg
@@ -559,19 +311,290 @@ export default function FeaturesPage() {
                           stroke="#37322F"
                           strokeWidth="2"
                         >
-                          <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                          <path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                         </svg>
                       }
-                      text="For Developers"
+                      text="Dictation"
                     />
-                    <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mt-4 mb-4">
-                      Built for Developers, Not Just Dictation
+                  </div>
+                  <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-stretch-semi-condensed font-medium leading-tight font-serif mb-4">
+                    Speak Naturally. Oravo Does the Rest.
+                  </h2>
+                  <p className="text-[#605A57] text-base md:text-lg font-sans max-w-[600px] mx-auto">
+                    AI-powered dictation that understands context, accents, and technical jargon. Works in noisy environments.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <FeatureCard
+                    icon={
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={1.5}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                    }
+                    title="Works in Any App"
+                    description="Notion, Gmail, Google Docs, Slack, WhatsApp, Cursor—anything with a text field. One voice keyboard for everything."
+                  />
+                  <FeatureCard
+                    icon={
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={1.5}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    }
+                    title="Context-Aware Spelling"
+                    description="Oravo uses surrounding context to spell names, technical terms, and product names correctly. No manual corrections."
+                  />
+                  <FeatureCard
+                    icon={
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={1.5}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
+                        />
+                      </svg>
+                    }
+                    title="100+ Languages"
+                    description="Dictate in Spanish, Hindi, Chinese, Korean, Arabic, French, German, and 90+ more languages."
+                  />
+                  <FeatureCard
+                    icon={
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={1.5}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.829a5 5 0 010-7.07m7.072 0a5 5 0 010 7.07M13 12a1 1 0 11-2 0 1 1 0 012 0z"
+                        />
+                      </svg>
+                    }
+                    title="Whisper Mode"
+                    description="Works even when you're whispering. Dictate in shared spaces, quiet offices, or late at night."
+                  />
+                </div>
+              </div>
+            </section>
+
+            {/* REFINE Section */}
+            <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
+              <div className="max-w-[900px] mx-auto">
+                <div className="text-center mb-12">
+                  <div className="flex justify-center mb-4">
+                    <Badge
+                      icon={
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#37322F"
+                          strokeWidth="2"
+                        >
+                          <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                      }
+                      text="Auto-Formatting"
+                    />
+                  </div>
+                  <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-stretch-semi-condensed font-medium leading-tight font-serif mb-4">
+                    Clean, Polished Text. Automatically.
+                  </h2>
+                  <p className="text-[#605A57] text-base md:text-lg font-sans max-w-[600px] mx-auto">
+                    Punctuation, paragraphs, and capitalization added automatically. Just speak naturally.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <MiniFeatureCard
+                    title="Instant Corrections"
+                    description="Change your mind mid-sentence? Say 'Let's meet at 2… actually 3,' and Oravo writes the corrected version. No backspacing needed."
+                  />
+                  <MiniFeatureCard
+                    title="Filler Word Removal"
+                    description="Oravo automatically removes 'um,' 'uh,' 'like,' and verbal pauses. Your text comes out clean and professional every time."
+                  />
+                  <MiniFeatureCard
+                    title="Smart Lists"
+                    description="Just speak the numbers: 'First, apples. Second, bananas. Third, oranges.' Oravo turns it into a properly formatted list."
+                  />
+                  <MiniFeatureCard
+                    title="Auto Punctuation"
+                    description="Oravo detects punctuation from your natural pauses and tone. Dictate 'comma' or 'period' when you need precise control."
+                  />
+                </div>
+              </div>
+            </section>
+
+            {/* PERSONALIZE Section */}
+            <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
+              <div className="max-w-[900px] mx-auto">
+                <div className="text-center mb-12">
+                  <div className="flex justify-center mb-4">
+                    <Badge
+                      icon={
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#37322F"
+                          strokeWidth="2"
+                        >
+                          <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                      }
+                      text="Personalization"
+                    />
+                  </div>
+                  <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-stretch-semi-condensed font-medium leading-tight font-serif mb-4">
+                    Learns Your Style. Speaks Your Language.
+                  </h2>
+                  <p className="text-[#605A57] text-base md:text-lg font-sans max-w-[600px] mx-auto">
+                    AI learns your writing style, recognizes names, dates, and technical terms automatically.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <article className="group p-5 bg-white border border-[#E0DEDB] rounded-xl flex flex-col gap-4 transition-all duration-200 hover:border-[#847971]">
+                    <div className="w-10 h-10 rounded-lg bg-[#F7F5F3] flex items-center justify-center text-[#605A57] group-hover:text-[#37322F] transition-colors">
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={1.5}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                        />
+                      </svg>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-[#37322F] text-base font-semibold leading-tight font-sans">
+                        Custom Dictionary
+                      </h3>
+                      <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
+                        Medical terms, legal phrases, tech acronyms—Oravo memorizes your specialized vocabulary after hearing it once.
+                      </p>
+                    </div>
+                  </article>
+                  <article className="group p-5 bg-white border border-[#E0DEDB] rounded-xl flex flex-col gap-4 transition-all duration-200 hover:border-[#847971]">
+                    <div className="w-10 h-10 rounded-lg bg-[#F7F5F3] flex items-center justify-center text-[#605A57] group-hover:text-[#37322F] transition-colors">
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={1.5}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                        />
+                      </svg>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-[#37322F] text-base font-semibold leading-tight font-sans">
+                        Voice Shortcuts
+                      </h3>
+                      <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
+                        Create shortcuts for things you say often—scheduling links, email signatures, FAQs. Speak the cue, get the full text.
+                      </p>
+                    </div>
+                  </article>
+                  <article className="group p-5 bg-white border border-[#E0DEDB] rounded-xl flex flex-col gap-4 transition-all duration-200 hover:border-[#847971]">
+                    <div className="w-10 h-10 rounded-lg bg-[#F7F5F3] flex items-center justify-center text-[#605A57] group-hover:text-[#37322F] transition-colors">
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={1.5}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+                        />
+                      </svg>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-[#37322F] text-base font-semibold leading-tight font-sans">
+                        Adaptive Tone
+                      </h3>
+                      <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
+                        Formal in documents, casual in messages, enthusiastic in emails. Oravo adapts to match where you're writing.
+                      </p>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </section>
+
+            {/* DEVELOPER Section */}
+            <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
+              <div className="max-w-[900px] mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  <div>
+                    <div className="flex justify-start mb-4">
+                      <Badge
+                        icon={
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#37322F"
+                            strokeWidth="2"
+                          >
+                            <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                          </svg>
+                        }
+                        text="For Developers"
+                      />
+                    </div>
+                    <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-stretch-semi-condensed font-medium leading-tight font-serif mb-4">
+                      Built for Code, Not Just Prose
                     </h2>
                     <p className="text-[#605A57] text-base md:text-lg leading-relaxed font-sans mb-6">
-                      Oravo understands syntax, file names, and code formatting—so your voice fits seamlessly into your developer workflow.
+                      Oravo understands syntax, file names, and code formatting—so your voice fits seamlessly into your IDE.
                     </p>
                     <Link
-                      href="/voice-keyboard-for-cursor"
+                      href="/for-developers"
                       className="inline-flex items-center gap-2 text-[#1877F2] font-semibold hover:underline"
                     >
                       Learn more about developer features
@@ -593,15 +616,15 @@ export default function FeaturesPage() {
                   <div className="space-y-4">
                     <MiniFeatureCard
                       title="File Tagging"
-                      description="Using Cursor or VS Code? Oravo recognizes filenames as you speak and automatically tags the right file, bringing all its context into your prompt for more precise AI responses."
+                      description="Using Cursor or VS Code? Oravo recognizes filenames as you speak and automatically tags the right file in your workspace."
                     />
                     <MiniFeatureCard
                       title="Syntax Awareness"
-                      description="Oravo parses your speech with full syntax awareness—preserving exact spacing, formatting, camelCase, snake_case, acronyms, and CLI commands."
+                      description="Preserves exact spacing, formatting, camelCase, snake_case, acronyms, and CLI commands. Code stays code."
                     />
                     <MiniFeatureCard
                       title="Dev Terminology"
-                      description="Oravo automatically recognizes developer-specific terms like Supabase, Cloudflare, Vercel, React, and TypeScript. Add custom terms to your dictionary with a single correction."
+                      description="Automatically recognizes Supabase, Cloudflare, Vercel, React, TypeScript, and thousands of tech terms."
                     />
                   </div>
                 </div>
@@ -612,54 +635,53 @@ export default function FeaturesPage() {
             <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
               <div className="max-w-[900px] mx-auto">
                 <div className="text-center mb-12">
-                  <Badge
-                    icon={
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#37322F"
-                        strokeWidth="2"
-                      >
-                        <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                    }
-                    text="Works Everywhere"
-                  />
-                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mt-4 mb-4">
+                  <div className="flex justify-center mb-4">
+                    <Badge
+                      icon={
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#37322F"
+                          strokeWidth="2"
+                        >
+                          <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      }
+                      text="Platforms"
+                    />
+                  </div>
+                  <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-stretch-semi-condensed font-medium leading-tight font-serif mb-4">
                     Available on All Your Devices
                   </h2>
                   <p className="text-[#605A57] text-base md:text-lg font-sans max-w-[600px] mx-auto">
-                    Oravo runs seamlessly on Mac, Windows, iPhone, and Android—keeping your voice, vocabulary, and settings in sync across every device.
+                    Native apps for Mac and Windows. Your vocabulary and settings sync across every device.
                   </p>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {[
                     { name: "macOS", desc: "Native Mac app", comingSoon: false },
                     { name: "Windows", desc: "Native Windows app", comingSoon: false },
                     { name: "iOS", desc: "iPhone & iPad", comingSoon: true },
                     { name: "Android", desc: "All Android devices", comingSoon: true },
                   ].map((platform) => (
-                    <div
+                    <article
                       key={platform.name}
-                      className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-[rgba(55,50,47,0.12)] text-center hover:shadow-[0px_4px_12px_rgba(55,50,47,0.08)] transition-all relative"
+                      className="group p-5 bg-white border border-[#E0DEDB] rounded-xl text-center transition-all duration-200 hover:border-[#847971] relative"
                     >
                       {platform.comingSoon && (
                         <span className="absolute top-3 right-3 px-2 py-0.5 bg-[#F59E0B]/10 text-[#F59E0B] text-xs font-semibold rounded-full">
                           Coming soon
                         </span>
                       )}
-                      <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center mb-3 mx-auto"
-                        style={{ background: "#1877F215" }}
-                      >
+                      <div className="w-10 h-10 rounded-lg bg-[#F7F5F3] flex items-center justify-center mx-auto mb-3 text-[#605A57] group-hover:text-[#37322F] transition-colors">
                         <svg
                           className="w-6 h-6"
                           fill="none"
                           viewBox="0 0 24 24"
-                          stroke="#1877F2"
-                          strokeWidth={2}
+                          stroke="currentColor"
+                          strokeWidth={1.5}
                         >
                           <path
                             strokeLinecap="round"
@@ -674,7 +696,7 @@ export default function FeaturesPage() {
                       <div className="text-[#847971] text-sm font-sans">
                         {platform.desc}
                       </div>
-                    </div>
+                    </article>
                   ))}
                 </div>
               </div>
@@ -685,14 +707,14 @@ export default function FeaturesPage() {
               <div className="max-w-[900px] mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                   <div className="order-2 lg:order-1">
-                    <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-[rgba(55,50,47,0.12)]">
+                    <div className="p-6 md:p-8 bg-white border border-[#E0DEDB] rounded-xl">
                       <ul className="space-y-4">
                         {[
-                          "No audio stored on servers",
+                          "Zero data retention — nothing stored",
                           "Your data never trains our models",
                           "GDPR and CCPA compliant",
                           "SOC 2 Type II certified",
-                          "Enterprise-grade security",
+                          "HIPAA-ready for healthcare",
                         ].map((item, idx) => (
                           <li
                             key={idx}
@@ -716,26 +738,28 @@ export default function FeaturesPage() {
                     </div>
                   </div>
                   <div className="order-1 lg:order-2">
-                    <Badge
-                      icon={
-                        <svg
-                          width="12"
-                          height="12"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#37322F"
-                          strokeWidth="2"
-                        >
-                          <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
-                      }
-                      text="Privacy & Security"
-                    />
-                    <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mt-4 mb-4">
-                      Your Data, Your Control
+                    <div className="flex justify-start mb-4">
+                      <Badge
+                        icon={
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#37322F"
+                            strokeWidth="2"
+                          >
+                            <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                          </svg>
+                        }
+                        text="Privacy & Security"
+                      />
+                    </div>
+                    <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-stretch-semi-condensed font-medium leading-tight font-serif mb-4">
+                      Privacy-First Architecture
                     </h2>
                     <p className="text-[#605A57] text-base md:text-lg leading-relaxed font-sans">
-                      Built for professionals who value privacy. Oravo uses encrypted processing, never stores your audio, and gives you complete control over your data.
+                      Built for professionals who can't compromise on security. Encrypted processing, zero data retention, and complete control over your information.
                     </p>
                   </div>
                 </div>
@@ -746,22 +770,24 @@ export default function FeaturesPage() {
             <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
               <div className="max-w-[800px] mx-auto">
                 <div className="text-center mb-12">
-                  <Badge
-                    icon={
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#37322F"
-                        strokeWidth="2"
-                      >
-                        <path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    }
-                    text="FAQ"
-                  />
-                  <h2 className="text-[#37322F] text-3xl md:text-4xl font-normal font-serif mt-4 mb-4">
+                  <div className="flex justify-center mb-4">
+                    <Badge
+                      icon={
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#37322F"
+                          strokeWidth="2"
+                        >
+                          <path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      }
+                      text="FAQ"
+                    />
+                  </div>
+                  <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-stretch-semi-condensed font-medium leading-tight font-serif mb-4">
                     Frequently Asked Questions
                   </h2>
                 </div>
@@ -786,10 +812,10 @@ export default function FeaturesPage() {
                   style={{ background: accentColor }}
                 >
                   <h2 className="text-white text-2xl md:text-4xl font-normal font-serif mb-4">
-                    Ready to Flow?
+                    4x Faster Than Typing
                   </h2>
                   <p className="text-white/90 text-base md:text-lg leading-relaxed font-sans mb-8">
-                    Effortless voice dictation on Mac, Windows, and mobile. 4x faster than typing, with AI edits built in.
+                    Try in your next email, Slack message, or AI prompt. It's free and works everywhere.
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
