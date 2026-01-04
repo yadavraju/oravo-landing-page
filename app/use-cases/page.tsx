@@ -327,49 +327,49 @@ const categories = {
       name: "Asana",
       description:
         "Use voice dictation in Asana to capture task updates and ideas as they come to you.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-asana",
       color: "#F06A6A",
     },
     {
       name: "Trello",
       description:
         "With speech-to-text, you can easily keep Trello work moving during busy collaboration sessions.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-trello",
       color: "#0052CC",
     },
     {
       name: "Monday.com",
       description:
         "Use Oravo voice dictation in Monday.com to record detailed notes without breaking your flow.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-monday",
       color: "#FF3D57",
     },
     {
       name: "ClickUp",
       description:
         "With speech-to-text, you can easily add ClickUp context, comments, and tasks much faster.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-clickup",
       color: "#7B68EE",
     },
     {
       name: "Jira",
       description:
         "Use Oravo voice dictation in Jira to capture ticket updates and ideas as they come.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-jira",
       color: "#0052CC",
     },
     {
       name: "Linear",
       description:
         "Linear works smoothly with hands-free dictation to record detailed notes without breaking your flow.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-linear",
       color: "#5E6AD2",
     },
     {
       name: "Airtable",
       description:
         "Airtable works smoothly with hands-free dictation to add context, comments, and tasks much faster.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-airtable",
       color: "#18BFFF",
     },
   ],
@@ -385,77 +385,77 @@ const categories = {
       name: "VS Code",
       description:
         "Voice-to-text in VS Code lets you write comments, documentation, and code explanations faster.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-vscode",
       color: "#007ACC",
     },
     {
       name: "Cursor",
       description:
         "Speak more context to your AI coding assistant and get better results with voice dictation.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-cursor",
       color: "#1877F2",
     },
     {
       name: "GitHub",
       description:
         "Write detailed PR descriptions, issue comments, and documentation at speaking speed.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-github",
       color: "#181717",
     },
     {
       name: "Jira",
       description:
         "Capture detailed ticket descriptions and comments without breaking your engineering flow.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-jira",
       color: "#0052CC",
     },
     {
       name: "Linear",
       description:
         "Issue tracking at speaking speed. Add context and comments to Linear issues effortlessly.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-linear",
       color: "#5E6AD2",
     },
     {
       name: "Stack Overflow",
       description:
         "Write detailed questions and answers with technical accuracy using voice-to-text.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-stackoverflow",
       color: "#F58025",
     },
     {
       name: "Warp",
       description:
         "AI terminal companion works great with voice input for commands and documentation.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-warp",
       color: "#01A4FF",
     },
     {
       name: "Replit",
       description:
         "Code and collaborate faster with voice-to-text for comments, docs, and chat.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-replit",
       color: "#F26207",
     },
     {
       name: "v0",
       description:
         "Describe your UI components faster with voice to get better AI-generated code.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-v0",
       color: "#000000",
     },
     {
       name: "Bolt",
       description:
         "Voice-first development with AI. Speak your requirements and ship faster.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-bolt",
       color: "#000000",
     },
     {
       name: "Lovable",
       description:
         "Build full-stack apps by speaking your ideas. Voice dictation for rapid prototyping.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-lovable",
       color: "#FF6B6B",
     },
   ],
@@ -492,56 +492,56 @@ const categories = {
       name: "Outlook",
       description:
         "Use voice dictation in Outlook to write professional emails efficiently without heavy typing strain.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-outlook",
       color: "#0078D4",
     },
     {
       name: "WhatsApp",
       description:
         "Use voice typing in WhatsApp Web to stay connected and reply to messages much faster.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-whatsapp",
       color: "#25D366",
     },
     {
       name: "Telegram",
       description:
         "Dictate Telegram messages in personal chats and groups to express ideas clearly without typing delays.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-telegram",
       color: "#26A5E4",
     },
     {
       name: "Signal",
       description:
         "Use speech-to-text in Signal to communicate privately and efficiently with secure encrypted messaging.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-signal",
       color: "#3A76F0",
     },
     {
       name: "Instagram",
       description:
         "Use speech-to-text for Instagram messages, comments, and replies to engage faster without typing.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-instagram",
       color: "#E4405F",
     },
     {
       name: "Messenger",
       description:
         "Speak your Messenger messages instead of typing them for faster and more natural conversations.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-messenger",
       color: "#00B2FF",
     },
     {
       name: "LinkedIn",
       description:
         "Use speech-to-text to network and communicate faster with professional clarity on LinkedIn.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-linkedin",
       color: "#0A66C2",
     },
     {
       name: "iMessage",
       description:
         "Use accurate voice-to-text in iMessage to stay responsive without typing strain on Mac.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-imessage",
       color: "#1DA1F2",
     },
   ],
@@ -564,49 +564,49 @@ const categories = {
       name: "Obsidian",
       description:
         "Take notes in your knowledge vault at speaking speed with voice-to-text.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-obsidian",
       color: "#7C3AED",
     },
     {
       name: "Evernote",
       description:
         "Capture notes and ideas as they come with hands-free voice dictation.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-evernote",
       color: "#00A82D",
     },
     {
       name: "Apple Notes",
       description:
         "Quick voice notes on Mac with seamless iCloud sync across devices.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-apple-notes",
       color: "#000000",
     },
     {
       name: "Medium",
       description:
         "Write and publish articles at speaking speed with automatic formatting.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-medium",
       color: "#000000",
     },
     {
       name: "WordPress",
       description:
         "Blog faster with voice-to-text. Write posts and content hands-free.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-wordpress",
       color: "#21759B",
     },
     {
       name: "Substack",
       description:
         "Write newsletters at speaking speed. Connect with your audience faster.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-substack",
       color: "#FF6719",
     },
     {
       name: "Ghost",
       description:
         "Publish content hands-free. Voice dictation for professional blogging.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-ghost",
       color: "#15171A",
     },
     {
@@ -622,56 +622,56 @@ const categories = {
       name: "ChatGPT",
       description:
         "Speak longer prompts with more context to get better AI responses.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-chatgpt",
       color: "#10A37F",
     },
     {
       name: "Claude",
       description:
         "Voice-first AI conversations. Dictate complex prompts naturally.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-claude",
       color: "#CC9B7A",
     },
     {
       name: "Perplexity",
       description:
         "Search and research faster by speaking your questions instead of typing.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-perplexity",
       color: "#20808D",
     },
     {
       name: "Cursor",
       description:
         "AI coding assistant works better with more context. Speak your requirements.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-cursor",
       color: "#1877F2",
     },
     {
       name: "v0",
       description:
         "Describe your UI at speaking speed. Better prompts, better components.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-v0",
       color: "#000000",
     },
     {
       name: "Bolt",
       description:
         "Build full-stack apps by voice. Speak your ideas into reality.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-bolt",
       color: "#000000",
     },
     {
       name: "Lovable",
       description:
         "Voice-first app development. Describe features and watch them build.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-lovable",
       color: "#FF6B6B",
     },
     {
       name: "Replit",
       description:
         "Collaborative coding with voice. Speak to build with AI assistance.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-replit",
       color: "#F26207",
     },
   ],
@@ -680,14 +680,14 @@ const categories = {
       name: "Figma",
       description:
         "Add comments, feedback, and documentation in Figma designs faster with voice.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-figma",
       color: "#F24E1E",
     },
     {
       name: "Canva",
       description:
         "Add text to your designs faster by speaking instead of typing.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-canva",
       color: "#00C4CC",
     },
     {
@@ -703,14 +703,14 @@ const categories = {
       name: "Chrome",
       description:
         "Voice typing works everywhere in Chrome. Forms, searches, and more.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-chrome",
       color: "#4285F4",
     },
     {
       name: "Arc",
       description:
         "Modern browsing with voice input. Type anywhere at speaking speed.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-arc",
       color: "#FCBFBD",
     },
   ],
@@ -719,21 +719,21 @@ const categories = {
       name: "Salesforce",
       description:
         "Update CRM records and log activities faster with voice dictation.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-salesforce",
       color: "#00A1E0",
     },
     {
       name: "HubSpot",
       description:
         "Log calls, update deals, and write notes at speaking speed.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-hubspot",
       color: "#FF7A59",
     },
     {
       name: "LinkedIn",
       description:
         "Network and outreach faster with voice-to-text messaging.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-linkedin",
       color: "#0A66C2",
     },
     {
@@ -747,7 +747,7 @@ const categories = {
       name: "Outlook",
       description:
         "Enterprise email at speaking speed. Professional communication made easy.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-outlook",
       color: "#0078D4",
     },
   ],
@@ -756,14 +756,14 @@ const categories = {
       name: "Zendesk",
       description:
         "Resolve tickets 4x faster with voice-to-text responses.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-zendesk",
       color: "#03363D",
     },
     {
       name: "Intercom",
       description:
         "Customer support at speaking speed. Reply faster, help more.",
-      href: "/use-cases",
+      href: "/voice-keyboard-for-intercom",
       color: "#6AFDEF",
     },
     {
