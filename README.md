@@ -327,8 +327,6 @@ Oravo uses the following trusted subprocessors (see `/subprocessors` page):
 
 - **Zero Data Retention**: Voice data is not stored
 - **HIPAA-Ready**: Compliant with healthcare regulations
-- **SOC 2 Type II**: Enterprise security certification
-- **End-to-End Encryption**: Data encrypted in transit
 - **Open Source Models**: Transparent AI processing
 
 ---
