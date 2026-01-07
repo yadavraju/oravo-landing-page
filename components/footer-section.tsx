@@ -73,13 +73,13 @@ export default function FooterSection() {
           <div className="flex items-center gap-4 mt-2">
             {/* Fazier Badge */}
             <a
-              href="https://fazier.com/launches/oravo.ai"
+              href="https://fazier.com/launches/oravo-ai"
               target="_blank"
               rel="noopener noreferrer"
             >
               <img
-                src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light"
-                width={120}
+                src="https://fazier.com/api/v1/public/badges/embed_image.svg?launch_id=6546&badge_type=daily&variant=2&theme=light"
+                width={150}
                 alt="Fazier badge"
               />
             </a>
@@ -93,8 +93,8 @@ export default function FooterSection() {
               <img
                 src="https://twelve.tools/badge0-white.svg"
                 alt="Featured on Twelve Tools"
-                width={200}
-                height={54}
+                width={150}
+                height={40}
               />
             </a>
           </div>
