@@ -9,26 +9,48 @@ const featuredPersonas = [
   {
     id: "creators",
     label: "Creators",
-    title: "Voice to Text for Creators",
+    title: "International Founders & Professionals",
     description:
-      "Dictate video scripts, podcast notes, and social media content at the speed of thought. Keep your creative flow uninterrupted.",
+      "Faster emails, proposals, and updates. Write polished English without slowing down to think about grammar.",
     href: "/for-creators",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round"/>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <path
+          d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
   },
   {
     id: "healthcare",
     label: "Healthcare",
-    title: "Speech to Text for Healthcare",
+    title: "Healthcare Teams",
     description:
-      "Document patient notes and medical reports hands-free. HIPAA-ready with medical terminology recognition built-in.",
+      "Faster documentation with privacy in mind. HIPAA-ready with medical terminology recognition built-in.",
     href: "/for-healthcare",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" strokeLinecap="round" strokeLinejoin="round"/>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <path
+          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
   },
@@ -40,23 +62,49 @@ const featuredPersonas = [
       "Beat writer's block by speaking your first draft. Get words flowing at the natural pace of human thought.",
     href: "/for-writers",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" strokeLinecap="round" strokeLinejoin="round"/>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <path
+          d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
   },
   {
     id: "students",
     label: "Students",
-    title: "Dictation App for Students",
+    title: "Students",
     description:
-      "Write essays, research papers, and study notes 4x faster. Focus on learning, not typing.",
+      "Essays and notes without the grammar struggle. Write research papers and assignments 4x faster.",
     href: "/for-students",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M12 14l9-5-9-5-9 5 9 5z" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M12 14v7" strokeLinecap="round" strokeLinejoin="round"/>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <path
+          d="M12 14l9-5-9-5-9 5 9 5z"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path d="M12 14v7" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },
@@ -68,21 +116,43 @@ const featuredPersonas = [
       "Dictate legal documents, case notes, and client communications with precision. Understands legal terminology.",
     href: "/for-lawyers",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" strokeLinecap="round" strokeLinejoin="round"/>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <path
+          d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
   },
   {
     id: "engineers",
     label: "Engineers",
-    title: "Dictation for Developers",
+    title: "Engineers & Technical Writers",
     description:
-      "Document code, write specs, and update tickets without leaving your IDE. Technical terminology recognized.",
+      "Docs, tickets, and specs without breaking flow. Technical terminology recognized automatically.",
     href: "/for-developers",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" strokeLinecap="round" strokeLinejoin="round"/>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <path
+          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
   },
@@ -94,8 +164,19 @@ const featuredPersonas = [
       "Follow up faster, close deals quicker. Dictate emails and CRM updates between meetings.",
     href: "/for-sales",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" strokeLinecap="round" strokeLinejoin="round"/>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <path
+          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
   },
@@ -107,9 +188,20 @@ const featuredPersonas = [
       "Type hands-free with accuracy and independence. Perfect for RSI, mobility challenges, or visual impairments.",
     href: "/for-accessibility",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="12" cy="4" r="2"/>
-        <path d="M12 6v4m0 0l-4 8m4-8l4 8m-8-4h8" strokeLinecap="round" strokeLinejoin="round"/>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <circle cx="12" cy="4" r="2" />
+        <path
+          d="M12 6v4m0 0l-4 8m4-8l4 8m-8-4h8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
   },
@@ -148,10 +240,12 @@ export default function MadeForYou() {
             id="made-for-you-heading"
             className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-stretch-semi-condensed font-medium leading-tight md:leading-[60px] font-serif text-center px-4"
           >
-            Voice to Text for Every Professional
+            You Think Faster Than You Type.
           </h2>
           <p className="text-[#605A57] text-base md:text-lg font-normal leading-relaxed font-sans text-center max-w-[600px]">
-            From creators to healthcare workers, Oravo adapts to your industry and workflow.
+            Writing in a second language is exhausting. Oravo lets you speak in
+            your native tongue and get perfectly written English — with the
+            right tone, grammar, and formatting. Automatically.
           </p>
         </div>
       </div>
@@ -192,7 +286,9 @@ export default function MadeForYou() {
             className="flex items-center gap-2 text-[#605A57] hover:text-[#37322F] transition-colors"
           >
             <span className="text-sm font-medium font-sans">
-              {showAll ? "Show less" : `+${additionalRoles.length} more professions`}
+              {showAll
+                ? "Show less"
+                : `+${additionalRoles.length} more professions`}
             </span>
             <motion.svg
               width="16"
@@ -204,7 +300,11 @@ export default function MadeForYou() {
               animate={{ rotate: showAll ? 180 : 0 }}
               transition={{ duration: 0.2 }}
             >
-              <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M19 9l-7 7-7-7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </motion.svg>
           </button>
 

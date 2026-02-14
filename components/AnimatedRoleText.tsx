@@ -4,9 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 // Import roles from MadeForYou component
-const roles = [
-  "Global Speakers"
-] as const;
+const roles = ["Without Typing a Word"] as const;
 
 export default function AnimatedRoleText() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -27,7 +25,11 @@ export default function AnimatedRoleText() {
   // }, [isClient]);
 
   if (!isClient) {
-    return <span className="inline-block">Global Speakers</span>;
+    return (
+      <span className="inline-block">
+        4× Faster—Just Speak in Your Language
+      </span>
+    );
   }
 
   return (

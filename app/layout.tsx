@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Oravo",
   },
   description:
-    "Voice typing that understands every accent. Speak your language, type in English. Real-time AI translation for non-native speakers. 4x faster. Try free.",
+    "Write perfect English 4x faster—just speak in your language. Context-aware voice typing with real-time translation for non-native speakers. Works in Gmail, Slack, Notion, and every app.",
   applicationName: "Oravo.ai",
   keywords: [
     // PRIMARY MOAT: Non-native English speaker keywords (UNIQUE POSITIONING)

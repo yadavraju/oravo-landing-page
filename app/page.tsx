@@ -19,6 +19,7 @@ import PricingSection from "../components/pricing-section";
 import SmartSimpleBrilliant from "../components/smart-simple-brilliant";
 import TechCompanyMarquee from "../components/TechCompanyMarquee";
 import TestimonialsSection from "../components/testimonials-section";
+import TwoWayExamples from "../components/two-way-examples";
 import YourWorkInSync from "../components/your-work-in-sync";
 
 // Reusable Badge Component
@@ -127,14 +128,15 @@ export default function LandingPage() {
               <div className="w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
                 <div className="self-stretch rounded-[3px] flex flex-col justify-center items-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
                   <h1 className="w-full text-center text-[#37322F] text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[80px] font-stretch-semi-condensed font-medium leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-4 sm:px-6 md:px-0 mt-6 sm:mt-8 md:mt-4 lg:mt-0">
-                    AI Voice typing for
+                    Write English 4x Faster
                     <br />
                     <AnimatedRoleText />
                   </h1>
                   <div className="w-full max-w-[720px] lg:w-[720px] text-center flex justify-center flex-col text-[rgba(55,50,47,0.80)] sm:text-lg md:text-xl leading-[1.4] sm:leading-[1.45] md:leading-[1.5] lg:leading-7 font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-medium text-sm">
-                    Voice typing with real-time translation for non-native English speakers.
-                    Write clear emails, documents, scripts, and notes using your voice in any app you work.
-                    Support for Google Docs, Gmail, Slack, and more.
+                    Context-aware, two-way voice typing that translates as you
+                    speak. Dictate in Spanish and Oravo types polished English
+                    for Gmail; speak English and it types natural Spanish for
+                    chat—auto-fixing tone, grammar, and formatting in every app.
                   </div>
                 </div>
               </div>
@@ -145,8 +147,89 @@ export default function LandingPage() {
                 <DownloadButtons />
               </div>
 
-              {/* Security & Privacy Trust Badges */}
+              {/* Trust Elements */}
               <div className="mt-6 sm:mt-8 flex flex-wrap justify-center items-center gap-3 sm:gap-4 px-4 sm:px-0 relative z-10">
+                <Badge
+                  icon={
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                        cx="7"
+                        cy="7"
+                        r="5"
+                        stroke="#37322F"
+                        strokeWidth="1"
+                        fill="none"
+                      />
+                      <path
+                        d="M7 4V7L9 9"
+                        stroke="#37322F"
+                        strokeWidth="1"
+                        fill="none"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  }
+                  text="Understands 100+ accents"
+                />
+                <Badge
+                  icon={
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2 5L7 2L12 5V9L7 12L2 9V5Z"
+                        stroke="#37322F"
+                        strokeWidth="1"
+                        fill="none"
+                      />
+                      <path
+                        d="M5 7H9"
+                        stroke="#37322F"
+                        strokeWidth="1"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  }
+                  text="Real-time translation to English"
+                />
+                <Badge
+                  icon={
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3 4C3 4 5 2 7 2C9 2 11 4 11 4"
+                        stroke="#37322F"
+                        strokeWidth="1"
+                        fill="none"
+                        strokeLinecap="round"
+                      />
+                      <path
+                        d="M4.5 6.5C4.5 6.5 5.5 5 7 5C8.5 5 9.5 6.5 9.5 6.5"
+                        stroke="#37322F"
+                        strokeWidth="1"
+                        fill="none"
+                        strokeLinecap="round"
+                      />
+                      <circle cx="7" cy="9" r="1" fill="#37322F" />
+                    </svg>
+                  }
+                  text="Works in noisy environments"
+                />
                 <Badge
                   icon={
                     <svg
@@ -170,88 +253,16 @@ export default function LandingPage() {
                       />
                     </svg>
                   }
-                  text="Zero Data Retention"
-                />
-                <Badge
-                  icon={
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect
-                        x="3"
-                        y="6"
-                        width="8"
-                        height="6"
-                        rx="1"
-                        stroke="#37322F"
-                        strokeWidth="1"
-                        fill="none"
-                      />
-                      <path
-                        d="M5 6V4C5 2.9 5.9 2 7 2C8.1 2 9 2.9 9 4V6"
-                        stroke="#37322F"
-                        strokeWidth="1"
-                        fill="none"
-                      />
-                    </svg>
-                  }
-                  text="Open Source models"
-                />
-                <Badge
-                  icon={
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M7 1L2 3.5V7C2 9.76 4.24 12.26 7 13C9.76 12.26 12 9.76 12 7V3.5L7 1Z"
-                        stroke="#37322F"
-                        strokeWidth="1"
-                        fill="none"
-                      />
-                    </svg>
-                  }
-                  text="HIPAA-Ready"
-                />
-                <Badge
-                  icon={
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M7 2L9 6H13L9.5 9L11 13L7 10L3 13L4.5 9L1 6H5L7 2Z"
-                        stroke="#37322F"
-                        strokeWidth="1"
-                        fill="none"
-                      />
-                    </svg>
-                  }
-                  text="SOC 2 Type II"
+                  text="HIPAA-ready · SOC 2 Type II"
                 />
               </div>
 
-              {/* Language Support Indicator */}
+              {/* Trust line */}
               <div className="mt-4 sm:mt-6 flex flex-wrap justify-center items-center gap-2 px-4 sm:px-0 relative z-10">
-                <span className="text-[#847971] text-xs font-medium uppercase tracking-wide">
-                  100+ Languages Supported
+                <span className="text-[#847971] text-xs font-medium tracking-wide">
+                  Works in any app &nbsp;·&nbsp; Built for non‑native accents
+                  &nbsp;·&nbsp; Real‑time translation &nbsp;·&nbsp; HIPAA‑ready
                 </span>
-                <div className="flex items-center gap-1">
-                  {["🇺🇸", "🇪🇸", "🇫🇷", "🇩🇪", "🇯🇵", "🇨🇳", "🇮🇳", "🇧🇷", "🇰🇷", "🇮🇹"].map((flag, i) => (
-                    <span key={i} className="text-base sm:text-lg">{flag}</span>
-                  ))}
-                  <span className="text-[#847971] text-xs ml-1">+90 more</span>
-                </div>
               </div>
 
               <div className="absolute top-[232px] sm:top-[248px] md:top-[264px] lg:top-[320px] left-1/2 transform -translate-x-1/2 z-0 pointer-events-none">
@@ -285,22 +296,22 @@ export default function LandingPage() {
                 <div className="flex-1 px-0 sm:px-2 md:px-0 flex flex-col md:flex-row justify-center items-stretch gap-0">
                   {/* Feature Cards */}
                   <FeatureCard
-                    title="40% More Accurate Than Built-in Tools"
-                    description="AI learns your writing style, recognizes names, dates, and technical terms automatically. No more fixing typos in medical records or legal documents."
+                    title="App-aware tone: casual in Slack, professional in email"
+                    description="Oravo understands what you're writing and where—then outputs clean text that matches the moment. Auto punctuation, paragraphs, and formatting included."
                     isActive={activeCard === 1}
                     progress={activeCard === 0 ? progress : 0}
                     onClick={() => handleCardClick(0)}
                   />
                   <FeatureCard
-                    title="Dictate & Translate Instantly"
-                    description="Speak in Spanish, type in English. Real-time translation while you dictate. Choose any input and output language. Write emails globally without learning new languages."
+                    title="Two-way translation while you type"
+                    description="Speak Spanish, get English. Speak English, get Spanish. Real-time translation in both directions—Oravo handles it all while you focus on your message."
                     isActive={activeCard === 1}
                     progress={activeCard === 1 ? progress : 0}
                     onClick={() => handleCardClick(1)}
                   />
                   <FeatureCard
-                    title="Learns Your Industry Jargon in Seconds"
-                    description="Medical terminology, legal phrases, tech acronyms - Oravo memorizes your specialized vocabulary after hearing it once. Works for healthcare, law, engineering, and finance."
+                    title="Removes filler words and awkward phrasing"
+                    description="No more 'um', 'like', or rambling sentences. Oravo cleans up your speech into polished text automatically—so every message sounds intentional."
                     isActive={activeCard === 1}
                     progress={activeCard === 2 ? progress : 0}
                     onClick={() => handleCardClick(2)}
@@ -319,6 +330,9 @@ export default function LandingPage() {
                   </div>
                 </div>
               </div>
+
+              {/* Documentation Section */}
+              <DocumentationSection />
 
               {/* Bento Grid Section - Feature Highlights */}
               <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
@@ -376,12 +390,13 @@ export default function LandingPage() {
                     />
 
                     <h2 className="w-full text-center text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-stretch-semi-condensed font-medium leading-tight md:leading-[60px] font-serif px-4">
-                      Voice to Text, Perfected
+                      Your Voice. Any Language. Perfect English.
                     </h2>
                     <div className="self-stretch text-center text-[#605A57] text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
-                      Speak naturally. Oravo transcribes, formats, and translates
-                      <br className="hidden sm:block" />
-                      your words into polished text — in any app, any language.
+                      Stop struggling to write in a language that isn't yours.
+                      Just speak naturally — Oravo translates, formats, and
+                      polishes your words into professional English. Works in
+                      Gmail, Slack, Notion, and 50+ apps.
                     </div>
                   </div>
                 </div>
@@ -408,7 +423,8 @@ export default function LandingPage() {
                           Dictate + Translate
                         </h3>
                         <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
-                          Speak in Spanish, get text in English. Write emails in any language without learning it.
+                          Speak in Spanish, get text in English. Write emails in
+                          any language without learning it.
                         </p>
                       </div>
                       <div className="w-full h-[280px] sm:h-[320px] rounded-xl flex overflow-hidden items-center justify-center relative bg-[#F7F5F3]">
@@ -420,10 +436,11 @@ export default function LandingPage() {
                     <div className="border-b border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col gap-5">
                       <div className="flex flex-col gap-3">
                         <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
-                          Incredibly Accurate
+                          AI Mode
                         </h3>
                         <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
-                          AI that understands context, accents, and technical jargon. Works in noisy environments.
+                          AI that understands context, accents, and technical
+                          jargon. Works in noisy environments.
                         </p>
                       </div>
                       <div className="w-full h-[280px] sm:h-[320px] rounded-xl flex items-center justify-center overflow-hidden">
@@ -440,10 +457,11 @@ export default function LandingPage() {
                     <div className="border-b md:border-b-0 border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col gap-5">
                       <div className="flex flex-col gap-3">
                         <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
-                          Auto-Format as You Speak
+                          Auto format as you speak
                         </h3>
                         <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
-                          Punctuation, paragraphs, and capitalization added automatically. Just speak naturally.
+                          Punctuation, paragraphs, and capitalization added
+                          automatically. Just speak naturally.
                         </p>
                       </div>
                       <div className="w-full h-[280px] sm:h-[320px] rounded-xl flex overflow-hidden items-center justify-center relative">
@@ -460,10 +478,12 @@ export default function LandingPage() {
                     <div className="p-6 sm:p-8 md:p-10 flex flex-col gap-5">
                       <div className="flex flex-col gap-3">
                         <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
-                          Works Everywhere
+                          Types Anywhere You Can Type
                         </h3>
                         <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
-                          Gmail, Slack, Notion, Google Docs — type anywhere with your voice on Mac.
+                          Gmail, Slack, Notion, Google Docs, Word, LinkedIn,
+                          Jira, and more—Oravo works system-wide so you never
+                          change your workflow.
                         </p>
                       </div>
                       <div className="w-full h-[280px] sm:h-[320px] rounded-xl flex overflow-hidden justify-center items-center relative bg-transparent">
@@ -490,11 +510,11 @@ export default function LandingPage() {
                 </div>
               </div>
 
+              {/* Two-way Translation Examples */}
+              <TwoWayExamples />
+
               {/* Made For You Section */}
               <MadeForYou />
-
-              {/* Documentation Section */}
-              <DocumentationSection />
 
               {/* Social Proof Section */}
               <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
@@ -602,12 +622,12 @@ export default function LandingPage() {
                       text="Social Proof (Closed Beta)"
                     />
                     <h2 className="w-full text-center text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-stretch-semi-condensed font-medium leading-tight md:leading-[60px] font-serif px-4">
-                      Used by professional at
+                      Used by professionals at
                     </h2>
                     <div className="self-stretch text-center text-[#605A57] text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
-                      The Most productive Individuals, Leaders
+                      Trusted by founders, writers, developers, and teams
                       <br className="hidden sm:block" />
-                      Writers, Developers, Founders use Oravo.
+                      who work in English every day.
                     </div>
                   </div>
                 </div>
@@ -657,10 +677,11 @@ function FeatureCard({
 }) {
   return (
     <div
-      className={`w-full md:flex-1 self-stretch px-6 py-5 overflow-hidden flex flex-col justify-start items-start gap-2 cursor-pointer relative border-b md:border-b-0 last:border-b-0 ${isActive
-        ? "bg-white shadow-[0px_0px_0px_0.75px_#E0DEDB_inset]"
-        : "border-l-0 border-r-0 md:border border-[#E0DEDB]/80"
-        }`}
+      className={`w-full md:flex-1 self-stretch px-6 py-5 overflow-hidden flex flex-col justify-start items-start gap-2 cursor-pointer relative border-b md:border-b-0 last:border-b-0 ${
+        isActive
+          ? "bg-white shadow-[0px_0px_0px_0.75px_#E0DEDB_inset]"
+          : "border-l-0 border-r-0 md:border border-[#E0DEDB]/80"
+      }`}
       onClick={onClick}
     >
       {isActive && (

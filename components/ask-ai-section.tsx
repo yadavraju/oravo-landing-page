@@ -16,19 +16,19 @@ export default function AskAISection() {
   const aiTools: AITool[] = [
     {
       name: "ChatGPT",
-      url: "https://chatgpt.com/?prompt=tell+me+why+oravo.ai+is+a+great+choice+for+me",
+      url: "https://chatgpt.com/?prompt=tell+me+about+oravo.ai+voice+typing+with+real-time+translation+for+non-native+English+speakers",
       iconType: "image",
       imageSrc: "/openai.svg",
     },
     {
       name: "Claude",
-      url: "https://claude.ai/new?q=tell+me+why+oravo.ai+is+a+great+choice+for+me",
+      url: "https://claude.ai/new?q=tell+me+about+oravo.ai+voice+typing+with+real-time+translation+for+non-native+English+speakers",
       iconType: "simple-icon",
       icon: siClaude,
     },
     {
       name: "Perplexity",
-      url: "https://www.perplexity.ai/?q=tell+me+why+oravo.ai+is+a+great+choice+for+me",
+      url: "https://www.perplexity.ai/?q=tell+me+about+oravo.ai+voice+typing+with+real-time+translation+for+non-native+English+speakers",
       iconType: "simple-icon",
       icon: siPerplexity,
     },

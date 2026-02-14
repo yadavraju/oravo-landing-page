@@ -57,14 +57,14 @@ export default function PricingSection() {
 
           {/* Title */}
           <h2 className="w-full text-center text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-stretch-semi-condensed font-medium leading-tight md:leading-[60px] font-serif px-4">
-            Choose the perfect plan
+            Start free. Upgrade when you&apos;re ready.
           </h2>
 
           {/* Description */}
           <div className="self-stretch text-center text-[#605A57] text-base font-normal leading-7 font-sans">
-            Download the app to get started
+            Try Oravo free. Go Pro for unlimited voice typing,
             <br />
-            for free No credit card required.
+            faster processing, and custom vocabulary.
           </div>
         </div>
       </div>
@@ -148,7 +148,7 @@ export default function PricingSection() {
                     Starter
                   </div>
                   <div className="w-full max-w-[242px] text-[rgba(41,37,35,0.70)] text-sm font-normal leading-5 font-sans">
-                    Free — No credit card required
+                    Free forever — No credit card required
                   </div>
                 </div>
 
@@ -158,7 +158,7 @@ export default function PricingSection() {
                       Free
                     </div>
                     <div className="text-[#847971] text-sm font-medium font-sans">
-                      2,000 words per week
+                      30 minutes/month forever
                     </div>
                   </div>
                 </div>

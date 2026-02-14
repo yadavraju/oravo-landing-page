@@ -42,21 +42,21 @@ export default function DocumentationSection() {
 
   const cards = [
     {
-      title: "Auto formatting",
+      title: "1. Press your hotkey in any app",
       description:
-        "Clean, consistent formatting tailored to what you're writing and what's on your screen.",
+        "One shortcut activates Oravo wherever your cursor is—Gmail, Slack, Notion, Google Docs, or any text field.",
       component: AutoFormattingAnimation,
     },
     {
-      title: "Personalization",
+      title: "2. Speak naturally",
       description:
-        "It learns and adapts to your tone, formality, and natural style on any platform.",
+        "Talk in English or your native language. Oravo understands 100+ accents and handles code-switching naturally.",
       component: PersonalizationAnimation,
     },
     {
-      title: "Context awareness",
+      title: "3. Oravo types with the right tone",
       description:
-        "oravo gets unique terms and names right using contextual cues. You don't have to go back and correct the spelling.",
+        "The right language, the right format, instantly where your cursor is. Casual in Slack, professional in email, technical in Notion.",
       component: ContextAwarenessAnimation,
     },
   ];
@@ -100,21 +100,21 @@ export default function DocumentationSection() {
           {/* Main heading with gradient accent */}
           <div className="relative">
             <h2 className="text-center text-[#49423D] text-[32px] sm:text-4xl md:text-5xl lg:text-[56px] font-medium leading-tight md:leading-[1.15] font-serif">
-              Speak{" "}
+              Press.{" "}
               <span className="relative inline-block">
-                <span className="relative z-10">better</span>
+                <span className="relative z-10">Speak.</span>
                 <svg className="absolute -bottom-1 left-0 w-full h-3 text-[#FF8C42]/30" viewBox="0 0 100 12" preserveAspectRatio="none">
                   <path d="M0 6 Q 25 0, 50 6 T 100 6" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round"/>
                 </svg>
               </span>
-              , not harder.
+              {" "}Done.
             </h2>
           </div>
 
           {/* Subtitle with app icons */}
           <div className="flex flex-col items-center gap-4">
             <p className="text-center text-[#605A57] text-lg md:text-xl font-normal leading-relaxed font-sans max-w-[500px]">
-              Lightning-fast AI dictation that works across all your favorite apps.
+              Press your hotkey in any app. Speak naturally. Oravo types the right language with the right tone—instantly.
             </p>
 
             {/* App icons row */}

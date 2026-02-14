@@ -9,24 +9,44 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: "Can I try Oravo for free?",
+    question: "Does it really understand my accent?",
     answer:
-      "Yes! You can try Oravo completely free—no credit card required. Just download the app and start dictating instantly to experience how fast and effortless it feels.",
+      "Yes. Oravo is trained on 100+ accents from every continent. If you can speak English (even with a strong accent), Oravo understands you. And if English is hard, just speak your native language—Oravo translates in real time.",
   },
   {
-    question: "Is Oravo secure and private?",
+    question: "Can I speak my native language and get English text?",
     answer:
-      "Absolutely. Privacy and security are at the heart of everything we do. Your transcripts are never collected or stored on our servers—they remain local to your device. You can optionally opt in to share anonymized data to help improve Oravo's models, but by default, your data stays private and secure. All processing is handled using enterprise-grade encryption and security standards. Oravo is SOC 2 and HIPAA compliant.",
+      "Absolutely. Speak Spanish, Hindi, Mandarin, Arabic, French, Portuguese, Russian, German, Japanese, Korean, or 20+ other languages—Oravo translates to fluent, context-aware English instantly.",
   },
   {
-    question: "Is there a mobile app?",
+    question: "How is this different from Wispr Flow or Dragon?",
     answer:
-      "Not yet—but it's coming soon! Right now, we're focused on delivering the best native experience for macOS, Windows, and Linux. Our iOS and Android apps are already on the roadmap.",
+      "vs Wispr Flow: They're great for native English speakers. We're built specifically for non-native speakers with real-time translation and accent optimization. vs Dragon: 10× cheaper, cross-platform (Mac + Windows), no training required, understands 100+ accents, has real-time translation. vs Otter.ai: Works in all apps (not just meetings), optimized for non-native speakers, real-time translation.",
   },
   {
-    question: "Do you support languages other than English?",
+    question: "What apps does it work with?",
     answer:
-      "Yes! Oravo supports over 50 languages. You can speak naturally in your preferred language, and Oravo will accurately transcribe and format your text as if you were writing it yourself.",
+      "Everywhere you can type: Gmail, Slack, Notion, Google Docs, Microsoft Word, Figma, VSCode, Jira, LinkedIn, WhatsApp, Teams, Salesforce—literally any text field.",
+  },
+  {
+    question: "How does context awareness work?",
+    answer:
+      "Oravo reads which app you're using and adjusts tone, format, and structure automatically. The same sentence becomes casual in Slack, professional in Gmail, and technical in Notion—without you doing anything.",
+  },
+  {
+    question: "Is my voice data private and secure?",
+    answer:
+      "Yes. We're SOC 2 Type II and HIPAA-ready. Your voice data is encrypted, never stored permanently, and not used for AI training without explicit consent. Free plan has zero data retention.",
+  },
+  {
+    question: "Can I try before I pay?",
+    answer:
+      "Yes. Free plan includes 30 minutes/month forever. Pro plan has 14-day free trial—no credit card required.",
+  },
+  {
+    question: "What if I speak multiple languages in one sentence?",
+    answer:
+      "Oravo handles code-switching naturally. Speak \"I need to email the cliente about the meeting\"—Oravo understands and formats correctly.",
   },
 ];
 
@@ -69,9 +89,9 @@ export default function FAQSection() {
             Frequently Asked Questions
           </h2>
           <div className="w-full text-left text-[#605A57] text-base font-normal leading-7 font-sans px-4 lg:px-0">
-            Seamless speech-to-text that understands
+            Everything you need to know about Oravo,
             <br />
-            your voice, your flow and your apps.
+            accents, translation, and privacy.
           </div>
         </div>
 
