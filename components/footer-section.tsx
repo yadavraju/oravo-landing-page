@@ -68,22 +68,6 @@ export default function FooterSection() {
               </a>
             </div>
           </div>
-
-          {/* Badges */}
-          <div className="flex items-center gap-4 mt-2">
-            {/* Fazier Badge */}
-            <a
-              href="https://fazier.com/launches/oravo-ai"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="https://fazier.com/api/v1/public/badges/embed_image.svg?launch_id=6546&badge_type=daily&variant=2&theme=light"
-                width={150}
-                alt="Fazier badge"
-              />
-            </a>
-          </div>
         </div>
 
         {/* Navigation Links */}
