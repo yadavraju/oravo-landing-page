@@ -280,6 +280,39 @@ export default function LandingPage() {
                 <EmailComparisonSection />
               </div>
 
+              {/* Hero-Level Dictate + Translate Section */}
+              <div className="w-full border-b border-[rgba(55,50,47,0.12)] bg-gradient-to-b from-[#FFFBF7] to-[#F7F5F3]">
+                <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-16 md:py-20 flex flex-col justify-center items-center gap-8 sm:gap-10 md:gap-12">
+                  <div className="w-full max-w-[800px] flex flex-col items-center gap-4 sm:gap-6 text-center">
+                    <Badge
+                      icon={
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2">
+                          <path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                        </svg>
+                      }
+                      text="The Magic"
+                    />
+                    <h2 className="text-[#37322F] text-[28px] sm:text-4xl md:text-5xl font-medium leading-tight font-serif">
+                      Speak Your Language.<br />Get Perfect English.
+                    </h2>
+                    <p className="text-[#605A57] text-base sm:text-lg md:text-xl font-normal leading-relaxed font-sans max-w-[640px]">
+                      Speak in Spanish, get text in English. Write emails in any language without learning it. Think naturally, Oravo handles the rest.
+                    </p>
+                  </div>
+
+                  {/* Translation Demo */}
+                  <div className="w-full max-w-[800px]">
+                    <div className="bg-white rounded-2xl border border-[#E0DEDB] shadow-[0_4px_24px_rgba(55,50,47,0.08)] overflow-hidden">
+                      <div className="w-full h-[320px] sm:h-[380px] flex items-center justify-center">
+                        <TranslationDemo />
+                      </div>
+                    </div>
+                  </div>
+                   {/* Two-way Translation Examples */}
+                  <TwoWayExamples />
+                </div>
+              </div>
+
               <div className="self-stretch border-t border-b border-[#E0DEDB] flex justify-center items-start">
                 <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden">
                   {/* Left decorative pattern */}
@@ -416,24 +449,8 @@ export default function LandingPage() {
                   </div>
 
                   <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-0 border-l border-r border-[rgba(55,50,47,0.12)]">
-                    {/* Card 1 - Translation */}
+                    {/* Card 1 - AI Mode */}
                     <div className="border-b border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col gap-5">
-                      <div className="flex flex-col gap-3">
-                        <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
-                          Dictate + Translate
-                        </h3>
-                        <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
-                          Speak in Spanish, get text in English. Write emails in
-                          any language without learning it.
-                        </p>
-                      </div>
-                      <div className="w-full h-[280px] sm:h-[320px] rounded-xl flex overflow-hidden items-center justify-center relative bg-[#F7F5F3]">
-                        <TranslationDemo />
-                      </div>
-                    </div>
-
-                    {/* Card 2 - Accuracy */}
-                    <div className="border-b border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col gap-5">
                       <div className="flex flex-col gap-3">
                         <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
                           AI Mode
@@ -453,8 +470,8 @@ export default function LandingPage() {
                       </div>
                     </div>
 
-                    {/* Card 3 - Auto-Format */}
-                    <div className="border-b md:border-b-0 border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col gap-5">
+                    {/* Card 2 - Auto-Format */}
+                    <div className="border-b border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col gap-5">
                       <div className="flex flex-col gap-3">
                         <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
                           Auto format as you speak
@@ -471,6 +488,46 @@ export default function LandingPage() {
                           theme="light"
                           className="scale-80 sm:scale-90"
                         />
+                      </div>
+                    </div>
+
+                    {/* Card 3 - Style-matching */}
+                    <div className="border-b md:border-b-0 border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col gap-5">
+                      <div className="flex flex-col gap-3">
+                        <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
+                          Style-matching
+                        </h3>
+                        <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
+                          Oravo adapts to your tone and writing style across
+                          different apps to sound like you.
+                        </p>
+                      </div>
+                      <div className="w-full h-[280px] sm:h-[320px] rounded-xl flex overflow-hidden items-center justify-center relative bg-[#F7F5F3]">
+                        {/* Style-matching visual - clean design */}
+                        <div className="flex flex-col items-center gap-6 px-8 w-full max-w-[320px]">
+                          {/* Input */}
+                          <div className="w-full text-center">
+                            <p className="text-[#847971] text-xs font-medium uppercase tracking-wider mb-2 font-sans">You say</p>
+                            <p className="text-[#37322F] text-sm font-sans italic">"tell them I'll be late"</p>
+                          </div>
+                          
+                          {/* Arrow */}
+                          <svg className="w-5 h-5 text-[#847971]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                          </svg>
+                          
+                          {/* Outputs */}
+                          <div className="w-full flex flex-col gap-3">
+                            <div className="bg-white rounded-lg border border-[#E0DEDB] p-3">
+                              <p className="text-[#847971] text-[10px] font-medium uppercase tracking-wider mb-1 font-sans">Email</p>
+                              <p className="text-[#37322F] text-sm font-sans">I'll be arriving shortly after the scheduled time.</p>
+                            </div>
+                            <div className="bg-white rounded-lg border border-[#E0DEDB] p-3">
+                              <p className="text-[#847971] text-[10px] font-medium uppercase tracking-wider mb-1 font-sans">Slack</p>
+                              <p className="text-[#37322F] text-sm font-sans">Running a few mins late!</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -510,8 +567,7 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              {/* Two-way Translation Examples */}
-              <TwoWayExamples />
+             
 
               {/* Made For You Section */}
               <MadeForYou />

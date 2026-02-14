@@ -3,19 +3,6 @@
 export default function TwoWayExamples() {
   return (
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
-      {/* Header */}
-      <div className="self-stretch px-6 md:px-24 pt-12 md:pt-16 pb-8 md:pb-12 flex justify-center items-center">
-        <div className="w-full max-w-[800px] flex flex-col justify-start items-center gap-4">
-          <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-stretch-semi-condensed font-medium leading-tight md:leading-[60px] font-serif text-center px-4">
-            Think in Spanish. Get typed in English.
-          </h2>
-          <p className="text-[#605A57] text-base md:text-lg font-normal leading-relaxed font-sans text-center max-w-[600px]">
-            See how Oravo translates and formats your speech for the right
-            context.
-          </p>
-        </div>
-      </div>
-
       {/* Examples */}
       <div className="w-full max-w-[1060px] px-4 sm:px-6 md:px-8 pb-12 md:pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

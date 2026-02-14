@@ -83,20 +83,6 @@ export default function FooterSection() {
                 alt="Fazier badge"
               />
             </a>
-
-            {/* Twelve Tools Badge */}
-            <a
-              href="https://twelve.tools"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="https://twelve.tools/badge0-white.svg"
-                alt="Featured on Twelve Tools"
-                width={150}
-                height={40}
-              />
-            </a>
           </div>
         </div>
 

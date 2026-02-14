@@ -65,6 +65,128 @@ function FeatureCard({ icon, title, description }: { icon: React.ReactNode; titl
   );
 }
 
+function TranslationDemo() {
+  const languages = [
+    { code: "es", name: "Spanish", flag: "🇪🇸", input: "Hola, necesito enviar este informe a mi jefe antes de las cinco de la tarde..." },
+    { code: "hi", name: "Hindi", flag: "🇮🇳", input: "मुझे कल की मीटिंग के लिए प्रेजेंटेशन तैयार करनी है..." },
+    { code: "zh", name: "Mandarin", flag: "🇨🇳", input: "我想预约下周三的会议室..." },
+    { code: "ar", name: "Arabic", flag: "🇸🇦", input: "أريد أن أرسل هذا البريد الإلكتروني إلى العميل..." },
+    { code: "pt", name: "Portuguese", flag: "🇧🇷", input: "Preciso revisar o contrato antes da reunião..." },
+  ];
+  
+  const outputs = [
+    "Hi, I need to send this report to my boss before 5 PM today.",
+    "I need to prepare a presentation for tomorrow's meeting.",
+    "I'd like to book the meeting room for next Wednesday.",
+    "I want to send this email to the client.",
+    "I need to review the contract before the meeting.",
+  ];
+
+  return (
+    <div className="w-full max-w-[800px] mx-auto">
+      <div className="bg-white rounded-2xl border border-[#E0DEDB] shadow-[0_4px_24px_rgba(55,50,47,0.08)] overflow-hidden">
+        {/* Language Selector */}
+        <div className="px-6 py-4 border-b border-[#E0DEDB] bg-[#FAFAF9]">
+          <p className="text-[#847971] text-xs font-medium uppercase tracking-wider mb-3 font-sans">Select your language</p>
+          <div className="flex flex-wrap gap-2">
+            {languages.map((lang, index) => (
+              <button
+                key={lang.code}
+                className={`px-3 py-1.5 rounded-full text-sm font-medium font-sans transition-all ${
+                  index === 0
+                    ? "bg-[#F97316] text-white"
+                    : "bg-white border border-[#E0DEDB] text-[#605A57] hover:border-[#847971]"
+                }`}
+              >
+                <span className="mr-1.5">{lang.flag}</span>
+                {lang.name}
+              </button>
+            ))}
+          </div>
+        </div>
+        
+        {/* Demo Area */}
+        <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#E0DEDB]">
+          {/* Input Side */}
+          <div className="p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 rounded-full bg-[#FFF7ED] flex items-center justify-center">
+                <svg className="w-4 h-4 text-[#F97316]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                </svg>
+              </div>
+              <span className="text-[#37322F] text-sm font-semibold font-sans">You speak (Spanish)</span>
+            </div>
+            <div className="relative">
+              <p className="text-[#605A57] text-base leading-relaxed font-sans italic">
+                "{languages[0].input}"
+              </p>
+              <div className="absolute -bottom-1 left-0 w-full h-4 bg-gradient-to-t from-white to-transparent"></div>
+            </div>
+            {/* Sound Wave Animation */}
+            <div className="mt-4 flex items-center justify-center gap-1">
+              {[...Array(12)].map((_, i) => (
+                <div
+                  key={i}
+                  className="w-1 bg-[#F97316] rounded-full animate-pulse"
+                  style={{
+                    height: `${Math.random() * 20 + 8}px`,
+                    animationDelay: `${i * 0.1}s`,
+                  }}
+                ></div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Output Side */}
+          <div className="p-6 bg-[#FAFAF9]">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 rounded-full bg-[#DCFCE7] flex items-center justify-center">
+                <svg className="w-4 h-4 text-[#16A34A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <span className="text-[#37322F] text-sm font-semibold font-sans">Perfect English output</span>
+            </div>
+            <p className="text-[#37322F] text-base leading-relaxed font-sans font-medium">
+              "{outputs[0]}"
+            </p>
+            {/* Features Tags */}
+            <div className="mt-4 flex flex-wrap gap-2">
+              <span className="px-2 py-1 bg-white border border-[#E0DEDB] rounded text-xs text-[#605A57] font-sans">Auto-punctuated</span>
+              <span className="px-2 py-1 bg-white border border-[#E0DEDB] rounded text-xs text-[#605A57] font-sans">Grammar-corrected</span>
+              <span className="px-2 py-1 bg-white border border-[#E0DEDB] rounded text-xs text-[#605A57] font-sans">Professional tone</span>
+            </div>
+          </div>
+        </div>
+        
+        {/* Arrow Indicator */}
+        <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#F97316] items-center justify-center shadow-lg">
+          <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </div>
+      </div>
+      
+      {/* Stats */}
+      <div className="mt-8 grid grid-cols-3 gap-4 text-center">
+        <div>
+          <p className="text-[#37322F] text-2xl md:text-3xl font-semibold font-sans">100+</p>
+          <p className="text-[#847971] text-sm font-sans">Languages supported</p>
+        </div>
+        <div>
+          <p className="text-[#37322F] text-2xl md:text-3xl font-semibold font-sans">Real-time</p>
+          <p className="text-[#847971] text-sm font-sans">Translation speed</p>
+        </div>
+        <div>
+          <p className="text-[#37322F] text-2xl md:text-3xl font-semibold font-sans">99%</p>
+          <p className="text-[#847971] text-sm font-sans">Accuracy rate</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   return (
     <article className="p-5 bg-white border border-[#E0DEDB] rounded-xl">
@@ -144,50 +266,80 @@ export default function DictationAppPage() {
               </div>
             </section>
 
+            {/* Hero-Level Translation Section - The Magic Moment */}
+            <section className="px-6 md:px-12 py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] bg-gradient-to-b from-[#FFFBF7] to-[#F7F5F3]">
+              <div className="max-w-[900px] mx-auto">
+                <div className="text-center mb-12">
+                  <div className="flex justify-center mb-4">
+                    <Badge 
+                      icon={<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2"><path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg>} 
+                      text="The Magic" 
+                    />
+                  </div>
+                  <h2 className="text-[#37322F] text-[32px] sm:text-4xl md:text-5xl font-normal leading-tight font-serif mb-4">
+                    Speak Your Language.<br />Get Perfect English.
+                  </h2>
+                  <p className="text-[#605A57] text-lg md:text-xl font-sans max-w-[640px] mx-auto">
+                    Think in your native language. Speak naturally. Oravo translates and polishes your words into professional English—instantly.
+                  </p>
+                </div>
+
+                <TranslationDemo />
+
+                <div className="mt-12 text-center">
+                  <Link
+                    href="/download"
+                    className="group relative inline-flex h-14 px-10 overflow-hidden rounded-full items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95"
+                    style={{
+                      background: `linear-gradient(to bottom, ${accentColor}, ${accentColor})`,
+                      boxShadow: `0px 0px 0px 2.5px rgba(255,255,255,0.08) inset, 0px 4px 12px ${accentColor}66`,
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/10 pointer-events-none"></div>
+                    <span className="text-white text-lg font-medium leading-5 font-sans relative z-10">Try It Free</span>
+                    <svg className="w-5 h-5 relative z-10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </section>
+
+            {/* Features Section - 4 Cards */}
             <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
               <div className="max-w-[900px] mx-auto">
                 <div className="text-center mb-12">
                   <div className="flex justify-center mb-4">
-                    <Badge icon={<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#37322F" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>} text="Why #1" />
+                    <Badge icon={<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#37322F" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>} text="More Power" />
                   </div>
                   <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-medium leading-tight font-serif mb-4">
-                    What Makes Oravo the Best Dictation App
+                    Voice to Text, Perfected
                   </h2>
                   <p className="text-[#605A57] text-base md:text-lg font-sans max-w-[600px] mx-auto">
-                    We built Oravo specifically for non-native English speakers who need accurate dictation.
+                    Beyond translation—Oravo understands context, adapts to your style, and works everywhere you do.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <FeatureCard
                     icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>}
-                    title="Any Accent, Perfect Text"
-                    description="Our AI is trained on voices from 100+ countries. Your accent isn't a bug—it's supported."
-                  />
-                  <FeatureCard
-                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>}
-                    title="Speak Any Language"
-                    description="Dictate in Spanish, Hindi, Chinese—get English text. Real-time translation built-in."
-                  />
-                  <FeatureCard
-                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>}
-                    title="4x Faster Than Typing"
-                    description="Speak 150 words per minute vs 40 typing. Finish in a quarter of the time."
-                  />
-                  <FeatureCard
-                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>}
-                    title="Works in Every App"
-                    description="Google Docs, Word, Slack, email—if you can type there, Oravo works there."
+                    title="AI Mode: Any Accent, Perfect Text"
+                    description="Our AI is trained on voices from 100+ countries. Indian, Chinese, Spanish accents—all understood perfectly."
                   />
                   <FeatureCard
                     icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>}
-                    title="Smart Formatting"
-                    description="Auto punctuation, paragraphs, and capitalization. Speak naturally, get polished text."
+                    title="Auto-Format"
+                    description="Smart punctuation, paragraphs, and capitalization. Speak naturally, get polished, professional text."
                   />
                   <FeatureCard
-                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>}
-                    title="Privacy First"
-                    description="Zero data retention. Your voice is never stored. HIPAA and SOC 2 compliant."
+                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>}
+                    title="Works Everywhere"
+                    description="Google Docs, Word, Slack, email, browser—if you can type there, Oravo works there. No copy-paste needed."
+                  />
+                  <FeatureCard
+                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>}
+                    title="Style-Matching"
+                    description="Oravo adapts to your tone and writing style across different apps. Formal for emails, casual for Slack—always sounds like you."
                   />
                 </div>
               </div>
