@@ -9,7 +9,23 @@ import FooterSection from "@/components/footer-section";
 export const metadata: Metadata = {
   title: "Blog - Oravo.ai",
   description:
-    "Learn about voice dictation, productivity tips, and AI-powered writing tools from the Oravo.ai team.",
+    "Learn about voice dictation, productivity tips, and AI-powered writing tools from the Oravo.ai team. Write in English like a native speaker — just by talking.",
+  keywords: [
+    "voice dictation blog",
+    "voice typing tips",
+    "speech to text guide",
+    "dictation productivity",
+    "AI writing tools",
+    "voice typing for non-native speakers",
+    "best dictation for non-native English speakers",
+    "write English like a native speaker",
+    "Whisper Flow alternative",
+    "Willow Voice alternative",
+    "Wispr Flow alternative",
+    "Dragon alternative",
+    "Otter.ai alternative",
+    "Notta alternative",
+  ],
 };
 
 // Disable caching for development

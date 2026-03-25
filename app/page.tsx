@@ -142,10 +142,11 @@ export default function LandingPage() {
                       className="h-7"
                     />
                   </a>
+                  {/* Write English 4x Faster  */}
                   <h1 className="w-full text-center text-[#37322F] text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[80px] font-stretch-semi-condensed font-medium leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-4 sm:px-6 md:px-0">
-                    Write English 4x Faster
+                    Write in English like a native
                     <br />
-                    <AnimatedRoleText />
+                    speaker <AnimatedRoleText />
                   </h1>
                   <div className="w-full max-w-[720px] lg:w-[720px] text-center flex justify-center flex-col text-[rgba(55,50,47,0.80)] sm:text-lg md:text-xl leading-[1.4] sm:leading-[1.45] md:leading-[1.5] lg:leading-7 font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-medium text-sm">
                     Context-aware, two-way voice typing that translates as you
@@ -301,17 +302,28 @@ export default function LandingPage() {
                   <div className="w-full max-w-[800px] flex flex-col items-center gap-4 sm:gap-6 text-center">
                     <Badge
                       icon={
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2">
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#F97316"
+                          strokeWidth="2"
+                        >
                           <path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
                         </svg>
                       }
                       text="The Magic"
                     />
                     <h2 className="text-[#37322F] text-[28px] sm:text-4xl md:text-5xl font-medium leading-tight font-serif">
-                      Speak Your Language.<br />Get Perfect English.
+                      Speak Your Language.
+                      <br />
+                      Get Perfect English.
                     </h2>
                     <p className="text-[#605A57] text-base sm:text-lg md:text-xl font-normal leading-relaxed font-sans max-w-[640px]">
-                      Speak in Spanish, get text in English. Write emails in any language without learning it. Think naturally, Oravo handles the rest.
+                      Speak in Spanish, get text in English. Write emails in any
+                      language without learning it. Think naturally, Oravo
+                      handles the rest.
                     </p>
                   </div>
 
@@ -323,7 +335,7 @@ export default function LandingPage() {
                       </div>
                     </div>
                   </div>
-                   {/* Two-way Translation Examples */}
+                  {/* Two-way Translation Examples */}
                   <TwoWayExamples />
                 </div>
               </div>
@@ -522,24 +534,47 @@ export default function LandingPage() {
                         <div className="flex flex-col items-center gap-6 px-8 w-full max-w-[320px]">
                           {/* Input */}
                           <div className="w-full text-center">
-                            <p className="text-[#847971] text-xs font-medium uppercase tracking-wider mb-2 font-sans">You say</p>
-                            <p className="text-[#37322F] text-sm font-sans italic">"tell them I'll be late"</p>
+                            <p className="text-[#847971] text-xs font-medium uppercase tracking-wider mb-2 font-sans">
+                              You say
+                            </p>
+                            <p className="text-[#37322F] text-sm font-sans italic">
+                              "tell them I'll be late"
+                            </p>
                           </div>
-                          
+
                           {/* Arrow */}
-                          <svg className="w-5 h-5 text-[#847971]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                          <svg
+                            className="w-5 h-5 text-[#847971]"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={1.5}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                            />
                           </svg>
-                          
+
                           {/* Outputs */}
                           <div className="w-full flex flex-col gap-3">
                             <div className="bg-white rounded-lg border border-[#E0DEDB] p-3">
-                              <p className="text-[#847971] text-[10px] font-medium uppercase tracking-wider mb-1 font-sans">Email</p>
-                              <p className="text-[#37322F] text-sm font-sans">I'll be arriving shortly after the scheduled time.</p>
+                              <p className="text-[#847971] text-[10px] font-medium uppercase tracking-wider mb-1 font-sans">
+                                Email
+                              </p>
+                              <p className="text-[#37322F] text-sm font-sans">
+                                I'll be arriving shortly after the scheduled
+                                time.
+                              </p>
                             </div>
                             <div className="bg-white rounded-lg border border-[#E0DEDB] p-3">
-                              <p className="text-[#847971] text-[10px] font-medium uppercase tracking-wider mb-1 font-sans">Slack</p>
-                              <p className="text-[#37322F] text-sm font-sans">Running a few mins late!</p>
+                              <p className="text-[#847971] text-[10px] font-medium uppercase tracking-wider mb-1 font-sans">
+                                Slack
+                              </p>
+                              <p className="text-[#37322F] text-sm font-sans">
+                                Running a few mins late!
+                              </p>
                             </div>
                           </div>
                         </div>
@@ -581,8 +616,6 @@ export default function LandingPage() {
                   </div>
                 </div>
               </div>
-
-             
 
               {/* Made For You Section */}
               <MadeForYou />
