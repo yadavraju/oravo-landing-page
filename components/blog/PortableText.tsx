@@ -22,6 +22,45 @@ const components: PortableTextComponents = {
         </div>
       )
     },
+    table: ({ value }) => {
+      const rows = value?.rows
+      if (!rows || rows.length === 0) return null
+      return (
+        <div className="my-8 overflow-x-auto rounded-lg border border-[rgba(55,50,47,0.12)]">
+          <table className="w-full border-collapse text-left text-sm sm:text-base font-sans">
+            <thead>
+              <tr className="bg-[rgba(55,50,47,0.06)]">
+                {rows[0]?.cells?.map((cell: string, i: number) => (
+                  <th
+                    key={i}
+                    className="px-4 py-3 font-semibold text-[#37322F] border-b border-[rgba(55,50,47,0.12)]"
+                  >
+                    {cell}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.slice(1).map((row: { cells: string[] }, i: number) => (
+                <tr
+                  key={i}
+                  className="border-b border-[rgba(55,50,47,0.08)] last:border-b-0 hover:bg-[rgba(55,50,47,0.02)] transition-colors"
+                >
+                  {row.cells?.map((cell: string, j: number) => (
+                    <td
+                      key={j}
+                      className="px-4 py-3 text-[#37322F]"
+                    >
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+    },
   },
   block: {
     h1: ({ children }) => (

@@ -102,6 +102,15 @@ function baseKeywords(appName: string, category: CopyCategory): string[] {
     `${app} speech to text`,
     `dictate ${app}`,
     `voice typing ${app}`,
+    "Whisper Flow alternative",
+    "Willow Voice alternative",
+    "Wispr Flow alternative",
+    "Dragon alternative",
+    "Otter.ai alternative",
+    "Notta alternative",
+    "best dictation for non-native English speakers",
+    "write English like a native speaker",
+    "voice typing for non-native speakers",
   ];
 
   const byCategory: Record<CopyCategory, string[]> = {
