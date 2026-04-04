@@ -1,5 +1,27 @@
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
+import type { Metadata } from "next";
+import { ogImageUrl } from "@/lib/ogImage";
+
+const ogUrl = ogImageUrl("Subprocessors | Oravo", "Third-party services Oravo uses", "default");
+
+export const metadata: Metadata = {
+  title: "Subprocessors | Oravo",
+  description: "Third-party services Oravo uses. Know exactly where your data is and how it is being used.",
+  openGraph: {
+    title: "Subprocessors | Oravo",
+    description: "Third-party services Oravo uses",
+    url: "https://oravo.ai/subprocessors",
+    type: "website",
+    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Subprocessors | Oravo" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Subprocessors | Oravo",
+    description: "Third-party services Oravo uses",
+    images: [ogUrl],
+  },
+};
 
 export default function SubprocessorsPage() {
   return (

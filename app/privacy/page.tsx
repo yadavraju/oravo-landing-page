@@ -1,5 +1,27 @@
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
+import type { Metadata } from "next";
+import { ogImageUrl } from "@/lib/ogImage";
+
+const ogUrl = ogImageUrl("Privacy Policy | Oravo", "How Oravo protects your data", "default");
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | Oravo",
+  description: "How Oravo protects your data. Learn about our privacy-first approach to voice dictation.",
+  openGraph: {
+    title: "Privacy Policy | Oravo",
+    description: "How Oravo protects your data",
+    url: "https://oravo.ai/privacy",
+    type: "website",
+    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Privacy Policy | Oravo" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | Oravo",
+    description: "How Oravo protects your data",
+    images: [ogUrl],
+  },
+};
 
 export default function PrivacyPage() {
   return (

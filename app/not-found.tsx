@@ -2,11 +2,24 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
+import { ogImageUrl } from "@/lib/ogImage";
+
+const ogUrl = ogImageUrl("Page Not Found", "The page you're looking for doesn't exist");
 
 export const metadata: Metadata = {
   title: "Page Not Found | Oravo",
   description: "The page you're looking for doesn't exist. Explore Oravo's AI voice typing and dictation features instead.",
   robots: { index: false, follow: true },
+  openGraph: {
+    title: "Page Not Found | Oravo",
+    description: "The page you're looking for doesn't exist. Explore Oravo's AI voice typing and dictation features instead.",
+    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Page Not Found - Oravo" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Page Not Found | Oravo",
+    images: [ogUrl],
+  },
 };
 
 export default function NotFound() {

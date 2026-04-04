@@ -5,6 +5,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
+import { ogImageUrl } from "@/lib/ogImage";
+
+const ogUrl = ogImageUrl("Oravo Blog", "Tips, guides, and updates on AI voice typing", "blog");
 
 export const metadata: Metadata = {
   title: "Blog - Oravo.ai",
@@ -26,6 +29,22 @@ export const metadata: Metadata = {
     "Otter.ai alternative",
     "Notta alternative",
   ],
+  openGraph: {
+    title: "Blog - Oravo.ai",
+    description: "Tips, guides, and updates on AI voice typing and dictation.",
+    url: "https://oravo.ai/blog",
+    type: "website",
+    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Oravo Blog" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog - Oravo.ai",
+    description: "Tips, guides, and updates on AI voice typing and dictation.",
+    images: [ogUrl],
+  },
+  alternates: {
+    canonical: "https://oravo.ai/blog",
+  },
 };
 
 // Disable caching for development

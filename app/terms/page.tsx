@@ -1,5 +1,27 @@
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
+import type { Metadata } from "next";
+import { ogImageUrl } from "@/lib/ogImage";
+
+const ogUrl = ogImageUrl("Terms of Service | Oravo", "Terms and conditions for using Oravo", "default");
+
+export const metadata: Metadata = {
+  title: "Terms of Service | Oravo",
+  description: "Terms and conditions for using Oravo. Read our terms of service agreement.",
+  openGraph: {
+    title: "Terms of Service | Oravo",
+    description: "Terms and conditions for using Oravo",
+    url: "https://oravo.ai/terms",
+    type: "website",
+    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Terms of Service | Oravo" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms of Service | Oravo",
+    description: "Terms and conditions for using Oravo",
+    images: [ogUrl],
+  },
+};
 
 export default function TermsPage() {
   return (

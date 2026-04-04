@@ -1,11 +1,27 @@
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import type { Metadata } from "next";
+import { ogImageUrl } from "@/lib/ogImage";
+
+const ogUrl = ogImageUrl("Our Manifesto | Oravo", "Why we built Oravo", "default");
 
 export const metadata: Metadata = {
-  title: "Manifesto - Oravo.ai",
+  title: "Our Manifesto | Oravo",
   description:
     "Why voice? Why now? Discover how Oravo is transforming the way we interact with technology through privacy-focused, lightning-fast AI voice dictation.",
+  openGraph: {
+    title: "Our Manifesto | Oravo",
+    description: "Why we built Oravo",
+    url: "https://oravo.ai/manifesto",
+    type: "website",
+    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Our Manifesto | Oravo" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Manifesto | Oravo",
+    description: "Why we built Oravo",
+    images: [ogUrl],
+  },
 };
 
 export default function ManifestoPage() {

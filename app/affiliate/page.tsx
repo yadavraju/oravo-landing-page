@@ -1,11 +1,27 @@
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import type { Metadata } from "next";
+import { ogImageUrl } from "@/lib/ogImage";
+
+const ogUrl = ogImageUrl("Affiliate Program | Oravo", "Earn with Oravo's affiliate program", "default");
 
 export const metadata: Metadata = {
-  title: "Become an Affiliate - Oravo.ai",
+  title: "Affiliate Program | Oravo",
   description:
     "Join the Oravo affiliate program. Get your unique referral key, share with your network, and start earning commissions for every user you bring to Oravo.",
+  openGraph: {
+    title: "Affiliate Program | Oravo",
+    description: "Earn with Oravo's affiliate program",
+    url: "https://oravo.ai/affiliate",
+    type: "website",
+    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Affiliate Program | Oravo" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Affiliate Program | Oravo",
+    description: "Earn with Oravo's affiliate program",
+    images: [ogUrl],
+  },
 };
 
 export default function AffiliatePage() {

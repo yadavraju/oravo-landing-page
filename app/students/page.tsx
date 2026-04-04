@@ -1,5 +1,27 @@
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
+import type { Metadata } from "next";
+import { ogImageUrl } from "@/lib/ogImage";
+
+const ogUrl = ogImageUrl("Oravo for Students", "Voice typing for students and academics", "default");
+
+export const metadata: Metadata = {
+  title: "Oravo for Students",
+  description: "Voice typing for students and academics. Get Oravo Pro at 50% off with your .edu email.",
+  openGraph: {
+    title: "Oravo for Students",
+    description: "Voice typing for students and academics",
+    url: "https://oravo.ai/students",
+    type: "website",
+    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Oravo for Students" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Oravo for Students",
+    description: "Voice typing for students and academics",
+    images: [ogUrl],
+  },
+};
 
 export default function StudentsPage() {
   return (

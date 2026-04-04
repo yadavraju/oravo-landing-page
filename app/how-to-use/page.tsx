@@ -2,6 +2,9 @@ import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ogImageUrl } from "@/lib/ogImage";
+
+const ogUrl = ogImageUrl("How to Use Oravo", "Complete setup guide for AI voice typing");
 
 export const metadata: Metadata = {
   title: "How to Use Oravo - Voice Typing",
@@ -25,12 +28,14 @@ export const metadata: Metadata = {
       "Complete guide to using Oravo: Voice typing + AI meeting notes setup, shortcuts, and tips for 100+ languages.",
     url: "https://oravo.ai/how-to-use",
     type: "article",
+    images: [{ url: ogUrl, width: 1200, height: 630, alt: "How to Use Oravo" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "How to Use Oravo - Complete Setup Guide",
     description:
       "Master Oravo voice typing and AI meeting notes with our complete guide.",
+    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/how-to-use",

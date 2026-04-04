@@ -4,9 +4,12 @@ import FooterSection from '@/components/footer-section';
 import Logo from '@/components/Logo';
 import { VersionSection } from '@/components/download/VersionSection';
 import type { Metadata } from 'next';
+import { ogImageUrl } from '@/lib/ogImage';
 
 // Force dynamic rendering for API calls
 export const dynamic = 'force-dynamic';
+
+const ogUrl = ogImageUrl('Download Oravo', 'Get Oravo for Mac, Windows, Android & iOS', 'default');
 
 export const metadata: Metadata = {
   title: 'Download Oravo - AI Voice Typing + Meeting Notes for Mac, Windows & Linux',
@@ -28,11 +31,13 @@ export const metadata: Metadata = {
     description: 'Download Oravo: Voice typing + AI meeting notes. Context-aware dictation in 100+ languages.',
     url: 'https://oravo.ai/download',
     type: 'website',
+    images: [{ url: ogUrl, width: 1200, height: 630, alt: 'Download Oravo' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Download Oravo - Voice Typing + AI Meeting Notes',
     description: 'Download Oravo for Mac, Windows & Linux. Your complete AI voice assistant.',
+    images: [ogUrl],
   },
   alternates: {
     canonical: 'https://oravo.ai/download',
