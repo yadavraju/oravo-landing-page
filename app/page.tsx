@@ -319,7 +319,7 @@ export default function LandingPage() {
                       Get Perfect English.
                     </h2>
                     <p className="text-[#605A57] text-base sm:text-lg md:text-xl font-normal leading-relaxed font-sans max-w-[640px]">
-                      Speak in Spanish, get text in English. Write emails in any
+                      Speak in Spanish, get text in English &amp; vice versa. Write emails in any
                       language without learning it. Think naturally, Oravo
                       handles the rest.
                     </p>
