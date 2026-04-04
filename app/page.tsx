@@ -144,15 +144,13 @@ export default function LandingPage() {
                   </a>
                   {/* Write English 4x Faster  */}
                   <h1 className="w-full text-center text-[#37322F] text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[80px] font-stretch-semi-condensed font-medium leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-4 sm:px-6 md:px-0">
-                    Write in English like a native
+                    Just speak. <AnimatedRoleText />
                     <br />
-                    speaker <AnimatedRoleText />
+                    types it perfectly.
                   </h1>
                   <div className="w-full max-w-[720px] lg:w-[720px] text-center flex justify-center flex-col text-[rgba(55,50,47,0.80)] sm:text-lg md:text-xl leading-[1.4] sm:leading-[1.45] md:leading-[1.5] lg:leading-7 font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-medium text-sm">
-                    Context-aware, two-way voice typing that translates as you
-                    speak. Dictate in Spanish and Oravo types polished English
-                    for Gmail; speak English and it types natural Spanish for
-                    chat—auto-fixing tone, grammar, and formatting in every app.
+                    Works in every app. Understands every accent. Polishes your
+                    writing as you speak — 4× faster than typing.
                   </div>
                 </div>
               </div>
