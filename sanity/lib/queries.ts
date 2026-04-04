@@ -20,6 +20,7 @@ export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | ord
 
 export const postQuery = groq`*[_type == "post" && slug.current == $slug][0] {
   _id,
+  _updatedAt,
   title,
   slug,
   excerpt,

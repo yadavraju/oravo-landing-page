@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 // Import roles from MadeForYou component Without Typing a Word
-const roles = ["just by talking"] as const;
+const roles = ["Oravo"] as const;
 
 export default function AnimatedRoleText() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);

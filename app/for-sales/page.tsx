@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
+import { ogImageUrl } from "@/lib/ogImage";
+
+const ogUrl = ogImageUrl("Voice Typing for Sales Teams", "Dictate emails and CRM updates between meetings", "audience");
 
 export const metadata: Metadata = {
   title: "Voice Typing for Sales Teams | CRM Dictation | Oravo AI",
@@ -30,13 +33,13 @@ export const metadata: Metadata = {
     description: "Follow up faster, close deals quicker. Dictate emails and CRM updates between meetings.",
     url: "https://oravo.ai/for-sales",
     type: "website",
-    images: ["/og-image.png"],
+    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Voice Typing for Sales Teams - Oravo AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Voice Typing for Sales Teams | Oravo AI",
     description: "Follow up faster, close deals quicker with voice dictation.",
-    images: ["/og-image.png"],
+    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/for-sales",

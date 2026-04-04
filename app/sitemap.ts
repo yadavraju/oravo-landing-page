@@ -49,6 +49,16 @@ const PAGE_CONFIG: Record<
   "/voice-typing-for-accents": { priority: 0.9, changeFrequency: "weekly" },
   "/speech-to-text-spanish": { priority: 0.85, changeFrequency: "weekly" },
 
+  // Comparison pages (SEO targeting competitor searches)
+  "/compare/wispr-flow": { priority: 0.85, changeFrequency: "monthly" },
+  "/compare/willow-voice": { priority: 0.85, changeFrequency: "monthly" },
+  "/compare/dragon": { priority: 0.85, changeFrequency: "monthly" },
+  "/compare/otter-ai": { priority: 0.85, changeFrequency: "monthly" },
+
+  // Additional audience landing pages
+  "/for-multilingual-teams": { priority: 0.85, changeFrequency: "monthly" },
+  "/for-non-native-speakers": { priority: 0.85, changeFrequency: "monthly" },
+
   // Legal pages - required but lower priority
   "/privacy": { priority: 0.3, changeFrequency: "yearly" },
   "/terms": { priority: 0.3, changeFrequency: "yearly" },

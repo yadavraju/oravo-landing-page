@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "How to Use Oravo - Voice Typing + AI Meeting Notes Setup Guide",
+  title: "How to Use Oravo - Voice Typing",
   description:
     "Learn how to use Oravo AI voice assistant. Complete setup guide for voice typing and AI meeting notes, keyboard shortcuts, troubleshooting tips for 100+ languages.",
   keywords: [
@@ -67,12 +67,24 @@ export default function HowToUsePage() {
 
               {/* Video Tutorial */}
               <div className="mb-16 rounded-2xl overflow-hidden shadow-[0_8px_32px_rgba(55,50,47,0.12)] border border-[rgba(55,50,47,0.08)]">
-                <div style={{ position: "relative", paddingBottom: "64.55089820359281%", height: 0 }}>
+                <div
+                  style={{
+                    position: "relative",
+                    paddingBottom: "64.55089820359281%",
+                    height: 0,
+                  }}
+                >
                   <iframe
                     src="https://www.loom.com/embed/d893aa4622244befa684ceeb6cb65935"
                     frameBorder="0"
                     allowFullScreen
-                    style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100%",
+                    }}
                   />
                 </div>
               </div>

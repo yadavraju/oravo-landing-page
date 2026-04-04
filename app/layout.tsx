@@ -2,6 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
 import Script from "next/script";
+import { ogImageUrl } from "@/lib/ogImage";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,11 +22,11 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "Best Dictation App for Non-Native English Speakers | Oravo",
+    default: "AI Voice Typing & Dictation App | Oravo",
     template: "%s | Oravo",
   },
   description:
-    "Write in English like a native speaker — just by talking. Best dictation app for non-native English speakers with real-time AI translation. Speak in your language, type perfect English 4x faster. Works in Gmail, Slack, Notion, and every app.",
+    "Fast, accurate voice dictation for Mac, Windows, Android & iOS. Speak any language, type perfect English. Built for native and non-native speakers with 60+ languages.",
   applicationName: "Oravo.ai",
   keywords: [
     // PRIMARY MOAT: Non-native English speaker keywords (UNIQUE POSITIONING)
@@ -300,18 +301,10 @@ export const metadata: Metadata = {
     siteName: "Oravo",
     images: [
       {
-        url: "/og-image.png",
+        url: ogImageUrl("AI Voice Typing & Dictation App", "Speak any language, type perfect English. 4x faster than typing."),
         width: 1200,
         height: 630,
-        alt: "Oravo - Best Dictation App for Non-Native English Speakers - Write English Like a Native Speaker",
-        type: "image/png",
-      },
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 1200,
-        alt: "Oravo.ai Logo",
-        type: "image/png",
+        alt: "Oravo - AI Voice Typing & Dictation App",
       },
     ],
   },
@@ -320,7 +313,7 @@ export const metadata: Metadata = {
     title: "Best Dictation App for Non-Native English Speakers | Oravo",
     description:
       "Write in English like a native speaker — just by talking. AI voice typing built for non-native English speakers. Real-time translation. 4x faster. Works everywhere. Try free.",
-    images: ["/og-image.png"],
+    images: [ogImageUrl("AI Voice Typing & Dictation App", "Speak any language, type perfect English. 4x faster than typing.")],
     creator: "@oravoai",
     site: "@oravoai",
   },
@@ -459,23 +452,23 @@ export default function RootLayout({
             name: "Free Plan",
             price: "0",
             priceCurrency: "USD",
-            priceValidUntil: "2025-12-31",
-            description: "Free trial with 2,000 words/week, all core features",
+            priceValidUntil: "2026-12-31",
+            description: "Free plan — 30 minutes/month forever",
             availability: "https://schema.org/InStock",
             eligibleRegion: "US",
           },
           {
             "@type": "Offer",
             name: "Pro Plan",
-            price: "12",
+            price: "9.99",
             priceCurrency: "USD",
-            priceValidUntil: "2025-12-31",
+            priceValidUntil: "2026-12-31",
             description: "Unlimited dictation with AI command mode",
             availability: "https://schema.org/InStock",
             eligibleRegion: "US",
             priceSpecification: {
               "@type": "UnitPriceSpecification",
-              price: "12.00",
+              price: "9.99",
               priceCurrency: "USD",
               unitText: "month",
             },

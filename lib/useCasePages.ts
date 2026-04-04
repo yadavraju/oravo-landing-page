@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ogImageUrl } from "@/lib/ogImage";
 import {
   siAirtable,
   siApple,
@@ -154,6 +155,11 @@ export function buildUseCaseMetadata(page: UseCasePageConfig): Metadata {
   const title = `${page.heroTitle}: ${page.appName} Voice Typing 4x Faster | Oravo AI`;
   const description = page.heroDescription;
   const keywords = Array.from(new Set(pageKeywords(page)));
+  const og = ogImageUrl(
+    `Voice Typing for ${page.appName}`,
+    description,
+    "app",
+  );
 
   return {
     title,
@@ -165,12 +171,13 @@ export function buildUseCaseMetadata(page: UseCasePageConfig): Metadata {
       description,
       url: canonical,
       type: "article",
+      images: [{ url: og, width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ["/og-image.png"],
+      images: [og],
     },
   };
 }

@@ -1,6 +1,7 @@
 import { client } from '@/sanity/lib/client'
 import { postQuery, postPathsQuery } from '@/sanity/lib/queries'
 import { urlForImage } from '@/sanity/lib/image'
+import { ogImageUrl } from '@/lib/ogImage'
 import { PortableText } from '@/components/blog/PortableText'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const ogImage = post.mainImage
     ? urlForImage(post.mainImage).width(1200).height(630).url()
-    : '/og-image.png'
+    : ogImageUrl(post.title, post.excerpt || 'Oravo Blog', 'blog')
 
   // Use SEO fields if available, fallback to default values
   const metaTitle = post.seo?.metaTitle || `${post.title} | Oravo.ai Blog`
@@ -71,8 +72,38 @@ export default async function BlogPost({ params }: Props) {
     ? urlForImage(post.author.image).width(100).height(100).url()
     : '/placeholder-user.jpg'
 
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.seo?.metaDescription || post.excerpt || '',
+    image: imageUrl,
+    datePublished: post.publishedAt,
+    dateModified: post._updatedAt || post.publishedAt,
+    author: {
+      '@type': 'Person',
+      name: post.author?.name || 'Oravo Team',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Oravo',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://oravo.ai/og-image.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://oravo.ai/blog/${params.slug}`,
+    },
+  }
+
   return (
     <article className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <div className="relative flex flex-col justify-start items-center w-full">
         {/* Main container with proper margins */}
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
