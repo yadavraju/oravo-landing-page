@@ -21,11 +21,11 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "Best Dictation App for Non-Native English Speakers | Oravo",
+    default: "AI Voice Typing & Dictation App | Oravo",
     template: "%s | Oravo",
   },
   description:
-    "Write in English like a native speaker — just by talking. Best dictation app for non-native English speakers with real-time AI translation. Speak in your language, type perfect English 4x faster. Works in Gmail, Slack, Notion, and every app.",
+    "Fast, accurate voice dictation for Mac, Windows, Android & iOS. Speak any language, type perfect English. Built for native and non-native speakers with 60+ languages.",
   applicationName: "Oravo.ai",
   keywords: [
     // PRIMARY MOAT: Non-native English speaker keywords (UNIQUE POSITIONING)
