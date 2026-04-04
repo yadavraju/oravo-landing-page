@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
+import { ogImageUrl } from "@/lib/ogImage";
+
+const ogUrl = ogImageUrl("Voice to Text Features", "AI dictation & speech recognition", "default");
 
 export const metadata: Metadata = {
   title: "Voice to Text Features | AI Dictation & Speech Recognition | Oravo",
@@ -56,14 +59,14 @@ export const metadata: Metadata = {
       "Speak naturally. Oravo transcribes, formats, and translates your words into polished text — in any app, any language. 4x faster than typing.",
     url: "https://oravo.ai/features",
     type: "website",
-    images: ["/og-image.png"],
+    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Voice to Text Features - Oravo" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Voice to Text Features | Oravo AI",
     description:
       "Discover Oravo's powerful voice-to-text features. Perfect transcription with automatic punctuation, 100+ languages, and seamless integration.",
-    images: ["/og-image.png"],
+    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/features",

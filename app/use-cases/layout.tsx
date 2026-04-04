@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { ogImageUrl } from "@/lib/ogImage";
+
+const ogUrl = ogImageUrl("Voice Keyboard Use Cases", "Voice-to-text for Slack, Gmail, Teams, Notion & more");
 
 export const metadata: Metadata = {
   title: "Voice Keyboard Use Cases: Slack, Gmail, Teams, Notion & More | Oravo AI",
@@ -30,13 +33,14 @@ export const metadata: Metadata = {
       "Explore Oravo voice keyboard use cases. Voice-to-text for Slack, Gmail, Teams, Notion & more.",
     url: "https://oravo.ai/use-cases",
     type: "website",
+    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Voice Keyboard Use Cases - Oravo" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Voice Keyboard Use Cases | Oravo AI",
     description:
       "Voice-to-text for Slack, Gmail, Teams, Notion & more. 4x faster than typing.",
-    images: ["/og-image.png"],
+    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/use-cases",

@@ -1,6 +1,7 @@
 import { client } from '@/sanity/lib/client'
 import { postQuery, postPathsQuery } from '@/sanity/lib/queries'
 import { urlForImage } from '@/sanity/lib/image'
+import { ogImageUrl } from '@/lib/ogImage'
 import { PortableText } from '@/components/blog/PortableText'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const ogImage = post.mainImage
     ? urlForImage(post.mainImage).width(1200).height(630).url()
-    : '/og-image.png'
+    : ogImageUrl(post.title, post.excerpt || 'Oravo Blog', 'blog')
 
   // Use SEO fields if available, fallback to default values
   const metaTitle = post.seo?.metaTitle || `${post.title} | Oravo.ai Blog`

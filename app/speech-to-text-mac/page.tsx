@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
+import { ogImageUrl } from "@/lib/ogImage";
+
+const ogUrl = ogImageUrl("Speech to Text for Mac", "Best voice typing app for macOS", "default");
 
 export const metadata: Metadata = {
   title: "Speech to Text for Mac | Best Voice Typing App for macOS",
@@ -31,13 +34,13 @@ export const metadata: Metadata = {
       "Best speech to text app for Mac. Native macOS voice typing with accent support. Works in all apps. 4x faster.",
     url: "https://oravo.ai/speech-to-text-mac",
     type: "website",
-    images: ["/og-image.png"],
+    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Speech to Text for Mac - Oravo" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Speech to Text for Mac | Oravo",
     description: "Best speech to text app for Mac. Works in all apps. 4x faster than typing.",
-    images: ["/og-image.png"],
+    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/speech-to-text-mac",

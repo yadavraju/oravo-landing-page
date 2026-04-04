@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 import type { ComparisonPageConfig } from "@/components/comparison/ComparisonPageTemplate";
+import { ogImageUrl } from "@/lib/ogImage";
 
 const BASE_URL = "https://oravo.ai";
 
 export function buildComparisonMetadata(config: ComparisonPageConfig): Metadata {
+  const og = ogImageUrl(
+    `Oravo vs ${config.competitorName}`,
+    config.heroDescription,
+    "compare",
+  );
   return {
     title: config.heroBadgeText,
     description: config.heroDescription,
@@ -22,13 +28,13 @@ export function buildComparisonMetadata(config: ComparisonPageConfig): Metadata 
       description: config.heroDescription,
       url: `${BASE_URL}${config.route}`,
       type: "website",
-      images: ["/og-image.png"],
+      images: [{ url: og, width: 1200, height: 630, alt: config.heroBadgeText }],
     },
     twitter: {
       card: "summary_large_image",
       title: config.heroBadgeText,
       description: config.heroDescription,
-      images: ["/og-image.png"],
+      images: [og],
     },
     alternates: {
       canonical: `${BASE_URL}${config.route}`,

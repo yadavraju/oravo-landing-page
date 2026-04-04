@@ -2,6 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
 import Script from "next/script";
+import { ogImageUrl } from "@/lib/ogImage";
 import "./globals.css";
 
 const inter = Inter({
@@ -300,18 +301,10 @@ export const metadata: Metadata = {
     siteName: "Oravo",
     images: [
       {
-        url: "/og-image.png",
+        url: ogImageUrl("AI Voice Typing & Dictation App", "Speak any language, type perfect English. 4x faster than typing."),
         width: 1200,
         height: 630,
-        alt: "Oravo - Best Dictation App for Non-Native English Speakers - Write English Like a Native Speaker",
-        type: "image/png",
-      },
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 1200,
-        alt: "Oravo.ai Logo",
-        type: "image/png",
+        alt: "Oravo - AI Voice Typing & Dictation App",
       },
     ],
   },
@@ -320,7 +313,7 @@ export const metadata: Metadata = {
     title: "Best Dictation App for Non-Native English Speakers | Oravo",
     description:
       "Write in English like a native speaker — just by talking. AI voice typing built for non-native English speakers. Real-time translation. 4x faster. Works everywhere. Try free.",
-    images: ["/og-image.png"],
+    images: [ogImageUrl("AI Voice Typing & Dictation App", "Speak any language, type perfect English. 4x faster than typing.")],
     creator: "@oravoai",
     site: "@oravoai",
   },

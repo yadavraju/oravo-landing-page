@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
+import { ogImageUrl } from "@/lib/ogImage";
+
+const ogUrl = ogImageUrl("Dictation for Developers", "Document code and write specs without leaving your IDE", "audience");
 
 export const metadata: Metadata = {
   title: "Dictation for Developers | Code Documentation Voice Typing | Oravo AI",
@@ -30,13 +33,13 @@ export const metadata: Metadata = {
     description: "Document code, write specs, and update tickets without leaving your IDE. Technical terminology recognized.",
     url: "https://oravo.ai/for-developers",
     type: "website",
-    images: ["/og-image.png"],
+    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Dictation for Developers - Oravo AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Dictation for Developers | Oravo AI",
     description: "Document code and write specs without leaving your IDE.",
-    images: ["/og-image.png"],
+    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/for-developers",
