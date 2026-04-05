@@ -91,8 +91,51 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 export default function ForWritersPage() {
   const accentColor = "#8B5CF6";
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Does speaking really help with writer's block?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes! Speaking activates different neural pathways than typing. Many writers find that when they're stuck, talking through their ideas unlocks creativity that typing doesn't.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Will my writing still sound like me?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Absolutely. Oravo transcribes your exact words. Many writers find their authentic voice comes through more naturally when speaking than when typing.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I use it with Scrivener?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Oravo works in Scrivener, Google Docs, Microsoft Word, Notion, and any other writing app with a text field.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What about dialogue and character voices?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Oravo captures exactly what you say. Many fiction writers dictate dialogue by voicing their characters out loud—it often sounds more natural than typed dialogue.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="relative flex flex-col justify-start items-center w-full">
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
           <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0" />

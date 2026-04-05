@@ -112,8 +112,51 @@ export default function VoiceTypingWithTranslationPage() {
     { flag: "🇸🇦", language: "Arabic", example: "مرحبا، كيف حالك؟" },
   ];
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How accurate is the translation?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Oravo uses state-of-the-art AI models for both transcription and translation. The result is professional-quality English text that sounds natural, not machine-translated.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I speak in one language and get text in another (not English)?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes! While English is the most popular target, you can translate to any of our 100+ supported languages. Speak in Spanish, get German text, for example.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is there a delay in translation?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The translation is nearly real-time. You'll see English text appearing as you speak, typically with less than 1 second delay.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does it preserve my original meaning?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes! Our AI understands context and nuance. It translates meaning, not just words, so your message comes across naturally in English.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="relative flex flex-col justify-start items-center w-full">
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
           <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0" />

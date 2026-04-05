@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
+import { buildBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 
 export type SimpleIconData = { title: string; hex: string; path: string } | null;
 
@@ -248,8 +249,19 @@ function DefaultFeatureIcon({ color }: { color: string }) {
 
 export function UseCasePageTemplate({ config }: { config: UseCasePageConfig }) {
   const accent = config.accentColor;
+
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", url: "https://oravo.ai" },
+    { name: "Use Cases", url: "https://oravo.ai/use-cases" },
+    { name: config.appName, url: "https://oravo.ai" + config.route },
+  ]);
+
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="relative flex flex-col justify-start items-center w-full">
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
           {/* Left vertical line */}

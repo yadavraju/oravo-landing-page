@@ -90,8 +90,51 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 export default function ForLawyersPage() {
   const accentColor = "#1E3A5F";
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Is Oravo secure enough for legal work?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Oravo uses encrypted processing, stores no audio, and is built with privacy-first architecture suitable for maintaining attorney-client privilege.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does it understand legal terminology?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Oravo recognizes thousands of legal terms including Latin phrases, case citations, statute references, and practice-specific vocabulary.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I use it with my practice management software?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Oravo works in any application where you can type—including Clio, MyCase, PracticePanther, and other legal software.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Will it help me bill more hours?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Many attorneys find they can document more thoroughly and accurately when dictating, leading to better time capture and more billable hours.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="relative flex flex-col justify-start items-center w-full">
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
           <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0" />

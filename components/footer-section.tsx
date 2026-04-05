@@ -60,6 +60,10 @@ export default function FooterSection() {
               <a href="/compare/willow-voice" className={linkClass}>vs Willow Voice</a>
               <a href="/compare/dragon" className={linkClass}>vs Dragon</a>
               <a href="/compare/otter-ai" className={linkClass}>vs Otter.ai</a>
+              <a href="/compare/google-voice-typing" className={linkClass}>vs Google Voice Typing</a>
+              <a href="/compare/apple-dictation" className={linkClass}>vs Apple Dictation</a>
+              <a href="/compare/notta" className={linkClass}>vs Notta</a>
+              <a href="/compare/speechnotes" className={linkClass}>vs Speechnotes</a>
             </nav>
           </div>
 

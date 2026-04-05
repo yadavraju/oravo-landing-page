@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
+import { buildBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Blog - Oravo.ai",
@@ -45,6 +46,11 @@ export const metadata: Metadata = {
 // Disable caching for development
 export const revalidate = 0;
 
+const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+  { name: "Home", url: "https://oravo.ai" },
+  { name: "Blog", url: "https://oravo.ai/blog" },
+]);
+
 export default async function BlogPage() {
   let posts = [];
   let error = null;
@@ -59,6 +65,10 @@ export default async function BlogPage() {
 
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="relative flex flex-col justify-start items-center w-full">
         {/* Main container with proper margins */}
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">

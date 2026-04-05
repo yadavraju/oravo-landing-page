@@ -126,8 +126,51 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 export default function ForHealthcarePage() {
   const accentColor = "#06B6D4";
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Is Oravo HIPAA compliant?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Oravo is built with HIPAA-ready security features including encrypted processing, no audio storage, and privacy-first architecture. Contact us for BAA requirements.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does it understand medical terminology?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Oravo recognizes thousands of medical terms including drug names, procedures, diagnoses, and abbreviations. You can also add specialty-specific terms to your dictionary.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Will it work with my EHR system?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Oravo works in any application where you can type—including Epic, Cerner, Meditech, Athena, and other EHR systems. If you can click in a text field, Oravo can transcribe there.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I use it during patient encounters?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Absolutely. Many healthcare professionals use Oravo to document in real-time during patient encounters, completing notes before the patient leaves.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="relative flex flex-col justify-start items-center w-full">
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
           <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0" />

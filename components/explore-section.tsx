@@ -7,6 +7,10 @@ const COMPARE_LINKS = [
   { label: "Oravo vs Willow Voice", href: "/compare/willow-voice" },
   { label: "Oravo vs Dragon", href: "/compare/dragon" },
   { label: "Oravo vs Otter.ai", href: "/compare/otter-ai" },
+  { label: "Oravo vs Google Voice Typing", href: "/compare/google-voice-typing" },
+  { label: "Oravo vs Apple Dictation", href: "/compare/apple-dictation" },
+  { label: "Oravo vs Notta", href: "/compare/notta" },
+  { label: "Oravo vs Speechnotes", href: "/compare/speechnotes" },
 ];
 
 const AUDIENCE_LINKS = [

@@ -117,8 +117,51 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 export default function ForMultilingualTeamsPage() {
   const accentColor = "#1877F2";
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Which languages does Oravo translate between?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Oravo supports real-time translation between 60+ language pairs including English, Spanish, French, German, Japanese, Korean, Chinese, Hindi, Portuguese, Arabic, and more. New languages are added regularly.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How accurate is the translation?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Oravo uses advanced AI models for translation, producing professional-quality output that reads naturally — not like machine translation. It understands context, idioms, and business terminology.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can team members use different languages simultaneously?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Each team member configures their own source and target language. One person speaks Japanese, another speaks Spanish — both output professional English (or any target language).",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is there a team/enterprise plan?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Oravo offers team pricing at $10/user/month with centralized billing, admin controls, and priority support. Contact us for enterprise needs.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="relative flex flex-col justify-start items-center w-full">
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
           <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0" />

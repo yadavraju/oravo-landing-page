@@ -125,8 +125,51 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 export default function ForCreatorsPage() {
   const accentColor = "#EC4899";
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Can I use Oravo while editing video?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes! Oravo works in any app. Dictate into Premiere Pro, Final Cut, DaVinci Resolve—anywhere you can type.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does it capture my authentic voice and style?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Absolutely. Oravo transcribes exactly what you say with proper punctuation and formatting.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I dictate in different languages?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, Oravo supports 100+ languages. Perfect for multilingual creators or reaching global audiences.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Will it work with my content management tools?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Oravo works everywhere—Notion, Google Docs, WordPress, Substack, and any other tool with a text field.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="relative flex flex-col justify-start items-center w-full">
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
           <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0" />

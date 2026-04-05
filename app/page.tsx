@@ -108,8 +108,83 @@ export default function LandingPage() {
     }
   };
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Does it really understand my accent?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Oravo is trained on 100+ accents from every continent. If you can speak English (even with a strong accent), Oravo understands you. And if English is hard, just speak your native language\u2014Oravo translates in real time.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I speak my native language and get English text?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Absolutely. Speak Spanish, Hindi, Mandarin, Arabic, French, Portuguese, Russian, German, Japanese, Korean, or 20+ other languages\u2014Oravo translates to fluent, context-aware English instantly.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How is this different from Wispr Flow or Dragon?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "vs Wispr Flow: They're great for native English speakers. We're built specifically for non-native speakers with real-time translation and accent optimization. vs Dragon: 10\u00d7 cheaper, cross-platform (Mac + Windows), no training required, understands 100+ accents, has real-time translation. vs Otter.ai: Works in all apps (not just meetings), optimized for non-native speakers, real-time translation.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What apps does it work with?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Everywhere you can type: Gmail, Slack, Notion, Google Docs, Microsoft Word, Figma, VSCode, Jira, LinkedIn, WhatsApp, Teams, Salesforce\u2014literally any text field.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How does context awareness work?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Oravo reads which app you're using and adjusts tone, format, and structure automatically. The same sentence becomes casual in Slack, professional in Gmail, and technical in Notion\u2014without you doing anything.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is my voice data private and secure?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. We're SOC 2 Type II and HIPAA-ready. Your voice data is encrypted, never stored permanently, and not used for AI training without explicit consent. Free plan has zero data retention.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I try before I pay?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Free plan includes 30 minutes/month forever. Pro plan has 14-day free trial\u2014no credit card required.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What if I speak multiple languages in one sentence?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Oravo handles code-switching naturally. Speak \"I need to email the cliente about the meeting\"\u2014Oravo understands and formats correctly.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="relative flex flex-col justify-start items-center w-full">
         {/* Main container with proper margins */}
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">

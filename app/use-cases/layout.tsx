@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Voice Keyboard Use Cases: Slack, Gmail, Teams, Notion & More | Oravo AI",
@@ -42,10 +43,23 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+  { name: "Home", url: "https://oravo.ai" },
+  { name: "Use Cases", url: "https://oravo.ai/use-cases" },
+]);
+
 export default function UseCasesLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      {children}
+    </>
+  );
 }

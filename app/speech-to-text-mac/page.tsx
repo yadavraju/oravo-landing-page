@@ -77,8 +77,51 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 export default function SpeechToTextMacPage() {
   const accentColor = "#007AFF"; // Apple blue
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What macOS versions are supported?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Oravo supports macOS 12 (Monterey) and later. It's optimized for Apple Silicon (M1, M2, M3) but also works great on Intel Macs.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is Oravo better than Mac's built-in dictation?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Oravo offers significantly better accuracy (especially for non-native speakers), real-time translation, smart formatting, and privacy-first design. Mac's built-in dictation is basic and sends your audio to Apple.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does it work with all Mac apps?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes! Oravo works in any app where you can type—Google Docs, Microsoft Word, Slack, Gmail, VS Code, Notion, and thousands more.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I use it offline?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Oravo can process speech locally on your Mac without an internet connection, unlike many cloud-based alternatives.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="relative flex flex-col justify-start items-center w-full">
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
           <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0" />

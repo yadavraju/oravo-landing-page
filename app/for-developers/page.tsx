@@ -90,8 +90,51 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 export default function ForDevelopersPage() {
   const accentColor = "#10B981";
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Does it work in VS Code / JetBrains?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Oravo works in VS Code, JetBrains IDEs, Vim, Emacs—any editor with a text input. It types wherever your cursor is.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can it handle technical terminology?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Oravo recognizes programming terms, framework names, library references, and common tech vocabulary. It learns your project-specific terms too.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What about code syntax?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Oravo is optimized for natural language documentation. For actual code, pair it with Copilot or use for comments, docs, and tickets.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does it slow down my workflow?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. Oravo runs locally and transcribes in real-time. Most developers find it saves context-switching time on documentation tasks.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="relative flex flex-col justify-start items-center w-full">
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
           <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0" />

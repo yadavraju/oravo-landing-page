@@ -118,8 +118,51 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 export default function ForNonNativeSpeakersPage() {
   const accentColor = "#F59E0B";
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Do I need to speak English at all?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No! You can speak entirely in your native language and Oravo will translate to professional English. You can also speak English with your accent — Oravo understands 100+ accent profiles.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How natural does the English output sound?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Very natural. Oravo's AI produces text that reads like a native English speaker wrote it — proper grammar, natural phrasing, and appropriate vocabulary. It goes beyond translation to produce genuinely professional writing.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Which languages can I speak in?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Oravo supports 60+ languages including Spanish, Hindi, Mandarin, Japanese, Korean, Arabic, Portuguese, French, German, Italian, Russian, and more. New languages are added regularly.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Will it understand my accent when I speak English?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Oravo has 100+ accent profiles covering Indian English, Chinese English, Arabic English, Latin American English, and many more. It achieves 97%+ accuracy regardless of your accent.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="relative flex flex-col justify-start items-center w-full">
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
           <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0" />

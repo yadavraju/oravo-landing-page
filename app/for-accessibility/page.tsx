@@ -85,8 +85,51 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 export default function ForAccessibilityPage() {
   const accentColor = "#14B8A6";
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Can I use Oravo 100% hands-free?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Once set up, you can activate and use Oravo entirely by voice. A simple voice command or keyboard shortcut starts dictation.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does it work with screen readers?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Oravo is designed to work alongside screen readers and other assistive technologies. It types text wherever your cursor is focused.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How accurate is the speech recognition?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Very accurate. Oravo uses state-of-the-art AI speech recognition that understands natural speech patterns, accents, and continuous dictation.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is there a trial or free version?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Oravo offers a free tier so you can experience the accessibility benefits before committing. We believe everyone deserves access to these tools.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="relative flex flex-col justify-start items-center w-full">
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
           <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0" />

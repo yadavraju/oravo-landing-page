@@ -54,10 +54,26 @@ const PAGE_CONFIG: Record<
   "/compare/willow-voice": { priority: 0.85, changeFrequency: "monthly" },
   "/compare/dragon": { priority: 0.85, changeFrequency: "monthly" },
   "/compare/otter-ai": { priority: 0.85, changeFrequency: "monthly" },
+  "/compare/google-voice-typing": { priority: 0.85, changeFrequency: "monthly" },
+  "/compare/apple-dictation": { priority: 0.85, changeFrequency: "monthly" },
+  "/compare/notta": { priority: 0.85, changeFrequency: "monthly" },
+  "/compare/speechnotes": { priority: 0.85, changeFrequency: "monthly" },
 
   // Additional audience landing pages
   "/for-multilingual-teams": { priority: 0.85, changeFrequency: "monthly" },
   "/for-non-native-speakers": { priority: 0.85, changeFrequency: "monthly" },
+
+  // Language pair SEO pages
+  "/voice-typing-hindi-to-english": { priority: 0.85, changeFrequency: "monthly" },
+  "/voice-typing-arabic-to-english": { priority: 0.85, changeFrequency: "monthly" },
+  "/voice-typing-chinese-to-english": { priority: 0.85, changeFrequency: "monthly" },
+  "/voice-typing-japanese-to-english": { priority: 0.85, changeFrequency: "monthly" },
+  "/voice-typing-korean-to-english": { priority: 0.85, changeFrequency: "monthly" },
+  "/voice-typing-portuguese-to-english": { priority: 0.85, changeFrequency: "monthly" },
+  "/voice-typing-french-to-english": { priority: 0.85, changeFrequency: "monthly" },
+  "/voice-typing-german-to-english": { priority: 0.85, changeFrequency: "monthly" },
+  "/voice-typing-tagalog-to-english": { priority: 0.85, changeFrequency: "monthly" },
+  "/voice-typing-vietnamese-to-english": { priority: 0.85, changeFrequency: "monthly" },
 
   // Legal pages - required but lower priority
   "/privacy": { priority: 0.3, changeFrequency: "yearly" },

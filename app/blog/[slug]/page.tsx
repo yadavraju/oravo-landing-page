@@ -9,6 +9,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Header } from '@/components/header'
 import FooterSection from '@/components/footer-section'
+import { buildBreadcrumbJsonLd } from '@/lib/breadcrumbs'
 
 type Props = {
   params: { slug: string }
@@ -71,6 +72,12 @@ export default async function BlogPost({ params }: Props) {
     ? urlForImage(post.author.image).width(100).height(100).url()
     : '/placeholder-user.jpg'
 
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", url: "https://oravo.ai" },
+    { name: "Blog", url: "https://oravo.ai/blog" },
+    { name: post.title, url: `https://oravo.ai/blog/${params.slug}` },
+  ]);
+
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -99,6 +106,10 @@ export default async function BlogPost({ params }: Props) {
 
   return (
     <article className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
