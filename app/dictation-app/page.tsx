@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
-import { ogImageUrl } from "@/lib/ogImage";
-
-const ogUrl = ogImageUrl("Best Dictation App", "AI voice to text for Mac & Windows", "default");
 
 export const metadata: Metadata = {
   title: "Best Dictation App 2024 | AI Voice to Text for Mac & Windows",
@@ -32,13 +29,11 @@ export const metadata: Metadata = {
     description: "Best dictation app with AI accuracy. Understands every accent. 4x faster than typing.",
     url: "https://oravo.ai/dictation-app",
     type: "website",
-    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Best Dictation App - Oravo" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Best Dictation App 2024 | Oravo",
     description: "Best dictation app with AI accuracy. Understands every accent.",
-    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/dictation-app",

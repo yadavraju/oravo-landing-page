@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
-import { ogImageUrl } from "@/lib/ogImage";
-
-const ogUrl = ogImageUrl("Speech to Text Spanish", "Speak Spanish, get English text with AI accuracy", "default");
 
 export const metadata: Metadata = {
   title: "Speech to Text Spanish | Habla Español, Escribe en Inglés",
@@ -32,13 +29,11 @@ export const metadata: Metadata = {
     description: "Speech to text for Spanish speakers. Speak Spanish, get English text. 99% accuracy.",
     url: "https://oravo.ai/speech-to-text-spanish",
     type: "website",
-    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Speech to Text Spanish - Oravo" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Speech to Text Spanish | Oravo",
     description: "Speak Spanish, get English text. Perfect for bilingual professionals.",
-    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/speech-to-text-spanish",

@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
-import { ogImageUrl } from "@/lib/ogImage";
-
-const ogUrl = ogImageUrl("Voice to Text for Lawyers", "Dictate legal documents and case notes with precision", "audience");
 
 export const metadata: Metadata = {
   title: "Voice to Text for Lawyers | Legal Dictation Software | Oravo AI",
@@ -33,13 +30,11 @@ export const metadata: Metadata = {
     description: "Dictate legal documents, case notes, and client communications with precision. Understands legal terminology.",
     url: "https://oravo.ai/for-lawyers",
     type: "website",
-    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Voice to Text for Lawyers - Oravo AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Voice to Text for Lawyers | Oravo AI",
     description: "Dictate legal documents and case notes with precision.",
-    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/for-lawyers",

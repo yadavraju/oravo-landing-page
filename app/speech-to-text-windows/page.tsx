@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
-import { ogImageUrl } from "@/lib/ogImage";
-
-const ogUrl = ogImageUrl("Speech to Text for Windows", "Best voice typing app for PC", "default");
 
 export const metadata: Metadata = {
   title: "Speech to Text for Windows | Best Voice Typing App for PC",
@@ -33,13 +30,11 @@ export const metadata: Metadata = {
       "Best speech to text app for Windows. Voice typing with accent support. Works in all apps. 4x faster.",
     url: "https://oravo.ai/speech-to-text-windows",
     type: "website",
-    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Speech to Text for Windows - Oravo" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Speech to Text for Windows | Oravo",
     description: "Best speech to text app for Windows. Works in all apps. 4x faster than typing.",
-    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/speech-to-text-windows",

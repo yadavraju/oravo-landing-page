@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
-import { ogImageUrl } from "@/lib/ogImage";
-
-const ogUrl = ogImageUrl("Write Professional English by Speaking", "Speak in your language, get perfect professional English", "audience");
 
 export const metadata: Metadata = {
   title: "Write Professional English by Speaking Your Language | Oravo AI",
@@ -34,14 +31,12 @@ export const metadata: Metadata = {
       "AI voice typing for non-native English speakers. Speak in your language, get perfect professional English.",
     url: "https://oravo.ai/for-non-native-speakers",
     type: "website",
-    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Write Professional English by Speaking Your Language - Oravo AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Write Professional English by Speaking Your Language | Oravo AI",
     description:
       "AI voice typing for non-native English speakers. Speak in your language, get perfect professional English.",
-    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/for-non-native-speakers",

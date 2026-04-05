@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
-import { ogImageUrl } from "@/lib/ogImage";
-
-const ogUrl = ogImageUrl("Voice Typing with Translation", "Speak any language, type English", "default");
 
 export const metadata: Metadata = {
   title: "Voice Typing with Translation | Speak Any Language, Type English",
@@ -46,13 +43,11 @@ export const metadata: Metadata = {
     description: "Voice typing with real-time translation. Speak in your language, get English text instantly.",
     url: "https://oravo.ai/voice-typing-with-translation",
     type: "website",
-    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Voice Typing with Translation - Oravo" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Voice Typing with Translation | Oravo",
     description: "Speak Spanish, Hindi, Chinese—get English text instantly.",
-    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/voice-typing-with-translation",

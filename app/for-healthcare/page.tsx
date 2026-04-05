@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
-import { ogImageUrl } from "@/lib/ogImage";
-
-const ogUrl = ogImageUrl("Speech to Text for Healthcare", "HIPAA-ready medical dictation with terminology recognition", "audience");
 
 export const metadata: Metadata = {
   title: "Speech to Text for Healthcare | Medical Dictation | Oravo AI",
@@ -34,14 +31,12 @@ export const metadata: Metadata = {
       "Document patient notes and medical reports hands-free. HIPAA-ready with medical terminology recognition built-in.",
     url: "https://oravo.ai/for-healthcare",
     type: "website",
-    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Speech to Text for Healthcare - Oravo AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Speech to Text for Healthcare | Oravo AI",
     description:
       "Document patient notes and medical reports hands-free. HIPAA-ready with medical terminology recognition.",
-    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/for-healthcare",

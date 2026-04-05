@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
-import { ogImageUrl } from "@/lib/ogImage";
-
-const ogUrl = ogImageUrl("Voice Typing With Real-Time Translation", "Speak your language, get perfect text in any language", "audience");
 
 export const metadata: Metadata = {
   title: "Voice Typing With Real-Time Translation for Global Teams | Oravo AI",
@@ -33,14 +30,12 @@ export const metadata: Metadata = {
       "Break language barriers with AI voice typing that translates in real time. Speak your language, get perfect text in any language.",
     url: "https://oravo.ai/for-multilingual-teams",
     type: "website",
-    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Voice Typing With Real-Time Translation - Oravo AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Voice Typing With Real-Time Translation | Oravo AI",
     description:
       "Break language barriers with AI voice typing that translates in real time.",
-    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/for-multilingual-teams",

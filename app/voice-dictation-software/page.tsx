@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
-import { ogImageUrl } from "@/lib/ogImage";
-
-const ogUrl = ogImageUrl("Voice Dictation Software", "Best AI dictation app for professionals", "default");
 
 export const metadata: Metadata = {
   title: "Voice Dictation Software | Best AI Dictation App 2024",
@@ -32,13 +29,11 @@ export const metadata: Metadata = {
     description: "Best voice dictation software for professionals. AI-powered with accent support. 4x faster.",
     url: "https://oravo.ai/voice-dictation-software",
     type: "website",
-    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Voice Dictation Software - Oravo" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Voice Dictation Software | Oravo",
     description: "Best voice dictation software for professionals. 4x faster than typing.",
-    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/voice-dictation-software",

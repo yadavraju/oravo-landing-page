@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
-import { ogImageUrl } from "@/lib/ogImage";
-
-const ogUrl = ogImageUrl("Voice Typing for Accents", "Speech recognition that understands any accent", "default");
 
 export const metadata: Metadata = {
   title: "Voice Typing for Accents | Speech Recognition That Understands You",
@@ -46,13 +43,11 @@ export const metadata: Metadata = {
     description: "Voice typing that understands any accent. Indian, Chinese, Spanish—perfect accuracy.",
     url: "https://oravo.ai/voice-typing-for-accents",
     type: "website",
-    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Voice Typing for Accents - Oravo" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Voice Typing for Accents | Oravo",
     description: "Voice typing that understands any accent. AI trained on 100+ accents.",
-    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/voice-typing-for-accents",

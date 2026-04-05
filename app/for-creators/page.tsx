@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
-import { ogImageUrl } from "@/lib/ogImage";
-
-const ogUrl = ogImageUrl("Voice to Text for Creators", "Dictate scripts, podcast notes, and content at speed of thought", "audience");
 
 export const metadata: Metadata = {
   title: "Voice to Text for Creators | Dictate Scripts & Content | Oravo AI",
@@ -33,14 +30,12 @@ export const metadata: Metadata = {
       "Dictate video scripts, podcast notes, and social media content at the speed of thought. Keep your creative flow uninterrupted.",
     url: "https://oravo.ai/for-creators",
     type: "website",
-    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Voice to Text for Creators - Oravo AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Voice to Text for Creators | Oravo AI",
     description:
       "Dictate video scripts, podcast notes, and social media content at the speed of thought.",
-    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/for-creators",

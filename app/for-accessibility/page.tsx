@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
-import { ogImageUrl } from "@/lib/ogImage";
-
-const ogUrl = ogImageUrl("Voice Typing for Accessibility", "Type hands-free with accuracy for RSI and mobility challenges", "audience");
 
 export const metadata: Metadata = {
   title: "Voice Typing for Accessibility | Hands-Free Dictation | Oravo AI",
@@ -33,13 +30,11 @@ export const metadata: Metadata = {
     description: "Type hands-free with accuracy and independence. Perfect for RSI, mobility challenges, or visual impairments.",
     url: "https://oravo.ai/for-accessibility",
     type: "website",
-    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Voice Typing for Accessibility - Oravo AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Voice Typing for Accessibility | Oravo AI",
     description: "Type hands-free with accuracy and independence.",
-    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/for-accessibility",

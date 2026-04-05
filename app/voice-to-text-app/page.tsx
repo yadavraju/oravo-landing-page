@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
-import { ogImageUrl } from "@/lib/ogImage";
-
-const ogUrl = ogImageUrl("Voice to Text App", "Best speech recognition app with AI accuracy", "default");
 
 export const metadata: Metadata = {
   title: "Voice to Text App | Best Speech Recognition App 2024",
@@ -46,13 +43,11 @@ export const metadata: Metadata = {
     description: "Best voice to text app with AI accuracy. Works with any accent. 4x faster than typing.",
     url: "https://oravo.ai/voice-to-text-app",
     type: "website",
-    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Voice to Text App - Oravo" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Voice to Text App | Oravo",
     description: "Best voice to text app with AI accuracy. Works with any accent.",
-    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/voice-to-text-app",

@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import Link from "next/link";
-import { ogImageUrl } from "@/lib/ogImage";
-
-const ogUrl = ogImageUrl("Dictation App for Students", "Write essays and research papers 4x faster with voice", "audience");
 
 export const metadata: Metadata = {
   title: "Dictation App for Students | Write Essays 4x Faster | Oravo AI",
@@ -45,13 +42,11 @@ export const metadata: Metadata = {
     description: "Write essays, research papers, and study notes 4x faster. Focus on learning, not typing.",
     url: "https://oravo.ai/for-students",
     type: "website",
-    images: [{ url: ogUrl, width: 1200, height: 630, alt: "Dictation App for Students - Oravo AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Dictation App for Students | Oravo AI",
     description: "Write essays and research papers 4x faster with voice dictation.",
-    images: [ogUrl],
   },
   alternates: {
     canonical: "https://oravo.ai/for-students",
