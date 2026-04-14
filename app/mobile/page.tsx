@@ -115,7 +115,7 @@ export default function AndroidPage() {
                   </div>
 
                   {/* Right Content - Phone Mockup with Wave Animation */}
-                  <div className="order-2 flex justify-center pt-8 md:pt-0">
+                  <div className="order-2 flex justify-center pt-12 md:pt-16">
                     <div className="relative">
                       {/* Phone Frame */}
                       <div className="relative bg-[#1a1a1a] rounded-[45px] p-[6px] shadow-2xl">

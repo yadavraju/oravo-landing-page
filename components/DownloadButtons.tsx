@@ -123,29 +123,24 @@ export default function DownloadButtons() {
   );
 
   return (
-    <div className="w-full max-w-[650px] lg:w-[650px] flex flex-col justify-center items-center gap-4 sm:gap-6 relative z-10">
+    <div className="w-full max-w-[700px] flex flex-col justify-center items-center gap-3 relative z-10">
+      {/* Desktop Download Row */}
       <div className="backdrop-blur-[8.25px] flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
         {/* Mac Download Button */}
         <button
           onClick={handleMacDownload}
           disabled={loadingPlatform !== null}
-          className="group relative h-12 w-full sm:w-[260px] px-6 bg-gradient-to-b from-[#1877F2] to-[#166FE5] hover:from-[#1570E8] hover:to-[#1466D8] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(24,119,242,0.4)] overflow-hidden rounded-full flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="group relative h-12 w-full sm:w-[220px] px-5 bg-gradient-to-b from-[#1877F2] to-[#166FE5] hover:from-[#1570E8] hover:to-[#1466D8] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(24,119,242,0.4)] overflow-hidden rounded-full flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
         >
-          {/* Glossy overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/10 pointer-events-none"></div>
-          {/* Apple logo or spinner */}
           {loadingPlatform === "mac" ? (
             <LoadingSpinner />
           ) : (
-            <svg
-              className="w-5 h-5 relative z-10 flex-shrink-0"
-              viewBox="0 0 24 24"
-              fill="white"
-            >
+            <svg className="w-5 h-5 relative z-10 flex-shrink-0" viewBox="0 0 24 24" fill="white">
               <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
             </svg>
           )}
-          <span className="text-white text-base font-medium leading-5 font-sans relative z-10">
+          <span className="text-white text-sm font-medium leading-5 font-sans relative z-10">
             Download for Mac
           </span>
         </button>
@@ -154,41 +149,43 @@ export default function DownloadButtons() {
         <button
           onClick={handleWindowsDownload}
           disabled={loadingPlatform !== null}
-          className="group relative h-12 w-full sm:w-[260px] px-6 bg-gradient-to-b from-white to-gray-100 hover:from-gray-50 hover:to-gray-200 shadow-[0px_0px_0px_2.5px_rgba(0,0,0,0.05)_inset,0px_4px_12px_rgba(0,0,0,0.1)] overflow-hidden rounded-full flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 active:scale-95 border border-gray-200 whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="group relative h-12 w-full sm:w-[220px] px-5 bg-gradient-to-b from-white to-gray-100 hover:from-gray-50 hover:to-gray-200 shadow-[0px_0px_0px_2.5px_rgba(0,0,0,0.05)_inset,0px_4px_12px_rgba(0,0,0,0.1)] overflow-hidden rounded-full flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-105 active:scale-95 border border-gray-200 whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
         >
-          {/* Glossy overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-black/5 pointer-events-none"></div>
-          {/* Windows logo or spinner */}
           {loadingPlatform === "windows" ? (
             <LoadingSpinner />
           ) : (
-            <svg
-              className="w-5 h-5 relative z-10 flex-shrink-0"
-              viewBox="0 0 24 24"
-              fill="#0078D4"
-            >
+            <svg className="w-5 h-5 relative z-10 flex-shrink-0" viewBox="0 0 24 24" fill="#0078D4">
               <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" />
             </svg>
           )}
-          <span className="text-gray-800 text-base font-medium leading-5 font-sans relative z-10">
+          <span className="text-gray-800 text-sm font-medium leading-5 font-sans relative z-10">
             Download for Windows
           </span>
         </button>
       </div>
 
-      {/* Android Link */}
-      <a
-        href="/android"
-        className="flex items-center gap-2 text-[#605A57] hover:text-[#37322F] text-sm font-medium font-sans transition-colors"
-      >
-        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="#3DDC84">
-          <path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/>
-        </svg>
-        <span>Also available on Android</span>
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
+      {/* Mobile Store Badges Row — 2 grid */}
+      <div className="grid grid-cols-2 gap-3 w-full sm:w-auto">
+        <a
+          href="https://play.google.com/store/apps/details?id=ai.oravo"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:opacity-90 transition-all duration-300 hover:scale-105 active:scale-95 flex justify-center"
+        >
+          <img src="/playstore.png" alt="Get it on Google Play" className="h-12 w-auto" />
+        </a>
+        <a
+          href="#"
+          className="hover:opacity-90 transition-all duration-300 hover:scale-105 active:scale-95 flex justify-center opacity-60 cursor-not-allowed"
+          title="Coming soon to iOS"
+          onClick={(e) => e.preventDefault()}
+        >
+          <img src="/applestore.png" alt="Download on the App Store" className="h-12 w-auto" />
+        </a>
+      </div>
+
+      <p className="text-[#847971] text-xs font-sans">iOS app coming soon</p>
     </div>
   );
 }
