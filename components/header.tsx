@@ -70,6 +70,17 @@ export function Header() {
                 Use Cases
               </div>
             </a>
+            <a
+              href="/mobile"
+              className="flex justify-start items-center cursor-pointer gap-1"
+            >
+              <svg className="w-3 h-3 text-[rgba(49,45,43,0.80)] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
+                Mobile App
+              </div>
+            </a>
           </div>
         </div>
         <div className="h-6 sm:h-7 md:h-8 flex justify-start items-center gap-2 sm:gap-3">
@@ -138,6 +149,16 @@ export function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Use Cases
+            </a>
+            <a
+              href="/mobile"
+              className="flex items-center gap-2 text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              Mobile App
             </a>
             <div className="border-t border-[rgba(55,50,47,0.12)] my-2"></div>
             <a
