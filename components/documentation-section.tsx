@@ -50,7 +50,7 @@ export default function DocumentationSection() {
     {
       title: "2. Speak naturally",
       description:
-        "Talk in English or your native language. Oravo understands 100+ accents and handles code-switching naturally.",
+        "Dictate in fluent English or switch languages when you need to—Oravo understands technical terms, names from your contacts, and code-switching.",
       component: PersonalizationAnimation,
     },
     {

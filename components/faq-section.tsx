@@ -21,7 +21,7 @@ const faqData: FAQItem[] = [
   {
     question: "How is this different from Wispr Flow or Dragon?",
     answer:
-      "vs Wispr Flow: They're great for native English speakers. We're built specifically for non-native speakers with real-time translation and accent optimization. vs Dragon: 10× cheaper, cross-platform (Mac + Windows), no training required, understands 100+ accents, has real-time translation. vs Otter.ai: Works in all apps (not just meetings), optimized for non-native speakers, real-time translation.",
+      "vs Wispr Flow: Similar accuracy and speed at roughly one-third the price, with Mac, Windows, and Android support and custom vocabulary on the free tier. vs Dragon: About 10× cheaper, cross-platform (Mac + Windows), no training required, with app-aware tone and smart formatting. vs Otter.ai: Works in every app where you type (not just meetings), with sub-300ms latency and a full desktop voice keyboard.",
   },
   {
     question: "What apps does it work with?",

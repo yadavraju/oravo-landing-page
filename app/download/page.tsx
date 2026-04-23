@@ -65,6 +65,12 @@ export default async function DownloadPage() {
 
           {/* Main Content */}
           <main className="flex-1 w-full mt-20 md:mt-24 lg:mt-28 relative z-10">
+            <div className="bg-green-50 dark:bg-green-950 border-b border-green-200 dark:border-green-900 py-4 px-6 text-center">
+              <p className="text-sm text-green-900 dark:text-green-100 font-sans">
+                ✓ Your 14-day Pro trial starts automatically when you install. No
+                credit card required.
+              </p>
+            </div>
             <div className="max-w-[800px] mx-auto px-6 md:px-12 py-12 md:py-16">
               {/* Hero Section */}
               <div className="text-center mb-12 lg:mb-16">

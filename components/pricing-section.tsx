@@ -138,7 +138,8 @@ export default function PricingSection() {
           </div>
 
           {/* Pricing Cards Container */}
-          <div className="flex-1 flex flex-col md:flex-row justify-center items-stretch gap-6 py-12 md:py-0">
+          <div className="flex-1 flex flex-col justify-center items-stretch gap-6 py-12 md:py-0">
+            <div className="flex flex-col md:flex-row justify-center items-stretch gap-6 pt-6 md:pt-8">
             {/* Starter Plan */}
             <div className="flex-1 max-w-full md:max-w-none px-6 py-5 border border-[rgba(50,45,43,0.12)] border-[#E0DEDB] overflow-hidden flex flex-col justify-between items-start gap-6 bg-[rgba(255,255,255,0)]">
               <div className="self-stretch flex flex-col gap-6">
@@ -209,13 +210,19 @@ export default function PricingSection() {
                 <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/20 pointer-events-none"></div>
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.1),transparent_50%)] pointer-events-none"></div>
                 <div className="relative flex justify-center flex-col text-[#FBFAF9] text-[14px] font-semibold leading-5 font-sans tracking-wide">
-                  Get Started Free
+                  Download Free
                 </div>
               </Link>
+              <p className="text-[#847971] text-xs text-center font-sans leading-5 w-full">
+                No credit card · Free forever
+              </p>
             </div>
 
             {/* Professional Plan (Featured) */}
-            <div className="flex-1 max-w-full md:max-w-none px-6 py-5 bg-[#37322F] border border-[rgba(50,45,43,0.12)] border-[rgba(55,50,47,0.12)] overflow-hidden flex flex-col justify-between items-start gap-6">
+            <div className="flex-1 max-w-full md:max-w-none px-6 pt-8 pb-5 bg-[#37322F] border border-[rgba(50,45,43,0.12)] border-[rgba(55,50,47,0.12)] overflow-visible flex flex-col justify-between items-start gap-6 relative">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 text-[#1f2937] text-[10px] sm:text-[11px] font-bold tracking-wide font-sans shadow-md whitespace-nowrap">
+                ★ 14-DAY FREE TRIAL
+              </div>
               <div className="self-stretch flex flex-col gap-6">
                 {/* Plan Header */}
                 <div className="self-stretch flex flex-col justify-start items-start gap-2">
@@ -274,15 +281,13 @@ export default function PricingSection() {
                 <div className="self-stretch flex flex-col justify-start items-start gap-2">
                   {[
                     "Unlimited words",
-                    "Full personalization across apps",
+                    "Advanced voice commands & custom macros",
+                    "Offline dictation mode",
                     "Smart memory of your writing style",
-                    "Optimized performance & reliability",
                     "Priority customer support",
                     "Early access to new features",
-                    "Advanced voice commands",
-                    "Custom macros & shortcuts",
-                    "Offline dictation mode",
                     "Export & backup options",
+                    "Full personalization across apps",
                   ].map((feature, index) => (
                     <div
                       key={index}
@@ -319,9 +324,12 @@ export default function PricingSection() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.4),transparent_60%)] pointer-events-none"></div>
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-opacity duration-500 pointer-events-none"></div>
                 <div className="relative flex justify-center flex-col text-white text-[14px] font-bold leading-5 font-sans tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
-                  Upgrade to Pro
+                  Start free trial
                 </div>
               </Link>
+              <p className="text-[#D2C6BF] text-xs text-center font-sans leading-5 w-full">
+                Download the app · Trial starts automatically · No credit card
+              </p>
             </div>
 
             {/* Enterprise Plan */}
@@ -424,14 +432,19 @@ export default function PricingSection() {
               </div>
 
               {/* CTA Button */}
-              <Link href="/download" className="group self-stretch px-6 py-3 relative bg-gradient-to-b from-[#37322F] to-[#2A2522] shadow-[0px_1px_2px_rgba(0,0,0,0.05),0px_0px_0px_1px_rgba(255,255,255,0.08)_inset,0px_8px_16px_rgba(0,0,0,0.15)] overflow-hidden rounded-[99px] flex justify-center items-center transition-all duration-300 hover:shadow-[0px_2px_4px_rgba(0,0,0,0.08),0px_0px_0px_1px_rgba(255,255,255,0.12)_inset,0px_12px_24px_rgba(0,0,0,0.2)] hover:scale-[1.02] active:scale-[0.98]">
+              <a
+                href="mailto:hello@oravo.ai?subject=Oravo%20Enterprise%20inquiry"
+                className="group self-stretch px-6 py-3 relative bg-gradient-to-b from-[#37322F] to-[#2A2522] shadow-[0px_1px_2px_rgba(0,0,0,0.05),0px_0px_0px_1px_rgba(255,255,255,0.08)_inset,0px_8px_16px_rgba(0,0,0,0.15)] overflow-hidden rounded-[99px] flex justify-center items-center transition-all duration-300 hover:shadow-[0px_2px_4px_rgba(0,0,0,0.08),0px_0px_0px_1px_rgba(255,255,255,0.12)_inset,0px_12px_24px_rgba(0,0,0,0.2)] hover:scale-[1.02] active:scale-[0.98]"
+              >
                 <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/20 pointer-events-none"></div>
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.1),transparent_50%)] pointer-events-none"></div>
                 <div className="relative flex justify-center flex-col text-[#FBFAF9] text-[14px] font-semibold leading-5 font-sans tracking-wide">
                   Contact Sales
                 </div>
-              </Link>
+              </a>
             </div>
+            </div>
+
           </div>
 
           {/* Right Decorative Pattern */}

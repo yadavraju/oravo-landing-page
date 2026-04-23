@@ -149,7 +149,7 @@ oravo-landing-page/
 ### Prerequisites
 
 - **Node.js 18+** (recommended: v18.17.0 or higher)
-- **npm** or **pnpm** (recommended)
+- **pnpm** (version pinned in `package.json` via `packageManager`; enable with `corepack enable`)
 
 ### Installation
 
@@ -161,8 +161,6 @@ oravo-landing-page/
 
 2. **Install dependencies**
    ```bash
-   npm install
-   # or
    pnpm install
    ```
 
@@ -176,8 +174,6 @@ oravo-landing-page/
 
 4. **Run the development server**
    ```bash
-   npm run dev
-   # or
    pnpm dev
    ```
 
@@ -187,8 +183,8 @@ oravo-landing-page/
 ### Build for Production
 
 ```bash
-npm run build
-npm run start
+pnpm build
+pnpm start
 ```
 
 ---
