@@ -187,7 +187,7 @@ export default function HomeLanding() {
                   </h1>
                   <div className="w-full max-w-[720px] lg:w-[720px] text-center flex justify-center flex-col text-[rgba(55,50,47,0.80)] sm:text-lg md:text-xl leading-[1.4] sm:leading-[1.45] md:leading-[1.5] lg:leading-7 font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-medium text-sm">
                     Press a hotkey, speak naturally, and Oravo writes polished
-                    text — 99% accuracy, sub-500ms latency, in every app you
+                    text — 99% accuracy, sub-300ms latency, in every app you
                     already use.
                   </div>
                 </div>
@@ -202,7 +202,7 @@ export default function HomeLanding() {
               {/* Trust bar */}
               <div className="mt-6 sm:mt-8 flex flex-wrap justify-center items-center gap-2 px-4 sm:px-0 relative z-10">
                 <span className="text-[#847971] text-xs sm:text-sm font-medium tracking-wide text-center">
-                  99% accuracy · Sub-500ms latency · Works in 50+ apps ·
+                  99% accuracy · Sub-300ms latency · Works in 50+ apps ·
                   HIPAA-ready · SOC 2 Type II
                 </span>
               </div>

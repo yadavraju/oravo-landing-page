@@ -27,17 +27,17 @@ export default function WisprSwitchSection() {
               Same accuracy, 1/3 the price
             </h3>
             <p className="text-[#605A57] text-sm leading-relaxed font-sans">
-              99% accuracy, sub-500ms latency. Wispr charges $15/month for the
+              99% accuracy, sub-300ms latency. Wispr charges $15/month for the
               same speed. Oravo is $9.99 — or $99/year.
             </p>
           </div>
           <div className="bg-white rounded-xl border border-[#E0DEDB] p-6 sm:p-7 shadow-[0_4px_24px_rgba(55,50,47,0.06)] flex flex-col gap-3">
             <h3 className="text-[#37322F] text-lg font-semibold leading-tight font-sans">
-              Works on Mac AND Windows
+              Real translation, not just dictation
             </h3>
             <p className="text-[#605A57] text-sm leading-relaxed font-sans">
-              Wispr is Mac-only. Oravo runs on Mac, Windows, and Android. Same
-              keyboard shortcut, every device.
+              Speak in 60+ languages — Spanish, Hindi, Mandarin, Arabic — and
+              get polished English where your cursor is. Two-way, in real time.
             </p>
           </div>
           <div className="bg-white rounded-xl border border-[#E0DEDB] p-6 sm:p-7 shadow-[0_4px_24px_rgba(55,50,47,0.06)] flex flex-col gap-3">
