@@ -45,7 +45,7 @@ export default function FooterSection() {
             <div className={headingClass}>Solutions</div>
             <nav className="flex flex-col gap-2.5">
               <a href="/for-multilingual-teams" className={linkClass}>Multilingual Teams</a>
-              <a href="/for-non-native-speakers" className={linkClass}>Non-Native Speakers</a>
+              <a href="/for-creators" className={linkClass}>Founders & Operators</a>
               <a href="/for-healthcare" className={linkClass}>Healthcare</a>
               <a href="/for-developers" className={linkClass}>Developers</a>
               <a href="/students" className={linkClass}>Students</a>

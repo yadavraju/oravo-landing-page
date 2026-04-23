@@ -27,14 +27,15 @@ export default function CTASection() {
           <div className="self-stretch flex flex-col justify-start items-start gap-3">
             <div className="self-stretch rounded-[3px] flex flex-col justify-center items-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
               <h2 className="w-full text-center text-[#37322F] text-[28px] sm:text-[36px] md:text-[52px] lg:text-[80px] font-stretch-semi-condensed font-medium leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-4 sm:px-6 md:px-0">
-                Write Perfect English 4x Faster
+                Stop typing. Start talking.
               </h2>
             </div>
             <div className="self-stretch text-center text-[#605A57] text-base leading-7 font-sans font-medium">
-              Download free for Mac & Windows.
-              <br />
-              Just speak in your language — Oravo handles the rest.
+              14-day free trial. No credit card. Install in 30 seconds.
             </div>
+          </div>
+          <div className="self-stretch text-center text-[#605A57] text-sm leading-6 font-sans font-medium">
+            Install the app — your 14-day Pro trial starts automatically.
           </div>
           <DownloadButtons />
         </div>

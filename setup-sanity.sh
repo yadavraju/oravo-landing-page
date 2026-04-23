@@ -12,7 +12,7 @@ echo ""
 echo "📦 Step 1: Checking Sanity CLI..."
 if ! command -v sanity &> /dev/null; then
     echo "Installing Sanity CLI globally..."
-    npm install -g @sanity/cli
+    pnpm add -g @sanity/cli
 else
     echo "✓ Sanity CLI already installed"
 fi
@@ -22,7 +22,7 @@ echo ""
 echo "🔐 Step 2: Login to Sanity..."
 echo "This will open your browser to authenticate with Sanity."
 echo ""
-npx sanity login
+pnpm dlx sanity login
 echo ""
 
 # Step 3: Check for project ID
@@ -58,15 +58,15 @@ echo ""
 echo "🚀 Step 4: Deploying Sanity schema..."
 echo "This will upload your content structure to Sanity."
 echo ""
-npx sanity schema deploy
+pnpm dlx sanity schema deploy
 echo ""
 
 # Step 5: Grant CORS permissions
 echo "🔓 Step 5: Setting up CORS permissions..."
 echo "This allows your local development to access Sanity."
 echo ""
-npx sanity cors add http://localhost:3000 --no-credentials
-npx sanity cors add http://localhost:3001 --no-credentials
+pnpm dlx sanity cors add http://localhost:3000 --no-credentials
+pnpm dlx sanity cors add http://localhost:3001 --no-credentials
 echo ""
 
 # Step 6: Success message
@@ -79,7 +79,7 @@ echo ""
 echo "🎉 Next Steps:"
 echo ""
 echo "1. Start your development server:"
-echo "   npm run dev"
+echo "   pnpm dev"
 echo ""
 echo "2. Access Sanity Studio:"
 echo "   http://localhost:3000/studio"

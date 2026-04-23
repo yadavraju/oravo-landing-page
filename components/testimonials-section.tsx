@@ -24,10 +24,10 @@ export default function TestimonialsSection() {
   const testimonials = [
     {
       quote:
-        "Honestly, Oravo's been a lifesaver this semester. I mostly use it on my laptop for getting lecture notes down or drafting discussion posts without having to type everything. Really useful when I have back-to-back classes and need to capture ideas quickly between them. Also clutch for those nights when I'm working on multiple papers and my hands are just done with typing. Not perfect every time, but it's way faster than typing and accurate enough that I don't spend forever fixing stuff.",
-      name: "Abhinas Y.",
-      company: "University Student at UCO",
-      image: "/uco.png",
+        "I write 40+ emails a day. Oravo cut that time in half. The accuracy is shockingly good — I rarely need to fix anything.",
+      name: "[Name]",
+      company: "[Role] at [Company]",
+      image: "/osu.svg",
     },
     {
       quote:
@@ -71,7 +71,9 @@ export default function TestimonialsSection() {
 
   return (
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
-      {/* Header Section */}
+      {/* TODO: Replace with 2-3 real professional testimonials from knowledge-worker users.
+          Target quotes from founders, engineers, or sales professionals — not students.
+          Each should include: name, role, company, and optional LinkedIn link. */}
 
       {/* Testimonial Content */}
       <div className="self-stretch px-2 overflow-hidden flex justify-start items-center bg-background border border-b border-l-0 border-r-0 border-t-0">
