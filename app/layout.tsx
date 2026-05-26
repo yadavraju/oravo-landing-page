@@ -2,6 +2,8 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
 import Script from "next/script";
+import ModeToggleFAB from "@/components/mode-toggle-fab";
+import AgentModeView from "@/components/agent-mode-view";
 import "./globals.css";
 
 const inter = Inter({
@@ -765,7 +767,8 @@ export default function RootLayout({
             gtag('config', 'AW-16703603891');
           `}
         </Script>
-        {children}
+        <AgentModeView>{children}</AgentModeView>
+        <ModeToggleFAB />
       </body>
     </html>
   );

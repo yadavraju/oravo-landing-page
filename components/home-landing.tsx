@@ -92,10 +92,10 @@ export default function HomeLanding() {
       },
       {
         "@type": "Question",
-        name: "How is this different from other dictation tools?",
+        name: "How is Oravo different from Wispr Flow, Willow Voice, Dragon, and other dictation tools?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Oravo is built for full-day professional writing, not just transcription. It understands app context, fixes filler and grammar automatically, adds formatting as you speak, and works system-wide with low latency where your cursor is.",
+          text: "vs Wispr Flow: Similar accuracy and speed at roughly one-third the price, with Mac, Windows, and Android support. vs Willow Voice: Oravo adds context-aware tone adjustment, 60+ language translation, and better accent support for non-native speakers. vs Dragon NaturallySpeaking: About 10x cheaper, cross-platform, no training required, with smart formatting. vs Voice In or Dictation.io: Oravo works system-wide (not just Chrome), in every desktop app including Gmail, Slack, Notion, and Teams.",
         },
       },
       {
