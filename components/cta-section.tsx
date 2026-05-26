@@ -35,7 +35,7 @@ export default function CTASection() {
             </div>
           </div>
           <div className="self-stretch text-center text-[#605A57] text-sm leading-6 font-sans font-medium">
-            Install the app — your 14-day Pro trial starts automatically.
+            Install the app — 5,000 words free, no credit card required.
           </div>
           <DownloadButtons />
         </div>

@@ -127,7 +127,7 @@ export default function HomeLanding() {
         name: "Can I try before I pay?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. Free plan includes 30 minutes/month forever. Pro plan has 14-day free trial\u2014no credit card required.",
+          text: "Yes. You get 5,000 words free\u2014no credit card required. After that, Pro plan is $9.99/month for unlimited voice typing.",
         },
       },
       {
