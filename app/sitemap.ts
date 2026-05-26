@@ -39,6 +39,10 @@ const PAGE_CONFIG: Record<
   // Use cases landing page
   "/use-cases": { priority: 0.85, changeFrequency: "weekly" },
 
+  // High-value SEO landing pages (head keywords)
+  "/voice-typing": { priority: 0.95, changeFrequency: "weekly" },
+  "/voice-dictation-for-email": { priority: 0.9, changeFrequency: "weekly" },
+
   // High-value SEO landing pages (long-tail keywords)
   "/speech-to-text-mac": { priority: 0.9, changeFrequency: "weekly" },
   "/speech-to-text-windows": { priority: 0.9, changeFrequency: "weekly" },

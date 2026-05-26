@@ -3,14 +3,15 @@ import HomeLanding from "@/components/home-landing";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Oravo — Type 4× Faster with Voice. Works in Every App.",
+    absolute:
+      "Oravo — Voice Typing & Dictation App | Type 4× Faster in Any App",
   },
   description:
-    "Press a hotkey, speak naturally, and Oravo writes polished text in Gmail, Slack, Notion, and 50+ apps. 99% accuracy. 14-day free trial, no credit card.",
+    "AI voice typing app for Mac, Windows, Android & iOS. Speak naturally and get polished text in Gmail, Slack, Notion, Google Docs & 50+ apps. 99% accuracy. 5,000 words free.",
   openGraph: {
-    title: "Type 4× Faster with Voice | Oravo",
+    title: "Voice Typing & Dictation App | Oravo",
     description:
-      "Voice dictation for professionals. Works in Gmail, Slack, Notion, and 50+ apps. 14-day free trial, no credit card.",
+      "AI voice typing that works in every app. Speak naturally, get polished text. 99% accuracy, 60+ languages. 5,000 words free.",
   },
 };
 

@@ -221,7 +221,7 @@ export default function PricingSection() {
             {/* Professional Plan (Featured) */}
             <div className="flex-1 max-w-full md:max-w-none px-6 pt-8 pb-5 bg-[#37322F] border border-[rgba(50,45,43,0.12)] border-[rgba(55,50,47,0.12)] overflow-visible flex flex-col justify-between items-start gap-6 relative">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 text-[#1f2937] text-[10px] sm:text-[11px] font-bold tracking-wide font-sans shadow-md whitespace-nowrap">
-                ★ 14-DAY FREE TRIAL
+                ★ 5,000 WORDS FREE
               </div>
               <div className="self-stretch flex flex-col gap-6">
                 {/* Plan Header */}

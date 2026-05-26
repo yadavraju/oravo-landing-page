@@ -41,7 +41,7 @@ const faqData: FAQItem[] = [
   {
     question: "Can I try before I pay?",
     answer:
-      "Yes. Free plan includes 30 minutes/month forever. Pro plan has 14-day free trial—no credit card required.",
+      "Yes. You get 5,000 words free—no credit card required. After that, Pro plan is $9.99/month for unlimited voice typing.",
   },
   {
     question: "What if I speak multiple languages in one sentence?",

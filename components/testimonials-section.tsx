@@ -25,8 +25,8 @@ export default function TestimonialsSection() {
     {
       quote:
         "I write 40+ emails a day. Oravo cut that time in half. The accuracy is shockingly good — I rarely need to fix anything.",
-      name: "[Name]",
-      company: "[Role] at [Company]",
+      name: "Abhinash Y",
+      company: "Software Engineer at OSU",
       image: "/osu.svg",
     },
     {
@@ -125,7 +125,7 @@ export default function TestimonialsSection() {
               onClick={() =>
                 handleNavigationClick(
                   (activeTestimonial - 1 + testimonials.length) %
-                    testimonials.length
+                    testimonials.length,
                 )
               }
               className="w-9 h-9 shadow-[0px_1px_2px_rgba(0,0,0,0.08)] overflow-hidden rounded-full border border-[rgba(0,0,0,0.15)] justify-center items-center gap-2 flex hover:bg-gray-50 transition-colors"
@@ -151,7 +151,7 @@ export default function TestimonialsSection() {
             <button
               onClick={() =>
                 handleNavigationClick(
-                  (activeTestimonial + 1) % testimonials.length
+                  (activeTestimonial + 1) % testimonials.length,
                 )
               }
               className="w-9 h-9 shadow-[0px_1px_2px_rgba(0,0,0,0.08)] overflow-hidden rounded-full border border-[rgba(0,0,0,0.15)] justify-center items-center gap-2 flex hover:bg-gray-50 transition-colors"
