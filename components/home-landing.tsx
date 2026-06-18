@@ -36,7 +36,7 @@ function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
   );
 }
 
-export default function HomeLanding() {
+export default function HomeLanding({ blogSection }: { blogSection?: React.ReactNode }) {
   // Handle hash navigation from other pages
   useEffect(() => {
     const hash = window.location.hash;
@@ -679,6 +679,9 @@ export default function HomeLanding() {
 
               {/* CTA Section */}
               <CTASection />
+
+              {/* Latest Articles Section (Server Component Slot) */}
+              {blogSection}
 
               {/* Footer Section */}
               <FooterSection />

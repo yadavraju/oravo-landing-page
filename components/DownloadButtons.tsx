@@ -82,7 +82,12 @@ export default function DownloadButtons({ variant = "default" }: DownloadButtons
       const bestDownload = findBestDownload(latestDownloads, "macos", arch);
 
       if (bestDownload) {
-        window.open(bestDownload.file_path, "_blank");
+        // Trigger Google Ads conversion tracking
+        if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+          (window as any).gtag_report_conversion(bestDownload.file_path);
+        } else {
+          window.open(bestDownload.file_path, "_blank");
+        }
       } else {
         window.location.assign("/download");
       }
@@ -103,7 +108,12 @@ export default function DownloadButtons({ variant = "default" }: DownloadButtons
       const bestDownload = findBestDownload(latestDownloads, "windows", "x64");
 
       if (bestDownload) {
-        window.open(bestDownload.file_path, "_blank");
+        // Trigger Google Ads conversion tracking
+        if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+          (window as any).gtag_report_conversion(bestDownload.file_path);
+        } else {
+          window.open(bestDownload.file_path, "_blank");
+        }
       } else {
         window.location.assign("/download");
       }
@@ -227,6 +237,12 @@ export default function DownloadButtons({ variant = "default" }: DownloadButtons
           href="https://play.google.com/store/apps/details?id=ai.oravo"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={(e) => {
+            if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+              e.preventDefault();
+              (window as any).gtag_report_conversion('https://play.google.com/store/apps/details?id=ai.oravo');
+            }
+          }}
           className="hover:opacity-90 transition-all duration-300 hover:scale-105 active:scale-95 flex justify-center"
         >
           <img

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import HomeLanding from "@/components/home-landing";
+import { LatestArticles } from "@/components/blog/LatestArticles";
 
 export const metadata: Metadata = {
   title: {
@@ -16,5 +17,5 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return <HomeLanding />;
+  return <HomeLanding blogSection={<LatestArticles />} />;
 }

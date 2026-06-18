@@ -131,8 +131,13 @@ export function SmartDownloadButton({
       const bestDownload = findBestDownload(latestDownloads, platform, arch);
 
       if (bestDownload) {
-        // Trigger download
-        window.open(bestDownload.file_path, "_blank");
+        // Trigger Google Ads conversion tracking
+        if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+          (window as any).gtag_report_conversion(bestDownload.file_path);
+        } else {
+          // Fallback: trigger download directly
+          window.open(bestDownload.file_path, "_blank");
+        }
       } else {
         // No matching download found, go to download page
         router.push("/download");
