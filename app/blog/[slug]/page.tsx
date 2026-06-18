@@ -12,7 +12,7 @@ import FooterSection from '@/components/footer-section'
 import { buildBreadcrumbJsonLd } from '@/lib/breadcrumbs'
 
 type Props = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
@@ -21,7 +21,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await client.fetch(postQuery, { slug: params.slug })
+  const { slug } = await params
+  const post = await client.fetch(postQuery, { slug })
 
   if (!post) {
     return {}
@@ -58,7 +59,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPost({ params }: Props) {
-  const post = await client.fetch(postQuery, { slug: params.slug })
+  const { slug } = await params
+  const post = await client.fetch(postQuery, { slug })
 
   if (!post) {
     notFound()
@@ -75,7 +77,7 @@ export default async function BlogPost({ params }: Props) {
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
     { name: "Home", url: "https://oravo.ai" },
     { name: "Blog", url: "https://oravo.ai/blog" },
-    { name: post.title, url: `https://oravo.ai/blog/${params.slug}` },
+    { name: post.title, url: `https://oravo.ai/blog/${slug}` },
   ]);
 
   const articleJsonLd = {
@@ -100,7 +102,7 @@ export default async function BlogPost({ params }: Props) {
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://oravo.ai/blog/${params.slug}`,
+      '@id': `https://oravo.ai/blog/${slug}`,
     },
   }
 

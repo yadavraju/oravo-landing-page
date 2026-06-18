@@ -23,9 +23,10 @@ export function BlogCard({ post }: BlogCardProps) {
     ? urlForImage(post.mainImage).width(1200).height(630).url()
     : '/placeholder.jpg'
 
-  const authorImageUrl = post.author?.image
+  const hasAuthorImage = post.author?.image?.asset?._ref
+  const authorImageUrl = hasAuthorImage
     ? urlForImage(post.author.image).width(100).height(100).url()
-    : '/placeholder-user.jpg'
+    : null
 
   return (
     <Link
@@ -55,7 +56,7 @@ export function BlogCard({ post }: BlogCardProps) {
           </div>
 
           <div className="flex items-center gap-3">
-            {post.author?.image && (
+            {hasAuthorImage && authorImageUrl && (
               <Image
                 src={authorImageUrl}
                 alt={post.author?.name || 'Author'}

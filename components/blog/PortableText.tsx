@@ -23,8 +23,19 @@ const components: PortableTextComponents = {
       )
     },
     table: ({ value }) => {
+      // Sanity table plugin structure: { rows: [{cells: ['cell1', 'cell2', ...]}, ...] }
       const rows = value?.rows
-      if (!rows || rows.length === 0) return null
+
+      if (!rows || rows.length === 0) {
+        return null
+      }
+
+      // Check if we have any data
+      const hasData = rows.some((row: any) => row?.cells && row.cells.length > 0)
+      if (!hasData) {
+        return null
+      }
+
       return (
         <div className="my-8 overflow-x-auto rounded-lg border border-[rgba(55,50,47,0.12)]">
           <table className="w-full border-collapse text-left text-sm sm:text-base font-sans">
@@ -35,23 +46,23 @@ const components: PortableTextComponents = {
                     key={i}
                     className="px-4 py-3 font-semibold text-[#37322F] border-b border-[rgba(55,50,47,0.12)]"
                   >
-                    {cell}
+                    {cell || ''}
                   </th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {rows.slice(1).map((row: { cells: string[] }, i: number) => (
+              {rows.slice(1).map((row: { cells: string[] }, rowIndex: number) => (
                 <tr
-                  key={i}
+                  key={rowIndex}
                   className="border-b border-[rgba(55,50,47,0.08)] last:border-b-0 hover:bg-[rgba(55,50,47,0.02)] transition-colors"
                 >
-                  {row.cells?.map((cell: string, j: number) => (
+                  {row.cells?.map((cell: string, cellIndex: number) => (
                     <td
-                      key={j}
+                      key={cellIndex}
                       className="px-4 py-3 text-[#37322F]"
                     >
-                      {cell}
+                      {cell || ''}
                     </td>
                   ))}
                 </tr>

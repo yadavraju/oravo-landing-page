@@ -1,0 +1,259 @@
+"use client";
+
+import { useState, useCallback, useEffect } from "react";
+import { fetchDownloadUrls, getLatestDownloads, DownloadData } from "@/lib/downloadApi";
+
+type DetectedPlatform = "macos" | "windows" | "linux" | null;
+type DetectedArch = "arm64" | "x64" | null;
+
+// Detect Mac architecture using WebGL
+function detectMacArchitecture(): DetectedArch {
+  try {
+    const canvas = document.createElement("canvas");
+    const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+    if (gl) {
+      const debugInfo = (gl as WebGLRenderingContext).getExtension("WEBGL_debug_renderer_info");
+      if (debugInfo) {
+        const renderer = (gl as WebGLRenderingContext).getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+        if (renderer && (renderer.includes("Apple M") || renderer.includes("Apple GPU"))) {
+          return "arm64";
+        }
+        if (renderer && (renderer.includes("Intel") || renderer.includes("AMD") || renderer.includes("Radeon"))) {
+          return "x64";
+        }
+      }
+    }
+  } catch {
+    // WebGL detection failed
+  }
+  return null;
+}
+
+// Find best download for platform/arch
+function findBestDownload(
+  downloads: DownloadData[],
+  platform: DetectedPlatform,
+  arch: DetectedArch
+): DownloadData | null {
+  if (!platform || downloads.length === 0) return null;
+
+  const platformDownloads = downloads.filter((d) => d.platform === platform);
+  if (platformDownloads.length === 0) return null;
+
+  if (platform === "macos" && arch) {
+    const archMatch = platformDownloads.find((d) => d.architecture === arch);
+    if (archMatch) return archMatch;
+  }
+
+  return platformDownloads[0];
+}
+
+export default function DownloadSection() {
+  const [loadingPlatform, setLoadingPlatform] = useState<"mac" | "windows" | "android" | "ios" | null>(null);
+
+  const handleMacDownload = useCallback(async () => {
+    setLoadingPlatform("mac");
+    try {
+      const arch = detectMacArchitecture();
+      const response = await fetchDownloadUrls();
+      const latestDownloads = getLatestDownloads(response.data);
+      const bestDownload = findBestDownload(latestDownloads, "macos", arch);
+
+      if (bestDownload) {
+        // Trigger Google Ads conversion tracking
+        if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+          (window as any).gtag_report_conversion(bestDownload.file_path);
+        } else {
+          window.open(bestDownload.file_path, "_blank");
+        }
+      } else {
+        window.location.assign("/download");
+      }
+    } catch (error) {
+      console.error("Mac download error:", error);
+      window.location.assign("/download");
+    } finally {
+      setLoadingPlatform(null);
+    }
+  }, []);
+
+  const handleWindowsDownload = useCallback(async () => {
+    setLoadingPlatform("windows");
+    try {
+      const response = await fetchDownloadUrls();
+      const latestDownloads = getLatestDownloads(response.data);
+      const bestDownload = findBestDownload(latestDownloads, "windows", "x64");
+
+      if (bestDownload) {
+        // Trigger Google Ads conversion tracking
+        if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+          (window as any).gtag_report_conversion(bestDownload.file_path);
+        } else {
+          window.open(bestDownload.file_path, "_blank");
+        }
+      } else {
+        window.location.assign("/download");
+      }
+    } catch (error) {
+      console.error("Windows download error:", error);
+      window.location.assign("/download");
+    } finally {
+      setLoadingPlatform(null);
+    }
+  }, []);
+
+  const handleAndroidDownload = useCallback(() => {
+    setLoadingPlatform("android");
+    const playStoreUrl = "https://play.google.com/store/apps/details?id=ai.oravo";
+
+    if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+      (window as any).gtag_report_conversion(playStoreUrl);
+    } else {
+      window.open(playStoreUrl, "_blank");
+    }
+    setLoadingPlatform(null);
+  }, []);
+
+  const LoadingSpinner = () => (
+    <svg className="w-5 h-5 animate-spin" viewBox="0 0 24 24" fill="none">
+      <circle
+        className="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="4"
+      />
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+      />
+    </svg>
+  );
+
+  return (
+    <div className="w-full max-w-[900px] mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Desktop Downloads Box (Left) */}
+        <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl border border-gray-200 p-8 shadow-[0px_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.12)] transition-all duration-300">
+          <div className="flex flex-col gap-6">
+            {/* Header */}
+            <div className="flex flex-col gap-2">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-[#37322F] text-xl font-semibold font-sans">Desktop Apps</h3>
+              <p className="text-[#605A57] text-sm font-normal font-sans">For Mac & Windows</p>
+            </div>
+
+            {/* Mac Button */}
+            <button
+              onClick={handleMacDownload}
+              disabled={loadingPlatform !== null}
+              className="group w-full h-14 px-6 bg-gradient-to-b from-[#1877F2] to-[#166FE5] hover:from-[#1570E8] hover:to-[#1466D8] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(24,119,242,0.4)] rounded-xl flex items-center justify-between transition-all duration-300 hover:scale-105 active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
+            >
+              <div className="flex items-center gap-3">
+                {loadingPlatform === "mac" ? (
+                  <LoadingSpinner />
+                ) : (
+                  <svg className="w-5 h-5 text-white flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+                  </svg>
+                )}
+                <span className="text-white text-sm font-medium font-sans">Download for Mac</span>
+              </div>
+              <svg className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Windows Button */}
+            <button
+              onClick={handleWindowsDownload}
+              disabled={loadingPlatform !== null}
+              className="group w-full h-14 px-6 bg-white border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 rounded-xl flex items-center justify-between transition-all duration-300 hover:scale-105 active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
+            >
+              <div className="flex items-center gap-3">
+                {loadingPlatform === "windows" ? (
+                  <LoadingSpinner />
+                ) : (
+                  <svg className="w-5 h-5 text-[#0078D4] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" />
+                  </svg>
+                )}
+                <span className="text-gray-800 text-sm font-medium font-sans">Download for Windows</span>
+              </div>
+              <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Downloads Box (Right) */}
+        <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl border border-gray-200 p-8 shadow-[0px_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.12)] transition-all duration-300">
+          <div className="flex flex-col gap-6">
+            {/* Header */}
+            <div className="flex flex-col gap-2">
+              <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-lg">
+                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-[#37322F] text-xl font-semibold font-sans">Mobile Apps</h3>
+              <p className="text-[#605A57] text-sm font-normal font-sans">For Android & iOS</p>
+            </div>
+
+            {/* Google Play Button */}
+            <button
+              onClick={handleAndroidDownload}
+              disabled={loadingPlatform !== null}
+              className="group w-full h-14 px-6 bg-gradient-to-b from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-700 rounded-xl flex items-center justify-between transition-all duration-300 hover:scale-105 active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
+            >
+              <div className="flex items-center gap-3">
+                {loadingPlatform === "android" ? (
+                  <LoadingSpinner />
+                ) : (
+                  <svg className="w-5 h-5 text-white flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M1.815 11.456c-.216 0-.39.174-.39.39v4.308c0 .216.174.39.39.39.216 0 .39-.174.39-.39v-4.308c0-.216-.174-.39-.39-.39zm20.37 0c-.216 0-.39.174-.39.39v4.308c0 .216.174.39.39.39.216 0 .39-.174.39-.39v-4.308c0-.216-.174-.39-.39-.39zM6.283 6.783l.88-1.652c.048-.09.015-.201-.074-.25-.09-.047-.201-.015-.25.075l-.89 1.673c-.76-.34-1.605-.531-2.495-.531-.89 0-1.735.191-2.495.53l-.89-1.672c-.048-.09-.16-.122-.25-.075-.09.049-.122.16-.074.25l.88 1.652C-.374 7.866-.928 9.477-.928 11.223h8.143c0-1.746-.554-3.357-1.932-4.44zm-3.544 2.82c-.203 0-.368-.165-.368-.368 0-.203.165-.368.368-.368.203 0 .368.165.368.368 0 .203-.165.368-.368.368zm3.03 0c-.203 0-.368-.165-.368-.368 0-.203.165-.368.368-.368.203 0 .368.165.368.368 0 .203-.165.368-.368.368zm8.748-2.82l.88-1.652c.048-.09.015-.201-.074-.25-.09-.047-.201-.015-.25.075l-.89 1.673c-.76-.34-1.605-.531-2.495-.531-.89 0-1.735.191-2.495.53l-.89-1.672c-.048-.09-.16-.122-.25-.075-.09.049-.122.16-.074.25l.88 1.652c-1.378 1.083-1.932 2.694-1.932 4.44h8.143c0-1.746-.554-3.357-1.932-4.44zm-3.544 2.82c-.203 0-.368-.165-.368-.368 0-.203.165-.368.368-.368.203 0 .368.165.368.368 0 .203-.165.368-.368.368zm3.03 0c-.203 0-.368-.165-.368-.368 0-.203.165-.368.368-.368.203 0 .368.165.368.368 0 .203-.165.368-.368.368z"/>
+                  </svg>
+                )}
+                <span className="text-white text-sm font-medium font-sans">Get it on Google Play</span>
+              </div>
+              <svg className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* iOS Button (Coming Soon) */}
+            <button
+              disabled
+              className="group w-full h-14 px-6 bg-white border-2 border-gray-200 rounded-xl flex items-center justify-between opacity-50 cursor-not-allowed"
+            >
+              <div className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+                </svg>
+                <div className="flex flex-col items-start">
+                  <span className="text-gray-400 text-sm font-medium font-sans">Download on App Store</span>
+                  <span className="text-gray-400 text-xs font-normal font-sans">Coming Soon</span>
+                </div>
+              </div>
+              <svg className="w-5 h-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Free Trial Note */}
+      <p className="text-center text-[#847971] text-sm font-medium font-sans mt-6">
+        14-day Pro trial starts on install · No credit card required
+      </p>
+    </div>
+  );
+}

@@ -767,6 +767,26 @@ export default function RootLayout({
             gtag('config', 'AW-16703603891');
           `}
         </Script>
+
+        {/* Google Ads Conversion Tracking */}
+        <Script id="google-ads-conversion" strategy="afterInteractive">
+          {`
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                'send_to': 'AW-16703603891/oravo_download',
+                'value': 5.0,
+                'currency': 'USD',
+                'event_callback': callback
+              });
+              return false;
+            }
+          `}
+        </Script>
         <AgentModeView>{children}</AgentModeView>
         <ModeToggleFAB />
       </body>
