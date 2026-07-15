@@ -787,6 +787,13 @@ export default function RootLayout({
             }
           `}
         </Script>
+        {/* Klaviyo Onsite Tracking */}
+        <Script
+          id="klaviyo-onsite"
+          src="https://static.klaviyo.com/onsite/js/ReSdPA/klaviyo.js"
+          strategy="afterInteractive"
+        />
+
         <AgentModeView>{children}</AgentModeView>
         <ModeToggleFAB />
       </body>
