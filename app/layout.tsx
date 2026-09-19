@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | Oravo",
   },
   description:
-    "Fast, accurate voice dictation for Mac, Windows, Android & iOS. Speak any language, type perfect English. Built for native and non-native speakers with 60+ languages.",
+    "Voice typing for Mac, Windows, and Android. Speak naturally in 60+ languages and turn your words into polished English.",
   applicationName: "Oravo.ai",
   keywords: [
     // PRIMARY MOAT: Non-native English speaker keywords (UNIQUE POSITIONING)
@@ -379,9 +379,9 @@ export default function RootLayout({
           height: 512,
         },
         description:
-          "The fastest AI voice typing app with zero data retention and Secure speech-to-text that works 4x faster than keyboard typing across all your apps.",
+          "Voice typing for multilingual professionals. Speak naturally and turn your words into polished text across the apps you use.",
         foundingDate: "2024",
-        slogan: "Fastest Voice Typing - Secure, Private, 4x Faster",
+        slogan: "Speak naturally. Send polished English.",
         sameAs: [
           "https://twitter.com/oravoai",
           "https://linkedin.com/company/oravo-ai",
@@ -401,7 +401,7 @@ export default function RootLayout({
         url: "https://oravo.ai",
         name: "Oravo.ai - AI Voice Dictation",
         description:
-          "Professional voice dictation software powered by AI. 4x faster than typing, works in every app.",
+          "AI voice typing for multilingual professionals on Mac, Windows, and Android.",
         publisher: {
           "@id": "https://oravo.ai/#organization",
         },
@@ -420,25 +420,25 @@ export default function RootLayout({
         name: "Oravo.ai Voice Typing",
         applicationCategory: "ProductivityApplication",
         applicationSubCategory: "Voice Typing Software",
-        operatingSystem: ["macOS 11.0+", "Windows 10+", "iOS 14.0+"],
+        operatingSystem: ["macOS 11.0+", "Windows 10+", "Android"],
         browserRequirements: "Requires JavaScript. Requires HTML5.",
         softwareVersion: "2.0",
         releaseNotes:
-          "97% accuracy in real-time transcription, improved noise handling",
+          "Voice typing with automatic formatting and multilingual support",
         featureList: [
-          "4x faster than keyboard typing (220 WPM vs 45 WPM)",
-          "Real-time AI voice typing with <1 second latency",
-          "Works in Google Docs, Gmail, Slack & 1000+ apps",
-          "Zero data retention - your voice stays private",
-          "HIPAA-ready and SOC 2 Type II ready",
-          "97% transcription accuracy (Q4 2025 internal benchmark)",
+          "Voice typing without manual transcription",
+          "AI-assisted voice typing",
+          "Works in popular writing and communication apps",
+          "Privacy information available in Oravo policies",
+          "Designed for professional workflows",
+          "Accent benchmark methodology in development",
           "Works in noisy environments",
-          "Cross-platform support (Mac, Windows, iOS)",
-          "100+ language support",
+          "Cross-platform support (Mac, Windows, Android)",
+          "60+ language support",
           "Automatic text formatting",
           "Custom vocabulary support",
           "Technical jargon recognition",
-          "Privacy-first architecture - no cloud storage",
+          "Privacy-focused product design",
         ],
         aggregateRating: {
           "@type": "AggregateRating",
@@ -519,7 +519,7 @@ export default function RootLayout({
             name: "Is Oravo.ai secure and privacy-focused?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. Oravo.ai is built with privacy-first architecture and zero data retention. All voice data is processed with and immediately deleted after transcription. We never store your voice recordings or personal data. We are HIPAA-ready and SOC 2 Type II certified, ensuring the highest security standards for professionals in healthcare, legal, and enterprise environments.",
+              text: "Oravo publishes privacy information for users evaluating how voice data is processed. Check the current privacy policy for the exact scope and terms.",
             },
           },
           {
@@ -527,7 +527,7 @@ export default function RootLayout({
             name: "What is the fastest voice typing app?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Oravo.ai is the fastest voice typing app, enabling you to type at 220 words per minute using your voice - that's 4x faster than average keyboard typing speed of 45 WPM. With sub-1 second latency and real-time AI transcription, your words appear instantly as you speak. Works in Google Docs, Gmail, Slack, and all your favorite apps with 97% accuracy, even in noisy environments.",
+              text: "Oravo helps people turn natural speech into polished text. Actual speed depends on the speaker, device, network, and workflow.",
             },
           },
           {
@@ -535,7 +535,7 @@ export default function RootLayout({
             name: "What is the best voice typing app?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Oravo.ai is the best voice typing app that works 4x faster than keyboard typing (220 WPM vs 45 WPM). It features secure, privacy-first AI that adapts to your style across 1000+ apps including Google Docs, Gmail, Slack, and ChatGPT. With zero data retention, HIPAA compliance, 100+ language support, and sub-1 second processing, it's trusted by 10,000+ users worldwide.",
+              text: "The best voice typing app depends on your language, accent, device, and workflow. Oravo supports 60+ languages and is building an accent-stratified benchmark.",
             },
           },
           {
@@ -551,7 +551,7 @@ export default function RootLayout({
             name: "Is Oravo.ai HIPAA compliant and does it store my data?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes, Oravo.ai is HIPAA-ready with zero data retention and SOC 2 Type II compliance. We never store your voice recordings or transcription data. All processing happens with and data is immediately deleted after transcription. Your voice data stays completely private and secure. Perfect for healthcare professionals needing compliant clinical documentation and patient notes.",
+              text: "Check Oravo policies for the current data-handling and compliance scope before using the product for regulated information.",
             },
           },
           {
@@ -559,7 +559,7 @@ export default function RootLayout({
             name: "How does Oravo.ai protect my privacy?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Oravo.ai uses a privacy-first architecture with three layers of protection: (1) Zero data retention - we never store your voice recordings or personal data, (2) for all voice processing, and (3) No cloud storage - your data is never uploaded to third-party servers. We are SOC 2 Type II certified and HIPAA-ready, making us the most secure voice typing solution for professionals who value privacy.",
+              text: "Check Oravo policies for the current details about voice processing, retention, and third-party services.",
             },
           },
           {
@@ -567,7 +567,7 @@ export default function RootLayout({
             name: "Does voice typing work in Google Docs and other apps?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes! Oravo.ai voice typing works universally across 1000+ applications including Google Docs, Gmail, Slack, Notion, ChatGPT, Cursor, VS Code, Figma, WhatsApp, and any other app. Simply press a hotkey, speak, and perfect text appears instantly in any app—no switching required. Works on Mac, Windows, and iOS.",
+              text: "Oravo is designed to type into popular writing and communication apps on Mac, Windows, and Android. Compatibility can vary by platform and app.",
             },
           },
           {
@@ -575,7 +575,7 @@ export default function RootLayout({
             name: "What languages does Oravo.ai support?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Oravo.ai supports 100+ languages including English, Spanish, Mandarin, French, German, Japanese, Portuguese, and many more. You can effortlessly switch between languages for multilingual teams and global communication.",
+              text: "Oravo supports 60+ languages, including English, Spanish, Mandarin, French, German, Japanese, and Portuguese.",
             },
           },
           {
@@ -583,7 +583,7 @@ export default function RootLayout({
             name: "How much faster is Oravo.ai than typing?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Oravo.ai enables dictation at 220 words per minute compared to average typing speed of 45 WPM—nearly 4x faster. This means you can write emails, documents, and messages in a fraction of the time.",
+              text: "Voice typing can reduce manual typing and cleanup. Actual speed varies by speaker and workflow.",
             },
           },
           {
@@ -591,7 +591,7 @@ export default function RootLayout({
             name: "Is there a free trial for Oravo.ai?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes! Oravo.ai offers a free plan with 2,000 words/week and all core features. No credit card required to start. Pro plan ($12/month) offers unlimited dictation.",
+              text: "Current trial and pricing details are shown in the app at signup.",
             },
           },
           {
@@ -599,7 +599,7 @@ export default function RootLayout({
             name: "How is Oravo.ai better than Wispr Flow or Dragon NaturallySpeaking?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Oravo.ai combines the universal app compatibility with superior AI accuracy. It works 40% more accurately than built-in tools, processes in sub-1 second, and offers context-aware tone adaptation. Unlike competitors, it includes HIPAA compliance, 100+ languages, and privacy-first architecture with zero data retention.",
+              text: "Oravo focuses on multilingual voice typing, polished output, and accent-friendly workflows. Compare current platform support, features, and pricing for your needs.",
             },
           },
         ],
@@ -614,7 +614,7 @@ export default function RootLayout({
             "@type": "HowToStep",
             position: 1,
             name: "Download and Install",
-            text: "Download Oravo.ai for Mac, Windows, or iOS and complete the 2-minute setup",
+            text: "Download Oravo.ai for Mac, Windows, or Android and complete setup",
             url: "https://oravo.ai/download",
           },
           {
@@ -729,9 +729,9 @@ export default function RootLayout({
         {/* Preload Critical Assets */}
         <link
           rel="preload"
-          href="/keyboard.avif"
+          href="/mask-group-pattern.svg"
           as="image"
-          type="image/avif"
+          type="image/svg+xml"
         />
 
         {/* Security Headers */}
@@ -742,7 +742,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         {/* Google Analytics */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-BXXZJF9LRR"
+          src="https://www.googletagmanager.com/gtag/js?id=G-21Y49PCQEZ"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -750,15 +750,11 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-BXXZJF9LRR');
+            gtag('config', 'G-21Y49PCQEZ');
           `}
         </Script>
 
         {/* Google Ads */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-16703603891"
-          strategy="afterInteractive"
-        />
         <Script id="google-ads" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
