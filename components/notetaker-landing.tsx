@@ -5,161 +5,165 @@ import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 import { trackEvent } from "@/lib/analytics";
 
-const deliverables = [
-  ["Transcript", "A searchable speaker-by-speaker record that keeps decisions and exact wording easy to find."],
-  ["Summary", "A clear account of what happened, organized around decisions, risks, and open questions."],
-  ["Action items", "Owners and next steps pulled into a focused list for follow-through."],
-];
-
-const requirements = [
-  "Process a one-hour meeting transcript and generate its summary in about 30 seconds.",
-  "Show processing state, elapsed time, and a clear completion receipt.",
-  "Preserve speaker labels, timestamps, source transcript, and links back to evidence.",
-  "Separate transcript facts from generated interpretation and make every summary editable.",
-  "Support a structured summary, decisions, open questions, and action items with owners.",
-  "Measure meeting upload started, processing completed, summary viewed, export, and follow-up actions.",
-];
-
 function trackCta(cta: string, destination: string) {
   trackEvent("notetaker_interest_click", {
     product: "oravo_notetaker",
-    variant: "speed-proof-v1",
+    variant: "premium-speed-v2",
     cta,
     destination,
   });
 }
 
+const moments = [
+  ["Decision", "Launch the Android pilot with the five approved accent cohorts."],
+  ["Owner", "Maya will share the final test build by Thursday."],
+  ["Next step", "Raju reviews the benchmark report before any public claim ships."],
+];
+
 export default function NotetakerLanding() {
   useEffect(() => {
     trackEvent("notetaker_landing_view", {
       product: "oravo_notetaker",
-      variant: "speed-proof-v1",
+      variant: "premium-speed-v2",
       landing_path: window.location.pathname,
       device: window.matchMedia("(max-width: 767px)").matches ? "mobile" : "desktop",
     });
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#F7F5F3] text-[#37322F] overflow-x-hidden">
+    <main className="min-h-screen overflow-x-hidden bg-[#F7F5F3] text-[#37322F]">
       <Header />
-      <div className="mx-auto w-full max-w-[1060px] border-x border-[rgba(55,50,47,0.12)] bg-[#F7F5F3]">
-        <section className="relative px-5 sm:px-10 md:px-16 pt-32 sm:pt-40 pb-20 sm:pb-28 text-center overflow-hidden">
-          <div className="absolute inset-x-0 top-20 h-72 opacity-40 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.20),transparent_62%)]" />
-          <div className="relative mx-auto max-w-[840px] flex flex-col items-center">
-            <span className="mb-6 rounded-full border border-[#E8DDD4] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#F97316] shadow-[0_0_0_4px_rgba(55,50,47,0.04)]">
-              Oravo Notetaker · product direction
-            </span>
-            <h1 className="font-serif text-[42px] leading-[0.98] sm:text-6xl md:text-[78px] md:leading-[0.98] tracking-[-0.02em]">
-              One hour of conversation.
+      <div className="mx-auto w-full max-w-[1060px] border-x border-[rgba(55,50,47,0.12)]">
+        <section className="relative px-5 pb-14 pt-28 text-center sm:px-10 sm:pb-20 sm:pt-36 md:px-16 md:pt-44">
+          <div className="pointer-events-none absolute inset-x-0 top-20 h-[420px] bg-[radial-gradient(circle_at_center,rgba(255,132,55,0.17),transparent_64%)]" />
+          <div className="relative mx-auto max-w-[860px]">
+            <div className="mx-auto mb-5 inline-flex items-center gap-2 rounded-full border border-[#E7DDD5] bg-white/90 px-4 py-2 text-xs font-semibold text-[#F97316] shadow-[0_0_0_4px_rgba(55,50,47,0.035)]">
+              <span className="h-2 w-2 rounded-full bg-[#FF7A2A]" />
+              Oravo Notetaker
+            </div>
+            <h1 className="text-balance font-serif text-[45px] leading-[0.98] tracking-[-0.025em] sm:text-7xl md:text-[88px]">
+              The meeting ends.
               <br />
-              Notes in about 30 seconds.
+              The work is ready.
             </h1>
-            <p className="mt-7 max-w-[690px] text-base sm:text-xl leading-relaxed text-[#605A57]">
-              Oravo Notetaker is designed to turn a one-hour meeting transcript into a structured summary, decisions, and action items in about 30 seconds after the transcript is ready.
+            <p className="mx-auto mt-6 max-w-[700px] text-base leading-relaxed text-[#605A57] sm:mt-8 sm:text-xl">
+              Turn a one-hour meeting transcript into a clear summary, decisions, and action items in about 30 seconds.
             </p>
-            <p className="mt-3 max-w-[650px] text-sm leading-relaxed text-[#847971]">
-              This is the target product experience under review. The public speed claim should ship only after the end-to-end benchmark and test conditions are published.
-            </p>
-            <div className="mt-9 flex w-full flex-col sm:w-auto sm:flex-row gap-3">
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <a
-                href="#requirements"
-                onClick={() => trackCta("review_requirements", "requirements")}
-                className="rounded-full bg-gradient-to-b from-[#FF8C42] to-[#FF6B1A] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(255,107,26,0.28)] transition-transform hover:scale-[1.02]"
+                href="#experience"
+                onClick={() => trackCta("see_how_it_works", "experience")}
+                className="rounded-full bg-gradient-to-b from-[#FF8C42] to-[#FF6B1A] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_28px_rgba(255,107,26,0.30)] transition-transform hover:scale-[1.02]"
               >
-                Review product requirements
+                See how it works
               </a>
               <a
-                href="#output"
-                onClick={() => trackCta("see_output", "output")}
-                className="rounded-full border border-[#DED8D3] bg-white px-7 py-3.5 text-sm font-semibold text-[#37322F] transition-colors hover:bg-[#FFF9F4]"
+                href="#speed"
+                onClick={() => trackCta("see_speed", "speed")}
+                className="rounded-full border border-[#DDD7D2] bg-white px-7 py-3.5 text-sm font-semibold text-[#37322F] hover:bg-[#FFF9F4]"
               >
-                See the output
+                Why it feels instant
               </a>
             </div>
           </div>
-        </section>
 
-        <section className="border-t border-[rgba(55,50,47,0.12)] px-5 sm:px-10 md:px-16 py-14 sm:py-20">
-          <div className="grid gap-5 md:grid-cols-[0.8fr_1.2fr] items-stretch">
-            <div className="rounded-3xl bg-[#292524] p-7 sm:p-9 text-white flex flex-col justify-between min-h-[360px]">
-              <div>
-                <p className="text-xs uppercase tracking-[0.16em] text-white/55">Speed target</p>
-                <p className="mt-5 font-serif text-7xl sm:text-8xl leading-none">~30s</p>
-                <p className="mt-4 text-lg text-white/75">to process a one-hour transcript and generate the meeting summary</p>
+          <div className="relative mx-auto mt-12 max-w-[920px] rounded-[28px] border border-[#DCD6D1] bg-[#292524] p-2 shadow-[0_28px_70px_rgba(55,50,47,0.20)] sm:mt-16 sm:p-3">
+            <div className="overflow-hidden rounded-[22px] bg-white text-left">
+              <div className="flex items-center justify-between border-b border-[#ECE8E4] px-4 py-3 sm:px-6 sm:py-4">
+                <div className="flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#FF7A2A]" />
+                  <p className="text-xs font-semibold sm:text-sm">Product launch review</p>
+                </div>
+                <span className="rounded-full bg-[#EFF8F0] px-3 py-1 text-[10px] font-semibold text-[#4F7A5A] sm:text-xs">Ready in 28s</span>
               </div>
-              <p className="mt-10 border-t border-white/15 pt-5 text-xs leading-relaxed text-white/55">
-                Benchmark the complete path on representative transcripts. Publish p50/p95 processing time and failure rate before using this as an unqualified public promise.
-              </p>
-            </div>
-            <div className="rounded-3xl border border-[#E0DEDB] bg-white p-7 sm:p-9 shadow-[0_12px_32px_rgba(55,50,47,0.06)]">
-              <p className="text-xs uppercase tracking-[0.16em] text-[#847971]">Processing receipt</p>
-              <div className="mt-6 grid gap-4">
-                {["Transcript parsed", "Speakers and topics mapped", "Decisions and actions generated"].map((item, index) => (
-                  <div key={item} className="flex items-center gap-4 rounded-2xl border border-[#ECE7E2] bg-[#FFFDFC] p-4">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#FFF1E8] text-sm font-semibold text-[#F97316]">{index + 1}</span>
-                    <div className="flex-1">
-                      <p className="text-sm font-semibold">{item}</p>
-                      <div className="mt-2 h-1.5 rounded-full bg-[#F1ECE8]"><div className="h-full w-full rounded-full bg-[#FF7A2A]" /></div>
-                    </div>
-                    <span className="text-xs font-medium text-[#5D8A67]">Done</span>
+              <div className="grid min-h-[420px] md:grid-cols-[0.72fr_1.28fr]">
+                <aside className="border-b border-[#ECE8E4] bg-[#FAF8F6] p-4 md:border-b-0 md:border-r sm:p-6">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#9A9089]">Meeting</p>
+                  <p className="mt-3 text-sm font-semibold">Sep 19 · 60 min</p>
+                  <div className="mt-5 flex -space-x-2">
+                    {["RY", "MK", "AS", "+2"].map((person, index) => (
+                      <span key={person} className={`flex h-9 w-9 items-center justify-center rounded-full border-2 border-[#FAF8F6] text-[10px] font-semibold ${index === 0 ? "bg-[#292524] text-white" : "bg-[#FFE9DA] text-[#A74B14]"}`}>{person}</span>
+                    ))}
                   </div>
-                ))}
+                  <div className="mt-7 hidden space-y-3 md:block">
+                    {["Overview", "Transcript", "Decisions", "Action items"].map((item, index) => (
+                      <div key={item} className={`rounded-xl px-3 py-2.5 text-xs font-medium ${index === 0 ? "bg-white text-[#37322F] shadow-sm" : "text-[#847971]"}`}>{item}</div>
+                    ))}
+                  </div>
+                </aside>
+                <div className="p-5 sm:p-8">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#F97316]">Summary</p>
+                      <h2 className="mt-2 font-serif text-3xl sm:text-4xl">Ready to move.</h2>
+                    </div>
+                    <button className="hidden rounded-full border border-[#E4DEDA] px-4 py-2 text-xs font-semibold sm:block" type="button">Copy notes</button>
+                  </div>
+                  <p className="mt-4 max-w-[540px] text-sm leading-relaxed text-[#605A57]">
+                    The team aligned on an Android-first benchmark pilot, confirmed the first five cohorts, and kept every public performance claim behind measured results.
+                  </p>
+                  <div className="mt-6 grid gap-3">
+                    {moments.map(([label, copy], index) => (
+                      <div key={label} className="flex gap-3 rounded-2xl border border-[#ECE7E2] bg-[#FFFDFC] p-3.5 sm:p-4">
+                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#FFF0E6] text-[10px] font-bold text-[#F97316]">{index + 1}</span>
+                        <div><p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#9A9089]">{label}</p><p className="mt-1 text-xs leading-relaxed text-[#49423D] sm:text-sm">{copy}</p></div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <div className="mt-6 flex items-center justify-between rounded-2xl bg-[#F7F5F3] px-4 py-3 text-sm">
-                <span className="text-[#605A57]">1:00:00 transcript</span>
-                <span className="font-semibold">Summary ready</span>
+            </div>
+          </div>
+          <p className="mx-auto mt-5 max-w-[700px] text-xs leading-relaxed text-[#978D86]">About 30 seconds is the target after the transcript is ready. Public performance reporting will include test conditions and latency percentiles.</p>
+        </section>
+
+        <section id="speed" className="border-t border-[rgba(55,50,47,0.12)] px-5 py-16 sm:px-10 sm:py-24 md:px-16">
+          <div className="grid items-center gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#F97316]">No post-meeting limbo</p>
+              <h2 className="mt-4 font-serif text-4xl leading-[1.05] sm:text-6xl">Your next step should not wait for your notes.</h2>
+              <p className="mt-5 text-base leading-relaxed text-[#605A57] sm:text-lg">Oravo is built around a fast handoff from conversation to action, so you can send the follow-up while the meeting is still fresh.</p>
+            </div>
+            <div className="rounded-[28px] bg-[#292524] p-7 text-white shadow-[0_20px_50px_rgba(55,50,47,0.18)] sm:p-10">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/45">One-hour transcript</p>
+              <div className="mt-6 flex items-end gap-3"><span className="font-serif text-8xl leading-none sm:text-9xl">~30</span><span className="pb-3 text-xl text-white/60">seconds</span></div>
+              <div className="mt-8 h-1.5 overflow-hidden rounded-full bg-white/10"><div className="h-full w-[94%] rounded-full bg-gradient-to-r from-[#FF9B59] to-[#FF6B1A]" /></div>
+              <div className="mt-5 grid grid-cols-3 gap-3 border-t border-white/10 pt-5 text-center">
+                <div><p className="text-lg font-semibold">Summary</p><p className="mt-1 text-[10px] text-white/45">what happened</p></div>
+                <div><p className="text-lg font-semibold">Decisions</p><p className="mt-1 text-[10px] text-white/45">what changed</p></div>
+                <div><p className="text-lg font-semibold">Actions</p><p className="mt-1 text-[10px] text-white/45">what is next</p></div>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="output" className="border-t border-[rgba(55,50,47,0.12)] px-5 sm:px-10 md:px-16 py-16 sm:py-24">
-          <div className="mx-auto max-w-[700px] text-center">
-            <p className="text-xs uppercase tracking-[0.16em] text-[#F97316]">Useful after the meeting</p>
-            <h2 className="mt-4 font-serif text-4xl sm:text-6xl leading-tight">The meeting becomes work you can use.</h2>
-            <p className="mt-5 text-[#605A57] text-base sm:text-lg leading-relaxed">A fast summary matters only when people can trace it back to the conversation and act on it.</p>
+        <section id="experience" className="border-t border-[rgba(55,50,47,0.12)] bg-[#FFF9F4] px-5 py-16 sm:px-10 sm:py-24 md:px-16">
+          <div className="mx-auto max-w-[720px] text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#F97316]">From talk to traction</p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-6xl">The details stay connected to the source.</h2>
+            <p className="mt-5 text-base leading-relaxed text-[#605A57] sm:text-lg">Open the transcript, check the moment behind a decision, edit the summary, and carry action items into the work that follows.</p>
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {deliverables.map(([title, copy], index) => (
-              <article key={title} className="rounded-2xl border border-[#E0DEDB] bg-white p-6 shadow-[0_8px_24px_rgba(55,50,47,0.045)]">
-                <span className="text-xs font-semibold text-[#F97316]">0{index + 1}</span>
-                <h3 className="mt-5 font-serif text-3xl">{title}</h3>
+            {[
+              ["Find the exact moment", "Search speaker-by-speaker notes and jump from a summary point back to the transcript."],
+              ["Know what was decided", "Pull decisions, open questions, and risks into a clear record that the team can inspect."],
+              ["Leave with the next move", "Turn action items into a focused follow-up list with owners and editable details."],
+            ].map(([title, copy], index) => (
+              <article key={title} className="rounded-[22px] border border-[#E6DED8] bg-white p-6 shadow-[0_8px_24px_rgba(55,50,47,0.045)]">
+                <span className="text-xs font-bold text-[#F97316]">0{index + 1}</span>
+                <h3 className="mt-7 font-serif text-3xl leading-tight">{title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#605A57]">{copy}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section id="requirements" className="border-t border-[rgba(55,50,47,0.12)] bg-[#FFF9F4] px-5 sm:px-10 md:px-16 py-16 sm:py-24">
-          <div className="grid gap-10 md:grid-cols-[0.75fr_1.25fr]">
-            <div>
-              <p className="text-xs uppercase tracking-[0.16em] text-[#F97316]">Review requirements</p>
-              <h2 className="mt-4 font-serif text-4xl sm:text-5xl leading-tight">Fast, inspectable, and ready for follow-through.</h2>
-              <p className="mt-5 text-sm leading-relaxed text-[#605A57]">These are product requirements, not claims that every feature is live today.</p>
-            </div>
-            <ol className="grid gap-3">
-              {requirements.map((item, index) => (
-                <li key={item} className="flex gap-4 rounded-2xl border border-[#E8DDD4] bg-white p-4 sm:p-5">
-                  <span className="text-xs font-semibold text-[#F97316] pt-1">0{index + 1}</span>
-                  <span className="text-sm sm:text-base leading-relaxed text-[#49423D]">{item}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section className="border-t border-[rgba(55,50,47,0.12)] px-5 sm:px-10 md:px-16 py-16 sm:py-24 text-center">
-          <div className="mx-auto max-w-[760px] rounded-3xl border border-[#E0DEDB] bg-white px-6 py-12 sm:px-12 shadow-[0_16px_48px_rgba(55,50,47,0.06)]">
-            <p className="text-xs uppercase tracking-[0.16em] text-[#847971]">One Oravo workflow</p>
-            <h2 className="mt-4 font-serif text-4xl sm:text-5xl">Talk in the meeting. Move the work after it.</h2>
-            <p className="mx-auto mt-5 max-w-[590px] text-[#605A57] leading-relaxed">Notetaker turns the meeting into a source record and follow-up plan. Oravo dictation helps you write the emails, updates, and documents that come next.</p>
-            <a
-              href="#requirements"
-              onClick={() => trackCta("final_review", "requirements")}
-              className="mt-8 inline-flex rounded-full bg-[#1877F2] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_22px_rgba(24,119,242,0.22)]"
-            >
-              Review the product direction
-            </a>
+        <section className="border-t border-[rgba(55,50,47,0.12)] px-5 py-16 text-center sm:px-10 sm:py-24 md:px-16">
+          <div className="mx-auto max-w-[780px] rounded-[30px] border border-[#E0DEDB] bg-white px-6 py-12 shadow-[0_18px_50px_rgba(55,50,47,0.07)] sm:px-12 sm:py-16">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#F97316]">One voice workflow</p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-6xl">Capture the meeting. Write what comes next.</h2>
+            <p className="mx-auto mt-5 max-w-[600px] text-base leading-relaxed text-[#605A57]">Notetaker turns the conversation into a usable record. Oravo dictation helps you turn that record into the emails, updates, and documents that move the work.</p>
+            <a href="#experience" onClick={() => trackCta("final_see_experience", "experience")} className="mt-8 inline-flex rounded-full bg-[#1877F2] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(24,119,242,0.22)]">Explore the experience</a>
           </div>
         </section>
         <FooterSection />
