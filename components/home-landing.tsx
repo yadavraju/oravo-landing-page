@@ -1,26 +1,30 @@
 "use client";
 
 import React from "react";
+import dynamic from "next/dynamic";
 
 import { useEffect } from "react";
 import CTASection from "../components/cta-section";
-import DocumentationSection from "../components/documentation-section";
 import DownloadButtons from "../components/DownloadButtons";
-import EffortlessIntegration from "../components/effortless-integration-updated";
+import LandingAnalytics from "../components/LandingAnalytics";
 import EmailComparisonSection from "../components/EmailComparisonSection";
-import FAQSection from "../components/faq-section";
-import AskAISection from "../components/ask-ai-section";
-import FooterSection from "../components/footer-section";
 import { Header } from "../components/header";
-import MadeForYou from "../components/MadeForYou";
-import PricingSection from "../components/pricing-section";
-import SmartSimpleBrilliant from "../components/smart-simple-brilliant";
-import TechCompanyMarquee from "../components/TechCompanyMarquee";
-import TestimonialsSection from "../components/testimonials-section";
-import WisprSwitchSection from "../components/wispr-switch-section";
-import YourWorkInSync from "../components/your-work-in-sync";
-import TranslationDemo from "../components/TranslationDemo";
-import TwoWayExamples from "../components/two-way-examples";
+
+
+const DocumentationSection = dynamic(() => import("../components/documentation-section"));
+const EffortlessIntegration = dynamic(() => import("../components/effortless-integration-updated"));
+const FAQSection = dynamic(() => import("../components/faq-section"));
+const AskAISection = dynamic(() => import("../components/ask-ai-section"));
+const FooterSection = dynamic(() => import("../components/footer-section"));
+const MadeForYou = dynamic(() => import("../components/MadeForYou"));
+const PricingSection = dynamic(() => import("../components/pricing-section"));
+const SmartSimpleBrilliant = dynamic(() => import("../components/smart-simple-brilliant"));
+const TechCompanyMarquee = dynamic(() => import("../components/TechCompanyMarquee"));
+const TestimonialsSection = dynamic(() => import("../components/testimonials-section"));
+const WisprSwitchSection = dynamic(() => import("../components/wispr-switch-section"));
+const YourWorkInSync = dynamic(() => import("../components/your-work-in-sync"));
+const TranslationDemo = dynamic(() => import("../components/TranslationDemo"));
+const TwoWayExamples = dynamic(() => import("../components/two-way-examples"));
 
 // Reusable Badge Component
 function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
@@ -79,7 +83,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
         name: "Does it really understand my accent?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. Oravo is trained on 100+ accents from every continent. If you can speak English (even with a strong accent), Oravo understands you. And if English is hard, just speak your native language\u2014Oravo translates in real time.",
+          text: "Oravo is built for multilingual speakers and strong accents. We are running the same-script benchmark across five accent and language cohorts so you can inspect the method and results.",
         },
       },
       {
@@ -95,7 +99,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
         name: "How is Oravo different from Wispr Flow, Willow Voice, Dragon, and other dictation tools?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "vs Wispr Flow: Similar accuracy and speed at roughly one-third the price, with Mac, Windows, and Android support. vs Willow Voice: Oravo adds context-aware tone adjustment, 60+ language translation, and better accent support for non-native speakers. vs Dragon NaturallySpeaking: About 10x cheaper, cross-platform, no training required, with smart formatting. vs Voice In or Dictation.io: Oravo works system-wide (not just Chrome), in every desktop app including Gmail, Slack, Notion, and Teams.",
+          text: "Oravo focuses on multilingual voice typing, polished output, and accent-friendly workflows on Mac, Windows, and Android. Compare current platform support, features, and pricing for your needs.",
         },
       },
       {
@@ -119,7 +123,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
         name: "Is my voice data private and secure?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. We're SOC 2 Type II and HIPAA-ready. Your voice data is encrypted, never stored permanently, and not used for AI training without explicit consent. Free plan has zero data retention.",
+          text: "Check Oravo's current privacy policy for exact details about voice processing, retention, and third-party services.",
         },
       },
       {
@@ -127,7 +131,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
         name: "Can I try before I pay?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. You get 5,000 words free\u2014no credit card required. After that, Pro plan is $9.99/month for unlimited voice typing.",
+          text: "Current trial and pricing details are shown in the app at signup.",
         },
       },
       {
@@ -143,6 +147,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
 
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+      <LandingAnalytics variant="accent-proof-v1" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -181,14 +186,13 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
                   </a>
                   {/* Write English 4x Faster  */}
                   <h1 className="w-full text-center text-[#37322F] text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[80px] font-stretch-semi-condensed font-medium leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-4 sm:px-6 md:px-0">
-                    Type 4× faster.
+                    Speak naturally.
                     <br />
-                    In every app you already use.
+                    Send polished English.
                   </h1>
                   <div className="w-full max-w-[720px] lg:w-[720px] text-center flex justify-center flex-col text-[rgba(55,50,47,0.80)] sm:text-lg md:text-xl leading-[1.4] sm:leading-[1.45] md:leading-[1.5] lg:leading-7 font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-medium text-sm">
-                    Press a hotkey, speak naturally, and Oravo writes polished
-                    text — 99% accuracy, sub-300ms latency, in every app you
-                    already use.
+                    Speak Hindi, Spanish, or your first language. Oravo turns
+                    your words into polished English in the apps where you work.
                   </div>
                 </div>
               </div>
@@ -202,8 +206,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
               {/* Trust bar */}
               <div className="mt-6 sm:mt-8 flex flex-wrap justify-center items-center gap-2 px-4 sm:px-0 relative z-10">
                 <span className="text-[#847971] text-xs sm:text-sm font-medium tracking-wide text-center">
-                  99% accuracy · Sub-300ms latency · Works in 50+ apps ·
-                  HIPAA-ready · SOC 2 Type II
+                  60+ languages · Mac, Windows, and Android · Accent benchmark in progress
                 </span>
               </div>
 
@@ -221,6 +224,37 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
               <div className="w-full max-w-[960px] lg:w-[960px] flex flex-col justify-center items-center relative z-5 mb-8 sm:mb-12 md:mb-16 lg:mb-16">
                 <EmailComparisonSection />
               </div>
+
+              {/* Accent proof wedge */}
+              <section className="w-full border-y border-[rgba(55,50,47,0.12)] bg-white" aria-labelledby="accent-proof-heading">
+                <div className="px-5 sm:px-8 md:px-12 py-12 sm:py-16 grid gap-8 md:grid-cols-[1.1fr_0.9fr] items-center">
+                  <div className="flex flex-col items-start gap-4">
+                    <Badge
+                      icon={<span className="text-[#F97316] text-xs" aria-hidden="true">●</span>}
+                      text="Accent proof, not vague claims"
+                    />
+                    <h2 id="accent-proof-heading" className="text-[#37322F] text-[30px] sm:text-4xl md:text-5xl font-medium leading-tight font-serif">
+                      Built for real accents. Measured with the same script.
+                    </h2>
+                    <p className="text-[#605A57] text-base sm:text-lg leading-relaxed font-sans max-w-[620px]">
+                      We are testing Oravo end to end across Hindi-accented English, Spanish-accented English, Hindi and Spanish speech to polished English, plus a native-English control.
+                    </p>
+                    <p className="text-[#847971] text-sm leading-relaxed font-sans max-w-[620px]">
+                      The report will separate raw transcription from polished output and publish sample sizes, corrections, meaning errors, and time to final text. Until then, we will not turn an upstream model benchmark into an Oravo accuracy claim.
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-[#E0DEDB] bg-[#FFF9F4] p-5 sm:p-6 shadow-[0_8px_28px_rgba(55,50,47,0.06)]">
+                    <p className="text-[#847971] text-xs font-semibold uppercase tracking-[0.14em] mb-4">Pilot scorecard</p>
+                    <ul className="grid gap-3 text-[#37322F] text-sm sm:text-base font-sans">
+                      <li className="flex gap-3"><span className="text-[#F97316]">01</span><span>Same audio and scripts across cohorts</span></li>
+                      <li className="flex gap-3"><span className="text-[#F97316]">02</span><span>Raw transcript and final output scored separately</span></li>
+                      <li className="flex gap-3"><span className="text-[#F97316]">03</span><span>Corrections, meaning errors, and time reported</span></li>
+                      <li className="flex gap-3"><span className="text-[#F97316]">04</span><span>Failure cases included, not only the best demos</span></li>
+                    </ul>
+                    <p className="mt-5 pt-4 border-t border-[#E9DED5] text-[#605A57] text-xs leading-relaxed">Pilot target: at least 10 speakers per cohort and 10 utterances per speaker before any strong accuracy claim.</p>
+                  </div>
+                </div>
+              </section>
 
               {/* Real-time Translation Section */}
               <div className="w-full border-b border-[rgba(55,50,47,0.12)] bg-gradient-to-b from-[#FFFBF7] to-[#F7F5F3]">
@@ -405,7 +439,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
                         <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
                           Understands technical jargon, proper nouns from your
                           contacts, and what you&apos;re working on. Works in
-                          noisy environments. 99% accuracy on everyday speech.
+                          multilingual speech and professional vocabulary. Benchmark results will be published with the method and sample sizes.
                         </p>
                       </div>
                       <div className="w-full h-[280px] sm:h-[320px] rounded-xl flex items-center justify-center overflow-hidden">
@@ -508,7 +542,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
                     <div className="p-6 sm:p-8 md:p-10 flex flex-col gap-5">
                       <div className="flex flex-col gap-3">
                         <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
-                          Works in 50+ apps
+                          Works where you write
                         </h3>
                         <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
                           Gmail, Slack, Notion, Google Docs, Word, Linear, Jira,
@@ -692,4 +726,3 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
     </div>
   );
 }
-
