@@ -34,7 +34,7 @@ export default function NotetakerLanding() {
     <main className="min-h-screen overflow-x-hidden bg-[#F7F5F3] text-[#37322F]">
       <Header />
       <div className="mx-auto w-full max-w-[1060px] border-x border-[rgba(55,50,47,0.12)]">
-        <section className="relative px-5 pb-14 pt-40 text-center sm:px-10 sm:pb-20 sm:pt-36 md:px-16 md:pt-44">
+        <section className="relative px-5 pb-14 pt-28 text-center sm:px-10 sm:pb-20 sm:pt-36 md:px-16 md:pt-44">
           <div className="pointer-events-none absolute inset-x-0 top-20 h-[420px] bg-[radial-gradient(circle_at_center,rgba(255,132,55,0.17),transparent_64%)]" />
           <div className="relative mx-auto max-w-[860px]">
             <div className="mx-auto mb-5 inline-flex items-center gap-2 rounded-full border border-[#E7DDD5] bg-white/90 px-4 py-2 text-xs font-semibold text-[#F97316] shadow-[0_0_0_4px_rgba(55,50,47,0.035)]">
