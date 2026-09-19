@@ -72,13 +72,13 @@ export function Header() {
         </button>
 
         {desktopMenu === "products" && (
-          <div id="product-destinations" className="absolute left-1/2 top-[calc(100%+10px)] hidden w-[270px] -translate-x-[156px] rounded-[14px] border border-white bg-[#F7F5F3]/98 p-3 shadow-[0_2px_0_rgba(55,50,47,0.08),0_20px_45px_rgba(55,50,47,0.18),inset_0_0_0_1px_rgba(55,50,47,0.05)] backdrop-blur-xl lg:block">
+          <div id="product-destinations" className="absolute left-1/2 top-[calc(100%+10px)] hidden w-[320px] -translate-x-[181px] rounded-[14px] border border-white bg-[#F7F5F3]/98 p-3 shadow-[0_2px_0_rgba(55,50,47,0.08),0_20px_45px_rgba(55,50,47,0.18),inset_0_0_0_1px_rgba(55,50,47,0.05)] backdrop-blur-xl lg:block">
             {[
               ["/", "Dictation", "Voice typing in every app", onDictation, "dictation"],
               ["/notetaker", "Notetaker", "Meeting notes in seconds", onNotetaker, "notetaker"],
               ["/mobile", "Mobile App", "Oravo while you are moving", onMobile, "mobile"],
             ].map(([href, label, detail, active, icon]) => (
-              <a key={href as string} href={href as string} aria-current={active ? "page" : undefined} className={`flex items-start gap-3 rounded-[10px] px-3 py-3 transition-all ${active ? "bg-white shadow-[0_2px_0_rgba(55,50,47,0.06),0_7px_16px_rgba(55,50,47,0.07)]" : "hover:bg-white/70"}`}>{menuIcon(icon as string)}<span><span className="block text-sm font-bold text-[#37322F]">{label as string}</span><span className="mt-0.5 block text-xs font-medium text-[#847971]">{detail as string}</span></span></a>
+              <a key={href as string} href={href as string} aria-current={active ? "page" : undefined} className={`flex w-full items-start gap-3 rounded-[10px] px-3 py-3 transition-colors ${active ? "bg-[#ECEAE8]" : "hover:bg-white/70"}`}>{menuIcon(icon as string)}<span><span className="block text-sm font-bold text-[#37322F]">{label as string}</span><span className="mt-0.5 block text-xs font-medium text-[#847971]">{detail as string}</span></span></a>
             ))}
           </div>
         )}
