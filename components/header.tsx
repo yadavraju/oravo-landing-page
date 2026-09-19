@@ -6,8 +6,8 @@ import Logo from "./Logo";
 
 type DesktopMenu = "products" | "resources" | null;
 
-const actionBase = "inline-flex h-11 items-center justify-center rounded-[10px] border px-5 text-sm font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.36),0_3px_0_rgba(55,50,47,0.13),0_9px_20px_rgba(55,50,47,0.12)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-[2px] active:shadow-[inset_0_1px_0_rgba(255,255,255,0.28),0_1px_0_rgba(55,50,47,0.14),0_4px_10px_rgba(55,50,47,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1877F2] focus-visible:ring-offset-2";
-const navButtonBase = "inline-flex h-11 items-center justify-center gap-2 rounded-[10px] border border-white bg-gradient-to-b from-white to-[#F3F0ED] px-5 text-sm font-bold text-[#37322F] shadow-[inset_0_1px_0_white,0_2px_0_rgba(55,50,47,0.10),0_8px_18px_rgba(55,50,47,0.10)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1877F2]";
+const actionBase = "inline-flex h-11 items-center justify-center rounded-[10px] border px-5 text-sm font-bold text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1877F2] focus-visible:ring-offset-2";
+const navButtonBase = "inline-flex h-11 items-center justify-center gap-2 rounded-[10px] border border-white bg-white px-5 text-sm font-bold text-[#37322F] transition-colors duration-200 hover:bg-[#F3F0ED] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1877F2]";
 
 export function Header() {
   const pathname = usePathname();
@@ -38,11 +38,22 @@ export function Header() {
     <svg aria-hidden="true" viewBox="0 0 20 20" className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 8 4 4 4-4" strokeLinecap="round" strokeLinejoin="round" /></svg>
   );
   const mobileLinkClass = (active = false) => `flex items-center justify-between rounded-[10px] px-3 py-2.5 text-sm font-semibold transition-colors ${active ? "bg-white text-[#292524] shadow-sm" : "text-[#605A57] hover:bg-white/70 hover:text-[#292524]"}`;
+  const menuIcon = (kind: string) => {
+    const paths: Record<string, string> = {
+      dictation: "M12 15a4 4 0 0 0 4-4V6a4 4 0 1 0-8 0v5a4 4 0 0 0 4 4Zm-7-4a7 7 0 0 0 14 0M12 18v3M9 21h6",
+      notetaker: "M6 3h9l3 3v15H6V3Zm8 0v4h4M9 11h6M9 15h6",
+      mobile: "M8 2h8v20H8V2Zm3 17h2",
+      features: "M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7L12 3Zm7 11 .8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8L19 14Z",
+      usecases: "M4 5h16v12H4V5Zm4 16h8M12 17v4",
+      blog: "M5 3h14v18H5V3Zm3 5h8M8 12h8M8 16h5",
+    };
+    return <span className="flex h-9 w-9 shrink-0 items-center justify-center text-[#9A9089]"><svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8"><path d={paths[kind]} strokeLinecap="round" strokeLinejoin="round" /></svg></span>;
+  };
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 flex h-[76px] items-center justify-center px-4 sm:h-[88px] sm:px-6">
       <div className="pointer-events-none absolute inset-x-0 top-1/2 border-t border-[rgba(55,50,47,0.10)] shadow-[0_1px_0_white]" />
-      <div ref={shellRef} className="relative z-10 flex h-[60px] w-full max-w-[1120px] items-center justify-between gap-4 rounded-[10px] border border-white/90 bg-[#F7F5F3]/94 px-4 shadow-[0_2px_0_rgba(55,50,47,0.08),0_12px_32px_rgba(55,50,47,0.10),inset_0_0_0_1px_rgba(55,50,47,0.05)] backdrop-blur-xl sm:px-5">
+      <div ref={shellRef} className="relative z-10 flex h-[60px] w-full max-w-[1120px] items-center justify-between gap-4 px-1 sm:px-2">
         <a href="/" aria-label="Oravo home" className="flex shrink-0 items-center gap-1.5 rounded-[10px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1877F2]"><Logo /><span className="font-sans text-lg font-semibold text-[#2F3037]">oravo</span></a>
 
         <nav aria-label="Primary navigation" className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-3 lg:flex">
@@ -52,31 +63,35 @@ export function Header() {
         </nav>
 
         <div className="hidden shrink-0 items-center gap-3 lg:flex">
-          <a href="/how-to-use" className={`${actionBase} border-[#4D9BFF] bg-gradient-to-b from-[#4598FF] to-[#1877F2]`}>How to use</a>
-          <a href="/download" className={`${actionBase} border-[#FF9453] bg-gradient-to-b from-[#FF964F] to-[#FF6B1A]`}>Download</a>
+          <a href="/how-to-use" className={`${actionBase} border-[#1877F2] bg-[#1877F2]`}>How to use</a>
+          <a href="/download" className={`${actionBase} border-[#F97316] bg-[#F97316]`}>Download</a>
         </div>
 
-        <button type="button" aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => { setMobileOpen((open) => !open); setDesktopMenu(null); }} className="flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-1 rounded-[10px] border border-white bg-[#ECE8E4] shadow-[0_2px_0_rgba(55,50,47,0.10),0_6px_14px_rgba(55,50,47,0.10)] transition-transform active:translate-y-px lg:hidden">
+        <button type="button" aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => { setMobileOpen((open) => !open); setDesktopMenu(null); }} className="flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-1 rounded-[10px] border border-white bg-[#ECE8E4] transition-colors hover:bg-[#E2DDD8] lg:hidden">
           <span className={`h-0.5 w-4 bg-[#37322F] transition-transform ${mobileOpen ? "translate-y-1.5 rotate-45" : ""}`} /><span className={`h-0.5 w-4 bg-[#37322F] transition-opacity ${mobileOpen ? "opacity-0" : ""}`} /><span className={`h-0.5 w-4 bg-[#37322F] transition-transform ${mobileOpen ? "-translate-y-1.5 -rotate-45" : ""}`} />
         </button>
 
         {desktopMenu === "products" && (
           <div id="product-destinations" className="absolute left-1/2 top-[calc(100%+10px)] hidden w-[270px] -translate-x-[156px] rounded-[14px] border border-white bg-[#F7F5F3]/98 p-3 shadow-[0_2px_0_rgba(55,50,47,0.08),0_20px_45px_rgba(55,50,47,0.18),inset_0_0_0_1px_rgba(55,50,47,0.05)] backdrop-blur-xl lg:block">
             {[
-              ["/", "Dictation", "Voice typing in every app", onDictation],
-              ["/notetaker", "Notetaker", "Meeting notes in seconds", onNotetaker],
-              ["/mobile", "Mobile App", "Oravo while you are moving", onMobile],
-            ].map(([href, label, detail, active]) => (
-              <a key={href as string} href={href as string} aria-current={active ? "page" : undefined} className={`block rounded-[10px] px-3 py-3 transition-all ${active ? "bg-white shadow-[0_2px_0_rgba(55,50,47,0.06),0_7px_16px_rgba(55,50,47,0.07)]" : "hover:bg-white/70"}`}><span className="block text-sm font-bold text-[#37322F]">{label as string}</span><span className="mt-0.5 block text-xs font-medium text-[#847971]">{detail as string}</span></a>
+              ["/", "Dictation", "Voice typing in every app", onDictation, "dictation"],
+              ["/notetaker", "Notetaker", "Meeting notes in seconds", onNotetaker, "notetaker"],
+              ["/mobile", "Mobile App", "Oravo while you are moving", onMobile, "mobile"],
+            ].map(([href, label, detail, active, icon]) => (
+              <a key={href as string} href={href as string} aria-current={active ? "page" : undefined} className={`flex items-start gap-3 rounded-[10px] px-3 py-3 transition-all ${active ? "bg-white shadow-[0_2px_0_rgba(55,50,47,0.06),0_7px_16px_rgba(55,50,47,0.07)]" : "hover:bg-white/70"}`}>{menuIcon(icon as string)}<span><span className="block text-sm font-bold text-[#37322F]">{label as string}</span><span className="mt-0.5 block text-xs font-medium text-[#847971]">{detail as string}</span></span></a>
             ))}
           </div>
         )}
 
         {desktopMenu === "resources" && (
           <div id="resource-destinations" className="absolute left-1/2 top-[calc(100%+10px)] hidden w-[230px] translate-x-[-12px] rounded-[14px] border border-white bg-[#F7F5F3]/98 p-3 shadow-[0_2px_0_rgba(55,50,47,0.08),0_20px_45px_rgba(55,50,47,0.18),inset_0_0_0_1px_rgba(55,50,47,0.05)] backdrop-blur-xl lg:block">
-            <a href="/features" className={mobileLinkClass()}>Features</a>
-            <a href="/use-cases" className={mobileLinkClass()}>Use Cases</a>
-            <a href="/blog" className={mobileLinkClass()}>Blog</a>
+            {[
+              ["/features", "Features", "Explore what Oravo can do", "features"],
+              ["/use-cases", "Use Cases", "Ways teams work by voice", "usecases"],
+              ["/blog", "Blog", "Guides and product updates", "blog"],
+            ].map(([href, label, detail, icon]) => (
+              <a key={href} href={href} className="flex items-start gap-3 rounded-[10px] px-3 py-3 transition-colors hover:bg-white/70">{menuIcon(icon)}<span><span className="block text-sm font-bold text-[#37322F]">{label}</span><span className="mt-0.5 block text-xs font-medium text-[#847971]">{detail}</span></span></a>
+            ))}
           </div>
         )}
 
@@ -91,7 +106,7 @@ export function Header() {
             <a role="menuitem" href="/use-cases" className={mobileLinkClass()}>Use Cases</a>
             <a role="menuitem" href="/blog" className={mobileLinkClass()}>Blog</a>
             <a role="menuitem" href="/#pricing-section" className={`${mobileLinkClass()} mt-1 border-t border-[rgba(55,50,47,0.10)]`}>Pricing</a>
-            <div className="mt-3 grid gap-2"><a role="menuitem" href="/how-to-use" className={`${actionBase} w-full border-[#4D9BFF] bg-gradient-to-b from-[#4598FF] to-[#1877F2]`}>How to use</a><a role="menuitem" href="/download" className={`${actionBase} w-full border-[#FF9453] bg-gradient-to-b from-[#FF964F] to-[#FF6B1A]`}>Download</a></div>
+            <div className="mt-3 grid gap-2"><a role="menuitem" href="/how-to-use" className={`${actionBase} w-full border-[#1877F2] bg-[#1877F2]`}>How to use</a><a role="menuitem" href="/download" className={`${actionBase} w-full border-[#F97316] bg-[#F97316]`}>Download</a></div>
           </div>
         )}
       </div>
