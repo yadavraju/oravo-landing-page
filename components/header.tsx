@@ -51,8 +51,8 @@ export function Header() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex h-[76px] items-center justify-center px-4 sm:h-[88px] sm:px-6">
-      <div className="pointer-events-none absolute inset-x-0 top-1/2 border-t border-[rgba(55,50,47,0.10)] shadow-[0_1px_0_white]" />
+    <header className="fixed inset-x-0 top-0 z-50 flex h-[80px] items-center justify-center border-b border-[rgba(55,50,47,0.08)] bg-[#F7F5F3]/96 px-4 backdrop-blur-xl sm:h-[92px] sm:px-6">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 border-t border-white/80" />
       <div ref={shellRef} className="relative z-10 flex h-[60px] w-full max-w-[1120px] items-center justify-between gap-4 px-1 sm:px-2">
         <a href="/" aria-label="Oravo home" className="flex shrink-0 items-center gap-1.5 rounded-[10px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1877F2]"><Logo /><span className="font-sans text-lg font-semibold text-[#2F3037]">oravo</span></a>
 
