@@ -8,11 +8,11 @@ export const metadata: Metadata = {
       "Oravo — Voice Typing & Dictation App | Type 4× Faster in Any App",
   },
   description:
-    "AI voice typing app for Mac, Windows, Android & iOS. Speak naturally and get polished text in Gmail, Slack, Notion, Google Docs & 50+ apps. 99% accuracy. 5,000 words free.",
+    "Voice typing for Mac, Windows, and Android. Speak naturally in 60+ languages and turn your words into polished text.",
   openGraph: {
     title: "Voice Typing & Dictation App | Oravo",
     description:
-      "AI voice typing that works in every app. Speak naturally, get polished text. 99% accuracy, 60+ languages. 5,000 words free.",
+      "Speak naturally in 60+ languages and turn your words into polished text on Mac, Windows, and Android.",
   },
 };
 
