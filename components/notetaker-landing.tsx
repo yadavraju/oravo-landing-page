@@ -158,12 +158,12 @@ export default function NotetakerLanding() {
           </div>
         </section>
 
-        <section className="border-t border-[rgba(55,50,47,0.12)] px-5 py-16 text-center sm:px-10 sm:py-24 md:px-16">
-          <div className="mx-auto max-w-[780px] rounded-[30px] border border-[#E0DEDB] bg-white px-6 py-12 shadow-[0_18px_50px_rgba(55,50,47,0.07)] sm:px-12 sm:py-16">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#F97316]">One voice workflow</p>
-            <h2 className="mt-4 font-serif text-5xl leading-[1.04] sm:text-7xl">Capture the meeting. Write what comes next.</h2>
-            <p className="mx-auto mt-5 max-w-[600px] text-base font-medium leading-relaxed text-[#605A57]">Notetaker turns the conversation into a usable record. Oravo dictation helps you turn that record into the emails, updates, and documents that move the work.</p>
-            <a href="#experience" onClick={() => trackCta("final_see_experience", "experience")} className="mt-8 inline-flex rounded-full bg-[#1877F2] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(24,119,242,0.22)]">Explore the experience</a>
+        <section className="border-t border-[rgba(55,50,47,0.12)] px-5 py-16 text-center sm:px-10 md:px-16">
+          <div className="mx-auto max-w-[700px] rounded-3xl bg-[#F97316] px-6 py-9 text-white shadow-[0_8px_48px_rgba(249,115,22,0.25)] sm:px-10 sm:py-12">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/75">One voice workflow</p>
+            <h2 className="mx-auto mt-3 max-w-[560px] font-serif text-3xl font-medium leading-tight sm:text-4xl">Capture the meeting. Write what comes next.</h2>
+            <p className="mx-auto mt-4 max-w-[560px] text-base font-medium leading-relaxed text-white/90">Notetaker turns the conversation into a usable record. Oravo dictation helps you write the follow-up.</p>
+            <a href="#experience" onClick={() => trackCta("final_see_experience", "experience")} className="mt-7 inline-flex rounded-[10px] bg-white px-6 py-3 text-sm font-semibold text-[#C84E0D] shadow-[0_7px_20px_rgba(126,43,0,0.18)] transition-transform hover:-translate-y-0.5">Explore the experience</a>
           </div>
         </section>
         <FooterSection />
