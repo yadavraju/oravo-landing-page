@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
+import { Inter, Instrument_Serif, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import ModeToggleFAB from "@/components/mode-toggle-fab";
 import AgentModeView from "@/components/agent-mode-view";
@@ -9,6 +9,13 @@ import "./globals.css";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+  preload: true,
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
   display: "swap",
   preload: true,
 });
@@ -674,7 +681,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${instrumentSerif.variable} antialiased`}
+      className={`${inter.variable} ${plusJakartaSans.variable} ${instrumentSerif.variable} antialiased`}
     >
       <head>
         {/* Favicon - Explicit Links for Better Browser Support */}

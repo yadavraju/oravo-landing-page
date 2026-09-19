@@ -1,183 +1,115 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 
+type DesktopMenu = "products" | "resources" | null;
+
+const actionBase = "inline-flex h-11 items-center justify-center rounded-[10px] border px-5 text-sm font-bold text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1877F2] focus-visible:ring-offset-2";
+const navButtonBase = "inline-flex h-11 items-center justify-center gap-2 rounded-[10px] border border-white bg-white px-5 text-sm font-bold text-[#37322F] transition-colors duration-200 hover:bg-[#F3F0ED] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1877F2]";
+
 export function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const router = useRouter();
   const pathname = usePathname();
+  const onDictation = pathname === "/";
+  const onNotetaker = pathname.startsWith("/notetaker");
+  const onMobile = pathname.startsWith("/mobile");
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [desktopMenu, setDesktopMenu] = useState<DesktopMenu>(null);
+  const shellRef = useRef<HTMLDivElement>(null);
+  const firstMobileLinkRef = useRef<HTMLAnchorElement>(null);
 
-  const scrollToSection = (sectionId: string) => {
-    // If not on homepage, navigate to homepage first
-    if (pathname !== "/") {
-      router.push(`/#${sectionId}`);
-      setIsMobileMenuOpen(false);
-      return;
-    }
+  useEffect(() => { setMobileOpen(false); setDesktopMenu(null); }, [pathname]);
+  useEffect(() => {
+    if (!mobileOpen && !desktopMenu) return;
+    if (mobileOpen) firstMobileLinkRef.current?.focus();
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { setMobileOpen(false); setDesktopMenu(null); }
+    };
+    const outside = (event: PointerEvent) => {
+      if (!shellRef.current?.contains(event.target as Node)) { setMobileOpen(false); setDesktopMenu(null); }
+    };
+    document.addEventListener("keydown", close);
+    document.addEventListener("pointerdown", outside);
+    return () => { document.removeEventListener("keydown", close); document.removeEventListener("pointerdown", outside); };
+  }, [mobileOpen, desktopMenu]);
 
-    // If on homepage, scroll to section
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 100; // Offset for header height
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-    setIsMobileMenuOpen(false); // Close mobile menu after clicking
+  const chevron = (open: boolean) => (
+    <svg aria-hidden="true" viewBox="0 0 20 20" className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 8 4 4 4-4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+  );
+  const mobileLinkClass = (active = false) => `flex items-center justify-between rounded-[10px] px-3 py-2.5 text-sm font-semibold transition-colors ${active ? "bg-white text-[#292524] shadow-sm" : "text-[#605A57] hover:bg-white/70 hover:text-[#292524]"}`;
+  const menuIcon = (kind: string) => {
+    const paths: Record<string, string> = {
+      dictation: "M12 15a4 4 0 0 0 4-4V6a4 4 0 1 0-8 0v5a4 4 0 0 0 4 4Zm-7-4a7 7 0 0 0 14 0M12 18v3M9 21h6",
+      notetaker: "M6 3h9l3 3v15H6V3Zm8 0v4h4M9 11h6M9 15h6",
+      mobile: "M8 2h8v20H8V2Zm3 17h2",
+      features: "M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7L12 3Zm7 11 .8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8L19 14Z",
+      usecases: "M4 5h16v12H4V5Zm4 16h8M12 17v4",
+      blog: "M5 3h14v18H5V3Zm3 5h8M8 12h8M8 16h5",
+    };
+    return <span className="flex h-9 w-9 shrink-0 items-center justify-center text-[#9A9089]"><svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8"><path d={paths[kind]} strokeLinecap="round" strokeLinejoin="round" /></svg></span>;
   };
 
   return (
-    <div className="w-full h-12 sm:h-14 md:h-16 lg:h-[84px] fixed left-0 top-0 flex justify-center items-center z-50 px-6 sm:px-8 md:px-12 lg:px-0 bg-[#F7F5F3]/80 backdrop-blur-md">
-      <div className="w-full h-0 absolute left-0 top-6 sm:top-7 md:top-8 lg:top-[42px] border-t border-[rgba(55,50,47,0.12)] shadow-[0px_1px_0px_white]"></div>
+    <header className="fixed inset-x-0 top-0 z-50 flex h-[80px] items-center justify-center border-b border-[rgba(55,50,47,0.08)] bg-[#F7F5F3]/96 px-4 backdrop-blur-xl sm:h-[92px] sm:px-6">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 border-t border-white/80" />
+      <div ref={shellRef} className="relative z-10 flex h-[60px] w-full max-w-[1120px] items-center justify-between gap-4 px-1 sm:px-2">
+        <a href="/" aria-label="Oravo home" className="flex shrink-0 items-center gap-1.5 rounded-[10px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1877F2]"><Logo /><span className="font-sans text-lg font-semibold text-[#2F3037]">oravo</span></a>
 
-      <div className="w-full max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] md:max-w-[calc(100%-64px)] lg:max-w-[700px] lg:w-[700px] h-10 sm:h-11 md:h-12 py-1.5 sm:py-2 px-3 sm:px-4 md:px-4 pr-2 sm:pr-3 bg-[#F7F5F3] backdrop-blur-sm shadow-[0px_0px_0px_2px_white] overflow-visible rounded-[50px] flex justify-between items-center relative z-50">
-        <div className="flex justify-center items-center">
-          <a href="/" className="flex justify-start items-center gap-1">
-            <Logo />
-            <div className="flex flex-col justify-center text-[#2F3037] text-sm sm:text-base md:text-lg lg:text-xl font-semibold leading-5 font-sans">
-              oravo
-            </div>
-          </a>
-          {/* Desktop Navigation Links */}
-          <div className="pl-3 sm:pl-4 md:pl-5 lg:pl-5 justify-start items-start hidden sm:flex flex-row gap-2 sm:gap-3 md:gap-4 lg:gap-4">
-            <a
-              href="/features"
-              className="flex justify-start items-center cursor-pointer"
-            >
-              <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
-                Features
-              </div>
-            </a>
-            <button
-              onClick={() => scrollToSection("pricing-section")}
-              className="flex justify-start items-center cursor-pointer"
-            >
-              <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
-                Pricing
-              </div>
-            </button>
-            <a
-              href="/use-cases"
-              className="flex justify-start items-center cursor-pointer"
-            >
-              <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
-                Use Cases
-              </div>
-            </a>
-            <a
-              href="/mobile"
-              className="flex justify-start items-center cursor-pointer gap-1"
-            >
-              <svg className="w-3 h-3 text-[rgba(49,45,43,0.80)] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
-              <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
-                Mobile App
-              </div>
-            </a>
+        <nav aria-label="Primary navigation" className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-3 lg:flex">
+          <button type="button" aria-expanded={desktopMenu === "products"} aria-controls="product-destinations" onClick={() => setDesktopMenu((open) => open === "products" ? null : "products")} className={navButtonBase}>Products {chevron(desktopMenu === "products")}</button>
+          <button type="button" aria-expanded={desktopMenu === "resources"} aria-controls="resource-destinations" onClick={() => setDesktopMenu((open) => open === "resources" ? null : "resources")} className={navButtonBase}>Resources {chevron(desktopMenu === "resources")}</button>
+          <a href="/#pricing-section" className={navButtonBase}>Pricing</a>
+        </nav>
+
+        <div className="hidden shrink-0 items-center gap-3 lg:flex">
+          <a href="/how-to-use" className={`${actionBase} border-[#1877F2] bg-[#1877F2]`}>How to use</a>
+          <a href="/download" className={`${actionBase} border-[#F97316] bg-[#F97316]`}>Download</a>
+        </div>
+
+        <button type="button" aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => { setMobileOpen((open) => !open); setDesktopMenu(null); }} className="flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-1 rounded-[10px] border border-white bg-[#ECE8E4] transition-colors hover:bg-[#E2DDD8] lg:hidden">
+          <span className={`h-0.5 w-4 bg-[#37322F] transition-transform ${mobileOpen ? "translate-y-1.5 rotate-45" : ""}`} /><span className={`h-0.5 w-4 bg-[#37322F] transition-opacity ${mobileOpen ? "opacity-0" : ""}`} /><span className={`h-0.5 w-4 bg-[#37322F] transition-transform ${mobileOpen ? "-translate-y-1.5 -rotate-45" : ""}`} />
+        </button>
+
+        {desktopMenu === "products" && (
+          <div id="product-destinations" className="absolute left-1/2 top-[calc(100%+10px)] hidden w-[320px] -translate-x-[181px] rounded-[14px] border border-white bg-[#F7F5F3]/98 p-3 shadow-[0_2px_0_rgba(55,50,47,0.08),0_20px_45px_rgba(55,50,47,0.18),inset_0_0_0_1px_rgba(55,50,47,0.05)] backdrop-blur-xl lg:block">
+            {[
+              ["/", "Dictation", "Voice typing in every app", onDictation, "dictation"],
+              ["/notetaker", "Notetaker", "Meeting notes in seconds", onNotetaker, "notetaker"],
+              ["/mobile", "Mobile App", "Oravo while you are moving", onMobile, "mobile"],
+            ].map(([href, label, detail, active, icon]) => (
+              <a key={href as string} href={href as string} aria-current={active ? "page" : undefined} className={`flex w-full items-start gap-3 rounded-[10px] px-3 py-3 transition-colors ${active ? "bg-[#ECEAE8]" : "hover:bg-white/70"}`}>{menuIcon(icon as string)}<span><span className="block text-sm font-bold text-[#37322F]">{label as string}</span><span className="mt-0.5 block text-xs font-medium text-[#847971]">{detail as string}</span></span></a>
+            ))}
           </div>
-        </div>
-        <div className="h-6 sm:h-7 md:h-8 flex justify-start items-center gap-2 sm:gap-3">
-          {/* Desktop Download Link - Goes to download page */}
-          <a
-            href="/download"
-            className="hidden sm:flex px-3 md:px-4 py-1 sm:py-[6px] bg-white border border-[#E0DEDB] hover:bg-[#F7F5F3] overflow-hidden rounded-full justify-center items-center transition-all duration-300 hover:scale-105 active:scale-95"
-          >
-            <span className="text-[#37322F] text-xs md:text-[13px] font-medium leading-5 font-sans">
-              Download
-            </span>
-          </a>
-          {/* How to use Button - Hidden on Mobile */}
-          <a
-            href="/how-to-use"
-            className="hidden sm:flex px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-gradient-to-b from-[#1877F2] to-[#166FE5] hover:from-[#1570E8] hover:to-[#1466D8] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(24,119,242,0.4)] overflow-hidden rounded-full justify-center items-center transition-all duration-300 hover:scale-105 active:scale-95"
-          >
-            <span className="text-[#FFF] text-xs md:text-[13px] font-medium leading-5 font-sans">
-              How to use
-            </span>
-          </a>
-          {/* Hamburger Menu Button - Mobile Only */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="sm:hidden w-8 h-8 flex flex-col justify-center items-center gap-1 cursor-pointer"
-            aria-label="Toggle menu"
-          >
-            <span
-              className={`w-4 h-0.5 bg-[#37322F] transition-all duration-300 ${
-                isMobileMenuOpen ? "rotate-45 translate-y-1.5" : ""
-              }`}
-            ></span>
-            <span
-              className={`w-4 h-0.5 bg-[#37322F] transition-all duration-300 ${
-                isMobileMenuOpen ? "opacity-0" : ""
-              }`}
-            ></span>
-            <span
-              className={`w-4 h-0.5 bg-[#37322F] transition-all duration-300 ${
-                isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
-              }`}
-            ></span>
-          </button>
+        )}
 
-        </div>
+        {desktopMenu === "resources" && (
+          <div id="resource-destinations" className="absolute left-1/2 top-[calc(100%+10px)] hidden w-[230px] translate-x-[-12px] rounded-[14px] border border-white bg-[#F7F5F3]/98 p-3 shadow-[0_2px_0_rgba(55,50,47,0.08),0_20px_45px_rgba(55,50,47,0.18),inset_0_0_0_1px_rgba(55,50,47,0.05)] backdrop-blur-xl lg:block">
+            {[
+              ["/features", "Features", "Explore what Oravo can do", "features"],
+              ["/use-cases", "Use Cases", "Ways teams work by voice", "usecases"],
+              ["/blog", "Blog", "Guides and product updates", "blog"],
+            ].map(([href, label, detail, icon]) => (
+              <a key={href} href={href} className="flex items-start gap-3 rounded-[10px] px-3 py-3 transition-colors hover:bg-white/70">{menuIcon(icon)}<span><span className="block text-sm font-bold text-[#37322F]">{label}</span><span className="mt-0.5 block text-xs font-medium text-[#847971]">{detail}</span></span></a>
+            ))}
+          </div>
+        )}
 
-        {/* Mobile Menu Dropdown */}
-        {isMobileMenuOpen && (
-          <div className="absolute top-full left-0 right-0 mt-2 bg-[#F7F5F3] backdrop-blur-sm shadow-[0px_0px_0px_2px_white] rounded-2xl p-4 flex flex-col gap-3 sm:hidden">
-            <a
-              href="/features"
-              className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer block"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Features
-            </a>
-            <button
-              onClick={() => scrollToSection("pricing-section")}
-              className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer"
-            >
-              Pricing
-            </button>
-            <a
-              href="/use-cases"
-              className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer block"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Use Cases
-            </a>
-            <a
-              href="/mobile"
-              className="flex items-center gap-2 text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
-              Mobile App
-            </a>
-            <div className="border-t border-[rgba(55,50,47,0.12)] my-2"></div>
-            <a
-              href="/download"
-              className="text-[#6366F1] text-sm font-semibold leading-5 font-sans hover:text-[#4F46E5] transition-colors py-2 text-left block"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Download
-            </a>
-            <a
-              href="/how-to-use"
-              className="w-full px-4 py-2.5 text-sm mt-2 bg-gradient-to-b from-[#1877F2] to-[#166FE5] text-white font-medium rounded-full text-center block"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              How to use
-            </a>
+        {mobileOpen && (
+          <div id="mobile-navigation" role="menu" aria-label="Primary navigation" className="absolute right-0 top-[calc(100%+10px)] w-[260px] rounded-[14px] border border-white bg-[#F7F5F3]/98 p-3 shadow-[0_2px_0_rgba(55,50,47,0.08),0_20px_45px_rgba(55,50,47,0.18),inset_0_0_0_1px_rgba(55,50,47,0.05)] backdrop-blur-xl lg:hidden">
+            <p className="px-3 pb-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[#9A9089]">Products</p>
+            <a ref={firstMobileLinkRef} role="menuitem" href="/" aria-current={onDictation ? "page" : undefined} className={mobileLinkClass(onDictation)}>Dictation</a>
+            <a role="menuitem" href="/notetaker" aria-current={onNotetaker ? "page" : undefined} className={mobileLinkClass(onNotetaker)}>Notetaker</a>
+            <a role="menuitem" href="/mobile" aria-current={onMobile ? "page" : undefined} className={mobileLinkClass(onMobile)}>Mobile App</a>
+            <p className="mt-3 border-t border-[rgba(55,50,47,0.10)] px-3 pb-1 pt-3 text-[10px] font-bold uppercase tracking-[0.14em] text-[#9A9089]">Resources</p>
+            <a role="menuitem" href="/features" className={mobileLinkClass()}>Features</a>
+            <a role="menuitem" href="/use-cases" className={mobileLinkClass()}>Use Cases</a>
+            <a role="menuitem" href="/blog" className={mobileLinkClass()}>Blog</a>
+            <a role="menuitem" href="/#pricing-section" className={`${mobileLinkClass()} mt-1 border-t border-[rgba(55,50,47,0.10)]`}>Pricing</a>
+            <div className="mt-3 grid gap-2"><a role="menuitem" href="/how-to-use" className={`${actionBase} w-full border-[#1877F2] bg-[#1877F2]`}>How to use</a><a role="menuitem" href="/download" className={`${actionBase} w-full border-[#F97316] bg-[#F97316]`}>Download</a></div>
           </div>
         )}
       </div>
-    </div>
+    </header>
   );
 }

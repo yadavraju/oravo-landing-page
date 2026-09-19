@@ -33,7 +33,10 @@ export default function FooterSection() {
           <div>
             <div className={headingClass}>Product</div>
             <nav className="flex flex-col gap-2.5">
+              <a href="/" className={linkClass}>Dictation</a>
+              <a href="/notetaker" className={linkClass}>Notetaker</a>
               <a href="/features" className={linkClass}>Features</a>
+              <a href="/#pricing-section" className={linkClass}>Pricing</a>
               <a href="/blog" className={linkClass}>Blog</a>
               <a href="/download" className={linkClass}>Download</a>
               <a href="/use-cases" className={linkClass}>Use Cases</a>
