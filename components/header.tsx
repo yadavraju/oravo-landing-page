@@ -54,6 +54,9 @@ export function Header() {
                 Features
               </div>
             </a>
+            <a href="/notetaker" className="flex justify-start items-center cursor-pointer">
+              <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">Notetaker</div>
+            </a>
             <button
               onClick={() => scrollToSection("pricing-section")}
               className="flex justify-start items-center cursor-pointer"
@@ -137,6 +140,7 @@ export function Header() {
             >
               Features
             </a>
+            <a href="/notetaker" className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left block" onClick={() => setIsMobileMenuOpen(false)}>Notetaker</a>
             <button
               onClick={() => scrollToSection("pricing-section")}
               className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer"
