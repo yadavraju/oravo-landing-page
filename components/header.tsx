@@ -1,187 +1,49 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 
 export function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const router = useRouter();
   const pathname = usePathname();
+  const onNotetaker = pathname.startsWith("/notetaker");
 
-  const scrollToSection = (sectionId: string) => {
-    // If not on homepage, navigate to homepage first
-    if (pathname !== "/") {
-      router.push(`/#${sectionId}`);
-      setIsMobileMenuOpen(false);
-      return;
-    }
-
-    // If on homepage, scroll to section
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 100; // Offset for header height
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-    setIsMobileMenuOpen(false); // Close mobile menu after clicking
-  };
+  const productTab = (href: string, label: string, active: boolean) => (
+    <a
+      href={href}
+      aria-current={active ? "page" : undefined}
+      className={`relative flex min-w-[88px] items-center justify-center rounded-full px-4 py-2 text-xs font-semibold transition-all duration-200 sm:min-w-[104px] sm:px-5 sm:text-[13px] ${
+        active
+          ? "bg-white text-[#292524] shadow-[0_2px_10px_rgba(55,50,47,0.11),0_0_0_1px_rgba(55,50,47,0.05)]"
+          : "text-[#847971] hover:text-[#37322F]"
+      }`}
+    >
+      {label}
+    </a>
+  );
 
   return (
-    <div className="w-full h-12 sm:h-14 md:h-16 lg:h-[84px] fixed left-0 top-0 flex justify-center items-center z-50 px-6 sm:px-8 md:px-12 lg:px-0 bg-[#F7F5F3]/80 backdrop-blur-md">
-      <div className="w-full h-0 absolute left-0 top-6 sm:top-7 md:top-8 lg:top-[42px] border-t border-[rgba(55,50,47,0.12)] shadow-[0px_1px_0px_white]"></div>
+    <header className="fixed inset-x-0 top-0 z-50 flex h-[72px] items-center justify-center border-b border-[rgba(55,50,47,0.10)] bg-[#F7F5F3]/90 px-4 backdrop-blur-xl sm:h-[82px] sm:px-6">
+      <div className="flex w-full max-w-[1060px] items-center justify-between gap-3">
+        <a href="/" aria-label="Oravo home" className="flex shrink-0 items-center gap-1.5">
+          <Logo />
+          <span className="font-sans text-base font-semibold text-[#2F3037] sm:text-lg">oravo</span>
+        </a>
 
-      <div className="w-full max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] md:max-w-[calc(100%-64px)] lg:max-w-[700px] lg:w-[700px] h-10 sm:h-11 md:h-12 py-1.5 sm:py-2 px-3 sm:px-4 md:px-4 pr-2 sm:pr-3 bg-[#F7F5F3] backdrop-blur-sm shadow-[0px_0px_0px_2px_white] overflow-visible rounded-[50px] flex justify-between items-center relative z-50">
-        <div className="flex justify-center items-center">
-          <a href="/" className="flex justify-start items-center gap-1">
-            <Logo />
-            <div className="flex flex-col justify-center text-[#2F3037] text-sm sm:text-base md:text-lg lg:text-xl font-semibold leading-5 font-sans">
-              oravo
-            </div>
-          </a>
-          {/* Desktop Navigation Links */}
-          <div className="pl-3 sm:pl-4 md:pl-5 lg:pl-5 justify-start items-start hidden sm:flex flex-row gap-2 sm:gap-3 md:gap-4 lg:gap-4">
-            <a
-              href="/features"
-              className="flex justify-start items-center cursor-pointer"
-            >
-              <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
-                Features
-              </div>
-            </a>
-            <a href="/notetaker" className="flex justify-start items-center cursor-pointer">
-              <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">Notetaker</div>
-            </a>
-            <button
-              onClick={() => scrollToSection("pricing-section")}
-              className="flex justify-start items-center cursor-pointer"
-            >
-              <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
-                Pricing
-              </div>
-            </button>
-            <a
-              href="/use-cases"
-              className="flex justify-start items-center cursor-pointer"
-            >
-              <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
-                Use Cases
-              </div>
-            </a>
-            <a
-              href="/mobile"
-              className="flex justify-start items-center cursor-pointer gap-1"
-            >
-              <svg className="w-3 h-3 text-[rgba(49,45,43,0.80)] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
-              <div className="flex flex-col justify-center text-[rgba(49,45,43,0.80)] text-xs md:text-[13px] font-semibold leading-[14px] font-sans hover:text-[#37322F] transition-colors">
-                Mobile App
-              </div>
-            </a>
+        <nav aria-label="Oravo products" className="absolute left-1/2 -translate-x-1/2">
+          <div className="flex items-center rounded-full bg-[#ECE8E4] p-1 shadow-[inset_0_0_0_1px_rgba(55,50,47,0.06)]">
+            {productTab("/", "Dictation", !onNotetaker)}
+            {productTab("/notetaker", "Notetaker", onNotetaker)}
           </div>
-        </div>
-        <div className="h-6 sm:h-7 md:h-8 flex justify-start items-center gap-2 sm:gap-3">
-          {/* Desktop Download Link - Goes to download page */}
-          <a
-            href="/download"
-            className="hidden sm:flex px-3 md:px-4 py-1 sm:py-[6px] bg-white border border-[#E0DEDB] hover:bg-[#F7F5F3] overflow-hidden rounded-full justify-center items-center transition-all duration-300 hover:scale-105 active:scale-95"
-          >
-            <span className="text-[#37322F] text-xs md:text-[13px] font-medium leading-5 font-sans">
-              Download
-            </span>
-          </a>
-          {/* How to use Button - Hidden on Mobile */}
-          <a
-            href="/how-to-use"
-            className="hidden sm:flex px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-gradient-to-b from-[#1877F2] to-[#166FE5] hover:from-[#1570E8] hover:to-[#1466D8] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(24,119,242,0.4)] overflow-hidden rounded-full justify-center items-center transition-all duration-300 hover:scale-105 active:scale-95"
-          >
-            <span className="text-[#FFF] text-xs md:text-[13px] font-medium leading-5 font-sans">
-              How to use
-            </span>
-          </a>
-          {/* Hamburger Menu Button - Mobile Only */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="sm:hidden w-8 h-8 flex flex-col justify-center items-center gap-1 cursor-pointer"
-            aria-label="Toggle menu"
-          >
-            <span
-              className={`w-4 h-0.5 bg-[#37322F] transition-all duration-300 ${
-                isMobileMenuOpen ? "rotate-45 translate-y-1.5" : ""
-              }`}
-            ></span>
-            <span
-              className={`w-4 h-0.5 bg-[#37322F] transition-all duration-300 ${
-                isMobileMenuOpen ? "opacity-0" : ""
-              }`}
-            ></span>
-            <span
-              className={`w-4 h-0.5 bg-[#37322F] transition-all duration-300 ${
-                isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
-              }`}
-            ></span>
-          </button>
+        </nav>
 
-        </div>
-
-        {/* Mobile Menu Dropdown */}
-        {isMobileMenuOpen && (
-          <div className="absolute top-full left-0 right-0 mt-2 bg-[#F7F5F3] backdrop-blur-sm shadow-[0px_0px_0px_2px_white] rounded-2xl p-4 flex flex-col gap-3 sm:hidden">
-            <a
-              href="/features"
-              className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer block"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Features
-            </a>
-            <a href="/notetaker" className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left block" onClick={() => setIsMobileMenuOpen(false)}>Notetaker</a>
-            <button
-              onClick={() => scrollToSection("pricing-section")}
-              className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer"
-            >
-              Pricing
-            </button>
-            <a
-              href="/use-cases"
-              className="text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer block"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Use Cases
-            </a>
-            <a
-              href="/mobile"
-              className="flex items-center gap-2 text-[rgba(49,45,43,0.80)] text-sm font-semibold leading-5 font-sans hover:text-[#37322F] transition-colors py-2 text-left cursor-pointer"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
-              Mobile App
-            </a>
-            <div className="border-t border-[rgba(55,50,47,0.12)] my-2"></div>
-            <a
-              href="/download"
-              className="text-[#6366F1] text-sm font-semibold leading-5 font-sans hover:text-[#4F46E5] transition-colors py-2 text-left block"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Download
-            </a>
-            <a
-              href="/how-to-use"
-              className="w-full px-4 py-2.5 text-sm mt-2 bg-gradient-to-b from-[#1877F2] to-[#166FE5] text-white font-medium rounded-full text-center block"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              How to use
-            </a>
-          </div>
-        )}
+        <a
+          href={onNotetaker ? "#experience" : "/download"}
+          className="hidden shrink-0 rounded-full bg-[#292524] px-5 py-2.5 text-xs font-semibold text-white transition-transform hover:scale-[1.02] sm:inline-flex"
+        >
+          {onNotetaker ? "See how it works" : "Download"}
+        </a>
+        <div className="w-[54px] sm:hidden" aria-hidden="true" />
       </div>
-    </div>
+    </header>
   );
 }
