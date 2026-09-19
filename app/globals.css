@@ -193,3 +193,23 @@
   animation: wave 0.8s ease-in-out infinite;
   transform-origin: center;
 }
+
+/* Notetaker product-story motion: small, purposeful, and disabled on request. */
+@keyframes oravo-receipt-fill {
+  from { width: 18%; opacity: 0.55; }
+  to { width: 94%; opacity: 1; }
+}
+@keyframes oravo-reveal-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes oravo-ready-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(79, 122, 90, 0); }
+  50% { box-shadow: 0 0 0 5px rgba(79, 122, 90, 0.09); }
+}
+.oravo-receipt-fill { animation: oravo-receipt-fill 1.8s cubic-bezier(.22,.8,.2,1) both; }
+.oravo-story-reveal { opacity: 0; animation: oravo-reveal-up .55s cubic-bezier(.22,.8,.2,1) forwards; }
+.oravo-ready-pulse { animation: oravo-ready-pulse 2.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .oravo-receipt-fill, .oravo-story-reveal, .oravo-ready-pulse { animation: none !important; opacity: 1; transform: none; }
+}
