@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 import { fetchDownloadUrls, getLatestDownloads, DownloadData } from "@/lib/downloadApi";
+import { trackEvent } from "@/lib/analytics";
 
 type DetectedPlatform = "macos" | "windows" | "linux" | null;
 type DetectedArch = "arm64" | "x64" | null;
@@ -68,9 +69,10 @@ export default function DownloadButtons({ variant = "default" }: DownloadButtons
       return;
     }
     setVisitorOs("other");
-  }, []);
+  }, [variant]);
 
   const handleMacDownload = useCallback(async () => {
+    trackEvent("primary_cta_click", { cta: "download_mac", destination: "desktop_download", variant });
     setLoadingPlatform("mac");
     try {
       // Detect Mac architecture
@@ -100,6 +102,7 @@ export default function DownloadButtons({ variant = "default" }: DownloadButtons
   }, []);
 
   const handleWindowsDownload = useCallback(async () => {
+    trackEvent("primary_cta_click", { cta: "download_windows", destination: "desktop_download", variant });
     setLoadingPlatform("windows");
     try {
       // Fetch download URLs and get only latest version
@@ -123,7 +126,7 @@ export default function DownloadButtons({ variant = "default" }: DownloadButtons
     } finally {
       setLoadingPlatform(null);
     }
-  }, []);
+  }, [variant]);
 
   const LoadingSpinner = () => (
     <svg className="w-5 h-5 animate-spin" viewBox="0 0 24 24" fill="none">
@@ -238,6 +241,8 @@ export default function DownloadButtons({ variant = "default" }: DownloadButtons
           target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => {
+            trackEvent("play_store_outbound", { destination: "google_play", variant });
+            trackEvent("primary_cta_click", { cta: "google_play", destination: "google_play", variant });
             if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
               e.preventDefault();
               (window as any).gtag_report_conversion('https://play.google.com/store/apps/details?id=ai.oravo');
