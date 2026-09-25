@@ -13,3 +13,9 @@ export function trackEvent(name: string, params: AnalyticsParams = {}) {
   );
   window.gtag("event", name, cleanParams);
 }
+
+/** Count Play intent without waiting for analytics or redirecting this page. */
+export function trackPlayStoreOutbound(variant: string) {
+  trackEvent("play_store_outbound", { destination: "google_play", variant });
+  trackEvent("primary_cta_click", { cta: "google_play", destination: "google_play", variant });
+}
