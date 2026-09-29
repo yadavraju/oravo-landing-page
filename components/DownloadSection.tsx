@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 import { fetchDownloadUrls, getLatestDownloads, DownloadData } from "@/lib/downloadApi";
+import { trackPlayStoreOutbound } from "@/lib/analytics";
 
 type DetectedPlatform = "macos" | "windows" | "linux" | null;
 type DetectedArch = "arm64" | "x64" | null;
@@ -103,15 +104,9 @@ export default function DownloadSection() {
   }, []);
 
   const handleAndroidDownload = useCallback(() => {
-    setLoadingPlatform("android");
-    const playStoreUrl = "https://play.google.com/store/apps/details?id=ai.oravo";
-
-    if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-      (window as any).gtag_report_conversion(playStoreUrl);
-    } else {
-      window.open(playStoreUrl, "_blank");
-    }
-    setLoadingPlatform(null);
+    trackPlayStoreOutbound("download-section");
+    // Open during the user gesture so popup blockers do not drop the store visit.
+    window.open("https://play.google.com/store/apps/details?id=ai.oravo", "_blank", "noopener,noreferrer");
   }, []);
 
   const LoadingSpinner = () => (

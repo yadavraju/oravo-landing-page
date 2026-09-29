@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { trackPlayStoreOutbound } from "@/lib/analytics";
 import { Header } from "@/components/header";
 import FooterSection from "@/components/footer-section";
 
@@ -85,6 +86,7 @@ export default function AndroidPage() {
                     <div className="flex flex-row gap-3 flex-wrap">
                       <a
                         href="https://play.google.com/store/apps/details?id=ai.oravo"
+                        onClick={() => trackPlayStoreOutbound("mobile-page")}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:opacity-90 transition-all duration-200 hover:scale-105 active:scale-95"
@@ -418,6 +420,7 @@ export default function AndroidPage() {
                 </p>
                 <a
                   href="https://play.google.com/store/apps/details?id=ai.oravo"
+                  onClick={() => trackPlayStoreOutbound("mobile-page")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block hover:opacity-90 transition-opacity"

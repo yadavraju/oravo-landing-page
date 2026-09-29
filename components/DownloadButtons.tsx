@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 import { fetchDownloadUrls, getLatestDownloads, DownloadData } from "@/lib/downloadApi";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackPlayStoreOutbound } from "@/lib/analytics";
 
 type DetectedPlatform = "macos" | "windows" | "linux" | null;
 type DetectedArch = "arm64" | "x64" | null;
@@ -240,14 +240,7 @@ export default function DownloadButtons({ variant = "default" }: DownloadButtons
           href="https://play.google.com/store/apps/details?id=ai.oravo"
           target="_blank"
           rel="noopener noreferrer"
-          onClick={(e) => {
-            trackEvent("play_store_outbound", { destination: "google_play", variant });
-            trackEvent("primary_cta_click", { cta: "google_play", destination: "google_play", variant });
-            if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-              e.preventDefault();
-              (window as any).gtag_report_conversion('https://play.google.com/store/apps/details?id=ai.oravo');
-            }
-          }}
+          onClick={() => trackPlayStoreOutbound(variant)}
           className="hover:opacity-90 transition-all duration-300 hover:scale-105 active:scale-95 flex justify-center"
         >
           <img
