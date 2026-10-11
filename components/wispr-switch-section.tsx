@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function WisprSwitchSection() {
   return (
     <section
-      className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center bg-[#F7F5F3]"
+      className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center bg-transparent"
       aria-labelledby="wispr-switch-heading"
     >
       <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] pt-12 md:pt-16 pb-12 md:pb-16 flex flex-col justify-center items-center gap-8">

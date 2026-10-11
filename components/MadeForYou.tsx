@@ -229,7 +229,7 @@ export default function MadeForYou() {
   return (
     <section
       id="made-for-you"
-      className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center bg-[#F7F5F3]"
+      className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center bg-transparent"
       aria-labelledby="made-for-you-heading"
     >
       {/* Header Section */}

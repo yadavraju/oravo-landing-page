@@ -35,7 +35,7 @@ export default function AskAISection() {
   ];
 
   return (
-    <div className="w-full flex justify-center items-start bg-[#F7F5F3]">
+    <div className="w-full flex justify-center items-start bg-transparent">
       <div className="w-full max-w-[1200px] px-4 md:px-12 py-16 md:py-20 flex flex-col justify-center items-center gap-8">
         {/* Header */}
         <div className="w-full flex flex-col justify-center items-center gap-4 text-center">

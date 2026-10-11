@@ -1,11 +1,19 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif, Plus_Jakarta_Sans } from "next/font/google";
+import { Hedvig_Letters_Serif, Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import ModeToggleFAB from "@/components/mode-toggle-fab";
 import AgentModeView from "@/components/agent-mode-view";
 import "./globals.css";
 
+/*
+ * Type system, shared with the video-shala marketing site:
+ * - Inter carries running text and UI.
+ * - Plus Jakarta Sans carries subtitles, eyebrows and buttons (`font-display`).
+ * - Hedvig Letters Serif carries headlines (`font-serif`).
+ * All three are self-hosted through next/font, so there is no layout shift and
+ * no request to Google Fonts at runtime.
+ */
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -20,12 +28,16 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   preload: true,
 });
 
-const instrumentSerif = Instrument_Serif({
+// Next has no metrics for this face, so name a close fallback ourselves:
+// Georgia has a comparable x-height, which keeps the pre-swap reflow small.
+const hedvigSerif = Hedvig_Letters_Serif({
   subsets: ["latin"],
-  variable: "--font-instrument-serif",
-  weight: ["400"],
+  variable: "--font-hedvig-serif",
+  weight: "400",
   display: "swap",
   preload: true,
+  fallback: ["Georgia", "Times New Roman", "serif"],
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
@@ -681,7 +693,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${plusJakartaSans.variable} ${instrumentSerif.variable} antialiased`}
+      className={`${inter.variable} ${plusJakartaSans.variable} ${hedvigSerif.variable} antialiased`}
     >
       <head>
         {/* Favicon - Explicit Links for Better Browser Support */}
@@ -691,28 +703,8 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
 
-        {/* DNS Prefetch & Preconnect for Performance */}
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-
-        {/* Font Loading with display=swap for better performance */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400&display=swap"
-        />
-
         {/* Theme Color for Mobile Browser */}
-        <meta name="theme-color" content="#3B4A5C" />
+        <meta name="theme-color" content="#F7F5F2" />
         <meta name="msapplication-TileColor" content="#3B4A5C" />
 
         {/* Apple Mobile Web App */}

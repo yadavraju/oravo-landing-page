@@ -30,7 +30,7 @@ function CompanyLogo({ icon, imageSrc, name }: Company) {
   // If it's an image source, render as img
   if (imageSrc) {
     return (
-      <div className="flex items-center px-8 flex-shrink-0">
+      <div className="flex items-center px-8 flex-shrink-0 grayscale opacity-60 transition duration-500 hover:grayscale-0 hover:opacity-100">
         <img src={imageSrc} alt={name} className="h-8 w-auto object-contain" />
       </div>
     );
@@ -38,7 +38,7 @@ function CompanyLogo({ icon, imageSrc, name }: Company) {
 
   // Otherwise render as SVG from Simple Icons
   return (
-    <div className="flex items-center px-8 flex-shrink-0">
+    <div className="flex items-center px-8 flex-shrink-0 grayscale opacity-60 transition duration-500 hover:grayscale-0 hover:opacity-100">
       <div
         className="w-8 h-8 flex items-center justify-center"
         dangerouslySetInnerHTML={{ __html: icon.svg }}
@@ -50,20 +50,9 @@ function CompanyLogo({ icon, imageSrc, name }: Company) {
 
 export default function TechCompanyMarquee() {
   return (
-    <div className="self-stretch border-[rgba(55,50,47,0.12)] flex justify-center items-start border-t border-b-0">
-      <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden">
-        {/* Left decorative pattern */}
-        <div className="w-[120px] sm:w-[140px] md:w-[162px] left-[-40px] sm:left-[-50px] md:left-[-58px] top-[-120px] absolute flex flex-col justify-start items-start">
-          {Array.from({ length: 50 }).map((_, i) => (
-            <div
-              key={i}
-              className="self-stretch h-3 sm:h-4 rotate-[-45deg] origin-top-left outline outline-[0.5px] outline-[rgba(3,7,18,0.08)] outline-offset-[-0.25px]"
-            />
-          ))}
-        </div>
-      </div>
+    <div className="self-stretch flex justify-center items-start">
 
-      <div className="flex-1 border-l border-r border-[rgba(55,50,47,0.12)] overflow-hidden py-8">
+      <div className="flex-1 overflow-hidden py-4">
         {/* Row 1 - Moving left to right */}
         <div className="relative overflow-hidden mb-8">
           <motion.div
@@ -92,7 +81,7 @@ export default function TechCompanyMarquee() {
         </div>
 
         {/* Row 2 - Moving right to left */}
-        <div className="relative overflow-hidden border-t border-[rgba(55,50,47,0.12)] pt-8">
+        <div className="relative overflow-hidden">
           <motion.div
             className="flex"
             animate={{
@@ -119,17 +108,6 @@ export default function TechCompanyMarquee() {
         </div>
       </div>
 
-      <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden">
-        {/* Right decorative pattern */}
-        <div className="w-[120px] sm:w-[140px] md:w-[162px] left-[-40px] sm:left-[-50px] md:left-[-58px] top-[-120px] absolute flex flex-col justify-start items-start">
-          {Array.from({ length: 50 }).map((_, i) => (
-            <div
-              key={i}
-              className="self-stretch h-3 sm:h-4 rotate-[-45deg] origin-top-left outline outline-[0.5px] outline-[rgba(3,7,18,0.08)] outline-offset-[-0.25px]"
-            />
-          ))}
-        </div>
-      </div>
     </div>
   );
 }
