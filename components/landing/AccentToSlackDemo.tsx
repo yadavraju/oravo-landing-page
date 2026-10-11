@@ -60,7 +60,7 @@ function Waveform({ active }: { active: boolean }) {
         return (
           <motion.span
             key={i}
-            className="w-[3px] rounded-full bg-gradient-to-t from-[#f2661c] via-[#c86fd8] to-[#5b8fe0]"
+            className="w-[3px] rounded-full bg-brand"
             animate={
               active
                 ? {
@@ -138,12 +138,12 @@ export default function AccentToSlackDemo() {
     <div ref={ref} className="relative w-full">
       <div className="grid items-stretch gap-4 md:grid-cols-[minmax(0,1fr)_72px_minmax(0,1.25fr)] md:gap-0">
         {/* Left: raw speech */}
-        <div className="glass glass-rim rounded-[28px] p-5 sm:p-6 flex flex-col gap-5 min-h-[300px]">
+        <div className="surface !rounded-2xl p-5 sm:p-6 flex flex-col gap-5 min-h-[300px]">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2.5">
-              <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-[#2b2824] text-white">
+              <span className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-ink text-white">
                 {listening && !reduceMotion && (
-                  <span className="absolute inset-0 rounded-full bg-[#f2661c]/50 animate-ping" />
+                  <span className="absolute inset-0 rounded-lg bg-brand/40 animate-ping" />
                 )}
                 <svg viewBox="0 0 24 24" className="relative h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M12 15a4 4 0 0 0 4-4V6a4 4 0 1 0-8 0v5a4 4 0 0 0 4 4Zm-7-4a7 7 0 0 0 14 0M12 18v3" />
@@ -160,7 +160,7 @@ export default function AccentToSlackDemo() {
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
-                className="glass-pill px-3 py-1 font-display text-[11px] font-semibold text-ink-soft"
+                className="chip px-2.5 py-1 font-display text-[11px] font-semibold text-ink-soft"
               >
                 {scenario.input}
               </motion.span>
@@ -191,32 +191,31 @@ export default function AccentToSlackDemo() {
           </p>
         </div>
 
-        {/* Middle: the Oravo orb */}
+        {/* Middle: Oravo, polishing */}
         <div className="relative flex items-center justify-center py-1 md:py-0" aria-hidden="true">
-          <div className="absolute md:inset-y-10 md:left-1/2 md:w-px md:-translate-x-1/2 inset-x-1/2 h-full w-px bg-gradient-to-b from-transparent via-[#c86fd8]/40 to-transparent md:block hidden" />
+          <div className="absolute inset-y-10 left-1/2 hidden w-px -translate-x-1/2 bg-line md:block" />
           <motion.div
-            className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full"
-            animate={processing && !reduceMotion ? { scale: [1, 1.18, 1] } : { scale: 1 }}
+            className="relative z-10 flex h-14 w-14 items-center justify-center rounded-xl bg-ink text-white shadow-[0_6px_16px_-6px_rgba(51,48,42,0.45)]"
+            animate={processing && !reduceMotion ? { scale: [1, 1.1, 1] } : { scale: 1 }}
             transition={{ duration: 1, repeat: processing ? Infinity : 0, ease: "easeInOut" }}
           >
             <span
-              className="absolute inset-0 rounded-full"
+              className="absolute -inset-1.5 rounded-[14px] border-2 border-brand border-b-transparent border-l-transparent"
               style={{
-                background: "conic-gradient(from 0deg, #ff9a62, #c86fd8, #5b8fe0, #6fd6b0, #ff9a62)",
-                animation: reduceMotion ? undefined : `o-spin ${processing ? 1.2 : 6}s linear infinite`,
-                filter: "blur(1px)",
+                animation: reduceMotion ? undefined : `o-spin ${processing ? 0.9 : 5}s linear infinite`,
+                opacity: processing ? 1 : 0.35,
+                transition: "opacity 0.3s",
               }}
             />
-            <span className="absolute inset-[3px] rounded-full bg-white/80 backdrop-blur-md" />
-            <svg viewBox="0 0 24 24" className="relative h-5 w-5 text-ink md:rotate-0 rotate-90" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg viewBox="0 0 24 24" className="relative h-5 w-5 rotate-90 md:rotate-0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
           </motion.div>
         </div>
 
         {/* Right: Slack window */}
-        <div className="glass-strong glass-rim rounded-[28px] overflow-hidden flex flex-col min-h-[300px]">
-          <div className="flex items-center gap-2 border-b border-black/5 bg-white/50 px-4 py-3">
+        <div className="surface-solid !rounded-2xl overflow-hidden flex flex-col min-h-[300px]">
+          <div className="flex items-center gap-2 border-b border-line bg-canvas px-4 py-3">
             <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
             <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
             <span className="h-3 w-3 rounded-full bg-[#28c840]" />
@@ -250,7 +249,7 @@ export default function AccentToSlackDemo() {
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     className="flex gap-3"
                   >
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#ffe3d1] font-display text-xs font-bold text-[#b4532a]">{scenario.initials}</span>
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-soft font-display text-xs font-bold text-brand">{scenario.initials}</span>
                     <div className="min-w-0">
                       <p className="text-sm"><span className="font-semibold text-ink">{scenario.speaker}</span> <span className="text-xs text-ink-faint">9:42 AM</span></p>
                       <p className="text-sm leading-relaxed text-ink">{scenario.polished}</p>
@@ -259,14 +258,14 @@ export default function AccentToSlackDemo() {
                 )}
               </AnimatePresence>
 
-              <div className="mt-auto rounded-xl border border-black/10 bg-white/80 p-3">
+              <div className="mt-auto rounded-lg border border-line bg-white p-3">
                 <p className="min-h-[60px] text-sm leading-relaxed text-ink">
                   {phase === "typing" ? scenario.polished.slice(0, typedCount) : null}
                   {phase === "processing" && <span className="text-ink-faint">Oravo is polishing…</span>}
                   {(phase === "listening" || phase === "sent") && (
                     <span className="text-ink-faint">Message #{scenario.channel}</span>
                   )}
-                  {phase === "typing" && <span className="o-caret ml-px inline-block h-4 w-[2px] translate-y-[2px] bg-[#f2661c]" />}
+                  {phase === "typing" && <span className="o-caret ml-px inline-block h-4 w-[2px] translate-y-[2px] bg-brand" />}
                 </p>
                 <div className="mt-2 flex items-center justify-between">
                   <span className="text-[11px] font-medium text-ink-faint">
@@ -285,7 +284,7 @@ export default function AccentToSlackDemo() {
       {/* Scenario dots */}
       <div className="mt-5 flex justify-center gap-2" aria-hidden="true">
         {SCENARIOS.map((s, i) => (
-          <span key={s.speaker} className={`h-1.5 rounded-full transition-all duration-500 ${i === index ? "w-6 bg-ink" : "w-1.5 bg-ink/20"}`} />
+          <span key={s.speaker} className={`h-1 rounded-sm transition-all duration-500 ${i === index ? "w-6 bg-ink" : "w-3 bg-ink/20"}`} />
         ))}
       </div>
     </div>

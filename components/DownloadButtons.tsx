@@ -162,14 +162,14 @@ export default function DownloadButtons({ variant = "default" }: DownloadButtons
     // The visitor's own platform gets the solid button; Windows wins when unknown.
     const macFirst = visitorOs === "mac";
     const windowsButton = (
-      <button key="windows" type="button" onClick={handleWindowsDownload} disabled={loadingPlatform !== null} className={`${macFirst ? "btn-glass" : "btn-liquid"} w-full sm:w-auto`}>
+      <button key="windows" type="button" onClick={handleWindowsDownload} disabled={loadingPlatform !== null} className={`${macFirst ? "btn-secondary" : "btn-primary"} w-full sm:w-auto`}>
         {loadingPlatform === "windows" ? <LoadingSpinner /> : WindowsIcon}
         <span>Download for Windows</span>
-        <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${macFirst ? "bg-black/[0.06] text-ink-soft" : "bg-white/15 text-white/90"}`}>Free</span>
+        <span className={`rounded px-1.5 py-0.5 text-[11px] font-semibold ${macFirst ? "bg-ink/[0.06] text-ink-soft" : "bg-white/15 text-white/90"}`}>Free</span>
       </button>
     );
     const macButton = (
-      <button key="mac" type="button" onClick={handleMacDownload} disabled={loadingPlatform !== null} className={`${macFirst ? "btn-liquid" : "btn-glass"} w-full sm:w-auto`}>
+      <button key="mac" type="button" onClick={handleMacDownload} disabled={loadingPlatform !== null} className={`${macFirst ? "btn-primary" : "btn-secondary"} w-full sm:w-auto`}>
         {loadingPlatform === "mac" ? <LoadingSpinner /> : AppleIcon}
         <span>Download for Mac</span>
       </button>

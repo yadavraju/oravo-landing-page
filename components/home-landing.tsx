@@ -11,7 +11,8 @@ import EmailComparisonSection from "../components/EmailComparisonSection";
 import { Header } from "../components/header";
 import AccentToSlackDemo from "./landing/AccentToSlackDemo";
 import AgitationSection from "./landing/AgitationSection";
-import LiquidBackground from "./landing/LiquidBackground";
+import { Band } from "./landing/Band";
+import { Parallax } from "./landing/Parallax";
 import { Reveal, RevealWords } from "./landing/Reveal";
 
 
@@ -135,229 +136,265 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
     ],
   };
 
+  // Band colours, top to bottom. Each band blends out of the one above it.
+  const SAND = "var(--o-band-sand)";
+  const PAPER = "var(--o-paper)";
+  const CANVAS = "var(--o-canvas)";
+  const CLAY = "var(--o-band-clay)";
+  const ESPRESSO = "var(--o-band-espresso)";
+  const BLUSH = "var(--o-blush)";
+  const SHELL = "mx-auto w-full max-w-6xl px-5 sm:px-8";
+
   return (
-    <div className="grain relative w-full min-h-screen bg-canvas text-ink overflow-x-hidden">
-      <LandingAnalytics variant="liquid-glass-v1" />
+    <div className="grain relative w-full min-h-screen bg-paper text-ink overflow-x-hidden">
+      <LandingAnalytics variant="warm-bands-v1" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      {/* One soft liquid field behind the whole page so every glass surface has colour to refract. */}
-      <div className="pointer-events-none fixed inset-0 z-0 opacity-45" aria-hidden="true">
-        <LiquidBackground />
-      </div>
       <Header />
 
-      {/* ───────────── Hero ───────────── */}
-      <section className="relative isolate overflow-hidden px-4 pt-32 sm:px-6 sm:pt-40 lg:pt-44 pb-16 sm:pb-24">
-        <LiquidBackground className="[mask-image:linear-gradient(180deg,#000_70%,transparent)]" />
-        <div className="relative z-10 mx-auto flex max-w-[1120px] flex-col items-center text-center">
-          <Reveal>
-            <span className="glass-pill inline-flex items-center gap-2 px-4 py-1.5 font-display text-xs font-semibold text-ink-soft">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
-              </span>
-              AI dictation for non-native English speakers
-            </span>
-          </Reveal>
+      {/* ───────────── Hero: one warm solid colour, parallax shapes ───────────── */}
+      <Band color={SAND} className="pt-28 sm:pt-36 pb-16 sm:pb-20">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <Parallax speed={140} className="absolute -left-40 top-16 sm:-left-24">
+            <div className="h-[380px] w-[380px] rounded-full bg-sand-deep sm:h-[460px] sm:w-[460px]" />
+          </Parallax>
+          <Parallax speed={-90} className="absolute -right-32 top-[38%] sm:-right-16">
+            <div className="h-[300px] w-[300px] rotate-12 rounded-[56px] bg-clay sm:h-[360px] sm:w-[360px]" />
+          </Parallax>
+          <Parallax speed={220} className="absolute left-[14%] top-[58%] hidden md:block">
+            <div className="h-4 w-4 rounded-full bg-brand" />
+          </Parallax>
+        </div>
 
-          <h1 className="display-1 mt-7 max-w-[1120px] text-ink">
-            <RevealWords text="Speak in your accent." delay={0.05} />
-            <br />
-            <span className="text-liquid">
-              <RevealWords text="Write in flawless business English." delay={0.3} />
-            </span>
-          </h1>
+        <div className={`${SHELL} relative`}>
+          <Parallax speed={-30}>
+            <div className="mx-auto flex max-w-[62rem] flex-col items-center text-center">
+              <Reveal>
+                <span className="chip px-3 py-1.5 font-display text-xs font-semibold text-ink-soft">
+                  <span className="h-1.5 w-1.5 rounded-sm bg-brand" />
+                  AI dictation for non-native English speakers
+                </span>
+              </Reveal>
 
-          <Reveal delay={0.55}>
-            <p className="subtitle mx-auto mt-6 max-w-[680px]">
-              The AI dictation tool built specifically for non-native English speakers. Speak in your
-              natural accent or directly in your native language, and Oravo instantly types perfect,
-              professional English into the apps you already use.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.7} className="mt-9 w-full" >
-            <div id="download-section">
-              <DownloadButtons variant="glass" />
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.85}>
-            <div className="glass-pill mt-8 inline-flex flex-col items-center gap-3 px-4 py-3 sm:flex-row sm:px-5 sm:py-2.5">
-              <div className="flex -space-x-2" aria-hidden="true">
-                {[
-                  ["AR", "#ffe3d1", "#b4532a"],
-                  ["LM", "#e6defe", "#5b3fb8"],
-                  ["RS", "#d9ecfb", "#24628f"],
-                  ["KO", "#d6f1e3", "#2c6b4f"],
-                ].map(([initials, bg, fg]) => (
-                  <span
-                    key={initials}
-                    className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white font-display text-[10px] font-bold"
-                    style={{ background: bg, color: fg }}
-                  >
-                    {initials}
+              <h1 className="display-1 mt-6 text-ink">
+                <span className="block text-balance">
+                  <RevealWords text="Speak in your accent." delay={0.05} />
+                </span>
+                <span className="block text-balance">
+                  <RevealWords text="Write in" delay={0.25} />{" "}
+                  <span className="text-accent">
+                    <RevealWords text="flawless business English." delay={0.37} />
                   </span>
-                ))}
-              </div>
-              <p className="text-[13px] leading-snug text-ink-soft sm:text-left">
-                Trusted by <span className="font-semibold text-ink">10,000+</span> remote developers,
-                international founders, and global agency owners.
-              </p>
+                </span>
+              </h1>
+
+              <Reveal delay={0.5}>
+                <p className="subtitle mx-auto mt-5 max-w-[640px] text-balance">
+                  The AI dictation tool built specifically for non-native English speakers. Speak in
+                  your natural accent or directly in your native language, and Oravo instantly types
+                  perfect, professional English into the apps you already use.
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.6} className="mt-9 w-full">
+                <div id="download-section">
+                  <DownloadButtons variant="glass" />
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.7}>
+                <div className="chip mt-8 flex-col px-4 py-3 sm:flex-row sm:py-2.5">
+                  <div className="flex -space-x-1.5" aria-hidden="true">
+                    {[
+                      ["AR", "#f6dccd", "#9a4424"],
+                      ["LM", "#efe4d3", "#6b5a3e"],
+                      ["RS", "#e8dccf", "#5c4a3a"],
+                      ["KO", "#f3e4d2", "#7a4d2c"],
+                    ].map(([initials, bg, fg]) => (
+                      <span
+                        key={initials}
+                        className="flex h-7 w-7 items-center justify-center rounded-md border-2 border-white font-display text-[10px] font-bold"
+                        style={{ background: bg, color: fg }}
+                      >
+                        {initials}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="text-[13px] leading-snug text-ink-soft sm:text-left">
+                    Trusted by <span className="font-semibold text-ink">10,000+</span> remote
+                    developers, international founders, and global agency owners.
+                  </p>
+                </div>
+              </Reveal>
             </div>
+          </Parallax>
+
+          <Reveal delay={0.35} y={32} className="relative mt-14 sm:mt-16">
+            <Parallax speed={36}>
+              <AccentToSlackDemo />
+            </Parallax>
           </Reveal>
-        </div>
 
-        <Reveal delay={0.4} y={48} className="relative z-10 mx-auto mt-16 max-w-[1120px] sm:mt-20">
-          <AccentToSlackDemo />
-        </Reveal>
-      </section>
-
-      {/* Logo marquee */}
-      <section aria-label="Used by professionals at" className="relative z-10 py-6">
-        <p className="eyebrow mb-5 text-center">Used by professionals at</p>
-        <div className="[mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
-          <TechCompanyMarquee />
+          <div className="mt-16 sm:mt-20">
+            <p className="eyebrow mb-4 text-center">Used by professionals at</p>
+            <div className="[mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
+              <TechCompanyMarquee />
+            </div>
+          </div>
         </div>
-      </section>
+      </Band>
 
       {/* ───────────── Section 2: The Agitation ───────────── */}
-      <AgitationSection />
+      <Band color={PAPER} from={SAND} aria-label="The real problem">
+        <AgitationSection />
+      </Band>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1120px] flex-col gap-24 px-4 pb-24 sm:gap-32 sm:px-6">
-        {/* Keyboard vs. voice */}
-        <Reveal>
-          <div className="glass glass-rim rounded-[36px] p-3 sm:p-6">
-            <EmailComparisonSection />
-          </div>
-        </Reveal>
+      {/* Keyboard vs. voice */}
+      <Band color={CANVAS} from={PAPER} className="py-16 sm:py-24">
+        <div className={SHELL}>
+          <Reveal>
+            <div className="surface-solid !rounded-2xl p-3 sm:p-6">
+              <EmailComparisonSection />
+            </div>
+          </Reveal>
+        </div>
+      </Band>
 
-        {/* Real-time translation */}
-        <section className="relative" aria-labelledby="translation-heading">
-          <div className="relative z-10 mx-auto flex max-w-[760px] flex-col items-center gap-5 text-center">
+      {/* Real-time translation */}
+      <Band color={CLAY} from={CANVAS} className="py-20 sm:py-28" aria-labelledby="translation-heading">
+        <Parallax speed={110} className="pointer-events-none absolute -left-24 top-24 hidden lg:block" aria-hidden="true">
+          <div className="h-56 w-56 rounded-full bg-sand-deep" />
+        </Parallax>
+        <div className={`${SHELL} relative`}>
+          <div className="mx-auto flex max-w-[760px] flex-col items-center text-center">
             <Reveal><p className="eyebrow">Real-time translation</p></Reveal>
-            <h2 id="translation-heading" className="display-2">
+            <h2 id="translation-heading" className="display-2 mt-3">
               <RevealWords text="Think in your language. Send it in English." />
             </h2>
-            <Reveal delay={0.15}>
-              <p className="subtitle max-w-[620px]">
+            <Reveal delay={0.12}>
+              <p className="subtitle mt-4 max-w-xl">
                 Speak Spanish, Hindi, Portuguese, or any of 60+ languages. Oravo writes fluent,
                 context-aware English, and works in reverse when you need it to.
               </p>
             </Reveal>
           </div>
-          <Reveal delay={0.1} className="relative z-10 mx-auto mt-12 max-w-[820px]">
-            <div className="glass-strong glass-rim overflow-hidden rounded-[32px]">
-              <div className="flex h-[320px] w-full items-center justify-center sm:h-[380px]">
-                <TranslationDemo />
+          <Reveal delay={0.1} className="mx-auto mt-12 max-w-[820px]">
+            <Parallax speed={24}>
+              <div className="surface-solid overflow-hidden !rounded-2xl">
+                <div className="flex h-[320px] w-full items-center justify-center sm:h-[380px]">
+                  <TranslationDemo />
+                </div>
               </div>
-            </div>
+            </Parallax>
           </Reveal>
-          <Reveal className="relative z-10 mt-10">
+          <Reveal className="mt-10">
             <TwoWayExamples />
           </Reveal>
-        </section>
+        </div>
+      </Band>
 
-        {/* Accent proof */}
-        <Reveal>
-          <section className="glass-dark relative overflow-hidden rounded-[36px] p-7 sm:p-12" aria-labelledby="accent-proof-heading">
-            <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#f2661c] opacity-30 blur-[90px]" aria-hidden="true" />
-            <div className="pointer-events-none absolute -bottom-32 left-10 h-80 w-80 rounded-full bg-[#7a5cd6] opacity-30 blur-[90px]" aria-hidden="true" />
-            <div className="relative grid items-center gap-10 md:grid-cols-[1.1fr_0.9fr]">
-              <div className="flex flex-col items-start gap-5">
-                <p className="eyebrow !text-white/50">Accent proof, not vague claims</p>
-                <h2 id="accent-proof-heading" className="display-2 text-white">
-                  Built for real accents. Measured with the same script.
-                </h2>
-                <p className="max-w-[560px] text-base leading-relaxed text-white/70 sm:text-lg">
-                  We are testing Oravo end to end across Hindi-accented English, Spanish-accented English, Hindi and Spanish speech to polished English, plus a native-English control.
-                </p>
-                <p className="max-w-[560px] text-sm leading-relaxed text-white/50">
-                  The report will separate raw transcription from polished output and publish sample sizes, corrections, meaning errors, and time to final text. Until then, we will not turn an upstream model benchmark into an Oravo accuracy claim.
-                </p>
-              </div>
-              <div className="rounded-[24px] border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl">
-                <p className="eyebrow !text-white/50 mb-5">Pilot scorecard</p>
-                <ul className="grid gap-4 text-sm text-white/85 sm:text-base">
+      {/* Accent proof: the one dark band */}
+      <Band color={ESPRESSO} from={CLAY} blend={220} className="pt-36 pb-24 sm:pt-44 sm:pb-28" aria-labelledby="accent-proof-heading">
+        <Parallax speed={-70} className="pointer-events-none absolute right-[6%] top-40 hidden md:block" aria-hidden="true">
+          <div className="h-40 w-40 rotate-12 rounded-[36px] bg-white/[0.04]" />
+        </Parallax>
+        <div className={`${SHELL} relative grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]`}>
+          <div className="flex flex-col items-start">
+            <Reveal><p className="eyebrow !text-white/45">Accent proof, not vague claims</p></Reveal>
+            <h2 id="accent-proof-heading" className="display-2 mt-3 text-white">
+              <RevealWords text="Built for real accents. Measured with the same script." />
+            </h2>
+            <Reveal delay={0.12}>
+              <p className="mt-5 max-w-[560px] text-base leading-relaxed text-white/70 sm:text-lg">
+                We are testing Oravo end to end across Hindi-accented English, Spanish-accented English, Hindi and Spanish speech to polished English, plus a native-English control.
+              </p>
+              <p className="mt-4 max-w-[560px] text-sm leading-relaxed text-white/50">
+                The report will separate raw transcription from polished output and publish sample sizes, corrections, meaning errors, and time to final text. Until then, we will not turn an upstream model benchmark into an Oravo accuracy claim.
+              </p>
+            </Reveal>
+          </div>
+          <Reveal delay={0.1}>
+            <Parallax speed={30}>
+              <div className="rounded-2xl bg-white/[0.06] p-6 ring-1 ring-white/10 backdrop-blur-xl sm:p-7">
+                <p className="eyebrow !text-white/45 mb-5">Pilot scorecard</p>
+                <ul className="grid divide-y divide-white/10 text-sm text-white/85 sm:text-base">
                   {[
                     "Same audio and scripts across cohorts",
                     "Raw transcript and final output scored separately",
                     "Corrections, meaning errors, and time reported",
                     "Failure cases included, not only the best demos",
                   ].map((item, i) => (
-                    <li key={item} className="flex gap-3">
-                      <span className="font-display text-[#ffb38a]">{String(i + 1).padStart(2, "0")}</span>
+                    <li key={item} className="flex gap-3 py-3 first:pt-0">
+                      <span className="font-display text-[#e8a07f]">{String(i + 1).padStart(2, "0")}</span>
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-6 border-t border-white/10 pt-4 text-xs leading-relaxed text-white/55">Pilot target: at least 10 speakers per cohort and 10 utterances per speaker before any strong accuracy claim.</p>
+                <p className="mt-3 border-t border-white/10 pt-4 text-xs leading-relaxed text-white/55">Pilot target: at least 10 speakers per cohort and 10 utterances per speaker before any strong accuracy claim.</p>
               </div>
-            </div>
-          </section>
-        </Reveal>
+            </Parallax>
+          </Reveal>
+        </div>
+      </Band>
 
-        {/* Speak once. Get finished text. */}
-        <section aria-labelledby="finished-text-heading">
-          <div className="mx-auto flex max-w-[760px] flex-col items-center gap-5 text-center">
+      {/* Speak once. Get finished text. */}
+      <Band color={PAPER} from={ESPRESSO} blend={220} className="pt-36 pb-20 sm:pt-44 sm:pb-28" aria-labelledby="finished-text-heading">
+        <div className={SHELL}>
+          <div className="mx-auto flex max-w-[760px] flex-col items-center text-center">
             <Reveal><p className="eyebrow">Polished, not just transcribed</p></Reveal>
-            <h2 id="finished-text-heading" className="display-2">
+            <h2 id="finished-text-heading" className="display-2 mt-3">
               <RevealWords text="Speak once. Get finished text." />
             </h2>
-            <Reveal delay={0.15}>
-              <p className="subtitle max-w-[620px]">
+            <Reveal delay={0.12}>
+              <p className="subtitle mt-4 max-w-xl">
                 Oravo removes filler words, fixes grammar, adds punctuation, and matches the tone of
                 whatever app you&apos;re writing in, automatically.
               </p>
             </Reveal>
           </div>
-          <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
-            {[
-              {
-                title: "Same thought, different apps.",
-                body: "Oravo knows when you're in Slack vs. Gmail vs. Notion, and adjusts tone and formatting to match. Casual in chat. Professional in email. Structured in docs.",
-                tint: "#ffc8a6",
-              },
-              {
-                title: "No more “um, like, you know.”",
-                body: "Oravo removes filler words, fixes false starts, and turns rambling thoughts into clean sentences, so what comes out sounds intentional, not dictated.",
-                tint: "#d8cbff",
-              },
-              {
-                title: "Punctuation, paragraphs, capitalization.",
-                body: "Bullet lists when you say “three things.” Line breaks when you pause. Code blocks in technical contexts. You never touch the keyboard to fix formatting.",
-                tint: "#c7e4fb",
-              },
-            ].map((card, i) => (
-              <Reveal key={card.title} delay={i * 0.08}>
-                <div className="glass glass-rim group relative h-full overflow-hidden rounded-[28px] p-7 transition-transform duration-500 ease-entrance hover:-translate-y-1">
-                  <span
-                    className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full opacity-70 blur-2xl transition-transform duration-700 ease-entrance group-hover:scale-125"
-                    style={{ background: card.tint }}
-                    aria-hidden="true"
-                  />
-                  <h3 className="display-3 relative text-ink">{card.title}</h3>
-                  <p className="relative mt-3 text-sm leading-relaxed text-ink-soft">{card.body}</p>
+          {/* One surface split by hairlines, video-shala style, instead of three floating boxes. */}
+          <Reveal className="mt-12">
+            <div className="surface-solid grid grid-cols-1 divide-y divide-line overflow-hidden md:grid-cols-3 md:divide-x md:divide-y-0">
+              {[
+                {
+                  title: "Same thought, different apps.",
+                  body: "Oravo knows when you're in Slack vs. Gmail vs. Notion, and adjusts tone and formatting to match. Casual in chat. Professional in email. Structured in docs.",
+                },
+                {
+                  title: "No more “um, like, you know.”",
+                  body: "Oravo removes filler words, fixes false starts, and turns rambling thoughts into clean sentences, so what comes out sounds intentional, not dictated.",
+                },
+                {
+                  title: "Punctuation, paragraphs, capitalization.",
+                  body: "Bullet lists when you say “three things.” Line breaks when you pause. Code blocks in technical contexts. You never touch the keyboard to fix formatting.",
+                },
+              ].map((card, i) => (
+                <div key={card.title} className="p-7 sm:p-8">
+                  <span className="font-display text-xs font-semibold text-brand">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="display-3 mt-3 text-ink">{card.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink-soft">{card.body}</p>
                 </div>
-              </Reveal>
-            ))}
-          </div>
-        </section>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </Band>
 
-        {/* Feature highlights bento */}
-        <section aria-labelledby="features-heading">
-          <div className="mx-auto flex max-w-[760px] flex-col items-center gap-5 text-center">
+      {/* Feature highlights */}
+      <Band color={CANVAS} from={PAPER} className="py-20 sm:py-28" aria-labelledby="features-heading">
+        <div className={SHELL}>
+          <div className="mx-auto flex max-w-[760px] flex-col items-center text-center">
             <Reveal><p className="eyebrow">Feature highlights</p></Reveal>
-            <h2 id="features-heading" className="display-2">
+            <h2 id="features-heading" className="display-2 mt-3">
               <RevealWords text="Built for the way you actually work." />
             </h2>
           </div>
 
           <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
             <Reveal>
-              <div className="glass glass-rim flex h-full flex-col gap-5 rounded-[32px] p-6 sm:p-8">
+              <div className="surface-solid surface-interactive flex h-full flex-col gap-5 p-6 sm:p-8">
                 <div className="flex flex-col gap-2">
                   <h3 className="display-3">Context-aware AI</h3>
                   <p className="text-sm leading-relaxed text-ink-soft">
@@ -366,14 +403,14 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
                     results will be published with the method and sample sizes.
                   </p>
                 </div>
-                <div className="flex h-[280px] w-full items-center justify-center overflow-hidden rounded-[22px] bg-white/50 sm:h-[320px]">
+                <div className="flex h-[280px] w-full items-center justify-center overflow-hidden rounded-lg bg-canvas sm:h-[320px]">
                   <SmartSimpleBrilliant width="100%" height="100%" theme="light" className="scale-65 sm:scale-75 md:scale-85" />
                 </div>
               </div>
             </Reveal>
 
-            <Reveal delay={0.08}>
-              <div className="glass glass-rim flex h-full flex-col gap-5 rounded-[32px] p-6 sm:p-8">
+            <Reveal delay={0.06}>
+              <div className="surface-solid surface-interactive flex h-full flex-col gap-5 p-6 sm:p-8">
                 <div className="flex flex-col gap-2">
                   <h3 className="display-3">Auto-format as you speak</h3>
                   <p className="text-sm leading-relaxed text-ink-soft">
@@ -381,14 +418,14 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
                     speak, no voice commands needed.
                   </p>
                 </div>
-                <div className="relative flex h-[280px] w-full items-center justify-center overflow-hidden rounded-[22px] bg-white/50 sm:h-[320px]">
+                <div className="relative flex h-[280px] w-full items-center justify-center overflow-hidden rounded-lg bg-canvas sm:h-[320px]">
                   <YourWorkInSync width="400" height="280" theme="light" className="scale-80 sm:scale-90" />
                 </div>
               </div>
             </Reveal>
 
             <Reveal>
-              <div className="glass glass-rim flex h-full flex-col gap-5 rounded-[32px] p-6 sm:p-8">
+              <div className="surface-solid surface-interactive flex h-full flex-col gap-5 p-6 sm:p-8">
                 <div className="flex flex-col gap-2">
                   <h3 className="display-3">Matches your style</h3>
                   <p className="text-sm leading-relaxed text-ink-soft">
@@ -396,7 +433,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
                     email. Your voice, your style, every time.
                   </p>
                 </div>
-                <div className="relative flex h-[280px] w-full items-center justify-center overflow-hidden rounded-[22px] bg-white/50 sm:h-[320px]">
+                <div className="relative flex h-[280px] w-full items-center justify-center overflow-hidden rounded-lg bg-canvas sm:h-[320px]">
                   <div className="flex w-full max-w-[320px] flex-col items-center gap-5 px-6">
                     <div className="w-full text-center">
                       <p className="eyebrow mb-2">You say</p>
@@ -406,11 +443,11 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                     </svg>
                     <div className="flex w-full flex-col gap-3">
-                      <div className="glass-strong rounded-2xl p-3">
+                      <div className="surface-solid !rounded-lg p-3">
                         <p className="eyebrow mb-1 !text-[10px]">Email</p>
                         <p className="text-sm text-ink">I&apos;ll be arriving shortly after the scheduled time.</p>
                       </div>
-                      <div className="glass-strong rounded-2xl p-3">
+                      <div className="surface-solid !rounded-lg p-3">
                         <p className="eyebrow mb-1 !text-[10px]">Slack</p>
                         <p className="text-sm text-ink">Running a few mins late!</p>
                       </div>
@@ -420,8 +457,8 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
               </div>
             </Reveal>
 
-            <Reveal delay={0.08}>
-              <div className="glass glass-rim flex h-full flex-col gap-5 rounded-[32px] p-6 sm:p-8">
+            <Reveal delay={0.06}>
+              <div className="surface-solid surface-interactive flex h-full flex-col gap-5 p-6 sm:p-8">
                 <div className="flex flex-col gap-2">
                   <h3 className="display-3">Works where you write</h3>
                   <p className="text-sm leading-relaxed text-ink-soft">
@@ -429,36 +466,40 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
                     anywhere your cursor blinks, Oravo types.
                   </p>
                 </div>
-                <div className="relative flex h-[280px] w-full items-center justify-center overflow-hidden rounded-[22px] bg-white/50 sm:h-[320px]">
+                <div className="relative flex h-[280px] w-full items-center justify-center overflow-hidden rounded-lg bg-canvas sm:h-[320px]">
                   <EffortlessIntegration width={400} height={280} className="max-w-full max-h-full" />
                 </div>
               </div>
             </Reveal>
           </div>
-        </section>
-      </div>
-
-      {/* Long-form sections on one glass sheet: each keeps its own layout and motion. */}
-      <div className="relative z-10 mx-auto w-full px-4 sm:px-6 lg:w-[1108px] lg:px-6">
-        <div className="glass glass-rim overflow-hidden rounded-[40px]">
-          <DocumentationSection />
-          <MadeForYou />
-          <TestimonialsSection />
-          <PricingSection />
-          <WisprSwitchSection />
-          <FAQSection />
-          <AskAISection />
         </div>
-      </div>
+      </Band>
 
-      <div className="relative z-10 mx-auto mt-24 w-full max-w-[1120px] px-4 sm:mt-32 sm:px-6">
-        <CTASection />
-      </div>
+      {/* Long-form sections: each keeps its own layout and motion. */}
+      <Band color={PAPER} from={CANVAS} className="py-16 sm:py-24">
+        <div className="mx-auto w-full max-w-[1060px] px-5 sm:px-8 lg:px-0">
+          <div className="surface-solid overflow-hidden !rounded-2xl">
+            <DocumentationSection />
+            <MadeForYou />
+            <TestimonialsSection />
+            <PricingSection />
+            <WisprSwitchSection />
+            <FAQSection />
+            <AskAISection />
+          </div>
+        </div>
+      </Band>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1060px] px-4 sm:px-6 lg:px-0">
-        {blogSection}
-        <FooterSection />
-      </div>
+      {/* Closing CTA and footer share one warm ground, as in video-shala. */}
+      <Band color={BLUSH} from={PAPER} className="pt-16 sm:pt-24">
+        <div className={SHELL}>
+          <CTASection />
+        </div>
+        <div className="mx-auto mt-16 w-full max-w-[1060px] px-5 sm:px-8 lg:px-0">
+          {blogSection}
+          <FooterSection />
+        </div>
+      </Band>
     </div>
   );
 }

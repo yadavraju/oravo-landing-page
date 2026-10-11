@@ -1,13 +1,12 @@
-# Oravo design guide: liquid glass
+# Oravo design guide: warm bands
 
-The landing site uses a warm-paper ground with translucent glass surfaces
-floating over slow-moving liquid colour. The tokens live in
-`app/globals.css` under "Oravo liquid-glass design system".
+The landing site shares its vocabulary with the video-shala marketing site:
+warm paper grounds, ink type, hairline-ringed surfaces and rectangular
+controls. Oravo adds solid warm colour bands that blend into each other, and
+parallax shapes that move at their own speed while you scroll. The tokens
+live in `app/globals.css` under "Oravo warm design system".
 
 ## Type
-
-Shared with the video-shala marketing site. All three faces are self-hosted
-through `next/font` in `app/layout.tsx`.
 
 | Role | Face | How to use |
 | --- | --- | --- |
@@ -15,59 +14,63 @@ through `next/font` in `app/layout.tsx`.
 | Subtitles, eyebrows, buttons | Plus Jakarta Sans | `subtitle`, `eyebrow`, `font-display` |
 | Running text, UI | Inter | default `font-sans` |
 
-Rules:
-- Use one serif headline per section. Never set the serif in bold. It ships at weight 400 only.
-- Headlines fit on two lines on desktop. If one wraps to three, shorten the copy.
-- Use `.text-liquid` on at most one phrase per screen (the hero's second line).
-- The legacy `.font-instrument-serif` class now maps to Hedvig, so older pages pick up the new face.
+- Hero headlines are two blocks, each on its own line (`<span className="block">`).
+- Use one serif headline per section, at weight 400 only.
+- `.text-accent` marks the one phrase per screen that carries the promise.
 
 ## Colour
 
-| Token | Value | Tailwind |
-| --- | --- | --- |
-| Canvas (page ground) | `#F7F5F2` | `bg-canvas` |
-| Ink | `#2B2824` | `text-ink` |
-| Ink soft (body) | `#625C54` | `text-ink-soft` |
-| Ink faint (meta) | `#958D82` | `text-ink-faint` |
-| Brand accent | `#F2661C` | `bg-brand`, `text-brand` |
-| Liquid hues | peach `#FFC8A6`, lilac `#D8CBFF`, sky `#C7E4FB`, mint `#CDEEDD` | used only as blurred washes |
+No gradients. Every ground is a solid colour. The only blending is the soft
+edge where one band meets the next.
 
-Liquid hues never carry text and never appear as flat fills.
+| Token | Value | Use |
+| --- | --- | --- |
+| `sand` | `#F3E4D2` | Hero and closing CTA panel |
+| `sand-deep` | `#EAD4BD` | Parallax shapes on sand |
+| `paper` | `#FEFDFB` | Open sections |
+| `canvas` | `#F7F5F2` | Set-in sections, insets inside cards |
+| `clay` | `#F0DCCA` | Warm feature band (translation) |
+| `espresso` | `#2A211B` | The one dark band (accent proof) |
+| `blush` | `#FBF2EE` | CTA and footer ground |
+| `ink` / `ink-soft` / `ink-faint` | `#33302A` / `#6B655B` / `#9C958A` | Text |
+| `line` | `#E7E2DA` | Hairlines and rings |
+| `brand` | `#C4572F` | Single accent, at most once per viewport |
+
+## Bands
+
+Wrap each full-width section in `<Band color from>` (`components/landing/Band.tsx`).
+`from` is the colour of the band above, and the top `blend` px (160 by default,
+220 into and out of espresso) fade from it. Content sits in the shell:
+`mx-auto w-full max-w-6xl px-5 sm:px-8`.
 
 ## Surfaces
 
-- `.glass`: the default card. Translucent white, 22px backdrop blur, a white hairline, and a soft three-layer shadow.
-- `.glass-strong`: the same, but more opaque. Use it for dense content such as app windows and forms.
-- `.glass-pill`: a fully rounded glass chip for badges and social proof.
-- `.glass-rim`: add it to any glass element for the specular gradient edge, brighter at the top left.
-- `.glass-dark`: a smoked-glass panel for the single high-contrast moment on a page (the accent proof panel).
+- `.surface-solid`: a white card with 12px radius, a 1px `line` ring and almost no shadow.
+- `.surface`: the same card, slightly translucent with a frosted blur. Use it over shapes or colour.
+- `.surface-interactive`: lifts 2px and darkens the ring on hover.
+- `.chip`: the header-key shape at label size (8px radius, 2px white bevel, white-to-quarter-white fill).
 
-Radii: 9999px for pills and buttons, 22–28px for cards, 32–40px for large panels.
-Glass needs colour behind it to read as glass. The homepage mounts one fixed
-`<LiquidBackground />` behind everything, and the hero and CTA add their own
-stronger wash.
+Prefer one surface divided by hairlines (`divide-line`) over a row of separate floating boxes.
 
 ## Buttons
 
-- `.btn-liquid`: the primary action. A dark ink pill with a liquid highlight that rolls across it on hover.
-- `.btn-glass`: the secondary action, with the same hover behaviour on glass.
+These are rectangular, never capsules, and the same shapes as video-shala.
 
-The visitor's own platform gets `btn-liquid`. See the `glass` variant of `DownloadButtons`.
+- `.btn-primary`: solid ink with a 2px ink border, 48px tall, 8px radius. It lifts 1px on hover.
+- `.btn-secondary`: a glass key with a 2px white border and a white-to-quarter-white fill, so the band shows through.
+
+The header uses the same two shapes at 40px. It has exactly one solid button.
 
 ## Motion
 
-Use one easing curve for every entrance: `cubic-bezier(0.16, 1, 0.3, 1)`
-(`ease-entrance` in Tailwind, `var(--o-ease)` in CSS).
-
 | Pattern | Where | Implementation |
 | --- | --- | --- |
-| Liquid drift | Backgrounds | `.liquid-blob` morphs border-radius and position over 26–36s |
-| Word-rise headline | Every section headline | `<RevealWords>` in `components/landing/Reveal.tsx` |
-| Blur-to-sharp entrance | Cards, copy | `<Reveal>` (rise of 24px plus a blur(8px) settle, fires once) |
-| Product story loop | Hero | `AccentToSlackDemo`: listen, then polish, then type, then send, across 3 speakers |
-| Pain loop | Section 2 | `AgitationSection`: a draft that keeps being rewritten while the clock runs |
-| Rolling highlight | Buttons | `::before` radial gradients slide across on hover |
-| Marquee | Logos | Two counter-running rows with an edge fade mask; logos are greyscale until hover |
+| Parallax | Hero shapes, demos, dark band | `<Parallax speed>`. Positive speeds drift faster than the scroll, negative ones lag behind |
+| Word-rise headline | Section headlines | `<RevealWords>` |
+| Fade-up | Copy and cards | `<Reveal>` (12px rise, 620ms, fires once) |
+| Product story loop | Hero | `AccentToSlackDemo` |
+| Pain loop | Section 2 | `AgitationSection` |
+| Marquee | Logos | Two counter-running rows, greyscale until hover |
 
-Every animation stops when its section is out of view (`useInView`) and
-collapses to the finished state under `prefers-reduced-motion`.
+Loops pause off-screen. Everything settles to its finished state under
+`prefers-reduced-motion`.

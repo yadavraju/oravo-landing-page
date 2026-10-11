@@ -74,13 +74,7 @@ function Clock({ seconds, animate }: { seconds: number; animate: boolean }) {
   const hourDeg = (seconds / 12) * 6;
   return (
     <svg viewBox="0 0 120 120" className="h-28 w-28 sm:h-32 sm:w-32" aria-hidden="true">
-      <defs>
-        <linearGradient id="clock-rim" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#fff" stopOpacity="0.95" />
-          <stop offset="1" stopColor="#fff" stopOpacity="0.2" />
-        </linearGradient>
-      </defs>
-      <circle cx="60" cy="60" r="56" fill="rgba(255,255,255,0.55)" stroke="url(#clock-rim)" strokeWidth="2" />
+      <circle cx="60" cy="60" r="56" fill="#f7f5f2" stroke="#e7e2da" strokeWidth="2" />
       {Array.from({ length: 12 }).map((_, i) => (
         <line
           key={i}
@@ -101,7 +95,7 @@ function Clock({ seconds, animate }: { seconds: number; animate: boolean }) {
         cy="60"
         r="30"
         fill="none"
-        stroke="#f2661c"
+        stroke="#c4572f"
         strokeOpacity="0.18"
         strokeWidth="60"
         strokeDasharray={`${2 * Math.PI * 30}`}
@@ -115,7 +109,7 @@ function Clock({ seconds, animate }: { seconds: number; animate: boolean }) {
         y1="60"
         x2="60"
         y2="22"
-        stroke="#f2661c"
+        stroke="#c4572f"
         strokeWidth="2.5"
         strokeLinecap="round"
         style={{
@@ -139,13 +133,13 @@ export default function AgitationSection() {
   const elapsed = useElapsed(active, 14 * 60 + 32);
 
   return (
-    <section id="the-real-problem" aria-labelledby="agitation-heading" className="relative w-full px-4 sm:px-6 py-20 sm:py-28">
-      <div className="mx-auto grid max-w-[1120px] items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+    <div id="the-real-problem" className="relative w-full py-20 sm:py-28">
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
         <div className="flex flex-col gap-6">
           <Reveal>
             <p className="eyebrow">The real problem</p>
           </Reveal>
-          <h2 id="agitation-heading" className="display-2 text-ink">
+          <h2 className="display-2 text-ink">
             <RevealWords text="Your ideas are fast. Your English typing is slow." />
           </h2>
           <Reveal delay={0.15}>
@@ -159,8 +153,8 @@ export default function AgitationSection() {
           <ul className="mt-2 grid gap-3">
             {PAINS.map((pain, i) => (
               <Reveal as="li" key={pain.title} delay={0.2 + i * 0.08}>
-                <div className="glass glass-rim rounded-2xl px-5 py-4 flex gap-4">
-                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#ffe3d1] font-display text-xs font-bold text-[#b4532a]">
+                <div className="surface-solid surface-interactive px-5 py-4 flex gap-4">
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-brand-soft font-display text-xs font-bold text-brand">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
@@ -174,9 +168,7 @@ export default function AgitationSection() {
         </div>
 
         <Reveal delay={0.1}>
-          <div ref={ref} className="glass-strong glass-rim relative overflow-hidden rounded-[32px] p-6 sm:p-8">
-            <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#ffc8a6] opacity-60 blur-3xl" aria-hidden="true" />
-            <div className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-[#d8cbff] opacity-60 blur-3xl" aria-hidden="true" />
+          <div ref={ref} className="surface-solid relative overflow-hidden !rounded-2xl p-6 sm:p-8">
 
             <div className="relative flex items-center justify-between gap-6">
               <div>
@@ -189,10 +181,10 @@ export default function AgitationSection() {
               <Clock seconds={elapsed.seconds} animate={active} />
             </div>
 
-            <div className="relative mt-8 rounded-2xl border border-black/[0.06] bg-white/80 p-5 shadow-[0_1px_0_#fff_inset]">
+            <div className="relative mt-8 rounded-xl border border-line bg-canvas/60 p-5">
               <div className="mb-3 flex items-center gap-2 text-xs text-ink-faint">
                 <span className="font-semibold text-ink-soft">To:</span> sarah@client.com
-                <span className="ml-auto rounded-full bg-black/[0.04] px-2 py-0.5">Re: Project timeline</span>
+                <span className="ml-auto rounded-md bg-ink/[0.05] px-2 py-0.5">Re: Project timeline</span>
               </div>
               <p className="min-h-[56px] text-lg leading-relaxed text-ink" aria-hidden="true">
                 {reduceMotion ? DRAFTS[DRAFTS.length - 1] : text}
@@ -200,7 +192,7 @@ export default function AgitationSection() {
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {["Grammar check", "Translate", "Rephrase"].map((tool) => (
-                  <span key={tool} className="rounded-full border border-black/[0.06] bg-[#f7f5f2] px-3 py-1 text-xs font-medium text-ink-soft">
+                  <span key={tool} className="rounded-md border border-line bg-white px-2.5 py-1 text-xs font-medium text-ink-soft">
                     {tool}
                   </span>
                 ))}
@@ -209,6 +201,6 @@ export default function AgitationSection() {
           </div>
         </Reveal>
       </div>
-    </section>
+    </div>
   );
 }
