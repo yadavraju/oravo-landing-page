@@ -9,10 +9,10 @@ import DownloadButtons from "../components/DownloadButtons";
 import LandingAnalytics from "../components/LandingAnalytics";
 import EmailComparisonSection from "../components/EmailComparisonSection";
 import { Header } from "../components/header";
-import AccentToSlackDemo from "./landing/AccentToSlackDemo";
 import AgitationSection from "./landing/AgitationSection";
 import { Band } from "./landing/Band";
 import { Parallax } from "./landing/Parallax";
+import { Doodle } from "./landing/Doodle";
 import { Reveal, RevealWords } from "./landing/Reveal";
 
 
@@ -163,8 +163,11 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
           <Parallax speed={-90} className="absolute -right-32 top-[38%] sm:-right-16">
             <div className="h-[300px] w-[300px] rotate-12 rounded-[56px] bg-clay sm:h-[360px] sm:w-[360px]" />
           </Parallax>
-          <Parallax speed={220} className="absolute left-[14%] top-[58%] hidden md:block">
-            <div className="h-4 w-4 rounded-full bg-brand" />
+          <Parallax speed={60} className="absolute left-[3%] top-[300px] hidden xl:block">
+            <Doodle name="speech" className="w-44" />
+          </Parallax>
+          <Parallax speed={-40} className="absolute right-[3%] top-[180px] hidden xl:block">
+            <Doodle name="plane" className="w-44" />
           </Parallax>
         </div>
 
@@ -231,9 +234,12 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
             </div>
           </Parallax>
 
-          <Reveal delay={0.35} y={32} className="relative mt-14 sm:mt-16">
-            <Parallax speed={36}>
-              <AccentToSlackDemo />
+          {/* Why typing is the bottleneck: the first thing under the hero. */}
+          <Reveal delay={0.35} y={24} className="relative mt-14 sm:mt-16">
+            <Parallax speed={30}>
+              <div className="surface-solid !rounded-2xl p-3 sm:p-6">
+                <EmailComparisonSection />
+              </div>
             </Parallax>
           </Reveal>
 
@@ -251,24 +257,14 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
         <AgitationSection />
       </Band>
 
-      {/* Keyboard vs. voice */}
-      <Band color={CANVAS} from={PAPER} className="py-16 sm:py-24">
-        <div className={SHELL}>
-          <Reveal>
-            <div className="surface-solid !rounded-2xl p-3 sm:p-6">
-              <EmailComparisonSection />
-            </div>
-          </Reveal>
-        </div>
-      </Band>
-
       {/* Real-time translation */}
-      <Band color={CLAY} from={CANVAS} className="py-20 sm:py-28" aria-labelledby="translation-heading">
+      <Band color={CLAY} from={PAPER} className="py-20 sm:py-28" aria-labelledby="translation-heading">
         <Parallax speed={110} className="pointer-events-none absolute -left-24 top-24 hidden lg:block" aria-hidden="true">
           <div className="h-56 w-56 rounded-full bg-sand-deep" />
         </Parallax>
         <div className={`${SHELL} relative`}>
           <div className="mx-auto flex max-w-[760px] flex-col items-center text-center">
+            <Parallax speed={18} className="mb-4"><Doodle name="globe" className="w-32 sm:w-36" /></Parallax>
             <Reveal><p className="eyebrow">Real-time translation</p></Reveal>
             <h2 id="translation-heading" className="display-2 mt-3">
               <RevealWords text="Think in your language. Send it in English." />
@@ -302,6 +298,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
         </Parallax>
         <div className={`${SHELL} relative grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]`}>
           <div className="flex flex-col items-start">
+            <Parallax speed={18} className="mb-4"><Doodle name="measure" className="w-32 sm:w-36" tone="dark" /></Parallax>
             <Reveal><p className="eyebrow !text-white/45">Accent proof, not vague claims</p></Reveal>
             <h2 id="accent-proof-heading" className="display-2 mt-3 text-white">
               <RevealWords text="Built for real accents. Measured with the same script." />
@@ -343,6 +340,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
       <Band color={PAPER} from={ESPRESSO} blend={220} className="pt-36 pb-20 sm:pt-44 sm:pb-28" aria-labelledby="finished-text-heading">
         <div className={SHELL}>
           <div className="mx-auto flex max-w-[760px] flex-col items-center text-center">
+            <Parallax speed={18} className="mb-4"><Doodle name="sparkle" className="w-32 sm:w-36" /></Parallax>
             <Reveal><p className="eyebrow">Polished, not just transcribed</p></Reveal>
             <h2 id="finished-text-heading" className="display-2 mt-3">
               <RevealWords text="Speak once. Get finished text." />
@@ -386,6 +384,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
       <Band color={CANVAS} from={PAPER} className="py-20 sm:py-28" aria-labelledby="features-heading">
         <div className={SHELL}>
           <div className="mx-auto flex max-w-[760px] flex-col items-center text-center">
+            <Parallax speed={18} className="mb-4"><Doodle name="windows" className="w-32 sm:w-36" /></Parallax>
             <Reveal><p className="eyebrow">Feature highlights</p></Reveal>
             <h2 id="features-heading" className="display-2 mt-3">
               <RevealWords text="Built for the way you actually work." />

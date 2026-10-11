@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { siMeta, siSalesforce } from "simple-icons";
 
 type Company = {
@@ -48,66 +47,42 @@ function CompanyLogo({ icon, imageSrc, name }: Company) {
   );
 }
 
+// One looping row, built like video-shala's: the row is sized to its content
+// (`w-max`) and holds the list twice, so translating by -50% lands exactly on
+// the seam and the loop is invisible. Each half repeats the logos enough times
+// to stay wider than the viewport, so the row never shows an empty gap.
+function MarqueeRow({ items, reverse = false }: { items: Company[]; reverse?: boolean }) {
+  const half = [...items, ...items, ...items];
+  return (
+    <div
+      className="relative overflow-hidden"
+      style={{
+        maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+        WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+      }}
+    >
+      <div
+        className="flex w-max items-center"
+        style={{
+          animation: "o-marquee 60s linear infinite",
+          animationDirection: reverse ? "reverse" : "normal",
+        }}
+      >
+        {[...half, ...half].map((company, i) => (
+          <CompanyLogo key={`${company.name}-${i}`} {...company} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function TechCompanyMarquee() {
   return (
-    <div className="self-stretch flex justify-center items-start">
-
-      <div className="flex-1 overflow-hidden py-4">
-        {/* Row 1 - Moving left to right */}
-        <div className="relative overflow-hidden mb-8">
-          <motion.div
-            className="flex"
-            animate={{
-              x: ["-50%", "0%"],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 30,
-                ease: "linear",
-              },
-            }}
-          >
-            {/* First set */}
-            {techCompanies.row1.map((company, index) => (
-              <CompanyLogo key={`row1-first-${index}`} {...company} />
-            ))}
-            {/* Duplicate for seamless loop */}
-            {techCompanies.row1.map((company, index) => (
-              <CompanyLogo key={`row1-second-${index}`} {...company} />
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Row 2 - Moving right to left */}
-        <div className="relative overflow-hidden">
-          <motion.div
-            className="flex"
-            animate={{
-              x: ["0%", "-50%"],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 30,
-                ease: "linear",
-              },
-            }}
-          >
-            {/* First set */}
-            {techCompanies.row2.map((company, index) => (
-              <CompanyLogo key={`row2-first-${index}`} {...company} />
-            ))}
-            {/* Duplicate for seamless loop */}
-            {techCompanies.row2.map((company, index) => (
-              <CompanyLogo key={`row2-second-${index}`} {...company} />
-            ))}
-          </motion.div>
-        </div>
+    <div className="w-full" aria-hidden="true">
+      <div className="flex flex-col gap-6">
+        <MarqueeRow items={techCompanies.row1} />
+        <MarqueeRow items={techCompanies.row2} reverse />
       </div>
-
     </div>
   );
 }

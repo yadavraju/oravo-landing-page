@@ -59,7 +59,11 @@ These are rectangular, never capsules, and the same shapes as video-shala.
 - `.btn-primary`: solid ink with a 2px ink border, 48px tall, 8px radius. It lifts 1px on hover.
 - `.btn-secondary`: a glass key with a 2px white border and a white-to-quarter-white fill, so the band shows through.
 
-The header uses the same two shapes at 40px. It has exactly one solid button.
+The header follows video-shala's nav: a three-column grid with the menus on
+the true centre line, identical rectangular keys, menus that open on hover,
+click or focus (120ms close delay), one solid Download button, transparent at
+rest and a canvas shelf once scrolled. On phones it is a plain menu icon
+with a full-width drawer.
 
 ## Motion
 
@@ -68,9 +72,10 @@ The header uses the same two shapes at 40px. It has exactly one solid button.
 | Parallax | Hero shapes, demos, dark band | `<Parallax speed>`. Positive speeds drift faster than the scroll, negative ones lag behind |
 | Word-rise headline | Section headlines | `<RevealWords>` |
 | Fade-up | Copy and cards | `<Reveal>` (12px rise, 620ms, fires once) |
-| Product story loop | Hero | `AccentToSlackDemo` |
+| Keyboard vs. voice | Hero (first section under it) | `EmailComparisonSection` |
+| Drawn line art | One piece per section | `<Doodle name>`: strokes trace in on first view, then drift with `<Parallax>` |
 | Pain loop | Section 2 | `AgitationSection` |
-| Marquee | Logos | Two counter-running rows, greyscale until hover |
+| Marquee | Logos | Two counter-running `w-max` rows, list doubled so -50% lands on the seam, edges masked, greyscale until hover |
 
 Loops pause off-screen. Everything settles to its finished state under
 `prefers-reduced-motion`.

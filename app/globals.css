@@ -415,8 +415,14 @@
 
 @keyframes o-spin { to { transform: rotate(360deg); } }
 
+@keyframes o-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .o-caret { animation: none !important; }
+  [style*="o-marquee"] { animation-play-state: paused !important; }
   .btn-primary,
   .btn-secondary,
   .surface-interactive { transition: none; }

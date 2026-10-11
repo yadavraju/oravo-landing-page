@@ -28,7 +28,7 @@ export function MiniVoiceWaveform() {
           ease: "easeInOut",
         }}
       >
-        <div className="w-full h-full bg-gradient-to-r from-blue-400 via-violet-400 to-purple-400 rounded-full" />
+        <div className="w-full h-full bg-[#c4572f] rounded-full" />
       </motion.div>
 
       {/* Waveform bars */}
@@ -40,7 +40,7 @@ export function MiniVoiceWaveform() {
           return (
             <motion.div
               key={i}
-              className="w-[1.5px] sm:w-[2px] bg-gradient-to-t from-blue-300 via-violet-300 to-purple-300 rounded-full"
+              className="w-[1.5px] sm:w-[2px] bg-[#e8a07f] rounded-full"
               animate={{
                 height: [6 + phase * 4, 12 + phase * 6, 6 + phase * 4],
                 opacity: [0.7, 1, 0.7],
@@ -246,7 +246,7 @@ function VoiceStreaming() {
       <div className="space-y-1.5 sm:space-y-2">
         <div className="h-1 sm:h-1.5 bg-white/10 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-gradient-to-r from-blue-400 via-violet-400 to-purple-400 rounded-full"
+            className="h-full bg-[#e8a07f] rounded-full"
             style={{ width: `${progress}%` }}
             transition={{
               type: "spring",
@@ -373,7 +373,7 @@ export default function EmailComparisonSection() {
           >
             {/* Animated gradient background */}
             <motion.div
-              className="absolute inset-0 bg-gradient-to-br from-[#3B4A5C] via-[#2A3647] to-[#1F2937]"
+              className="absolute inset-0 bg-[#2a211b]"
               style={{ willChange: "transform" }}
               animate={{
                 scale: [1, 1.05, 1],
@@ -391,9 +391,9 @@ export default function EmailComparisonSection() {
               style={{ willChange: "background" }}
               animate={{
                 background: [
-                  "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
-                  "radial-gradient(circle at 70% 60%, rgba(168, 85, 247, 0.25) 0%, transparent 60%)",
-                  "radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)",
+                  "radial-gradient(circle at 30% 40%, rgba(196, 87, 47, 0.16) 0%, transparent 60%)",
+                  "radial-gradient(circle at 70% 60%, rgba(232, 160, 127, 0.14) 0%, transparent 60%)",
+                  "radial-gradient(circle at 30% 40%, rgba(196, 87, 47, 0.16) 0%, transparent 60%)",
                 ],
               }}
               transition={{
@@ -418,7 +418,7 @@ export default function EmailComparisonSection() {
                   <span className="text-xs text-white/90 font-medium">wpm</span>
                 </div>
                 <p className="text-[11px] text-white/70 mt-1.5 leading-relaxed">
-                  <span className="text-violet-300 font-semibold">
+                  <span className="text-[#e8a07f] font-semibold">
                     Press your hotkey.
                   </span>{" "}
                   Oravo writes polished text in your style — fast.

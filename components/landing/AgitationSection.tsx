@@ -2,6 +2,8 @@
 
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { Doodle } from "./Doodle";
+import { Parallax } from "./Parallax";
 import { Reveal, RevealWords } from "./Reveal";
 
 // The same message, rewritten over and over. Each draft types in, hesitates,
@@ -136,6 +138,9 @@ export default function AgitationSection() {
     <div id="the-real-problem" className="relative w-full py-20 sm:py-28">
       <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
         <div className="flex flex-col gap-6">
+          <Parallax speed={18}>
+            <Doodle name="scribble" className="w-32 sm:w-36" />
+          </Parallax>
           <Reveal>
             <p className="eyebrow">The real problem</p>
           </Reveal>

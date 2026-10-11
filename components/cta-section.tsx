@@ -1,6 +1,7 @@
 "use client";
 
 import DownloadButtons from "./DownloadButtons";
+import { Doodle } from "./landing/Doodle";
 import { Parallax } from "./landing/Parallax";
 import { Reveal, RevealWords } from "./landing/Reveal";
 
@@ -21,6 +22,7 @@ export default function CTASection() {
       </Parallax>
 
       <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center">
+        <Doodle name="mic" className="mb-4 w-32 sm:w-36" />
         <Reveal>
           <p className="eyebrow">Start in under a minute</p>
         </Reveal>
