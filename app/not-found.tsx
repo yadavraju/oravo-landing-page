@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Header } from "@/components/header";
-import FooterSection from "@/components/footer-section";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { Band } from "@/components/landing/Band";
+import { Doodle } from "@/components/landing/Doodle";
+import { MarketingShell } from "@/components/landing/MarketingShell";
+import { Parallax } from "@/components/landing/Parallax";
+import { Reveal, RevealWords } from "@/components/landing/Reveal";
 
 export const metadata: Metadata = {
   title: "Page Not Found | Oravo",
@@ -17,53 +20,86 @@ export const metadata: Metadata = {
   },
 };
 
+const PLACES = [
+  { href: "/features", title: "Features", blurb: "Everything Oravo can do" },
+  { href: "/pricing", title: "Pricing", blurb: "Free plan, Pro from $9.99" },
+  { href: "/blog", title: "Blog", blurb: "Guides and product updates" },
+  { href: "/faq", title: "FAQ", blurb: "Accents, translation and privacy" },
+];
+
 export default function NotFound() {
   return (
-    <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
-      <div className="relative flex flex-col justify-start items-center w-full">
-        <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
-          <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0" />
-          <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0" />
+    <MarketingShell>
+      <Band color="var(--o-band-sand)" className="pt-32 pb-20 sm:pt-40 sm:pb-28">
+        <Parallax speed={120} className="pointer-events-none absolute -left-32 top-10" aria-hidden="true">
+          <div className="h-80 w-80 rounded-full bg-sand-deep" />
+        </Parallax>
+        <Parallax speed={-70} className="pointer-events-none absolute -right-24 top-[45%] hidden sm:block" aria-hidden="true">
+          <div className="h-72 w-72 rotate-12 rounded-[48px] bg-clay" />
+        </Parallax>
+        {/* The paper plane that took a wrong turn, with its looping trail. */}
+        <Parallax speed={60} className="pointer-events-none absolute left-[5%] top-36 hidden lg:block" aria-hidden="true">
+          <Doodle name="plane" className="w-44 -scale-x-100" />
+        </Parallax>
+        <Parallax speed={-40} className="pointer-events-none absolute right-[6%] top-[52%] hidden lg:block" aria-hidden="true">
+          <Doodle name="scribble" className="w-40" />
+        </Parallax>
 
-          <Header />
-
-          <main className="flex-1 w-full mt-20 md:mt-24 lg:mt-28 relative z-10 flex items-center justify-center">
-            <div className="px-6 md:px-12 py-20 md:py-32 text-center max-w-[600px] mx-auto">
-              <div className="text-[#847971] text-8xl md:text-[160px] font-medium font-serif leading-none mb-6">
-                404
-              </div>
-              <h1 className="text-[#37322F] text-2xl md:text-4xl font-normal font-serif mb-4">
-                Page not found
-              </h1>
-              <p className="text-[#605A57] text-base md:text-lg leading-relaxed font-sans mb-8">
-                The page you're looking for doesn't exist or has been moved. Let's get you back on track.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link
-                  href="/"
-                  className="group relative h-12 px-8 bg-gradient-to-b from-[#1877F2] to-[#166FE5] hover:from-[#1570E8] hover:to-[#1466D8] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset,0px_4px_12px_rgba(24,119,242,0.4)] overflow-hidden rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/10 pointer-events-none"></div>
-                  <span className="text-white text-base font-medium leading-5 font-sans relative z-10">
-                    Go Home
-                  </span>
-                </Link>
-                <Link
-                  href="/download"
-                  className="group relative h-12 px-8 bg-gradient-to-b from-white to-gray-100 hover:from-gray-50 hover:to-gray-200 shadow-[0px_0px_0px_2.5px_rgba(0,0,0,0.05)_inset,0px_4px_12px_rgba(0,0,0,0.1)] overflow-hidden rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95 border border-gray-200"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-black/5 pointer-events-none"></div>
-                  <span className="text-gray-800 text-base font-medium leading-5 font-sans relative z-10">
-                    Download Oravo
-                  </span>
-                </Link>
-              </div>
+        <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-5 text-center sm:px-8">
+          {/* "404" where the zero has gone missing: a dashed outline where it
+              should be, with a hand-drawn question mark inside. */}
+          <Reveal>
+            <p className="flex items-center justify-center font-serif text-[112px] leading-none tracking-[-0.04em] text-ink sm:text-[168px]">
+              <span className="sr-only">404</span>
+              <span aria-hidden="true">4</span>
+              <span aria-hidden="true" className="mx-1 inline-flex h-[0.84em] w-[0.66em] items-center justify-center rounded-full border-[3px] border-dashed border-ink/40 sm:mx-2 sm:border-4">
+                <Doodle name="question" className="w-[0.6em] translate-x-[0.03em]" />
+              </span>
+              <span aria-hidden="true">4</span>
+            </p>
+          </Reveal>
+          <h1 className="display-2 mt-6 text-ink">
+            <RevealWords text="Page not found" />
+          </h1>
+          <Reveal delay={0.12}>
+            <p className="subtitle mx-auto mt-4 max-w-md text-balance">
+              The page you're looking for doesn't exist or has been moved. Let's get you back on track.
+            </p>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <a href="/" className="btn-primary">
+                Go Home
+                <ArrowRight aria-hidden="true" className="h-4 w-4" />
+              </a>
+              <a href="/download" className="btn-secondary">
+                Download Oravo
+              </a>
             </div>
-          </main>
-
-          <FooterSection />
+          </Reveal>
         </div>
-      </div>
-    </div>
+      </Band>
+
+      <Band color="var(--o-paper)" from="var(--o-band-sand)" className="pb-20 pt-16 sm:pb-24 sm:pt-20">
+        <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
+          <Reveal>
+            <p className="eyebrow text-center">Or try one of these</p>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <div className="surface-solid mx-auto mt-5 grid max-w-4xl grid-cols-1 gap-px overflow-hidden !rounded-2xl bg-line sm:grid-cols-2 lg:grid-cols-4">
+              {PLACES.map((place) => (
+                <a key={place.href} href={place.href} className="group flex items-start justify-between gap-3 bg-raised p-5 transition-colors hover:bg-paper">
+                  <span>
+                    <span className="block font-display text-[15px] font-semibold text-ink">{place.title}</span>
+                    <span className="mt-1 block font-display text-[13px] leading-snug text-ink-soft">{place.blurb}</span>
+                  </span>
+                  <ArrowUpRight aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-ink-faint transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink" />
+                </a>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </Band>
+    </MarketingShell>
   );
 }

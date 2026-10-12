@@ -1,0 +1,38 @@
+# Oravo
+
+> Oravo is an AI dictation app built for non-native English speakers. Speak in your natural accent, or directly in your native language, and Oravo types polished, professional English into the app you are already using. Available for Windows, macOS and Android; iOS is coming soon.
+
+Oravo works system-wide: press a hotkey in any text field (Gmail, Slack, Notion, Google Docs, Microsoft Word, VS Code, Jira, LinkedIn, WhatsApp, Teams and more), speak, and finished text appears where the cursor is. It removes filler words, fixes grammar, adds punctuation and formatting, and adapts tone to the app (casual in chat, professional in email, structured in docs).
+
+Key facts:
+
+- Audience: non-native English speakers and multilingual professionals (remote developers, international founders, agency owners).
+- Languages: speak in 60+ languages and get fluent English; translation also works in reverse.
+- Code-switching: mixed-language sentences ("I need to email the cliente about the meeting") are understood and formatted correctly.
+- Accent proof: Oravo is running a same-script accent benchmark across Hindi-accented English, Spanish-accented English, Hindi and Spanish speech to English, and a native-English control. Results will be published with method and sample sizes; until then Oravo makes no accuracy-percentage claim.
+- Privacy: see the current privacy policy for how voice data is processed and retained.
+
+## Pricing
+
+- [Pricing](https://oravo.ai/pricing): Starter is free forever (30 minutes a month, no credit card). Professional is $9.99/month or $99.99/year for unlimited words, with a trial on install. Enterprise is $8.99 per user/month or $89.99/year (minimum 3 users).
+
+## Product
+
+- [Home](https://oravo.ai/): what Oravo does, with live examples
+- [Download](https://oravo.ai/download): Windows, macOS and Android installers
+- [How to use](https://oravo.ai/how-to-use): set your hotkey and start dictating
+- [Features](https://oravo.ai/features): formatting, tone matching, custom vocabulary, translation
+- [Notetaker](https://oravo.ai/notetaker): meeting notes
+- [Mobile app](https://oravo.ai/mobile): Oravo on Android
+
+## Help
+
+- [FAQ](https://oravo.ai/faq): accents, translation, app support, privacy and the free plan
+- [Compare with Wispr Flow](https://oravo.ai/compare/wispr-flow)
+- [Use cases](https://oravo.ai/use-cases)
+- [Blog](https://oravo.ai/blog)
+
+## Contact
+
+- Support: hi@oravo.ai
+- Sales and teams: hello@oravo.ai

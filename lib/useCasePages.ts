@@ -189,7 +189,7 @@ function makeConfig(seed: AppSeed): UseCasePageConfig {
     {
       title: "Install Oravo",
       description:
-        "Download Oravo for Mac, Windows, iOS, or Android. Setup takes about 2 minutes.",
+        "Download Oravo for Mac, Windows, or Android. Setup takes about 2 minutes.",
     },
     {
       title: `Open ${appName}`,
@@ -735,7 +735,7 @@ function makeConfig(seed: AppSeed): UseCasePageConfig {
         {
           question: "Can I use it on mobile?",
           answer:
-            "Yes—Oravo supports iOS and Android for dictation on the go.",
+            "Yes—Oravo supports Android for dictation on the go, and iOS is coming soon.",
         },
         {
           question: "Does it learn my vocabulary?",
@@ -843,7 +843,7 @@ function makeConfig(seed: AppSeed): UseCasePageConfig {
         {
           question: "Does it support multiple languages?",
           answer:
-            "Yes—Oravo supports 100+ languages.",
+            "Yes—Oravo supports 60+ languages.",
         },
         {
           question: "Is it private?",
@@ -883,7 +883,7 @@ function makeConfig(seed: AppSeed): UseCasePageConfig {
         {
           title: "Multi-language support",
           description:
-            "Dictate in 100+ languages for global workflows.",
+            "Dictate in 60+ languages for global workflows.",
         },
         {
           title: "Privacy-first",
@@ -940,7 +940,7 @@ function makeConfig(seed: AppSeed): UseCasePageConfig {
         {
           question: "Does it support multiple languages?",
           answer:
-            "Yes—100+ languages supported.",
+            "Yes—60+ languages supported.",
         },
         {
           question: "Can I edit before submitting a form?",
@@ -1048,7 +1048,7 @@ function makeConfig(seed: AppSeed): UseCasePageConfig {
         {
           question: "Does it work on mobile?",
           answer:
-            "Yes—dictate notes on iOS and Android as well.",
+            "Yes—dictate notes on Android as well, with iOS coming soon.",
         },
         {
           question: "Can I edit before saving?",
@@ -1152,7 +1152,7 @@ function makeConfig(seed: AppSeed): UseCasePageConfig {
         {
           question: "Does it support multiple languages?",
           answer:
-            "Yes—100+ languages supported for global support teams.",
+            "Yes—60+ languages supported for global support teams.",
         },
         {
           question: "Does it work across other tools too?",
@@ -1174,6 +1174,7 @@ function makeConfig(seed: AppSeed): UseCasePageConfig {
     appName,
     accentColor: seed.accentColor,
     brandIcon: toIconData(seed.brandIcon),
+    category: seed.category,
 
     heroBadgeText: `${appName} Integration`,
     heroTitle: `Voice Keyboard for ${appName}`,

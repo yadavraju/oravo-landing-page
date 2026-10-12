@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/header";
-import FooterSection from "@/components/footer-section";
-import Link from "next/link";
+import { ArrowRight, BookA, Briefcase, Languages, Lock, PenLine, Scale, Sparkles, Stethoscope, Target } from "lucide-react";
+import { Band } from "@/components/landing/Band";
+import { Doodle } from "@/components/landing/Doodle";
+import { MarketingShell } from "@/components/landing/MarketingShell";
+import { PageHero, SectionIntro } from "@/components/landing/PageBlocks";
+import { Parallax } from "@/components/landing/Parallax";
+import { Reveal } from "@/components/landing/Reveal";
+import { ClosingBand, FaqBand, JsonLd, RelatedBand } from "@/components/product-pages/blocks";
+import { MemoDictationDemo } from "@/components/product-pages/ProductPageDemos";
+import { SHELL } from "@/components/product-pages/shell";
+import { faqJsonLd, type FaqItem } from "@/lib/faq";
 
 export const metadata: Metadata = {
   title: "Voice Dictation Software | Best AI Dictation App 2024",
@@ -40,288 +48,186 @@ export const metadata: Metadata = {
   },
 };
 
-function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
-  return (
-    <div className="px-[14px] py-[6px] bg-white shadow-[0px_0px_0px_4px_rgba(55,50,47,0.05)] overflow-hidden rounded-[90px] flex justify-start items-center gap-[8px] border border-[rgba(2,6,23,0.08)] shadow-xs">
-      <div className="w-[14px] h-[14px] relative overflow-hidden flex items-center justify-center">{icon}</div>
-      <div className="text-center flex justify-center flex-col text-[#37322F] text-xs font-medium leading-3 font-sans">{text}</div>
-    </div>
-  );
-}
+const FAQS: FaqItem[] = [
+  {
+    question: "What is voice dictation software?",
+    answer:
+      "Voice dictation software converts your speech into written text. Instead of typing, you speak into a microphone and the software transcribes your words. Oravo uses AI to ensure high accuracy.",
+  },
+  {
+    question: "Is Oravo better than Dragon NaturallySpeaking?",
+    answer:
+      "Oravo is built for accent support and real-time translation, with a modern interface and cross-platform apps. It's also more affordable, with transparent pricing.",
+  },
+  {
+    question: "Can I use it for medical or legal dictation?",
+    answer:
+      "Yes. You can add custom medical or legal terminology so specialist terms come out right. If you work with regulated data, review Oravo's privacy policy and your organization's requirements before you start.",
+  },
+  {
+    question: "Does it work with my accent?",
+    answer: "Yes! Oravo is specifically built to understand non-native English speakers and accents.",
+  },
+];
 
-function FeatureCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
-  return (
-    <article className="group p-5 bg-white border border-[#E0DEDB] rounded-xl flex flex-col gap-4 transition-all duration-200 hover:border-[#847971]">
-      <div className="w-10 h-10 rounded-lg bg-[#F7F5F3] flex items-center justify-center text-[#605A57] group-hover:text-[#37322F] transition-colors">
-        {icon}
-      </div>
-      <div className="flex flex-col gap-2">
-        <h3 className="text-[#37322F] text-base font-semibold leading-tight font-sans">{title}</h3>
-        <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">{description}</p>
-      </div>
-    </article>
-  );
-}
+const FEATURES = [
+  { icon: Target, title: "AI-Powered Accuracy", description: "State-of-the-art speech recognition that learns your voice and holds up with accents." },
+  { icon: Languages, title: "Real-Time Translation", description: "Dictate in Spanish, Chinese, Hindi—get perfect English text. Built for global teams." },
+  { icon: PenLine, title: "Smart Formatting", description: "Automatic punctuation, paragraphs, and capitalization. Professional output with minimal editing." },
+  {
+    icon: Lock,
+    title: "Privacy-First",
+    description: "Your dictation is never used to train our models, and the privacy policy spells out how voice is processed, so your team can review it first.",
+  },
+  { icon: Briefcase, title: "Works Everywhere", description: "Google Docs, Microsoft Office, Slack, Gmail, CRM systems—dictate in any application." },
+  { icon: BookA, title: "Custom Vocabulary", description: "Add industry terms, names, and jargon to your dictionary for perfect recognition." },
+];
 
-function FAQItem({ question, answer }: { question: string; answer: string }) {
-  return (
-    <article className="p-5 bg-white border border-[#E0DEDB] rounded-xl">
-      <h4 className="text-[#37322F] text-base font-semibold font-sans mb-2">{question}</h4>
-      <p className="text-[#605A57] text-sm leading-relaxed font-sans">{answer}</p>
-    </article>
-  );
-}
+const MADE_FOR = [
+  { icon: Stethoscope, label: "Healthcare", href: "/for-healthcare" },
+  { icon: Scale, label: "Legal", href: "/for-lawyers" },
+  { icon: Briefcase, label: "Sales", href: "/for-sales" },
+  { icon: PenLine, label: "Writers", href: "/for-writers" },
+];
+
+const DRAGON = [
+  { label: "Translation", oravo: "Speak 60+ languages, type English", other: "Not included" },
+  { label: "Platforms", oravo: "Mac, Windows and Android", other: "Windows-first" },
+  { label: "Pricing", oravo: "Free plan, Pro from $9.99/mo", other: "Paid licence" },
+];
+
+const RELATED = [
+  { title: "All Features", href: "/features", note: "Everything Oravo does" },
+  { title: "Best Dictation App", href: "/dictation-app", note: "Accents and translation" },
+  { title: "Voice to Text App", href: "/voice-to-text-app", note: "Speech to text on every device" },
+  { title: "For Healthcare", href: "/for-healthcare", note: "Notes and letters" },
+  { title: "For Lawyers", href: "/for-lawyers", note: "Memos and case notes" },
+  { title: "All Use Cases", href: "/use-cases", note: "50+ app guides" },
+];
 
 export default function VoiceDictationSoftwarePage() {
-  const accentColor = "#6366F1";
-
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What is voice dictation software?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Voice dictation software converts your speech into written text. Instead of typing, you speak into a microphone and the software transcribes your words. Oravo uses AI to ensure high accuracy.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Is Oravo better than Dragon NaturallySpeaking?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Oravo offers comparable accuracy with better accent support, real-time translation, modern interface, and cross-platform compatibility. It's also more affordable with transparent pricing.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Can I use it for medical or legal dictation?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes! Oravo is HIPAA-ready with zero data retention, making it suitable for healthcare and legal professionals. You can add custom medical or legal terminology.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Does it work with my accent?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes! Oravo is specifically built to understand non-native English speakers and accents. It's trained on diverse speech patterns from around the world.",
-        },
-      },
-    ],
-  };
-
   return (
-    <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+    <MarketingShell>
+      <JsonLd data={faqJsonLd(FAQS)} />
+
+      <PageHero
+        eyebrow="Professional dictation"
+        eyebrowIcon={<Sparkles aria-hidden="true" className="h-3.5 w-3.5 text-brand" />}
+        title="Voice Dictation Software"
+        description="Professional voice dictation software powered by AI. Dictate documents, emails, and notes 4x faster than typing. Perfect for non-native English speakers."
+        primary={{ label: "Try free", href: "/download" }}
+        secondary={{ label: "See demo", href: "/how-to-use" }}
+        note="Mac & Windows · 60+ languages · Custom vocabulary"
+        doodles={["notebook", "scales"]}
+        visual={<MemoDictationDemo />}
       />
-      <div className="relative flex flex-col justify-start items-center w-full">
-        <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
-          <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0" />
-          <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0" />
 
-          <Header />
-
-          <main className="flex-1 w-full mt-20 md:mt-24 lg:mt-28 relative z-10">
-            <section className="px-6 md:px-12 py-12 md:py-20 border-b border-[rgba(55,50,47,0.12)]">
-              <div className="max-w-[800px] mx-auto text-center">
-                <div className="flex justify-center mb-6">
-                  <Badge
-                    icon={<svg className="w-3.5 h-3.5" fill={accentColor} viewBox="0 0 24 24"><path d="M12 15c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v7c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 15 6.7 12H5c0 3.41 2.72 6.23 6 6.72V22h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/></svg>}
-                    text="Professional Dictation"
-                  />
-                </div>
-
-                <h1 className="text-[#37322F] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal leading-tight font-serif mb-6">
-                  Voice Dictation Software
-                </h1>
-
-                <p className="text-[#605A57] text-lg md:text-xl leading-relaxed font-sans mb-8 max-w-[640px] mx-auto">
-                  Professional voice dictation software powered by AI. Dictate documents, emails, and notes 4x faster than typing. Perfect for non-native English speakers.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                  <Link
-                    href="/download"
-                    className="group relative h-12 px-8 overflow-hidden rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95"
-                    style={{
-                      background: `linear-gradient(to bottom, ${accentColor}, ${accentColor})`,
-                      boxShadow: `0px 0px 0px 2.5px rgba(255,255,255,0.08) inset, 0px 4px 12px ${accentColor}66`,
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/10 pointer-events-none"></div>
-                    <span className="text-white text-base font-medium leading-5 font-sans relative z-10">Try Free</span>
-                    <svg className="w-5 h-5 relative z-10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                      <path d="M12 5v14M5 12l7 7 7-7" />
-                    </svg>
-                  </Link>
-                  <Link
-                    href="/how-to-use"
-                    className="group relative h-12 px-8 bg-gradient-to-b from-white to-gray-100 hover:from-gray-50 hover:to-gray-200 shadow-[0px_0px_0px_2.5px_rgba(0,0,0,0.05)_inset,0px_4px_12px_rgba(0,0,0,0.1)] overflow-hidden rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95 border border-gray-200"
-                  >
-                    <span className="text-gray-800 text-base font-medium leading-5 font-sans relative z-10">See Demo</span>
-                  </Link>
-                </div>
-
-                <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-[#847971]">
-                  <span className="flex items-center gap-2">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                    Mac & Windows
+      {/* Why professionals */}
+      <Band color="var(--o-paper)" from="var(--o-band-sand)" blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-28">
+        <div className={`${SHELL} grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16`}>
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <SectionIntro
+              align="left"
+              doodle="notebook"
+              eyebrow="Why Oravo"
+              title="Why Professionals Choose Oravo"
+              lede="Professional-grade dictation software that understands every accent."
+            />
+            <Reveal delay={0.2}>
+              <p className="mt-8 eyebrow">Made for</p>
+              <ul className="mt-3 grid grid-cols-2 gap-2">
+                {MADE_FOR.map((m) => (
+                  <li key={m.href}>
+                    <a href={m.href} className="group flex items-center gap-2.5 rounded-lg bg-raised px-3 py-2.5 font-display text-[13.5px] font-semibold text-ink ring-1 ring-line transition-colors hover:ring-ink/25">
+                      <m.icon aria-hidden="true" className="h-4 w-4 text-ink-soft transition-transform group-hover:-rotate-6" />
+                      {m.label}
+                      <ArrowRight aria-hidden="true" className="ml-auto h-3.5 w-3.5 text-ink-faint opacity-0 transition-opacity group-hover:opacity-100" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+          <ol className="relative space-y-4">
+            <span className="absolute bottom-6 left-[27px] top-6 hidden w-px border-l border-dashed border-ink/20 sm:block" aria-hidden="true" />
+            {FEATURES.map((f, i) => (
+              <Reveal as="li" key={f.title} delay={0.05 * i}>
+                <div className="group relative flex gap-5 rounded-2xl bg-raised p-5 shadow-[0_0_0_1px_var(--o-line)] transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_rgba(51,48,42,0.2),0_16px_32px_-22px_rgba(51,48,42,0.4)] sm:p-6">
+                  <span className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-canvas text-ink-soft ring-1 ring-line transition-colors group-hover:text-ink">
+                    <f.icon aria-hidden="true" className="h-[18px] w-[18px]" strokeWidth={1.75} />
                   </span>
-                  <span className="flex items-center gap-2">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                    100+ Languages
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                    HIPAA-Ready
+                  <span>
+                    <span className="font-display text-[11.5px] font-semibold text-brand">{String(i + 1).padStart(2, "0")}</span>
+                    <h3 className="mt-0.5 font-display text-[16.5px] font-semibold tracking-[-0.01em] text-ink">{f.title}</h3>
+                    <p className="mt-1.5 text-[14.5px] leading-relaxed text-ink-soft">{f.description}</p>
                   </span>
                 </div>
-              </div>
-            </section>
-
-            <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
-              <div className="max-w-[900px] mx-auto">
-                <div className="text-center mb-12">
-                  <div className="flex justify-center mb-4">
-                    <Badge icon={<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#37322F" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>} text="Features" />
-                  </div>
-                  <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-medium leading-tight font-serif mb-4">
-                    Why Professionals Choose Oravo
-                  </h2>
-                  <p className="text-[#605A57] text-base md:text-lg font-sans max-w-[600px] mx-auto">
-                    Enterprise-grade dictation software that understands every accent.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  <FeatureCard
-                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>}
-                    title="AI-Powered Accuracy"
-                    description="State-of-the-art speech recognition that learns your voice. 99%+ accuracy even with accents."
-                  />
-                  <FeatureCard
-                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>}
-                    title="Real-Time Translation"
-                    description="Dictate in Spanish, Chinese, Hindi—get perfect English text. Built for global teams."
-                  />
-                  <FeatureCard
-                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>}
-                    title="Smart Formatting"
-                    description="Automatic punctuation, paragraphs, and capitalization. Professional output, zero editing."
-                  />
-                  <FeatureCard
-                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>}
-                    title="HIPAA & SOC 2 Ready"
-                    description="Enterprise security with zero data retention. Perfect for healthcare, legal, and finance."
-                  />
-                  <FeatureCard
-                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>}
-                    title="Works Everywhere"
-                    description="Google Docs, Microsoft Office, Slack, Gmail, CRM systems—dictate in any application."
-                  />
-                  <FeatureCard
-                    icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>}
-                    title="Custom Vocabulary"
-                    description="Add industry terms, names, and jargon to your dictionary for perfect recognition."
-                  />
-                </div>
-              </div>
-            </section>
-
-            <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
-              <div className="max-w-[800px] mx-auto">
-                <div className="text-center mb-12">
-                  <div className="flex justify-center mb-4">
-                    <Badge icon={<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#37322F" strokeWidth="2"><path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>} text="FAQ" />
-                  </div>
-                  <h2 className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl font-medium leading-tight font-serif mb-4">
-                    Frequently Asked Questions
-                  </h2>
-                </div>
-
-                <div className="space-y-4">
-                  <FAQItem
-                    question="What is voice dictation software?"
-                    answer="Voice dictation software converts your speech into written text. Instead of typing, you speak into a microphone and the software transcribes your words. Oravo uses AI to ensure high accuracy."
-                  />
-                  <FAQItem
-                    question="Is Oravo better than Dragon NaturallySpeaking?"
-                    answer="Oravo offers comparable accuracy with better accent support, real-time translation, modern interface, and cross-platform compatibility. It's also more affordable with transparent pricing."
-                  />
-                  <FAQItem
-                    question="Can I use it for medical or legal dictation?"
-                    answer="Yes! Oravo is HIPAA-ready with zero data retention, making it suitable for healthcare and legal professionals. You can add custom medical or legal terminology."
-                  />
-                  <FAQItem
-                    question="Does it work with my accent?"
-                    answer="Yes! Oravo is specifically built to understand non-native English speakers and accents. It's trained on diverse speech patterns from around the world."
-                  />
-                </div>
-              </div>
-            </section>
-
-            {/* Related Pages */}
-            <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)]">
-              <div className="max-w-[800px] mx-auto">
-                <h3 className="text-[#37322F] text-lg font-semibold font-sans mb-4">Related Topics</h3>
-                <div className="flex flex-wrap gap-3">
-                  <Link href="/features" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
-                    All Features
-                  </Link>
-                  <Link href="/dictation-app" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
-                    Best Dictation App
-                  </Link>
-                  <Link href="/voice-to-text-app" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
-                    Voice to Text App
-                  </Link>
-                  <Link href="/for-healthcare" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
-                    For Healthcare
-                  </Link>
-                  <Link href="/for-lawyers" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
-                    For Lawyers
-                  </Link>
-                  <Link href="/use-cases" className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-sm font-medium text-[#605A57] hover:border-[#1877F2] hover:text-[#1877F2] transition-colors">
-                    All Use Cases
-                  </Link>
-                </div>
-              </div>
-            </section>
-
-            <section className="px-6 md:px-12 py-16 md:py-20">
-              <div className="max-w-[700px] mx-auto text-center">
-                <div className="rounded-3xl p-8 md:p-12 shadow-[0_8px_48px_rgba(55,50,47,0.15)]" style={{ background: accentColor }}>
-                  <h2 className="text-white text-2xl md:text-4xl font-normal font-serif mb-4">
-                    Try Professional Voice Dictation
-                  </h2>
-                  <p className="text-white/90 text-base md:text-lg leading-relaxed font-sans mb-8">
-                    Join thousands of professionals who dictate 4x faster with Oravo. Free to try, no credit card required.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-                    <Link
-                      href="/download"
-                      className="group relative h-12 px-8 bg-gradient-to-b from-white to-gray-100 hover:from-gray-50 hover:to-gray-200 shadow-lg overflow-hidden rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95"
-                    >
-                      <span className="text-gray-800 text-base font-medium leading-5 font-sans relative z-10">Download Free</span>
-                    </Link>
-                  </div>
-                  <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-white/80 text-sm font-sans">
-                    <span>Mac & Windows</span><span>•</span><span>HIPAA-ready</span><span>•</span><span>Free trial</span>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </main>
-
-          <FooterSection />
+              </Reveal>
+            ))}
+          </ol>
         </div>
-      </div>
-    </div>
+      </Band>
+
+      {/* Switching from Dragon */}
+      <Band color="var(--o-band-clay)" from="var(--o-paper)" blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-24">
+        <Parallax speed={90} className="pointer-events-none absolute -left-28 top-24" aria-hidden="true">
+          <div className="h-80 w-80 rounded-full bg-sand" />
+        </Parallax>
+        <Parallax speed={-40} className="pointer-events-none absolute right-[5%] top-28 hidden xl:block" aria-hidden="true">
+          <Doodle name="plane" className="w-32" />
+        </Parallax>
+        <div className={`${SHELL} relative grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]`}>
+          <div>
+            <SectionIntro
+              align="left"
+              doodle="scales"
+              eyebrow="Switching from Dragon?"
+              title="A modern Dragon alternative"
+              lede="Dragon set the standard for desktop dictation. Oravo brings it to every app and every accent, with translation built in."
+            />
+            <Reveal delay={0.2}>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a href="/compare/dragon" className="btn-neutral">
+                  Oravo vs Dragon
+                  <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                </a>
+              </div>
+            </Reveal>
+          </div>
+          <Reveal delay={0.1} y={24}>
+            <div className="relative">
+              <div className="absolute inset-0 -rotate-2 rounded-2xl bg-sand-deep" aria-hidden="true" />
+              <div className="relative overflow-hidden rounded-2xl bg-raised shadow-[0_0_0_1px_var(--o-line),0_30px_60px_-36px_rgba(51,48,42,0.5)]">
+                <div className="grid grid-cols-[0.9fr_1fr_1fr] border-b border-line bg-canvas px-5 py-3.5 sm:px-6">
+                  <span className="eyebrow">At a glance</span>
+                  <span className="font-display text-[13px] font-semibold text-brand">Oravo</span>
+                  <span className="font-display text-[13px] font-semibold text-ink-soft">Dragon</span>
+                </div>
+                {DRAGON.map((row) => (
+                  <div key={row.label} className="grid grid-cols-[0.9fr_1fr_1fr] items-center gap-3 border-b border-line px-5 py-4 last:border-b-0 sm:px-6">
+                    <span className="font-display text-[13px] font-semibold text-ink">{row.label}</span>
+                    <span className="text-[13.5px] leading-snug text-ink">{row.oravo}</span>
+                    <span className="text-[13.5px] leading-snug text-ink-faint">{row.other}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </Band>
+
+      <FaqBand title="Frequently Asked Questions" items={FAQS} color="var(--o-paper)" from="var(--o-band-clay)" />
+
+      <RelatedBand title="Related Topics" lede="Dictation for your profession and platform." links={RELATED} color="var(--o-canvas)" from="var(--o-paper)" doodle="notebook" />
+
+      <ClosingBand
+        from="var(--o-canvas)"
+        eyebrow="Free trial"
+        title="Try Professional Voice Dictation"
+        description="Dictate 4x faster with Oravo. Free to try, no credit card required."
+        primary={{ label: "Download free", href: "/download" }}
+        footnote={["Mac & Windows", "Free trial", "No credit card"]}
+      />
+    </MarketingShell>
   );
 }
-

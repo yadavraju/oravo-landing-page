@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const dynamic = "force-static";
-export const alt = "Oravo — AI Voice Typing & Dictation App";
+export const alt = "Oravo — Dictation, voice notes, and bot-free meeting notes";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

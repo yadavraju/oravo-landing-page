@@ -1,115 +1,252 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+/**
+ * Site header, built on the video-shala marketing nav.
+ *
+ * - A three-column grid so the menus sit on the page's true centre line,
+ *   whatever width the logo and the actions either side of it take.
+ * - Every item is the same rectangular key (8px radius, 2px white bevel,
+ *   white-to-quarter-white fill); exactly one element is filled: Download.
+ * - Menus open on hover, click and focus. The close waits ~120ms so the
+ *   diagonal trip from trigger to panel does not dismiss it halfway.
+ * - Transparent at rest; a warm canvas shelf with a blur once scrolled.
+ */
+
+import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import {
+  BookOpen,
+  ChevronDown,
+  CircleHelp,
+  FileText,
+  LayoutGrid,
+  Menu,
+  Mic,
+  Smartphone,
+  Sparkles,
+  X,
+  type LucideIcon,
+} from "lucide-react";
 import Logo from "./Logo";
 
-type DesktopMenu = "products" | "resources" | null;
+type NavItem = { href: string; icon: LucideIcon; title: string; blurb: string };
+type NavMenu = { id: "products" | "resources"; label: string; items: NavItem[] };
 
-const actionBase = "inline-flex h-11 items-center justify-center rounded-[10px] border px-5 text-sm font-bold text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1877F2] focus-visible:ring-offset-2";
-const navButtonBase = "inline-flex h-11 items-center justify-center gap-2 rounded-[10px] border border-white bg-white px-5 text-sm font-bold text-[#37322F] transition-colors duration-200 hover:bg-[#F3F0ED] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1877F2]";
+const NAV: NavMenu[] = [
+  {
+    id: "products",
+    label: "Products",
+    items: [
+      { href: "/", icon: Mic, title: "Dictation", blurb: "Voice typing in every app" },
+      { href: "/notetaker", icon: FileText, title: "Notetaker", blurb: "Meeting notes in seconds" },
+      { href: "/mobile", icon: Smartphone, title: "Mobile App", blurb: "Oravo while you are moving" },
+    ],
+  },
+  {
+    id: "resources",
+    label: "Resources",
+    items: [
+      { href: "/features", icon: Sparkles, title: "Features", blurb: "Explore what Oravo can do" },
+      { href: "/use-cases", icon: LayoutGrid, title: "Use Cases", blurb: "Ways teams work by voice" },
+      { href: "/blog", icon: BookOpen, title: "Blog", blurb: "Guides and product updates" },
+      { href: "/faq", icon: CircleHelp, title: "FAQ", blurb: "Accents, translation and privacy" },
+    ],
+  },
+];
+
+const NAV_LINKS = [{ href: "/pricing", label: "Pricing" }];
+
+const NAV_PILL =
+  "inline-flex h-9 items-center gap-1.5 rounded-lg border-2 border-white bg-gradient-to-b from-white to-white/25 px-3.5 " +
+  "font-display text-[14px] font-medium text-ink shadow-[0_2px_4px_rgba(51,48,42,0.05)] " +
+  "transition-all duration-300 ease-out hover:to-white/60 hover:shadow-[0_4px_10px_-2px_rgba(51,48,42,0.10)] active:shadow-none " +
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 xl:h-10 xl:px-5 xl:text-[15px]";
+
+const NAV_PILL_OPEN = "to-white shadow-[0_4px_10px_-2px_rgba(51,48,42,0.12)]";
+
+const NAV_PILL_SOLID =
+  "inline-flex h-9 items-center justify-center rounded-lg border-2 border-primary-500 bg-primary-500 px-4 font-display text-[14px] font-semibold text-white " +
+  "shadow-[0_2px_4px_rgba(15,106,158,0.18)] transition-all duration-300 ease-out hover:border-primary-600 hover:bg-primary-600 " +
+  "hover:shadow-[0_6px_14px_-4px_rgba(15,106,158,0.4)] active:shadow-none " +
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40 focus-visible:ring-offset-2 xl:h-10 xl:px-6 xl:text-[15px]";
+
+function isActive(pathname: string, href: string) {
+  return href === "/" ? pathname === "/" : pathname.startsWith(href);
+}
+
+function SiteNav({ pathname }: { pathname: string }) {
+  const [open, setOpen] = useState<NavMenu["id"] | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout>>();
+  const navRef = useRef<HTMLElement>(null);
+
+  const hold = useCallback(() => clearTimeout(closeTimer.current), []);
+  const scheduleClose = useCallback(() => {
+    clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpen(null), 120);
+  }, []);
+
+  useEffect(() => () => clearTimeout(closeTimer.current), []);
+  useEffect(() => setOpen(null), [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(null);
+    };
+    const onPointer = (event: PointerEvent) => {
+      if (!navRef.current?.contains(event.target as Node)) setOpen(null);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
+  }, [open]);
+
+  return (
+    <nav ref={navRef} aria-label="Primary navigation" className="relative hidden items-center gap-2 lg:flex" onMouseLeave={scheduleClose}>
+      {NAV.map((menu) => {
+        const isOpen = open === menu.id;
+        return (
+          <div key={menu.id} className="relative" onMouseEnter={() => { hold(); setOpen(menu.id); }}>
+            <button
+              type="button"
+              aria-expanded={isOpen}
+              aria-haspopup="true"
+              aria-controls={`${menu.id}-menu`}
+              onClick={() => setOpen(isOpen ? null : menu.id)}
+              onFocus={() => { hold(); setOpen(menu.id); }}
+              className={`${NAV_PILL} ${isOpen ? NAV_PILL_OPEN : ""}`}
+            >
+              {menu.label}
+              <ChevronDown aria-hidden="true" className={`h-3.5 w-3.5 text-ink-faint transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+            </button>
+
+            {isOpen && (
+              // Padding, not margin, for the gap: the pointer never crosses dead space.
+              <div id={`${menu.id}-menu`} onMouseEnter={hold} className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2">
+                <div className="w-[19rem] rounded-2xl bg-raised p-2 shadow-[0_1px_2px_rgba(51,48,42,0.04),0_16px_40px_-16px_rgba(51,48,42,0.22)] ring-1 ring-line">
+                  {menu.items.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      aria-current={isActive(pathname, item.href) ? "page" : undefined}
+                      onClick={() => setOpen(null)}
+                      className={`flex items-start gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-canvas ${isActive(pathname, item.href) ? "bg-canvas" : ""}`}
+                    >
+                      <item.icon aria-hidden="true" className="mt-0.5 h-[18px] w-[18px] shrink-0 text-ink-faint" />
+                      <span className="min-w-0">
+                        <span className="block font-display text-[14px] font-semibold text-ink">{item.title}</span>
+                        <span className="mt-0.5 block font-display text-[12.5px] leading-snug text-ink-soft">{item.blurb}</span>
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      {NAV_LINKS.map((link) => (
+        <a key={link.href} href={link.href} onMouseEnter={scheduleClose} className={NAV_PILL}>
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  );
+}
 
 export function Header() {
   const pathname = usePathname();
-  const onDictation = pathname === "/";
-  const onNotetaker = pathname.startsWith("/notetaker");
-  const onMobile = pathname.startsWith("/mobile");
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [desktopMenu, setDesktopMenu] = useState<DesktopMenu>(null);
-  const shellRef = useRef<HTMLDivElement>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const firstMobileLinkRef = useRef<HTMLAnchorElement>(null);
 
-  useEffect(() => { setMobileOpen(false); setDesktopMenu(null); }, [pathname]);
-  useEffect(() => {
-    if (!mobileOpen && !desktopMenu) return;
-    if (mobileOpen) firstMobileLinkRef.current?.focus();
-    const close = (event: KeyboardEvent) => {
-      if (event.key === "Escape") { setMobileOpen(false); setDesktopMenu(null); }
-    };
-    const outside = (event: PointerEvent) => {
-      if (!shellRef.current?.contains(event.target as Node)) { setMobileOpen(false); setDesktopMenu(null); }
-    };
-    document.addEventListener("keydown", close);
-    document.addEventListener("pointerdown", outside);
-    return () => { document.removeEventListener("keydown", close); document.removeEventListener("pointerdown", outside); };
-  }, [mobileOpen, desktopMenu]);
+  useEffect(() => setMenuOpen(false), [pathname]);
 
-  const chevron = (open: boolean) => (
-    <svg aria-hidden="true" viewBox="0 0 20 20" className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 8 4 4 4-4" strokeLinecap="round" strokeLinejoin="round" /></svg>
-  );
-  const mobileLinkClass = (active = false) => `flex items-center justify-between rounded-[10px] px-3 py-2.5 text-sm font-semibold transition-colors ${active ? "bg-white text-[#292524] shadow-sm" : "text-[#605A57] hover:bg-white/70 hover:text-[#292524]"}`;
-  const menuIcon = (kind: string) => {
-    const paths: Record<string, string> = {
-      dictation: "M12 15a4 4 0 0 0 4-4V6a4 4 0 1 0-8 0v5a4 4 0 0 0 4 4Zm-7-4a7 7 0 0 0 14 0M12 18v3M9 21h6",
-      notetaker: "M6 3h9l3 3v15H6V3Zm8 0v4h4M9 11h6M9 15h6",
-      mobile: "M8 2h8v20H8V2Zm3 17h2",
-      features: "M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7L12 3Zm7 11 .8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8L19 14Z",
-      usecases: "M4 5h16v12H4V5Zm4 16h8M12 17v4",
-      blog: "M5 3h14v18H5V3Zm3 5h8M8 12h8M8 16h5",
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    firstMobileLinkRef.current?.focus();
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
     };
-    return <span className="flex h-9 w-9 shrink-0 items-center justify-center text-[#9A9089]"><svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8"><path d={paths[kind]} strokeLinecap="round" strokeLinejoin="round" /></svg></span>;
-  };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex h-[80px] items-center justify-center border-b border-[rgba(55,50,47,0.08)] bg-[#F7F5F3]/96 px-4 backdrop-blur-xl sm:h-[92px] sm:px-6">
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 border-t border-white/80" />
-      <div ref={shellRef} className="relative z-10 flex h-[60px] w-full max-w-[1120px] items-center justify-between gap-4 px-1 sm:px-2">
-        <a href="/" aria-label="Oravo home" className="flex shrink-0 items-center gap-1.5 rounded-[10px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1877F2]"><Logo /><span className="font-sans text-lg font-semibold text-[#2F3037]">oravo</span></a>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ease-out ${
+        scrolled || menuOpen ? "bg-canvas/90 shadow-[0_2px_4px_rgba(51,48,42,0.05)] backdrop-blur-md" : "bg-transparent"
+      }`}
+    >
+      <div className="mx-auto grid h-[4.25rem] w-full max-w-[76rem] grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 sm:h-[4.75rem] sm:px-8">
+        <a href="/" aria-label="Oravo home" className="flex w-fit shrink-0 items-center gap-2 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/30">
+          <Logo />
+          <span className="font-display text-[17px] font-bold tracking-[-0.02em] text-ink">oravo</span>
+        </a>
 
-        <nav aria-label="Primary navigation" className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-3 lg:flex">
-          <button type="button" aria-expanded={desktopMenu === "products"} aria-controls="product-destinations" onClick={() => setDesktopMenu((open) => open === "products" ? null : "products")} className={navButtonBase}>Products {chevron(desktopMenu === "products")}</button>
-          <button type="button" aria-expanded={desktopMenu === "resources"} aria-controls="resource-destinations" onClick={() => setDesktopMenu((open) => open === "resources" ? null : "resources")} className={navButtonBase}>Resources {chevron(desktopMenu === "resources")}</button>
-          <a href="/#pricing-section" className={navButtonBase}>Pricing</a>
-        </nav>
+        <SiteNav pathname={pathname} />
 
-        <div className="hidden shrink-0 items-center gap-3 lg:flex">
-          <a href="/how-to-use" className={`${actionBase} border-[#1877F2] bg-[#1877F2]`}>How to use</a>
-          <a href="/download" className={`${actionBase} border-[#F97316] bg-[#F97316]`}>Download</a>
+        <div className="hidden items-center justify-end gap-2 lg:flex">
+          <a href="/how-to-use" className={NAV_PILL}>How to use</a>
+          <a href="/download" className={NAV_PILL_SOLID}>Download</a>
         </div>
 
-        <button type="button" aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => { setMobileOpen((open) => !open); setDesktopMenu(null); }} className="flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-1 rounded-[10px] border border-white bg-[#ECE8E4] transition-colors hover:bg-[#E2DDD8] lg:hidden">
-          <span className={`h-0.5 w-4 bg-[#37322F] transition-transform ${mobileOpen ? "translate-y-1.5 rotate-45" : ""}`} /><span className={`h-0.5 w-4 bg-[#37322F] transition-opacity ${mobileOpen ? "opacity-0" : ""}`} /><span className={`h-0.5 w-4 bg-[#37322F] transition-transform ${mobileOpen ? "-translate-y-1.5 -rotate-45" : ""}`} />
+        <button
+          type="button"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
+          className="col-start-3 -mr-2 flex h-11 w-11 items-center justify-center justify-self-end rounded-lg text-ink active:bg-ink/5 lg:hidden"
+        >
+          {menuOpen ? <X aria-hidden="true" className="h-5 w-5" /> : <Menu aria-hidden="true" className="h-5 w-5" />}
         </button>
-
-        {desktopMenu === "products" && (
-          <div id="product-destinations" className="absolute left-1/2 top-[calc(100%+10px)] hidden w-[320px] -translate-x-[181px] rounded-[14px] border border-white bg-[#F7F5F3]/98 p-3 shadow-[0_2px_0_rgba(55,50,47,0.08),0_20px_45px_rgba(55,50,47,0.18),inset_0_0_0_1px_rgba(55,50,47,0.05)] backdrop-blur-xl lg:block">
-            {[
-              ["/", "Dictation", "Voice typing in every app", onDictation, "dictation"],
-              ["/notetaker", "Notetaker", "Meeting notes in seconds", onNotetaker, "notetaker"],
-              ["/mobile", "Mobile App", "Oravo while you are moving", onMobile, "mobile"],
-            ].map(([href, label, detail, active, icon]) => (
-              <a key={href as string} href={href as string} aria-current={active ? "page" : undefined} className={`flex w-full items-start gap-3 rounded-[10px] px-3 py-3 transition-colors ${active ? "bg-[#ECEAE8]" : "hover:bg-white/70"}`}>{menuIcon(icon as string)}<span><span className="block text-sm font-bold text-[#37322F]">{label as string}</span><span className="mt-0.5 block text-xs font-medium text-[#847971]">{detail as string}</span></span></a>
-            ))}
-          </div>
-        )}
-
-        {desktopMenu === "resources" && (
-          <div id="resource-destinations" className="absolute left-1/2 top-[calc(100%+10px)] hidden w-[230px] translate-x-[-12px] rounded-[14px] border border-white bg-[#F7F5F3]/98 p-3 shadow-[0_2px_0_rgba(55,50,47,0.08),0_20px_45px_rgba(55,50,47,0.18),inset_0_0_0_1px_rgba(55,50,47,0.05)] backdrop-blur-xl lg:block">
-            {[
-              ["/features", "Features", "Explore what Oravo can do", "features"],
-              ["/use-cases", "Use Cases", "Ways teams work by voice", "usecases"],
-              ["/blog", "Blog", "Guides and product updates", "blog"],
-            ].map(([href, label, detail, icon]) => (
-              <a key={href} href={href} className="flex items-start gap-3 rounded-[10px] px-3 py-3 transition-colors hover:bg-white/70">{menuIcon(icon)}<span><span className="block text-sm font-bold text-[#37322F]">{label}</span><span className="mt-0.5 block text-xs font-medium text-[#847971]">{detail}</span></span></a>
-            ))}
-          </div>
-        )}
-
-        {mobileOpen && (
-          <div id="mobile-navigation" role="menu" aria-label="Primary navigation" className="absolute right-0 top-[calc(100%+10px)] w-[260px] rounded-[14px] border border-white bg-[#F7F5F3]/98 p-3 shadow-[0_2px_0_rgba(55,50,47,0.08),0_20px_45px_rgba(55,50,47,0.18),inset_0_0_0_1px_rgba(55,50,47,0.05)] backdrop-blur-xl lg:hidden">
-            <p className="px-3 pb-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[#9A9089]">Products</p>
-            <a ref={firstMobileLinkRef} role="menuitem" href="/" aria-current={onDictation ? "page" : undefined} className={mobileLinkClass(onDictation)}>Dictation</a>
-            <a role="menuitem" href="/notetaker" aria-current={onNotetaker ? "page" : undefined} className={mobileLinkClass(onNotetaker)}>Notetaker</a>
-            <a role="menuitem" href="/mobile" aria-current={onMobile ? "page" : undefined} className={mobileLinkClass(onMobile)}>Mobile App</a>
-            <p className="mt-3 border-t border-[rgba(55,50,47,0.10)] px-3 pb-1 pt-3 text-[10px] font-bold uppercase tracking-[0.14em] text-[#9A9089]">Resources</p>
-            <a role="menuitem" href="/features" className={mobileLinkClass()}>Features</a>
-            <a role="menuitem" href="/use-cases" className={mobileLinkClass()}>Use Cases</a>
-            <a role="menuitem" href="/blog" className={mobileLinkClass()}>Blog</a>
-            <a role="menuitem" href="/#pricing-section" className={`${mobileLinkClass()} mt-1 border-t border-[rgba(55,50,47,0.10)]`}>Pricing</a>
-            <div className="mt-3 grid gap-2"><a role="menuitem" href="/how-to-use" className={`${actionBase} w-full border-[#1877F2] bg-[#1877F2]`}>How to use</a><a role="menuitem" href="/download" className={`${actionBase} w-full border-[#F97316] bg-[#F97316]`}>Download</a></div>
-          </div>
-        )}
       </div>
+
+      {menuOpen && (
+        <div id="mobile-navigation" className="border-t border-line bg-paper px-5 pb-5 pt-3 lg:hidden">
+          {NAV.map((menu, m) => (
+            <div key={menu.id} className="mb-3">
+              <p className="mb-1 font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-faint">{menu.label}</p>
+              {menu.items.map((item, i) => (
+                <a
+                  key={item.href}
+                  ref={m === 0 && i === 0 ? firstMobileLinkRef : undefined}
+                  href={item.href}
+                  aria-current={isActive(pathname, item.href) ? "page" : undefined}
+                  onClick={() => setMenuOpen(false)}
+                  className="flex min-h-[44px] items-center gap-2.5 font-display text-[15px] font-medium text-ink"
+                >
+                  <item.icon aria-hidden="true" className="h-[18px] w-[18px] text-ink-faint" />
+                  {item.title}
+                </a>
+              ))}
+            </div>
+          ))}
+
+          {NAV_LINKS.map((link) => (
+            <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="flex min-h-[44px] items-center font-display text-[15px] font-medium text-ink">
+              {link.label}
+            </a>
+          ))}
+
+          <div className="mt-2 flex flex-col gap-2">
+            <a href="/download" className={`${NAV_PILL_SOLID} !h-11 w-full`}>Download</a>
+            <a href="/how-to-use" className={`${NAV_PILL} !h-11 w-full justify-center !border-line`}>How to use</a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

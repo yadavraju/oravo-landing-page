@@ -1,0 +1,226 @@
+/*
+ * Reading typography for the legal documents (/privacy, /terms,
+ * /subprocessors). Plain CSS on the warm design tokens from app/globals.css,
+ * so the page files can keep their legal copy as bare <p>, <ul>, <li>,
+ * <strong> and <h3> without a class on every element.
+ */
+
+.prose {
+  color: var(--o-ink-soft);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.prose p {
+  margin: 0 0 1rem;
+  text-wrap: pretty;
+}
+
+.prose p:last-child,
+.prose ul:last-child {
+  margin-bottom: 0;
+}
+
+.prose strong {
+  color: var(--o-ink);
+  font-weight: 600;
+}
+
+.prose h3 {
+  margin: 1.75rem 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: 16.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--o-ink);
+}
+
+.prose h3:first-child {
+  margin-top: 0.25rem;
+}
+
+/* Lists: a short ink dash instead of a browser bullet, hanging in the
+   margin so wrapped lines align with the first. */
+.prose ul {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.prose li {
+  position: relative;
+  padding-left: 1.6rem;
+}
+
+.prose li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 0.82em;
+  width: 0.7rem;
+  height: 1.5px;
+  border-radius: 1px;
+  background: var(--o-ink-faint);
+}
+
+.prose a {
+  color: var(--o-primary);
+  font-weight: 500;
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  text-decoration: underline;
+}
+
+/* --- Tables (subprocessors) ---------------------------------------------- */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.table th {
+  padding: 0 1rem 0.85rem;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--o-ink-faint);
+  border-bottom: 1px solid var(--o-line);
+}
+
+.table td {
+  padding: 1rem;
+  vertical-align: top;
+  color: var(--o-ink-soft);
+  border-bottom: 1px solid var(--o-line);
+}
+
+.table th:first-child,
+.table td:first-child {
+  padding-left: 0;
+}
+
+.table th:last-child,
+.table td:last-child {
+  padding-right: 0;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.table tbody tr {
+  transition: background-color 0.2s ease-out;
+}
+
+.table tbody tr:hover {
+  background: var(--o-canvas);
+}
+
+.table td:first-child {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--o-ink);
+}
+
+.table a {
+  color: var(--o-primary);
+  font-weight: 500;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.table a:hover {
+  text-decoration: underline;
+}
+
+/* On phones each row becomes a small card: the cells stack and the column
+   name is shown beside each value (from data-label, so the visible table
+   text itself is unchanged). */
+@media (max-width: 639px) {
+  .table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+  }
+
+  .table tbody {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .table tbody tr {
+    border-radius: 0.75rem;
+    padding: 0.9rem 1rem;
+    background: var(--o-canvas);
+    box-shadow: 0 0 0 1px var(--o-line);
+  }
+
+  .table tbody tr:hover {
+    background: var(--o-canvas);
+  }
+
+  .table td,
+  .table td:first-child,
+  .table td:last-child {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0.75rem;
+    padding: 0.3rem 0;
+    border-bottom: 0;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    font-family: var(--font-display);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 2.2;
+    color: var(--o-ink-faint);
+  }
+
+  .table td:first-child {
+    font-size: 16px;
+  }
+}
+
+/* --- Sticky table of contents ------------------------------------------- */
+
+/* `position: sticky` needs every ancestor up to the viewport to be free of
+   scroll containers, but the marketing shell and Band use overflow: hidden
+   (which makes them one). On the legal pages only, swap that for
+   overflow: clip, which clips the same way without creating a scroll
+   container, so the contents column can stick. */
+:global(.grain):has(.page) {
+  overflow: clip;
+}
+
+.unclip {
+  overflow-x: clip !important;
+  overflow-y: visible !important;
+}
+
+.page {
+  display: contents;
+}

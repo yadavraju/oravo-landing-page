@@ -1,45 +1,43 @@
 "use client";
 
 import DownloadButtons from "./DownloadButtons";
+import { Doodle } from "./landing/Doodle";
+import { Parallax } from "./landing/Parallax";
+import { Reveal, RevealWords } from "./landing/Reveal";
 
+// The close is the hero again: same warm sand, same centred column, same
+// buttons, so a visitor who scrolls the whole page arrives back where they
+// started. Solid colour only; the shapes behind it move at their own speed.
 export default function CTASection() {
   return (
-    <div className="w-full relative overflow-hidden flex flex-col justify-center items-center gap-2">
-      {/* Content */}
-      <div className="self-stretch px-6 md:px-24 py-12 md:py-12 border-t border-b border-[rgba(55,50,47,0.12)] flex justify-center items-center gap-6 relative z-10">
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
-          <div className="w-full h-full relative">
-            {Array.from({ length: 300 }).map((_, i) => (
-              <div
-                key={i}
-                className="absolute h-4 w-full rotate-[-45deg] origin-top-left outline outline-[0.5px] outline-[rgba(3,7,18,0.08)] outline-offset-[-0.25px]"
-                style={{
-                  top: `${i * 16 - 120}px`,
-                  left: "-100%",
-                  width: "300%",
-                }}
-              ></div>
-            ))}
-          </div>
-        </div>
+    <section
+      aria-labelledby="cta-heading"
+      className="relative isolate w-full overflow-hidden rounded-3xl bg-sand px-6 py-16 text-center ring-1 ring-line sm:px-16 sm:py-20"
+    >
+      <Parallax speed={80} className="pointer-events-none absolute -left-20 -top-16" aria-hidden="true">
+        <div className="h-64 w-64 rounded-full bg-sand-deep" />
+      </Parallax>
+      <Parallax speed={-60} className="pointer-events-none absolute -bottom-24 -right-16" aria-hidden="true">
+        <div className="h-72 w-72 rotate-12 rounded-[48px] bg-clay" />
+      </Parallax>
 
-        <div className="w-full max-w-[586px] px-6 py-5 md:py-8 overflow-hidden rounded-lg flex flex-col justify-start items-center gap-6 relative z-20">
-          <div className="self-stretch flex flex-col justify-start items-start gap-3">
-            <div className="self-stretch rounded-[3px] flex flex-col justify-center items-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
-              <h2 className="w-full text-center text-[#37322F] text-[28px] sm:text-[36px] md:text-[52px] lg:text-[80px] font-stretch-semi-condensed font-medium leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-4 sm:px-6 md:px-0">
-                Stop typing. Start talking.
-              </h2>
-            </div>
-            <div className="self-stretch text-center text-[#605A57] text-base leading-7 font-sans font-medium">
-              5,000 words free. No credit card. Install in 30 seconds.
-            </div>
-          </div>
-          <div className="self-stretch text-center text-[#605A57] text-sm leading-6 font-sans font-medium">
-            Install the app — 5,000 words free, no credit card required.
-          </div>
-          <DownloadButtons />
-        </div>
+      <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center">
+        <Doodle name="mic" className="mb-4 w-32 sm:w-36" />
+        <Reveal>
+          <p className="eyebrow">Start in under a minute</p>
+        </Reveal>
+        <h2 id="cta-heading" className="display-2 mt-3 text-ink">
+          <RevealWords text="Stop typing. Start talking." />
+        </h2>
+        <Reveal delay={0.12}>
+          <p className="subtitle mx-auto mt-4 max-w-lg text-balance">
+            5,000 words free.&nbsp;· No credit card.&nbsp;· Install in 30 seconds.
+          </p>
+        </Reveal>
+        <Reveal delay={0.2} className="mt-9 w-full">
+          <DownloadButtons variant="glass" />
+        </Reveal>
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,6 +1,12 @@
-import { Header } from "@/components/header";
-import FooterSection from "@/components/footer-section";
 import type { Metadata } from "next";
+import { GraduationCap } from "lucide-react";
+import { AudienceHero } from "@/components/audience/AudienceHero";
+import { AudienceCta, Statement } from "@/components/audience/AudienceSections";
+import { ScenarioTimeline } from "@/components/audience/ScenarioLayouts";
+import { BAND_PAD, GROUND, SHELL } from "@/components/audience/shell";
+import { StudentOfferCard } from "@/components/audience/StudentOffer";
+import { Band } from "@/components/landing/Band";
+import { MarketingShell } from "@/components/landing/MarketingShell";
 
 export const metadata: Metadata = {
   title: "Oravo for Students",
@@ -16,236 +22,102 @@ export const metadata: Metadata = {
     title: "Oravo for Students",
     description: "Voice typing for students and academics",
   },
+  alternates: {
+    canonical: "https://oravo.ai/students",
+  },
 };
+
+const STEPS = [
+  {
+    time: "Step 1",
+    title: "Sign Up",
+    description: "Click “Start Today for Free” and sign in to create an account.",
+  },
+  {
+    time: "Step 2",
+    title: "Download the App",
+    description: "Choose where you want to use Oravo: available now on macOS, Windows and Android, with iOS and Linux coming soon.",
+  },
+  {
+    time: "Step 3",
+    title: "Get Verified",
+    description: "Sign in to the app with your .edu email and we'll auto-activate your student offer for free, then $5/month (50% off). Cancel anytime.",
+  },
+];
+
+const BENEFITS = [
+  "3 months completely free to get started",
+  "50% off the regular price after trial ends",
+  "Full access to all Pro features",
+  "Cancel anytime, no questions asked",
+  "Easy verification with your .edu email address",
+];
 
 export default function StudentsPage() {
   return (
-    <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
-      <div className="relative flex flex-col justify-start items-center w-full">
-        {/* Main container with proper margins */}
-        <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
-          {/* Left vertical line */}
-          <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0"></div>
+    <MarketingShell>
+      <AudienceHero
+        eyebrow="Student offer"
+        icon={<GraduationCap />}
+        lead="Oravo Pro"
+        accent="for Students"
+        description="Get started for free. Auto renews at 50% off. Cancel anytime."
+        primary={{ label: "Start Today for Free", href: "/download" }}
+        secondary={{ label: "Why students use Oravo", href: "/for-students" }}
+        proof={["50% off Pro", "Verify with your .edu email", "Cancel anytime"]}
+        note="Mac, Windows and Android · iOS coming soon"
+        doodles={["tag", "notebook"]}
+        visual={<StudentOfferCard features={["Use all of our features on our Pro Plan", "Unlimited dictation for essays, notes and papers", "Works in Docs, Word, Canvas and Notion"]} />}
+      />
 
-          {/* Right vertical line */}
-          <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0"></div>
-
-          {/* Header */}
-          <Header />
-
-          {/* Main Content */}
-          <main className="flex-1 w-full mt-20 md:mt-24 lg:mt-28 relative z-10">
-            <div className="max-w-[800px] mx-auto px-6 md:px-12 py-12 md:py-16">
-              {/* Title Section */}
-              <div className="mb-12">
-                <h1 className="text-[#37322F] text-4xl md:text-5xl lg:text-6xl font-normal leading-tight font-serif mb-6">
-                  Oravo Pro for Students
-                </h1>
-                <p className="text-[#605A57] text-xl md:text-2xl leading-relaxed font-sans mb-6">
-                  Get started for free
-                </p>
-                <p className="text-[#847971] text-base font-medium font-sans">
-                  Auto renews at 50% off. Cancel anytime.
-                </p>
-              </div>
-
-              {/* Pricing Card */}
-              <div className="mb-16 bg-gradient-to-br from-[#1877F2] to-[#166FE5] rounded-3xl p-8 md:p-10 shadow-[0_8px_48px_rgba(24,119,242,0.3)]">
-                <div className="text-white/90 text-sm font-semibold uppercase tracking-wider mb-4">
-                  Flow Pro for Students
-                </div>
-                <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-white text-5xl md:text-6xl font-serif">
-                    $5
-                  </span>
-                  <span className="text-white/80 text-xl font-medium">/mo</span>
-                </div>
-                <p className="text-white/70 text-sm mb-2">billed annually</p>
-                <p className="text-white/90 text-base font-medium mb-8">
-                  50% off, just for students
-                </p>
-                <div className="space-y-3 mb-8">
-                  <p className="text-white text-base leading-relaxed">
-                    Use all of our features on our Pro Plan
-                  </p>
-                  <p className="text-white/90 text-base font-semibold">
-                    Start your free trail today
-                  </p>
-                </div>
-                <button className="w-full h-14 bg-white hover:bg-gray-50 text-[#1877F2] text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg">
-                  Start Today for Free
-                </button>
-              </div>
-
-              {/* How to Sign Up Section */}
-              <div className="mb-16">
-                <h2 className="text-[#49423D] text-3xl md:text-4xl font-normal font-serif mb-8">
-                  How to sign up
-                </h2>
-
-                <div className="space-y-8">
-                  {/* Step 1 */}
-                  <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#1877F2] to-[#166FE5] flex items-center justify-center">
-                      <span className="text-white text-xl font-semibold">
-                        1
-                      </span>
-                    </div>
-                    <div className="flex-1 pt-2">
-                      <h3 className="text-[#49423D] text-xl font-semibold font-sans mb-2">
-                        Sign Up
-                      </h3>
-                      <p className="text-[#605A57] text-base leading-7 font-sans">
-                        Click "Start Today for Free" and sign in to create an
-                        account.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Step 2 */}
-                  <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#1877F2] to-[#166FE5] flex items-center justify-center">
-                      <span className="text-white text-xl font-semibold">
-                        2
-                      </span>
-                    </div>
-                    <div className="flex-1 pt-2">
-                      <h3 className="text-[#49423D] text-xl font-semibold font-sans mb-2">
-                        Download the App
-                      </h3>
-                      <p className="text-[#605A57] text-base leading-7 font-sans">
-                        Choose where you want to Flow: now available on MacOS,
-                        Windows, Linux, Android and iOS.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Step 3 */}
-                  <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#1877F2] to-[#166FE5] flex items-center justify-center">
-                      <span className="text-white text-xl font-semibold">
-                        3
-                      </span>
-                    </div>
-                    <div className="flex-1 pt-2">
-                      <h3 className="text-[#49423D] text-xl font-semibold font-sans mb-2">
-                        Get Verified
-                      </h3>
-                      <p className="text-[#605A57] text-base leading-7 font-sans">
-                        Sign in to the app with your .edu email—we'll
-                        auto-activate your student offer for free, then $5/month
-                        (50% off). Cancel anytime.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Additional Info */}
-              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-[rgba(55,50,47,0.12)]">
-                <h3 className="text-[#49423D] text-xl font-semibold font-sans mb-4">
-                  Student Benefits
-                </h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <svg
-                      className="w-6 h-6 text-[#6366F1] flex-shrink-0 mt-0.5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span className="text-[#605A57] text-base leading-7 font-sans">
-                      3 months completely free to get started
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <svg
-                      className="w-6 h-6 text-[#6366F1] flex-shrink-0 mt-0.5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span className="text-[#605A57] text-base leading-7 font-sans">
-                      50% off the regular price after trial ends
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <svg
-                      className="w-6 h-6 text-[#6366F1] flex-shrink-0 mt-0.5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span className="text-[#605A57] text-base leading-7 font-sans">
-                      Full access to all Pro features
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <svg
-                      className="w-6 h-6 text-[#6366F1] flex-shrink-0 mt-0.5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span className="text-[#605A57] text-base leading-7 font-sans">
-                      Cancel anytime, no questions asked
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <svg
-                      className="w-6 h-6 text-[#6366F1] flex-shrink-0 mt-0.5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span className="text-[#605A57] text-base leading-7 font-sans">
-                      Easy verification with your .edu email address
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </main>
-
-          {/* Footer */}
-          <FooterSection />
+      <Band color={GROUND.paper} from={GROUND.sand} blend={200} className={BAND_PAD}>
+        <div className={SHELL}>
+          <ScenarioTimeline
+            intro={{
+              doodle: "hotkey",
+              eyebrow: "Three steps",
+              title: "How to sign up",
+              lede: "Takes about two minutes. Have your .edu email ready.",
+            }}
+            items={STEPS}
+          />
         </div>
-      </div>
-    </div>
+      </Band>
+
+      <Band color={GROUND.clay} from={GROUND.paper} blend={200} className={BAND_PAD}>
+        <div className={SHELL}>
+          <Statement
+            tone="light"
+            doodle="sparkle"
+            eyebrow="Student Benefits"
+            title="Everything in Pro, at half the price."
+            body={
+              <>
+                Dictate essays, lecture notes and discussion posts at speaking speed, in 60+ languages.{" "}
+                <a href="/for-students" className="font-semibold text-primary-500 underline-offset-4 hover:underline">
+                  See how students use Oravo
+                </a>
+              </>
+            }
+            pointsLabel="Student Benefits"
+            points={BENEFITS}
+          />
+        </div>
+      </Band>
+
+      <Band color={GROUND.blush} from={GROUND.clay} className="pt-16 pb-20 sm:pt-20">
+        <div className={SHELL}>
+          <AudienceCta
+            doodle="notebook"
+            eyebrow="Student offer"
+            title="Start Today for Free"
+            description="Questions about verification? Email hi@oravo.ai with your .edu address and we'll help."
+            primary={{ label: "Start Today for Free", href: "/download" }}
+            secondary={{ label: "Compare plans", href: "/pricing" }}
+            bullets={["50% off Pro", "Cancel anytime", ".edu verification"]}
+          />
+        </div>
+      </Band>
+    </MarketingShell>
   );
 }

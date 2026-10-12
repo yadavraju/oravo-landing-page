@@ -37,14 +37,14 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  /* Updated font variables with explicit fallbacks for deployment */
-  --font-inter: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-instrument-serif: "Instrument Serif", ui-serif, serif;
+  /* Font variables (--font-inter, --font-plus-jakarta, --font-hedvig-serif)
+     are injected on <html> by next/font in app/layout.tsx. */
 }
 
 @theme inline {
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-instrument-serif);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: var(--font-plus-jakarta), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-hedvig-serif), Georgia, "Times New Roman", ui-serif, serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -106,17 +106,9 @@
   font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* Legacy class name kept so older pages pick up the new headline face. */
 .font-instrument-serif {
-  font-family: var(--font-instrument-serif);
-  font-display: swap;
-}
-
-/* Added explicit font loading optimization */
-@supports (font-display: swap) {
-  @font-face {
-    font-family: "Instrument Serif";
-    font-display: swap;
-  }
+  font-family: var(--font-hedvig-serif), Georgia, "Times New Roman", serif;
 }
 
 .mix-blend-multiply {
@@ -212,4 +204,339 @@
 .oravo-ready-pulse { animation: oravo-ready-pulse 2.4s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) {
   .oravo-receipt-fill, .oravo-story-reveal, .oravo-ready-pulse { animation: none !important; opacity: 1; transform: none; }
+}
+
+/* ==========================================================================
+   Oravo warm design system (shared vocabulary with video-shala)
+   See docs/design-guide.md for the rules behind these tokens.
+   ========================================================================== */
+
+:root {
+  /* Video-shala's warm paper palette. */
+  --o-paper: #fbf7f0;
+  --o-canvas: #f4eee5;
+  --o-raised: #fffcf6;
+  --o-line: #e6ddd0;
+  --o-ink: #33302a;
+  --o-ink-soft: #6b655b;
+  --o-ink-faint: #9c958a;
+  --o-blush: #fbf2ee;
+
+  /* Primary action colour, matching the desktop app's buttons: a deep sky
+     blue that holds its own against the warm grounds. */
+  --o-primary: #0f6a9e;
+  --o-primary-hover: #0c5a87;
+  --o-primary-soft: #e3f0f8;
+
+  /* Oravo's single accent: a burnt orange, used once per viewport. */
+  --o-accent: #c4572f;
+  --o-accent-soft: #f6dccd;
+
+  /* Warm solid bands. Neighbouring bands blend at their edges
+     (components/landing/Band.tsx); nothing else on the page is a gradient. */
+  --o-band-sand: #f3e4d2;
+  --o-band-sand-deep: #ead4bd;
+  --o-band-clay: #f0dcca;
+  --o-band-espresso: #2a211b;
+  /* A whisper of the sky-blue primary (about 10%) over warm paper. */
+  --o-band-mist: #e3ebee;
+  /* The footer's ground: a rosy clay, warmer than sand, so the page ends on
+     the warmest colour on the site (video-shala ends on blush). */
+  --o-band-rose: #f2dccf;
+  --o-band-rose-deep: #e9c9b8;
+
+  /* Secondary: a very light sky blue for selected chips, segmented keys,
+     pills and quiet buttons. Nothing on the site is filled black. */
+  --o-cloud: #e4eef6;
+  --o-cloud-hover: #d8e7f2;
+  --o-cloud-line: #c5dbeb;
+  --o-cloud-ink: #0d5480;
+
+  --o-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --color-paper: var(--o-paper);
+  --color-canvas: var(--o-canvas);
+  --color-raised: var(--o-raised);
+  --color-line: var(--o-line);
+  --color-ink: var(--o-ink);
+  --color-ink-soft: var(--o-ink-soft);
+  --color-ink-faint: var(--o-ink-faint);
+  --color-blush: var(--o-blush);
+  --color-primary-500: var(--o-primary);
+  --color-primary-600: var(--o-primary-hover);
+  --color-primary-soft: var(--o-primary-soft);
+  --color-brand: var(--o-accent);
+  --color-brand-soft: var(--o-accent-soft);
+  --color-sand: var(--o-band-sand);
+  --color-sand-deep: var(--o-band-sand-deep);
+  --color-clay: var(--o-band-clay);
+  --color-espresso: var(--o-band-espresso);
+  --color-mist: var(--o-band-mist);
+  --color-rose: var(--o-band-rose);
+  --color-rose-deep: var(--o-band-rose-deep);
+  --color-cloud: var(--o-cloud);
+  --color-cloud-hover: var(--o-cloud-hover);
+  --color-cloud-line: var(--o-cloud-line);
+  --color-cloud-ink: var(--o-cloud-ink);
+  --ease-entrance: var(--o-ease);
+}
+
+/* --- Typography (same scale as video-shala) ----------------------------- */
+
+.display-1 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 4.6vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.022em;
+}
+
+.display-2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.875rem, 3.4vw, 2.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.display-3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.25rem, 1.9vw, 1.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.subtitle {
+  font-family: var(--font-display);
+  font-size: 15.5px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  color: var(--o-ink-soft);
+  text-wrap: pretty;
+}
+@media (min-width: 640px) {
+  .subtitle { font-size: 16.5px; }
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--o-ink-faint);
+}
+
+/* The one emphasised phrase per screen: solid accent, never a gradient. */
+.text-accent { color: var(--o-accent); }
+
+/* --- Surfaces ----------------------------------------------------------- */
+
+/* A card: lighter than its ground, separated by a hairline ring rather than a
+   border or a heavy shadow. Slightly translucent so it frosts whatever sits
+   behind it. */
+.surface {
+  border-radius: 0.75rem;
+  background: rgba(255, 252, 246, 0.82);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 0 0 1px var(--o-line), 0 1px 2px rgba(51, 48, 42, 0.04);
+}
+.surface-solid {
+  border-radius: 0.75rem;
+  background: var(--o-raised);
+  box-shadow: 0 0 0 1px var(--o-line), 0 1px 2px rgba(51, 48, 42, 0.04);
+}
+.surface-interactive {
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+.surface-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px rgba(51, 48, 42, 0.25), 0 6px 16px -6px rgba(51, 48, 42, 0.12);
+}
+
+/* A chip: the header's key shape at label size. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid #fffcf6;
+  background: linear-gradient(to bottom, #fffcf6, rgba(255, 252, 246, 0.3));
+  box-shadow: 0 2px 4px rgba(51, 48, 42, 0.05);
+}
+
+/* Dotted frame: a dotted hairline with "+" registration marks at the corners,
+   like a crop mark on a print proof. Used to frame interactive stages so they
+   read as a workspace rather than as another card. */
+.frame-dotted {
+  position: relative;
+  border: 1.5px dashed rgba(51, 48, 42, 0.18);
+  border-radius: 1.25rem;
+}
+.frame-dotted::before,
+.frame-dotted::after {
+  content: "+";
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 14px;
+  line-height: 1;
+  color: rgba(51, 48, 42, 0.35);
+  pointer-events: none;
+}
+.frame-dotted::before { top: -9px; left: -5px; }
+.frame-dotted::after { bottom: -9px; right: -5px; }
+
+/* A sheet of note paper: warm white with faint ruled lines. */
+.paper-ruled {
+  background-color: #fffdf8;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 27px, rgba(51, 48, 42, 0.06) 27px 28px);
+}
+
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- Buttons: rectangular (8px), never capsules ------------------------- */
+
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  height: 3rem;
+  padding: 0 1.75rem;
+  border-radius: 0.5rem;
+  border-width: 2px;
+  border-style: solid;
+  font-family: var(--font-display);
+  font-size: 15px;
+  white-space: nowrap;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s ease-out,
+    border-color 0.3s ease-out;
+}
+.btn-primary {
+  border-color: var(--o-primary);
+  background: var(--o-primary);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(15, 106, 158, 0.18);
+}
+.btn-primary:hover {
+  border-color: var(--o-primary-hover);
+  background: var(--o-primary-hover);
+  box-shadow: 0 6px 14px -4px rgba(15, 106, 158, 0.4);
+  transform: translateY(-1px);
+}
+/* The secondary is a glass key: white at the top falling to quarter-white,
+   so the band colour shows through its base. */
+.btn-secondary {
+  border-color: #fffcf6;
+  background: linear-gradient(to bottom, #fffcf6, rgba(255, 252, 246, 0.3));
+  color: var(--o-ink);
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(51, 48, 42, 0.05);
+}
+.btn-secondary:hover {
+  background: linear-gradient(to bottom, #fffcf6, rgba(255, 252, 246, 0.65));
+  box-shadow: 0 4px 10px -2px rgba(51, 48, 42, 0.1);
+  transform: translateY(-1px);
+}
+/* A quiet warm-grey action for in-section CTAs that should not shout. */
+.btn-neutral {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  height: 3rem;
+  padding: 0 1.5rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid #d9cebf;
+  background: #ebe3d8;
+  color: var(--o-ink);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform 0.3s ease-out, background-color 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+.btn-neutral:hover {
+  background: #e2d8cb;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px -8px rgba(51, 48, 42, 0.3);
+}
+.btn-neutral:focus-visible { outline: 2px solid rgba(51, 48, 42, 0.3); outline-offset: 2px; }
+
+/* Secondary button: the light sky-blue key. */
+.btn-soft {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  height: 3rem;
+  padding: 0 1.5rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid var(--o-cloud-line);
+  background: var(--o-cloud);
+  color: var(--o-cloud-ink);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform 0.3s ease-out, background-color 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+.btn-soft:hover {
+  background: var(--o-cloud-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px -8px rgba(13, 84, 128, 0.35);
+}
+.btn-soft:focus-visible { outline: 2px solid var(--o-cloud-line); outline-offset: 2px; }
+
+/* The selected state of a chip, tab or segmented key. */
+.key-on {
+  background: var(--o-cloud);
+  color: var(--o-cloud-ink);
+  box-shadow: inset 0 0 0 1px var(--o-cloud-line);
+}
+
+.btn-primary:active,
+.btn-secondary:active { transform: translateY(0); box-shadow: none; }
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible { outline: 2px solid rgba(15, 106, 158, 0.45); outline-offset: 2px; }
+.btn-primary:disabled,
+.btn-secondary:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+/* --- Motion helpers ----------------------------------------------------- */
+
+@keyframes o-caret {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.o-caret { animation: o-caret 1.05s steps(1) infinite; }
+
+@keyframes o-spin { to { transform: rotate(360deg); } }
+
+@keyframes o-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .o-caret { animation: none !important; }
+  [style*="o-marquee"] { animation-play-state: paused !important; }
+  .btn-primary,
+  .btn-secondary,
+  .surface-interactive { transition: none; }
 }

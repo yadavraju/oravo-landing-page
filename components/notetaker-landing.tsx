@@ -1,173 +1,379 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, Check, Square } from "lucide-react";
 import { useEffect } from "react";
-import { Header } from "@/components/header";
-import FooterSection from "@/components/footer-section";
+import { Band } from "@/components/landing/Band";
+import { Doodle } from "@/components/landing/Doodle";
+import { SectionIntro, SHELL } from "@/components/landing/PageBlocks";
+import { Parallax } from "@/components/landing/Parallax";
+import { Reveal, RevealWords } from "@/components/landing/Reveal";
+import { TimeChip } from "@/components/notetaker/bits";
+import { NT_VARIANT, trackCta } from "@/components/notetaker/data";
+import { EditShare } from "@/components/notetaker/EditShare";
+import { EvidenceExplorer } from "@/components/notetaker/EvidenceExplorer";
+import { FollowUp } from "@/components/notetaker/FollowUp";
+import { HeroNotepad } from "@/components/notetaker/HeroNotepad";
+import { NoteAnatomy } from "@/components/notetaker/NoteAnatomy";
+import { SpeedReceipt } from "@/components/notetaker/SpeedReceipt";
 import { trackEvent } from "@/lib/analytics";
 
-function trackCta(cta: string, destination: string) {
-  trackEvent("notetaker_interest_click", {
-    product: "oravo_notetaker",
-    variant: "premium-speed-v2",
-    cta,
-    destination,
-  });
+const SAND = "var(--o-band-sand)";
+const PAPER = "var(--o-paper)";
+const CANVAS = "var(--o-canvas)";
+const CLAY = "var(--o-band-clay)";
+const MIST = "var(--o-band-mist)";
+const BLUSH = "var(--o-blush)";
+
+const TARGET_NOTE = "Summary target: about 30 seconds after a one-hour transcript is ready.";
+
+/* ------------------------------------------------------------------------ */
+/* How it works: three beats, three materials.                               */
+/* ------------------------------------------------------------------------ */
+
+const BEATS = [
+  {
+    title: "Write what matters",
+    copy: "Jot a few words while you talk, in your own shorthand. Oravo keeps a searchable transcript with speaker labels and timestamps underneath.",
+  },
+  {
+    title: "End the meeting",
+    copy: "Processing is visible the whole time, never a blank wait. The target is about 30 seconds once a one-hour transcript is ready.",
+  },
+  {
+    title: "Check it, then send it",
+    copy: "Your notes come back as a summary, decisions, risks, open questions and action items, each linked to its moment in the transcript.",
+  },
+];
+
+function BeatArt({ i }: { i: number }) {
+  if (i === 0) {
+    return (
+      <div className="paper-ruled h-full -rotate-[1.5deg] rounded-xl px-4 py-3 shadow-[0_0_0_1px_var(--o-line),0_14px_28px_-20px_rgba(51,48,42,0.4)]">
+        <p className="font-mono text-[13px] leading-[28px] text-ink">
+          – pricing → Q3?
+          <br />– android pilot, 5 cohorts ok
+          <br />– maya: test build thu
+          <span className="o-caret ml-0.5 inline-block h-[1em] w-[2px] translate-y-[3px] bg-ink" />
+        </p>
+      </div>
+    );
+  }
+  if (i === 1) {
+    return (
+      <div className="flex h-full flex-col items-center justify-center gap-3 rounded-xl bg-canvas px-4 py-4 ring-1 ring-line">
+        <span className="inline-flex h-10 items-center gap-2 rounded-lg bg-cloud px-4 font-display text-[13.5px] font-semibold text-cloud-ink ring-1 ring-cloud-line">
+          <Square aria-hidden="true" className="h-3 w-3 fill-current" />
+          End meeting
+        </span>
+        <div className="w-full max-w-[200px]">
+          <div className="flex justify-between font-display text-[11px] text-ink-faint">
+            <span>Processing</span>
+            <span className="tabular-nums">target ~30s</span>
+          </div>
+          <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-raised ring-1 ring-line">
+            <motion.div
+              className="h-full rounded-full bg-[#4E6B47]"
+              initial={{ width: "8%" }}
+              whileInView={{ width: "78%" }}
+              viewport={{ once: true, amount: 0.8 }}
+              transition={{ duration: 2.4, ease: "easeInOut", delay: 0.4 }}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div className="h-full rotate-[1.2deg] rounded-xl bg-raised px-4 py-3 shadow-[0_0_0_1px_var(--o-line),0_14px_28px_-20px_rgba(51,48,42,0.4)]">
+      <p className="eyebrow !text-[9.5px]">Decisions</p>
+      <p className="mt-1 flex items-start gap-2 text-[12.5px] leading-snug text-ink">
+        <span className="flex-1">Android pilot with all five cohorts</span>
+        <TimeChip at="08:12" />
+      </p>
+      <p className="eyebrow mt-2.5 !text-[9.5px]">Action items</p>
+      <p className="mt-1 flex items-start gap-2 text-[12.5px] leading-snug text-ink">
+        <span className="flex-1">
+          <span className="font-semibold">Maya</span> · test build, Thu
+        </span>
+        <TimeChip at="34:05" />
+      </p>
+    </div>
+  );
 }
 
-const moments = [
-  ["Decision", "Launch the Android pilot with the five approved accent cohorts."],
-  ["Owner", "Maya will share the final test build by Thursday."],
-  ["Next step", "Raju reviews the benchmark report before any public claim ships."],
-];
+function ThreeBeats() {
+  const reduceMotion = useReducedMotion();
+  return (
+    <div className="relative">
+      <svg className="pointer-events-none absolute left-[16%] right-[16%] top-[30px] hidden h-6 md:block" viewBox="0 0 100 6" preserveAspectRatio="none" aria-hidden="true">
+        <motion.path
+          d="M0 3 C 20 0, 30 6, 50 3 S 80 0, 100 3"
+          fill="none"
+          stroke="rgba(51,48,42,0.28)"
+          strokeWidth="1.5"
+          strokeDasharray="2 3"
+          vectorEffect="non-scaling-stroke"
+          initial={reduceMotion ? false : { pathLength: 0 }}
+          whileInView={{ pathLength: 1 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 1.6, ease: "easeInOut" }}
+        />
+      </svg>
+      <ol className="relative grid gap-10 md:grid-cols-3 md:gap-8">
+        {BEATS.map((beat, i) => (
+          <Reveal as="li" key={beat.title} delay={0.1 + i * 0.14}>
+            <div className="flex h-full flex-col items-center text-center">
+              <span className="relative z-10 flex h-[60px] w-[60px] items-center justify-center rounded-full bg-paper font-serif text-[28px] text-brand ring-1 ring-line">
+                {i + 1}
+              </span>
+              <div className="mt-6 h-[150px] w-full max-w-[290px]">
+                <BeatArt i={i} />
+              </div>
+              <h3 className="display-3 mt-7 text-ink">{beat.title}</h3>
+              <p className="mt-2 max-w-[320px] text-[14.5px] leading-relaxed text-ink-soft">{beat.copy}</p>
+            </div>
+          </Reveal>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------------ */
 
 export default function NotetakerLanding() {
   useEffect(() => {
     trackEvent("notetaker_landing_view", {
       product: "oravo_notetaker",
-      variant: "premium-speed-v2",
+      variant: NT_VARIANT,
       landing_path: window.location.pathname,
       device: window.matchMedia("(max-width: 767px)").matches ? "mobile" : "desktop",
     });
   }, []);
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#F7F5F3] text-[#37322F]">
-      <Header />
-      <div className="mx-auto w-full max-w-[1060px] border-x border-[rgba(55,50,47,0.12)]">
-        <section className="relative px-5 pb-14 pt-28 text-center sm:px-10 sm:pb-20 sm:pt-36 md:px-16 md:pt-44">
-          <div className="pointer-events-none absolute inset-x-0 top-20 h-[420px] bg-[radial-gradient(circle_at_center,rgba(255,132,55,0.17),transparent_64%)]" />
-          <div className="relative mx-auto max-w-[860px]">
-            <div className="mx-auto mb-5 inline-flex items-center gap-2 rounded-full border border-[#E7DDD5] bg-white/90 px-4 py-2 text-xs font-semibold text-[#F97316] shadow-[0_0_0_4px_rgba(55,50,47,0.035)]">
-              <span className="h-2 w-2 rounded-full bg-[#FF7A2A]" />
-              Oravo Notetaker
-            </div>
-            <h1 className="text-balance font-serif text-[50px] leading-[0.96] tracking-[-0.03em] sm:text-[80px] md:text-[96px]">
-              The meeting ends.
-              <br />
-              The work is ready.
+    <>
+      {/* ───────── Hero: copy on the left, the notepad demo on the right ───────── */}
+      <Band color={SAND} className="pt-32 pb-20 sm:pt-40 sm:pb-28">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <Parallax speed={140} className="absolute -left-40 top-16 sm:-left-24">
+            <div className="h-[360px] w-[360px] rounded-full bg-sand-deep sm:h-[440px] sm:w-[440px]" />
+          </Parallax>
+          <Parallax speed={-90} className="absolute -right-32 top-[52%] sm:-right-16">
+            <div className="h-[280px] w-[280px] rotate-12 rounded-[56px] bg-clay sm:h-[340px] sm:w-[340px]" />
+          </Parallax>
+        </div>
+
+        <div className={`${SHELL} relative grid grid-cols-1 items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14`}>
+          <div>
+            <Parallax speed={24}>
+              <Doodle name="notebook" className="mb-5 w-28" />
+            </Parallax>
+            <Reveal>
+              <p className="eyebrow">Oravo Notetaker</p>
+            </Reveal>
+            <h1 className="display-1 mt-4 text-ink">
+              <span className="block">
+                <RevealWords text="The meeting ends." delay={0.05} />
+              </span>
+              <span className="block text-accent">
+                <RevealWords text="The work is ready." delay={0.25} />
+              </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-[700px] text-base font-medium leading-relaxed text-[#605A57] sm:mt-8 sm:text-xl">
-              Turn a one-hour meeting transcript into a clear summary, decisions, and action items in about 30 seconds.
-            </p>
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <a
-                href="#experience"
-                onClick={() => trackCta("see_how_it_works", "experience")}
-                className="rounded-full bg-gradient-to-b from-[#FF8C42] to-[#FF6B1A] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_28px_rgba(255,107,26,0.30)] transition-transform hover:scale-[1.02]"
-              >
-                See how it works
-              </a>
-              <a
-                href="#speed"
-                onClick={() => trackCta("see_speed", "speed")}
-                className="rounded-full border border-[#DDD7D2] bg-white px-7 py-3.5 text-sm font-semibold text-[#37322F] hover:bg-[#FFF9F4]"
-              >
-                Why it feels instant
-              </a>
-            </div>
+            <Reveal delay={0.3}>
+              <p className="subtitle mt-5 max-w-[540px]">
+                Jot rough notes while you talk. When the meeting ends, Oravo turns your notes and the transcript into a clear summary, decisions and action items, every point linked back to the moment it was said.
+              </p>
+            </Reveal>
+            <Reveal delay={0.4}>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a href="#experience" onClick={() => trackCta("see_how_it_works", "experience")} className="btn-primary">
+                  See how it works
+                  <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                </a>
+                <a href="#speed" onClick={() => trackCta("see_speed", "speed")} className="btn-secondary">
+                  Why it feels instant
+                </a>
+              </div>
+            </Reveal>
+            <Reveal delay={0.5}>
+              <p className="mt-4 max-w-[460px] font-display text-[12.5px] leading-relaxed text-ink-faint">{TARGET_NOTE} Public performance reporting will include test conditions and latency percentiles.</p>
+            </Reveal>
           </div>
 
-          <div className="relative mx-auto mt-12 max-w-[920px] [font-family:var(--font-plus-jakarta)] rounded-[28px] border border-[#DCD6D1] bg-[#292524] p-2 shadow-[0_28px_70px_rgba(55,50,47,0.20)] sm:mt-16 sm:p-3">
-            <div className="overflow-hidden rounded-[22px] bg-white text-left">
-              <div className="flex items-center justify-between border-b border-[#ECE8E4] px-4 py-3 sm:px-6 sm:py-4">
-                <div className="flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#FF7A2A]" />
-                  <p className="text-xs font-semibold sm:text-sm">Product launch review</p>
-                </div>
-                <span className="oravo-ready-pulse rounded-full bg-[#EFF8F0] px-3 py-1 text-[10px] font-semibold text-[#4F7A5A] sm:text-xs">Ready in 28s</span>
+          <Reveal delay={0.2} y={24}>
+            <HeroNotepad />
+          </Reveal>
+        </div>
+      </Band>
+
+      {/* ───────── How it works ───────── */}
+      <Band id="experience" color={PAPER} from={SAND} blend={200} className="scroll-mt-20 pt-24 pb-20 sm:pt-28 sm:pb-28">
+        <div className={SHELL}>
+          <SectionIntro
+            doodle="sparkle"
+            eyebrow="From talk to traction"
+            title="Your notes first. The transcript fills the gaps."
+            lede="Oravo starts from what you thought mattered, then adds what you missed from the conversation, so the result still sounds like your meeting."
+          />
+          <div className="mt-16">
+            <ThreeBeats />
+          </div>
+        </div>
+      </Band>
+
+      {/* ───────── Zoom to the moment ───────── */}
+      <Band id="evidence" color={CANVAS} from={PAPER} blend={200} className="scroll-mt-20 pt-24 pb-20 sm:pt-28 sm:pb-28">
+        <div className={SHELL}>
+          <div className="grid grid-cols-1 items-end gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <SectionIntro
+              align="left"
+              doodle="measure"
+              eyebrow="Zoom to the moment"
+              title="The details stay connected to the source."
+              lede="Pick any decision, risk or action item and jump to the sentence behind it. Search the transcript by word or by speaker."
+            />
+            <Reveal delay={0.15}>
+              <ul className="grid grid-cols-3 divide-x divide-line rounded-xl bg-raised/70 ring-1 ring-line">
+                {[
+                  ["Speakers", "labelled"],
+                  ["Timestamps", "on every line"],
+                  ["Search", "word or name"],
+                ].map(([k, v]) => (
+                  <li key={k} className="px-4 py-3.5">
+                    <p className="font-display text-[14px] font-semibold text-ink">{k}</p>
+                    <p className="mt-0.5 font-display text-[12px] text-ink-faint">{v}</p>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+          <Reveal delay={0.1} className="mt-12">
+            <div className="frame-dotted bg-paper/60 p-3 sm:p-6">
+              <EvidenceExplorer />
+            </div>
+          </Reveal>
+        </div>
+      </Band>
+
+      {/* ───────── Speed (light mist band) ───────── */}
+      <Band id="speed" color={MIST} from={CANVAS} blend={220} className="scroll-mt-20 pt-28 pb-24 sm:pt-36 sm:pb-32">
+        <Parallax speed={100} className="pointer-events-none absolute -left-24 top-1/3" aria-hidden="true">
+          <div className="h-72 w-72 rounded-full bg-[#d3e0e6]" />
+        </Parallax>
+        <Parallax speed={-70} className="pointer-events-none absolute -right-20 bottom-10" aria-hidden="true">
+          <div className="h-64 w-64 rotate-12 rounded-[48px] bg-[#dae5ea]" />
+        </Parallax>
+        <div className={`${SHELL} relative grid grid-cols-1 items-center gap-14 lg:grid-cols-[1fr_0.9fr]`}>
+          <div>
+            <SectionIntro
+              align="left"
+              doodle="speed"
+              eyebrow="No post-meeting limbo"
+              title="Your next step should not wait for your notes."
+              lede="Oravo is built around a fast handoff from conversation to action, so you can send the follow-up while the meeting is still fresh."
+            />
+            <Reveal delay={0.2}>
+              <div className="mt-8 max-w-xl border-l-2 border-brand/50 pl-4">
+                <p className="font-display text-[13.5px] leading-relaxed text-ink-soft">
+                  About 30 seconds is our <span className="font-semibold text-ink">target</span> for a one-hour transcript, timed from the moment the transcript is ready. It is not a guarantee yet: before we publish it as a promise, we will share p50 and p95 processing times and the conditions we tested under.
+                </p>
               </div>
-              <div className="grid min-h-[420px] md:grid-cols-[0.72fr_1.28fr]">
-                <aside className="border-b border-[#ECE8E4] bg-[#FAF8F6] p-4 md:border-b-0 md:border-r sm:p-6">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#9A9089]">Meeting</p>
-                  <p className="mt-3 text-sm font-semibold">Sep 19 · 60 min</p>
-                  <div className="mt-5 flex -space-x-2">
-                    {["RY", "MK", "AS", "+2"].map((person, index) => (
-                      <span key={person} className={`flex h-9 w-9 items-center justify-center rounded-full border-2 border-[#FAF8F6] text-[10px] font-semibold ${index === 0 ? "bg-[#292524] text-white" : "bg-[#FFE9DA] text-[#A74B14]"}`}>{person}</span>
-                    ))}
-                  </div>
-                  <div className="mt-7 hidden space-y-3 md:block">
-                    {["Overview", "Transcript", "Decisions", "Action items"].map((item, index) => (
-                      <div key={item} className={`rounded-xl px-3 py-2.5 text-xs font-medium ${index === 0 ? "bg-white text-[#37322F] shadow-sm" : "text-[#847971]"}`}>{item}</div>
-                    ))}
-                  </div>
-                </aside>
-                <div className="p-5 sm:p-8">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#F97316]">Summary</p>
-                      <h2 className="mt-2 text-3xl font-bold tracking-[-0.03em] sm:text-4xl">Ready to move.</h2>
-                    </div>
-                    <button className="hidden rounded-full border border-[#E4DEDA] px-4 py-2 text-xs font-semibold sm:block" type="button">Copy notes</button>
-                  </div>
-                  <p className="mt-4 max-w-[540px] text-sm font-medium leading-relaxed text-[#605A57]">
-                    The team aligned on an Android-first benchmark pilot, confirmed the first five cohorts, and kept every public performance claim behind measured results.
+            </Reveal>
+          </div>
+          <SpeedReceipt />
+        </div>
+      </Band>
+
+      {/* ───────── Anatomy of a note ───────── */}
+      <Band color={CLAY} from={MIST} blend={220} className="pt-28 pb-20 sm:pt-36 sm:pb-28">
+        <div className={SHELL}>
+          <SectionIntro
+            doodle="notebook"
+            eyebrow="Know what was decided"
+            title="Every note comes back in the same clear shape."
+            lede="Decisions, risks and open questions in one record the team can inspect, and action items with an owner, a due date and the evidence."
+          />
+          <div className="mt-14">
+            <NoteAnatomy />
+          </div>
+        </div>
+      </Band>
+
+      {/* ───────── Edit and share ───────── */}
+      <Band color={PAPER} from={CLAY} blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-28">
+        <div className={`${SHELL} grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16`}>
+          <div>
+            <SectionIntro
+              align="left"
+              doodle="scribble"
+              eyebrow="Leave with the next move"
+              title="Fix a word, change an owner, then send it on."
+              lede="Generated notes are a draft you control. Edit the summary and every action item, then copy the notes or export them for the work that follows."
+            />
+            <Reveal delay={0.2}>
+              <ul className="mt-8 grid gap-3">
+                {["Edit the summary and action items in place", "Owners and due dates you can change", "Copy or export when it reads right"].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-[15px] leading-relaxed text-ink">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-[#E9ECDD] text-[#4E6B47]">
+                      <Check aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={2.5} />
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+          <Reveal delay={0.1} y={24}>
+            <EditShare />
+          </Reveal>
+        </div>
+      </Band>
+
+      {/* ───────── Cross-sell: back to Dictation ───────── */}
+      <Band color={BLUSH} from={PAPER} className="pt-16 pb-20 sm:pt-20">
+        <div className={SHELL}>
+          <section className="relative isolate overflow-hidden rounded-3xl bg-sand px-6 py-14 ring-1 ring-line sm:px-12 sm:py-16 lg:px-14">
+            <Parallax speed={80} className="pointer-events-none absolute -left-20 -top-16" aria-hidden="true">
+              <div className="h-64 w-64 rounded-full bg-sand-deep" />
+            </Parallax>
+            <Parallax speed={-60} className="pointer-events-none absolute -bottom-24 -right-16" aria-hidden="true">
+              <div className="h-72 w-72 rotate-12 rounded-[48px] bg-clay" />
+            </Parallax>
+            <div className="relative z-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-12">
+              <div>
+                <Doodle name="plane" className="mb-4 w-28" />
+                <Reveal>
+                  <p className="eyebrow">One voice workflow</p>
+                </Reveal>
+                <h2 className="display-2 mt-3 text-ink">
+                  <RevealWords text="Capture the meeting. Write what comes next." />
+                </h2>
+                <Reveal delay={0.12}>
+                  <p className="subtitle mt-4 max-w-md">
+                    Notetaker turns the conversation into a usable record. Oravo Dictation helps you write the follow-up: say it once and it lands as polished text in the app you are using.
                   </p>
-                  <div className="mt-6 grid gap-3">
-                    {moments.map(([label, copy], index) => (
-                      <div key={label} style={{ animationDelay: `${220 + index * 140}ms` }} className="oravo-story-reveal flex gap-3 rounded-2xl border border-[#ECE7E2] bg-[#FFFDFC] p-3.5 sm:p-4">
-                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#FFF0E6] text-[10px] font-bold text-[#F97316]">{index + 1}</span>
-                        <div><p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#9A9089]">{label}</p><p className="mt-1 text-xs leading-relaxed text-[#49423D] sm:text-sm">{copy}</p></div>
-                      </div>
-                    ))}
+                </Reveal>
+                <Reveal delay={0.2}>
+                  <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                    <a href="/download" onClick={() => trackCta("cross_sell_dictation", "download")} className="btn-primary">
+                      Try Oravo Dictation
+                      <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                    </a>
+                    <a href="#experience" onClick={() => trackCta("final_see_experience", "experience")} className="btn-secondary">
+                      Explore the experience
+                    </a>
                   </div>
-                </div>
+                </Reveal>
               </div>
+              <Reveal delay={0.15} y={20}>
+                <FollowUp />
+              </Reveal>
             </div>
-          </div>
-          <p className="mx-auto mt-5 max-w-[700px] text-xs leading-relaxed text-[#978D86]">About 30 seconds is the target after the transcript is ready. Public performance reporting will include test conditions and latency percentiles.</p>
-        </section>
-
-        <section id="speed" className="border-t border-[rgba(55,50,47,0.12)] px-5 py-16 sm:px-10 sm:py-24 md:px-16">
-          <div className="grid items-center gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#F97316]">No post-meeting limbo</p>
-              <h2 className="mt-4 font-serif text-5xl leading-[1.02] sm:text-7xl">Your next step should not wait for your notes.</h2>
-              <p className="mt-5 text-base font-medium leading-relaxed text-[#605A57] sm:text-lg">Oravo is built around a fast handoff from conversation to action, so you can send the follow-up while the meeting is still fresh.</p>
-            </div>
-            <div className="rounded-[28px] bg-[#292524] p-7 text-white shadow-[0_20px_50px_rgba(55,50,47,0.18)] sm:p-10">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/45">One-hour transcript</p>
-              <div className="mt-6 flex items-end gap-3"><span className="font-serif text-8xl leading-none sm:text-9xl">~30</span><span className="pb-3 text-xl text-white/60">seconds</span></div>
-              <div className="mt-8 h-1.5 overflow-hidden rounded-full bg-white/10"><div className="oravo-receipt-fill h-full rounded-full bg-gradient-to-r from-[#FF9B59] to-[#FF6B1A]" /></div>
-              <div className="mt-5 grid grid-cols-3 gap-3 border-t border-white/10 pt-5 text-center">
-                <div className="oravo-story-reveal" style={{ animationDelay: "220ms" }}><p className="text-lg font-semibold">Summary</p><p className="mt-1 text-[10px] text-white/45">what happened</p></div>
-                <div className="oravo-story-reveal" style={{ animationDelay: "360ms" }}><p className="text-lg font-semibold">Decisions</p><p className="mt-1 text-[10px] text-white/45">what changed</p></div>
-                <div className="oravo-story-reveal" style={{ animationDelay: "500ms" }}><p className="text-lg font-semibold">Actions</p><p className="mt-1 text-[10px] text-white/45">what is next</p></div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="experience" className="border-t border-[rgba(55,50,47,0.12)] bg-[#FFF9F4] px-5 py-16 sm:px-10 sm:py-24 md:px-16">
-          <div className="mx-auto max-w-[720px] text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#F97316]">From talk to traction</p>
-            <h2 className="mt-4 font-serif text-5xl leading-[1.04] sm:text-7xl">The details stay connected to the source.</h2>
-            <p className="mt-5 text-base font-medium leading-relaxed text-[#605A57] sm:text-lg">Open the transcript, check the moment behind a decision, edit the summary, and carry action items into the work that follows.</p>
-          </div>
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {[
-              ["Find the exact moment", "Search speaker-by-speaker notes and jump from a summary point back to the transcript."],
-              ["Know what was decided", "Pull decisions, open questions, and risks into a clear record that the team can inspect."],
-              ["Leave with the next move", "Turn action items into a focused follow-up list with owners and editable details."],
-            ].map(([title, copy], index) => (
-              <article key={title} className="rounded-[22px] border border-[#E6DED8] bg-white p-6 shadow-[0_8px_24px_rgba(55,50,47,0.045)]">
-                <span className="text-xs font-bold text-[#F97316]">0{index + 1}</span>
-                <h3 className="mt-7 font-serif text-4xl leading-[1.05]">{title}</h3>
-                <p className="mt-3 text-sm font-medium leading-relaxed text-[#605A57]">{copy}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="border-t border-[rgba(55,50,47,0.12)] px-5 py-16 text-center sm:px-10 md:px-16">
-          <div className="mx-auto max-w-[700px] rounded-3xl bg-[#F97316] px-6 py-9 text-white shadow-[0_8px_48px_rgba(249,115,22,0.25)] sm:px-10 sm:py-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/75">One voice workflow</p>
-            <h2 className="mx-auto mt-3 max-w-[560px] font-serif text-3xl font-medium leading-tight sm:text-4xl">Capture the meeting. Write what comes next.</h2>
-            <p className="mx-auto mt-4 max-w-[560px] text-base font-medium leading-relaxed text-white/90">Notetaker turns the conversation into a usable record. Oravo dictation helps you write the follow-up.</p>
-            <a href="#experience" onClick={() => trackCta("final_see_experience", "experience")} className="mt-7 inline-flex rounded-[10px] bg-white px-6 py-3 text-sm font-semibold text-[#C84E0D] shadow-[0_7px_20px_rgba(126,43,0,0.18)] transition-transform hover:-translate-y-0.5">Explore the experience</a>
-          </div>
-        </section>
-        <FooterSection />
-      </div>
-    </main>
+          </section>
+        </div>
+      </Band>
+    </>
   );
 }

@@ -1,15 +1,34 @@
 import { client } from '@/sanity/lib/client'
 import { postQuery, postPathsQuery } from '@/sanity/lib/queries'
 import { urlForImage } from '@/sanity/lib/image'
-import { PortableText } from '@/components/blog/PortableText'
-import Image from 'next/image'
-import Link from 'next/link'
-import { format } from 'date-fns'
+import { ArticleLayout } from '@/components/blog/ArticleLayout'
+import type { BlogListPost } from '@/components/blog/BlogCard'
+import { toListPosts } from '@/components/blog/toListPost'
+import { MarketingShell } from '@/components/landing/MarketingShell'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { Header } from '@/components/header'
-import FooterSection from '@/components/footer-section'
+import { groq } from 'next-sanity'
 import { buildBreadcrumbJsonLd } from '@/lib/breadcrumbs'
+
+// Up to three other published posts, the ones sharing the most categories first.
+const relatedPostsQuery = groq`*[
+  _type == "post" &&
+  defined(slug.current) &&
+  !(_id in path("drafts.**")) &&
+  publishedAt <= now() &&
+  slug.current != $slug
+] {
+  _id,
+  title,
+  slug,
+  excerpt,
+  mainImage,
+  _createdAt,
+  publishedAt,
+  author->{ name, image },
+  categories[]->{ _id, title },
+  "shared": count((categories[]._ref)[@ in $categoryIds])
+} | order(shared desc, publishedAt desc) [0...3]`
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -71,8 +90,8 @@ export default async function BlogPost({ params }: Props) {
     : '/placeholder.jpg'
 
   const authorImageUrl = post.author?.image
-    ? urlForImage(post.author.image).width(100).height(100).url()
-    : '/placeholder-user.jpg'
+    ? urlForImage(post.author.image).width(120).height(120).url()
+    : null
 
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
     { name: "Home", url: "https://oravo.ai" },
@@ -106,130 +125,38 @@ export default async function BlogPost({ params }: Props) {
     },
   }
 
+  let related: BlogListPost[] = []
+  try {
+    related = toListPosts(
+      await client.fetch(relatedPostsQuery, {
+        slug,
+        categoryIds: (post.categories ?? []).map((category: { _id: string }) => category._id),
+      }),
+    )
+  } catch (e) {
+    console.error('Error fetching related posts:', e)
+  }
+
   return (
-    <article className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+    <MarketingShell>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <ArticleLayout
+        article={{
+          title: post.title,
+          excerpt: post.excerpt,
+          imageUrl: post.mainImage ? urlForImage(post.mainImage).width(1600).height(900).url() : null,
+          imageAlt: post.mainImage?.alt,
+          publishedAt: post.publishedAt,
+          authorName: post.author?.name || 'Oravo Team',
+          authorImageUrl: post.author?.image ? authorImageUrl : null,
+          authorBio: post.author?.bio,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          categories: (post.categories ?? []).filter((c: any) => c?._id && c?.title),
+          body: post.body,
+          related,
+        }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
-      <div className="relative flex flex-col justify-start items-center w-full">
-        {/* Main container with proper margins */}
-        <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
-          {/* Left vertical line */}
-          <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0"></div>
-
-          {/* Right vertical line */}
-          <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0"></div>
-
-          {/* Header */}
-          <Header />
-
-          <div className="self-stretch pt-[9px] overflow-hidden flex flex-col justify-start items-start gap-0 relative z-10 mt-20 md:mt-24 lg:mt-28">
-            {/* Header Section */}
-            <div className="w-full px-4 sm:px-6 lg:px-20 pt-12 pb-8 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center gap-6">
-              <div className="w-full max-w-[720px] flex flex-col justify-start items-start gap-4">
-                <h1 className="w-full text-[#37322F] text-[32px] sm:text-[40px] md:text-[48px] font-medium leading-tight font-serif">
-                  {post.title}
-                </h1>
-
-                <div className="flex items-center gap-3">
-                  {post.author?.image && (
-                    <Image
-                      src={authorImageUrl}
-                      alt={post.author?.name || 'Author'}
-                      width={40}
-                      height={40}
-                      className="rounded-full"
-                    />
-                  )}
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2 text-sm">
-                    <span className="text-[#37322F] font-medium font-sans">
-                      {post.author?.name || 'Oravo Team'}
-                    </span>
-                    <span className="hidden sm:inline text-[#605A57]">·</span>
-                    <span className="text-[#605A57] font-sans">
-                      {format(new Date(post.publishedAt), 'MMMM dd, yyyy')}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Featured Image */}
-            {post.mainImage && (
-              <div className="w-full px-4 sm:px-6 lg:px-20 py-8 border-b border-[rgba(55,50,47,0.12)]">
-                <div className="w-full max-w-[720px] mx-auto relative h-[300px] sm:h-[400px] rounded-lg overflow-hidden bg-[rgba(55,50,47,0.04)]">
-                  <Image
-                    src={imageUrl}
-                    alt={post.mainImage?.alt || post.title}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </div>
-            )}
-
-            {/* Content */}
-            <div className="w-full px-4 sm:px-6 lg:px-20 py-12">
-              <div className="w-full max-w-[720px] mx-auto">
-                <div className="prose-oravo">
-                  <PortableText value={post.body} />
-                </div>
-
-                {/* Categories */}
-                {post.categories && post.categories.length > 0 && (
-                  <div className="mt-12 pt-8 border-t border-[rgba(55,50,47,0.12)]">
-                    <p className="text-sm font-medium text-[#605A57] mb-3 font-sans">
-                      Categories:
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {post.categories.map((category: any) => (
-                        <span
-                          key={category._id}
-                          className="px-4 py-2 bg-white border border-[rgba(55,50,47,0.12)] rounded-full text-sm font-medium text-[#37322F] font-sans"
-                        >
-                          {category.title}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Author Bio */}
-                {post.author?.bio && (
-                  <div className="mt-12 p-6 bg-white border border-[rgba(55,50,47,0.12)] rounded-lg">
-                    <div className="flex items-start gap-4">
-                      <Image
-                        src={authorImageUrl}
-                        alt={post.author.name}
-                        width={64}
-                        height={64}
-                        className="rounded-full"
-                      />
-                      <div className="flex-1">
-                        <p className="text-lg font-semibold text-[#37322F] mb-2 font-sans">
-                          About {post.author.name}
-                        </p>
-                        <div className="text-[#605A57] text-sm leading-relaxed font-sans">
-                          <PortableText value={post.author.bio} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Footer */}
-            <FooterSection />
-          </div>
-        </div>
-      </div>
-    </article>
+    </MarketingShell>
   )
 }

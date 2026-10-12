@@ -1,11 +1,17 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif, Plus_Jakarta_Sans } from "next/font/google";
+import { Hedvig_Letters_Serif, Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
-import ModeToggleFAB from "@/components/mode-toggle-fab";
-import AgentModeView from "@/components/agent-mode-view";
 import "./globals.css";
 
+/*
+ * Type system, shared with the video-shala marketing site:
+ * - Inter carries running text and UI.
+ * - Plus Jakarta Sans carries subtitles, eyebrows and buttons (`font-display`).
+ * - Hedvig Letters Serif carries headlines (`font-serif`).
+ * All three are self-hosted through next/font, so there is no layout shift and
+ * no request to Google Fonts at runtime.
+ */
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -20,21 +26,25 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   preload: true,
 });
 
-const instrumentSerif = Instrument_Serif({
+// Next has no metrics for this face, so name a close fallback ourselves:
+// Georgia has a comparable x-height, which keeps the pre-swap reflow small.
+const hedvigSerif = Hedvig_Letters_Serif({
   subsets: ["latin"],
-  variable: "--font-instrument-serif",
-  weight: ["400"],
+  variable: "--font-hedvig-serif",
+  weight: "400",
   display: "swap",
   preload: true,
+  fallback: ["Georgia", "Times New Roman", "serif"],
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "AI Voice Typing & Dictation App | Oravo",
+    default: "Oravo — Dictation, voice notes, and bot-free meeting notes",
     template: "%s | Oravo",
   },
   description:
-    "Voice typing for Mac, Windows, and Android. Speak naturally in 60+ languages and turn your words into polished English.",
+    "Oravo brings voice dictation, voice notes, and bot-free meeting transcription together in one app for Mac, iPhone, iPad, and Apple Watch.",
   applicationName: "Oravo.ai",
   keywords: [
     // PRIMARY MOAT: Non-native English speaker keywords (UNIQUE POSITIONING)
@@ -211,7 +221,7 @@ export const metadata: Metadata = {
     "automatic formatting voice typing",
     "technical jargon transcription",
     "multi-language support dictation",
-    "100+ languages voice typing",
+    "60+ languages voice typing",
     "accent-friendly voice typing",
 
     // Long-tail intent keywords
@@ -303,24 +313,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://oravo.ai",
-    title: "Best Dictation App for Non-Native English Speakers | Oravo",
+    title: "Oravo — Dictation, voice notes, and bot-free meeting notes",
     description:
-      "Write in English like a native speaker — just by talking. Speak in your native language, type perfect English. Real-time AI translation for non-native speakers. 4x faster. Works in Google Docs, Gmail, Slack & 1000+ apps.",
+      "Oravo brings voice dictation, voice notes, and bot-free meeting transcription together in one app for Mac, iPhone, iPad, and Apple Watch.",
     siteName: "Oravo",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Oravo - AI Voice Typing & Dictation App",
+        alt: "Oravo — Dictation, voice notes, and bot-free meeting notes",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Dictation App for Non-Native English Speakers | Oravo",
+    title: "Oravo — Dictation, voice notes, and bot-free meeting notes",
     description:
-      "Write in English like a native speaker — just by talking. AI voice typing built for non-native English speakers. Real-time translation. 4x faster. Works everywhere. Try free.",
+      "Oravo brings voice dictation, voice notes, and bot-free meeting transcription together in one app for Mac, iPhone, iPad, and Apple Watch.",
     images: ["/og-image.png"],
     creator: "@oravoai",
     site: "@oravoai",
@@ -398,7 +408,7 @@ export default function RootLayout({
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "Customer Support",
-          email: "support@oravo.ai",
+          email: "hi@oravo.ai",
           availableLanguage: ["English", "Spanish", "French", "German"],
         },
       },
@@ -681,7 +691,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${plusJakartaSans.variable} ${instrumentSerif.variable} antialiased`}
+      className={`${inter.variable} ${plusJakartaSans.variable} ${hedvigSerif.variable} antialiased`}
     >
       <head>
         {/* Favicon - Explicit Links for Better Browser Support */}
@@ -691,28 +701,8 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
 
-        {/* DNS Prefetch & Preconnect for Performance */}
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-
-        {/* Font Loading with display=swap for better performance */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400&display=swap"
-        />
-
         {/* Theme Color for Mobile Browser */}
-        <meta name="theme-color" content="#3B4A5C" />
+        <meta name="theme-color" content="#F7F5F2" />
         <meta name="msapplication-TileColor" content="#3B4A5C" />
 
         {/* Apple Mobile Web App */}
@@ -722,6 +712,9 @@ export default function RootLayout({
           content="black-translucent"
         />
         <meta name="apple-mobile-web-app-title" content="Oravo.ai" />
+
+        {/* Machine-readable site summary for AI assistants */}
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM summary" />
 
         {/* Microsoft Application */}
         <meta name="application-name" content="Oravo.ai" />
@@ -797,8 +790,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
 
-        <AgentModeView>{children}</AgentModeView>
-        <ModeToggleFAB />
+        {children}
       </body>
     </html>
   );
