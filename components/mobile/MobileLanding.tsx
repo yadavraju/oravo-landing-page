@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
-import { AppWindow, ArrowLeftRight, ArrowUpRight, Check, Languages, Minus, Wand2 } from "lucide-react";
+import { AppWindow, ArrowLeftRight, ArrowUpRight, Languages, Wand2 } from "lucide-react";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { Band } from "@/components/landing/Band";
 import { Doodle } from "@/components/landing/Doodle";
@@ -12,6 +12,7 @@ import { Reveal, RevealWords } from "@/components/landing/Reveal";
 import { trackPlayStoreOutbound } from "@/lib/analytics";
 import { MOBILE_FAQS, PLAY_STORE_URL } from "./content";
 import { PhoneDemo, SCENES } from "./PhoneDemo";
+import { VersusSlider } from "./VersusSlider";
 
 const SAND = "var(--o-band-sand)";
 const PAPER = "var(--o-paper)";
@@ -140,7 +141,7 @@ const FEATURES: { title: string; description: string; icon: ReactNode; art: Reac
     art: <AnywhereArt />,
   },
   {
-    title: "100+ languages",
+    title: "60+ languages",
     description: "Speak naturally in the language you prefer. Oravo can turn it into English as you go.",
     icon: <Languages className="h-4 w-4" />,
     art: <LanguagesArt />,
@@ -221,98 +222,6 @@ function AnyApp() {
 /* ------------------------------------------------------------------------ */
 /* Built-in voice typing vs Oravo, on the same sentence.                     */
 /* ------------------------------------------------------------------------ */
-
-const SPOKEN = "hey sarah umm there are two no wait actually three things oravo does really well its fast its accurate and uh it fixes your mistakes";
-const CLEAN = "Hey Sarah, there are three things Oravo does really well: it's fast, accurate, and fixes your mistakes automatically.";
-const FILLERS = new Set(["umm", "uh", "two", "no", "wait", "actually"]);
-
-const ORAVO_POINTS = ["Polishes speech in real time", "Adapts as you rethink or rephrase", "Formats text automatically", "Removes filler words (um, like)", "Translates to English as you speak"];
-const BUILTIN_POINTS = ["Captures exactly what you say, mistakes included", "Gets messy when you change your mind", "Plain text with minimal formatting", "Keeps every filler word", "Usually no translation"];
-
-function VersusStage() {
-  const reduceMotion = useReducedMotion();
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { amount: 0.4, once: true });
-  const [chars, setChars] = useState(0);
-  useEffect(() => {
-    if (!inView) return;
-    if (reduceMotion) return setChars(CLEAN.length);
-    if (chars >= CLEAN.length) return;
-    const id = setTimeout(() => setChars((c) => c + 2), chars === 0 ? 900 : 24);
-    return () => clearTimeout(id);
-  }, [inView, chars, reduceMotion]);
-
-  return (
-    <div ref={ref} className="mx-auto max-w-5xl">
-      <Reveal>
-        <div className="mx-auto flex max-w-2xl items-center gap-4 rounded-xl bg-raised/80 px-4 py-3 ring-1 ring-line">
-          <span className="flex h-6 shrink-0 items-center gap-[2px]" aria-hidden="true">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <motion.span
-                key={i}
-                className="w-[2.5px] rounded-full bg-brand"
-                animate={reduceMotion ? { height: 6 } : { height: [4, 8 + ((i * 5) % 14), 5] }}
-                transition={{ duration: 0.7 + (i % 3) * 0.15, repeat: Infinity, ease: "easeInOut" }}
-              />
-            ))}
-          </span>
-          <p className="font-display text-[13px] italic leading-snug text-ink-soft">You say: “{SPOKEN}”</p>
-        </div>
-      </Reveal>
-
-      <div className="mt-8 grid gap-5 md:grid-cols-2">
-        <Reveal delay={0.1}>
-          <div className="flex h-full flex-col rounded-2xl bg-raised p-6 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)] sm:p-7">
-            <div className="flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand font-display text-[14px] font-bold text-raised">O</span>
-              <h3 className="display-3 text-ink">Oravo</h3>
-            </div>
-            <div className="mt-5 min-h-[96px] rounded-xl bg-canvas p-4 text-[14.5px] leading-relaxed text-ink ring-1 ring-line">
-              {CLEAN.slice(0, chars)}
-              {chars < CLEAN.length && <span className="o-caret ml-0.5 inline-block h-[1em] w-[2px] translate-y-[2px] bg-ink" />}
-            </div>
-            <ul className="mt-5 grid gap-2.5">
-              {ORAVO_POINTS.map((p) => (
-                <li key={p} className="flex items-start gap-2.5 text-[14px] text-ink">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-brand-soft text-brand">
-                    <Check aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={2.5} />
-                  </span>
-                  {p}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
-        <Reveal delay={0.2}>
-          <div className="flex h-full flex-col rounded-2xl bg-raised/60 p-6 ring-1 ring-line sm:p-7">
-            <div className="flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-canvas font-display text-[13px] font-bold text-ink-faint">Aa</span>
-              <h3 className="display-3 text-ink-soft">Built-in voice typing</h3>
-            </div>
-            <div className="mt-5 min-h-[96px] rounded-xl bg-canvas p-4 text-[14.5px] leading-relaxed text-ink-soft ring-1 ring-line">
-              {SPOKEN.split(" ").map((w, i) => (
-                <span key={i} className={FILLERS.has(w) ? "rounded-sm bg-brand-soft text-brand" : ""}>
-                  {w}
-                  {" "}
-                </span>
-              ))}
-            </div>
-            <ul className="mt-5 grid gap-2.5">
-              {BUILTIN_POINTS.map((p) => (
-                <li key={p} className="flex items-start gap-2.5 text-[14px] text-ink-soft">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-canvas text-ink-faint ring-1 ring-line">
-                    <Minus aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={2.5} />
-                  </span>
-                  {p}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
-      </div>
-    </div>
-  );
-}
 
 /* ------------------------------------------------------------------------ */
 
@@ -443,7 +352,7 @@ export default function MobileLanding({ variant }: { variant: Variant }) {
             lede="Oravo cleans up your text while you talk, so you can just speak it and send it."
           />
           <div className="mt-12">
-            <VersusStage />
+            <VersusSlider />
           </div>
         </div>
       </Band>

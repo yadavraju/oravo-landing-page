@@ -843,7 +843,7 @@ function makeConfig(seed: AppSeed): UseCasePageConfig {
         {
           question: "Does it support multiple languages?",
           answer:
-            "Yes—Oravo supports 100+ languages.",
+            "Yes—Oravo supports 60+ languages.",
         },
         {
           question: "Is it private?",
@@ -883,7 +883,7 @@ function makeConfig(seed: AppSeed): UseCasePageConfig {
         {
           title: "Multi-language support",
           description:
-            "Dictate in 100+ languages for global workflows.",
+            "Dictate in 60+ languages for global workflows.",
         },
         {
           title: "Privacy-first",
@@ -940,7 +940,7 @@ function makeConfig(seed: AppSeed): UseCasePageConfig {
         {
           question: "Does it support multiple languages?",
           answer:
-            "Yes—100+ languages supported.",
+            "Yes—60+ languages supported.",
         },
         {
           question: "Can I edit before submitting a form?",
@@ -1152,7 +1152,7 @@ function makeConfig(seed: AppSeed): UseCasePageConfig {
         {
           question: "Does it support multiple languages?",
           answer:
-            "Yes—100+ languages supported for global support teams.",
+            "Yes—60+ languages supported for global support teams.",
         },
         {
           question: "Does it work across other tools too?",

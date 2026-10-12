@@ -18,12 +18,12 @@ export const MOBILE_FAQS: FaqItem[] = [
   {
     question: "Which features are available on Android at launch?",
     answer:
-      "Android supports the core Oravo experience including: unlimited dictation, auto punctuation, filler word removal, self-corrections, numbered lists, and 100+ languages with real-time translation.",
+      "Android supports the core Oravo experience including: unlimited dictation, auto punctuation, filler word removal, self-corrections, numbered lists, and 60+ languages with real-time translation.",
   },
   {
     question: "What languages does Oravo support?",
     answer:
-      "Oravo supports 100+ languages including Spanish, Portuguese, French, Italian, Hindi, Chinese, Japanese, Korean, Russian, Arabic, and more. For best results, we recommend selecting your preferred language(s) in Settings.",
+      "Oravo supports 60+ languages including Spanish, Portuguese, French, Italian, Hindi, Chinese, Japanese, Korean, Russian, Arabic, and more. For best results, we recommend selecting your preferred language(s) in Settings.",
   },
   {
     question: "Is Oravo available on iPhone?",

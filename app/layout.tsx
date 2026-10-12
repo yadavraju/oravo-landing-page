@@ -221,7 +221,7 @@ export const metadata: Metadata = {
     "automatic formatting voice typing",
     "technical jargon transcription",
     "multi-language support dictation",
-    "100+ languages voice typing",
+    "60+ languages voice typing",
     "accent-friendly voice typing",
 
     // Long-tail intent keywords

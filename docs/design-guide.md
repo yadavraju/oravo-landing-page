@@ -31,8 +31,10 @@ edge where one band meets the next.
 | `canvas` | `#F7F5F2` | Set-in sections, insets inside cards |
 | `clay` | `#F0DCCA` | Warm feature band (translation) |
 | `mist` | `#E3EBEE` | A whisper of sky blue (~10%) over paper; the "cool" band (accent proof). Use instead of dark bands |
-| `espresso` | `#2A211B` | Text-dark accents only; avoid as a section or stage background |
-| `blush` | `#FBF2EE` | CTA and footer ground |
+| `espresso` | `#2A211B` | Legacy token. Do not use for any fill: no black or espresso sections, stages, buttons, chips or pills |
+| `blush` | `#FBF2EE` | Closing CTA ground |
+| `rose` / `rose-deep` | `#F2DCCF` / `#E9C9B8` | Footer ground and its wordmark; the warmest colour on the site, so every page ends on it |
+| `cloud` / `cloud-line` / `cloud-ink` | `#E4EEF6` / `#C5DBEB` / `#0D5480` | Secondary: a very light sky blue for selected chips and segmented keys, pills ("Typed by Oravo"), sent bubbles and quiet buttons. Replaces every black fill |
 | `ink` / `ink-soft` / `ink-faint` | `#33302A` / `#6B655B` / `#9C958A` | Text |
 | `line` | `#E7E2DA` | Hairlines and rings |
 | `primary-500` / `primary-600` | `#0F6A9E` / `#0C5A87` | Primary action (sky-blue, matches the desktop app). Buttons, active states, links |
@@ -66,6 +68,30 @@ These are rectangular, never capsules, and the same shapes as video-shala.
 - `.btn-primary`: solid sky-blue (`--o-primary`) with a 2px border in the same colour, 48px tall, 8px radius. It lifts 1px on hover.
 - `.btn-secondary`: a glass key with a 2px warm-white border and a fill that lets the band show through.
 - `.btn-neutral`: quiet warm grey, for CTAs inside or under a section (e.g. "Download Dictation") that should not compete with the page's primary action.
+- `.btn-soft`: the light sky-blue secondary key (`cloud`), for interactive controls inside demos such as "Hold to speak".
+- `.key-on`: the selected state of a chip, tab or segmented key (`cloud` fill, `cloud-ink` text, `cloud-line` ring). Nothing selected is ever filled black.
+
+## App windows
+
+Every desktop demo sits in `MacWindow` (`components/landing/MacWindow.tsx`),
+never a hand-rolled three-dot box. Pass `app` (or `macAppFor(name)`) and the
+window draws that app's own toolbar in the warm palette: `gmail` (Safari row
+and compose header), `outlook` (reply keys and search), `slack` (search bar
+and channel header), `notion` (breadcrumb, Share), `docs` / `word` (menu and
+formatting rows), `editor` (file tabs), `linear` (issue key and status),
+`chat` (model picker), `notes`, `browser` and `plain`. Use a different app on
+neighbouring demos so no two windows on a page look the same.
+
+## Footer
+
+`SiteFooter` (`components/landing/SiteFooter.tsx`) is the only footer. It is a
+full-bleed `rose` band with the brand line, two drawn product tickets
+(Dictation: a mic whose words land on a line; Notetaker: a notebook that fills
+itself in), four link columns, the Press, Speak, Done timeline (video-shala's
+Generate, Share, Grow), socials and the `oravo` wordmark. The wordmark is in
+the footer's own flow and sized from the viewport (`clamp(110px, 25vw,
+360px)`), so it is identical on every page. `MarketingShell` renders it; the
+homepage passes `from` so it blends out of the closing CTA's blush.
 
 The header follows video-shala's nav: a three-column grid with the menus on
 the true centre line, identical rectangular keys, menus that open on hover,
@@ -90,7 +116,7 @@ Loops pause off-screen. Everything settles to its finished state under
 
 ## Pages
 
-- `/`: homepage bands, top to bottom: hero (sand), why typing is the bottleneck + logos + trusted-by (paper), try both products (canvas: interactive Dictation and Notetaker), the real problem (paper), Press. Speak. Done. (clay), Slack accent demo (paper), translation showcase (sand), accent proof (espresso), speak once (paper), features (canvas), made for you (paper), testimonial deck (canvas), switch from Wispr Flow + ask an AI (clay), blog highlights (paper), CTA and footer (blush).
+- `/`: homepage bands, top to bottom: hero (sand), why typing is the bottleneck + logos + trusted-by (paper), try both products (canvas: interactive Dictation and Notetaker), the real problem (paper), Press. Speak. Done. (clay), Slack accent demo (paper), translation showcase (sand), accent proof (mist), speak once (paper), features (canvas), made for you (paper), testimonial deck (canvas), switch from Wispr Flow + ask an AI (clay), blog highlights (paper), CTA (blush), footer (rose).
 - `/pricing`: plans (video-shala layout: cycle switch, plan cards with a "Most popular" strip) and the FAQ beneath.
 - `/faq`: the full FAQ. Content lives in `lib/faq.ts`, shared with `/pricing` and their FAQPage JSON-LD.
 - `/llms.txt`: plain-text site summary for AI assistants (replaces the old human/agent toggle).
