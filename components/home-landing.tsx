@@ -54,7 +54,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
   const SHELL = "mx-auto w-full max-w-6xl px-5 sm:px-8";
 
   return (
-    <div className="grain relative w-full min-h-screen bg-paper text-ink overflow-x-hidden">
+    <div className="grain relative w-full min-h-screen bg-paper text-ink overflow-x-clip">
       <LandingAnalytics variant="warm-bands-v2" />
       <Header />
 

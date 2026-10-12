@@ -21,7 +21,7 @@ export function Band({
     background: from ? `linear-gradient(180deg, ${from} 0px, ${color} ${blend}px, ${color} 100%)` : color,
   };
   return (
-    <section className={`relative w-full overflow-hidden ${className}`} style={style} {...rest}>
+    <section className={`relative w-full overflow-clip ${className}`} style={style} {...rest}>
       {children}
     </section>
   );

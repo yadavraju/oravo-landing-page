@@ -6,7 +6,7 @@ import FooterSection from "../footer-section";
 // (/pricing, /faq), so every route shares the same ground and chrome.
 export function MarketingShell({ children }: { children: ReactNode }) {
   return (
-    <div className="grain relative min-h-screen bg-paper text-ink overflow-x-hidden">
+    <div className="grain relative min-h-screen bg-paper text-ink overflow-x-clip">
       <Header />
       <main>{children}</main>
       <div className="bg-blush">
