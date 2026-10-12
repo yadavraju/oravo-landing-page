@@ -7,21 +7,6 @@ import { Reveal, RevealWords } from "./landing/Reveal";
 import { AnimatePresence, motion } from "framer-motion";
 import { ContextScene, HotkeyScene, StyleScene } from "./landing/HowItWorksScenes";
 
-// Icons for feature cards
-const featureIcons = [
-  // Auto formatting
-  <svg key="format" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path d="M4 6h16M4 12h16M4 18h10" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>,
-  // Personalization
-  <svg key="person" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>,
-  // Context awareness
-  <svg key="context" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>,
-];
 
 export default function DocumentationSection() {
   const [activeCard, setActiveCard] = useState(0);
@@ -130,107 +115,79 @@ export default function DocumentationSection() {
         </Reveal>
       </div>
 
-      {/* Content Section - REDESIGNED */}
-      <div className="mx-auto w-full max-w-6xl px-5 pt-12 sm:px-8 sm:pt-14">
-        <div className="surface-solid overflow-hidden !rounded-2xl">
-          <div className="flex flex-col lg:flex-row">
-            {/* Left Column - Feature Cards */}
-            <div className="w-full lg:w-[360px] flex flex-col border-b lg:border-b-0 lg:border-r border-line">
-              {cards.map((card, index) => {
-                const isActive = index === activeCard;
-                const isLast = index === cards.length - 1;
-
-                return (
-                  <div
-                    key={index}
-                    onClick={() => handleCardClick(index)}
-                    className={`relative w-full transition-all duration-300 cursor-pointer ${
-                      !isLast ? "border-b border-line" : ""
-                    } ${isActive ? "bg-canvas" : "hover:bg-canvas/60"}`}
-                  >
-                    {/* Left progress indicator */}
-                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-transparent overflow-hidden">
-                      <div
-                        className={`w-full bg-primary-500 transition-all duration-100 ease-linear ${
-                          isActive ? "" : "opacity-0"
-                        }`}
-                        style={{ height: isActive ? `${progress}%` : "0%" }}
-                      />
-                    </div>
-
-                    <div className="p-5 pl-6 flex gap-4">
-                      {/* Icon */}
-                      <div className={`w-10 h-10 rounded-lg shrink-0 flex items-center justify-center transition-all duration-300 ${
-                        isActive
-                          ? "bg-primary-500 text-white shadow-[0_4px_10px_-2px_rgba(15,106,158,0.4)]"
-                          : "bg-canvas text-ink-soft ring-1 ring-line"
-                      }`}>
-                        {featureIcons[index]}
-                      </div>
-
-                      {/* Content */}
-                      <div className="flex flex-col gap-1.5">
-                        <div className={`font-display text-sm font-semibold leading-tight transition-colors ${
-                          isActive ? "text-ink" : "text-ink-soft"
-                        }`}>
-                          {card.title}
-                        </div>
-                        <div className={`text-[13px] font-normal leading-[20px] font-sans transition-colors ${
-                          isActive ? "text-ink-soft" : "text-ink-faint"
-                        }`}>
-                          {card.description}
-                        </div>
-                      </div>
-                    </div>
+      {/* Steps on the band, the scene on a dark stage beside them. */}
+      <div className="mx-auto mt-12 grid w-full max-w-6xl items-stretch gap-8 px-5 sm:mt-14 sm:px-8 lg:grid-cols-[minmax(0,330px)_minmax(0,1fr)] lg:gap-10">
+        <ol className="flex flex-col justify-center gap-2">
+          {cards.map((card, index) => {
+            const isActive = index === activeCard;
+            return (
+              <li key={index}>
+                <button
+                  type="button"
+                  onClick={() => handleCardClick(index)}
+                  aria-current={isActive ? "step" : undefined}
+                  className={`group relative w-full rounded-2xl px-5 py-4 text-left transition-colors duration-300 ${isActive ? "bg-raised/70 shadow-[0_0_0_1px_var(--o-line)]" : "hover:bg-raised/40"}`}
+                >
+                  <div className="flex items-baseline gap-4">
+                    <span className={`font-serif text-[34px] leading-none transition-colors duration-300 ${isActive ? "text-brand" : "text-ink-faint/60"}`}>
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className={`font-display text-[16px] font-semibold leading-snug transition-colors ${isActive ? "text-ink" : "text-ink-soft"}`}>
+                      {card.title.replace(/^\d\.\s*/, "")}
+                    </span>
                   </div>
-                );
-              })}
-            </div>
+                  <AnimatePresence initial={false}>
+                    {isActive && (
+                      <motion.p
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                        className="overflow-hidden pl-[54px] text-[14px] leading-relaxed text-ink-soft"
+                      >
+                        <span className="block pt-2">{card.description}</span>
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+                  {isActive && (
+                    <span className="absolute inset-x-5 bottom-0 h-[2px] overflow-hidden rounded-full bg-line">
+                      <span className="block h-full bg-brand transition-[width] duration-100 ease-linear" style={{ width: `${progress}%` }} />
+                    </span>
+                  )}
+                </button>
+              </li>
+            );
+          })}
+        </ol>
 
-            {/* Right column: the active scene on a warm dotted stage. */}
-            <div
-              className="relative flex-1 overflow-hidden bg-sand p-4 sm:p-6"
-              style={{
-                backgroundImage: "radial-gradient(rgba(51,48,42,0.10) 1px, transparent 1px)",
-                backgroundSize: "18px 18px",
-              }}
-            >
-              <div className="pointer-events-none absolute right-3 top-2 hidden w-20 opacity-70 xl:block" aria-hidden="true">
-                <Doodle name={["hotkey", "speech", "sparkle"][activeCard] as "hotkey" | "speech" | "sparkle"} className="w-full" />
-              </div>
-              <div className="relative h-[460px] sm:h-[480px]">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeCard}
-                    initial={{ opacity: 0, y: 12, scale: 0.985 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -8, scale: 0.985 }}
-                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute inset-0"
-                  >
-                    {(() => {
-                      const Scene = cards[activeCard].component;
-                      return <Scene />;
-                    })()}
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </div>
+        {/* The stage: warm espresso with a faint dot grid, a drifting doodle, fixed height. */}
+        <div className="relative overflow-hidden rounded-[28px] bg-espresso p-4 shadow-[0_30px_60px_-34px_rgba(42,33,27,0.7)] sm:p-7">
+          <div
+            className="pointer-events-none absolute inset-0"
+            aria-hidden="true"
+            style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)", backgroundSize: "20px 20px" }}
+          />
+          <div className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full bg-brand/20 blur-3xl" aria-hidden="true" />
+          <div className="pointer-events-none absolute right-5 top-4 hidden w-20 xl:block" aria-hidden="true">
+            <Doodle name={(["hotkey", "speech", "sparkle"] as const)[activeCard]} tone="dark" className="w-full" />
           </div>
-        </div>
-
-        {/* Mobile indicator dots */}
-        <div className="flex justify-center gap-2 mt-4 lg:hidden">
-          {cards.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => handleCardClick(index)}
-              className={`h-1 rounded-sm transition-all ${
-                index === activeCard ? "bg-primary-500 w-6" : "bg-line w-3"
-              }`}
-              aria-label={`View feature ${index + 1}`}
-            />
-          ))}
+          <div className="relative mx-auto h-[500px] max-w-[620px] sm:h-[540px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeCard}
+                initial={{ opacity: 0, y: 14, scale: 0.985 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.985 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0"
+              >
+                {(() => {
+                  const Scene = cards[activeCard].component;
+                  return <Scene />;
+                })()}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </div>

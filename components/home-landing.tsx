@@ -16,15 +16,13 @@ import { Parallax } from "./landing/Parallax";
 import { Reveal, RevealWords } from "./landing/Reveal";
 
 const DocumentationSection = dynamic(() => import("../components/documentation-section"));
-const EffortlessIntegration = dynamic(() => import("../components/effortless-integration-updated"));
 const FooterSection = dynamic(() => import("../components/footer-section"));
 const MadeForYou = dynamic(() => import("../components/MadeForYou"));
-const SmartSimpleBrilliant = dynamic(() => import("../components/smart-simple-brilliant"));
 const SwitchAndAsk = dynamic(() => import("./landing/SwitchAndAsk"));
+const FinishedTextBento = dynamic(() => import("./landing/FinishedTextBento"));
 const TechCompanyMarquee = dynamic(() => import("../components/TechCompanyMarquee"));
 const TestimonialDeck = dynamic(() => import("./landing/TestimonialDeck"));
 const ProductDuo = dynamic(() => import("./landing/ProductDuo"));
-const YourWorkInSync = dynamic(() => import("../components/your-work-in-sync"));
 const TranslationShowcase = dynamic(() => import("./landing/TranslationShowcase"));
 
 export default function HomeLanding({ blogSection }: { blogSection?: React.ReactNode }) {
@@ -253,156 +251,23 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
         </div>
       </Band>
 
-      {/* Speak once. Get finished text. */}
-      <Band color={PAPER} from={ESPRESSO} blend={220} className="pt-36 pb-20 sm:pt-44 sm:pb-28" aria-labelledby="finished-text-heading">
-        <div className={SHELL}>
-          <div className="mx-auto flex max-w-[760px] flex-col items-center text-center">
-            <Parallax speed={18} className="mb-4"><Doodle name="sparkle" className="w-32 sm:w-36" /></Parallax>
-            <Reveal><p className="eyebrow">Polished, not just transcribed</p></Reveal>
-            <h2 id="finished-text-heading" className="display-2 mt-3">
-              <RevealWords text="Speak once. Get finished text." />
-            </h2>
-            <Reveal delay={0.12}>
-              <p className="subtitle mt-4 max-w-xl">
-                Oravo removes filler words, fixes grammar, adds punctuation, and matches the tone of
-                whatever app you&apos;re writing in, automatically.
-              </p>
-            </Reveal>
-          </div>
-          {/* One surface split by hairlines, video-shala style, instead of three floating boxes. */}
-          <Reveal className="mt-12">
-            <div className="surface-solid grid grid-cols-1 divide-y divide-line overflow-hidden md:grid-cols-3 md:divide-x md:divide-y-0">
-              {[
-                {
-                  title: "Same thought, different apps.",
-                  body: "Oravo knows when you're in Slack vs. Gmail vs. Notion, and adjusts tone and formatting to match. Casual in chat. Professional in email. Structured in docs.",
-                },
-                {
-                  title: "No more “um, like, you know.”",
-                  body: "Oravo removes filler words, fixes false starts, and turns rambling thoughts into clean sentences, so what comes out sounds intentional, not dictated.",
-                },
-                {
-                  title: "Punctuation, paragraphs, capitalization.",
-                  body: "Bullet lists when you say “three things.” Line breaks when you pause. Code blocks in technical contexts. You never touch the keyboard to fix formatting.",
-                },
-              ].map((card, i) => (
-                <div key={card.title} className="p-7 sm:p-8">
-                  <span className="font-display text-xs font-semibold text-brand">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 className="display-3 mt-3 text-ink">{card.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-ink-soft">{card.body}</p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </Band>
-
-      {/* Feature highlights */}
-      <Band color={CANVAS} from={PAPER} className="py-20 sm:py-28" aria-labelledby="features-heading">
-        <div className={SHELL}>
-          <div className="mx-auto flex max-w-[760px] flex-col items-center text-center">
-            <Parallax speed={18} className="mb-4"><Doodle name="windows" className="w-32 sm:w-36" /></Parallax>
-            <Reveal><p className="eyebrow">Feature highlights</p></Reveal>
-            <h2 id="features-heading" className="display-2 mt-3">
-              <RevealWords text="Built for the way you actually work." />
-            </h2>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
-            <Reveal>
-              <div className="surface-solid surface-interactive flex h-full flex-col gap-5 p-6 sm:p-8">
-                <div className="flex flex-col gap-2">
-                  <h3 className="display-3">Context-aware AI</h3>
-                  <p className="text-sm leading-relaxed text-ink-soft">
-                    Understands technical jargon, proper nouns from your contacts, and what you&apos;re
-                    working on. Works in multilingual speech and professional vocabulary. Benchmark
-                    results will be published with the method and sample sizes.
-                  </p>
-                </div>
-                <div className="flex h-[280px] w-full items-center justify-center overflow-hidden rounded-lg bg-canvas sm:h-[320px]">
-                  <SmartSimpleBrilliant width="100%" height="100%" theme="light" className="scale-65 sm:scale-75 md:scale-85" />
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.06}>
-              <div className="surface-solid surface-interactive flex h-full flex-col gap-5 p-6 sm:p-8">
-                <div className="flex flex-col gap-2">
-                  <h3 className="display-3">Auto-format as you speak</h3>
-                  <p className="text-sm leading-relaxed text-ink-soft">
-                    Punctuation, paragraphs, capitalization, and lists, added automatically. Just
-                    speak, no voice commands needed.
-                  </p>
-                </div>
-                <div className="relative flex h-[280px] w-full items-center justify-center overflow-hidden rounded-lg bg-canvas sm:h-[320px]">
-                  <YourWorkInSync width="400" height="280" theme="light" className="scale-80 sm:scale-90" />
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal>
-              <div className="surface-solid surface-interactive flex h-full flex-col gap-5 p-6 sm:p-8">
-                <div className="flex flex-col gap-2">
-                  <h3 className="display-3">Matches your style</h3>
-                  <p className="text-sm leading-relaxed text-ink-soft">
-                    Oravo learns your tone over time. Short and direct in Slack. Warm and full in
-                    email. Your voice, your style, every time.
-                  </p>
-                </div>
-                <div className="relative flex h-[280px] w-full items-center justify-center overflow-hidden rounded-lg bg-canvas sm:h-[320px]">
-                  <div className="flex w-full max-w-[320px] flex-col items-center gap-5 px-6">
-                    <div className="w-full text-center">
-                      <p className="eyebrow mb-2">You say</p>
-                      <p className="text-sm italic text-ink">&ldquo;tell them I&apos;ll be late&rdquo;</p>
-                    </div>
-                    <svg className="h-5 w-5 text-ink-faint" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                    </svg>
-                    <div className="flex w-full flex-col gap-3">
-                      <div className="surface-solid !rounded-lg p-3">
-                        <p className="eyebrow mb-1 !text-[10px]">Email</p>
-                        <p className="text-sm text-ink">I&apos;ll be arriving shortly after the scheduled time.</p>
-                      </div>
-                      <div className="surface-solid !rounded-lg p-3">
-                        <p className="eyebrow mb-1 !text-[10px]">Slack</p>
-                        <p className="text-sm text-ink">Running a few mins late!</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.06}>
-              <div className="surface-solid surface-interactive flex h-full flex-col gap-5 p-6 sm:p-8">
-                <div className="flex flex-col gap-2">
-                  <h3 className="display-3">Works where you write</h3>
-                  <p className="text-sm leading-relaxed text-ink-soft">
-                    Gmail, Slack, Notion, Google Docs, Word, Linear, Jira, Figma, VSCode, LinkedIn:
-                    anywhere your cursor blinks, Oravo types.
-                  </p>
-                </div>
-                <div className="relative flex h-[280px] w-full items-center justify-center overflow-hidden rounded-lg bg-canvas sm:h-[320px]">
-                  <EffortlessIntegration width={400} height={280} className="max-w-full max-h-full" />
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
+      {/* ───────────── Speak once + built for the way you work (merged bento) ───────────── */}
+      <Band color={PAPER} from={ESPRESSO} blend={220} className="pt-36 pb-20 sm:pt-44 sm:pb-28" aria-label="Speak once. Get finished text.">
+        <FinishedTextBento />
       </Band>
 
       {/* ───────────── Made for you ───────────── */}
-      <Band color={PAPER} from={CANVAS} className="py-20 sm:py-28">
+      <Band color={CANVAS} from={PAPER} className="py-20 sm:py-28">
         <MadeForYou />
       </Band>
 
       {/* ───────────── Testimonials: a deck of notes ───────────── */}
-      <Band color={CANVAS} from={PAPER} className="py-20 sm:py-28">
+      <Band color={PAPER} from={CANVAS} className="py-20 sm:py-28">
         <TestimonialDeck />
       </Band>
 
       {/* ───────────── Why switch + Ask an AI ───────────── */}
-      <Band color={CLAY} from={CANVAS} blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-28" aria-labelledby="switch-heading">
+      <Band color={CLAY} from={PAPER} blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-28" aria-labelledby="switch-heading">
         <SwitchAndAsk />
       </Band>
 
