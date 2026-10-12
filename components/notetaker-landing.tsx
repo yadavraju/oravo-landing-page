@@ -22,7 +22,7 @@ const SAND = "var(--o-band-sand)";
 const PAPER = "var(--o-paper)";
 const CANVAS = "var(--o-canvas)";
 const CLAY = "var(--o-band-clay)";
-const ESPRESSO = "var(--o-band-espresso)";
+const MIST = "var(--o-band-mist)";
 const BLUSH = "var(--o-blush)";
 
 const TARGET_NOTE = "Summary target: about 30 seconds after a one-hour transcript is ready.";
@@ -257,28 +257,27 @@ export default function NotetakerLanding() {
         </div>
       </Band>
 
-      {/* ───────── Speed (the one dark band) ───────── */}
-      <Band id="speed" color={ESPRESSO} from={CANVAS} blend={220} className="scroll-mt-20 pt-28 pb-24 sm:pt-36 sm:pb-32">
+      {/* ───────── Speed (light mist band) ───────── */}
+      <Band id="speed" color={MIST} from={CANVAS} blend={220} className="scroll-mt-20 pt-28 pb-24 sm:pt-36 sm:pb-32">
         <Parallax speed={100} className="pointer-events-none absolute -left-24 top-1/3" aria-hidden="true">
-          <div className="h-72 w-72 rounded-full bg-white/[0.04]" />
+          <div className="h-72 w-72 rounded-full bg-[#d3e0e6]" />
         </Parallax>
         <Parallax speed={-70} className="pointer-events-none absolute -right-20 bottom-10" aria-hidden="true">
-          <div className="h-64 w-64 rotate-12 rounded-[48px] bg-white/[0.035]" />
+          <div className="h-64 w-64 rotate-12 rounded-[48px] bg-[#dae5ea]" />
         </Parallax>
         <div className={`${SHELL} relative grid grid-cols-1 items-center gap-14 lg:grid-cols-[1fr_0.9fr]`}>
           <div>
             <SectionIntro
               align="left"
-              tone="dark"
               doodle="speed"
               eyebrow="No post-meeting limbo"
               title="Your next step should not wait for your notes."
               lede="Oravo is built around a fast handoff from conversation to action, so you can send the follow-up while the meeting is still fresh."
             />
             <Reveal delay={0.2}>
-              <div className="mt-8 max-w-xl border-l-2 border-[#e8a07f]/60 pl-4">
-                <p className="font-display text-[13.5px] leading-relaxed text-white/60">
-                  About 30 seconds is our <span className="font-semibold text-white/85">target</span> for a one-hour transcript, timed from the moment the transcript is ready. It is not a guarantee yet: before we publish it as a promise, we will share p50 and p95 processing times and the conditions we tested under.
+              <div className="mt-8 max-w-xl border-l-2 border-brand/50 pl-4">
+                <p className="font-display text-[13.5px] leading-relaxed text-ink-soft">
+                  About 30 seconds is our <span className="font-semibold text-ink">target</span> for a one-hour transcript, timed from the moment the transcript is ready. It is not a guarantee yet: before we publish it as a promise, we will share p50 and p95 processing times and the conditions we tested under.
                 </p>
               </div>
             </Reveal>
@@ -288,7 +287,7 @@ export default function NotetakerLanding() {
       </Band>
 
       {/* ───────── Anatomy of a note ───────── */}
-      <Band color={CLAY} from={ESPRESSO} blend={220} className="pt-28 pb-20 sm:pt-36 sm:pb-28">
+      <Band color={CLAY} from={MIST} blend={220} className="pt-28 pb-20 sm:pt-36 sm:pb-28">
         <div className={SHELL}>
           <SectionIntro
             doodle="notebook"

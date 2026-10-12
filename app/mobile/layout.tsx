@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Oravo Mobile App | Voice to Text for Android & iOS",
+  title: "Oravo Mobile App | Voice to Text for Android (iOS Coming Soon)",
   description:
     "Voice-to-text that turns messy speech into ready-to-send text in any app. Auto punctuation, filler word removal, and real-time translation to English. Free during launch.",
   keywords: [

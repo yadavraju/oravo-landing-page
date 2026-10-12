@@ -17,7 +17,7 @@ const SAND = "var(--o-band-sand)";
 const PAPER = "var(--o-paper)";
 const CANVAS = "var(--o-canvas)";
 const CLAY = "var(--o-band-clay)";
-const ESPRESSO = "var(--o-band-espresso)";
+const MIST = "var(--o-band-mist)";
 const BLUSH = "var(--o-blush)";
 
 type Variant = "mobile-page" | "android-page";
@@ -245,18 +245,18 @@ function VersusStage() {
   return (
     <div ref={ref} className="mx-auto max-w-5xl">
       <Reveal>
-        <div className="mx-auto flex max-w-2xl items-center gap-4 rounded-xl bg-white/[0.05] px-4 py-3 ring-1 ring-white/10">
+        <div className="mx-auto flex max-w-2xl items-center gap-4 rounded-xl bg-raised/80 px-4 py-3 ring-1 ring-line">
           <span className="flex h-6 shrink-0 items-center gap-[2px]" aria-hidden="true">
             {Array.from({ length: 12 }).map((_, i) => (
               <motion.span
                 key={i}
-                className="w-[2.5px] rounded-full bg-[#e8a07f]"
+                className="w-[2.5px] rounded-full bg-brand"
                 animate={reduceMotion ? { height: 6 } : { height: [4, 8 + ((i * 5) % 14), 5] }}
                 transition={{ duration: 0.7 + (i % 3) * 0.15, repeat: Infinity, ease: "easeInOut" }}
               />
             ))}
           </span>
-          <p className="font-display text-[13px] italic leading-snug text-white/60">You say: “{SPOKEN}”</p>
+          <p className="font-display text-[13px] italic leading-snug text-ink-soft">You say: “{SPOKEN}”</p>
         </div>
       </Reveal>
 
@@ -284,14 +284,14 @@ function VersusStage() {
           </div>
         </Reveal>
         <Reveal delay={0.2}>
-          <div className="flex h-full flex-col rounded-2xl bg-white/[0.04] p-6 ring-1 ring-white/10 sm:p-7">
+          <div className="flex h-full flex-col rounded-2xl bg-raised/60 p-6 ring-1 ring-line sm:p-7">
             <div className="flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 font-display text-[13px] font-bold text-white/60">Aa</span>
-              <h3 className="display-3 text-white/75">Built-in voice typing</h3>
+              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-canvas font-display text-[13px] font-bold text-ink-faint">Aa</span>
+              <h3 className="display-3 text-ink-soft">Built-in voice typing</h3>
             </div>
-            <div className="mt-5 min-h-[96px] rounded-xl bg-white/[0.04] p-4 text-[14.5px] leading-relaxed text-white/55 ring-1 ring-white/10">
+            <div className="mt-5 min-h-[96px] rounded-xl bg-canvas p-4 text-[14.5px] leading-relaxed text-ink-soft ring-1 ring-line">
               {SPOKEN.split(" ").map((w, i) => (
-                <span key={i} className={FILLERS.has(w) ? "rounded-sm bg-[#e8a07f]/15 text-[#f0b89d]" : ""}>
+                <span key={i} className={FILLERS.has(w) ? "rounded-sm bg-brand-soft text-brand" : ""}>
                   {w}
                   {" "}
                 </span>
@@ -299,8 +299,8 @@ function VersusStage() {
             </div>
             <ul className="mt-5 grid gap-2.5">
               {BUILTIN_POINTS.map((p) => (
-                <li key={p} className="flex items-start gap-2.5 text-[14px] text-white/55">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-white/[0.06] text-white/40 ring-1 ring-white/10">
+                <li key={p} className="flex items-start gap-2.5 text-[14px] text-ink-soft">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-canvas text-ink-faint ring-1 ring-line">
                     <Minus aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={2.5} />
                   </span>
                   {p}
@@ -430,14 +430,13 @@ export default function MobileLanding({ variant }: { variant: Variant }) {
         <AnyApp />
       </Band>
 
-      {/* ───────── Versus (dark) ───────── */}
-      <Band color={ESPRESSO} from={CLAY} blend={220} className="pt-28 pb-24 sm:pt-36 sm:pb-28">
+      {/* ───────── Versus (light mist band) ───────── */}
+      <Band color={MIST} from={CLAY} blend={220} className="pt-28 pb-24 sm:pt-36 sm:pb-28">
         <Parallax speed={90} className="pointer-events-none absolute -left-24 top-1/4" aria-hidden="true">
-          <div className="h-72 w-72 rounded-full bg-white/[0.035]" />
+          <div className="h-72 w-72 rounded-full bg-[#d3e0e6]" />
         </Parallax>
         <div className={`${SHELL} relative`}>
           <SectionIntro
-            tone="dark"
             doodle="scales"
             eyebrow="Same words, two results"
             title="Oravo vs. built-in voice mode"
@@ -450,7 +449,7 @@ export default function MobileLanding({ variant }: { variant: Variant }) {
       </Band>
 
       {/* ───────── Use cases ───────── */}
-      <Band color={PAPER} from={ESPRESSO} blend={220} className="pt-28 pb-20 sm:pt-36 sm:pb-28">
+      <Band color={PAPER} from={MIST} blend={220} className="pt-28 pb-20 sm:pt-36 sm:pb-28">
         <div className={SHELL}>
           <SectionIntro doodle="bubbles" eyebrow="Everyday" title="How people use Oravo" />
           <div className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3 md:gap-0">
