@@ -1,6 +1,14 @@
-import { Header } from "@/components/header";
-import FooterSection from "@/components/footer-section";
 import type { Metadata } from "next";
+import { Check } from "lucide-react";
+import { Band } from "@/components/landing/Band";
+import { FaqAccordion } from "@/components/landing/FaqAccordion";
+import { MarketingShell } from "@/components/landing/MarketingShell";
+import { SectionIntro } from "@/components/landing/PageBlocks";
+import { Reveal } from "@/components/landing/Reveal";
+import { CommissionStrip, ReferralTicket } from "@/components/seo-pages/AffiliateParts";
+import { CANVAS, CLAY, ClosingBand, MarginDoodle, MIST, PAPER, SAND, SeoHero, SHELL, SplitSection } from "@/components/seo-pages/SeoSections";
+import { Timeline } from "@/components/seo-pages/Timeline";
+import { faqJsonLd, type FaqItem } from "@/lib/faq";
 
 export const metadata: Metadata = {
   title: "Affiliate Program | Oravo",
@@ -17,375 +25,194 @@ export const metadata: Metadata = {
     title: "Affiliate Program | Oravo",
     description: "Earn with Oravo's affiliate program",
   },
+  alternates: {
+    canonical: "https://oravo.ai/affiliate",
+  },
 };
+
+const SIGNUP = "https://app.oravo.ai/signup";
+
+const SHARE = ["Share on social media", "Include in blog posts or newsletters", "Recommend to your professional network", "Create content about your Oravo experience"];
+
+const WHY = [
+  {
+    title: "Promote a Product You Believe In",
+    description: "Share something that actually improves people's productivity and workflow. Oravo is built for real users who need fast, accurate voice dictation.",
+  },
+  {
+    title: "Generous Commission Structure",
+    description: "20% recurring commission for 12 months means you earn continuously as your referrals stay subscribed.",
+  },
+  {
+    title: "Easy to Track and Manage",
+    description: "View all your referrals, conversions, and earnings in real-time through your affiliate dashboard.",
+  },
+  {
+    title: "No Limits on Earnings",
+    description: "Share with as many people as you want. There's no cap on how much you can earn.",
+  },
+];
+
+const FAQS: FaqItem[] = [
+  {
+    question: "Do I need to be an Oravo user to join the affiliate program?",
+    answer: "Yes, we require all affiliates to be active Oravo users so you can authentically share your experience with potential customers.",
+  },
+  {
+    question: "When do I get paid?",
+    answer: "Commission payments are processed monthly via PayPal or bank transfer once you reach a minimum threshold of $50.",
+  },
+  {
+    question: "Can I track my referrals?",
+    answer: "Absolutely. Your affiliate dashboard shows real-time data on clicks, sign-ups, conversions, and earnings.",
+  },
+  {
+    question: "Is there a limit to how many people I can refer?",
+    answer: "No limits. Refer as many people as you'd like and grow your affiliate earnings without restrictions.",
+  },
+];
 
 export default function AffiliatePage() {
   return (
-    <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
-      <div className="relative flex flex-col justify-start items-center w-full">
-        {/* Main container with proper margins */}
-        <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
-          {/* Left vertical line */}
-          <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0"></div>
+    <MarketingShell>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(FAQS)) }} />
 
-          {/* Right vertical line */}
-          <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0"></div>
+      <SeoHero
+        eyebrow="Oravo affiliate program"
+        lines={[{ text: "Become an" }, { text: "Affiliate", accent: true }]}
+        description="Share Oravo with your network and earn rewards for every user you bring on board."
+        primary={{ label: "Join the Affiliate Program", href: SIGNUP }}
+        secondary={{ label: "How it works", href: "#how-it-works" }}
+        ticks={["20% recurring commission", "First 12 months", "No cap on earnings"]}
+        doodle="tag"
+        visual={<ReferralTicket />}
+      />
 
-          {/* Header */}
-          <Header />
-
-          {/* Main Content */}
-          <main className="flex-1 w-full mt-20 md:mt-24 lg:mt-28 relative z-10">
-            <div className="max-w-[800px] mx-auto px-6 md:px-12 py-12 md:py-16">
-              {/* Title Section */}
-              <div className="mb-16">
-                <h1 className="text-[#37322F] text-4xl md:text-5xl lg:text-6xl font-normal leading-tight font-serif mb-6">
-                  Become an Affiliate
-                </h1>
-                <p className="text-[#605A57] text-lg md:text-xl leading-relaxed font-sans">
-                  Share Oravo with your network and earn rewards for every user
-                  you bring on board.
-                </p>
-              </div>
-
-              {/* Content Sections */}
-              <div className="prose prose-lg max-w-none">
-                {/* How It Works */}
-                <section className="mb-16">
-                  <h2 className="text-[#37322F] text-xs font-semibold uppercase tracking-wider mb-6 font-sans">
-                    HOW IT WORKS
-                  </h2>
-
-                  <div className="space-y-10">
-                    {/* Step 1 */}
-                    <div className="flex gap-6">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#FF8C42] to-[#FF6B1A] flex items-center justify-center">
-                        <span className="text-white text-xl font-bold font-sans">
-                          1
-                        </span>
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-[#49423D] text-2xl md:text-3xl font-normal font-serif mb-4">
-                          Join the App
-                        </h3>
-                        <p className="text-[#605A57] text-base leading-7 font-sans">
-                          Sign up for Oravo and create your account. Experience
-                          the power of voice dictation firsthand so you can
-                          authentically share it with others.
-                        </p>
-                      </div>
+      {/* How it works */}
+      <Band id="how-it-works" color={PAPER} from={SAND} blend={200} className="scroll-mt-20 pt-24 pb-20 sm:pt-28 sm:pb-24">
+        <MarginDoodle name="plane" position="right-[3%] top-40" speed={-40} />
+        <div className={SHELL}>
+          <SplitSection
+            doodle="hotkey"
+            eyebrow="How it works"
+            title="Four steps from user to affiliate"
+            lede="Join, grab your key, share it, and earn on every paying customer you refer."
+          >
+            <Timeline
+              size="lg"
+              steps={[
+                {
+                  title: "Join the App",
+                  description: "Sign up for Oravo and create your account. Experience the power of voice dictation firsthand so you can authentically share it with others.",
+                },
+                {
+                  title: "Get Your Affiliate Key",
+                  description: "Once you're in, navigate to your account settings and generate your unique affiliate key. This key tracks all referrals that come from you.",
+                  detail: (
+                    <div className="rounded-xl bg-canvas p-4 ring-1 ring-line">
+                      <p className="text-[13.5px] text-ink-soft">Your unique referral code will look like:</p>
+                      <code className="mt-2 inline-block rounded-md bg-raised px-3 py-2 font-mono text-[15px] font-semibold text-brand ring-1 ring-line">ORAVO-YOURNAME-2024</code>
                     </div>
-
-                    {/* Step 2 */}
-                    <div className="flex gap-6">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#FF8C42] to-[#FF6B1A] flex items-center justify-center">
-                        <span className="text-white text-xl font-bold font-sans">
-                          2
-                        </span>
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-[#49423D] text-2xl md:text-3xl font-normal font-serif mb-4">
-                          Get Your Affiliate Key
-                        </h3>
-                        <p className="text-[#605A57] text-base leading-7 font-sans mb-4">
-                          Once you're in, navigate to your account settings and
-                          generate your unique affiliate key. This key tracks
-                          all referrals that come from you.
-                        </p>
-                        <div className="bg-[#F7F5F3] border border-[rgba(55,50,47,0.12)] rounded-lg p-4">
-                          <p className="text-[#605A57] text-sm font-sans mb-2">
-                            Your unique referral code will look like:
-                          </p>
-                          <code className="text-[#FF6B1A] text-base font-mono bg-white px-3 py-2 rounded border border-[rgba(55,50,47,0.08)] inline-block">
-                            ORAVO-YOURNAME-2024
-                          </code>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Step 3 */}
-                    <div className="flex gap-6">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#FF8C42] to-[#FF6B1A] flex items-center justify-center">
-                        <span className="text-white text-xl font-bold font-sans">
-                          3
-                        </span>
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-[#49423D] text-2xl md:text-3xl font-normal font-serif mb-4">
-                          Start Sharing Your Referral Code
-                        </h3>
-                        <p className="text-[#605A57] text-base leading-7 font-sans mb-4">
-                          Share your referral code with friends, colleagues,
-                          your audience, or anyone who could benefit from
-                          faster, smarter voice dictation.
-                        </p>
-                        <div className="space-y-3">
-                          <div className="flex items-start gap-3">
-                            <div className="w-6 h-6 rounded-full bg-[#FF8C42]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <svg
-                                width="12"
-                                height="12"
-                                viewBox="0 0 12 12"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M10 3L4.5 8.5L2 6"
-                                  stroke="#FF6B1A"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                              </svg>
-                            </div>
-                            <p className="text-[#605A57] text-base leading-7 font-sans">
-                              Share on social media
-                            </p>
-                          </div>
-                          <div className="flex items-start gap-3">
-                            <div className="w-6 h-6 rounded-full bg-[#FF8C42]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <svg
-                                width="12"
-                                height="12"
-                                viewBox="0 0 12 12"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M10 3L4.5 8.5L2 6"
-                                  stroke="#FF6B1A"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                              </svg>
-                            </div>
-                            <p className="text-[#605A57] text-base leading-7 font-sans">
-                              Include in blog posts or newsletters
-                            </p>
-                          </div>
-                          <div className="flex items-start gap-3">
-                            <div className="w-6 h-6 rounded-full bg-[#FF8C42]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <svg
-                                width="12"
-                                height="12"
-                                viewBox="0 0 12 12"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M10 3L4.5 8.5L2 6"
-                                  stroke="#FF6B1A"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                              </svg>
-                            </div>
-                            <p className="text-[#605A57] text-base leading-7 font-sans">
-                              Recommend to your professional network
-                            </p>
-                          </div>
-                          <div className="flex items-start gap-3">
-                            <div className="w-6 h-6 rounded-full bg-[#FF8C42]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <svg
-                                width="12"
-                                height="12"
-                                viewBox="0 0 12 12"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M10 3L4.5 8.5L2 6"
-                                  stroke="#FF6B1A"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                              </svg>
-                            </div>
-                            <p className="text-[#605A57] text-base leading-7 font-sans">
-                              Create content about your Oravo experience
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Step 4 */}
-                    <div className="flex gap-6">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#FF8C42] to-[#FF6B1A] flex items-center justify-center">
-                        <span className="text-white text-xl font-bold font-sans">
-                          4
-                        </span>
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-[#49423D] text-2xl md:text-3xl font-normal font-serif mb-4">
-                          Start Earning
-                        </h3>
-                        <p className="text-[#605A57] text-base leading-7 font-sans mb-4">
-                          For every user who signs up with your referral code
-                          and becomes a paying customer, you earn a commission.
-                          It's that simple.
-                        </p>
-                        <div className="bg-gradient-to-br from-[#FF8C42]/5 to-[#FF6B1A]/5 rounded-2xl p-6 border border-[rgba(255,107,26,0.1)]">
-                          <p className="text-[#49423D] text-lg font-medium font-sans mb-2">
-                            Earning Potential
-                          </p>
-                          <p className="text-[#605A57] text-base leading-7 font-sans">
-                            Earn <span className="text-[#FF6B1A] font-semibold">20% recurring commission</span> on all
-                            subscription payments from users you refer for their
-                            first 12 months.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                {/* Why Join */}
-                <section className="mb-16">
-                  <h2 className="text-[#37322F] text-xs font-semibold uppercase tracking-wider mb-6 font-sans">
-                    WHY JOIN THE ORAVO AFFILIATE PROGRAM
-                  </h2>
-
-                  <div className="space-y-6">
-                    <div className="border-l-4 border-[#FF6B1A] pl-6">
-                      <h3 className="text-[#49423D] text-xl font-medium font-sans mb-2">
-                        Promote a Product You Believe In
-                      </h3>
-                      <p className="text-[#605A57] text-base leading-7 font-sans">
-                        Share something that actually improves people's
-                        productivity and workflow. Oravo is built for real
-                        users who need fast, accurate voice dictation.
-                      </p>
-                    </div>
-
-                    <div className="border-l-4 border-[#FF6B1A] pl-6">
-                      <h3 className="text-[#49423D] text-xl font-medium font-sans mb-2">
-                        Generous Commission Structure
-                      </h3>
-                      <p className="text-[#605A57] text-base leading-7 font-sans">
-                        20% recurring commission for 12 months means you earn
-                        continuously as your referrals stay subscribed.
-                      </p>
-                    </div>
-
-                    <div className="border-l-4 border-[#FF6B1A] pl-6">
-                      <h3 className="text-[#49423D] text-xl font-medium font-sans mb-2">
-                        Easy to Track and Manage
-                      </h3>
-                      <p className="text-[#605A57] text-base leading-7 font-sans">
-                        View all your referrals, conversions, and earnings in
-                        real-time through your affiliate dashboard.
-                      </p>
-                    </div>
-
-                    <div className="border-l-4 border-[#FF6B1A] pl-6">
-                      <h3 className="text-[#49423D] text-xl font-medium font-sans mb-2">
-                        No Limits on Earnings
-                      </h3>
-                      <p className="text-[#605A57] text-base leading-7 font-sans">
-                        Share with as many people as you want. There's no cap
-                        on how much you can earn.
-                      </p>
-                    </div>
-                  </div>
-                </section>
-
-                {/* Getting Started CTA */}
-                <section className="mb-12">
-                  <div className="bg-gradient-to-br from-[#1877F2]/5 to-[#166FE5]/5 rounded-2xl p-8 md:p-10 border border-[rgba(24,119,242,0.1)]">
-                    <h3 className="text-[#49423D] text-2xl md:text-3xl font-normal font-serif mb-4">
-                      Ready to Get Started?
-                    </h3>
-                    <p className="text-[#605A57] text-base leading-7 font-sans mb-6">
-                      Join Oravo today and start sharing your unique voice
-                      dictation experience with the world.
-                    </p>
-                    <a
-                      href="https://app.oravo.ai/signup"
-                      className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-[#FF8C42] to-[#FF6B1A] text-white text-base font-semibold rounded-lg hover:shadow-lg transition-all duration-200 font-sans"
-                    >
-                      Join the Affiliate Program
-                    </a>
-                  </div>
-                </section>
-
-                {/* FAQ */}
-                <section className="mb-12">
-                  <h2 className="text-[#37322F] text-xs font-semibold uppercase tracking-wider mb-6 font-sans">
-                    FREQUENTLY ASKED QUESTIONS
-                  </h2>
-
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-[#49423D] text-lg font-medium font-sans mb-2">
-                        Do I need to be an Oravo user to join the affiliate
-                        program?
-                      </h3>
-                      <p className="text-[#605A57] text-base leading-7 font-sans">
-                        Yes, we require all affiliates to be active Oravo users
-                        so you can authentically share your experience with
-                        potential customers.
-                      </p>
-                    </div>
-
-                    <div>
-                      <h3 className="text-[#49423D] text-lg font-medium font-sans mb-2">
-                        When do I get paid?
-                      </h3>
-                      <p className="text-[#605A57] text-base leading-7 font-sans">
-                        Commission payments are processed monthly via PayPal or
-                        bank transfer once you reach a minimum threshold of $50.
-                      </p>
-                    </div>
-
-                    <div>
-                      <h3 className="text-[#49423D] text-lg font-medium font-sans mb-2">
-                        Can I track my referrals?
-                      </h3>
-                      <p className="text-[#605A57] text-base leading-7 font-sans">
-                        Absolutely. Your affiliate dashboard shows real-time
-                        data on clicks, sign-ups, conversions, and earnings.
-                      </p>
-                    </div>
-
-                    <div>
-                      <h3 className="text-[#49423D] text-lg font-medium font-sans mb-2">
-                        Is there a limit to how many people I can refer?
-                      </h3>
-                      <p className="text-[#605A57] text-base leading-7 font-sans">
-                        No limits. Refer as many people as you'd like and grow
-                        your affiliate earnings without restrictions.
-                      </p>
-                    </div>
-                  </div>
-                </section>
-
-                {/* Contact */}
-                <section className="mb-12">
-                  <div className="border-t border-[rgba(55,50,47,0.12)] pt-8">
-                    <p className="text-[#605A57] text-base leading-7 font-sans">
-                      Have questions about the affiliate program?{" "}
-                      <a
-                        href="mailto:hello@oravo.ai"
-                        className="text-[#FF6B1A] hover:text-[#FF8C42] transition-colors font-medium"
-                      >
-                        Contact our team
-                      </a>{" "}
-                      and we'll be happy to help.
-                    </p>
-                  </div>
-                </section>
-              </div>
-            </div>
-          </main>
-
-          {/* Footer */}
-          <FooterSection />
+                  ),
+                },
+                {
+                  title: "Start Sharing Your Referral Code",
+                  description: "Share your referral code with friends, colleagues, your audience, or anyone who could benefit from faster, smarter voice dictation.",
+                  detail: (
+                    <ul className="grid gap-2 sm:grid-cols-2">
+                      {SHARE.map((item) => (
+                        <li key={item} className="flex items-start gap-2.5 text-[14.5px] leading-snug text-ink">
+                          <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-[5px] bg-raised text-ink ring-1 ring-line">
+                            <Check aria-hidden="true" className="h-3 w-3" strokeWidth={2.5} />
+                          </span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  ),
+                },
+                {
+                  title: "Start Earning",
+                  description: "For every user who signs up with your referral code and becomes a paying customer, you earn a commission. It's that simple.",
+                },
+              ]}
+            />
+          </SplitSection>
         </div>
-      </div>
-    </div>
+      </Band>
+
+      {/* Earnings explainer */}
+      <Band color={CLAY} from={PAPER} blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-24">
+        <div className={SHELL}>
+          <SectionIntro
+            doodle="tag"
+            eyebrow="Earning potential"
+            title="20% recurring, for the first 12 months"
+            lede={
+              <>
+                Earn <span className="font-semibold text-ink">20% recurring commission</span> on all subscription payments from users you refer for their first 12
+                months.
+              </>
+            }
+          />
+          <Reveal className="mt-12">
+            <CommissionStrip />
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 text-center sm:flex-row">
+              <p className="font-display text-[13.5px] text-ink-soft">Paid monthly once your balance reaches $50.</p>
+              <a href={SIGNUP} className="btn-neutral">
+                Join the Affiliate Program
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </Band>
+
+      {/* Why join */}
+      <Band color={MIST} from={CLAY} blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-24">
+        <div className={SHELL}>
+          <SectionIntro doodle="sparkle" eyebrow="Why join" title="Why Join the Oravo Affiliate Program" />
+          <Reveal className="mt-12">
+            <div className="surface-solid grid gap-px overflow-hidden !rounded-2xl bg-line sm:grid-cols-2">
+              {WHY.map((w, i) => (
+                <div key={w.title} className="bg-raised p-7 transition-colors hover:bg-paper sm:p-9">
+                  <span className="font-display text-xs font-semibold text-brand">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="display-3 mt-2 text-ink">{w.title}</h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">{w.description}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </Band>
+
+      {/* FAQ */}
+      <Band color={CANVAS} from={MIST} blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-24">
+        <div className="mx-auto w-full max-w-3xl px-5 sm:px-8">
+          <SectionIntro doodle="question" eyebrow="FAQ" title="Frequently Asked Questions" />
+          <Reveal className="mt-10">
+            <FaqAccordion items={FAQS} />
+          </Reveal>
+          <Reveal className="mt-10">
+            <p className="text-center text-[15px] leading-relaxed text-ink-soft">
+              Have questions about the affiliate program?{" "}
+              <a href="mailto:hi@oravo.ai" className="font-semibold text-primary-500 underline-offset-4 hover:underline">
+                Contact our team
+              </a>{" "}
+              and we&apos;ll be happy to help.
+            </p>
+          </Reveal>
+        </div>
+      </Band>
+
+      <ClosingBand
+        eyebrow="Getting started"
+        title="Ready to Get Started?"
+        description="Join Oravo today and start sharing your unique voice dictation experience with the world."
+        primary={{ label: "Join the Affiliate Program", href: SIGNUP }}
+        doodle="people"
+      />
+    </MarketingShell>
   );
 }

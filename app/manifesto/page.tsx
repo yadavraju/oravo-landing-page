@@ -1,6 +1,13 @@
-import { Header } from "@/components/header";
-import FooterSection from "@/components/footer-section";
 import type { Metadata } from "next";
+import { ArrowRight } from "lucide-react";
+import { Band } from "@/components/landing/Band";
+import { Doodle } from "@/components/landing/Doodle";
+import { MarketingShell } from "@/components/landing/MarketingShell";
+import { Parallax } from "@/components/landing/Parallax";
+import { Reveal, RevealWords } from "@/components/landing/Reveal";
+import { DrawnUnderline, KeysVersusVoice, ReadingProgress } from "@/components/seo-pages/EditorialMotion";
+import { DropCap, EssayPart, PullQuote } from "@/components/seo-pages/Essay";
+import { BLUSH, CANVAS, CLAY, PAPER, SAND, SHELL } from "@/components/seo-pages/SeoSections";
 
 export const metadata: Metadata = {
   title: "Our Manifesto | Oravo",
@@ -17,230 +24,208 @@ export const metadata: Metadata = {
     title: "Our Manifesto | Oravo",
     description: "Why we built Oravo",
   },
+  alternates: {
+    canonical: "https://oravo.ai/manifesto",
+  },
 };
+
+const WORKFLOWS = [
+  { who: "Content creators", what: "drafting entire articles by voice." },
+  { who: "Developers", what: "documenting code through natural conversation." },
+  { who: "Professionals", what: "capturing meeting notes without breaking eye contact." },
+  { who: "Students", what: "capturing lecture notes in real time." },
+];
 
 export default function ManifestoPage() {
   return (
-    <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
-      <div className="relative flex flex-col justify-start items-center w-full">
-        {/* Main container with proper margins */}
-        <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
-          {/* Left vertical line */}
-          <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0"></div>
+    <MarketingShell>
+      <ReadingProgress />
 
-          {/* Right vertical line */}
-          <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0"></div>
-
-          {/* Header */}
-          <Header />
-
-          {/* Main Content */}
-          <main className="flex-1 w-full mt-20 md:mt-24 lg:mt-28 relative z-10">
-            <div className="max-w-[800px] mx-auto px-6 md:px-12 py-12 md:py-16">
-              {/* Title Section */}
-              <div className="mb-16">
-                <h1 className="text-[#37322F] text-4xl md:text-5xl lg:text-6xl font-normal leading-tight font-serif mb-6">
-                  Why Voice? Why Now?
-                </h1>
-              </div>
-
-              {/* Content Sections */}
-              <div className="prose prose-lg max-w-none">
-                {/* THE CHALLENGE */}
-                <section className="mb-16">
-                  <div className="mb-6">
-                    <h2 className="text-[#37322F] text-xs font-semibold uppercase tracking-wider mb-3 font-sans">
-                      THE CHALLENGE
-                    </h2>
-                    <h3 className="text-[#49423D] text-2xl md:text-3xl font-normal font-serif mb-6">
-                      Your Thoughts Move Faster Than Your Fingers
-                    </h3>
-                  </div>
-
-                  <div className="space-y-4">
-                    <p className="text-[#605A57] text-base leading-7 font-sans">
-                      Communication should be effortless. Speaking is how we
-                      naturally express ideas—instant, intuitive, and
-                      authentically human. Yet in our daily digital
-                      interactions, we're constrained by keyboards and touch
-                      screens designed decades ago.
-                    </p>
-
-                    <p className="text-[#605A57] text-base leading-7 font-sans">
-                      Consider the paradox: We live in an era where AI
-                      generates entire articles, where algorithms drive vehicles
-                      autonomously, and where global connectivity happens at
-                      light speed. But to interact with all this technology?
-                      We're still pecking away at keyboards, wrestling with
-                      autocorrect, and watching our thoughts slow to a crawl.
-                    </p>
-                  </div>
-                </section>
-
-                {/* THE REALITY */}
-                <section className="mb-16">
-                  <div className="mb-6">
-                    <h2 className="text-[#37322F] text-xs font-semibold uppercase tracking-wider mb-3 font-sans">
-                      THE REALITY
-                    </h2>
-                    <h3 className="text-[#49423D] text-2xl md:text-3xl font-normal font-serif mb-6">
-                      Speech Technology Finally Caught Up
-                    </h3>
-                  </div>
-
-                  <div className="space-y-4">
-                    <p className="text-[#605A57] text-base leading-7 font-sans">
-                      For years, voice input has been a promise just out of
-                      reach. We don't process information in typed characters—our
-                      minds work in spoken language, conversation, and narrative
-                      flow.
-                    </p>
-
-                    <p className="text-[#605A57] text-base leading-7 font-sans">
-                      The last 18 months have marked a turning point in
-                      AI-powered speech understanding. Modern language models
-                      now grasp nuance, handle diverse accents seamlessly, and
-                      learn from context in ways previously impossible.
-                    </p>
-
-                    <p className="text-[#605A57] text-base leading-7 font-sans">
-                      Every major platform offers some form of voice input.
-                      Siri, Google Assistant, dictation features across
-                      operating systems—they've existed for years. But the gap
-                      between promise and performance has kept most of us
-                      reaching for the keyboard when accuracy matters.
-                    </p>
-                  </div>
-                </section>
-
-                {/* THE BREAKTHROUGH */}
-                <section className="mb-16">
-                  <div className="mb-6">
-                    <h2 className="text-[#37322F] text-xs font-semibold uppercase tracking-wider mb-3 font-sans">
-                      THE BREAKTHROUGH
-                    </h2>
-                    <h3 className="text-[#49423D] text-2xl md:text-3xl font-normal font-serif mb-6">
-                      Meet Oravo: Privacy-First Voice Input That Actually Works
-                    </h3>
-                  </div>
-
-                  <div className="space-y-4">
-                    <p className="text-[#605A57] text-base leading-7 font-sans">
-                      We built Oravo because we experienced that frustration
-                      firsthand. Next-generation voice dictation isn't about
-                      incremental improvements—it's about finally closing the
-                      gap between how fast you think and how quickly you can
-                      capture those thoughts.
-                    </p>
-
-                    <p className="text-[#605A57] text-base leading-7 font-sans">
-                      Oravo's AI engine recognizes context, learns your unique
-                      vocabulary, and adapts to your communication style. The
-                      result? Transcription accuracy that feels effortless,
-                      natural, and reliable enough to trust with your most
-                      important work—all while keeping your data private and
-                      secure.
-                    </p>
-                  </div>
-                </section>
-
-                {/* Picture Your Workflow */}
-                <section className="mb-16">
-                  <h3 className="text-[#49423D] text-2xl md:text-3xl font-normal font-serif mb-6">
-                    Picture Your Workflow Transformed
-                  </h3>
-
-                  <div className="space-y-4">
-                    <p className="text-[#605A57] text-base leading-7 font-sans">
-                      Content creators drafting entire articles by voice.
-                      Developers documenting code through natural conversation.
-                      Professionals capturing meeting notes without breaking eye
-                      contact. Students transcribing lectures in real-time with
-                      perfect accuracy.
-                    </p>
-
-                    <p className="text-[#605A57] text-base leading-7 font-sans">
-                      This isn't speculation—it's already happening with Oravo
-                      users today.
-                    </p>
-                  </div>
-                </section>
-
-                {/* One Voice Engine */}
-                <section className="mb-16">
-                  <h3 className="text-[#49423D] text-2xl md:text-3xl font-normal font-serif mb-6">
-                    One Voice Engine, Every Application
-                  </h3>
-
-                  <div className="space-y-4">
-                    <p className="text-[#605A57] text-base leading-7 font-sans">
-                      The future isn't dozens of disconnected speech tools, each
-                      learning your voice from scratch. Oravo creates a unified
-                      voice intelligence layer—one system that understands you,
-                      learns continuously, and works seamlessly across your
-                      entire digital workflow.
-                    </p>
-
-                    <p className="text-[#605A57] text-base leading-7 font-sans">
-                      From quick messages to long-form content creation, from
-                      technical documentation to creative writing, Oravo adapts
-                      to whatever you need to express.
-                    </p>
-                  </div>
-                </section>
-
-                {/* Privacy & Speed */}
-                <section className="mb-16 bg-gradient-to-br from-[#1877F2]/5 to-[#166FE5]/5 rounded-2xl p-8 md:p-10 border border-[rgba(24,119,242,0.1)]">
-                  <h3 className="text-[#49423D] text-2xl md:text-3xl font-normal font-serif mb-6">
-                    Privacy-Focused. Lightning-Fast.
-                  </h3>
-
-                  <div className="space-y-4">
-                    <p className="text-[#605A57] text-base leading-7 font-sans">
-                      Your voice data is yours. Oravo is built with privacy at
-                      its core—no unnecessary data collection, no selling your
-                      information, no compromises. You control what data is
-                      shared, and we're transparent about how it's used.
-                    </p>
-
-                    <p className="text-[#605A57] text-base leading-7 font-sans">
-                      Speed matters when you're capturing thoughts in real-time.
-                      Oravo delivers the fastest voice-to-text transcription
-                      available, with near-zero latency that keeps pace with
-                      natural speech. Think it, speak it, see it—instantly.
-                    </p>
-                  </div>
-                </section>
-
-                {/* Closing */}
-                <section className="mb-12">
-                  <p className="text-[#37322F] text-xl md:text-2xl font-medium leading-relaxed font-sans mb-8">
-                    The keyboard served us well. But it's time to move forward.
-                  </p>
-
-                  <div className="border-t border-[rgba(55,50,47,0.12)] pt-8 mt-8">
-                    <p className="text-[#49423D] text-2xl md:text-3xl font-normal font-serif mb-6">
-                      Ready to speak your mind? Welcome to Oravo.
-                    </p>
-                  </div>
-
-                  <div className="border-t border-[rgba(55,50,47,0.12)] pt-8 mt-8">
-                    <p className="text-[#605A57] text-sm leading-6 font-sans italic">
-                      Professional-grade voice dictation powered by advanced AI.
-                      Experience the difference when speech recognition actually
-                      understands you—while respecting your privacy and
-                      delivering unmatched speed.
-                    </p>
-                  </div>
-                </section>
-              </div>
-            </div>
-          </main>
-
-          {/* Footer */}
-          <FooterSection />
+      {/* Title page */}
+      <section className="relative w-full overflow-hidden bg-sand pt-36 pb-20 sm:pt-44 sm:pb-28">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <Parallax speed={130} className="absolute -left-40 top-20 sm:-left-24">
+            <div className="h-[380px] w-[380px] rounded-full bg-sand-deep sm:h-[460px] sm:w-[460px]" />
+          </Parallax>
+          <Parallax speed={-80} className="absolute -right-28 top-[55%]">
+            <div className="h-[300px] w-[300px] rotate-12 rounded-[56px] bg-clay" />
+          </Parallax>
+          <Parallax speed={60} className="absolute left-[6%] top-[58%] hidden xl:block">
+            <Doodle name="mic" className="w-40" />
+          </Parallax>
+          <Parallax speed={-40} className="absolute right-[7%] top-[170px] hidden xl:block">
+            <Doodle name="speech" className="w-40" />
+          </Parallax>
         </div>
-      </div>
-    </div>
+        <div className={`${SHELL} relative flex flex-col items-center text-center`}>
+          <Reveal>
+            <p className="eyebrow">Our manifesto</p>
+          </Reveal>
+          <h1 className="mt-6 font-serif text-[clamp(3.2rem,9vw,7rem)] font-normal leading-[0.98] tracking-[-0.035em] text-ink">
+            <span className="block">
+              <RevealWords text="Why Voice?" delay={0.05} />
+            </span>
+            <span className="block text-accent">
+              <DrawnUnderline>
+                <RevealWords text="Why Now?" delay={0.25} />
+              </DrawnUnderline>
+            </span>
+          </h1>
+          <Reveal delay={0.45}>
+            <p className="mx-auto mt-8 max-w-[560px] font-serif text-[20px] italic leading-relaxed text-ink-soft sm:text-[22px]">
+              On the keyboard, the voice, and why we built Oravo.
+            </p>
+          </Reveal>
+          <Reveal delay={0.55}>
+            <p className="mt-8 inline-flex items-center gap-3 font-display text-[12.5px] text-ink-faint">
+              <span className="h-px w-10 bg-ink/20" />
+              The Oravo team · 4 min read
+              <span className="h-px w-10 bg-ink/20" />
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* I + II */}
+      <Band color={PAPER} from={SAND} blend={200} className="pt-24 pb-16 sm:pt-28">
+        <div className="space-y-24 sm:space-y-28">
+          <EssayPart numeral="I" label="The challenge" title="Your Thoughts Move Faster Than Your Fingers" doodle="speed" margin={<KeysVersusVoice />}>
+            <DropCap>
+              Communication should be effortless. Speaking is how we naturally express ideas: instant, intuitive, and authentically human. Yet in our daily digital
+              interactions, we&apos;re constrained by keyboards and touch screens designed decades ago.
+            </DropCap>
+            <p>
+              Consider the paradox: we live in an era where AI generates entire articles, where algorithms drive vehicles autonomously, and where global connectivity
+              happens at light speed. But to interact with all this technology? We&apos;re still pecking away at keyboards, wrestling with autocorrect, and watching our
+              thoughts slow to a crawl.
+            </p>
+          </EssayPart>
+
+          <PullQuote>We don&apos;t process information in typed characters. Our minds work in spoken language.</PullQuote>
+
+          <EssayPart numeral="II" label="The reality" title="Speech Technology Finally Caught Up" doodle="measure">
+            <p>
+              For years, voice input has been a promise just out of reach. We don&apos;t process information in typed characters. Our minds work in spoken language,
+              conversation, and narrative flow.
+            </p>
+            <p>
+              The last 18 months have marked a turning point in AI-powered speech understanding. Modern language models now grasp nuance, handle diverse accents far
+              better, and learn from context in ways previously impossible.
+            </p>
+            <p>
+              Every major platform offers some form of voice input. Siri, Google Assistant, dictation features across operating systems: they&apos;ve existed for years.
+              But the gap between promise and performance has kept most of us reaching for the keyboard when accuracy matters.
+            </p>
+          </EssayPart>
+        </div>
+      </Band>
+
+      {/* III */}
+      <Band color={CANVAS} from={PAPER} blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-24">
+        <div className="space-y-24 sm:space-y-28">
+          <EssayPart numeral="III" label="The breakthrough" title="Meet Oravo: Privacy-First Voice Input That Actually Works" doodle="sparkle">
+            <p>
+              We built Oravo because we experienced that frustration firsthand. Next-generation voice dictation isn&apos;t about incremental improvements. It&apos;s about
+              finally closing the gap between how fast you think and how quickly you can capture those thoughts.
+            </p>
+            <p>
+              Oravo&apos;s AI engine recognizes context, learns your unique vocabulary, and adapts to your communication style. The result? Transcription that feels
+              effortless, natural, and reliable enough to trust with your most important work, while keeping your data private and secure.
+            </p>
+          </EssayPart>
+
+          <EssayPart numeral="IV" label="In practice" title="Picture Your Workflow Transformed" doodle="people">
+            <ul className="not-prose -mt-1 divide-y divide-line border-y border-line">
+              {WORKFLOWS.map((w) => (
+                <li key={w.who} className="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:gap-6">
+                  <span className="w-44 shrink-0 font-display text-[13px] font-semibold uppercase tracking-[0.12em] text-ink">{w.who}</span>
+                  <span className="italic">{w.what}</span>
+                </li>
+              ))}
+            </ul>
+            <p>This isn&apos;t speculation. It&apos;s already happening with Oravo users today.</p>
+          </EssayPart>
+
+          <EssayPart numeral="V" label="The idea" title="One Voice Engine, Every Application" doodle="windows">
+            <p>
+              The future isn&apos;t dozens of disconnected speech tools, each learning your voice from scratch. Oravo creates a unified voice intelligence layer: one system
+              that understands you, learns continuously, and works seamlessly across your entire digital workflow.
+            </p>
+            <p>
+              From quick messages to long-form content creation, from technical documentation to creative writing, Oravo adapts to whatever you need to express.
+            </p>
+          </EssayPart>
+        </div>
+      </Band>
+
+      {/* Privacy & speed: two columns, like facing pages */}
+      <Band color={CLAY} from={CANVAS} blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-24">
+        <div className={SHELL}>
+          <div className="mx-auto max-w-[900px] text-center">
+            <Parallax speed={18} className="mx-auto mb-4 w-28">
+              <Doodle name="notebook" className="w-28" />
+            </Parallax>
+            <Reveal>
+              <p className="eyebrow">Two promises</p>
+            </Reveal>
+            <h2 className="display-2 mt-3 text-ink">
+              <RevealWords text="Privacy-Focused. Lightning-Fast." />
+            </h2>
+          </div>
+          <div className="mx-auto mt-12 grid max-w-[980px] overflow-hidden rounded-2xl bg-raised shadow-[0_0_0_1px_var(--o-line),0_24px_48px_-30px_rgba(51,48,42,0.4)] md:grid-cols-2">
+            <Reveal className="p-7 sm:p-10">
+              <p className="font-serif text-[30px] leading-none text-brand">i.</p>
+              <h3 className="display-3 mt-4 text-ink">Your voice data is yours.</h3>
+              <p className="mt-4 font-serif text-[18px] leading-[1.7] text-ink-soft">
+                Oravo is built with privacy at its core: no unnecessary data collection, no selling your information, no compromises. You control what data is shared,
+                and we&apos;re transparent about how it&apos;s used.
+              </p>
+            </Reveal>
+            <Reveal delay={0.1} className="border-t border-line p-7 sm:p-10 md:border-l md:border-t-0">
+              <p className="font-serif text-[30px] leading-none text-brand">ii.</p>
+              <h3 className="display-3 mt-4 text-ink">Speed matters.</h3>
+              <p className="mt-4 font-serif text-[18px] leading-[1.7] text-ink-soft">
+                Speed matters when you&apos;re capturing thoughts in real time. Oravo is built to keep pace with natural speech, so the words land while the thought is
+                still fresh. Think it, speak it, see it.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </Band>
+
+      {/* Closing */}
+      <Band color={BLUSH} from={CLAY} blend={200} className="pt-24 pb-24 sm:pt-28">
+        <div className="space-y-14">
+          <PullQuote>The keyboard served us well. But it&apos;s time to move forward.</PullQuote>
+          <div className={`${SHELL} flex flex-col items-center text-center`}>
+            <Reveal>
+              <p className="font-serif text-[clamp(1.6rem,3vw,2.2rem)] leading-snug text-ink">
+                Ready to speak your mind? <span className="text-accent">Welcome to Oravo.</span>
+              </p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <Doodle name="scribble" className="mx-auto mt-6 w-40" />
+            </Reveal>
+            <Reveal delay={0.15}>
+              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                <a href="/download" className="btn-primary">
+                  Download Oravo
+                  <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                </a>
+                <a href="/how-to-use" className="btn-secondary">
+                  See how it works
+                </a>
+              </div>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p className="mx-auto mt-12 max-w-[560px] border-t border-line pt-8 font-serif text-[16px] italic leading-relaxed text-ink-faint">
+                Professional-grade voice dictation powered by advanced AI. Experience the difference when speech recognition actually understands you, while respecting
+                your privacy and keeping up with your thoughts.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </Band>
+    </MarketingShell>
   );
 }
