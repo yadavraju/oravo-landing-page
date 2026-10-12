@@ -34,7 +34,8 @@ edge where one band meets the next.
 | `blush` | `#FBF2EE` | CTA and footer ground |
 | `ink` / `ink-soft` / `ink-faint` | `#33302A` / `#6B655B` / `#9C958A` | Text |
 | `line` | `#E7E2DA` | Hairlines and rings |
-| `brand` | `#C4572F` | Single accent, at most once per viewport |
+| `primary-500` / `primary-600` | `#0F6A9E` / `#0C5A87` | Primary action (sky-blue, matches the desktop app). Buttons, active states, links |
+| `brand` | `#C4572F` | Single accent, at most once per viewport (the hero phrase, numbering, doodle accent strokes) |
 
 ## Bands
 
@@ -56,7 +57,7 @@ Prefer one surface divided by hairlines (`divide-line`) over a row of separate f
 
 These are rectangular, never capsules, and the same shapes as video-shala.
 
-- `.btn-primary`: solid ink with a 2px ink border, 48px tall, 8px radius. It lifts 1px on hover.
+- `.btn-primary`: solid sky-blue (`--o-primary`) with a 2px border in the same colour, 48px tall, 8px radius. It lifts 1px on hover.
 - `.btn-secondary`: a glass key with a 2px white border and a white-to-quarter-white fill, so the band shows through.
 
 The header follows video-shala's nav: a three-column grid with the menus on
@@ -73,9 +74,16 @@ with a full-width drawer.
 | Word-rise headline | Section headlines | `<RevealWords>` |
 | Fade-up | Copy and cards | `<Reveal>` (12px rise, 620ms, fires once) |
 | Keyboard vs. voice | Hero (first section under it) | `EmailComparisonSection` |
-| Drawn line art | One piece per section | `<Doodle name>`: strokes trace in on first view, then drift with `<Parallax>` |
+| Drawn line art | One piece per section | `<Doodle name>`: strokes trace in on first view, then the piece floats and sways on a slow loop while its accent stroke erases and re-sketches; drifts with `<Parallax>` |
 | Pain loop | Section 2 | `AgitationSection` |
 | Marquee | Logos | Two counter-running `w-max` rows, list doubled so -50% lands on the seam, edges masked, greyscale until hover |
 
 Loops pause off-screen. Everything settles to its finished state under
 `prefers-reduced-motion`.
+
+## Pages
+
+- `/`: homepage bands, top to bottom: hero (sand), why typing is the bottleneck + logos (paper), the real problem (canvas), Press. Speak. Done. (clay), Slack accent demo (paper), translation (sand), accent proof (espresso), speak once (paper), features (canvas), made for you (paper), testimonials (canvas), switch from Wispr Flow + ask an AI (clay), CTA and footer (blush).
+- `/pricing`: plans (video-shala layout: cycle switch, plan cards with a "Most popular" strip) and the FAQ beneath.
+- `/faq`: the full FAQ. Content lives in `lib/faq.ts`, shared with `/pricing` and their FAQPage JSON-LD.
+- `/llms.txt`: plain-text site summary for AI assistants (replaces the old human/agent toggle).

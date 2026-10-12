@@ -36,7 +36,8 @@ export default function FooterSection() {
               <a href="/" className={linkClass}>Dictation</a>
               <a href="/notetaker" className={linkClass}>Notetaker</a>
               <a href="/features" className={linkClass}>Features</a>
-              <a href="/#pricing-section" className={linkClass}>Pricing</a>
+              <a href="/pricing" className={linkClass}>Pricing</a>
+              <a href="/faq" className={linkClass}>FAQ</a>
               <a href="/blog" className={linkClass}>Blog</a>
               <a href="/download" className={linkClass}>Download</a>
               <a href="/use-cases" className={linkClass}>Use Cases</a>

@@ -1,5 +1,9 @@
 "use client";
 
+import { Doodle } from "./landing/Doodle";
+import { Parallax } from "./landing/Parallax";
+import { Reveal, RevealWords } from "./landing/Reveal";
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
@@ -229,19 +233,20 @@ export default function MadeForYou() {
   return (
     <section
       id="made-for-you"
-      className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center bg-transparent"
+      className="w-full flex flex-col justify-center items-center bg-transparent"
       aria-labelledby="made-for-you-heading"
     >
       {/* Header Section */}
-      <div className="self-stretch px-6 md:px-12 pt-12 md:pt-16 pb-8 md:pb-12 flex justify-center items-center">
-        <div className="w-full max-w-[800px] flex flex-col justify-start items-center gap-4">
-          <h2
-            id="made-for-you-heading"
-            className="text-[#49423D] text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-stretch-semi-condensed font-medium leading-tight md:leading-[60px] font-serif text-center px-4"
-          >
-            Made for people who write for a living.
+      <div className="self-stretch px-5 sm:px-8 pb-10 md:pb-12 flex justify-center items-center">
+        <div className="w-full max-w-[760px] flex flex-col justify-start items-center text-center">
+          <Parallax speed={18} className="mb-4">
+            <Doodle name="people" className="w-32 sm:w-36" />
+          </Parallax>
+          <Reveal><p className="eyebrow">Made for you</p></Reveal>
+          <h2 id="made-for-you-heading" className="display-2 mt-3 text-ink">
+            <RevealWords text="Made for people who write for a living." />
           </h2>
-          <p className="text-[#605A57] text-base md:text-lg font-normal leading-relaxed font-sans text-center max-w-[600px]">
+          <p className="subtitle mt-4 max-w-xl">
             Whether you&apos;re shipping code, closing deals, or drafting
             proposals — typing is slowing you down. Oravo speeds up the part of
             your job nobody teaches you to optimize.
@@ -250,25 +255,25 @@ export default function MadeForYou() {
       </div>
 
       {/* Featured Cards Grid */}
-      <div className="w-full max-w-[1060px] px-4 sm:px-6 md:px-8 pb-8 md:pb-12">
+      <div className="w-full max-w-6xl px-5 sm:px-8 pb-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {featuredPersonas.map((persona) => (
             <Link
               key={persona.id}
               href={persona.href}
-              className="group p-5 bg-white border border-[#E0DEDB] rounded-xl flex flex-col gap-4 transition-all duration-200 hover:border-[#847971]"
+              className="group surface-solid surface-interactive p-5 flex flex-col gap-4"
             >
               {/* Icon */}
-              <div className="w-10 h-10 rounded-lg bg-[#F7F5F3] flex items-center justify-center text-[#605A57] group-hover:text-[#37322F] transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-canvas ring-1 ring-line flex items-center justify-center text-ink-soft group-hover:text-primary-500 transition-colors">
                 {persona.icon}
               </div>
 
               {/* Content */}
               <div className="flex flex-col gap-2">
-                <h3 className="text-[#37322F] text-base font-semibold leading-tight font-sans">
+                <h3 className="text-ink text-base font-semibold leading-tight font-display">
                   {persona.title}
                 </h3>
-                <p className="text-[#605A57] text-sm font-normal leading-relaxed font-sans">
+                <p className="text-ink-soft text-sm font-normal leading-relaxed font-sans">
                   {persona.description}
                 </p>
               </div>
@@ -278,11 +283,11 @@ export default function MadeForYou() {
       </div>
 
       {/* Additional Roles */}
-      <div className="w-full max-w-[1060px] px-4 sm:px-6 md:px-8 pb-12 md:pb-16">
+      <div className="w-full max-w-6xl px-5 sm:px-8 pt-6">
         <div className="flex flex-col items-center gap-4">
           <button
             onClick={() => setShowAll(!showAll)}
-            className="flex items-center gap-2 text-[#605A57] hover:text-[#37322F] transition-colors"
+            className="flex items-center gap-2 text-ink-soft hover:text-ink transition-colors"
           >
             <span className="text-sm font-medium font-sans">
               {showAll
@@ -320,7 +325,7 @@ export default function MadeForYou() {
                   {additionalRoles.map((role) => (
                     <span
                       key={role}
-                      className="px-4 py-2 bg-white border border-[#E0DEDB] rounded-full text-[#605A57] text-sm font-medium font-sans"
+                      className="px-3 py-1.5 bg-raised ring-1 ring-line rounded-lg text-ink-soft text-sm font-medium font-display"
                     >
                       {role}
                     </span>

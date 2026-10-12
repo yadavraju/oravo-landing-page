@@ -17,6 +17,7 @@ import { usePathname } from "next/navigation";
 import {
   BookOpen,
   ChevronDown,
+  CircleHelp,
   FileText,
   LayoutGrid,
   Menu,
@@ -48,11 +49,12 @@ const NAV: NavMenu[] = [
       { href: "/features", icon: Sparkles, title: "Features", blurb: "Explore what Oravo can do" },
       { href: "/use-cases", icon: LayoutGrid, title: "Use Cases", blurb: "Ways teams work by voice" },
       { href: "/blog", icon: BookOpen, title: "Blog", blurb: "Guides and product updates" },
+      { href: "/faq", icon: CircleHelp, title: "FAQ", blurb: "Accents, translation and privacy" },
     ],
   },
 ];
 
-const NAV_LINKS = [{ href: "/#pricing-section", label: "Pricing" }];
+const NAV_LINKS = [{ href: "/pricing", label: "Pricing" }];
 
 const NAV_PILL =
   "inline-flex h-9 items-center gap-1.5 rounded-lg border-2 border-white bg-gradient-to-b from-white to-white/25 px-3.5 " +
@@ -63,10 +65,10 @@ const NAV_PILL =
 const NAV_PILL_OPEN = "to-white shadow-[0_4px_10px_-2px_rgba(51,48,42,0.12)]";
 
 const NAV_PILL_SOLID =
-  "inline-flex h-9 items-center justify-center rounded-lg border-2 border-ink bg-ink px-4 font-display text-[14px] font-semibold text-white " +
-  "shadow-[0_2px_4px_rgba(51,48,42,0.10)] transition-all duration-300 ease-out hover:border-ink/90 hover:bg-ink/90 " +
-  "hover:shadow-[0_4px_10px_-2px_rgba(51,48,42,0.18)] active:shadow-none " +
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 focus-visible:ring-offset-2 xl:h-10 xl:px-6 xl:text-[15px]";
+  "inline-flex h-9 items-center justify-center rounded-lg border-2 border-primary-500 bg-primary-500 px-4 font-display text-[14px] font-semibold text-white " +
+  "shadow-[0_2px_4px_rgba(15,106,158,0.18)] transition-all duration-300 ease-out hover:border-primary-600 hover:bg-primary-600 " +
+  "hover:shadow-[0_6px_14px_-4px_rgba(15,106,158,0.4)] active:shadow-none " +
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40 focus-visible:ring-offset-2 xl:h-10 xl:px-6 xl:text-[15px]";
 
 function isActive(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);

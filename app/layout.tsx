@@ -2,8 +2,6 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Hedvig_Letters_Serif, Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
-import ModeToggleFAB from "@/components/mode-toggle-fab";
-import AgentModeView from "@/components/agent-mode-view";
 import "./globals.css";
 
 /*
@@ -715,6 +713,9 @@ export default function RootLayout({
         />
         <meta name="apple-mobile-web-app-title" content="Oravo.ai" />
 
+        {/* Machine-readable site summary for AI assistants */}
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM summary" />
+
         {/* Microsoft Application */}
         <meta name="application-name" content="Oravo.ai" />
         <meta name="msapplication-tooltip" content="AI Voice Dictation" />
@@ -789,8 +790,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
 
-        <AgentModeView>{children}</AgentModeView>
-        <ModeToggleFAB />
+        {children}
       </body>
     </html>
   );

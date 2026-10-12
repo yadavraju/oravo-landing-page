@@ -1,14 +1,18 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
 
 /*
  * Hand-drawn line art, one piece per section.
  *
  * Every piece is plain stroked paths so it can be "drawn" on first view: each
  * path animates its pathLength from 0 to 1, staggered, so the illustration
- * appears to be sketched in front of the reader. Strokes are warm ink with one
- * accent stroke per piece. Decorative only: hidden from assistive tech.
+ * appears to be sketched in front of the reader. It never fully stops after
+ * that: the whole piece floats and sways on a slow loop, and the accent stroke
+ * keeps erasing and re-sketching itself, like a pen going over the line again.
+ * Strokes are warm ink with one accent per piece. Decorative only: hidden from
+ * assistive tech, and frozen in its drawn state under reduced motion.
  */
 
 type Stroke = { d: string; accent?: boolean; width?: number };
@@ -102,6 +106,84 @@ const ART = {
       { d: "M40 30 Q28 42 40 54 M136 30 Q148 42 136 54", accent: true },
     ],
   },
+  // A speedometer: thought outruns the keyboard.
+  speed: {
+    viewBox: "0 0 180 110",
+    strokes: [
+      { d: "M30 92 A60 60 0 0 1 150 92" },
+      { d: "M42 92 H52 M128 92 H138 M90 40 V50 M54 56 L61 63 M126 56 L119 63" },
+      { d: "M90 92 L128 58", accent: true, width: 2.5 },
+      { d: "M84 92 A6 6 0 1 0 96 92 A6 6 0 1 0 84 92" },
+    ],
+  },
+  // A keycap being pressed.
+  hotkey: {
+    viewBox: "0 0 170 110",
+    strokes: [
+      { d: "M40 30 H130 Q138 30 138 38 V78 Q138 86 130 86 H40 Q32 86 32 78 V38 Q32 30 40 30 Z" },
+      { d: "M46 40 H124 V70 H46 Z" },
+      { d: "M70 56 H100" },
+      { d: "M20 20 L30 30 M150 20 L140 30 M85 6 V18", accent: true },
+    ],
+  },
+  // Two chat bubbles: one rough, one polished.
+  bubbles: {
+    viewBox: "0 0 180 120",
+    strokes: [
+      { d: "M14 22 Q14 10 26 10 H92 Q104 10 104 22 V50 Q104 62 92 62 H44 L28 76 L30 62 Q14 62 14 50 Z" },
+      { d: "M28 28 C40 22 50 40 62 30 S82 26 90 34", accent: true },
+      { d: "M76 70 Q76 58 88 58 H154 Q166 58 166 70 V98 Q166 110 154 110 H140 L150 120 L126 110 H88 Q76 110 76 98 Z" },
+      { d: "M92 76 H150 M92 92 H134" },
+    ],
+  },
+  // A price tag.
+  tag: {
+    viewBox: "0 0 170 120",
+    strokes: [
+      { d: "M30 20 H96 L150 66 L104 112 L30 50 Z" },
+      { d: "M52 38 A7 7 0 1 1 51.9 38" },
+      { d: "M86 64 H118 M92 80 H112" },
+      { d: "M12 30 C2 50 18 64 30 50", accent: true },
+    ],
+  },
+  // A question mark with a spark of insight.
+  question: {
+    viewBox: "0 0 150 120",
+    strokes: [
+      { d: "M50 40 Q50 14 76 14 Q102 14 102 38 Q102 54 84 62 Q76 66 76 78" },
+      { d: "M76 96 V98" , width: 4 },
+      { d: "M118 20 L124 34 L138 40 L124 46 L118 60 L112 46 L98 40 L112 34 Z", accent: true },
+    ],
+  },
+  // A balance scale: weighing the options.
+  scales: {
+    viewBox: "0 0 180 120",
+    strokes: [
+      { d: "M90 14 V100 M60 104 H120" },
+      { d: "M34 30 H146" },
+      { d: "M34 30 L18 66 H50 Z" },
+      { d: "M146 30 L130 66 H162 Z", accent: true },
+      { d: "M90 8 A6 6 0 1 1 89.9 8" },
+    ],
+  },
+  // A quotation mark.
+  quote: {
+    viewBox: "0 0 150 110",
+    strokes: [
+      { d: "M30 70 Q30 30 62 22 M30 70 A14 14 0 1 0 44 56" },
+      { d: "M78 70 Q78 30 110 22 M78 70 A14 14 0 1 0 92 56" },
+      { d: "M24 96 C50 86 90 106 126 92", accent: true },
+    ],
+  },
+  // People who write for a living.
+  people: {
+    viewBox: "0 0 190 110",
+    strokes: [
+      { d: "M60 34 A14 14 0 1 1 59.9 34 M34 96 Q34 66 60 66 Q86 66 86 96" },
+      { d: "M130 34 A14 14 0 1 1 129.9 34 M104 96 Q104 66 130 66 Q156 66 156 96" },
+      { d: "M86 30 L104 14 M98 14 H104 V20", accent: true },
+    ],
+  },
 } satisfies Record<string, Art>;
 
 export type DoodleName = keyof typeof ART;
@@ -115,27 +197,54 @@ export function Doodle({
   className?: string;
   tone?: "light" | "dark";
 }) {
+  const ref = useRef<SVGSVGElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.4 });
   const reduceMotion = useReducedMotion();
   const art: Art = ART[name];
   const ink = tone === "dark" ? "rgba(255,255,255,0.42)" : "rgba(51,48,42,0.38)";
   const accent = tone === "dark" ? "#e8a07f" : "var(--o-accent)";
+  // A per-piece phase so neighbouring doodles do not sway in lockstep.
+  const phase = (name.length % 5) * 0.7;
 
   return (
-    <svg viewBox={art.viewBox} className={className} fill="none" aria-hidden="true">
-      {art.strokes.map((stroke, i) => (
-        <motion.path
-          key={i}
-          d={stroke.d}
-          stroke={stroke.accent ? accent : ink}
-          strokeWidth={stroke.width ?? 2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          initial={reduceMotion ? false : { pathLength: 0, opacity: 0 }}
-          whileInView={{ pathLength: 1, opacity: 1 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 1.3, delay: 0.15 + i * 0.18, ease: [0.33, 0.1, 0.25, 1] }}
-        />
-      ))}
+    <motion.svg
+      ref={ref}
+      viewBox={art.viewBox}
+      className={className}
+      fill="none"
+      aria-hidden="true"
+      animate={reduceMotion || !inView ? undefined : { y: [0, -6, 0], rotate: [0, -2, 0, 1.5, 0] }}
+      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: phase }}
+    >
+      {art.strokes.map((stroke, i) => {
+        const delay = 0.15 + i * 0.18;
+        const drawn = { pathLength: 1, opacity: 1 };
+        // The accent stroke loops: draw, hold, erase back to its start, redraw.
+        const loop = stroke.accent && !reduceMotion;
+        return (
+          <motion.path
+            key={i}
+            d={stroke.d}
+            stroke={stroke.accent ? accent : ink}
+            strokeWidth={stroke.width ?? 2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            initial={reduceMotion ? false : { pathLength: 0, opacity: 0 }}
+            animate={
+              !inView || reduceMotion
+                ? reduceMotion ? drawn : undefined
+                : loop
+                  ? { pathLength: [0, 1, 1, 0, 1], opacity: 1 }
+                  : drawn
+            }
+            transition={
+              loop
+                ? { duration: 6, times: [0, 0.22, 0.7, 0.86, 1], repeat: Infinity, repeatDelay: 0.6, delay, ease: "easeInOut" }
+                : { duration: 1.3, delay, ease: [0.33, 0.1, 0.25, 1] }
+            }
+          />
+        );
+      })}
       {art.glyphs?.map((glyph, i) => (
         <motion.text
           key={glyph.text}
@@ -144,14 +253,17 @@ export function Doodle({
           fill={ink}
           fontSize="18"
           fontFamily="var(--font-serif)"
-          initial={reduceMotion ? false : { opacity: 0, y: glyph.y + 6 }}
-          whileInView={{ opacity: 1, y: glyph.y }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.6, delay: 1 + i * 0.2 }}
+          initial={reduceMotion ? false : { opacity: 0 }}
+          animate={
+            !inView || reduceMotion
+              ? undefined
+              : { opacity: [0, 1, 1, 0.5, 1], y: [glyph.y + 6, glyph.y, glyph.y - 3, glyph.y, glyph.y] }
+          }
+          transition={{ duration: 5, delay: 1 + i * 0.4, repeat: Infinity, repeatDelay: 0.4 + i * 0.3, ease: "easeInOut" }}
         >
           {glyph.text}
         </motion.text>
       ))}
-    </svg>
+    </motion.svg>
   );
 }

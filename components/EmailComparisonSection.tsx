@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { Doodle } from "./landing/Doodle";
 
 const keyboardText = "Hey Kevin, let's meet on Friday at 2 PM... oh, wait";
 const voiceText = `Hey Kevin, let's meet Friday at 2 PM for the quarterly review.
@@ -280,17 +281,14 @@ export default function EmailComparisonSection() {
       }}
       className="w-full py-8 sm:py-12 md:py-16"
     >
-      <div className="w-full max-w-[800px] mx-auto px-4 text-center mb-8 sm:mb-10 md:mb-12">
-        <p className="text-[10px] sm:text-xs text-[#78716C] font-semibold uppercase tracking-[0.15em] mb-3">
-          Why typing is the bottleneck
-        </p>
-        <h2 className="text-[#37322F] text-[24px] sm:text-3xl md:text-4xl font-medium leading-tight font-serif mb-4">
-          You think at 220 wpm. You type at 45.
-        </h2>
-        <p className="text-[#605A57] text-sm sm:text-base font-normal leading-relaxed font-sans max-w-[640px] mx-auto">
-          Every email, every Slack reply, every doc — you&apos;re translating
-          thoughts to keystrokes all day. Oravo closes the gap. Press your
-          hotkey, speak, and get finished text where your cursor is.
+      <div className="w-full max-w-[760px] mx-auto px-4 flex flex-col items-center text-center mb-10 sm:mb-12">
+        <Doodle name="speed" className="mb-4 w-32 sm:w-36" />
+        <p className="eyebrow">Why typing is the bottleneck</p>
+        <h2 className="display-2 mt-3 text-ink">You think at 220 wpm. You type at 45.</h2>
+        <p className="subtitle mt-4 max-w-xl mx-auto">
+          Every email, every Slack reply, every doc — you&apos;re translating thoughts to keystrokes
+          all day. Oravo closes the gap. Press your hotkey, speak, and get finished text where your
+          cursor is.
         </p>
       </div>
 

@@ -1,5 +1,9 @@
 "use client";
 
+import { Doodle } from "./landing/Doodle";
+import { Parallax } from "./landing/Parallax";
+import { Reveal, RevealWords } from "./landing/Reveal";
+
 import { useState, useEffect } from "react";
 import type React from "react";
 
@@ -70,14 +74,23 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
+    <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
+      <div className="mx-auto mb-10 flex max-w-[760px] flex-col items-center text-center">
+        <Parallax speed={18} className="mb-4">
+          <Doodle name="quote" className="w-28 sm:w-32" />
+        </Parallax>
+        <Reveal><p className="eyebrow">In their words</p></Reveal>
+        <h2 className="display-2 mt-3 text-ink">
+          <RevealWords text="What people say after a week." />
+        </h2>
+      </div>
       {/* TODO: Replace with 2-3 real professional testimonials from knowledge-worker users.
           Target quotes from founders, engineers, or sales professionals — not students.
           Each should include: name, role, company, and optional LinkedIn link. */}
 
       {/* Testimonial Content */}
-      <div className="self-stretch px-2 overflow-hidden flex justify-start items-center bg-background border border-b border-l-0 border-r-0 border-t-0">
-        <div className="flex-1 py-16 md:py-17 flex flex-col md:flex-row justify-center items-end gap-6">
+      <div className="surface-solid !rounded-2xl px-2 overflow-hidden flex justify-start items-center">
+        <div className="flex-1 py-10 md:py-12 flex flex-col md:flex-row justify-center items-end gap-6">
           <div className="self-stretch px-3 md:px-12 justify-center items-start gap-4 flex flex-col md:flex-row">
             <img
               className="w-48 h-50 md:w-48 md:h-50 rounded-lg object-contain transition-all duration-700 ease-in-out"
@@ -94,7 +107,7 @@ export default function TestimonialsSection() {
               <div
                 // CHANGED: Reduced font size to text-base (mobile) and md:text-lg.
                 // CHANGED: Reduced line height to leading-6 and md:leading-7 to match the smaller font.
-                className="self-stretch justify-start flex flex-col text-[#49423D] text-base md:text-lg font-medium leading-6 md:leading-7 font-sans overflow-hidden transition-all duration-700 ease-in-out tracking-tight"
+                className="self-stretch justify-start flex flex-col text-ink font-serif text-xl md:text-2xl leading-snug overflow-hidden transition-all duration-700 ease-in-out tracking-tight"
                 style={{
                   filter: isTransitioning ? "blur(4px)" : "blur(0px)",
                   transition: "filter 0.7s ease-in-out",
@@ -109,10 +122,10 @@ export default function TestimonialsSection() {
                   transition: "filter 0.7s ease-in-out",
                 }}
               >
-                <div className="self-stretch justify-center flex flex-col text-[rgba(73,66,61,0.90)] text-lg font-medium leading-[26px] font-sans">
+                <div className="self-stretch justify-center flex flex-col text-ink font-display text-[15px] font-semibold leading-6">
                   {testimonials[activeTestimonial].name}
                 </div>
-                <div className="self-stretch justify-center flex flex-col text-[rgba(73,66,61,0.70)] text-lg font-medium leading-[26px] font-sans">
+                <div className="self-stretch justify-center flex flex-col text-ink-soft font-display text-[14px] leading-6">
                   {testimonials[activeTestimonial].company}
                 </div>
               </div>
@@ -128,7 +141,7 @@ export default function TestimonialsSection() {
                     testimonials.length,
                 )
               }
-              className="w-9 h-9 shadow-[0px_1px_2px_rgba(0,0,0,0.08)] overflow-hidden rounded-full border border-[rgba(0,0,0,0.15)] justify-center items-center gap-2 flex hover:bg-gray-50 transition-colors"
+              aria-label="Show testimonial" className="w-9 h-9 overflow-hidden rounded-lg border-2 border-white bg-gradient-to-b from-white to-white/25 shadow-[0_2px_4px_rgba(51,48,42,0.08)] ring-1 ring-line justify-center items-center gap-2 flex transition-all hover:to-white/60"
             >
               <div className="w-6 h-6 relative overflow-hidden">
                 <svg
@@ -154,7 +167,7 @@ export default function TestimonialsSection() {
                   (activeTestimonial + 1) % testimonials.length,
                 )
               }
-              className="w-9 h-9 shadow-[0px_1px_2px_rgba(0,0,0,0.08)] overflow-hidden rounded-full border border-[rgba(0,0,0,0.15)] justify-center items-center gap-2 flex hover:bg-gray-50 transition-colors"
+              aria-label="Show testimonial" className="w-9 h-9 overflow-hidden rounded-lg border-2 border-white bg-gradient-to-b from-white to-white/25 shadow-[0_2px_4px_rgba(51,48,42,0.08)] ring-1 ring-line justify-center items-center gap-2 flex transition-all hover:to-white/60"
             >
               <div className="w-6 h-6 relative overflow-hidden">
                 <svg

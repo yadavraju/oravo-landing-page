@@ -1,140 +1,50 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
 
-import { useEffect } from "react";
 import CTASection from "../components/cta-section";
 import DownloadButtons from "../components/DownloadButtons";
 import LandingAnalytics from "../components/LandingAnalytics";
 import EmailComparisonSection from "../components/EmailComparisonSection";
 import { Header } from "../components/header";
+import AccentToSlackDemo from "./landing/AccentToSlackDemo";
 import AgitationSection from "./landing/AgitationSection";
 import { Band } from "./landing/Band";
-import { Parallax } from "./landing/Parallax";
 import { Doodle } from "./landing/Doodle";
+import { Parallax } from "./landing/Parallax";
 import { Reveal, RevealWords } from "./landing/Reveal";
-
 
 const DocumentationSection = dynamic(() => import("../components/documentation-section"));
 const EffortlessIntegration = dynamic(() => import("../components/effortless-integration-updated"));
-const FAQSection = dynamic(() => import("../components/faq-section"));
-const AskAISection = dynamic(() => import("../components/ask-ai-section"));
 const FooterSection = dynamic(() => import("../components/footer-section"));
 const MadeForYou = dynamic(() => import("../components/MadeForYou"));
-const PricingSection = dynamic(() => import("../components/pricing-section"));
 const SmartSimpleBrilliant = dynamic(() => import("../components/smart-simple-brilliant"));
+const SwitchAndAsk = dynamic(() => import("./landing/SwitchAndAsk"));
 const TechCompanyMarquee = dynamic(() => import("../components/TechCompanyMarquee"));
 const TestimonialsSection = dynamic(() => import("../components/testimonials-section"));
-const WisprSwitchSection = dynamic(() => import("../components/wispr-switch-section"));
 const YourWorkInSync = dynamic(() => import("../components/your-work-in-sync"));
 const TranslationDemo = dynamic(() => import("../components/TranslationDemo"));
 const TwoWayExamples = dynamic(() => import("../components/two-way-examples"));
 
 export default function HomeLanding({ blogSection }: { blogSection?: React.ReactNode }) {
-  // Handle hash navigation from other pages
+  // Hash navigation from other pages. Pricing moved to its own page, so old
+  // "/#pricing-section" links (ads, bookmarks) are sent there.
   useEffect(() => {
-    const hash = window.location.hash;
-    if (hash) {
-      setTimeout(() => {
-        const sectionId = hash.replace("#", "");
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const offset = 100;
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - offset;
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth",
-          });
-        }
-      }, 100);
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+    if (hash === "pricing-section") {
+      window.location.replace("/pricing");
+      return;
     }
+    const timer = setTimeout(() => {
+      const element = document.getElementById(hash);
+      if (!element) return;
+      const top = element.getBoundingClientRect().top + window.pageYOffset - 100;
+      window.scrollTo({ top, behavior: "smooth" });
+    }, 100);
+    return () => clearTimeout(timer);
   }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Does it really understand my accent?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Oravo is built for multilingual speakers and strong accents. We are running the same-script benchmark across five accent and language cohorts so you can inspect the method and results.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Can I speak my native language and get English text?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Absolutely. Speak Spanish, Hindi, Mandarin, Arabic, French, Portuguese, Russian, German, Japanese, Korean, or 20+ other languages\u2014Oravo translates to fluent, context-aware English instantly.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How is Oravo different from Wispr Flow, Willow Voice, Dragon, and other dictation tools?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Oravo focuses on multilingual voice typing, polished output, and accent-friendly workflows on Mac, Windows, and Android. Compare current platform support, features, and pricing for your needs.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What apps does it work with?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Everywhere you can type: Gmail, Slack, Notion, Google Docs, Microsoft Word, Figma, VSCode, Jira, LinkedIn, WhatsApp, Teams, Salesforce\u2014literally any text field.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How does context awareness work?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Oravo reads which app you're using and adjusts tone, format, and structure automatically. The same sentence becomes casual in Slack, professional in Gmail, and technical in Notion\u2014without you doing anything.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Is my voice data private and secure?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Check Oravo's current privacy policy for exact details about voice processing, retention, and third-party services.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Can I try before I pay?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Current trial and pricing details are shown in the app at signup.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What if I speak multiple languages in one sentence?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Oravo handles code-switching naturally. Speak \"I need to email the cliente about the meeting\"\u2014Oravo understands and formats correctly.",
-        },
-      },
-    ],
-  };
 
   // Band colours, top to bottom. Each band blends out of the one above it.
   const SAND = "var(--o-band-sand)";
@@ -147,26 +57,22 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
 
   return (
     <div className="grain relative w-full min-h-screen bg-paper text-ink overflow-x-hidden">
-      <LandingAnalytics variant="warm-bands-v1" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+      <LandingAnalytics variant="warm-bands-v2" />
       <Header />
 
-      {/* ───────────── Hero: one warm solid colour, parallax shapes ───────────── */}
-      <Band color={SAND} className="pt-28 sm:pt-36 pb-16 sm:pb-20">
+      {/* ───────────── Hero: one warm solid colour, parallax shapes, drawn art ───────────── */}
+      <Band color={SAND} className="pt-32 sm:pt-40 pb-8 sm:pb-10">
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           <Parallax speed={140} className="absolute -left-40 top-16 sm:-left-24">
             <div className="h-[380px] w-[380px] rounded-full bg-sand-deep sm:h-[460px] sm:w-[460px]" />
           </Parallax>
-          <Parallax speed={-90} className="absolute -right-32 top-[38%] sm:-right-16">
+          <Parallax speed={-90} className="absolute -right-32 top-[48%] sm:-right-16">
             <div className="h-[300px] w-[300px] rotate-12 rounded-[56px] bg-clay sm:h-[360px] sm:w-[360px]" />
           </Parallax>
-          <Parallax speed={60} className="absolute left-[3%] top-[300px] hidden xl:block">
+          <Parallax speed={60} className="absolute left-[3%] top-[260px] hidden xl:block">
             <Doodle name="speech" className="w-44" />
           </Parallax>
-          <Parallax speed={-40} className="absolute right-[3%] top-[180px] hidden xl:block">
+          <Parallax speed={-40} className="absolute right-[3%] top-[150px] hidden xl:block">
             <Doodle name="plane" className="w-44" />
           </Parallax>
         </div>
@@ -174,14 +80,8 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
         <div className={`${SHELL} relative`}>
           <Parallax speed={-30}>
             <div className="mx-auto flex max-w-[62rem] flex-col items-center text-center">
-              <Reveal>
-                <span className="chip px-3 py-1.5 font-display text-xs font-semibold text-ink-soft">
-                  <span className="h-1.5 w-1.5 rounded-sm bg-brand" />
-                  AI dictation for non-native English speakers
-                </span>
-              </Reveal>
-
-              <h1 className="display-1 mt-6 text-ink">
+              <Doodle name="speech" className="mb-5 w-28 xl:hidden" />
+              <h1 className="display-1 text-ink">
                 <span className="block text-balance">
                   <RevealWords text="Speak in your accent." delay={0.05} />
                 </span>
@@ -207,25 +107,26 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
                 </div>
               </Reveal>
 
+              {/* Social proof as a caption, not a control: no box, no border. */}
               <Reveal delay={0.7}>
-                <div className="chip mt-8 flex-col px-4 py-3 sm:flex-row sm:py-2.5">
-                  <div className="flex -space-x-1.5" aria-hidden="true">
+                <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
+                  <div className="flex -space-x-2" aria-hidden="true">
                     {[
                       ["AR", "#f6dccd", "#9a4424"],
-                      ["LM", "#efe4d3", "#6b5a3e"],
-                      ["RS", "#e8dccf", "#5c4a3a"],
-                      ["KO", "#f3e4d2", "#7a4d2c"],
+                      ["LM", "#e3f0f8", "#0f6a9e"],
+                      ["RS", "#efe4d3", "#6b5a3e"],
+                      ["KO", "#f0dcca", "#7a4d2c"],
                     ].map(([initials, bg, fg]) => (
                       <span
                         key={initials}
-                        className="flex h-7 w-7 items-center justify-center rounded-md border-2 border-white font-display text-[10px] font-bold"
+                        className="flex h-8 w-8 items-center justify-center rounded-full font-display text-[10px] font-bold ring-2 ring-[var(--o-band-sand)]"
                         style={{ background: bg, color: fg }}
                       >
                         {initials}
                       </span>
                     ))}
                   </div>
-                  <p className="text-[13px] leading-snug text-ink-soft sm:text-left">
+                  <p className="max-w-[420px] text-[13.5px] leading-snug text-ink-soft sm:text-left">
                     Trusted by <span className="font-semibold text-ink">10,000+</span> remote
                     developers, international founders, and global agency owners.
                   </p>
@@ -233,34 +134,69 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
               </Reveal>
             </div>
           </Parallax>
+        </div>
+      </Band>
 
-          {/* Why typing is the bottleneck: the first thing under the hero. */}
-          <Reveal delay={0.35} y={24} className="relative mt-14 sm:mt-16">
-            <Parallax speed={30}>
-              <div className="surface-solid !rounded-2xl p-3 sm:p-6">
-                <EmailComparisonSection />
-              </div>
+      {/* ───────────── Why typing is the bottleneck: blends out of the hero, no box ───────────── */}
+      <Band color={PAPER} from={SAND} blend={240} className="pt-6 pb-16 sm:pb-20">
+        <div className={`${SHELL} relative`}>
+          <Reveal y={24}>
+            <Parallax speed={24}>
+              <EmailComparisonSection />
             </Parallax>
           </Reveal>
 
           <div className="mt-16 sm:mt-20">
             <p className="eyebrow mb-4 text-center">Used by professionals at</p>
-            <div className="[mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
-              <TechCompanyMarquee />
-            </div>
+            <TechCompanyMarquee />
           </div>
         </div>
       </Band>
 
       {/* ───────────── Section 2: The Agitation ───────────── */}
-      <Band color={PAPER} from={SAND} aria-label="The real problem">
+      <Band color={CANVAS} from={PAPER} aria-label="The real problem">
         <AgitationSection />
       </Band>
 
+      {/* ───────────── Press. Speak. Done. ───────────── */}
+      <Band color={CLAY} from={CANVAS} blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-28" aria-label="How it works">
+        <Parallax speed={-60} className="pointer-events-none absolute -right-20 top-20 hidden lg:block" aria-hidden="true">
+          <div className="h-60 w-60 rotate-12 rounded-[48px] bg-sand-deep/70" />
+        </Parallax>
+        <div className="relative">
+          <DocumentationSection />
+        </div>
+      </Band>
+
+      {/* ───────────── Accent in, business English out (Slack demo) ───────────── */}
+      <Band color={PAPER} from={CLAY} blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-28" aria-labelledby="slack-demo-heading">
+        <div className={SHELL}>
+          <div className="mx-auto flex max-w-[760px] flex-col items-center text-center">
+            <Parallax speed={18} className="mb-4">
+              <Doodle name="bubbles" className="w-32 sm:w-36" />
+            </Parallax>
+            <Reveal><p className="eyebrow">Accent in, business English out</p></Reveal>
+            <h2 id="slack-demo-heading" className="display-2 mt-3 text-ink">
+              <RevealWords text="Say it your way. Send it the right way." />
+            </h2>
+            <Reveal delay={0.12}>
+              <p className="subtitle mt-4 max-w-xl">
+                Raw, accented speech on the left. The message your client actually reads on the right.
+              </p>
+            </Reveal>
+          </div>
+          <Reveal delay={0.1} y={24} className="mt-12">
+            <Parallax speed={28}>
+              <AccentToSlackDemo />
+            </Parallax>
+          </Reveal>
+        </div>
+      </Band>
+
       {/* Real-time translation */}
-      <Band color={CLAY} from={PAPER} className="py-20 sm:py-28" aria-labelledby="translation-heading">
+      <Band color={SAND} from={PAPER} className="py-20 sm:py-28" aria-labelledby="translation-heading">
         <Parallax speed={110} className="pointer-events-none absolute -left-24 top-24 hidden lg:block" aria-hidden="true">
-          <div className="h-56 w-56 rounded-full bg-sand-deep" />
+          <div className="h-56 w-56 rounded-full bg-clay" />
         </Parallax>
         <div className={`${SHELL} relative`}>
           <div className="mx-auto flex max-w-[760px] flex-col items-center text-center">
@@ -292,7 +228,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
       </Band>
 
       {/* Accent proof: the one dark band */}
-      <Band color={ESPRESSO} from={CLAY} blend={220} className="pt-36 pb-24 sm:pt-44 sm:pb-28" aria-labelledby="accent-proof-heading">
+      <Band color={ESPRESSO} from={SAND} blend={220} className="pt-36 pb-24 sm:pt-44 sm:pb-28" aria-labelledby="accent-proof-heading">
         <Parallax speed={-70} className="pointer-events-none absolute right-[6%] top-40 hidden md:block" aria-hidden="true">
           <div className="h-40 w-40 rotate-12 rounded-[36px] bg-white/[0.04]" />
         </Parallax>
@@ -474,23 +410,23 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
         </div>
       </Band>
 
-      {/* Long-form sections: each keeps its own layout and motion. */}
-      <Band color={PAPER} from={CANVAS} className="py-16 sm:py-24">
-        <div className="mx-auto w-full max-w-[1060px] px-5 sm:px-8 lg:px-0">
-          <div className="surface-solid overflow-hidden !rounded-2xl">
-            <DocumentationSection />
-            <MadeForYou />
-            <TestimonialsSection />
-            <PricingSection />
-            <WisprSwitchSection />
-            <FAQSection />
-            <AskAISection />
-          </div>
-        </div>
+      {/* ───────────── Made for you ───────────── */}
+      <Band color={PAPER} from={CANVAS} className="py-20 sm:py-28">
+        <MadeForYou />
+      </Band>
+
+      {/* ───────────── Testimonials ───────────── */}
+      <Band color={CANVAS} from={PAPER} className="py-20 sm:py-28">
+        <TestimonialsSection />
+      </Band>
+
+      {/* ───────────── Why switch + Ask an AI ───────────── */}
+      <Band color={CLAY} from={CANVAS} blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-28" aria-labelledby="switch-heading">
+        <SwitchAndAsk />
       </Band>
 
       {/* Closing CTA and footer share one warm ground, as in video-shala. */}
-      <Band color={BLUSH} from={PAPER} className="pt-16 sm:pt-24">
+      <Band color={BLUSH} from={CLAY} blend={200} className="pt-20 sm:pt-28">
         <div className={SHELL}>
           <CTASection />
         </div>

@@ -222,6 +222,12 @@
   --o-ink-faint: #9c958a;
   --o-blush: #fbf2ee;
 
+  /* Primary action colour, matching the desktop app's buttons: a deep sky
+     blue that holds its own against the warm grounds. */
+  --o-primary: #0f6a9e;
+  --o-primary-hover: #0c5a87;
+  --o-primary-soft: #e3f0f8;
+
   /* Oravo's single accent: a burnt orange, used once per viewport. */
   --o-accent: #c4572f;
   --o-accent-soft: #f6dccd;
@@ -245,6 +251,9 @@
   --color-ink-soft: var(--o-ink-soft);
   --color-ink-faint: var(--o-ink-faint);
   --color-blush: var(--o-blush);
+  --color-primary-500: var(--o-primary);
+  --color-primary-600: var(--o-primary-hover);
+  --color-primary-soft: var(--o-primary-soft);
   --color-brand: var(--o-accent);
   --color-brand-soft: var(--o-accent-soft);
   --color-sand: var(--o-band-sand);
@@ -372,16 +381,16 @@
     border-color 0.3s ease-out;
 }
 .btn-primary {
-  border-color: var(--o-ink);
-  background: var(--o-ink);
+  border-color: var(--o-primary);
+  background: var(--o-primary);
   color: #fff;
   font-weight: 600;
-  box-shadow: 0 2px 4px rgba(51, 48, 42, 0.1);
+  box-shadow: 0 2px 4px rgba(15, 106, 158, 0.18);
 }
 .btn-primary:hover {
-  border-color: rgba(51, 48, 42, 0.9);
-  background: rgba(51, 48, 42, 0.9);
-  box-shadow: 0 4px 10px -2px rgba(51, 48, 42, 0.18);
+  border-color: var(--o-primary-hover);
+  background: var(--o-primary-hover);
+  box-shadow: 0 6px 14px -4px rgba(15, 106, 158, 0.4);
   transform: translateY(-1px);
 }
 /* The secondary is a glass key: white at the top falling to quarter-white,
@@ -401,7 +410,7 @@
 .btn-primary:active,
 .btn-secondary:active { transform: translateY(0); box-shadow: none; }
 .btn-primary:focus-visible,
-.btn-secondary:focus-visible { outline: 2px solid rgba(51, 48, 42, 0.3); outline-offset: 2px; }
+.btn-secondary:focus-visible { outline: 2px solid rgba(15, 106, 158, 0.45); outline-offset: 2px; }
 .btn-primary:disabled,
 .btn-secondary:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
 
