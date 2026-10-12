@@ -2,230 +2,39 @@
 
 import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
 import { ArrowRight, Check, FileText, Mic, Play, Sparkles } from "lucide-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Doodle } from "./Doodle";
 import { Parallax } from "./Parallax";
 import { Reveal, RevealWords } from "./Reveal";
-import { MacWindow } from "./MacWindow";
+import { VideoTutorial } from "./VideoTutorial";
 
 /* ======================================================================== */
-/* Dictation: hold to speak a sample, release to polish.                    */
+/* Dictation: the desktop tutorial in the warm player.                      */
 /* ======================================================================== */
 
-const VOICES = [
-  {
-    id: "zh",
-    label: "Mandarin accent",
-    raw: "please help me to check the contract, i think the price have some problem, can we discuss tomorrow morning",
-    polished: "Could you take a look at the contract? I think there's an issue with the pricing. Can we discuss it tomorrow morning?",
-  },
-  {
-    id: "ar",
-    label: "Arabic accent",
-    raw: "i want to make the meeting with the team for discuss the new design, maybe wednesday is good for everybody",
-    polished: "I'd like to set up a meeting with the team to discuss the new design. Would Wednesday work for everyone?",
-  },
-  {
-    id: "fr",
-    label: "Speaking French",
-    raw: "peux-tu dire à paul que la présentation est prête et que je l'envoie ce soir",
-    polished: "Could you let Paul know the presentation is ready? I'll send it over tonight.",
-  },
+const DICTATION_STEPS = [
+  { title: "Press your hotkey", body: "Fn on Mac, Ctrl + Win on Windows, in any app with a text field." },
+  { title: "Speak naturally", body: "In your accent, or in your own language. Fillers and false starts are fine." },
+  { title: "Polished text lands", body: "Grammar fixed, filler removed, typed where your cursor is." },
 ];
 
-type DictPhase = "ready" | "listening" | "polishing" | "done";
-
-function DictationTry() {
-  const reduceMotion = useReducedMotion();
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { amount: 0.5, once: true });
-  const [voice, setVoice] = useState(0);
-  const [phase, setPhase] = useState<DictPhase>("ready");
-  const [words, setWords] = useState(0);
-  const [chars, setChars] = useState(0);
-  const holding = useRef(false);
-  const autoplayed = useRef(false);
-  const v = VOICES[voice];
-  const rawWords = v.raw.split(" ");
-
-  const start = useCallback(() => {
-    holding.current = true;
-    setWords(0);
-    setChars(0);
-    setPhase("listening");
-  }, []);
-  const stop = useCallback(() => {
-    if (!holding.current) return;
-    holding.current = false;
-    setPhase((p) => (p === "listening" ? "polishing" : p));
-  }, []);
-
-  // Words arrive while the button is held; the sample ends on its own too.
-  useEffect(() => {
-    if (phase !== "listening") return;
-    if (words >= rawWords.length) {
-      holding.current = false;
-      setPhase("polishing");
-      return;
-    }
-    const id = setTimeout(() => setWords((w) => w + 1), 120);
-    return () => clearTimeout(id);
-  }, [phase, words, rawWords.length]);
-
-  useEffect(() => {
-    if (phase !== "polishing") return;
-    const id = setTimeout(() => setPhase("done"), 900);
-    return () => clearTimeout(id);
-  }, [phase]);
-
-  useEffect(() => {
-    if (phase !== "done" || chars >= v.polished.length) return;
-    const id = setTimeout(() => setChars((c) => Math.min(c + 2, v.polished.length)), reduceMotion ? 0 : 18);
-    return () => clearTimeout(id);
-  }, [phase, chars, v.polished.length, reduceMotion]);
-
-  // Play the first sample once on its own, so the panel is never empty.
-  useEffect(() => {
-    if (!inView || autoplayed.current) return;
-    autoplayed.current = true;
-    const id = setTimeout(() => {
-      start();
-      holding.current = false; // let it run to the end of the sample
-    }, 600);
-    return () => clearTimeout(id);
-  }, [inView, start]);
-
-  // Space bar works like the hotkey.
-  useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.code !== "Space" || e.repeat || !ref.current?.contains(document.activeElement)) return;
-      e.preventDefault();
-      start();
-    };
-    const up = (e: KeyboardEvent) => {
-      if (e.code === "Space") stop();
-    };
-    window.addEventListener("keydown", down);
-    window.addEventListener("keyup", up);
-    return () => {
-      window.removeEventListener("keydown", down);
-      window.removeEventListener("keyup", up);
-    };
-  }, [start, stop]);
-
-  const listening = phase === "listening";
-  const shownRaw = rawWords.slice(0, words).join(" ");
-
+function DictationTutorial() {
   return (
-    <div ref={ref} className="grid gap-6 lg:min-h-[500px] lg:grid-cols-[0.85fr_1.15fr] lg:gap-8">
-      <div className="flex flex-col">
-        <p className="eyebrow">Try it · pick a voice</p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {VOICES.map((item, i) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => {
-                setVoice(i);
-                setPhase("ready");
-                setWords(0);
-                setChars(0);
-              }}
-              className={`rounded-lg px-3 py-2 font-display text-[13px] font-semibold ring-1 transition-colors ${
-                i === voice ? "key-on ring-0" : "bg-raised/80 text-ink-soft ring-[var(--t-line)] hover:text-ink"
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
-
-        <div className="relative mt-8 flex flex-1 flex-col items-center justify-center gap-4 rounded-2xl bg-[var(--t-panel)] px-5 py-10 ring-1 ring-[var(--t-line)]">
-          <button
-            type="button"
-            onPointerDown={(e) => {
-              e.preventDefault();
-              start();
-            }}
-            onPointerUp={stop}
-            onPointerLeave={stop}
-            aria-label="Hold to speak the sample"
-            className="group relative flex h-14 select-none items-center justify-center gap-2.5 rounded-xl bg-cloud px-6 font-display text-[15px] font-semibold text-cloud-ink ring-1 ring-cloud-line shadow-[0_12px_24px_-14px_rgba(13,84,128,0.45)] transition-transform active:scale-95"
-          >
-            {listening && !reduceMotion && (
-              <>
-                <span className="absolute inset-0 animate-ping rounded-xl bg-cloud-line opacity-40" />
-                <span className="absolute -inset-2 rounded-2xl border-[1.5px] border-dashed border-cloud-ink/30" />
-              </>
-            )}
-            <Mic aria-hidden="true" className="relative h-4 w-4" />
-            <span className="relative">{listening ? "Listening…" : "Hold to speak"}</span>
-          </button>
-          <p className="text-center font-display text-[13px] text-ink-soft">
-            {listening ? "Let go when you're done" : phase === "polishing" ? "Polishing…" : "Press and hold, or hold Space"}
-          </p>
-          <div className="flex h-8 items-center gap-[3px]" aria-hidden="true">
-            {Array.from({ length: 24 }).map((_, i) => (
-              <motion.span
-                key={i}
-                className="w-[3px] rounded-full bg-[var(--t-deep)] opacity-60"
-                animate={listening ? { height: [4, 8 + ((i * 11) % 20), 6] } : { height: 4, opacity: 0.4 }}
-                transition={{ duration: 0.6 + (i % 4) * 0.12, repeat: listening ? Infinity : 0, delay: i * 0.03 }}
-              />
-            ))}
-          </div>
-          <p className="text-center font-display text-[11.5px] text-ink-faint">Plays a recorded sample. No microphone needed.</p>
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-4">
-        <div className="min-h-[110px] rounded-xl bg-[var(--t-panel)] p-4 ring-1 ring-[var(--t-line)]">
-          <p className="eyebrow">What you said · {v.label}</p>
-          <p className="mt-2 text-[15px] italic leading-relaxed text-ink-soft">
-            {phase === "ready" ? <span className="text-ink-faint">Hold the button to start…</span> : `“${shownRaw}${words >= rawWords.length ? "”" : ""}`}
-            {listening && <span className="o-caret ml-0.5 inline-block h-[1em] w-[2px] translate-y-[2px] bg-ink-faint" />}
-          </p>
-        </div>
-
-        <MacWindow app="outlook" title="Re: Contract review" subtitle="Daniel Okafor" className="flex-1 !rounded-2xl" bodyClassName="flex flex-col p-0">
-          <div className="relative min-h-[170px] flex-1 p-5">
-            <p className="text-[15.5px] leading-relaxed text-ink">
-              {phase === "done" ? v.polished.slice(0, chars) : null}
-              {phase === "done" && chars < v.polished.length && <span className="o-caret ml-0.5 inline-block h-[1em] w-[2px] translate-y-[2px] bg-[var(--t-accent)]" />}
-            </p>
-            {phase === "polishing" && (
-              <div className="space-y-2" aria-hidden="true">
-                {[92, 78, 64].map((w) => (
-                  <motion.div key={w} className="h-3 rounded bg-[var(--t-panel)]" style={{ width: `${w}%` }} animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 0.9, repeat: Infinity }} />
-                ))}
-              </div>
-            )}
-            <AnimatePresence>
-              {phase === "done" && chars >= v.polished.length && (
-                <motion.div
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="mt-4 flex flex-wrap gap-2"
-                >
-                  {["Grammar fixed", "Filler removed", "Tone: professional"].map((chip) => (
-                    <span key={chip} className="inline-flex items-center gap-1 rounded-md bg-[var(--t-panel)] px-2 py-1 font-display text-[11.5px] font-semibold text-[var(--t-deep)]">
-                      <Check aria-hidden="true" className="h-3 w-3" />
-                      {chip}
-                    </span>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </MacWindow>
-      </div>
+    <div className="grid items-center gap-6 lg:min-h-[500px] lg:grid-cols-[1.5fr_0.62fr] lg:gap-8">
+      <VideoTutorial note="Watch it once, then try it in any app." />
+      <ol className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+        {DICTATION_STEPS.map((step, i) => (
+          <li key={step.title} className="rounded-xl bg-[var(--t-panel)] p-4 ring-1 ring-[var(--t-line)]">
+            <span className="font-serif text-[26px] leading-none text-[var(--t-accent)]">0{i + 1}</span>
+            <p className="mt-2 font-display text-[14.5px] font-semibold text-ink">{step.title}</p>
+            <p className="mt-1 text-[13px] leading-relaxed text-ink-soft">{step.body}</p>
+          </li>
+        ))}
+      </ol>
     </div>
   );
 }
 
-/* ======================================================================== */
-/* Notetaker: your rough notes, enhanced when the meeting ends.             */
 /* ======================================================================== */
 
 const ROUGH = ["pricing → push to Q3?", "android pilot, 5 cohorts ok", "maya – test build thu", "benchmark before any claims!!"];
@@ -475,7 +284,7 @@ export default function ProductDuo() {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               >
-                {active === "dictation" ? <DictationTry /> : <NotetakerTry />}
+                {active === "dictation" ? <DictationTutorial /> : <NotetakerTry />}
               </motion.div>
             </AnimatePresence>
           </div>

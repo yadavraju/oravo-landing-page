@@ -90,8 +90,17 @@ full-bleed `rose` band with the brand line, two drawn product tickets
 itself in), four link columns, the Press, Speak, Done timeline (video-shala's
 Generate, Share, Grow), socials and the `oravo` wordmark. The wordmark is in
 the footer's own flow and sized from the viewport (`clamp(110px, 25vw,
-360px)`), so it is identical on every page. `MarketingShell` renders it; the
-homepage passes `from` so it blends out of the closing CTA's blush.
+360px)`), so it is identical on every page. Its top two corners are rounded
+(32px, 48px from `sm`) and it tucks up over the end of the section above by
+the same amount, so the corners always show that section's colour.
+`MarketingShell` and the homepage render it.
+
+## Video
+
+`VideoTutorial` (`components/landing/VideoTutorial.tsx`) is the warm player
+for the Oravo Desktop tutorial (Loom). It draws its own poster and control
+bar and loads the embed only when played. Used on `/how-to-use` and in the
+homepage's "Try both" Dictation tab.
 
 The header follows video-shala's nav: a three-column grid with the menus on
 the true centre line, identical rectangular keys, menus that open on hover,

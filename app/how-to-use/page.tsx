@@ -4,6 +4,7 @@ import { AppleIcon, WindowsIcon } from "@/components/download/PlatformSection";
 import { DetailedSteps, StartOptions } from "@/components/how-to-use/HowToSections";
 import { Walkthrough } from "@/components/how-to-use/Walkthrough";
 import { Band } from "@/components/landing/Band";
+import { VideoTutorial } from "@/components/landing/VideoTutorial";
 import { MarketingShell } from "@/components/landing/MarketingShell";
 import { CtaPanel, PageHero, SectionIntro } from "@/components/landing/PageBlocks";
 import { Reveal } from "@/components/landing/Reveal";
@@ -109,24 +110,7 @@ export default function HowToUsePage() {
         secondary={{ label: "See the steps", href: "#walkthrough" }}
         note="Mac default: Fn · Windows default: Ctrl + Win"
         doodles={["hotkey", "speech"]}
-        visual={
-          <figure className="rounded-2xl bg-raised p-2 shadow-[0_0_0_1px_var(--o-line),0_40px_80px_-48px_rgba(51,48,42,0.6)] sm:p-2.5">
-            <div className="relative w-full overflow-hidden rounded-xl bg-canvas" style={{ paddingBottom: "64.55089820359281%" }}>
-              <iframe
-                src="https://www.loom.com/embed/d893aa4622244befa684ceeb6cb65935"
-                title="Oravo Desktop video tutorial"
-                frameBorder="0"
-                allowFullScreen
-                loading="lazy"
-                className="absolute inset-0 h-full w-full"
-              />
-            </div>
-            <figcaption className="flex items-center justify-between gap-3 px-2 pb-1 pt-3 font-display text-[12.5px] text-ink-soft">
-              <span className="font-semibold text-ink">Video tutorial</span>
-              <span className="text-ink-faint">Oravo Desktop, start to finish</span>
-            </figcaption>
-          </figure>
-        }
+        visual={<VideoTutorial />}
       />
 
       {/* The four moves, animated. */}

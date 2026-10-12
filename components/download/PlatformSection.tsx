@@ -414,7 +414,7 @@ function PlatformCard({
       <div className="my-5 hidden flex-1 items-center justify-center rounded-xl bg-canvas/60 py-3 sm:flex">
         <DeviceArt kind={device} idle={muted} />
       </div>
-      <div className="mt-5 flex flex-col gap-2.5 sm:mt-0">{children}</div>
+      <div className="mt-5 flex flex-col gap-3.5 sm:mt-0">{children}</div>
     </motion.div>
   );
 }
@@ -473,15 +473,24 @@ export function PlatformCards({ downloads }: { downloads: DownloadData[] }) {
                   href={download.file_path}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${solid ? "btn-primary" : "btn-secondary !border-line"} w-full !justify-between !px-4`}
+                  className={`${solid ? "btn-primary" : "btn-secondary !border-line"} relative w-full !h-auto min-h-[56px] !justify-between gap-3 !whitespace-normal !px-4 py-2.5 text-left`}
                 >
-                  <span className="flex items-center gap-2">
+                  {/* "Recommended" rides the top edge so the label never has to share its line. */}
+                  {recommended && (
+                    <span className="absolute -top-2.5 right-3 rounded-md bg-cloud px-1.5 py-0.5 font-display text-[10.5px] font-semibold leading-none text-cloud-ink ring-1 ring-cloud-line">
+                      Recommended
+                    </span>
+                  )}
+                  <span className="flex min-w-0 items-center gap-2.5">
                     <DownloadIcon />
-                    {info.label}
+                    <span className="min-w-0 leading-tight">
+                      <span className="block">{info.label}</span>
+                      <span className={`block text-[11px] font-medium ${solid ? "text-white/75" : "text-ink-faint"}`}>{info.subtitle}</span>
+                    </span>
                   </span>
-                  <span className={`text-[11.5px] font-medium ${solid ? "text-white/75" : "text-ink-faint"}`}>
-                    {recommended ? "Recommended" : download.file_size_formatted ?? ""}
-                  </span>
+                  {download.file_size_formatted && (
+                    <span className={`shrink-0 text-[11px] font-medium ${solid ? "text-white/75" : "text-ink-faint"}`}>{download.file_size_formatted}</span>
+                  )}
                 </a>
               );
             })}

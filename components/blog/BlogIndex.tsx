@@ -1,7 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useMemo, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useMemo, useRef, useState } from "react";
 import { Band } from "@/components/landing/Band";
 import { Doodle } from "@/components/landing/Doodle";
 import { Parallax } from "@/components/landing/Parallax";
@@ -11,11 +12,91 @@ import { BlogCard, type BlogListPost } from "./BlogCard";
 
 /*
  * The /blog front page: the lead story, a category filter (only when the posts
- * carry more than one category), then a deliberately uneven layout: two tall
- * features, a row of standard cards, and the rest as an archive list.
+ * carry more than one category), two tall features, then every other article
+ * in a grid of nine per page with numbered pagination (?page=n links).
  */
 
 const ALL = "all";
+const PER_PAGE = 9;
+
+/* Keeps ?page= in the address bar without a navigation, so a page can be shared. */
+function syncUrl(page: number) {
+  if (typeof window === "undefined") return;
+  const url = new URL(window.location.href);
+  if (page > 1) url.searchParams.set("page", String(page));
+  else url.searchParams.delete("page");
+  window.history.replaceState(null, "", url.pathname + url.search + url.hash);
+}
+
+/* 1 … 4 5 6 … 12: first, last, and the neighbours of the current page. */
+function pageList(page: number, pages: number): (number | "gap")[] {
+  const keep = new Set([1, pages, page - 1, page, page + 1]);
+  const out: (number | "gap")[] = [];
+  for (let n = 1; n <= pages; n++) {
+    if (keep.has(n)) out.push(n);
+    else if (out[out.length - 1] !== "gap") out.push("gap");
+  }
+  return out;
+}
+
+/* Real links (crawlable, shareable) that page in place when JavaScript runs. */
+function Pagination({ page, pages, onGo }: { page: number; pages: number; onGo: (n: number) => void }) {
+  const href = (n: number) => (n > 1 ? `/blog?page=${n}` : "/blog");
+  const go = (n: number) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    onGo(n);
+  };
+  const edge = "inline-flex h-10 items-center gap-1.5 rounded-lg px-3.5 font-display text-[13.5px] font-semibold ring-1 transition-colors";
+  return (
+    <nav aria-label="Blog pages" className="mt-14 flex items-center justify-center gap-2">
+      {page > 1 ? (
+        <a href={href(page - 1)} onClick={go(page - 1)} rel="prev" className={`${edge} bg-raised/80 text-ink ring-line hover:bg-raised`}>
+          <ChevronLeft aria-hidden="true" className="h-4 w-4" />
+          <span className="hidden sm:inline">Newer</span>
+        </a>
+      ) : (
+        <span className={`${edge} cursor-not-allowed bg-raised/40 text-ink-faint ring-line/60`} aria-disabled="true">
+          <ChevronLeft aria-hidden="true" className="h-4 w-4" />
+          <span className="hidden sm:inline">Newer</span>
+        </span>
+      )}
+      <ol className="flex items-center gap-1">
+        {pageList(page, pages).map((n, i) =>
+          n === "gap" ? (
+            <li key={`gap-${i}`} className="w-6 text-center font-display text-[13px] text-ink-faint" aria-hidden="true">
+              …
+            </li>
+          ) : (
+            <li key={n}>
+              <a
+                href={href(n)}
+                onClick={go(n)}
+                aria-current={n === page ? "page" : undefined}
+                aria-label={`Page ${n}`}
+                className={`flex h-10 min-w-10 items-center justify-center rounded-lg px-2 font-display text-[13.5px] font-semibold tabular-nums transition-colors ${
+                  n === page ? "key-on" : "text-ink-soft hover:bg-raised hover:text-ink"
+                }`}
+              >
+                {n}
+              </a>
+            </li>
+          ),
+        )}
+      </ol>
+      {page < pages ? (
+        <a href={href(page + 1)} onClick={go(page + 1)} rel="next" className={`${edge} bg-raised/80 text-ink ring-line hover:bg-raised`}>
+          <span className="hidden sm:inline">Older</span>
+          <ChevronRight aria-hidden="true" className="h-4 w-4" />
+        </a>
+      ) : (
+        <span className={`${edge} cursor-not-allowed bg-raised/40 text-ink-faint ring-line/60`} aria-disabled="true">
+          <span className="hidden sm:inline">Older</span>
+          <ChevronRight aria-hidden="true" className="h-4 w-4" />
+        </span>
+      )}
+    </nav>
+  );
+}
 
 function CategoryFilter({
   categories,
@@ -78,8 +159,10 @@ function EmptyState() {
   );
 }
 
-export function BlogIndex({ posts }: { posts: BlogListPost[] }) {
+export function BlogIndex({ posts, initialPage = 1 }: { posts: BlogListPost[]; initialPage?: number }) {
   const [active, setActive] = useState(ALL);
+  const [page, setPage] = useState(initialPage);
+  const gridTop = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
 
   const categories = useMemo(() => {
@@ -98,8 +181,21 @@ export function BlogIndex({ posts }: { posts: BlogListPost[] }) {
   const visible = active === ALL ? posts : posts.filter((post) => post.categories.some((c) => c._id === active));
   const [lead, ...rest] = visible;
   const tall = rest.slice(0, 2);
-  const standard = rest.slice(2, 8);
-  const archive = rest.slice(8);
+  const library = rest.slice(2);
+  const pages = Math.max(1, Math.ceil(library.length / PER_PAGE));
+  const current = Math.min(Math.max(1, page), pages);
+  const pageItems = library.slice((current - 1) * PER_PAGE, current * PER_PAGE);
+
+  const pickCategory = (id: string) => {
+    setActive(id);
+    setPage(1);
+    syncUrl(1);
+  };
+  const goTo = (n: number) => {
+    setPage(n);
+    syncUrl(n);
+    gridTop.current?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  };
 
   const closing = (from: string) => (
     <Band color="var(--o-blush)" from={from} className="pb-20 pt-16 sm:pt-20">
@@ -137,7 +233,7 @@ export function BlogIndex({ posts }: { posts: BlogListPost[] }) {
           {categories.length > 0 && (
             <Reveal className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="eyebrow">Browse by topic</p>
-              <CategoryFilter categories={categories} active={active} onChange={setActive} />
+              <CategoryFilter categories={categories} active={active} onChange={pickCategory} />
             </Reveal>
           )}
 
@@ -169,68 +265,51 @@ export function BlogIndex({ posts }: { posts: BlogListPost[] }) {
         </div>
       </Band>
 
-      {standard.length > 0 && (
+      {library.length > 0 && (
         <Band color="var(--o-canvas)" from="var(--o-paper)" className="pb-20 pt-24 sm:pb-24">
-          <div className={SHELL}>
-            <div className="flex items-end justify-between gap-6">
+          <div ref={gridTop} className={`${SHELL} scroll-mt-24`}>
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <Reveal>
-                  <p className="eyebrow">More to read</p>
+                  <p className="eyebrow">Every article</p>
                 </Reveal>
                 <h2 className="display-2 mt-3 text-ink">
                   <RevealWords text="Fresh from the notebook" />
                 </h2>
+                <p className="mt-3 font-display text-[13.5px] text-ink-faint">
+                  {library.length > PER_PAGE
+                    ? `Showing ${(current - 1) * PER_PAGE + 1}–${(current - 1) * PER_PAGE + pageItems.length} of ${library.length} articles`
+                    : `${library.length} ${library.length === 1 ? "article" : "articles"}`}
+                </p>
               </div>
               <Parallax speed={20} className="hidden sm:block">
                 <Doodle name="scribble" className="w-36" />
               </Parallax>
             </div>
-            <div className="mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-              {standard.map((post, i) => (
-                <Reveal key={post._id} delay={(i % 3) * 0.08} className="h-full">
-                  <BlogCard post={post} variant="standard" />
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </Band>
-      )}
 
-      {archive.length > 0 && (
-        <Band
-          color="var(--o-paper)"
-          from={standard.length > 0 ? "var(--o-canvas)" : "var(--o-paper)"}
-          className="pb-20 pt-24 sm:pb-24"
-        >
-          <div className={`${SHELL} grid gap-10 lg:grid-cols-[16rem_1fr] lg:gap-14`}>
-            <div>
-              <Parallax speed={16} className="mb-4">
-                <Doodle name="quote" className="w-24" />
-              </Parallax>
-              <Reveal>
-                <p className="eyebrow">From the archive</p>
-              </Reveal>
-              <h2 className="display-2 mt-3 text-ink">
-                <RevealWords text="Every article" />
-              </h2>
-              <Reveal delay={0.1}>
-                <p className="mt-3 text-[14.5px] leading-relaxed text-ink-soft">
-                  {archive.length} more {archive.length === 1 ? "guide" : "guides"} on dictation, productivity and writing in English.
-                </p>
-              </Reveal>
-            </div>
-            <Reveal>
-              <div className="surface-solid divide-y divide-line overflow-hidden !rounded-2xl">
-                {archive.map((post) => (
-                  <BlogCard key={post._id} post={post} variant="row" />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`${active}-${current}`}
+                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3"
+              >
+                {pageItems.map((post) => (
+                  <div key={post._id} className="h-full">
+                    <BlogCard post={post} variant="standard" />
+                  </div>
                 ))}
-              </div>
-            </Reveal>
+              </motion.div>
+            </AnimatePresence>
+
+            {pages > 1 && <Pagination page={current} pages={pages} onGo={goTo} />}
           </div>
         </Band>
       )}
 
-      {closing(archive.length === 0 && standard.length > 0 ? "var(--o-canvas)" : "var(--o-paper)")}
+      {closing(library.length > 0 ? "var(--o-canvas)" : "var(--o-paper)")}
     </>
   );
 }

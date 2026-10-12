@@ -278,13 +278,13 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
         </Band>
       )}
 
-      {/* The closing CTA, then the footer blends out of its blush ground. */}
-      <Band color={BLUSH} from={blogSection ? PAPER : CLAY} blend={200} className="pt-20 pb-4 sm:pt-28">
+      {/* The closing CTA; the footer's rounded top tucks over the end of it. */}
+      <Band color={BLUSH} from={blogSection ? PAPER : CLAY} blend={200} className="pt-20 pb-24 sm:pt-28 sm:pb-32">
         <div className={SHELL}>
           <CTASection />
         </div>
       </Band>
-      <SiteFooter from={BLUSH} />
+      <SiteFooter />
     </div>
   );
 }

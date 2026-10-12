@@ -246,13 +246,15 @@ function PromiseLine() {
 
 /* ------------------------------------------------------------------------ */
 
-export function SiteFooter({ from }: { from?: string }) {
+/*
+ * The top two corners are rounded and the footer tucks up over the end of the
+ * section above by the same radius, so the corners always show that section's
+ * own colour, whatever it is, instead of a fixed ground behind them.
+ */
+export function SiteFooter() {
   return (
-    <footer
-      className="relative w-full overflow-clip font-display text-ink-soft"
-      style={{ background: from ? `linear-gradient(180deg, ${from} 0px, var(--o-band-rose) 140px)` : "var(--o-band-rose)" }}
-    >
-      <div className={`mx-auto w-full max-w-6xl px-5 sm:px-8 ${from ? "pt-28 sm:pt-32" : "border-t border-ink/[0.06] pt-16 sm:pt-20"}`}>
+    <footer className="relative z-10 -mt-8 w-full overflow-clip rounded-t-[32px] bg-rose font-display text-ink-soft shadow-[0_-1px_0_0_rgba(51,48,42,0.06),0_-18px_40px_-30px_rgba(51,48,42,0.25)] sm:-mt-12 sm:rounded-t-[48px]">
+      <div className="mx-auto w-full max-w-6xl px-5 pt-16 sm:px-8 sm:pt-20">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.25fr] lg:gap-14">
           <div>
             <a href="/" className="flex w-fit items-center gap-2 text-ink">

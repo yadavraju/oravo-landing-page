@@ -52,7 +52,8 @@ const breadcrumbJsonLd = buildBreadcrumbJsonLd([
   { name: "Blog", url: "https://oravo.ai/blog" },
 ]);
 
-export default async function BlogPage() {
+export default async function BlogPage({ searchParams }: { searchParams?: { page?: string } }) {
+  const initialPage = Math.max(1, Number.parseInt(searchParams?.page ?? "1", 10) || 1);
   let posts: BlogListPost[] = [];
 
   try {
@@ -72,7 +73,7 @@ export default async function BlogPage() {
         doodles={["notebook", "quote"]}
       />
 
-      <BlogIndex posts={posts} />
+      <BlogIndex posts={posts} initialPage={initialPage} />
     </MarketingShell>
   );
 }
