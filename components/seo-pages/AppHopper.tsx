@@ -36,11 +36,11 @@ export function AppHopper({
             <li
               key={app.name}
               className={`relative flex h-12 items-center gap-2.5 rounded-lg px-3 font-display text-[13.5px] font-semibold transition-colors duration-300 ${
-                on ? "bg-espresso text-white" : "bg-raised text-ink ring-1 ring-line"
+                on ? "bg-cloud text-cloud-ink ring-1 ring-cloud-line" : "bg-raised text-ink ring-1 ring-line"
               }`}
             >
               <span
-                className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md font-display text-[11px] font-bold ${on ? "bg-raised/10 text-[#e8a07f]" : "bg-canvas text-ink-soft"}`}
+                className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md font-display text-[11px] font-bold ${on ? "bg-raised text-cloud-ink" : "bg-canvas text-ink-soft"}`}
                 aria-hidden="true"
               >
                 {app.name.charAt(0)}
@@ -51,7 +51,7 @@ export function AppHopper({
                   {[0, 1, 2, 3].map((b) => (
                     <motion.span
                       key={b}
-                      className="w-[2px] rounded-full bg-[#e8a07f]"
+                      className="w-[2px] rounded-full bg-cloud-ink/70"
                       animate={{ height: [3, 10 - b * 2, 4] }}
                       transition={{ duration: 0.6, repeat: Infinity, delay: b * 0.08 }}
                     />

@@ -15,12 +15,12 @@ const LABEL: Record<PillState, string> = {
 export function OravoPill({ state, className = "" }: { state: PillState; className?: string }) {
   const live = state === "listening";
   return (
-    <span className={`inline-flex items-center gap-2 rounded-lg bg-espresso px-3 py-2 text-white shadow-[0_10px_24px_-12px_rgba(42,33,27,0.7)] ${className}`}>
+    <span className={`inline-flex items-center gap-2 rounded-lg bg-cloud px-3 py-2 text-cloud-ink ring-1 ring-cloud-line shadow-[0_10px_24px_-12px_rgba(42,33,27,0.7)] ${className}`}>
       <span className="flex h-4 items-center gap-[2px]" aria-hidden="true">
         {Array.from({ length: 9 }).map((_, i) => (
           <motion.span
             key={i}
-            className="w-[2px] rounded-full bg-[#e8a07f]"
+            className="w-[2px] rounded-full bg-cloud-ink/70"
             animate={live ? { height: [3, 6 + ((i * 7) % 9), 4] } : { height: state === "polishing" ? [3, 5, 3] : 3 }}
             transition={{ duration: live ? 0.7 : 0.9, repeat: live || state === "polishing" ? Infinity : 0, delay: i * 0.05 }}
           />

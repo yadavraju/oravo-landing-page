@@ -37,7 +37,7 @@ export function ReferralTicket() {
                 {chars < CODE.length && <span className="o-caret ml-0.5 inline-block h-[1em] w-[2px] translate-y-[2px] bg-ink" />}
               </code>
               <motion.span
-                className={`flex h-11 shrink-0 items-center gap-1.5 rounded-lg px-3 font-display text-[12px] font-semibold ring-1 transition-colors ${copied ? "bg-ink text-raised ring-ink" : "bg-raised text-ink-soft ring-line"}`}
+                className={`flex h-11 shrink-0 items-center gap-1.5 rounded-lg px-3 font-display text-[12px] font-semibold ring-1 transition-colors ${copied ? "bg-cloud text-cloud-ink ring-cloud-line" : "bg-raised text-ink-soft ring-line"}`}
                 animate={t > 2200 && t < 2450 ? { scale: 0.93 } : { scale: 1 }}
               >
                 {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
@@ -53,7 +53,7 @@ export function ReferralTicket() {
                     key={c}
                     className={`flex items-center gap-2 rounded-lg px-3 py-2 font-display text-[12.5px] transition-all duration-300 ${on ? "bg-canvas text-ink ring-1 ring-ink/30" : "bg-paper text-ink-faint ring-1 ring-line"}`}
                   >
-                    <span className={`flex h-4 w-4 items-center justify-center rounded-[5px] ${on ? "bg-ink text-raised" : "bg-canvas ring-1 ring-line"}`}>
+                    <span className={`flex h-4 w-4 items-center justify-center rounded-[5px] ${on ? "bg-cloud text-cloud-ink ring-1 ring-cloud-line" : "bg-canvas ring-1 ring-line"}`}>
                       {on && <Check className="h-2.5 w-2.5" strokeWidth={3} />}
                     </span>
                     {c}

@@ -3,6 +3,7 @@
 import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
 import { AtSign, Check, Mail, MessageSquare, NotebookPen, User } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { MacWindow, macAppFor } from "./MacWindow";
 
 /*
  * The three "Press. Speak. Done." scenes.
@@ -47,7 +48,7 @@ function OravoPill({ state }: { state: "idle" | "listening" | "polishing" | "don
   return (
     <motion.div
       layout
-      className="flex items-center gap-2 rounded-lg bg-ink px-3 py-2 text-white shadow-[0_10px_24px_-10px_rgba(51,48,42,0.6)]"
+      className="flex items-center gap-2 rounded-lg bg-cloud px-3 py-2 text-cloud-ink ring-1 ring-cloud-line shadow-[0_10px_24px_-10px_rgba(51,48,42,0.6)]"
       animate={{ opacity: state === "idle" ? 0 : 1, y: state === "idle" ? 8 : 0 }}
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
     >
@@ -55,7 +56,7 @@ function OravoPill({ state }: { state: "idle" | "listening" | "polishing" | "don
         {Array.from({ length: 9 }).map((_, i) => (
           <motion.span
             key={i}
-            className="w-[2px] rounded-full bg-[#e8a07f]"
+            className="w-[2px] rounded-full bg-cloud-ink/70"
             animate={state === "listening" ? { height: [3, 6 + ((i * 7) % 9), 4] } : { height: 3 }}
             transition={{ duration: 0.7 + (i % 3) * 0.15, repeat: state === "listening" ? Infinity : 0, delay: i * 0.05 }}
           />
@@ -64,25 +65,17 @@ function OravoPill({ state }: { state: "idle" | "listening" | "polishing" | "don
       <span className="font-display text-[11.5px] font-semibold">
         {state === "listening" ? "Listening…" : state === "polishing" ? "Polishing…" : "Typed by Oravo"}
       </span>
-      {state === "done" && <Check aria-hidden="true" className="h-3.5 w-3.5 text-[#9fd3b4]" />}
+      {state === "done" && <Check aria-hidden="true" className="h-3.5 w-3.5 text-cloud-ink" />}
     </motion.div>
   );
 }
 
-/* A warm app window: traffic lights, an app label, and content. */
-function AppWindow({ icon: Icon, app, detail, children }: { icon: typeof Mail; app: string; detail: string; children: React.ReactNode }) {
+/* The app the scene is typing into, with that app's own toolbar. */
+function AppWindow({ app, detail, to, children }: { icon?: unknown; app: string; detail: string; to?: string; children: React.ReactNode }) {
   return (
-    <div className="flex h-full flex-col overflow-hidden rounded-xl bg-raised shadow-[0_0_0_1px_var(--o-line),0_20px_40px_-24px_rgba(51,48,42,0.35)]">
-      <div className="flex items-center gap-2 border-b border-line bg-canvas px-3.5 py-2.5">
-        <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-        <Icon aria-hidden="true" className="ml-2 h-3.5 w-3.5 text-ink-faint" />
-        <span className="font-display text-[11.5px] font-semibold text-ink-soft">{app}</span>
-        <span className="truncate text-[11.5px] text-ink-faint">{detail}</span>
-      </div>
-      <div className="relative flex-1 p-4 sm:p-5">{children}</div>
-    </div>
+    <MacWindow app={macAppFor(app)} title={detail.replace(/^—\s*/, "")} subtitle={to} className="h-full" bodyClassName="p-4 sm:p-5">
+      {children}
+    </MacWindow>
   );
 }
 
@@ -123,7 +116,7 @@ export function HotkeyScene() {
       </div>
 
       <div className="relative flex-1 min-h-0">
-        <AppWindow icon={Mail} app="Gmail" detail="— New message">
+        <AppWindow app="Gmail" detail="New message" to="Sarah">
           <div className="mb-3 space-y-1.5 border-b border-line pb-3 text-[12px]">
             <p className="text-ink-faint">To <span className="ml-2 text-ink">sarah@acme.com</span></p>
             <p className="text-ink-faint">Subject <span className="ml-2 text-ink">Project budget</span></p>
@@ -206,9 +199,9 @@ export function StyleScene() {
         {STYLES.map((s, i) => (
           <span key={s.id} className="relative z-10 px-3 py-1.5 font-display text-[12px] font-semibold">
             {i === index && (
-              <motion.span layoutId="style-pill" className="absolute inset-0 -z-10 rounded-md bg-brand shadow-[0_2px_8px_-2px_rgba(196,87,47,0.6)]" transition={{ type: "spring", stiffness: 380, damping: 32 }} />
+              <motion.span layoutId="style-pill" className="absolute inset-0 -z-10 rounded-md bg-cloud ring-1 ring-cloud-line" transition={{ type: "spring", stiffness: 380, damping: 32 }} />
             )}
-            <span className={i === index ? "text-white" : "text-ink-soft"}>{s.id}</span>
+            <span className={i === index ? "text-cloud-ink" : "text-ink-soft"}>{s.id}</span>
           </span>
         ))}
       </div>

@@ -145,7 +145,7 @@ export function HeadingAnchor({ id, label }: { id: string; label: string }) {
     >
       {copied ? <Check aria-hidden="true" className="h-3.5 w-3.5" /> : <Link2 aria-hidden="true" className="h-3.5 w-3.5" />}
       {copied && (
-        <span role="status" className="absolute left-full ml-1.5 whitespace-nowrap rounded-md bg-ink px-2 py-1 font-display text-[11px] font-semibold text-paper">
+        <span role="status" className="absolute left-full ml-1.5 whitespace-nowrap rounded-md bg-cloud px-2 py-1 font-display text-[11px] font-semibold text-cloud-ink ring-1 ring-cloud-line">
           Link copied
         </span>
       )}

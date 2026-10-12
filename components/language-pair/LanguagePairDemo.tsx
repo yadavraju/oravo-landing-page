@@ -89,7 +89,7 @@ export function LanguagePairDemo({ language, flag, accent }: { language: string;
         <div className="my-5 flex items-center gap-3" aria-hidden="true">
           <span className="h-px flex-1 border-t-[1.5px] border-dashed border-line" />
           <motion.span
-            className={`flex h-9 items-center gap-2 rounded-lg px-3 font-display text-[12px] font-semibold ${translating ? "bg-ink text-white" : "bg-canvas text-ink-soft ring-1 ring-line"}`}
+            className={`flex h-9 items-center gap-2 rounded-lg px-3 font-display text-[12px] font-semibold ${translating ? "bg-cloud text-cloud-ink ring-1 ring-cloud-line" : "bg-canvas text-ink-soft ring-1 ring-line"}`}
             animate={translating ? { scale: [1, 1.05, 1] } : { scale: 1 }}
             transition={{ duration: 0.8, repeat: translating ? Infinity : 0 }}
           >

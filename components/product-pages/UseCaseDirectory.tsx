@@ -70,17 +70,17 @@ export function UseCaseDirectory({ apps, categories }: { apps: DirectoryApp[]; c
                     type="button"
                     aria-pressed={on}
                     onClick={() => setActive(c.id)}
-                    className={`relative flex h-10 shrink-0 items-center gap-1.5 rounded-lg px-2.5 font-display text-[12.5px] font-semibold transition-colors ${on ? "text-white" : "text-ink-soft hover:bg-raised hover:text-ink"}`}
+                    className={`relative flex h-10 shrink-0 items-center gap-1.5 rounded-lg px-2.5 font-display text-[12.5px] font-semibold transition-colors ${on ? "text-cloud-ink" : "text-ink-soft hover:bg-raised hover:text-ink"}`}
                   >
                     {on && (
                       <motion.span
                         layoutId={reduce ? undefined : "dir-chip"}
-                        className="absolute inset-0 rounded-lg bg-espresso"
+                        className="absolute inset-0 rounded-lg bg-cloud ring-1 ring-cloud-line"
                         transition={{ type: "spring", stiffness: 420, damping: 34 }}
                       />
                     )}
                     <span className="relative">{c.label}</span>
-                    <span className={`relative font-display text-[11px] ${on ? "text-white/60" : "text-ink-faint"}`}>{counts[c.id] ?? 0}</span>
+                    <span className={`relative font-display text-[11px] ${on ? "text-cloud-ink/60" : "text-ink-faint"}`}>{counts[c.id] ?? 0}</span>
                   </button>
                 );
               })}

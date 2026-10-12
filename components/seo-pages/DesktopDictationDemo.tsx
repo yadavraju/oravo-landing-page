@@ -93,7 +93,7 @@ function WindowsDesktop() {
       <div className="relative overflow-hidden rounded-xl bg-raised shadow-[0_0_0_1px_var(--o-line),0_30px_60px_-30px_rgba(51,48,42,0.45)]" aria-hidden="true">
         {/* Title bar */}
         <div className="flex h-10 items-center border-b border-line bg-canvas pl-3">
-          <span className="flex h-5 w-5 items-center justify-center rounded-[5px] bg-espresso font-display text-[10px] font-bold text-white">W</span>
+          <span className="flex h-5 w-5 items-center justify-center rounded-[5px] bg-cloud font-display text-[10px] font-bold text-cloud-ink">W</span>
           <span className="ml-2.5 truncate font-display text-[12px] text-ink">Q3 proposal.docx</span>
           <span className="ml-1.5 hidden text-[12px] text-ink-faint sm:inline">— Word</span>
           <span className="ml-auto flex h-full">
@@ -150,7 +150,7 @@ function WindowsDesktop() {
           </span>
           <span className="flex w-16 items-center justify-end gap-2 text-ink-soft">
             <motion.span
-              className={`flex h-6 w-6 items-center justify-center rounded-md ${s.state === "listening" ? "bg-espresso text-[#e8a07f]" : "text-ink-soft"}`}
+              className={`flex h-6 w-6 items-center justify-center rounded-md ${s.state === "listening" ? "bg-cloud text-cloud-ink" : "text-ink-soft"}`}
               animate={s.state === "listening" ? { scale: [1, 1.1, 1] } : { scale: 1 }}
               transition={{ duration: 0.9, repeat: s.state === "listening" ? Infinity : 0 }}
             >
@@ -182,7 +182,7 @@ function MacDesktop() {
           <span className="hidden text-ink-soft sm:inline">Format</span>
           <span className="ml-auto flex items-center gap-3 text-ink-soft">
             <motion.span
-              className={`flex h-5 items-center gap-1 rounded-md px-1.5 ${s.state === "listening" ? "bg-espresso text-[#e8a07f]" : ""}`}
+              className={`flex h-5 items-center gap-1 rounded-md px-1.5 ${s.state === "listening" ? "bg-cloud text-cloud-ink" : ""}`}
               animate={s.state === "listening" ? { scale: [1, 1.08, 1] } : { scale: 1 }}
               transition={{ duration: 0.9, repeat: s.state === "listening" ? Infinity : 0 }}
             >
@@ -239,7 +239,7 @@ function MacDesktop() {
           <div className="absolute inset-x-0 bottom-2.5 flex justify-center">
             <div className="flex items-center gap-1.5 rounded-xl bg-paper/70 px-2 py-1.5 ring-1 ring-line backdrop-blur">
               {[Globe, Mail, StickyNote, FileText].map((Icon, i) => (
-                <span key={i} className={`flex h-8 w-8 items-center justify-center rounded-lg ${i === 2 ? "bg-espresso text-[#e8a07f]" : "bg-raised text-ink-soft ring-1 ring-line"}`}>
+                <span key={i} className={`flex h-8 w-8 items-center justify-center rounded-lg ${i === 2 ? "bg-cloud text-cloud-ink" : "bg-raised text-ink-soft ring-1 ring-line"}`}>
                   <Icon className="h-4 w-4" />
                 </span>
               ))}

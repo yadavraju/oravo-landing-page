@@ -70,7 +70,7 @@ function AnywhereArt() {
         <span
           key={a}
           className={`flex h-9 w-9 items-center justify-center rounded-lg font-display text-[12px] font-bold transition-all duration-300 ${
-            n === i ? "-translate-y-1 bg-espresso text-sand shadow-[0_8px_16px_-8px_rgba(42,33,27,0.6)]" : "bg-raised text-ink-soft ring-1 ring-line"
+            n === i ? "-translate-y-1 bg-cloud text-cloud-ink ring-1 ring-cloud-line shadow-[0_8px_16px_-8px_rgba(42,33,27,0.6)]" : "bg-raised text-ink-soft ring-1 ring-line"
           }`}
         >
           {a}
@@ -198,7 +198,7 @@ function AnyApp() {
                     on ? "bg-raised text-ink ring-ink/20" : "bg-raised/40 text-ink-soft ring-line hover:bg-raised/70 hover:text-ink"
                   }`}
                 >
-                  <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[10px] font-bold ${on ? "bg-espresso text-sand" : "bg-canvas text-ink-faint"}`}>{s.glyph}</span>
+                  <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[10px] font-bold ${on ? "bg-cloud text-cloud-ink ring-1 ring-cloud-line" : "bg-canvas text-ink-faint"}`}>{s.glyph}</span>
                   {s.app}
                 </button>
               );

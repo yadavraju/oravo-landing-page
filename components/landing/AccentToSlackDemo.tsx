@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { MacWindow } from "./MacWindow";
 
 type Scenario = {
   speaker: string;
@@ -141,7 +142,7 @@ export default function AccentToSlackDemo() {
         <div className="surface !rounded-2xl p-5 sm:p-6 flex flex-col gap-5 min-h-[300px]">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2.5">
-              <span className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-ink text-white">
+              <span className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-cloud text-cloud-ink ring-1 ring-cloud-line">
                 {listening && !reduceMotion && (
                   <span className="absolute inset-0 rounded-lg bg-brand/40 animate-ping" />
                 )}
@@ -195,7 +196,7 @@ export default function AccentToSlackDemo() {
         <div className="relative flex items-center justify-center py-1 md:py-0" aria-hidden="true">
           <div className="absolute inset-y-10 left-1/2 hidden w-px -translate-x-1/2 bg-line md:block" />
           <motion.div
-            className="relative z-10 flex h-14 w-14 items-center justify-center rounded-xl bg-ink text-white shadow-[0_6px_16px_-6px_rgba(51,48,42,0.45)]"
+            className="relative z-10 flex h-14 w-14 items-center justify-center rounded-xl bg-cloud text-cloud-ink ring-1 ring-cloud-line shadow-[0_6px_16px_-6px_rgba(51,48,42,0.45)]"
             animate={processing && !reduceMotion ? { scale: [1, 1.1, 1] } : { scale: 1 }}
             transition={{ duration: 1, repeat: processing ? Infinity : 0, ease: "easeInOut" }}
           >
@@ -214,20 +215,13 @@ export default function AccentToSlackDemo() {
         </div>
 
         {/* Right: Slack window */}
-        <div className="surface-solid !rounded-2xl overflow-hidden flex flex-col min-h-[300px]">
-          <div className="flex items-center gap-2 border-b border-line bg-canvas px-4 py-3">
-            <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-            <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-            <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-            <span className="ml-3 font-display text-xs font-semibold text-ink-soft">Slack</span>
-            <span className="text-xs text-ink-faint">— #{scenario.channel}</span>
-          </div>
+        <MacWindow app="slack" title={scenario.channel} subtitle="Acme" className="min-h-[300px] !rounded-2xl" bodyClassName="flex min-h-0 p-0">
 
           <div className="flex flex-1 min-h-0">
-            <div className="hidden sm:flex w-[52px] shrink-0 flex-col items-center gap-3 bg-[#3f0e40] py-4">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-raised/90 font-display text-xs font-bold text-[#3f0e40]">O</span>
-              <span className="h-8 w-8 rounded-lg bg-raised/10" />
-              <span className="h-8 w-8 rounded-lg bg-raised/10" />
+            <div className="hidden sm:flex w-[52px] shrink-0 flex-col items-center gap-3 border-r border-[#e3d0de] bg-[#f5ecf2] py-4">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-raised font-display text-xs font-bold text-[#6d3f63] ring-1 ring-[#e3d0de]">O</span>
+              <span className="h-8 w-8 rounded-lg bg-[#ead9e5]" />
+              <span className="h-8 w-8 rounded-lg bg-[#ead9e5]" />
             </div>
 
             <div className="flex flex-1 min-w-0 flex-col p-4 sm:p-5 gap-4">
@@ -278,13 +272,13 @@ export default function AccentToSlackDemo() {
               </div>
             </div>
           </div>
-        </div>
+        </MacWindow>
       </div>
 
       {/* Scenario dots */}
       <div className="mt-5 flex justify-center gap-2" aria-hidden="true">
         {SCENARIOS.map((s, i) => (
-          <span key={s.speaker} className={`h-1 rounded-sm transition-all duration-500 ${i === index ? "w-6 bg-ink" : "w-3 bg-ink/20"}`} />
+          <span key={s.speaker} className={`h-1 rounded-sm transition-all duration-500 ${i === index ? "w-6 bg-cloud-ink" : "w-3 bg-ink/20"}`} />
         ))}
       </div>
     </div>

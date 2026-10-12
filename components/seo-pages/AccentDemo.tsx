@@ -92,7 +92,7 @@ export function AccentDemo() {
           <div className="rounded-xl bg-raised p-4 shadow-[0_0_0_1px_var(--o-line),inset_3px_0_0_var(--o-accent)]">
             <div className="flex items-center justify-between">
               <span className="eyebrow">Oravo wrote</span>
-              <span className="flex h-5 w-5 items-center justify-center rounded-md bg-espresso text-[#e8a07f]">
+              <span className="flex h-5 w-5 items-center justify-center rounded-md bg-cloud text-cloud-ink">
                 <Check className="h-3 w-3" strokeWidth={3} />
               </span>
             </div>
@@ -105,7 +105,7 @@ export function AccentDemo() {
           <div className="flex items-center justify-between pt-1">
             <span className="flex gap-1.5">
               {TAKES.map((x, i) => (
-                <span key={x.accent} className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? "w-6 bg-ink" : "w-1.5 bg-line"}`} />
+                <span key={x.accent} className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? "w-6 bg-cloud-ink" : "w-1.5 bg-line"}`} />
               ))}
             </span>
             <span className="font-display text-[11px] text-ink-faint">Illustrative example</span>
@@ -151,7 +151,7 @@ export function ContextDemo() {
               <motion.span
                 key={opt + i}
                 className={`rounded-md px-2 transition-colors duration-300 ${
-                  isRight && decided ? "bg-espresso text-white" : struck ? "text-ink-faint line-through decoration-brand" : "bg-raised text-ink-soft ring-1 ring-line"
+                  isRight && decided ? "bg-cloud text-cloud-ink ring-1 ring-cloud-line" : struck ? "text-ink-faint line-through decoration-brand" : "bg-raised text-ink-soft ring-1 ring-line"
                 }`}
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: struck ? 0.45 : 1, y: 0 }}

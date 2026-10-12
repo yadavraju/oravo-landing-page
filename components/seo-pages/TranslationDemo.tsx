@@ -43,7 +43,7 @@ export function TranslationDemo() {
             <span
               key={item.lang}
               className={`inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-display text-[11.5px] font-semibold transition-all duration-300 ${
-                i === index ? "bg-espresso text-white" : "bg-raised/70 text-ink-faint ring-1 ring-line"
+                i === index ? "bg-cloud text-cloud-ink ring-1 ring-cloud-line" : "bg-raised/70 text-ink-faint ring-1 ring-line"
               }`}
             >
               <span className="text-[12px]">{item.flag}</span>
@@ -80,7 +80,7 @@ export function TranslationDemo() {
               <div className="my-4 flex items-center gap-3">
                 <span className="h-px flex-1 border-t-[1.5px] border-dashed border-line" />
                 <motion.span
-                  className={`flex h-8 items-center gap-1.5 rounded-lg px-3 font-display text-[11.5px] font-semibold ${translating ? "bg-espresso text-white" : "bg-canvas text-ink-soft ring-1 ring-line"}`}
+                  className={`flex h-8 items-center gap-1.5 rounded-lg px-3 font-display text-[11.5px] font-semibold ${translating ? "bg-cloud text-cloud-ink ring-1 ring-cloud-line" : "bg-canvas text-ink-soft ring-1 ring-line"}`}
                   animate={translating ? { scale: [1, 1.05, 1] } : { scale: 1 }}
                   transition={{ duration: 0.8, repeat: translating ? Infinity : 0 }}
                 >

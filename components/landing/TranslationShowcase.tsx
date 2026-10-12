@@ -146,7 +146,7 @@ export default function TranslationShowcase() {
                 <span className="h-px flex-1 bg-line" />
                 <motion.span
                   className={`flex h-9 items-center gap-2 rounded-lg px-3 font-display text-[12px] font-semibold ${
-                    polishing ? "bg-ink text-white" : "bg-canvas text-ink-soft ring-1 ring-line"
+                    polishing ? "bg-cloud text-cloud-ink ring-1 ring-cloud-line" : "bg-canvas text-ink-soft ring-1 ring-line"
                   }`}
                   animate={polishing ? { scale: [1, 1.05, 1] } : { scale: 1 }}
                   transition={{ duration: 0.8, repeat: polishing ? Infinity : 0 }}

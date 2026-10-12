@@ -151,7 +151,7 @@ export function ScenarioSwitcher({ intro, items }: { intro: Intro; items: Scenar
                   setPaused(true);
                 }}
                 className={`h-9 shrink-0 whitespace-nowrap rounded-lg px-3.5 font-display text-[13px] font-medium transition-colors ${
-                  on ? "bg-ink text-paper shadow-[0_1px_2px_rgba(51,48,42,0.25)]" : "text-ink-soft hover:bg-canvas hover:text-ink"
+                  on ? "key-on" : "text-ink-soft hover:bg-canvas hover:text-ink"
                 }`}
               >
                 {s.title}

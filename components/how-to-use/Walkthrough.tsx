@@ -3,6 +3,7 @@
 import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
 import { Check, Hash, MousePointer2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { MacWindow } from "../landing/MacWindow";
 
 /*
  * The four-step desktop walkthrough as one animated scene. A single clock
@@ -85,7 +86,7 @@ function Pill({ state }: { state: "hidden" | "listening" | "polishing" | "done" 
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 6 }}
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="flex items-center gap-2 rounded-lg bg-ink px-3 py-2 text-paper shadow-[0_12px_26px_-12px_rgba(51,48,42,0.7)]"
+          className="flex items-center gap-2 rounded-lg bg-cloud px-3 py-2 text-cloud-ink ring-1 ring-cloud-line shadow-[0_12px_26px_-12px_rgba(51,48,42,0.7)]"
         >
           <span className="flex h-4 items-center gap-[2px]" aria-hidden="true">
             {Array.from({ length: 9 }).map((_, i) => (
@@ -135,14 +136,7 @@ function Stage({ t }: { t: number }) {
   const clicking = step === 0 && local > 1300 && local < 1700;
 
   return (
-    <div className="relative flex h-full flex-col overflow-hidden rounded-xl bg-raised shadow-[0_0_0_1px_var(--o-line),0_30px_60px_-36px_rgba(51,48,42,0.5)]">
-      <div className="flex items-center gap-2 border-b border-line bg-canvas px-3.5 py-2.5">
-        <span className="h-2.5 w-2.5 rounded-full bg-ink/15" />
-        <span className="h-2.5 w-2.5 rounded-full bg-ink/15" />
-        <span className="h-2.5 w-2.5 rounded-full bg-ink/15" />
-        <Hash aria-hidden="true" className="ml-2 h-3.5 w-3.5 text-ink-faint" />
-        <span className="font-display text-[11.5px] font-semibold text-ink-soft">team-updates</span>
-      </div>
+    <MacWindow app="slack" title="team-updates" subtitle="Northwind" className="h-full" bodyClassName="flex flex-col p-0">
 
       <div className="flex flex-1 flex-col gap-3.5 p-4 sm:p-5">
         <Message name="Maya" initial="M" tone="bg-sand text-ink-soft" lines="Morning! Are we still on for the stand-up at 9?" />
@@ -200,7 +194,7 @@ function Stage({ t }: { t: number }) {
             <motion.span
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="absolute -top-2.5 right-3 inline-flex items-center gap-1 rounded-md bg-ink px-1.5 py-0.5 font-display text-[10px] font-semibold text-paper"
+              className="absolute -top-2.5 right-3 inline-flex items-center gap-1 rounded-md bg-cloud px-1.5 py-0.5 font-display text-[10px] font-semibold text-cloud-ink ring-1 ring-cloud-line"
             >
               <Check aria-hidden="true" className="h-3 w-3" strokeWidth={3} /> Pasted
             </motion.span>
@@ -228,7 +222,7 @@ function Stage({ t }: { t: number }) {
           <MousePointer2 className="h-5 w-5 fill-ink text-paper drop-shadow-[0_2px_3px_rgba(51,48,42,0.35)]" />
         </span>
       </motion.div>
-    </div>
+    </MacWindow>
   );
 }
 

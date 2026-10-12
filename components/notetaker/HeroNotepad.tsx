@@ -204,7 +204,7 @@ export function HeroNotepad() {
                   <button
                     type="button"
                     onClick={endMeeting}
-                    className="relative inline-flex h-9 items-center gap-2 rounded-lg bg-espresso px-3.5 font-display text-[13px] font-semibold text-sand transition-transform hover:-translate-y-px active:translate-y-0"
+                    className="relative inline-flex h-9 items-center gap-2 rounded-lg bg-cloud px-3.5 font-display text-[13px] font-semibold text-cloud-ink ring-1 ring-cloud-line transition-transform hover:-translate-y-px active:translate-y-0"
                   >
                     {typed >= total && !reduceMotion && (
                       <span className="absolute -inset-1 animate-ping rounded-xl border-2 border-brand/40" aria-hidden="true" />

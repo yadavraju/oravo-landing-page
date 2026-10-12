@@ -70,7 +70,7 @@ function AppsArt() {
               on ? "bg-raised shadow-[0_0_0_1.5px_var(--o-ink)]" : "bg-raised/60 shadow-[0_0_0_1px_var(--o-line)]"
             }`}
           >
-            <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md font-display text-[11px] font-bold transition-colors duration-500 ${on ? "bg-ink text-paper" : "bg-canvas text-ink-faint"}`}>
+            <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md font-display text-[11px] font-bold transition-colors duration-500 ${on ? "bg-cloud text-cloud-ink ring-1 ring-cloud-line" : "bg-canvas text-ink-faint"}`}>
               {app.charAt(0)}
             </span>
             <span className="truncate font-display text-[12px] font-semibold text-ink-soft">{app}</span>
@@ -106,7 +106,7 @@ function HotkeyArt() {
           </Kbd>
         </div>
       </div>
-      <div className="flex items-center gap-3 rounded-xl bg-ink px-4 py-3 text-paper sm:col-span-2">
+      <div className="flex items-center gap-3 rounded-xl bg-cloud px-4 py-3 text-cloud-ink ring-1 ring-cloud-line sm:col-span-2">
         <span className="flex h-4 items-center gap-[3px]" aria-hidden="true">
           {Array.from({ length: 14 }).map((_, n) => (
             <motion.span
@@ -212,7 +212,7 @@ function BarArt() {
         <span className="block h-2 w-3/5 rounded-sm bg-ink/10" />
       </div>
       <motion.div
-        className="relative mb-5 flex items-center gap-2 rounded-lg bg-ink px-3 py-1.5 text-paper"
+        className="relative mb-5 flex items-center gap-2 rounded-lg bg-cloud px-3 py-1.5 text-cloud-ink ring-1 ring-cloud-line"
         animate={{ scale: on ? 1.06 : 1 }}
         transition={{ duration: 0.25 }}
       >

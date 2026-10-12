@@ -180,7 +180,7 @@ export default function VoiceTypingForAccentsPage() {
                 <Parallax speed={20} className="pointer-events-none absolute -right-4 -top-4" aria-hidden="true">
                   <Doodle name="sparkle" className="w-24" />
                 </Parallax>
-                <span className="flex h-7 w-7 items-center justify-center rounded-md bg-espresso text-[#e8a07f]">
+                <span className="flex h-7 w-7 items-center justify-center rounded-md bg-cloud text-cloud-ink">
                   <Check className="h-3.5 w-3.5" strokeWidth={3} />
                 </span>
                 <h3 className="display-3 mt-4 text-ink">Oravo</h3>

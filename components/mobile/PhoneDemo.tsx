@@ -258,7 +258,7 @@ export function PhoneDemo({
                   <span className="text-ink-faint">Message</span>
                 )}
               </div>
-              <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors ${phase === "done" ? "bg-espresso text-sand" : "bg-canvas text-ink-faint ring-1 ring-line"}`}>
+              <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors ${phase === "done" ? "bg-cloud text-cloud-ink ring-1 ring-cloud-line" : "bg-canvas text-ink-faint ring-1 ring-line"}`}>
                 <Send aria-hidden="true" className="h-4 w-4" />
               </span>
             </div>

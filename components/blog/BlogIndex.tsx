@@ -39,20 +39,20 @@ function CategoryFilter({
             aria-selected={on}
             onClick={() => onChange(category.id)}
             className={`relative shrink-0 rounded-lg px-3.5 py-2 font-display text-[13px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40 ${
-              on ? "text-paper" : "text-ink-soft hover:text-ink"
+              on ? "text-cloud-ink" : "text-ink-soft hover:text-ink"
             }`}
           >
             {on && (
               <motion.span
                 layoutId="blog-filter"
-                className="absolute inset-0 rounded-lg bg-ink"
+                className="absolute inset-0 rounded-lg bg-cloud ring-1 ring-cloud-line"
                 transition={reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 420, damping: 34 }}
               />
             )}
             {!on && <span className="absolute inset-0 rounded-lg bg-raised/70 ring-1 ring-line" aria-hidden="true" />}
             <span className="relative">
               {category.title}
-              <span className={`ml-1.5 tabular-nums ${on ? "text-paper/60" : "text-ink-faint"}`}>{category.count}</span>
+              <span className={`ml-1.5 tabular-nums ${on ? "text-cloud-ink/60" : "text-ink-faint"}`}>{category.count}</span>
             </span>
           </button>
         );

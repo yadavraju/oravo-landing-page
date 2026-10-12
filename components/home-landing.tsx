@@ -16,7 +16,7 @@ import { Parallax } from "./landing/Parallax";
 import { Reveal, RevealWords } from "./landing/Reveal";
 
 const DocumentationSection = dynamic(() => import("../components/documentation-section"));
-const FooterSection = dynamic(() => import("../components/footer-section"));
+const SiteFooter = dynamic(() => import("./landing/SiteFooter"));
 const MadeForYou = dynamic(() => import("../components/MadeForYou"));
 const SwitchAndAsk = dynamic(() => import("./landing/SwitchAndAsk"));
 const FinishedTextBento = dynamic(() => import("./landing/FinishedTextBento"));
@@ -278,15 +278,13 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
         </Band>
       )}
 
-      {/* Closing CTA and footer share one warm ground, as in video-shala. */}
-      <Band color={BLUSH} from={blogSection ? PAPER : CLAY} blend={200} className="pt-20 sm:pt-28">
+      {/* The closing CTA, then the footer blends out of its blush ground. */}
+      <Band color={BLUSH} from={blogSection ? PAPER : CLAY} blend={200} className="pt-20 pb-4 sm:pt-28">
         <div className={SHELL}>
           <CTASection />
         </div>
-        <div className="mx-auto mt-16 w-full max-w-[1060px] px-5 sm:px-8 lg:px-0">
-          <FooterSection />
-        </div>
       </Band>
+      <SiteFooter from={BLUSH} />
     </div>
   );
 }

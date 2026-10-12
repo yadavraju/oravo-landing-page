@@ -4,6 +4,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import { Check } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { SimpleIconData } from "./UseCasePageTemplate";
+import { MacWindow, macAppFor } from "../landing/MacWindow";
 
 // One realistic sample per app category: what you say, and what lands in the app.
 const SAMPLES: Record<string, { raw: string; polished: string; field: string }> = {
@@ -66,6 +67,14 @@ export function AppDictationDemo({
   category?: string;
 }) {
   const sample = SAMPLES[category] ?? SAMPLES.communication;
+  const chrome = macAppFor(appName);
+  const mark = icon ? (
+    <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill={accent} aria-hidden="true">
+      <path d={icon.path} />
+    </svg>
+  ) : (
+    <span className="h-2 w-2 rounded-full" style={{ background: accent }} />
+  );
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.3 });
   const reduceMotion = useReducedMotion();
@@ -90,23 +99,7 @@ export function AppDictationDemo({
   return (
     <div ref={ref} className="relative">
       <div className="frame-dotted absolute -inset-4 hidden sm:block" aria-hidden="true" />
-      <div className="relative overflow-hidden rounded-2xl bg-raised shadow-[0_0_0_1px_var(--o-line),0_30px_60px_-30px_rgba(51,48,42,0.45)]">
-        <div className="flex items-center gap-2 border-b border-line bg-canvas px-4 py-3">
-          <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-          <span className="ml-2 flex h-6 w-6 items-center justify-center rounded-md" style={{ background: `${accent}1a` }}>
-            {icon ? (
-              <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill={accent} aria-hidden="true">
-                <path d={icon.path} />
-              </svg>
-            ) : (
-              <span className="h-2 w-2 rounded-full" style={{ background: accent }} />
-            )}
-          </span>
-          <span className="font-display text-[12.5px] font-semibold text-ink">{appName}</span>
-          <span className="text-[12px] text-ink-faint">— {sample.field}</span>
-        </div>
+      <MacWindow app={chrome} title={chrome === "plain" || chrome === "browser" ? appName : sample.field} subtitle={chrome === "plain" ? `— ${sample.field}` : undefined} icon={mark} className="!rounded-2xl" bodyClassName="p-0">
 
         <div className="space-y-4 p-5 sm:p-6">
           <div className="min-h-[76px] rounded-xl bg-canvas p-3.5 ring-1 ring-line">
@@ -128,12 +121,12 @@ export function AppDictationDemo({
           </div>
 
           <div className="flex items-center justify-between">
-            <span className="flex items-center gap-2 rounded-lg bg-ink px-3 py-2 text-white">
+            <span className="flex items-center gap-2 rounded-lg bg-cloud px-3 py-2 text-cloud-ink ring-1 ring-cloud-line">
               <span className="flex h-4 items-center gap-[2px]" aria-hidden="true">
                 {Array.from({ length: 9 }).map((_, i) => (
                   <motion.span
                     key={i}
-                    className="w-[2px] rounded-full bg-[#e8a07f]"
+                    className="w-[2px] rounded-full bg-cloud-ink/70"
                     animate={state === "listening" ? { height: [3, 6 + ((i * 7) % 9), 4] } : { height: 3 }}
                     transition={{ duration: 0.7, repeat: state === "listening" ? Infinity : 0, delay: i * 0.05 }}
                   />
@@ -150,7 +143,7 @@ export function AppDictationDemo({
             )}
           </div>
         </div>
-      </div>
+      </MacWindow>
     </div>
   );
 }

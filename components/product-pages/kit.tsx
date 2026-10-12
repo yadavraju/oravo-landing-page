@@ -2,6 +2,7 @@
 
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { MacWindow, macAppFor } from "../landing/MacWindow";
 
 /*
  * Small shared parts for the product pages (/features, /dictation-app,
@@ -249,7 +250,7 @@ export function useSlotClock(count: number, slot: number | ((index: number) => n
   return { ref, index, setIndex, t, length, reduce: Boolean(reduce), inView };
 }
 
-/** App window chrome on a raised surface. */
+/** App window: a Mac window with the toolbar of the app named in `title`. */
 export function DemoWindow({
   title,
   subtitle,
@@ -265,27 +266,28 @@ export function DemoWindow({
   className?: string;
   bodyClassName?: string;
 }) {
+  const app = macAppFor(title);
+  const generic = app === "plain" || app === "browser";
   return (
-    <div className={`relative overflow-hidden rounded-2xl bg-raised shadow-[0_0_0_1px_var(--o-line),0_30px_60px_-30px_rgba(51,48,42,0.45)] ${className}`}>
-      <div className="flex items-center gap-2 border-b border-line bg-canvas px-4 py-3">
-        <span className="h-2.5 w-2.5 rounded-full bg-ink/15" />
-        <span className="h-2.5 w-2.5 rounded-full bg-ink/15" />
-        <span className="h-2.5 w-2.5 rounded-full bg-ink/15" />
-        {leading && <span className="ml-2">{leading}</span>}
-        <span className={`${leading ? "" : "ml-2"} truncate font-display text-[12.5px] font-semibold text-ink`}>{title}</span>
-        {subtitle && <span className="truncate text-[12px] text-ink-faint">— {subtitle}</span>}
-      </div>
-      <div className={bodyClassName}>{children}</div>
-    </div>
+    <MacWindow
+      app={app}
+      title={generic ? title : subtitle ?? title}
+      subtitle={app === "plain" && subtitle ? `— ${subtitle}` : undefined}
+      icon={leading}
+      className={`!rounded-2xl ${className}`}
+      bodyClassName={bodyClassName}
+    >
+      {children}
+    </MacWindow>
   );
 }
 
-/** The dark "Oravo is listening" pill used under the demos. */
+/** The light-blue "Oravo is listening" pill used under the demos. */
 export function ListeningPill({ state, labels }: { state: "listening" | "polishing" | "done"; labels?: Partial<Record<"listening" | "polishing" | "done", string>> }) {
   const text = { listening: "Listening…", polishing: "Polishing…", done: "Typed by Oravo", ...labels }[state];
   return (
-    <span className="inline-flex items-center gap-2 rounded-lg bg-espresso px-3 py-2 text-white">
-      <Waveform active={state === "listening"} className="bg-[#e8a07f]" />
+    <span className="inline-flex items-center gap-2 rounded-lg bg-cloud px-3 py-2 text-cloud-ink ring-1 ring-cloud-line">
+      <Waveform active={state === "listening"} className="bg-cloud-ink/70" />
       <span className="font-display text-[11.5px] font-semibold">{text}</span>
     </span>
   );

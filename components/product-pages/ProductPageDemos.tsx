@@ -269,7 +269,7 @@ export function AccentMicDemo() {
                 transition={{ duration: 1.6, repeat: speaking ? Infinity : 0, delay: ring * 0.8, ease: "easeOut" }}
               />
             ))}
-            <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-espresso text-white">
+            <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-cloud text-cloud-ink ring-1 ring-cloud-line">
               <Mic aria-hidden="true" className="h-5 w-5" />
             </span>
           </span>
@@ -426,8 +426,8 @@ export function DeviceConvertDemo() {
         </motion.div>
       </div>
       <div className="relative mt-5 flex items-center justify-between gap-3">
-        <span className="inline-flex items-center gap-2 rounded-lg bg-espresso px-3 py-2 text-white">
-          <Waveform active={listening || typed.length < item.text.length} className="bg-[#e8a07f]" />
+        <span className="inline-flex items-center gap-2 rounded-lg bg-cloud px-3 py-2 text-cloud-ink ring-1 ring-cloud-line">
+          <Waveform active={listening || typed.length < item.text.length} className="bg-cloud-ink/70" />
           <span className="font-display text-[11.5px] font-semibold">{listening ? "Listening…" : typed.length < item.text.length ? "Converting voice to text…" : `Typed on ${item.device}`}</span>
         </span>
         <span className="flex gap-1.5" aria-hidden="true">

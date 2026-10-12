@@ -107,7 +107,7 @@ export function EmailDemo() {
               <span className="flex items-center gap-2">
                 <Paperclip className="h-4 w-4 text-ink-faint" />
                 <motion.span
-                  className={`flex h-8 items-center gap-1.5 rounded-lg px-3 font-display text-[12px] font-semibold ${body.length === POLISHED.length ? "bg-ink text-raised" : "bg-canvas text-ink-faint ring-1 ring-line"}`}
+                  className={`flex h-8 items-center gap-1.5 rounded-lg px-3 font-display text-[12px] font-semibold ${body.length === POLISHED.length ? "bg-cloud text-cloud-ink ring-1 ring-cloud-line" : "bg-canvas text-ink-faint ring-1 ring-line"}`}
                   animate={t > typedEnd + 900 && t < sentAt ? { scale: [1, 0.94, 1] } : { scale: 1 }}
                   transition={{ duration: 0.3 }}
                 >

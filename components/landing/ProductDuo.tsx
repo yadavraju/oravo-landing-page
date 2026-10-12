@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Doodle } from "./Doodle";
 import { Parallax } from "./Parallax";
 import { Reveal, RevealWords } from "./Reveal";
+import { MacWindow } from "./MacWindow";
 
 /* ======================================================================== */
 /* Dictation: hold to speak a sample, release to polish.                    */
@@ -131,7 +132,7 @@ function DictationTry() {
                 setChars(0);
               }}
               className={`rounded-lg px-3 py-2 font-display text-[13px] font-semibold ring-1 transition-colors ${
-                i === voice ? "bg-ink text-white ring-ink" : "bg-raised/80 text-ink-soft ring-[var(--t-line)] hover:text-ink"
+                i === voice ? "key-on ring-0" : "bg-raised/80 text-ink-soft ring-[var(--t-line)] hover:text-ink"
               }`}
             >
               {item.label}
@@ -149,12 +150,12 @@ function DictationTry() {
             onPointerUp={stop}
             onPointerLeave={stop}
             aria-label="Hold to speak the sample"
-            className="group relative flex h-14 select-none items-center justify-center gap-2.5 rounded-xl bg-ink px-6 font-display text-[15px] font-semibold text-white shadow-[0_12px_24px_-14px_rgba(51,48,42,0.6)] transition-transform active:scale-95"
+            className="group relative flex h-14 select-none items-center justify-center gap-2.5 rounded-xl bg-cloud px-6 font-display text-[15px] font-semibold text-cloud-ink ring-1 ring-cloud-line shadow-[0_12px_24px_-14px_rgba(13,84,128,0.45)] transition-transform active:scale-95"
           >
             {listening && !reduceMotion && (
               <>
-                <span className="absolute inset-0 animate-ping rounded-xl bg-ink opacity-20" />
-                <span className="absolute -inset-2 rounded-2xl border-[1.5px] border-dashed border-ink/30" />
+                <span className="absolute inset-0 animate-ping rounded-xl bg-cloud-line opacity-40" />
+                <span className="absolute -inset-2 rounded-2xl border-[1.5px] border-dashed border-cloud-ink/30" />
               </>
             )}
             <Mic aria-hidden="true" className="relative h-4 w-4" />
@@ -186,14 +187,7 @@ function DictationTry() {
           </p>
         </div>
 
-        <div className="flex flex-1 flex-col overflow-hidden rounded-2xl bg-raised shadow-[0_0_0_1px_var(--t-line),0_24px_44px_-26px_var(--t-shadow)]">
-          <div className="flex items-center gap-2 border-b border-[var(--t-line)] bg-[var(--t-panel)] px-4 py-2.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-            <span className="ml-2 font-display text-[12px] font-semibold text-ink-soft">Gmail</span>
-            <span className="text-[12px] text-ink-faint">— Reply to client</span>
-          </div>
+        <MacWindow app="outlook" title="Re: Contract review" subtitle="Daniel Okafor" className="flex-1 !rounded-2xl" bodyClassName="flex flex-col p-0">
           <div className="relative min-h-[170px] flex-1 p-5">
             <p className="text-[15.5px] leading-relaxed text-ink">
               {phase === "done" ? v.polished.slice(0, chars) : null}
@@ -224,7 +218,7 @@ function DictationTry() {
               )}
             </AnimatePresence>
           </div>
-        </div>
+        </MacWindow>
       </div>
     </div>
   );
@@ -446,10 +440,10 @@ export default function ProductDuo() {
                 className="relative inline-flex h-10 items-center gap-2 rounded-lg px-4 font-display text-[14px] font-semibold"
               >
                 {selected && (
-                  <motion.span layoutId="product-key" className="absolute inset-0 rounded-lg bg-ink shadow-[0_4px_12px_-6px_rgba(51,48,42,0.5)]" transition={{ type: "spring", stiffness: 420, damping: 34 }} />
+                  <motion.span layoutId="product-key" className="absolute inset-0 rounded-lg bg-cloud ring-1 ring-cloud-line" transition={{ type: "spring", stiffness: 420, damping: 34 }} />
                 )}
-                <p.icon aria-hidden="true" className={`relative h-4 w-4 ${selected ? "text-white" : "text-ink-faint"}`} />
-                <span className={`relative ${selected ? "text-white" : "text-ink-soft"}`}>{p.name}</span>
+                <p.icon aria-hidden="true" className={`relative h-4 w-4 ${selected ? "text-cloud-ink" : "text-ink-faint"}`} />
+                <span className={`relative ${selected ? "text-cloud-ink" : "text-ink-soft"}`}>{p.name}</span>
               </button>
             );
           })}

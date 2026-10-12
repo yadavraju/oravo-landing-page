@@ -113,7 +113,7 @@ export function EditShare() {
               <Copy aria-hidden="true" className="h-3.5 w-3.5" />
               Copy notes
             </button>
-            <button type="button" onClick={exportFile} className="inline-flex h-8 items-center gap-1.5 rounded-md bg-espresso px-2.5 font-display text-[12px] font-semibold text-sand transition-transform hover:-translate-y-px">
+            <button type="button" onClick={exportFile} className="inline-flex h-8 items-center gap-1.5 rounded-md bg-cloud px-2.5 font-display text-[12px] font-semibold text-cloud-ink ring-1 ring-cloud-line transition-transform hover:-translate-y-px">
               <Download aria-hidden="true" className="h-3.5 w-3.5" />
               Export
             </button>
@@ -165,7 +165,7 @@ export function EditShare() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 6 }}
-              className="absolute bottom-4 left-1/2 inline-flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-lg bg-espresso px-3.5 py-2 font-display text-[12.5px] font-semibold text-sand shadow-lg"
+              className="absolute bottom-4 left-1/2 inline-flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-lg bg-cloud px-3.5 py-2 text-cloud-ink ring-1 ring-cloud-line font-display text-[12.5px] font-semibold text-sand shadow-lg"
             >
               <Check aria-hidden="true" className="h-3.5 w-3.5 text-[#BFCBB0]" strokeWidth={3} />
               {toast}

@@ -143,7 +143,7 @@ const COMPARISON: { feature: string; oravo: Cell; google: Cell; apple: Cell }[] 
 function CellView({ value, strong }: { value: Cell; strong?: boolean }) {
   if (value === true)
     return (
-      <span className={`inline-flex h-6 w-6 items-center justify-center rounded-md ${strong ? "bg-ink text-raised" : "bg-canvas text-ink-soft ring-1 ring-line"}`}>
+      <span className={`inline-flex h-6 w-6 items-center justify-center rounded-md ${strong ? "bg-cloud text-cloud-ink ring-1 ring-cloud-line" : "bg-canvas text-ink-soft ring-1 ring-line"}`}>
         <Check aria-label="Yes" className="h-3.5 w-3.5" strokeWidth={2.75} />
       </span>
     );

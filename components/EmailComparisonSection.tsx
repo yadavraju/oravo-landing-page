@@ -29,11 +29,11 @@ export function MiniVoiceWaveform() {
           ease: "easeInOut",
         }}
       >
-        <div className="w-full h-full bg-[#c4572f] rounded-full" />
+        <div className="w-full h-full bg-brand rounded-full" />
       </motion.div>
 
       {/* Waveform bars */}
-      <div className="relative flex items-center justify-center gap-[1.5px] sm:gap-[2px] px-3 py-1 sm:px-4 sm:py-1.5 bg-white/5 backdrop-blur-sm rounded-full border border-white/10">
+      <div className="relative flex items-center justify-center gap-[1.5px] sm:gap-[2px] px-3 py-1 sm:px-4 sm:py-1.5 bg-raised/80 rounded-full border border-cloud-line">
         {Array.from({ length: bars }).map((_, i) => {
           const normalizedIndex = i / bars;
           const phase = Math.sin(normalizedIndex * Math.PI);
@@ -41,7 +41,7 @@ export function MiniVoiceWaveform() {
           return (
             <motion.div
               key={i}
-              className="w-[1.5px] sm:w-[2px] bg-[#e8a07f] rounded-full"
+              className="w-[1.5px] sm:w-[2px] bg-brand rounded-full"
               animate={{
                 height: [6 + phase * 4, 12 + phase * 6, 6 + phase * 4],
                 opacity: [0.7, 1, 0.7],
@@ -126,7 +126,7 @@ function KeyboardTyping() {
   return (
     <div className="space-y-3 sm:space-y-4">
       {/* Email UI */}
-      <div className="bg-white/90 backdrop-blur-sm rounded-lg p-3 sm:p-4 md:p-5 shadow-sm border border-[#E8E6E3]/60 min-h-[100px] sm:min-h-[140px] md:min-h-[160px]">
+      <div className="bg-raised/90 rounded-lg p-3 sm:p-4 md:p-5 shadow-sm border border-[#E8E6E3]/60 min-h-[100px] sm:min-h-[140px] md:min-h-[160px]">
         <div className="space-y-2 sm:space-y-3">
           {/* Email Header */}
           <div className="flex items-center gap-2 text-[10px] sm:text-xs text-[#78716C]">
@@ -162,7 +162,7 @@ function KeyboardTyping() {
       <div className="space-y-1.5 sm:space-y-2">
         <div className="h-1 sm:h-1.5 bg-[#E8E6E3]/50 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-gradient-to-r from-[#78716C] to-[#57534E] rounded-full"
+            className="h-full bg-ink-faint rounded-full"
             style={{ width: `${progress}%` }}
             transition={{
               type: "spring",
@@ -211,30 +211,30 @@ function VoiceStreaming() {
   return (
     <div className="space-y-3 sm:space-y-4">
       {/* Email UI */}
-      <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 sm:p-4 md:p-5 shadow-lg border border-white/10 min-h-[100px] sm:min-h-[140px] md:min-h-[160px]">
+      <div className="bg-raised/85 rounded-lg p-3 sm:p-4 md:p-5 shadow-sm border border-cloud-line min-h-[100px] sm:min-h-[140px] md:min-h-[160px]">
         <div className="space-y-2 sm:space-y-3">
           {/* Email Header */}
-          <div className="flex items-center gap-2 text-[10px] sm:text-xs text-white/50">
+          <div className="flex items-center gap-2 text-[10px] sm:text-xs text-ink-faint">
             <div className="flex gap-0.5 sm:gap-1">
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/20" />
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/20" />
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/20" />
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-ink/15" />
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-ink/15" />
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-ink/15" />
             </div>
           </div>
 
-          <div className="text-[10px] sm:text-xs text-white/60 font-medium">
+          <div className="text-[10px] sm:text-xs text-ink-faint font-medium">
             Kevin Pietersen
           </div>
 
           {/* Streaming Area */}
           <div className="h-[70px] sm:h-[110px] md:h-[130px]">
             <p
-              className="text-xs sm:text-sm md:text-base text-white font-normal whitespace-pre-line"
+              className="text-xs sm:text-sm md:text-base text-ink font-normal whitespace-pre-line"
               style={{ lineHeight: "1.5" }}
             >
               {displayedText}
               <motion.span
-                className="inline-block w-[2px] h-3 sm:h-4 md:h-5 bg-white ml-[1px]"
+                className="inline-block w-[2px] h-3 sm:h-4 md:h-5 bg-brand ml-[1px]"
                 animate={{ opacity: [1, 0, 1] }}
                 transition={{ duration: 0.6, repeat: Infinity }}
               />
@@ -245,9 +245,9 @@ function VoiceStreaming() {
 
       {/* Progress Bar */}
       <div className="space-y-1.5 sm:space-y-2">
-        <div className="h-1 sm:h-1.5 bg-white/10 rounded-full overflow-hidden">
+        <div className="h-1 sm:h-1.5 bg-cloud-line/60 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-[#e8a07f] rounded-full"
+            className="h-full bg-brand rounded-full"
             style={{ width: `${progress}%` }}
             transition={{
               type: "spring",
@@ -257,7 +257,7 @@ function VoiceStreaming() {
             }}
           />
         </div>
-        <div className="flex justify-between items-center text-[10px] sm:text-xs text-white/60">
+        <div className="flex justify-between items-center text-[10px] sm:text-xs text-ink-faint">
           <span>Dictating...</span>
           <span>{Math.round(progress)}%</span>
         </div>
@@ -304,7 +304,7 @@ export default function EmailComparisonSection() {
               delay: 0.2,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#FAF9F6] via-[#F5F3F0] to-[#EBE9E6] shadow-[0_4px_24px_rgba(0,0,0,0.08)] group w-full"
+            className="relative overflow-hidden rounded-2xl bg-canvas ring-1 ring-line shadow-[0_4px_24px_rgba(0,0,0,0.08)] group w-full"
           >
             {/* Keyboard Image Background */}
             <div className="absolute inset-0">
@@ -319,8 +319,8 @@ export default function EmailComparisonSection() {
               />
             </div>
 
-            {/* Lighter gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F6]/10 via-[#FAF9F6]/50 to-[#FAF9F6]/85" />
+            {/* Wash over the keyboard photo */}
+            <div className="absolute inset-0 bg-canvas/70" />
 
             {/* Content */}
             <div className="relative z-10 p-5 sm:p-6 flex flex-col min-h-[380px] sm:min-h-[420px]">
@@ -367,35 +367,17 @@ export default function EmailComparisonSection() {
               delay: 0.3,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="relative overflow-hidden rounded-2xl shadow-[0_8px_48px_rgba(0,0,0,0.2)] group w-full"
+            className="relative overflow-hidden rounded-2xl shadow-[0_8px_32px_-12px_rgba(13,84,128,0.25)] group w-full"
           >
-            {/* Animated gradient background */}
+            {/* Solid mist ground */}
             <motion.div
-              className="absolute inset-0 bg-[#2a211b]"
+              className="absolute inset-0 bg-mist"
               style={{ willChange: "transform" }}
               animate={{
                 scale: [1, 1.05, 1],
               }}
               transition={{
                 duration: 10,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            {/* Flowing gradient overlay */}
-            <motion.div
-              className="absolute inset-0"
-              style={{ willChange: "background" }}
-              animate={{
-                background: [
-                  "radial-gradient(circle at 30% 40%, rgba(196, 87, 47, 0.16) 0%, transparent 60%)",
-                  "radial-gradient(circle at 70% 60%, rgba(232, 160, 127, 0.14) 0%, transparent 60%)",
-                  "radial-gradient(circle at 30% 40%, rgba(196, 87, 47, 0.16) 0%, transparent 60%)",
-                ],
-              }}
-              transition={{
-                duration: 12,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
@@ -408,15 +390,15 @@ export default function EmailComparisonSection() {
             >
               {/* Header */}
               <div className="mb-4 flex-shrink-0">
-                <p className="text-[9px] text-white/60 font-semibold uppercase tracking-[0.15em] mb-2">
+                <p className="text-[9px] text-cloud-ink/70 font-semibold uppercase tracking-[0.15em] mb-2">
                   Oravo
                 </p>
                 <div className="flex items-baseline gap-1.5">
-                  <h3 className="text-4xl font-serif text-white">220</h3>
-                  <span className="text-xs text-white/90 font-medium">wpm</span>
+                  <h3 className="text-4xl font-serif text-ink">220</h3>
+                  <span className="text-xs text-ink-soft font-medium">wpm</span>
                 </div>
-                <p className="text-[11px] text-white/70 mt-1.5 leading-relaxed">
-                  <span className="text-[#e8a07f] font-semibold">
+                <p className="text-[11px] text-ink-soft mt-1.5 leading-relaxed">
+                  <span className="text-brand font-semibold">
                     Press your hotkey.
                   </span>{" "}
                   Oravo writes polished text in your style — fast.
@@ -435,7 +417,7 @@ export default function EmailComparisonSection() {
             </div>
 
             {/* Border */}
-            <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />
+            <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-cloud-line" />
           </motion.div>
         </div>
       </div>

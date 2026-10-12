@@ -3,6 +3,7 @@
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import { Fragment, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { MacWindow, macAppFor } from "../landing/MacWindow";
 
 /*
  * The audience hero demo: one realistic thing this reader writes, said out
@@ -229,7 +230,7 @@ export function AudienceDemo({
 
   const status = (
     <div className="flex flex-wrap items-center justify-between gap-2">
-      <span className={`flex items-center gap-2 rounded-lg px-3 py-2 bg-ink text-paper`}>
+      <span className={`flex items-center gap-2 rounded-lg px-3 py-2 bg-cloud text-cloud-ink ring-1 ring-cloud-line`}>
         {waveform}
         <span className="font-display text-[11.5px] font-semibold">{statusLabel}</span>
       </span>
@@ -285,23 +286,7 @@ export function AudienceDemo({
   return (
     <div ref={ref} className="relative">
       <div className="frame-dotted absolute -inset-4 hidden sm:block" aria-hidden="true" />
-      <div
-        className={`relative overflow-hidden rounded-2xl ${
-          "bg-raised shadow-[0_0_0_1px_var(--o-line),0_30px_60px_-30px_rgba(51,48,42,0.45)]"
-        }`}
-      >
-        <div className={`flex items-center gap-2 border-b px-4 py-3 border-line bg-canvas`}>
-          {[0, 1, 2].map((d) => (
-            <span key={d} className={`h-2.5 w-2.5 rounded-full bg-ink/15`} />
-          ))}
-          <span
-            className="ml-2 flex h-6 w-6 items-center justify-center rounded-md bg-ink/[0.06] text-ink-soft [&_svg]:h-3.5 [&_svg]:w-3.5"
-          >
-            {icon}
-          </span>
-          <span className={`font-display text-[12.5px] font-semibold text-ink`}>{app}</span>
-          <span className={`truncate text-[12px] text-ink-faint`}>— {field}</span>
-        </div>
+      <MacWindow app={macAppFor(app)} title={["plain", "browser"].includes(macAppFor(app)) ? app : field} subtitle={macAppFor(app) === "plain" ? `— ${field}` : undefined} icon={<span className="flex h-5 w-5 items-center justify-center rounded-md bg-ink/[0.06] text-ink-soft [&_svg]:h-3 [&_svg]:w-3">{icon}</span>} className="!rounded-2xl" bodyClassName="p-0">
 
         <div className="space-y-4 p-5 sm:p-6">
           {speech}
@@ -326,7 +311,7 @@ export function AudienceDemo({
 
           {status}
         </div>
-      </div>
+      </MacWindow>
       {caption && <p className="relative mt-7 text-center font-display text-[12px] leading-relaxed text-ink-faint">{caption}</p>}
     </div>
   );

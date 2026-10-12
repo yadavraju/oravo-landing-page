@@ -49,7 +49,7 @@ export function KeyboardRow({ line = "Sounds good, I'll join the call at 4." }: 
           <motion.span
             key={i}
             className={`flex h-12 flex-col items-start justify-end rounded-md px-2 pb-1.5 font-display text-[10px] ${key.w} ${
-              key.hot ? (held ? "bg-espresso text-[#e8a07f]" : "bg-raised text-ink") : "bg-raised text-ink-faint"
+              key.hot ? (held ? "bg-cloud text-cloud-ink" : "bg-raised text-ink") : "bg-raised text-ink-faint"
             } shadow-[0_0_0_1px_var(--o-line),0_2px_0_var(--o-band-sand-deep)]`}
             animate={key.hot && held ? { y: 2, boxShadow: "0 0 0 1px var(--o-line), 0 0px 0 var(--o-band-sand-deep)" } : { y: 0 }}
             transition={{ duration: 0.12 }}

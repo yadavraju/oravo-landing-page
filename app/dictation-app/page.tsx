@@ -223,8 +223,8 @@ export default function DictationAppPage() {
                   <span className="mb-0.5 block font-display text-[10.5px] font-semibold text-ink-faint">Email</span>
                   Thank you for your patience. The revised proposal is attached.
                 </p>
-                <p className="ml-auto max-w-[75%] rounded-xl rounded-br-sm bg-espresso px-3 py-2 text-[13.5px] text-white">
-                  <span className="mb-0.5 block font-display text-[10.5px] font-semibold text-white/50">Slack</span>
+                <p className="ml-auto max-w-[75%] rounded-xl rounded-br-sm bg-cloud px-3 py-2 text-[13.5px] text-cloud-ink">
+                  <span className="mb-0.5 block font-display text-[10.5px] font-semibold text-cloud-ink/60">Slack</span>
                   New proposal&apos;s up, take a look!
                 </p>
               </div>

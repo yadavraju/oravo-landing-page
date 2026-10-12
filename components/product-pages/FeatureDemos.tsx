@@ -6,6 +6,7 @@ import { useState, type ReactNode } from "react";
 import { siGmail, siGoogledocs, siNotion, siSlack, siWhatsapp } from "simple-icons";
 import { Reveal } from "@/components/landing/Reveal";
 import { AppGlyph, Caret, DemoWindow, ListeningPill, Segmented, Waveform, scriptPhases, useAutoAdvance, useSlotClock, type IconData } from "./kit";
+import { MacWindow } from "../landing/MacWindow";
 
 /*
  * The interactive demos on /features. Each one is a small scripted scene that
@@ -706,14 +707,7 @@ export function DevEditorDemo() {
   return (
     <div ref={ref} className="relative">
       <div className="frame-dotted absolute -inset-4 hidden sm:block" aria-hidden="true" />
-      <div className="relative overflow-hidden rounded-2xl bg-raised shadow-[0_0_0_1px_var(--o-line),0_30px_60px_-30px_rgba(51,48,42,0.45)]">
-        <div className="flex items-center gap-2 border-b border-line bg-canvas px-4 py-3">
-          <span className="h-2.5 w-2.5 rounded-full bg-ink/15" />
-          <span className="h-2.5 w-2.5 rounded-full bg-ink/15" />
-          <span className="h-2.5 w-2.5 rounded-full bg-ink/15" />
-          <span className="ml-2 font-display text-[12.5px] font-semibold text-ink">Cursor</span>
-          <span className="text-[12px] text-ink-faint">— acme-web</span>
-        </div>
+      <MacWindow app="editor" title="AuthPanel.tsx" tabs={["useAuth.ts"]} className="!rounded-2xl" bodyClassName="p-0">
         <div className="grid grid-cols-[124px_1fr] sm:grid-cols-[156px_1fr]">
           <div className="border-r border-line bg-canvas/60 p-3 font-mono text-[11.5px] text-ink-soft">
             <p className="flex items-center gap-1.5 px-1.5 py-1 text-ink-faint">
@@ -763,7 +757,7 @@ export function DevEditorDemo() {
             </div>
           </div>
         </div>
-      </div>
+      </MacWindow>
     </div>
   );
 }

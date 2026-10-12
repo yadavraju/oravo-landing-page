@@ -62,7 +62,7 @@ function BeatArt({ i }: { i: number }) {
   if (i === 1) {
     return (
       <div className="flex h-full flex-col items-center justify-center gap-3 rounded-xl bg-canvas px-4 py-4 ring-1 ring-line">
-        <span className="inline-flex h-10 items-center gap-2 rounded-lg bg-espresso px-4 font-display text-[13.5px] font-semibold text-sand shadow-[0_10px_20px_-10px_rgba(42,33,27,0.6)]">
+        <span className="inline-flex h-10 items-center gap-2 rounded-lg bg-cloud px-4 font-display text-[13.5px] font-semibold text-cloud-ink ring-1 ring-cloud-line">
           <Square aria-hidden="true" className="h-3 w-3 fill-current" />
           End meeting
         </span>

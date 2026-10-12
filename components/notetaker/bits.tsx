@@ -35,7 +35,7 @@ export function TimeChip({
 }
 
 const AVATAR_TONES: Record<string, string> = {
-  Raju: "bg-espresso text-[#F3E4D2]",
+  Raju: "bg-cloud text-cloud-ink",
   Maya: "bg-brand-soft text-brand",
   Aisha: "bg-[#E9ECDD] text-[#4E6B47]",
 };

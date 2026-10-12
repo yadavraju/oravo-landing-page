@@ -394,7 +394,7 @@ function PlatformCard({
       }`}
     >
       {mine && (
-        <span className="absolute -top-3 left-5 rounded-md bg-ink px-2 py-1 font-display text-[10.5px] font-semibold uppercase tracking-[0.12em] text-paper">
+        <span className="absolute -top-3 left-5 rounded-md bg-cloud px-2 py-1 font-display text-[10.5px] font-semibold uppercase tracking-[0.12em] text-cloud-ink ring-1 ring-cloud-line">
           Your device
         </span>
       )}

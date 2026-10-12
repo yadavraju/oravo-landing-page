@@ -91,7 +91,7 @@ export function SpanishDemo() {
           <div className="my-4 flex items-center gap-3 pl-11">
             <span className="h-px flex-1 border-t-[1.5px] border-dashed border-line" />
             <motion.span
-              className={`flex h-8 items-center gap-1.5 rounded-lg px-3 font-display text-[11.5px] font-semibold ${translating ? "bg-espresso text-white" : "bg-canvas text-ink-soft ring-1 ring-line"}`}
+              className={`flex h-8 items-center gap-1.5 rounded-lg px-3 font-display text-[11.5px] font-semibold ${translating ? "bg-cloud text-cloud-ink ring-1 ring-cloud-line" : "bg-canvas text-ink-soft ring-1 ring-line"}`}
               animate={translating ? { scale: [1, 1.05, 1] } : { scale: 1 }}
               transition={{ duration: 0.8, repeat: translating ? Infinity : 0 }}
             >
@@ -102,7 +102,7 @@ export function SpanishDemo() {
           </div>
 
           <div className="flex items-start gap-3">
-            <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-espresso font-display text-[11px] font-bold text-[#e8a07f]">EN</span>
+            <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cloud font-display text-[11px] font-bold text-cloud-ink">EN</span>
             <div className="min-w-0 flex-1 rounded-2xl rounded-tl-md bg-raised p-4 shadow-[0_0_0_1px_var(--o-line),inset_3px_0_0_var(--o-accent)]">
               <span className="eyebrow">Oravo writes in English</span>
               <p className="mt-2 min-h-[56px] text-[16px] font-medium leading-relaxed text-ink">
@@ -212,7 +212,7 @@ export function ModeSwitcher() {
               <p className="mt-2 text-[18px] font-medium leading-relaxed text-ink">&ldquo;{mode.wrote}&rdquo;</p>
             </div>
             <p className="mt-5 inline-flex items-center gap-2 font-display text-[13px] font-semibold text-ink">
-              <span className="flex h-5 w-5 items-center justify-center rounded-md bg-espresso text-[#e8a07f]">
+              <span className="flex h-5 w-5 items-center justify-center rounded-md bg-cloud text-cloud-ink">
                 <Check className="h-3 w-3" strokeWidth={3} />
               </span>
               {mode.stamp}
