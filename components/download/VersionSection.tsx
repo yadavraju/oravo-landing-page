@@ -1,27 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { PlatformSection } from "./PlatformSection";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AppleIcon, PlatformSection, WindowsIcon } from "./PlatformSection";
 import type { DownloadData } from "@/lib/downloadApi";
-
-// Icons for platforms
-const AppleIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
-  </svg>
-);
-
-const WindowsIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M3 5.45v6.38l8.04.87V5.45zm8.04 7.38L3 13.7v6.38l8.04 1.17zm.96-7.69v7.31L21.96 13V3zm0 15.73V13.7L21.96 13v10z" />
-  </svg>
-);
 
 const ChevronIcon = ({ isExpanded }: { isExpanded: boolean }) => (
   <svg
-    className={`w-5 h-5 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}
+    className={`h-5 w-5 text-ink-faint transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
     viewBox="0 0 20 20"
     fill="currentColor"
+    aria-hidden="true"
   >
     <path
       fillRule="evenodd"
@@ -61,72 +50,74 @@ export function VersionSection({
   defaultExpanded = false,
 }: VersionSectionProps) {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
+  const reduceMotion = useReducedMotion();
   const groupedDownloads = groupByPlatform(downloads);
 
   // Get release date from first download
   const releaseDate = downloads[0]?.formatted_date || "";
+  const platformCount = ["macos", "windows"].filter((p) => groupedDownloads[p].length > 0).length;
 
   return (
-    <div className="bg-white/60 backdrop-blur-sm rounded-2xl border border-[rgba(55,50,47,0.12)] overflow-hidden">
+    <div
+      className={`overflow-hidden rounded-2xl transition-shadow duration-300 ${
+        isExpanded ? "bg-raised shadow-[0_0_0_1px_var(--o-line),0_20px_40px_-30px_rgba(51,48,42,0.4)]" : "bg-raised/60 shadow-[0_0_0_1px_var(--o-line)]"
+      }`}
+    >
       {/* Version Header - Clickable */}
       <button
+        type="button"
+        aria-expanded={isExpanded}
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full p-6 md:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 hover:bg-white/80 transition-colors"
+        className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left transition-colors hover:bg-canvas/50 sm:px-7"
       >
-        <div className="flex items-center gap-3">
-          <h2 className="text-2xl lg:text-3xl font-normal text-[#37322F] font-serif">
-            {version}
-          </h2>
+        <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1">
+          <h3 className="font-serif text-[1.5rem] leading-none tracking-[-0.015em] text-ink sm:text-[1.7rem]">{version}</h3>
           {isLatest && (
-            <span className="px-3 py-1 bg-gradient-to-b from-[#1877F2] to-[#166FE5] text-white text-xs font-semibold rounded-full">
+            <span className="inline-flex items-center gap-1.5 rounded-md bg-brand-soft px-2 py-1 font-display text-[11px] font-semibold text-brand">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />
               Latest
             </span>
           )}
+          <span className="hidden font-display text-[12.5px] text-ink-faint sm:inline">
+            {platformCount === 2 ? "Mac and Windows" : groupedDownloads.macos.length ? "Mac" : "Windows"}
+          </span>
         </div>
-        <div className="flex items-center gap-4 self-start sm:self-auto">
-          {releaseDate && (
-            <span className="text-[#847971] text-sm">{releaseDate}</span>
-          )}
+        <div className="flex shrink-0 items-center gap-4">
+          {releaseDate && <span className="font-display text-[12.5px] tabular-nums text-ink-faint">{releaseDate}</span>}
           <ChevronIcon isExpanded={isExpanded} />
         </div>
       </button>
 
       {/* Expanded Content */}
-      {isExpanded && (
-        <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0">
-          {/* Download Sections */}
-          <div className="space-y-4">
-            {/* macOS Section */}
-            {groupedDownloads.macos.length > 0 && (
-              <PlatformSection
-                platform="macos"
-                label="macOS"
-                icon={<AppleIcon />}
-                downloads={groupedDownloads.macos}
-              />
-            )}
+      <AnimatePresence initial={false}>
+        {isExpanded && (
+          <motion.div
+            key="content"
+            initial={reduceMotion ? false : { height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={reduceMotion ? undefined : { height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="space-y-3 px-5 pb-5 sm:px-7 sm:pb-7">
+              {/* macOS Section */}
+              {groupedDownloads.macos.length > 0 && (
+                <PlatformSection platform="macos" label="macOS" icon={<AppleIcon className="h-4 w-4" />} downloads={groupedDownloads.macos} />
+              )}
 
-            {/* Windows Section */}
-            {groupedDownloads.windows.length > 0 && (
-              <PlatformSection
-                platform="windows"
-                label="Windows"
-                icon={<WindowsIcon />}
-                downloads={groupedDownloads.windows}
-              />
-            )}
+              {/* Windows Section */}
+              {groupedDownloads.windows.length > 0 && (
+                <PlatformSection platform="windows" label="Windows" icon={<WindowsIcon className="h-3.5 w-3.5" />} downloads={groupedDownloads.windows} />
+              )}
 
-            {/* Linux Section */}
-            {groupedDownloads.linux.length > 0 && (
-              <PlatformSection
-                platform="linux"
-                label="Linux"
-                downloads={groupedDownloads.linux}
-              />
-            )}
-          </div>
-        </div>
-      )}
+              {/* Linux Section */}
+              {groupedDownloads.linux.length > 0 && (
+                <PlatformSection platform="linux" label="Linux" downloads={groupedDownloads.linux} />
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
