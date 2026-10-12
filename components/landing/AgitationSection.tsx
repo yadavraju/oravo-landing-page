@@ -197,7 +197,7 @@ export default function AgitationSection() {
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {["Grammar check", "Translate", "Rephrase"].map((tool) => (
-                  <span key={tool} className="rounded-md border border-line bg-white px-2.5 py-1 text-xs font-medium text-ink-soft">
+                  <span key={tool} className="rounded-md border border-line bg-raised px-2.5 py-1 text-xs font-medium text-ink-soft">
                     {tool}
                   </span>
                 ))}

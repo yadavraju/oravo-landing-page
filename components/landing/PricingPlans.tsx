@@ -98,7 +98,7 @@ function splitPrice(amount: number) {
 
 function CycleSwitch({ value, onChange }: { value: Cycle; onChange: (c: Cycle) => void }) {
   return (
-    <div role="tablist" aria-label="Billing cycle" className="inline-flex h-11 items-center gap-0.5 rounded-xl border border-line bg-white/70 p-1 backdrop-blur-sm">
+    <div role="tablist" aria-label="Billing cycle" className="inline-flex h-11 items-center gap-0.5 rounded-xl border border-line bg-raised/70 p-1 backdrop-blur-sm">
       {(["month", "year"] as Cycle[]).map((cycle) => {
         const selected = value === cycle;
         return (

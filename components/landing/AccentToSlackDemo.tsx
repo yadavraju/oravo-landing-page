@@ -225,9 +225,9 @@ export default function AccentToSlackDemo() {
 
           <div className="flex flex-1 min-h-0">
             <div className="hidden sm:flex w-[52px] shrink-0 flex-col items-center gap-3 bg-[#3f0e40] py-4">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/90 font-display text-xs font-bold text-[#3f0e40]">O</span>
-              <span className="h-8 w-8 rounded-lg bg-white/10" />
-              <span className="h-8 w-8 rounded-lg bg-white/10" />
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-raised/90 font-display text-xs font-bold text-[#3f0e40]">O</span>
+              <span className="h-8 w-8 rounded-lg bg-raised/10" />
+              <span className="h-8 w-8 rounded-lg bg-raised/10" />
             </div>
 
             <div className="flex flex-1 min-w-0 flex-col p-4 sm:p-5 gap-4">
@@ -258,7 +258,7 @@ export default function AccentToSlackDemo() {
                 )}
               </AnimatePresence>
 
-              <div className="mt-auto rounded-lg border border-line bg-white p-3">
+              <div className="mt-auto rounded-lg border border-line bg-raised p-3">
                 <p className="min-h-[60px] text-sm leading-relaxed text-ink">
                   {phase === "typing" ? scenario.polished.slice(0, typedCount) : null}
                   {phase === "processing" && <span className="text-ink-faint">Oravo is polishing…</span>}

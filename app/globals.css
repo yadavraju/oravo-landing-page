@@ -213,10 +213,10 @@
 
 :root {
   /* Video-shala's warm paper palette. */
-  --o-paper: #fefdfb;
-  --o-canvas: #f7f5f2;
-  --o-raised: #ffffff;
-  --o-line: #e7e2da;
+  --o-paper: #fbf7f0;
+  --o-canvas: #f4eee5;
+  --o-raised: #fffcf6;
+  --o-line: #e6ddd0;
   --o-ink: #33302a;
   --o-ink-soft: #6b655b;
   --o-ink-faint: #9c958a;
@@ -322,7 +322,7 @@
    behind it. */
 .surface {
   border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 252, 246, 0.82);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   backdrop-filter: blur(14px) saturate(140%);
   box-shadow: 0 0 0 1px var(--o-line), 0 1px 2px rgba(51, 48, 42, 0.04);
@@ -346,8 +346,8 @@
   align-items: center;
   gap: 0.5rem;
   border-radius: 0.5rem;
-  border: 2px solid #fff;
-  background: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0.25));
+  border: 2px solid #fffcf6;
+  background: linear-gradient(to bottom, #fffcf6, rgba(255, 252, 246, 0.3));
   box-shadow: 0 2px 4px rgba(51, 48, 42, 0.05);
 }
 
@@ -423,14 +423,14 @@
 /* The secondary is a glass key: white at the top falling to quarter-white,
    so the band colour shows through its base. */
 .btn-secondary {
-  border-color: #fff;
-  background: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0.25));
+  border-color: #fffcf6;
+  background: linear-gradient(to bottom, #fffcf6, rgba(255, 252, 246, 0.3));
   color: var(--o-ink);
   font-weight: 500;
   box-shadow: 0 2px 4px rgba(51, 48, 42, 0.05);
 }
 .btn-secondary:hover {
-  background: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0.6));
+  background: linear-gradient(to bottom, #fffcf6, rgba(255, 252, 246, 0.65));
   box-shadow: 0 4px 10px -2px rgba(51, 48, 42, 0.1);
   transform: translateY(-1px);
 }
