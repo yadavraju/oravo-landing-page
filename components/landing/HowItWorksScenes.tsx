@@ -119,7 +119,7 @@ export function HotkeyScene() {
             {key}
           </motion.kbd>
         ))}
-        <span className="ml-1 font-display text-[11.5px] text-white/55">hold to dictate</span>
+        <span className="ml-1 font-display text-[11.5px] text-ink-faint">hold to dictate</span>
       </div>
 
       <div className="relative flex-1 min-h-0">
@@ -160,10 +160,10 @@ export function HotkeyScene() {
           return (
             <div
               key={rule.label}
-              className={`flex items-center gap-2 rounded-lg px-2.5 py-2 ring-1 transition-colors duration-500 ${on ? "bg-brand-soft ring-brand/40" : "bg-white/[0.06] ring-white/10"}`}
+              className={`flex items-center gap-2 rounded-lg px-2.5 py-2 ring-1 transition-colors duration-500 ${on ? "bg-brand-soft ring-brand/40" : "bg-raised/80 ring-line"}`}
             >
-              <span className={`font-display text-[12px] font-bold transition-colors duration-500 ${on ? "text-brand" : "text-white/45"}`}>{rule.glyph}</span>
-              <span className={`truncate font-display text-[11.5px] font-medium transition-colors duration-500 ${on ? "text-ink" : "text-white/55"}`}>{rule.label}</span>
+              <span className={`font-display text-[12px] font-bold transition-colors duration-500 ${on ? "text-brand" : "text-ink-faint"}`}>{rule.glyph}</span>
+              <span className={`truncate font-display text-[11.5px] font-medium transition-colors duration-500 ${on ? "text-ink" : "text-ink-faint"}`}>{rule.label}</span>
               {on && <Check aria-hidden="true" className="ml-auto h-3 w-3 shrink-0 text-brand" />}
             </div>
           );
@@ -196,19 +196,19 @@ export function StyleScene() {
   return (
     <div ref={ref} className="flex h-full flex-col gap-3">
       <div className="flex items-center justify-between gap-3">
-        <p className="font-display text-[11.5px] text-white/50">
+        <p className="font-display text-[11.5px] text-ink-faint">
           <span className="font-semibold uppercase tracking-[0.12em]">You said</span>{" "}
-          <span className="italic text-white/85">&ldquo;tell mike about the meeting&rdquo;</span>
+          <span className="italic text-ink-soft">&ldquo;tell mike about the meeting&rdquo;</span>
         </p>
       </div>
 
-      <div className="relative inline-flex self-start rounded-lg bg-white/[0.06] p-1 ring-1 ring-white/10">
+      <div className="relative inline-flex self-start rounded-lg bg-raised/80 p-1 ring-1 ring-line">
         {STYLES.map((s, i) => (
           <span key={s.id} className="relative z-10 px-3 py-1.5 font-display text-[12px] font-semibold">
             {i === index && (
               <motion.span layoutId="style-pill" className="absolute inset-0 -z-10 rounded-md bg-brand shadow-[0_2px_8px_-2px_rgba(196,87,47,0.6)]" transition={{ type: "spring", stiffness: 380, damping: 32 }} />
             )}
-            <span className={i === index ? "text-white" : "text-white/60"}>{s.id}</span>
+            <span className={i === index ? "text-white" : "text-ink-soft"}>{s.id}</span>
           </span>
         ))}
       </div>
@@ -234,12 +234,12 @@ export function StyleScene() {
         </AppWindow>
       </div>
 
-      <div className="rounded-lg bg-white/[0.06] px-3 py-2.5 ring-1 ring-white/10">
+      <div className="rounded-lg bg-raised/80 px-3 py-2.5 ring-1 ring-line">
         <div className="flex items-center justify-between font-display text-[11.5px]">
-          <span className="font-semibold text-white">Learns your style over time</span>
-          <span className="tabular-nums text-white/55">{Math.round(learned)}%</span>
+          <span className="font-semibold text-ink">Learns your style over time</span>
+          <span className="tabular-nums text-ink-faint">{Math.round(learned)}%</span>
         </div>
-        <div className="mt-2 h-1.5 overflow-hidden rounded-sm bg-white/10">
+        <div className="mt-2 h-1.5 overflow-hidden rounded-sm bg-canvas">
           <div className="h-full rounded-sm bg-brand transition-[width] duration-300" style={{ width: `${learned}%` }} />
         </div>
       </div>
@@ -272,11 +272,11 @@ export function ContextScene() {
 
   return (
     <div ref={ref} className="flex h-full flex-col gap-3">
-      <div className="flex min-h-[38px] items-center rounded-lg bg-white/[0.06] px-3 py-2 ring-1 ring-white/10">
-        <p className="text-[12.5px] italic text-white/85">
-          <span className="mr-1.5 not-italic font-display text-[10px] font-semibold uppercase tracking-[0.12em] text-white/50">You said</span>
+      <div className="flex min-h-[38px] items-center rounded-lg bg-raised/80 px-3 py-2 ring-1 ring-line">
+        <p className="text-[12.5px] italic text-ink-soft">
+          <span className="mr-1.5 not-italic font-display text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-faint">You said</span>
           {said}
-          <Caret show={local < 1700} className="bg-white/60" />
+          <Caret show={local < 1700} className="bg-ink-faint" />
         </p>
       </div>
 
@@ -333,7 +333,7 @@ export function ContextScene() {
           return (
             <span
               key={tag}
-              className={`rounded-md px-2.5 py-1 font-display text-[11.5px] font-semibold ring-1 transition-colors duration-500 ${on ? "bg-brand-soft text-brand ring-brand/40" : "bg-white/[0.06] text-white/55 ring-white/10"}`}
+              className={`rounded-md px-2.5 py-1 font-display text-[11.5px] font-semibold ring-1 transition-colors duration-500 ${on ? "bg-brand-soft text-brand ring-brand/40" : "bg-raised/80 text-ink-faint ring-line"}`}
             >
               {tag}
             </span>

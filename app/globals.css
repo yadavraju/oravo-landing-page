@@ -238,6 +238,8 @@
   --o-band-sand-deep: #ead4bd;
   --o-band-clay: #f0dcca;
   --o-band-espresso: #2a211b;
+  /* A whisper of the sky-blue primary (about 10%) over warm paper. */
+  --o-band-mist: #e3ebee;
 
   --o-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -260,6 +262,7 @@
   --color-sand-deep: var(--o-band-sand-deep);
   --color-clay: var(--o-band-clay);
   --color-espresso: var(--o-band-espresso);
+  --color-mist: var(--o-band-mist);
   --ease-entrance: var(--o-ease);
 }
 
@@ -434,6 +437,31 @@
   box-shadow: 0 4px 10px -2px rgba(51, 48, 42, 0.1);
   transform: translateY(-1px);
 }
+/* A quiet warm-grey action for in-section CTAs that should not shout. */
+.btn-neutral {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  height: 3rem;
+  padding: 0 1.5rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid #d9cebf;
+  background: #ebe3d8;
+  color: var(--o-ink);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform 0.3s ease-out, background-color 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+.btn-neutral:hover {
+  background: #e2d8cb;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px -8px rgba(51, 48, 42, 0.3);
+}
+.btn-neutral:focus-visible { outline: 2px solid rgba(51, 48, 42, 0.3); outline-offset: 2px; }
+
 .btn-primary:active,
 .btn-secondary:active { transform: translateY(0); box-shadow: none; }
 .btn-primary:focus-visible,

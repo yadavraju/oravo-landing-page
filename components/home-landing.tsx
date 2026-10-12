@@ -49,7 +49,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
   const PAPER = "var(--o-paper)";
   const CANVAS = "var(--o-canvas)";
   const CLAY = "var(--o-band-clay)";
-  const ESPRESSO = "var(--o-band-espresso)";
+  const MIST = "var(--o-band-mist)";
   const BLUSH = "var(--o-blush)";
   const SHELL = "mx-auto w-full max-w-6xl px-5 sm:px-8";
 
@@ -206,32 +206,32 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
         </div>
       </Band>
 
-      {/* Accent proof: the one dark band */}
-      <Band color={ESPRESSO} from={SAND} blend={220} className="pt-36 pb-24 sm:pt-44 sm:pb-28" aria-labelledby="accent-proof-heading">
+      {/* Accent proof: a whisper of sky blue */}
+      <Band color={MIST} from={SAND} blend={220} className="pt-32 pb-24 sm:pt-40 sm:pb-28" aria-labelledby="accent-proof-heading">
         <Parallax speed={-70} className="pointer-events-none absolute right-[6%] top-40 hidden md:block" aria-hidden="true">
-          <div className="h-40 w-40 rotate-12 rounded-[36px] bg-white/[0.04]" />
+          <div className="h-40 w-40 rotate-12 rounded-[36px] bg-[#d3e0e6]" />
         </Parallax>
         <div className={`${SHELL} relative grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]`}>
           <div className="flex flex-col items-start">
-            <Parallax speed={18} className="mb-4"><Doodle name="measure" className="w-32 sm:w-36" tone="dark" /></Parallax>
-            <Reveal><p className="eyebrow !text-white/45">Accent proof, not vague claims</p></Reveal>
-            <h2 id="accent-proof-heading" className="display-2 mt-3 text-white">
+            <Parallax speed={18} className="mb-4"><Doodle name="measure" className="w-32 sm:w-36" /></Parallax>
+            <Reveal><p className="eyebrow">Accent proof, not vague claims</p></Reveal>
+            <h2 id="accent-proof-heading" className="display-2 mt-3 text-ink">
               <RevealWords text="Built for real accents. Measured with the same script." />
             </h2>
             <Reveal delay={0.12}>
-              <p className="mt-5 max-w-[560px] text-base leading-relaxed text-white/70 sm:text-lg">
+              <p className="mt-5 max-w-[560px] text-base leading-relaxed text-ink-soft sm:text-lg">
                 We are testing Oravo end to end across Hindi-accented English, Spanish-accented English, Hindi and Spanish speech to polished English, plus a native-English control.
               </p>
-              <p className="mt-4 max-w-[560px] text-sm leading-relaxed text-white/50">
+              <p className="mt-4 max-w-[560px] text-sm leading-relaxed text-ink-faint">
                 The report will separate raw transcription from polished output and publish sample sizes, corrections, meaning errors, and time to final text. Until then, we will not turn an upstream model benchmark into an Oravo accuracy claim.
               </p>
             </Reveal>
           </div>
           <Reveal delay={0.1}>
             <Parallax speed={30}>
-              <div className="rounded-2xl bg-white/[0.06] p-6 ring-1 ring-white/10 backdrop-blur-xl sm:p-7">
-                <p className="eyebrow !text-white/45 mb-5">Pilot scorecard</p>
-                <ul className="grid divide-y divide-white/10 text-sm text-white/85 sm:text-base">
+              <div className="rounded-2xl bg-raised/80 p-6 ring-1 ring-[#cfdde4] backdrop-blur-xl sm:p-7">
+                <p className="eyebrow mb-5">Pilot scorecard</p>
+                <ul className="grid divide-y divide-line text-sm text-ink sm:text-base">
                   {[
                     "Same audio and scripts across cohorts",
                     "Raw transcript and final output scored separately",
@@ -239,12 +239,12 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
                     "Failure cases included, not only the best demos",
                   ].map((item, i) => (
                     <li key={item} className="flex gap-3 py-3 first:pt-0">
-                      <span className="font-display text-[#e8a07f]">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="font-display text-brand">{String(i + 1).padStart(2, "0")}</span>
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-3 border-t border-white/10 pt-4 text-xs leading-relaxed text-white/55">Pilot target: at least 10 speakers per cohort and 10 utterances per speaker before any strong accuracy claim.</p>
+                <p className="mt-3 border-t border-line pt-4 text-xs leading-relaxed text-ink-faint">Pilot target: at least 10 speakers per cohort and 10 utterances per speaker before any strong accuracy claim.</p>
               </div>
             </Parallax>
           </Reveal>
@@ -252,7 +252,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
       </Band>
 
       {/* ───────────── Speak once + built for the way you work (merged bento) ───────────── */}
-      <Band color={PAPER} from={ESPRESSO} blend={220} className="pt-36 pb-20 sm:pt-44 sm:pb-28" aria-label="Speak once. Get finished text.">
+      <Band color={PAPER} from={MIST} blend={200} className="pt-28 pb-20 sm:pt-32 sm:pb-28" aria-label="Speak once. Get finished text.">
         <FinishedTextBento />
       </Band>
 

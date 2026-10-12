@@ -160,16 +160,32 @@ export default function DocumentationSection() {
           })}
         </ol>
 
-        {/* The stage: warm espresso with a faint dot grid, a drifting doodle, fixed height. */}
-        <div className="relative overflow-hidden rounded-[28px] bg-espresso p-4 shadow-[0_30px_60px_-34px_rgba(42,33,27,0.7)] sm:p-7">
+        {/* The stage: warm sand with a dot grid and a field of slowly drifting doodles. */}
+        <div className="relative overflow-hidden rounded-[28px] bg-[#f6e8da] p-4 ring-1 ring-[#ead6c3] sm:p-7">
           <div
             className="pointer-events-none absolute inset-0"
             aria-hidden="true"
-            style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)", backgroundSize: "20px 20px" }}
+            style={{ backgroundImage: "radial-gradient(rgba(122,53,25,0.10) 1px, transparent 1px)", backgroundSize: "20px 20px" }}
           />
-          <div className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full bg-brand/20 blur-3xl" aria-hidden="true" />
-          <div className="pointer-events-none absolute right-5 top-4 hidden w-20 xl:block" aria-hidden="true">
-            <Doodle name={(["hotkey", "speech", "sparkle"] as const)[activeCard]} tone="dark" className="w-full" />
+          <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+            {(
+              [
+                ["speech", "left-[3%] top-[6%] w-24", 0],
+                ["sparkle", "right-[4%] top-[4%] w-20", 1.2],
+                ["hotkey", "left-[2%] bottom-[8%] w-24", 2.1],
+                ["bubbles", "right-[3%] bottom-[6%] w-24", 0.6],
+                ["plane", "left-[42%] top-[1%] w-20", 1.8],
+              ] as const
+            ).map(([name, pos, delay]) => (
+              <motion.div
+                key={name}
+                className={`absolute opacity-60 ${pos}`}
+                animate={{ y: [0, -10, 0], rotate: [0, 3, 0, -2, 0] }}
+                transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay }}
+              >
+                <Doodle name={name} className="w-full" />
+              </motion.div>
+            ))}
           </div>
           <div className="relative mx-auto h-[500px] max-w-[620px] sm:h-[540px]">
             <AnimatePresence mode="wait">

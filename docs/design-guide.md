@@ -30,7 +30,8 @@ edge where one band meets the next.
 | `paper` | `#FEFDFB` | Open sections |
 | `canvas` | `#F7F5F2` | Set-in sections, insets inside cards |
 | `clay` | `#F0DCCA` | Warm feature band (translation) |
-| `espresso` | `#2A211B` | The one dark band (accent proof) |
+| `mist` | `#E3EBEE` | A whisper of sky blue (~10%) over paper; the "cool" band (accent proof). Use instead of dark bands |
+| `espresso` | `#2A211B` | Text-dark accents only; avoid as a section or stage background |
 | `blush` | `#FBF2EE` | CTA and footer ground |
 | `ink` / `ink-soft` / `ink-faint` | `#33302A` / `#6B655B` / `#9C958A` | Text |
 | `line` | `#E7E2DA` | Hairlines and rings |
@@ -63,7 +64,8 @@ everywhere.
 These are rectangular, never capsules, and the same shapes as video-shala.
 
 - `.btn-primary`: solid sky-blue (`--o-primary`) with a 2px border in the same colour, 48px tall, 8px radius. It lifts 1px on hover.
-- `.btn-secondary`: a glass key with a 2px white border and a white-to-quarter-white fill, so the band shows through.
+- `.btn-secondary`: a glass key with a 2px warm-white border and a fill that lets the band show through.
+- `.btn-neutral`: quiet warm grey, for CTAs inside or under a section (e.g. "Download Dictation") that should not compete with the page's primary action.
 
 The header follows video-shala's nav: a three-column grid with the menus on
 the true centre line, identical rectangular keys, menus that open on hover,

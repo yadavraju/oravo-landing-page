@@ -131,7 +131,7 @@ function DictationTry() {
                 setChars(0);
               }}
               className={`rounded-lg px-3 py-2 font-display text-[13px] font-semibold ring-1 transition-colors ${
-                i === voice ? "bg-[var(--t-accent)] text-white ring-[var(--t-accent)]" : "bg-raised/80 text-ink-soft ring-[var(--t-line)] hover:text-ink"
+                i === voice ? "bg-ink text-white ring-ink" : "bg-raised/80 text-ink-soft ring-[var(--t-line)] hover:text-ink"
               }`}
             >
               {item.label}
@@ -149,24 +149,25 @@ function DictationTry() {
             onPointerUp={stop}
             onPointerLeave={stop}
             aria-label="Hold to speak the sample"
-            className="group relative flex h-28 w-28 select-none items-center justify-center rounded-3xl bg-[var(--t-accent)] text-white shadow-[0_18px_34px_-12px_var(--t-shadow)] transition-transform active:scale-95"
+            className="group relative flex h-14 select-none items-center justify-center gap-2.5 rounded-xl bg-ink px-6 font-display text-[15px] font-semibold text-white shadow-[0_12px_24px_-14px_rgba(51,48,42,0.6)] transition-transform active:scale-95"
           >
             {listening && !reduceMotion && (
               <>
-                <span className="absolute inset-0 animate-ping rounded-3xl bg-[var(--t-accent)] opacity-30" />
-                <span className="absolute -inset-3 rounded-[28px] border-2 border-dashed border-[var(--t-accent)] opacity-40" style={{ animation: "o-spin 6s linear infinite" }} />
+                <span className="absolute inset-0 animate-ping rounded-xl bg-ink opacity-20" />
+                <span className="absolute -inset-2 rounded-2xl border-[1.5px] border-dashed border-ink/30" />
               </>
             )}
-            <Mic aria-hidden="true" className="relative h-10 w-10" />
+            <Mic aria-hidden="true" className="relative h-4 w-4" />
+            <span className="relative">{listening ? "Listening…" : "Hold to speak"}</span>
           </button>
           <p className="text-center font-display text-[13px] text-ink-soft">
-            {listening ? "Listening… let go when you're done" : phase === "polishing" ? "Polishing…" : "Hold to speak (or press Space)"}
+            {listening ? "Let go when you're done" : phase === "polishing" ? "Polishing…" : "Press and hold, or hold Space"}
           </p>
           <div className="flex h-8 items-center gap-[3px]" aria-hidden="true">
             {Array.from({ length: 24 }).map((_, i) => (
               <motion.span
                 key={i}
-                className="w-[3px] rounded-full bg-[var(--t-accent)]"
+                className="w-[3px] rounded-full bg-[var(--t-deep)] opacity-60"
                 animate={listening ? { height: [4, 8 + ((i * 11) % 20), 6] } : { height: 4, opacity: 0.4 }}
                 transition={{ duration: 0.6 + (i % 4) * 0.12, repeat: listening ? Infinity : 0, delay: i * 0.03 }}
               />
@@ -421,7 +422,7 @@ export default function ProductDuo() {
           <Doodle name="mic" className="w-32 sm:w-36" />
         </Parallax>
         <Reveal><p className="eyebrow">Two ways to stop typing</p></Reveal>
-        <h2 className="display-1 mt-3 text-ink">
+        <h2 className="display-2 mt-3 text-ink">
           <RevealWords text="Try both, right here." />
         </h2>
         <Reveal delay={0.12}>
@@ -429,12 +430,11 @@ export default function ProductDuo() {
         </Reveal>
       </div>
 
-      {/* Product switch: two large cards, each wearing its own theme. */}
-      <Reveal delay={0.1} className="mt-12">
-        <div role="tablist" aria-label="Oravo products" className="mx-auto grid max-w-4xl gap-3 sm:grid-cols-2">
+      {/* Product switch: two compact keys. */}
+      <Reveal delay={0.1} className="mt-10 flex justify-center">
+        <div role="tablist" aria-label="Oravo products" className="inline-flex items-center gap-1 rounded-xl bg-raised/70 p-1 ring-1 ring-line">
           {PRODUCTS.map((p) => {
             const selected = p.id === active;
-            const t = THEMES[p.id];
             return (
               <button
                 key={p.id}
@@ -443,26 +443,20 @@ export default function ProductDuo() {
                 aria-selected={selected}
                 aria-controls={`${p.id}-panel`}
                 onClick={() => setActive(p.id)}
-                style={{ background: selected ? t["--t-bg"] : undefined, boxShadow: selected ? `0 0 0 1.5px ${t["--t-accent"]}` : undefined }}
-                className={`group relative flex items-center gap-4 overflow-hidden rounded-2xl p-5 text-left transition-all duration-300 ${
-                  selected ? "" : "bg-raised/60 ring-1 ring-line hover:bg-raised"
-                }`}
+                className="relative inline-flex h-10 items-center gap-2 rounded-lg px-4 font-display text-[14px] font-semibold"
               >
-                <span
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-white transition-transform duration-300 group-hover:-rotate-6"
-                  style={{ background: selected ? t["--t-accent"] : "var(--o-ink-faint)" }}
-                >
-                  <p.icon aria-hidden="true" className="h-5 w-5" />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block font-serif text-[22px] leading-tight text-ink">{p.name}</span>
-                  <span className="mt-0.5 block font-display text-[13px] text-ink-soft">{p.line}</span>
-                </span>
-                <Doodle name={p.doodle} className={`hidden w-16 shrink-0 transition-opacity sm:block ${selected ? "opacity-100" : "opacity-40"}`} />
+                {selected && (
+                  <motion.span layoutId="product-key" className="absolute inset-0 rounded-lg bg-ink shadow-[0_4px_12px_-6px_rgba(51,48,42,0.5)]" transition={{ type: "spring", stiffness: 420, damping: 34 }} />
+                )}
+                <p.icon aria-hidden="true" className={`relative h-4 w-4 ${selected ? "text-white" : "text-ink-faint"}`} />
+                <span className={`relative ${selected ? "text-white" : "text-ink-soft"}`}>{p.name}</span>
               </button>
             );
           })}
         </div>
+      </Reveal>
+      <Reveal delay={0.12}>
+        <p className="mt-3 text-center font-display text-[13.5px] text-ink-soft">{product.line}</p>
       </Reveal>
 
       <Reveal delay={0.15} className="mt-6">
@@ -493,7 +487,7 @@ export default function ProductDuo() {
           </div>
         </motion.div>
         <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a href={product.href} className="btn-primary">
+          <a href={product.href} className="btn-neutral">
             {product.cta}
             <ArrowRight aria-hidden="true" className="h-4 w-4" />
           </a>
