@@ -75,7 +75,7 @@ export default function PricingPage() {
             More questions?{" "}
             <a href="/faq" className="font-semibold text-primary-500 underline-offset-4 hover:underline">Visit the FAQ</a>{" "}
             or email{" "}
-            <a href="mailto:support@oravo.ai" className="font-semibold text-primary-500 underline-offset-4 hover:underline">support@oravo.ai</a>.
+            <a href="mailto:hi@oravo.ai" className="font-semibold text-primary-500 underline-offset-4 hover:underline">hi@oravo.ai</a>.
           </p>
         </div>
       </Band>

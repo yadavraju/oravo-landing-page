@@ -55,8 +55,8 @@ export default function FaqPage() {
                 <LifeBuoy aria-hidden="true" className="h-[18px] w-[18px] text-ink-faint" />
                 <p className="mt-2.5 font-display text-[14px] font-semibold text-ink">Still have a question?</p>
                 <p className="mt-1 font-display text-[13px] leading-snug text-ink-soft">We reply to every email, usually within a day.</p>
-                <a href="mailto:support@oravo.ai" className="mt-3 inline-block font-display text-[13px] font-semibold text-primary-500 underline-offset-4 hover:underline">
-                  support@oravo.ai
+                <a href="mailto:hi@oravo.ai" className="mt-3 inline-block font-display text-[13px] font-semibold text-primary-500 underline-offset-4 hover:underline">
+                  hi@oravo.ai
                 </a>
               </div>
             </Reveal>

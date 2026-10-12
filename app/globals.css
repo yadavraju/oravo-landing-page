@@ -351,6 +351,33 @@
   box-shadow: 0 2px 4px rgba(51, 48, 42, 0.05);
 }
 
+/* Dotted frame: a dotted hairline with "+" registration marks at the corners,
+   like a crop mark on a print proof. Used to frame interactive stages so they
+   read as a workspace rather than as another card. */
+.frame-dotted {
+  position: relative;
+  border: 1.5px dashed rgba(51, 48, 42, 0.18);
+  border-radius: 1.25rem;
+}
+.frame-dotted::before,
+.frame-dotted::after {
+  content: "+";
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 14px;
+  line-height: 1;
+  color: rgba(51, 48, 42, 0.35);
+  pointer-events: none;
+}
+.frame-dotted::before { top: -9px; left: -5px; }
+.frame-dotted::after { bottom: -9px; right: -5px; }
+
+/* A sheet of note paper: warm white with faint ruled lines. */
+.paper-ruled {
+  background-color: #fffdf8;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 27px, rgba(51, 48, 42, 0.06) 27px 28px);
+}
+
 .grain::before {
   content: "";
   position: fixed;

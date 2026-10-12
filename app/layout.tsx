@@ -408,7 +408,7 @@ export default function RootLayout({
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "Customer Support",
-          email: "support@oravo.ai",
+          email: "hi@oravo.ai",
           availableLanguage: ["English", "Spanish", "French", "German"],
         },
       },

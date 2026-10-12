@@ -116,6 +116,16 @@ const ART = {
       { d: "M84 92 A6 6 0 1 0 96 92 A6 6 0 1 0 84 92" },
     ],
   },
+  // An open notebook with a pen.
+  notebook: {
+    viewBox: "0 0 180 120",
+    strokes: [
+      { d: "M20 24 Q50 14 88 26 V104 Q50 92 20 102 Z" },
+      { d: "M88 26 Q126 14 156 24 V102 Q126 92 88 104" },
+      { d: "M34 44 H72 M34 58 H70 M34 72 H64 M104 44 H142 M104 58 H136" },
+      { d: "M118 84 L158 44 L166 52 L126 92 L114 96 Z", accent: true },
+    ],
+  },
   // A keycap being pressed.
   hotkey: {
     viewBox: "0 0 170 110",

@@ -22,10 +22,10 @@ const MadeForYou = dynamic(() => import("../components/MadeForYou"));
 const SmartSimpleBrilliant = dynamic(() => import("../components/smart-simple-brilliant"));
 const SwitchAndAsk = dynamic(() => import("./landing/SwitchAndAsk"));
 const TechCompanyMarquee = dynamic(() => import("../components/TechCompanyMarquee"));
-const TestimonialsSection = dynamic(() => import("../components/testimonials-section"));
+const TestimonialDeck = dynamic(() => import("./landing/TestimonialDeck"));
+const ProductDuo = dynamic(() => import("./landing/ProductDuo"));
 const YourWorkInSync = dynamic(() => import("../components/your-work-in-sync"));
-const TranslationDemo = dynamic(() => import("../components/TranslationDemo"));
-const TwoWayExamples = dynamic(() => import("../components/two-way-examples"));
+const TranslationShowcase = dynamic(() => import("./landing/TranslationShowcase"));
 
 export default function HomeLanding({ blogSection }: { blogSection?: React.ReactNode }) {
   // Hash navigation from other pages. Pricing moved to its own page, so old
@@ -61,7 +61,7 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
       <Header />
 
       {/* ───────────── Hero: one warm solid colour, parallax shapes, drawn art ───────────── */}
-      <Band color={SAND} className="pt-32 sm:pt-40 pb-8 sm:pb-10">
+      <Band color={SAND} className="flex flex-col justify-center pt-32 pb-12 sm:pt-40 lg:min-h-[min(100svh,920px)] lg:pt-36 lg:pb-24">
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           <Parallax speed={140} className="absolute -left-40 top-16 sm:-left-24">
             <div className="h-[380px] w-[380px] rounded-full bg-sand-deep sm:h-[460px] sm:w-[460px]" />
@@ -107,31 +107,6 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
                 </div>
               </Reveal>
 
-              {/* Social proof as a caption, not a control: no box, no border. */}
-              <Reveal delay={0.7}>
-                <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
-                  <div className="flex -space-x-2" aria-hidden="true">
-                    {[
-                      ["AR", "#f6dccd", "#9a4424"],
-                      ["LM", "#e3f0f8", "#0f6a9e"],
-                      ["RS", "#efe4d3", "#6b5a3e"],
-                      ["KO", "#f0dcca", "#7a4d2c"],
-                    ].map(([initials, bg, fg]) => (
-                      <span
-                        key={initials}
-                        className="flex h-8 w-8 items-center justify-center rounded-full font-display text-[10px] font-bold ring-2 ring-[var(--o-band-sand)]"
-                        style={{ background: bg, color: fg }}
-                      >
-                        {initials}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="max-w-[420px] text-[13.5px] leading-snug text-ink-soft sm:text-left">
-                    Trusted by <span className="font-semibold text-ink">10,000+</span> remote
-                    developers, international founders, and global agency owners.
-                  </p>
-                </div>
-              </Reveal>
             </div>
           </Parallax>
         </div>
@@ -149,17 +124,47 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
           <div className="mt-16 sm:mt-20">
             <p className="eyebrow mb-4 text-center">Used by professionals at</p>
             <TechCompanyMarquee />
+              {/* Social proof as a caption, not a control: no box, no border. */}
+              <Reveal>
+                <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                  <div className="flex -space-x-2" aria-hidden="true">
+                    {[
+                      ["AR", "#f6dccd", "#9a4424"],
+                      ["LM", "#e3f0f8", "#0f6a9e"],
+                      ["RS", "#efe4d3", "#6b5a3e"],
+                      ["KO", "#f0dcca", "#7a4d2c"],
+                    ].map(([initials, bg, fg]) => (
+                      <span
+                        key={initials}
+                        className="flex h-8 w-8 items-center justify-center rounded-full font-display text-[10px] font-bold ring-2 ring-[var(--o-paper)]"
+                        style={{ background: bg, color: fg }}
+                      >
+                        {initials}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="max-w-[420px] text-[13.5px] leading-snug text-ink-soft sm:text-left">
+                    Trusted by <span className="font-semibold text-ink">10,000+</span> remote
+                    developers, international founders, and global agency owners.
+                  </p>
+                </div>
+              </Reveal>
           </div>
         </div>
       </Band>
 
+      {/* ───────────── Both products, tried on the page ───────────── */}
+      <Band color={CANVAS} from={PAPER} blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-28" aria-label="Try Dictation and Notetaker">
+        <ProductDuo />
+      </Band>
+
       {/* ───────────── Section 2: The Agitation ───────────── */}
-      <Band color={CANVAS} from={PAPER} aria-label="The real problem">
+      <Band color={PAPER} from={CANVAS} aria-label="The real problem">
         <AgitationSection />
       </Band>
 
       {/* ───────────── Press. Speak. Done. ───────────── */}
-      <Band color={CLAY} from={CANVAS} blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-28" aria-label="How it works">
+      <Band color={CLAY} from={PAPER} blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-28" aria-label="How it works">
         <Parallax speed={-60} className="pointer-events-none absolute -right-20 top-20 hidden lg:block" aria-hidden="true">
           <div className="h-60 w-60 rotate-12 rounded-[48px] bg-sand-deep/70" />
         </Parallax>
@@ -198,32 +203,8 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
         <Parallax speed={110} className="pointer-events-none absolute -left-24 top-24 hidden lg:block" aria-hidden="true">
           <div className="h-56 w-56 rounded-full bg-clay" />
         </Parallax>
-        <div className={`${SHELL} relative`}>
-          <div className="mx-auto flex max-w-[760px] flex-col items-center text-center">
-            <Parallax speed={18} className="mb-4"><Doodle name="globe" className="w-32 sm:w-36" /></Parallax>
-            <Reveal><p className="eyebrow">Real-time translation</p></Reveal>
-            <h2 id="translation-heading" className="display-2 mt-3">
-              <RevealWords text="Think in your language. Send it in English." />
-            </h2>
-            <Reveal delay={0.12}>
-              <p className="subtitle mt-4 max-w-xl">
-                Speak Spanish, Hindi, Portuguese, or any of 60+ languages. Oravo writes fluent,
-                context-aware English, and works in reverse when you need it to.
-              </p>
-            </Reveal>
-          </div>
-          <Reveal delay={0.1} className="mx-auto mt-12 max-w-[820px]">
-            <Parallax speed={24}>
-              <div className="surface-solid overflow-hidden !rounded-2xl">
-                <div className="flex h-[320px] w-full items-center justify-center sm:h-[380px]">
-                  <TranslationDemo />
-                </div>
-              </div>
-            </Parallax>
-          </Reveal>
-          <Reveal className="mt-10">
-            <TwoWayExamples />
-          </Reveal>
+        <div className="relative">
+          <TranslationShowcase />
         </div>
       </Band>
 
@@ -415,9 +396,9 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
         <MadeForYou />
       </Band>
 
-      {/* ───────────── Testimonials ───────────── */}
+      {/* ───────────── Testimonials: a deck of notes ───────────── */}
       <Band color={CANVAS} from={PAPER} className="py-20 sm:py-28">
-        <TestimonialsSection />
+        <TestimonialDeck />
       </Band>
 
       {/* ───────────── Why switch + Ask an AI ───────────── */}
@@ -425,13 +406,19 @@ export default function HomeLanding({ blogSection }: { blogSection?: React.React
         <SwitchAndAsk />
       </Band>
 
+      {/* From the blog: before the close, so the page ends on the CTA. */}
+      {blogSection && (
+        <Band color={PAPER} from={CLAY} blend={200} className="pt-24 pb-20 sm:pt-28 sm:pb-24">
+          {blogSection}
+        </Band>
+      )}
+
       {/* Closing CTA and footer share one warm ground, as in video-shala. */}
-      <Band color={BLUSH} from={CLAY} blend={200} className="pt-20 sm:pt-28">
+      <Band color={BLUSH} from={blogSection ? PAPER : CLAY} blend={200} className="pt-20 sm:pt-28">
         <div className={SHELL}>
           <CTASection />
         </div>
         <div className="mx-auto mt-16 w-full max-w-[1060px] px-5 sm:px-8 lg:px-0">
-          {blogSection}
           <FooterSection />
         </div>
       </Band>

@@ -51,7 +51,12 @@ Wrap each full-width section in `<Band color from>` (`components/landing/Band.ts
 - `.surface-interactive`: lifts 2px and darkens the ring on hover.
 - `.chip`: the header-key shape at label size (8px radius, 2px white bevel, white-to-quarter-white fill).
 
-Prefer one surface divided by hairlines (`divide-line`) over a row of separate floating boxes.
+- `.frame-dotted`: a dashed hairline frame with "+" registration marks at two corners. Use it to frame interactive stages ("try it" areas) so they read as a workspace.
+- `.paper-ruled`: warm note paper with faint ruled lines (testimonial cards, notes).
+
+Prefer one surface divided by hairlines (`divide-line`) over a row of separate floating boxes, and vary
+section composition (split layouts, decks, stages, overlapping cards) rather than stacking "title then grid"
+everywhere.
 
 ## Buttons
 
@@ -83,7 +88,7 @@ Loops pause off-screen. Everything settles to its finished state under
 
 ## Pages
 
-- `/`: homepage bands, top to bottom: hero (sand), why typing is the bottleneck + logos (paper), the real problem (canvas), Press. Speak. Done. (clay), Slack accent demo (paper), translation (sand), accent proof (espresso), speak once (paper), features (canvas), made for you (paper), testimonials (canvas), switch from Wispr Flow + ask an AI (clay), CTA and footer (blush).
+- `/`: homepage bands, top to bottom: hero (sand), why typing is the bottleneck + logos + trusted-by (paper), try both products (canvas: interactive Dictation and Notetaker), the real problem (paper), Press. Speak. Done. (clay), Slack accent demo (paper), translation showcase (sand), accent proof (espresso), speak once (paper), features (canvas), made for you (paper), testimonial deck (canvas), switch from Wispr Flow + ask an AI (clay), blog highlights (paper), CTA and footer (blush).
 - `/pricing`: plans (video-shala layout: cycle switch, plan cards with a "Most popular" strip) and the FAQ beneath.
 - `/faq`: the full FAQ. Content lives in `lib/faq.ts`, shared with `/pricing` and their FAQPage JSON-LD.
 - `/llms.txt`: plain-text site summary for AI assistants (replaces the old human/agent toggle).

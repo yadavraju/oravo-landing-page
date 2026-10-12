@@ -233,7 +233,7 @@ export function PricingPlans() {
             <CircleHelp aria-hidden="true" className="h-4 w-4 text-ink-faint" />
             FAQs
           </a>
-          <a href="mailto:support@oravo.ai" className="inline-flex items-center gap-1.5 font-display text-[13.5px] font-medium text-ink-soft transition-colors hover:text-ink">
+          <a href="mailto:hi@oravo.ai" className="inline-flex items-center gap-1.5 font-display text-[13.5px] font-medium text-ink-soft transition-colors hover:text-ink">
             <LifeBuoy aria-hidden="true" className="h-4 w-4 text-ink-faint" />
             Help
           </a>

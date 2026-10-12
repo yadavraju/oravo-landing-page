@@ -4,9 +4,8 @@ import { useState, useEffect } from "react";
 import { Doodle } from "./landing/Doodle";
 import { Parallax } from "./landing/Parallax";
 import { Reveal, RevealWords } from "./landing/Reveal";
-import AutoFormattingAnimation from "./AutoFormattingAnimation";
-import PersonalizationAnimation from "./PersonalizationAnimation";
-import ContextAwarenessAnimation from "./ContextAwarenessAnimation";
+import { AnimatePresence, motion } from "framer-motion";
+import { ContextScene, HotkeyScene, StyleScene } from "./landing/HowItWorksScenes";
 
 // Icons for feature cards
 const featureIcons = [
@@ -33,35 +32,41 @@ export default function DocumentationSection() {
       title: "1. Press your hotkey in any app",
       description:
         "One shortcut activates Oravo wherever your cursor is—Gmail, Slack, Notion, Google Docs, or any text field.",
-      component: AutoFormattingAnimation,
+      component: HotkeyScene,
+      duration: 11000,
     },
     {
       title: "2. Speak naturally",
       description:
         "Dictate in fluent English or switch languages when you need to—Oravo understands technical terms, names from your contacts, and code-switching.",
-      component: PersonalizationAnimation,
+      component: StyleScene,
+      duration: 10800,
     },
     {
       title: "3. Oravo types with the right tone",
       description:
         "The right language, the right format, instantly where your cursor is. Casual in Slack, professional in email, technical in Notion.",
-      component: ContextAwarenessAnimation,
+      component: ContextScene,
+      duration: 12600,
     },
   ];
 
+  // Each step stays up for one full loop of its scene, then hands over.
   useEffect(() => {
+    const step = 100 / (cards[activeCard].duration / 100);
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           setActiveCard((current) => (current + 1) % cards.length);
           return 0;
         }
-        return prev + 2;
+        return Math.min(100, prev + step);
       });
     }, 100);
 
     return () => clearInterval(progressInterval);
-  }, [cards.length]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeCard]);
 
   const handleCardClick = (index: number) => {
     setActiveCard(index);
@@ -182,37 +187,33 @@ export default function DocumentationSection() {
               })}
             </div>
 
-            {/* Right Column - Animated Demo */}
-            <div className="flex-1 p-4 md:p-6 flex flex-col items-center justify-center bg-canvas">
-              {/* Hotkey indicator */}
-              <div className="flex items-center gap-3 mb-4">
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-raised rounded-lg ring-1 ring-line">
-                  <kbd className="px-2 py-0.5 bg-ink text-white text-xs font-mono rounded">Fn</kbd>
-                  <span className="text-xs text-ink-faint">or</span>
-                  <kbd className="px-2 py-0.5 bg-ink text-white text-xs font-mono rounded">Ctrl</kbd>
-                  <span className="text-[10px] text-ink-faint">+</span>
-                  <kbd className="px-2 py-0.5 bg-ink text-white text-xs font-mono rounded">Win</kbd>
-                </div>
-                <span className="text-xs text-ink-soft">to start dictating</span>
+            {/* Right column: the active scene on a warm dotted stage. */}
+            <div
+              className="relative flex-1 overflow-hidden bg-sand p-4 sm:p-6"
+              style={{
+                backgroundImage: "radial-gradient(rgba(51,48,42,0.10) 1px, transparent 1px)",
+                backgroundSize: "18px 18px",
+              }}
+            >
+              <div className="pointer-events-none absolute right-3 top-2 hidden w-20 opacity-70 xl:block" aria-hidden="true">
+                <Doodle name={["hotkey", "speech", "sparkle"][activeCard] as "hotkey" | "speech" | "sparkle"} className="w-full" />
               </div>
-
-              {/* Demo area */}
-              <div className="w-full h-[320px] md:h-[440px] bg-raised rounded-xl overflow-hidden relative ring-1 ring-line">
-                {cards.map((card, index) => {
-                  const Component = card.component;
-                  return (
-                    <div
-                      key={index}
-                      className={`absolute inset-0 transition-all duration-500 ${
-                        activeCard === index
-                          ? "opacity-100 scale-100"
-                          : "opacity-0 scale-95 pointer-events-none"
-                      }`}
-                    >
-                      <Component />
-                    </div>
-                  );
-                })}
+              <div className="relative h-[460px] sm:h-[480px]">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeCard}
+                    initial={{ opacity: 0, y: 12, scale: 0.985 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -8, scale: 0.985 }}
+                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute inset-0"
+                  >
+                    {(() => {
+                      const Scene = cards[activeCard].component;
+                      return <Scene />;
+                    })()}
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
           </div>
