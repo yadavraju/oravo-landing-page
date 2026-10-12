@@ -4,8 +4,9 @@ import { Band } from "@/components/landing/Band";
 import { Doodle } from "@/components/landing/Doodle";
 import { FaqAccordion } from "@/components/landing/FaqAccordion";
 import { MarketingShell } from "@/components/landing/MarketingShell";
-import { CtaPanel, FeatureGrid, PageHero, SectionIntro, SHELL } from "@/components/landing/PageBlocks";
+import { CtaPanel, FeatureGrid, PageHero, SectionIntro } from "@/components/landing/PageBlocks";
 import { Reveal } from "@/components/landing/Reveal";
+import { SHELL } from "@/components/landing/shell";
 import { buildBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { faqJsonLd } from "@/lib/faq";
 

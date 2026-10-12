@@ -1,8 +1,9 @@
 import { Band } from "@/components/landing/Band";
 import { FaqAccordion } from "@/components/landing/FaqAccordion";
 import { MarketingShell } from "@/components/landing/MarketingShell";
-import { CheckList, CtaPanel, FeatureGrid, PageHero, SectionIntro, SHELL, StepsTimeline } from "@/components/landing/PageBlocks";
+import { CheckList, CtaPanel, FeatureGrid, PageHero, SectionIntro, StepsTimeline } from "@/components/landing/PageBlocks";
 import { Reveal } from "@/components/landing/Reveal";
+import { SHELL } from "@/components/landing/shell";
 import { faqJsonLd } from "@/lib/faq";
 import type { LanguagePairConfig } from "@/lib/languagePairPages";
 import { LanguagePairDemo } from "./LanguagePairDemo";

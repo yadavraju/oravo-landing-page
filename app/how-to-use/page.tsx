@@ -15,7 +15,7 @@ const SHELL = "mx-auto w-full max-w-6xl px-5 sm:px-8";
 export const metadata: Metadata = {
   title: "How to Use Oravo - Voice Typing",
   description:
-    "Learn how to use Oravo AI voice assistant. Complete setup guide for voice typing and AI meeting notes, keyboard shortcuts, troubleshooting tips for 100+ languages.",
+    "Learn how to use Oravo AI voice assistant. Complete setup guide for voice typing and AI meeting notes, keyboard shortcuts, troubleshooting tips for 60+ languages.",
   keywords: [
     "how to use voice dictation",
     "Oravo tutorial",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Use Oravo - Voice Typing + Meeting Notes Guide",
     description:
-      "Complete guide to using Oravo: Voice typing + AI meeting notes setup, shortcuts, and tips for 100+ languages.",
+      "Complete guide to using Oravo: Voice typing + AI meeting notes setup, shortcuts, and tips for 60+ languages.",
     url: "https://oravo.ai/how-to-use",
     type: "article",
   },

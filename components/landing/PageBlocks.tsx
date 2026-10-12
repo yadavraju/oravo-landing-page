@@ -15,7 +15,9 @@ import { Reveal, RevealWords } from "./Reveal";
 
 export type Action = { label: string; href: string };
 
-export const SHELL = "mx-auto w-full max-w-6xl px-5 sm:px-8";
+import { SHELL } from "./shell";
+
+export { SHELL };
 
 /* ------------------------------------------------------------------------ */
 
