@@ -3,16 +3,20 @@ import HomeLanding from "@/components/home-landing";
 import { LatestArticles } from "@/components/blog/LatestArticles";
 
 export const metadata: Metadata = {
-  title: {
-    absolute:
-      "Oravo — Voice Typing & Dictation App | Type 4× Faster in Any App",
-  },
+  title: { absolute: "Oravo — Dictation, voice notes, and bot-free meeting notes" },
   description:
-    "Voice typing for Mac, Windows, and Android. Speak naturally in 60+ languages and turn your words into polished text.",
+    "Oravo brings voice dictation, voice notes, and bot-free meeting transcription together in one app for Mac, iPhone, iPad, and Apple Watch.",
+  alternates: { canonical: "https://oravo.ai" },
   openGraph: {
-    title: "Voice Typing & Dictation App | Oravo",
+    title: "Oravo — Dictation, voice notes, and bot-free meeting notes",
     description:
-      "Speak naturally in 60+ languages and turn your words into polished text on Mac, Windows, and Android.",
+      "Oravo brings voice dictation, voice notes, and bot-free meeting transcription together in one app for Mac, iPhone, iPad, and Apple Watch.",
+    url: "https://oravo.ai",
+  },
+  twitter: {
+    title: "Oravo — Dictation, voice notes, and bot-free meeting notes",
+    description:
+      "Oravo brings voice dictation, voice notes, and bot-free meeting transcription together in one app for Mac, iPhone, iPad, and Apple Watch.",
   },
 };
 

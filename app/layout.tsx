@@ -40,11 +40,11 @@ const hedvigSerif = Hedvig_Letters_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "AI Voice Typing & Dictation App | Oravo",
+    default: "Oravo — Dictation, voice notes, and bot-free meeting notes",
     template: "%s | Oravo",
   },
   description:
-    "Voice typing for Mac, Windows, and Android. Speak naturally in 60+ languages and turn your words into polished English.",
+    "Oravo brings voice dictation, voice notes, and bot-free meeting transcription together in one app for Mac, iPhone, iPad, and Apple Watch.",
   applicationName: "Oravo.ai",
   keywords: [
     // PRIMARY MOAT: Non-native English speaker keywords (UNIQUE POSITIONING)
@@ -313,24 +313,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://oravo.ai",
-    title: "Best Dictation App for Non-Native English Speakers | Oravo",
+    title: "Oravo — Dictation, voice notes, and bot-free meeting notes",
     description:
-      "Write in English like a native speaker — just by talking. Speak in your native language, type perfect English. Real-time AI translation for non-native speakers. 4x faster. Works in Google Docs, Gmail, Slack & 1000+ apps.",
+      "Oravo brings voice dictation, voice notes, and bot-free meeting transcription together in one app for Mac, iPhone, iPad, and Apple Watch.",
     siteName: "Oravo",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Oravo - AI Voice Typing & Dictation App",
+        alt: "Oravo — Dictation, voice notes, and bot-free meeting notes",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Dictation App for Non-Native English Speakers | Oravo",
+    title: "Oravo — Dictation, voice notes, and bot-free meeting notes",
     description:
-      "Write in English like a native speaker — just by talking. AI voice typing built for non-native English speakers. Real-time translation. 4x faster. Works everywhere. Try free.",
+      "Oravo brings voice dictation, voice notes, and bot-free meeting transcription together in one app for Mac, iPhone, iPad, and Apple Watch.",
     images: ["/og-image.png"],
     creator: "@oravoai",
     site: "@oravoai",
