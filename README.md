@@ -417,9 +417,16 @@ By open-sourcing our landing page, we:
 
 - **AI tools** (speech to text, audio to text, subtitles, transcript cleaner, voice to email, grammar checker, paraphrasing tool, text summarizer, meeting summarizer) call `/api/tools/*`, which call Groq on the server. The key never reaches the browser. Every text task, with its prompt and input cap, is listed in `TEXT_TASKS` (`lib/tools/prompts.ts`).
   - Speech: `whisper-large-v3-turbo` (about $0.04 per hour of audio)
-  - Text: `llama-3.1-8b-instant` (a few cents per million tokens)
+  - Text: `openai/gpt-oss-20b` (Groq's replacement for the retired `llama-3.1-8b-instant`; a few cents per million tokens), falling back to `openai/gpt-oss-120b`
+  - If Groq retires a model, `lib/tools/groq.ts` moves on to the next one in its list. Set `GROQ_TEXT_MODEL` / `GROQ_STT_MODEL` (then redeploy) to put a different model first.
 - **Browser-only tools** (online dictation, voice recorder, silence remover, noise remover, typing speed test, word counter, speech time calculator, filler word counter, speaking speed test, microphone test, text to speech, PDF to text, PDF to Word) cost nothing to run. PDF reading uses `pdfjs-dist`; the DOCX is written by `components/tools/docx.ts`. Online dictation uses the browser's own speech recognition (Google's service in Chrome).
 - **Meeting summarizer** allows one try per visitor: a cookie plus a 30-day IP record. The try is claimed before the model runs and handed back if the run fails.
+
+### Tests
+
+- `pnpm test`: unit tests for the Groq client, every AI tool API route and the tool catalogue, run against a fake Groq (no network, no key). They cover a retired model, model fallback, reasoning-model token headroom, rate limits and the one-time meeting summary.
+- `GROQ_API_KEY=… pnpm test:live`: calls the real Groq API and checks that the models behind every AI tool exist for this key and answer.
+- `pnpm check:ai-tools https://oravo.ai`: calls the deployed site's AI tool APIs the way a visitor's browser does and prints PASS or FAIL per tool. Use it on a Deploy Preview URL before merging. It counts against that site's daily limits for your IP and skips the one-try meeting summarizer.
 
 ### Environment variables
 
@@ -432,5 +439,5 @@ Set these in Netlify under **Site configuration → Environment variables** (sco
 | `TOOLS_TRANSCRIBE_PER_DAY` | no | `8` | Transcriptions per IP per day |
 | `TOOLS_REWRITE_PER_DAY` | no | `30` | AI text runs (cleaner, email, grammar, paraphrase, summary) per IP per day |
 | `TOOLS_GLOBAL_PER_DAY` | no | `1500` | Hard daily cap on paid calls across all visitors |
-| `GROQ_STT_MODEL` / `GROQ_TEXT_MODEL` | no | see above | Swap models without a deploy |
+| `GROQ_STT_MODEL` / `GROQ_TEXT_MODEL` | no | see above | Model to try first; the built-in replacements follow it |
 | `GROQ_BASE_URL` | no | Groq | Point at a proxy or a local mock |
