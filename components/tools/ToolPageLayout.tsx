@@ -9,7 +9,7 @@ import { Reveal } from "@/components/landing/Reveal";
 import { SHELL } from "@/components/landing/shell";
 import { buildBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { faqJsonLd } from "@/lib/faq";
-import { getTool, relatedTools, toolUrl, type Tool, type ToolSlug } from "@/lib/tools/catalog";
+import { TOOLS, getTool, relatedTools, toolUrl, type Tool, type ToolSlug } from "@/lib/tools/catalog";
 import { LiteModelNotice } from "./shared";
 
 export function toolMetadata(slug: ToolSlug): Metadata {
@@ -17,8 +17,9 @@ export function toolMetadata(slug: ToolSlug): Metadata {
   return {
     title: tool.seoTitle,
     description: tool.seoDescription,
+    keywords: tool.keywords,
     alternates: { canonical: toolUrl(slug) },
-    openGraph: { title: `${tool.name} — Free Oravo Tool`, description: tool.seoDescription, url: toolUrl(slug), type: "website" },
+    openGraph: { title: `${tool.name} — Free Oravo Tool`, description: tool.seoDescription, url: toolUrl(slug), type: "website", siteName: "Oravo" },
     twitter: { card: "summary_large_image", title: `${tool.name} — Free Oravo Tool`, description: tool.seoDescription },
   };
 }
@@ -65,8 +66,20 @@ export function ToolPageLayout({ slug, children }: { slug: ToolSlug; children: R
     description: tool.seoDescription,
     applicationCategory: "UtilitiesApplication",
     operatingSystem: "Any (web browser)",
+    browserRequirements: "Requires a modern browser with JavaScript",
+    isAccessibleForFree: true,
+    keywords: tool.keywords.join(", "),
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     publisher: { "@type": "Organization", name: "Oravo", url: "https://oravo.ai" },
+  };
+  const howTo = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `How to use the ${tool.name.toLowerCase()}`,
+    description: tool.lede,
+    totalTime: "PT1M",
+    tool: { "@type": "HowToTool", name: `${tool.name} by Oravo` },
+    step: tool.steps.map((text, i) => ({ "@type": "HowToStep", position: i + 1, name: `Step ${i + 1}`, text, url: `${toolUrl(slug)}#how-to` })),
   };
   const crumbs = buildBreadcrumbJsonLd([
     { name: "Oravo", url: "https://oravo.ai" },
@@ -79,6 +92,7 @@ export function ToolPageLayout({ slug, children }: { slug: ToolSlug; children: R
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(app) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(tool.faq)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howTo) }} />
 
       <Band color="var(--o-band-sand)" className="pt-32 pb-10 sm:pt-36 sm:pb-12">
         <Parallax speed={110} className="pointer-events-none absolute -right-28 -top-10" aria-hidden="true">
@@ -109,6 +123,25 @@ export function ToolPageLayout({ slug, children }: { slug: ToolSlug; children: R
         <div className={`${SHELL} flex flex-col gap-5`}>
           {tool.engine === "lite-ai" && <LiteModelNotice tool={slug} />}
           <div className="frame-dotted bg-raised/70 p-4 sm:p-6">{children}</div>
+        </div>
+      </Band>
+
+      <Band id="how-to" color="var(--o-paper)" className="pb-16 sm:pb-20">
+        <div className={SHELL}>
+          <Reveal>
+            <p className="eyebrow">How it works</p>
+            <h2 className="display-2 mt-3 text-ink">How to use the free {tool.name.toLowerCase()}</h2>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <ol className="surface-solid mt-8 grid overflow-hidden !rounded-2xl md:grid-cols-3 md:divide-x md:divide-line [&>*+*]:border-t [&>*+*]:border-line md:[&>*+*]:border-t-0">
+              {tool.steps.map((step, i) => (
+                <li key={i} className="flex gap-4 p-6 sm:p-7">
+                  <span className="font-serif text-[28px] leading-none text-brand">{String(i + 1).padStart(2, "0")}</span>
+                  <p className="font-display text-[14.5px] leading-relaxed text-ink">{step}</p>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
         </div>
       </Band>
 
@@ -175,6 +208,22 @@ export function ToolPageLayout({ slug, children }: { slug: ToolSlug; children: R
               <ToolCard key={t.slug} tool={t} />
             ))}
           </div>
+          <nav aria-label="All free tools" className="mt-8">
+            <p className="eyebrow">All free tools</p>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {TOOLS.map((t) => (
+                <li key={t.slug}>
+                  <a
+                    href={`/tools/${t.slug}`}
+                    aria-current={t.slug === slug ? "page" : undefined}
+                    className={`chip h-8 px-3 font-display text-[13px] font-medium ${t.slug === slug ? "key-on !border-cloud" : "text-ink-soft hover:text-ink"}`}
+                  >
+                    {t.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </Band>
     </MarketingShell>

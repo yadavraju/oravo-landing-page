@@ -15,15 +15,20 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import {
+  ArrowRight,
   BookOpen,
+  Captions,
   ChevronDown,
   CircleHelp,
   FileText,
   LayoutGrid,
   Menu,
   Mic,
+  NotebookPen,
+  Scissors,
   Smartphone,
   Sparkles,
+  WandSparkles,
   Wrench,
   X,
   type LucideIcon,
@@ -31,7 +36,7 @@ import {
 import Logo from "./Logo";
 
 type NavItem = { href: string; icon: LucideIcon; title: string; blurb: string };
-type NavMenu = { id: "products" | "resources"; label: string; items: NavItem[] };
+type NavMenu = { id: "products" | "tools" | "resources"; label: string; items: NavItem[]; footer?: { href: string; label: string } };
 
 const NAV: NavMenu[] = [
   {
@@ -43,6 +48,20 @@ const NAV: NavMenu[] = [
       { href: "/mobile", icon: Smartphone, title: "Mobile App", blurb: "Oravo while you are moving" },
     ],
   },
+  // Between Products and Resources so people find them: the five most used,
+  // then a link to the whole catalogue.
+  {
+    id: "tools",
+    label: "Free Tools",
+    items: [
+      { href: "/tools/speech-to-text", icon: Mic, title: "Speech to Text", blurb: "Record and get a transcript" },
+      { href: "/tools/meeting-summarizer", icon: NotebookPen, title: "AI Meeting Summarizer", blurb: "Summary, decisions, action items" },
+      { href: "/tools/transcript-cleaner", icon: WandSparkles, title: "AI Transcript Cleaner", blurb: "Messy speech to clean text" },
+      { href: "/tools/subtitle-generator", icon: Captions, title: "Subtitle Generator", blurb: "SRT and VTT from any clip" },
+      { href: "/tools/silence-remover", icon: Scissors, title: "Audio Silence Remover", blurb: "Cut the dead air from a recording" },
+    ],
+    footer: { href: "/tools", label: "See all free tools" },
+  },
   {
     id: "resources",
     label: "Resources",
@@ -51,7 +70,6 @@ const NAV: NavMenu[] = [
       { href: "/use-cases", icon: LayoutGrid, title: "Use Cases", blurb: "Ways teams work by voice" },
       { href: "/blog", icon: BookOpen, title: "Blog", blurb: "Guides and product updates" },
       { href: "/faq", icon: CircleHelp, title: "FAQ", blurb: "Accents, translation and privacy" },
-      { href: "/tools", icon: Wrench, title: "Free Tools", blurb: "Transcribe, summarise, test your mic" },
     ],
   },
 ];
@@ -144,6 +162,16 @@ function SiteNav({ pathname }: { pathname: string }) {
                       </span>
                     </a>
                   ))}
+                  {menu.footer && (
+                    <a
+                      href={menu.footer.href}
+                      onClick={() => setOpen(null)}
+                      className="mt-1 flex items-center justify-between rounded-xl border-t border-line px-3 pb-2 pt-3 font-display text-[13.5px] font-semibold text-primary-500 transition-colors hover:bg-canvas"
+                    >
+                      {menu.footer.label}
+                      <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                    </a>
+                  )}
                 </div>
               </div>
             )}
@@ -234,6 +262,16 @@ export function Header() {
                   {item.title}
                 </a>
               ))}
+              {menu.footer && (
+                <a
+                  href={menu.footer.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="flex min-h-[44px] items-center gap-2.5 font-display text-[15px] font-semibold text-primary-500"
+                >
+                  <Wrench aria-hidden="true" className="h-[18px] w-[18px]" />
+                  {menu.footer.label}
+                </a>
+              )}
             </div>
           ))}
 

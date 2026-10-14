@@ -90,6 +90,10 @@ const PAGE_CONFIG: Record<
   "/tools/voice-to-email": { priority: 0.8, changeFrequency: "monthly" },
   "/tools/silence-remover": { priority: 0.8, changeFrequency: "monthly" },
   "/tools/audio-noise-remover": { priority: 0.8, changeFrequency: "monthly" },
+  "/tools/text-to-speech": { priority: 0.8, changeFrequency: "monthly" },
+  "/tools/microphone-test": { priority: 0.8, changeFrequency: "monthly" },
+  "/tools/filler-word-counter": { priority: 0.75, changeFrequency: "monthly" },
+  "/tools/speaking-speed-test": { priority: 0.75, changeFrequency: "monthly" },
 
   // Legal pages - required but lower priority
   "/privacy": { priority: 0.3, changeFrequency: "yearly" },

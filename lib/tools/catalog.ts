@@ -50,6 +50,10 @@ export type Tool = {
   /** Hero headline, two blocks on their own lines. */
   headline: [string, string];
   lede: string;
+  /** Search phrases the page targets, most important first. */
+  keywords: string[];
+  /** Three "how to" steps, shown on the page and sent as HowTo JSON-LD. */
+  steps: [string, string, string];
   /** What the free version is capped at, shown under the stage. */
   limits: string[];
   /** What the Oravo app does instead. */
@@ -90,6 +94,12 @@ export const TOOLS: Tool[] = [
       "Record your voice in the browser and get an instant transcript in 50+ languages. Free, no account, no download. Copy or save the text as TXT.",
     headline: ["Speak for a minute.", "Read it back as text."],
     lede: "Press record, talk, and stop. The transcript appears in seconds, ready to copy or download.",
+    keywords: ["speech to text", "free speech to text online", "voice to text online", "dictation online", "transcribe voice", "speech recognition online", "talk to text"],
+    steps: [
+      "Pick the language you will speak, or leave it on Auto-detect.",
+      "Press Start recording, speak for up to 60 seconds, then press Stop.",
+      "Read the transcript, fix any word, then copy it or save it as a TXT file.",
+    ],
     limits: ["Up to 60 seconds a recording", "8 transcriptions a day", "Runs on a lighter, lower-cost model"],
     inApp: ["Dictate straight into any app, with no time limit", "Fillers removed and punctuation added as you speak", "Tuned for accents and 100+ languages"],
     faq: [
@@ -112,6 +122,12 @@ export const TOOLS: Tool[] = [
       "Paste a meeting transcript or upload a short recording and get a clear summary, key decisions and action items with owners. Try it once free, no sign-up.",
     headline: ["One meeting in.", "Notes, decisions and next steps out."],
     lede: "Paste a transcript or add a recording. You get a summary, what was decided, and who does what next.",
+    keywords: ["ai meeting summarizer", "meeting summary generator", "meeting notes ai", "summarize meeting transcript", "zoom meeting summary", "action items from meeting", "free meeting minutes generator"],
+    steps: [
+      "Paste the meeting transcript, or record or upload a short recording.",
+      "Press Summarise my meeting and wait a few seconds.",
+      "Copy the summary, decisions and action items as Markdown, or save them as a file.",
+    ],
     limits: ["One free summary per person", "Recordings up to 4 MB, transcripts up to 24,000 characters", "Runs on a lighter, lower-cost model"],
     inApp: ["Oravo Notetaker summarises every meeting, with no limit", "Joins Zoom, Meet and Teams, or records in person", "Searchable notes you can ask questions of"],
     faq: [
@@ -134,6 +150,12 @@ export const TOOLS: Tool[] = [
       "Clean up a transcript or a voice note in one click: remove um, uh and like, fix punctuation and grammar, and keep your meaning. Free, no sign-up.",
     headline: ["Say it the way you think.", "Read it the way you'd write it."],
     lede: "Paste a transcript or record a thought. The cleaner removes fillers and false starts and fixes the punctuation, without changing what you meant.",
+    keywords: ["transcript cleaner", "remove filler words", "clean up transcript", "fix transcript grammar", "ai text cleanup", "voice note to text cleanup", "um remover"],
+    steps: [
+      "Paste a transcript or a voice note, or record one with Or speak it.",
+      "Choose a format: clean text, email, bullet points or a chat message.",
+      "Press Clean it up, check the result and copy it.",
+    ],
     limits: ["Up to 4,000 characters a run", "15 rewrites a day", "Runs on a lighter, lower-cost model"],
     inApp: ["This cleanup happens live, as you dictate, in every app", "Learns your names, terms and tone", "Speak in your language, get polished English"],
     faq: [
@@ -156,6 +178,12 @@ export const TOOLS: Tool[] = [
       "Speak or paste what you want to say and get a clear, friendly email with a subject line. Free AI email writer, no sign-up.",
     headline: ["Talk it through.", "Send a proper email."],
     lede: "Record what you want to say, however it comes out. You get a tidy email with a subject line, ready to paste into Gmail or Outlook.",
+    keywords: ["voice to email", "dictate email", "ai email writer", "speak an email", "email from voice note", "voice email generator"],
+    steps: [
+      "Record what you want to say, or paste a rough note.",
+      "Leave the format on Email and press Clean it up.",
+      "Copy the subject line and email into Gmail or Outlook and send it.",
+    ],
     limits: ["Up to 60 seconds of speech or 4,000 characters", "15 emails a day", "Runs on a lighter, lower-cost model"],
     inApp: ["Dictate straight into Gmail, Outlook or any reply box", "Matches the tone of the thread you are in", "No copying and pasting"],
     faq: [
@@ -176,6 +204,12 @@ export const TOOLS: Tool[] = [
       "Upload an MP3, M4A, WAV, WebM or MP4 and get a transcript in seconds. Export TXT, SRT or VTT. Free, no account needed.",
     headline: ["Drop in a recording.", "Take away the transcript."],
     lede: "Open a voice memo, a podcast clip or a video. You get the full text plus timed cues, ready to copy or download.",
+    keywords: ["audio to text", "mp3 to text", "convert audio to text free", "transcribe audio file", "m4a to text", "video to text", "audio transcription online"],
+    steps: [
+      "Drop an audio or video file under 4 MB into the box, or browse for one.",
+      "Pick the spoken language and press Transcribe file.",
+      "Copy the transcript or download it as TXT, SRT or VTT.",
+    ],
     limits: ["Files up to 4 MB (about four minutes of MP3)", "8 transcriptions a day", "Runs on a lighter, lower-cost model"],
     inApp: ["Studio transcribes long files offline, of any size", "Export plain text or SRT", "Speaker-aware meeting notes in Notetaker"],
     faq: [
@@ -197,6 +231,12 @@ export const TOOLS: Tool[] = [
       "Upload a short video or audio file and get timed subtitles. Edit each cue, then download SRT or VTT. Free, no watermark, no sign-up.",
     headline: ["Captions for your clip,", "timed and editable."],
     lede: "Add a short video or audio file. Each line comes back with its timing; fix any word, then download SRT or VTT.",
+    keywords: ["subtitle generator", "srt generator", "auto caption generator", "vtt subtitle maker", "free subtitle generator online", "generate captions from video", "srt file creator"],
+    steps: [
+      "Add a short video or audio file under 4 MB.",
+      "Press Generate subtitles and wait for the timed cues.",
+      "Fix any cue, then download an SRT or VTT file for your editor or player.",
+    ],
     limits: ["Files up to 4 MB", "8 files a day", "Runs on a lighter, lower-cost model"],
     inApp: ["Studio makes SRT from long videos, offline", "No size limit", "Works in 100+ languages"],
     faq: [
@@ -219,6 +259,12 @@ export const TOOLS: Tool[] = [
       "Remove long silences and dead air from voice recordings, podcasts and voice notes. Set the threshold, preview the result and download a WAV. Free, nothing uploaded.",
     headline: ["Cut the dead air.", "Keep every word."],
     lede: "Open a voice note, a podcast take or a lecture. Long pauses are shortened to a natural beat, so it plays tighter without sounding chopped.",
+    keywords: ["remove silence from audio", "audio silence remover", "cut pauses from audio", "remove dead air", "trim silence online", "podcast silence remover", "shorten pauses in recording"],
+    steps: [
+      "Drop in an audio file of up to 10 minutes, or record one.",
+      "Set the silence threshold and how long each pause should become.",
+      "Press Remove silences, compare the two versions and save the WAV.",
+    ],
     limits: ["Recordings up to 10 minutes", "Exports WAV only", "Runs entirely in your browser, nothing is uploaded"],
     inApp: ["Dictate without worrying about pauses: only finished text lands", "Thinking time never reaches the page", "Works in every app you type in"],
     faq: [
@@ -240,6 +286,12 @@ export const TOOLS: Tool[] = [
       "Remove background hum, hiss, fan and traffic noise from voice recordings in your browser. Compare the original and cleaned audio, then download a WAV. Free, nothing uploaded.",
     headline: ["Turn down the room.", "Keep the voice."],
     lede: "Open a recording with a fan, hum or hiss behind it. The tool learns the noise from the quiet moments and turns it down everywhere else.",
+    keywords: ["audio noise remover", "remove background noise from audio", "noise reduction online", "remove hiss from audio", "remove hum from audio", "clean up audio online free", "denoise voice recording"],
+    steps: [
+      "Drop in an audio file of up to 10 minutes, or record one.",
+      "Set the strength; around 60% suits most recordings.",
+      "Press Reduce noise, compare before and after, then save the WAV.",
+    ],
     limits: ["Recordings up to 10 minutes", "Best on steady noise; voices and music in the background stay", "Runs entirely in your browser, nothing is uploaded"],
     inApp: ["Oravo's dictation is tuned for real, noisy rooms", "Accurate in cafés, cars and open offices", "No cleanup step before you get your text"],
     faq: [
@@ -260,6 +312,12 @@ export const TOOLS: Tool[] = [
       "Paste a transcript or speech and count every filler word: um, uh, like, you know, basically. See your rate per 100 words and each match highlighted. Free.",
     headline: ["How many ums", "made it into that talk?"],
     lede: "Paste a transcript. Every filler is counted, highlighted in place, and given as a rate per 100 words.",
+    keywords: ["filler word counter", "um counter", "count filler words", "filler words in speech", "speech analyzer", "how many times did I say um", "public speaking filler words"],
+    steps: [
+      "Paste a transcript of a talk, call or voice note.",
+      "Read the counts: words, fillers and fillers per 100 words.",
+      "See every filler highlighted in place and which ones you use most.",
+    ],
     limits: ["Runs entirely in your browser", "No limit on use"],
     inApp: ["Oravo removes fillers as you dictate, so they never reach the page", "Works in every app you type in", "Fix the habit in what you write, without thinking about it"],
     faq: [
@@ -280,6 +338,12 @@ export const TOOLS: Tool[] = [
       "Read a short passage aloud and measure your speaking rate in words per minute. Or calculate WPM from a word count and a duration. Free, in your browser.",
     headline: ["How fast", "do you really talk?"],
     lede: "Start the timer, read the passage aloud at your natural pace, and stop. You get your words per minute and what it means.",
+    keywords: ["speaking speed test", "words per minute speaking", "speech rate calculator", "how fast do I talk", "wpm calculator", "speaking pace test", "speech speed"],
+    steps: [
+      "Press Start the timer.",
+      "Read the passage aloud at your normal pace.",
+      "Press I’m done to see your words per minute and what it means.",
+    ],
     limits: ["Runs entirely in your browser", "No limit on use"],
     inApp: ["Speaking is about 3x faster than typing", "Oravo turns that speed into finished text in any app", "Average users save an hour a day"],
     faq: [
@@ -299,6 +363,12 @@ export const TOOLS: Tool[] = [
       "Test your microphone online: see a live waveform, check the input level, pick a device and play back a 5-second sample. Free, nothing uploaded.",
     headline: ["Is your mic on?", "Find out in five seconds."],
     lede: "Allow the microphone, speak, and watch the meter. Switch devices, record a five-second sample, and hear how you sound.",
+    keywords: ["microphone test", "mic test online", "test my mic", "check microphone", "online mic test", "is my microphone working", "mic checker"],
+    steps: [
+      "Press Test my microphone and allow access when the browser asks.",
+      "Speak and watch the waveform and level meter move.",
+      "Switch devices if needed, record a 5-second sample and play it back.",
+    ],
     limits: ["Runs entirely in your browser", "Audio never leaves this tab"],
     inApp: ["Oravo picks the right mic for dictation automatically", "Works with AirPods and headsets", "Hold one key to talk in any app"],
     faq: [
@@ -318,6 +388,12 @@ export const TOOLS: Tool[] = [
       "Paste text and hear it read aloud with your device's built-in voices. Pick a voice, a language and a speed. Free, no sign-up, nothing uploaded.",
     headline: ["Hear your draft", "before anyone else does."],
     lede: "Paste a script, an email or a paragraph. Pick a voice and a speed and listen for what reads awkwardly.",
+    keywords: ["text to speech", "free text to speech online", "read text aloud", "tts online", "text reader", "text to voice", "read aloud online"],
+    steps: [
+      "Paste the text you want to hear, up to 5,000 characters.",
+      "Choose a voice and a speed.",
+      "Press Play, and pause or stop whenever you like.",
+    ],
     limits: ["Uses the voices built into your device", "Runs entirely in your browser"],
     inApp: ["Natural AI voices in 30+ languages", "Read back any selected text, in any app", "Listen to articles and notes on mobile"],
     faq: [

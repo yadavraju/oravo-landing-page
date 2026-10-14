@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { TOOL_LINKS } from "@/lib/tools/links";
 import Logo from "../Logo";
 
 /*
@@ -283,7 +284,22 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-14 sm:mt-16">
+        <nav aria-label="Free tools" className="mt-12 border-t border-ink/[0.08] pt-7">
+          <h3 className="font-display text-[12px] font-bold uppercase tracking-[0.11em] text-ink">
+            <a href="/tools" className="underline-offset-4 hover:underline">Free tools</a>
+          </h3>
+          <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+            {TOOL_LINKS.map((tool) => (
+              <li key={tool.href}>
+                <a href={tool.href} className="font-display text-[13.5px] text-ink-soft underline-offset-4 transition-colors hover:text-ink hover:underline">
+                  {tool.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="mt-12 sm:mt-14">
           <PromiseLine />
         </div>
 

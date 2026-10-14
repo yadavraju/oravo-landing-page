@@ -16,6 +16,16 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: "Free AI Voice Tools — Speech to Text, Meeting Summaries & More",
   description: DESCRIPTION,
+  keywords: [
+    "free ai tools",
+    "free voice tools",
+    "free speech to text",
+    "free transcription tools",
+    "ai meeting summarizer free",
+    "online audio tools",
+    "free subtitle generator",
+    "remove background noise free",
+  ],
   alternates: { canonical: "https://oravo.ai/tools" },
   openGraph: { title: "Free AI voice tools by Oravo", description: DESCRIPTION, url: "https://oravo.ai/tools", type: "website" },
 };
