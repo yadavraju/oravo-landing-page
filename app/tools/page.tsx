@@ -11,10 +11,10 @@ import { buildBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { FEATURED_TOOLS, TOOLS, TOOL_CATEGORIES, getTool, toolUrl } from "@/lib/tools/catalog";
 
 const DESCRIPTION =
-  "Free voice and writing tools from Oravo: speech to text, audio to text, subtitle generator, AI meeting summarizer, transcript cleaner, voice to email, mic test and more. No sign-up.";
+  "22 free voice, writing and PDF tools from Oravo: speech to text, online dictation, AI meeting summarizer, grammar checker, paraphrasing tool, typing speed test, word counter, PDF to Word and more. No sign-up.";
 
 export const metadata: Metadata = {
-  title: "Free AI Voice Tools — Speech to Text, Meeting Summaries & More",
+  title: "Free AI Tools — Speech to Text, Grammar Checker, PDF to Word & More",
   description: DESCRIPTION,
   keywords: [
     "free ai tools",
@@ -25,9 +25,14 @@ export const metadata: Metadata = {
     "online audio tools",
     "free subtitle generator",
     "remove background noise free",
+    "free grammar checker",
+    "typing speed test",
+    "word counter",
+    "pdf to word free",
+    "free online dictation",
   ],
   alternates: { canonical: "https://oravo.ai/tools" },
-  openGraph: { title: "Free AI voice tools by Oravo", description: DESCRIPTION, url: "https://oravo.ai/tools", type: "website" },
+  openGraph: { title: "22 free AI voice and writing tools by Oravo", description: DESCRIPTION, url: "https://oravo.ai/tools", type: "website" },
 };
 
 const IN_TAB = [
@@ -85,7 +90,7 @@ export default function ToolsPage() {
           </h1>
           <Reveal delay={0.12}>
             <p className="subtitle mx-auto mt-4 max-w-lg text-balance">
-              Transcribe, summarise, clean up and check your voice. Everything here is free and needs no account. When you want it in every app, get Oravo.
+              Transcribe, dictate, summarise, fix your grammar and convert PDFs. Everything here is free and needs no account. When you want it in every app, get Oravo.
             </p>
           </Reveal>
         </div>

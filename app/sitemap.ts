@@ -94,6 +94,16 @@ const PAGE_CONFIG: Record<
   "/tools/microphone-test": { priority: 0.8, changeFrequency: "monthly" },
   "/tools/filler-word-counter": { priority: 0.75, changeFrequency: "monthly" },
   "/tools/speaking-speed-test": { priority: 0.75, changeFrequency: "monthly" },
+  "/tools/typing-speed-test": { priority: 0.85, changeFrequency: "monthly" },
+  "/tools/word-counter": { priority: 0.85, changeFrequency: "monthly" },
+  "/tools/grammar-checker": { priority: 0.85, changeFrequency: "monthly" },
+  "/tools/online-dictation": { priority: 0.85, changeFrequency: "monthly" },
+  "/tools/paraphrasing-tool": { priority: 0.8, changeFrequency: "monthly" },
+  "/tools/text-summarizer": { priority: 0.8, changeFrequency: "monthly" },
+  "/tools/voice-recorder": { priority: 0.8, changeFrequency: "monthly" },
+  "/tools/speech-time-calculator": { priority: 0.8, changeFrequency: "monthly" },
+  "/tools/pdf-to-text": { priority: 0.75, changeFrequency: "monthly" },
+  "/tools/pdf-to-word": { priority: 0.75, changeFrequency: "monthly" },
 
   // Legal pages - required but lower priority
   "/privacy": { priority: 0.3, changeFrequency: "yearly" },

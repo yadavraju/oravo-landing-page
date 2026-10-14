@@ -16,12 +16,10 @@ export const LIMITS = {
   maxAudioBytes: 4 * 1024 * 1024,
   /** Transcriptions per visitor per day (speech, file and subtitle tools). */
   transcribePerDay: Number(process.env.TOOLS_TRANSCRIBE_PER_DAY || 8),
-  /** Text rewrites per visitor per day (cleanup, voice to email). */
-  rewritePerDay: Number(process.env.TOOLS_REWRITE_PER_DAY || 15),
+  /** Text tasks per visitor per day (cleaner, email, grammar, paraphrase, summary). */
+  rewritePerDay: Number(process.env.TOOLS_REWRITE_PER_DAY || 30),
   /** Every paid call across all visitors, per day: a hard ceiling on spend. */
   globalPerDay: Number(process.env.TOOLS_GLOBAL_PER_DAY || 1500),
-  /** Characters accepted by the rewrite tools. */
-  maxRewriteChars: 4000,
   /** Characters of transcript accepted by the meeting summarizer. */
   maxMeetingChars: 24000,
 };

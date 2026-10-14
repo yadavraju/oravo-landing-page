@@ -72,18 +72,20 @@ export async function complete({
   user,
   maxTokens,
   json = false,
+  temperature = 0.3,
 }: {
   system: string;
   user: string;
   maxTokens: number;
   json?: boolean;
+  temperature?: number;
 }): Promise<string> {
   const res = await fetch(`${GROQ_BASE}/chat/completions`, {
     method: "POST",
     headers: { Authorization: `Bearer ${apiKey()}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       model: TEXT_MODEL,
-      temperature: 0.3,
+      temperature,
       max_tokens: maxTokens,
       ...(json ? { response_format: { type: "json_object" } } : {}),
       messages: [
