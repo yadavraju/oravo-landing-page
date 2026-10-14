@@ -413,20 +413,22 @@ By open-sourcing our landing page, we:
 
 ## Free tools (`/tools`)
 
-Ten free tools under `/tools` to bring in search traffic. Every page says the tools run on a lighter model and links to the app.
+Twelve free tools under `/tools` to bring in search traffic. Every page says the tools run on a lighter model and links to the app.
 
 - **AI tools** (speech to text, audio to text, subtitles, transcript cleaner, voice to email, meeting summarizer) call `/api/tools/*`, which call Groq on the server. The key never reaches the browser.
   - Speech: `whisper-large-v3-turbo` (about $0.04 per hour of audio)
   - Text: `llama-3.1-8b-instant` (a few cents per million tokens)
-- **Browser-only tools** (filler word counter, speaking speed test, microphone test, text to speech) cost nothing and send no data.
+- **Browser-only tools** (silence remover, noise remover, filler word counter, speaking speed test, microphone test, text to speech) cost nothing and send no data.
 - **Meeting summarizer** allows one try per visitor: a cookie plus a 30-day IP record. The try is claimed before the model runs and handed back if the run fails.
 
 ### Environment variables
 
+Set these in Netlify under **Site configuration → Environment variables** (scope: Functions), then redeploy. Netlify functions time out after 10 seconds by default; the tools normally answer in 2–5 seconds, but if long uploads time out, Netlify can raise the limit to 26 seconds on paid plans.
+
 | Variable | Required | Default | Purpose |
 | --- | --- | --- | --- |
 | `GROQ_API_KEY` | yes | | Groq API key (server only) |
-| `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | recommended | | Shared rate-limit counters across serverless instances. Without them, limits are per instance and reset on cold starts |
+| `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | recommended | | Shared rate-limit counters across function instances. Without them, limits are per instance and reset on cold starts |
 | `TOOLS_TRANSCRIBE_PER_DAY` | no | `8` | Transcriptions per IP per day |
 | `TOOLS_REWRITE_PER_DAY` | no | `15` | Rewrites per IP per day |
 | `TOOLS_GLOBAL_PER_DAY` | no | `1500` | Hard daily cap on paid calls across all visitors |

@@ -5,11 +5,14 @@ import type { NextRequest } from "next/server";
 //
 // With UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN set, counters live
 // in Redis and hold across every serverless instance. Without them they fall
-// back to this instance's memory, which still stops a single client hammering
+// back to this function instance's memory, which still stops a single client hammering
 // one warm instance but resets on cold starts.
 
 export const LIMITS = {
-  /** Max upload the API accepts. Vercel rejects request bodies over 4.5 MB. */
+  /**
+   * Max upload the API accepts. Netlify caps function requests at 6 MB and
+   * base64-encodes binary bodies (+33%), so 4 MB is the safe ceiling.
+   */
   maxAudioBytes: 4 * 1024 * 1024,
   /** Transcriptions per visitor per day (speech, file and subtitle tools). */
   transcribePerDay: Number(process.env.TOOLS_TRANSCRIBE_PER_DAY || 8),
@@ -26,6 +29,8 @@ export const LIMITS = {
 const DAY = 24 * 60 * 60;
 
 export function clientIp(req: NextRequest) {
+  const netlify = req.headers.get("x-nf-client-connection-ip");
+  if (netlify) return netlify;
   const forwarded = req.headers.get("x-forwarded-for");
   return forwarded?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || req.ip || "unknown";
 }

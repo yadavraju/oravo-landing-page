@@ -64,11 +64,11 @@ export function LiteModelNotice({ tool }: { tool: string }) {
 }
 
 /** Shown under a finished result, when the visitor has just seen the value. */
-export function ResultUpsell({ tool, line }: { tool: string; line: string }) {
+export function ResultUpsell({ tool, line, lead = "That was the lite model." }: { tool: string; line: string; lead?: string }) {
   return (
     <div className="mt-4 flex flex-col gap-3 rounded-xl bg-blush px-4 py-4 shadow-[inset_0_0_0_1px_var(--o-line)] sm:flex-row sm:items-center sm:px-5">
       <p className="flex-1 font-display text-[13.5px] leading-snug text-ink-soft">
-        <span className="font-semibold text-ink">That was the lite model.</span> {line}
+        <span className="font-semibold text-ink">{lead}</span> {line}
       </p>
       <a
         href="/download"

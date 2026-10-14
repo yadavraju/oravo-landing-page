@@ -88,6 +88,8 @@ const PAGE_CONFIG: Record<
   "/tools/audio-to-text": { priority: 0.8, changeFrequency: "monthly" },
   "/tools/subtitle-generator": { priority: 0.8, changeFrequency: "monthly" },
   "/tools/voice-to-email": { priority: 0.8, changeFrequency: "monthly" },
+  "/tools/silence-remover": { priority: 0.8, changeFrequency: "monthly" },
+  "/tools/audio-noise-remover": { priority: 0.8, changeFrequency: "monthly" },
 
   // Legal pages - required but lower priority
   "/privacy": { priority: 0.3, changeFrequency: "yearly" },

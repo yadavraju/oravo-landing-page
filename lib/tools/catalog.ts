@@ -1,5 +1,6 @@
 import {
   AudioLines,
+  AudioWaveform,
   Captions,
   FileAudio,
   Gauge,
@@ -7,6 +8,7 @@ import {
   Mic,
   MicVocal,
   NotebookPen,
+  Scissors,
   Volume2,
   WandSparkles,
   type LucideIcon,
@@ -26,9 +28,11 @@ export type ToolSlug =
   | "filler-word-counter"
   | "speaking-speed-test"
   | "microphone-test"
-  | "text-to-speech";
+  | "text-to-speech"
+  | "silence-remover"
+  | "audio-noise-remover";
 
-export type ToolCategory = "transcribe" | "write" | "voice" | "listen";
+export type ToolCategory = "transcribe" | "write" | "audio" | "voice" | "listen";
 
 /** "lite-ai" tools call our API (a small Groq model). "browser" tools never leave the tab. */
 export type ToolEngine = "lite-ai" | "browser";
@@ -56,6 +60,7 @@ export type Tool = {
 export const TOOL_CATEGORIES: { id: ToolCategory; title: string; lede: string }[] = [
   { id: "transcribe", title: "Speech to text", lede: "Record or open a file, and get words you can edit" },
   { id: "write", title: "Write with your voice", lede: "Turn rambling speech into text you would actually send" },
+  { id: "audio", title: "Audio cleanup", lede: "Tidy a recording before you share or transcribe it" },
   { id: "voice", title: "Voice and microphone", lede: "Check your setup and how you sound before you record" },
   { id: "listen", title: "Text to speech", lede: "Have a script or a draft read back to you" },
 ];
@@ -199,6 +204,48 @@ export const TOOLS: Tool[] = [
       { question: "Will there be a watermark?", answer: "No. The SRT and VTT files are plain text you can add to YouTube, Premiere, CapCut or any player." },
       LITE_FAQ,
       PRIVACY_FAQ,
+    ],
+  },
+  {
+    slug: "silence-remover",
+    name: "Audio Silence Remover",
+    blurb: "Shorten the long pauses in a recording. Preview the cut, then download a WAV.",
+    category: "audio",
+    engine: "browser",
+    icon: Scissors,
+    badge: "New",
+    seoTitle: "Free Audio Silence Remover — Cut Pauses from Recordings Online",
+    seoDescription:
+      "Remove long silences and dead air from voice recordings, podcasts and voice notes. Set the threshold, preview the result and download a WAV. Free, nothing uploaded.",
+    headline: ["Cut the dead air.", "Keep every word."],
+    lede: "Open a voice note, a podcast take or a lecture. Long pauses are shortened to a natural beat, so it plays tighter without sounding chopped.",
+    limits: ["Recordings up to 10 minutes", "Exports WAV only", "Runs entirely in your browser, nothing is uploaded"],
+    inApp: ["Dictate without worrying about pauses: only finished text lands", "Thinking time never reaches the page", "Works in every app you type in"],
+    faq: [
+      { question: "Will it cut words?", answer: "It only shortens stretches quieter than the threshold that last longer than the minimum pause, and leaves a short beat in each one. If quiet words get clipped, lower the threshold." },
+      { question: "Why export WAV and not MP3?", answer: "WAV is lossless and every browser can write it without uploading anything. Convert it to MP3 afterwards if you need a smaller file." },
+      { question: "Is my audio uploaded?", answer: "No. The file is decoded and edited in this tab, and the result never leaves your device." },
+    ],
+  },
+  {
+    slug: "audio-noise-remover",
+    name: "Audio Noise Remover",
+    blurb: "Reduce steady background noise like hum, hiss and fans. Compare before and after, then save a WAV.",
+    category: "audio",
+    engine: "browser",
+    icon: AudioWaveform,
+    badge: "New",
+    seoTitle: "Free Audio Noise Remover — Reduce Background Noise Online",
+    seoDescription:
+      "Remove background hum, hiss, fan and traffic noise from voice recordings in your browser. Compare the original and cleaned audio, then download a WAV. Free, nothing uploaded.",
+    headline: ["Turn down the room.", "Keep the voice."],
+    lede: "Open a recording with a fan, hum or hiss behind it. The tool learns the noise from the quiet moments and turns it down everywhere else.",
+    limits: ["Recordings up to 10 minutes", "Best on steady noise; voices and music in the background stay", "Runs entirely in your browser, nothing is uploaded"],
+    inApp: ["Oravo's dictation is tuned for real, noisy rooms", "Accurate in cafés, cars and open offices", "No cleanup step before you get your text"],
+    faq: [
+      { question: "What kind of noise does it remove?", answer: "Steady noise: air conditioning, fans, computer hum, electrical buzz, tape hiss and distant traffic. Sudden sounds such as a door, a dog or other people talking are not steady, so they stay." },
+      { question: "My voice sounds thin or watery. What should I do?", answer: "Lower the strength. Around 50 to 60% removes most steady noise while keeping the voice natural." },
+      { question: "Is my audio uploaded?", answer: "No. The noise reduction runs in this tab, and nothing leaves your device." },
     ],
   },
   {
