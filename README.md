@@ -422,6 +422,12 @@ By open-sourcing our landing page, we:
 - **Browser-only tools** (online dictation, voice recorder, silence remover, noise remover, typing speed test, word counter, speech time calculator, filler word counter, speaking speed test, microphone test, text to speech, PDF to text, PDF to Word) cost nothing to run. PDF reading uses `pdfjs-dist`; the DOCX is written by `components/tools/docx.ts`. Online dictation uses the browser's own speech recognition (Google's service in Chrome).
 - **Meeting summarizer** allows one try per visitor: a cookie plus a 30-day IP record. The try is claimed before the model runs and handed back if the run fails.
 
+### Tests
+
+- `pnpm test`: unit tests for the Groq client, every AI tool API route and the tool catalogue, run against a fake Groq (no network, no key). They cover a retired model, model fallback, reasoning-model token headroom, rate limits and the one-time meeting summary.
+- `GROQ_API_KEY=… pnpm test:live`: calls the real Groq API and checks that the models behind every AI tool exist for this key and answer.
+- `pnpm check:ai-tools https://oravo.ai`: calls the deployed site's AI tool APIs the way a visitor's browser does and prints PASS or FAIL per tool. Use it on a Deploy Preview URL before merging. It counts against that site's daily limits for your IP and skips the one-try meeting summarizer.
+
 ### Environment variables
 
 Set these in Netlify under **Site configuration → Environment variables** (scope: Functions), then redeploy. Netlify functions time out after 10 seconds by default; the tools normally answer in 2–5 seconds, but if long uploads time out, Netlify can raise the limit to 26 seconds on paid plans.
