@@ -24,6 +24,7 @@ import {
   Mic,
   Smartphone,
   Sparkles,
+  Wrench,
   X,
   type LucideIcon,
 } from "lucide-react";
@@ -50,6 +51,7 @@ const NAV: NavMenu[] = [
       { href: "/use-cases", icon: LayoutGrid, title: "Use Cases", blurb: "Ways teams work by voice" },
       { href: "/blog", icon: BookOpen, title: "Blog", blurb: "Guides and product updates" },
       { href: "/faq", icon: CircleHelp, title: "FAQ", blurb: "Accents, translation and privacy" },
+      { href: "/tools", icon: Wrench, title: "Free Tools", blurb: "Transcribe, summarise, test your mic" },
     ],
   },
 ];

@@ -410,3 +410,25 @@ By open-sourcing our landing page, we:
 **Built with ❤️ by the Oravo.ai team**
 
 *Making voice typing faster, more secure, and universally accessible.*
+
+## Free tools (`/tools`)
+
+Ten free tools under `/tools` to bring in search traffic. Every page says the tools run on a lighter model and links to the app.
+
+- **AI tools** (speech to text, audio to text, subtitles, transcript cleaner, voice to email, meeting summarizer) call `/api/tools/*`, which call Groq on the server. The key never reaches the browser.
+  - Speech: `whisper-large-v3-turbo` (about $0.04 per hour of audio)
+  - Text: `llama-3.1-8b-instant` (a few cents per million tokens)
+- **Browser-only tools** (filler word counter, speaking speed test, microphone test, text to speech) cost nothing and send no data.
+- **Meeting summarizer** allows one try per visitor: a cookie plus a 30-day IP record. The try is claimed before the model runs and handed back if the run fails.
+
+### Environment variables
+
+| Variable | Required | Default | Purpose |
+| --- | --- | --- | --- |
+| `GROQ_API_KEY` | yes | | Groq API key (server only) |
+| `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | recommended | | Shared rate-limit counters across serverless instances. Without them, limits are per instance and reset on cold starts |
+| `TOOLS_TRANSCRIBE_PER_DAY` | no | `8` | Transcriptions per IP per day |
+| `TOOLS_REWRITE_PER_DAY` | no | `15` | Rewrites per IP per day |
+| `TOOLS_GLOBAL_PER_DAY` | no | `1500` | Hard daily cap on paid calls across all visitors |
+| `GROQ_STT_MODEL` / `GROQ_TEXT_MODEL` | no | see above | Swap models without a deploy |
+| `GROQ_BASE_URL` | no | Groq | Point at a proxy or a local mock |

@@ -80,6 +80,15 @@ const PAGE_CONFIG: Record<
   "/voice-typing-tagalog-to-english": { priority: 0.85, changeFrequency: "monthly" },
   "/voice-typing-vietnamese-to-english": { priority: 0.85, changeFrequency: "monthly" },
 
+  // Free tools (traffic magnets; each page links to the app)
+  "/tools": { priority: 0.9, changeFrequency: "weekly" },
+  "/tools/speech-to-text": { priority: 0.85, changeFrequency: "monthly" },
+  "/tools/meeting-summarizer": { priority: 0.85, changeFrequency: "monthly" },
+  "/tools/transcript-cleaner": { priority: 0.85, changeFrequency: "monthly" },
+  "/tools/audio-to-text": { priority: 0.8, changeFrequency: "monthly" },
+  "/tools/subtitle-generator": { priority: 0.8, changeFrequency: "monthly" },
+  "/tools/voice-to-email": { priority: 0.8, changeFrequency: "monthly" },
+
   // Legal pages - required but lower priority
   "/privacy": { priority: 0.3, changeFrequency: "yearly" },
   "/terms": { priority: 0.3, changeFrequency: "yearly" },

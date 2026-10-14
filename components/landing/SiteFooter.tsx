@@ -46,6 +46,7 @@ const COMPARE_LINKS = [
 
 const COMPANY_LINKS = [
   { text: "Blog", href: "/blog" },
+  { text: "Free tools", href: "/tools" },
   { text: "FAQ", href: "/faq" },
   { text: "Manifesto", href: "/manifesto" },
   { text: "Affiliate", href: "/affiliate" },
