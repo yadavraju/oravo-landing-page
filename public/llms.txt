@@ -25,6 +25,34 @@ Key facts:
 - [Notetaker](https://oravo.ai/notetaker): meeting notes
 - [Mobile app](https://oravo.ai/mobile): Oravo on Android
 
+## Free tools
+
+Free browser tools, no account needed. The AI tools run on a lighter model with daily limits; the Oravo app uses stronger models with no limits.
+
+- [All free tools](https://oravo.ai/tools)
+- [Speech to Text](https://oravo.ai/tools/speech-to-text): record your voice, get the transcript
+- [AI Meeting Summarizer](https://oravo.ai/tools/meeting-summarizer): summary, decisions and action items
+- [AI Transcript Cleaner](https://oravo.ai/tools/transcript-cleaner): messy speech in, clean text out
+- [Voice to Email](https://oravo.ai/tools/voice-to-email): talk it through, send a proper email
+- [Audio to Text](https://oravo.ai/tools/audio-to-text): transcribe MP3, M4A, WAV and video
+- [Subtitle Generator](https://oravo.ai/tools/subtitle-generator): timed SRT and VTT captions
+- [Audio Silence Remover](https://oravo.ai/tools/silence-remover): cut the dead air, keep every word
+- [Audio Noise Remover](https://oravo.ai/tools/audio-noise-remover): turn down hum, hiss and fans
+- [Filler Word Counter](https://oravo.ai/tools/filler-word-counter): count every um, uh and like
+- [Speaking Speed Test](https://oravo.ai/tools/speaking-speed-test): measure your words per minute
+- [Microphone Test](https://oravo.ai/tools/microphone-test): check your mic in five seconds
+- [Text to Speech](https://oravo.ai/tools/text-to-speech): hear your draft read aloud
+- [Typing Speed Test](https://oravo.ai/tools/typing-speed-test): your WPM, then your speaking speed
+- [Word Counter](https://oravo.ai/tools/word-counter): words, characters and reading time
+- [Speech Time Calculator](https://oravo.ai/tools/speech-time-calculator): how long will your speech take?
+- [Online Voice Recorder](https://oravo.ai/tools/voice-recorder): record, pause and save as WAV
+- [Online Dictation](https://oravo.ai/tools/online-dictation): talk and watch it type
+- [AI Grammar Checker](https://oravo.ai/tools/grammar-checker): fix the mistakes, keep your voice
+- [Paraphrasing Tool](https://oravo.ai/tools/paraphrasing-tool): same meaning, better words
+- [AI Text Summarizer](https://oravo.ai/tools/text-summarizer): the long version in, the point out
+- [PDF to Text](https://oravo.ai/tools/pdf-to-text): extract text from any PDF, privately
+- [PDF to Word](https://oravo.ai/tools/pdf-to-word): editable DOCX, no upload
+
 ## Help
 
 - [FAQ](https://oravo.ai/faq): accents, translation, app support, privacy and the free plan
