@@ -19,7 +19,11 @@ type Extracted = { name: string; pages: string[][] };
  */
 async function extract(file: File, onPage: (n: number, total: number) => void): Promise<string[][]> {
   const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
-  pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/legacy/build/pdf.worker.min.mjs", import.meta.url).toString();
+  // The worker is served from public/vendor rather than bundled: webpack's
+  // minifier cannot parse it. Its file name carries the version, so after a
+  // pdfjs-dist upgrade, copy node_modules/pdfjs-dist/legacy/build/pdf.worker.min.mjs
+  // to public/vendor/pdf.worker-<version>.min.mjs.
+  pdfjs.GlobalWorkerOptions.workerSrc = `/vendor/pdf.worker-${pdfjs.version}.min.mjs`;
   const doc = await pdfjs.getDocument({ data: new Uint8Array(await file.arrayBuffer()) }).promise;
   if (doc.numPages > MAX_PAGES) throw new Error(`pages:${doc.numPages}`);
   const pages: string[][] = [];
