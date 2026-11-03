@@ -36,6 +36,8 @@ const SUBPROCESSORS: { name: string; purpose: string; location: string; href: st
   { name: "Supabase", purpose: "Serverless PostgreSQL database", location: "United States", href: "https://supabase.com/", label: "https://supabase.com" },
   { name: "Slack", purpose: "Team communication and notifications", location: "United States", href: "https://slack.com", label: "https://slack.com" },
   { name: "PostHog", purpose: "Product analytics and event tracking", location: "United Kingdom", href: "https://posthog.com", label: "https://posthog.com" },
+  { name: "Soniox", purpose: "Real-time speech-to-text", location: "United States", href: "https://soniox.com", label: "https://soniox.com" },
+  { name: "Sentry", purpose: "Crash reporting and performance monitoring", location: "United States", href: "https://sentry.io", label: "https://sentry.io" },
   { name: "AssemblyAI", purpose: "Speech recognition and audio intelligence", location: "United States", href: "https://assemblyai.com", label: "https://assemblyai.com" },
 ];
 
@@ -44,7 +46,7 @@ export default function SubprocessorsPage() {
     <LegalDocument
       doc="subprocessors"
       title="Oravo Subprocessors"
-      updated="Current as of Aug 25, 2025"
+      updated="Current as of Nov 3, 2026"
       intro="Know exactly where your data is and how it is being used. Oravo's subprocessors."
       doodle="globe"
     >

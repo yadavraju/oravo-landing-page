@@ -219,7 +219,7 @@ const SECTIONS: LegalSection[] = [
     body: (
       <ul>
         <li>
-          <strong>Informal Resolution:</strong> We encourage you to contact us first at support@oravo.com to resolve any disputes in good faith.
+          <strong>Informal Resolution:</strong> We encourage you to contact us first at hi@oravo.ai to resolve any disputes in good faith.
         </li>
         <li>
           <strong>Arbitration:</strong> If informal efforts fail, disputes will be resolved through binding arbitration, unless otherwise prohibited by local law. Each party will be responsible for its own arbitration-related costs unless agreed otherwise.

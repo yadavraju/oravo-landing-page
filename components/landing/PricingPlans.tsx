@@ -80,7 +80,7 @@ const PLANS: Plan[] = [
       "SSO & security compliance",
       "Volume discounts available",
     ],
-    cta: { label: "Contact sales", href: "mailto:hello@oravo.ai?subject=Oravo%20Enterprise%20inquiry" },
+    cta: { label: "Contact sales", href: "mailto:hi@oravo.ai?subject=Oravo%20Enterprise%20inquiry" },
     note: "We reply within one business day",
   },
 ];
