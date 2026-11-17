@@ -37,6 +37,7 @@ const SOLUTION_LINKS = [
 ];
 
 const COMPARE_LINKS = [
+  { text: "English writing tools compared", href: "/write-professional-english-faster" },
   { text: "vs Wispr Flow", href: "/compare/wispr-flow" },
   { text: "vs Willow Voice", href: "/compare/willow-voice" },
   { text: "vs Dragon", href: "/compare/dragon" },
