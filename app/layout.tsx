@@ -373,6 +373,11 @@ export const metadata: Metadata = {
   category: "technology",
   classification: "Productivity Software",
   referrer: "origin-when-cross-origin",
+  verification: {
+    other: {
+      "msvalidate.01": "8513B5A094C6278F9C85CBB11656F3B9",
+    },
+  },
 };
 
 export default function RootLayout({
