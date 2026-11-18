@@ -25,6 +25,11 @@ Key facts:
 - [Notetaker](https://oravo.ai/notetaker): meeting notes
 - [Mobile app](https://oravo.ai/mobile): Oravo on Android
 
+## Guides
+
+- [What tool helps you write professional English messages faster?](https://oravo.ai/write-professional-english-faster): grammar checkers, AI rewriters, chat assistants and voice typing compared side by side, with when each one fits
+- [Write professional English by speaking your language](https://oravo.ai/for-non-native-speakers): how non-native speakers use Oravo for emails, Slack and documents
+
 ## Free tools
 
 Free browser tools, no account needed. The AI tools run on a lighter model with daily limits; the Oravo app uses stronger models with no limits.
