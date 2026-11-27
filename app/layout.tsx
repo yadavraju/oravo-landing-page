@@ -4,6 +4,7 @@ import { Hedvig_Letters_Serif, Inter, Plus_Jakarta_Sans } from "next/font/google
 import Script from "next/script";
 import "./globals.css";
 import ConsentBanner from "@/components/ConsentBanner";
+import DirectDownloadLinks from "@/components/DirectDownloadLinks";
 import { GOOGLE_ADS_ID } from "@/lib/analytics";
 import { CONSENT_REGIONS, CONSENT_STORAGE_KEY } from "@/lib/consent";
 
@@ -782,6 +783,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         <ConsentBanner />
+        <DirectDownloadLinks />
 
         {/* Klaviyo Onsite Tracking */}
         <Script
