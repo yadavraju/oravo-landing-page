@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 import { fetchDownloadUrls, getLatestDownloads, DownloadData } from "@/lib/downloadApi";
-import { trackPlayStoreOutbound } from "@/lib/analytics";
+import { startDesktopDownload, trackPlayStoreOutbound } from "@/lib/analytics";
 
 type DetectedPlatform = "macos" | "windows" | "linux" | null;
 type DetectedArch = "arm64" | "x64" | null;
@@ -61,12 +61,8 @@ export default function DownloadSection() {
       const bestDownload = findBestDownload(latestDownloads, "macos", arch);
 
       if (bestDownload) {
-        // Trigger Google Ads conversion tracking
-        if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-          (window as any).gtag_report_conversion(bestDownload.file_path);
-        } else {
-          window.open(bestDownload.file_path, "_blank");
-        }
+        // Count the Ads conversion, then start the download
+        startDesktopDownload(bestDownload.file_path);
       } else {
         window.location.assign("/download");
       }
@@ -86,12 +82,8 @@ export default function DownloadSection() {
       const bestDownload = findBestDownload(latestDownloads, "windows", "x64");
 
       if (bestDownload) {
-        // Trigger Google Ads conversion tracking
-        if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-          (window as any).gtag_report_conversion(bestDownload.file_path);
-        } else {
-          window.open(bestDownload.file_path, "_blank");
-        }
+        // Count the Ads conversion, then start the download
+        startDesktopDownload(bestDownload.file_path);
       } else {
         window.location.assign("/download");
       }
