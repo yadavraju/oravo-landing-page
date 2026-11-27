@@ -1,54 +1,11 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import { fetchDownloadUrls, getLatestDownloads, DownloadData } from "@/lib/downloadApi";
+import { fetchDownloadUrls, getLatestDownloads } from "@/lib/downloadApi";
 import { startDesktopDownload, trackEvent, trackPlayStoreOutbound } from "@/lib/analytics";
 import { detectVisitorDevice, type VisitorDevice } from "@/lib/device";
+import { detectMacArchitecture, findBestDownload } from "@/lib/desktopDownload";
 
-type DetectedPlatform = "macos" | "windows" | "linux" | null;
-type DetectedArch = "arm64" | "x64" | null;
-
-// Detect Mac architecture using WebGL
-function detectMacArchitecture(): DetectedArch {
-  try {
-    const canvas = document.createElement("canvas");
-    const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-    if (gl) {
-      const debugInfo = (gl as WebGLRenderingContext).getExtension("WEBGL_debug_renderer_info");
-      if (debugInfo) {
-        const renderer = (gl as WebGLRenderingContext).getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
-        if (renderer && (renderer.includes("Apple M") || renderer.includes("Apple GPU"))) {
-          return "arm64";
-        }
-        if (renderer && (renderer.includes("Intel") || renderer.includes("AMD") || renderer.includes("Radeon"))) {
-          return "x64";
-        }
-      }
-    }
-  } catch {
-    // WebGL detection failed
-  }
-  return null;
-}
-
-// Find best download for platform/arch
-function findBestDownload(
-  downloads: DownloadData[],
-  platform: DetectedPlatform,
-  arch: DetectedArch
-): DownloadData | null {
-  if (!platform || downloads.length === 0) return null;
-
-  const platformDownloads = downloads.filter((d) => d.platform === platform);
-  if (platformDownloads.length === 0) return null;
-
-  if (platform === "macos" && arch) {
-    const archMatch = platformDownloads.find((d) => d.architecture === arch);
-    if (archMatch) return archMatch;
-  }
-
-  return platformDownloads[0];
-}
 
 type DownloadButtonsProps = {
   variant?: "default" | "hero" | "glass";
