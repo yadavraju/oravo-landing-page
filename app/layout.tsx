@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 import { Hedvig_Letters_Serif, Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import ConsentBanner from "@/components/ConsentBanner";
+import { GOOGLE_ADS_ID } from "@/lib/analytics";
+import { CONSENT_REGIONS, CONSENT_STORAGE_KEY } from "@/lib/consent";
 
 /*
  * Type system, shared with the video-shala marketing site:
@@ -745,49 +748,41 @@ export default function RootLayout({
         <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
       </head>
       <body className="font-sans antialiased">
-        {/* Google Analytics */}
+        {/* Google tag: consent defaults first, then GA4 + Google Ads. */}
+        <Script id="google-tag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            // Consent Mode v2: EEA, UK and Switzerland start denied until the visitor accepts
+            // (ConsentBanner); everyone else is granted.
+            gtag('consent', 'default', {
+              ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied',
+              region: ${JSON.stringify(CONSENT_REGIONS)},
+              wait_for_update: 500
+            });
+            gtag('consent', 'default', {
+              ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted'
+            });
+            try {
+              var stored = localStorage.getItem('${CONSENT_STORAGE_KEY}');
+              if (stored === 'granted' || stored === 'denied') {
+                gtag('consent', 'update', { ad_storage: stored, ad_user_data: stored, ad_personalization: stored, analytics_storage: stored });
+              }
+            } catch (e) {}
+            gtag('set', 'url_passthrough', true);
+            gtag('js', new Date());
+            gtag('config', 'G-21Y49PCQEZ');
+            gtag('config', 'AW-16703603891');
+            gtag('config', '${GOOGLE_ADS_ID}');
+          `}
+        </Script>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-21Y49PCQEZ"
           strategy="afterInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-21Y49PCQEZ');
-          `}
-        </Script>
+        <ConsentBanner />
 
-        {/* Google Ads */}
-        <Script id="google-ads" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-16703603891');
-          `}
-        </Script>
-
-        {/* Google Ads Conversion Tracking */}
-        <Script id="google-ads-conversion" strategy="afterInteractive">
-          {`
-            function gtag_report_conversion(url) {
-              var callback = function () {
-                if (typeof(url) != 'undefined') {
-                  window.location = url;
-                }
-              };
-              gtag('event', 'conversion', {
-                'send_to': 'AW-16703603891/oravo_download',
-                'value': 5.0,
-                'currency': 'USD',
-                'event_callback': callback
-              });
-              return false;
-            }
-          `}
-        </Script>
         {/* Klaviyo Onsite Tracking */}
         <Script
           id="klaviyo-onsite"

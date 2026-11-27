@@ -2,11 +2,11 @@
 
 import { useState, useCallback, useEffect } from "react";
 import { fetchDownloadUrls, getLatestDownloads, DownloadData } from "@/lib/downloadApi";
-import { trackEvent, trackPlayStoreOutbound } from "@/lib/analytics";
+import { startDesktopDownload, trackEvent, trackPlayStoreOutbound } from "@/lib/analytics";
+import { detectVisitorDevice, type VisitorDevice } from "@/lib/device";
 
 type DetectedPlatform = "macos" | "windows" | "linux" | null;
 type DetectedArch = "arm64" | "x64" | null;
-type VisitorOS = "mac" | "windows" | "other";
 
 // Detect Mac architecture using WebGL
 function detectMacArchitecture(): DetectedArch {
@@ -56,20 +56,11 @@ type DownloadButtonsProps = {
 
 export default function DownloadButtons({ variant = "default" }: DownloadButtonsProps) {
   const [loadingPlatform, setLoadingPlatform] = useState<"mac" | "windows" | null>(null);
-  const [visitorOs, setVisitorOs] = useState<VisitorOS>("other");
+  const [visitorOs, setVisitorOs] = useState<VisitorDevice>("other");
 
   useEffect(() => {
-    const ua = navigator.userAgent.toLowerCase();
-    if (ua.includes("mac")) {
-      setVisitorOs("mac");
-      return;
-    }
-    if (ua.includes("win")) {
-      setVisitorOs("windows");
-      return;
-    }
-    setVisitorOs("other");
-  }, [variant]);
+    setVisitorOs(detectVisitorDevice(navigator.userAgent, navigator.maxTouchPoints));
+  }, []);
 
   const handleMacDownload = useCallback(async () => {
     trackEvent("primary_cta_click", { cta: "download_mac", destination: "desktop_download", variant });
@@ -84,12 +75,8 @@ export default function DownloadButtons({ variant = "default" }: DownloadButtons
       const bestDownload = findBestDownload(latestDownloads, "macos", arch);
 
       if (bestDownload) {
-        // Trigger Google Ads conversion tracking
-        if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-          (window as any).gtag_report_conversion(bestDownload.file_path);
-        } else {
-          window.open(bestDownload.file_path, "_blank");
-        }
+        // Count the Ads conversion, then start the download
+        startDesktopDownload(bestDownload.file_path);
       } else {
         window.location.assign("/download");
       }
@@ -111,12 +98,8 @@ export default function DownloadButtons({ variant = "default" }: DownloadButtons
       const bestDownload = findBestDownload(latestDownloads, "windows", "x64");
 
       if (bestDownload) {
-        // Trigger Google Ads conversion tracking
-        if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-          (window as any).gtag_report_conversion(bestDownload.file_path);
-        } else {
-          window.open(bestDownload.file_path, "_blank");
-        }
+        // Count the Ads conversion, then start the download
+        startDesktopDownload(bestDownload.file_path);
       } else {
         window.location.assign("/download");
       }
@@ -159,8 +142,32 @@ export default function DownloadButtons({ variant = "default" }: DownloadButtons
         <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
       </svg>
     );
+    // Android visitors (e.g. from a mobile ad) get Google Play as the main action.
+    if (visitorOs === "android") {
+      return (
+        <div className="flex w-full flex-col items-center gap-4">
+          <a
+            href="https://play.google.com/store/apps/details?id=ai.oravo"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackPlayStoreOutbound(variant)}
+            className="btn-primary w-full sm:w-auto"
+          >
+            <svg className="h-[18px] w-[18px] shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M7 4.5v15a1 1 0 001.5.86l12.4-7.5a1 1 0 000-1.72L8.5 3.64A1 1 0 007 4.5z" />
+            </svg>
+            <span>Get it on Google Play</span>
+            <span className="rounded bg-white/15 px-1.5 py-0.5 text-[11px] font-semibold text-white/90">Free</span>
+          </a>
+          <a href="/download" className="font-display text-sm font-medium text-ink-soft underline-offset-4 transition-colors hover:text-ink hover:underline">
+            Also on Mac and Windows
+          </a>
+        </div>
+      );
+    }
     // The visitor's own platform gets the solid button; Windows wins when unknown.
-    const macFirst = visitorOs === "mac";
+    // iPhone and iPad visitors are Apple users, so Mac leads for them too.
+    const macFirst = visitorOs === "mac" || visitorOs === "ios";
     const windowsButton = (
       <button key="windows" type="button" onClick={handleWindowsDownload} disabled={loadingPlatform !== null} className={`${macFirst ? "btn-secondary" : "btn-primary"} w-full sm:w-auto`}>
         {loadingPlatform === "windows" ? <LoadingSpinner /> : WindowsIcon}
@@ -191,6 +198,7 @@ export default function DownloadButtons({ variant = "default" }: DownloadButtons
             <path d="M4 10h11M11 5l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </a>
+        {visitorOs === "ios" && <p className="font-display text-[13px] text-ink-faint">iPhone app coming soon. Grab it on your Mac for now.</p>}
       </div>
     );
   }

@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { fetchDownloadUrls, getLatestDownloads, DownloadData } from "@/lib/downloadApi";
-import { trackPlayStoreOutbound } from "@/lib/analytics";
+import { startDesktopDownload, trackPlayStoreOutbound } from "@/lib/analytics";
 import { motion } from "framer-motion";
 
 type DetectedPlatform = "macos" | "windows" | "linux" | null;
@@ -60,11 +60,7 @@ export default function ImprovedDownloadHero() {
       const bestDownload = findBestDownload(latestDownloads, "macos", arch);
 
       if (bestDownload) {
-        if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-          (window as any).gtag_report_conversion(bestDownload.file_path);
-        } else {
-          window.open(bestDownload.file_path, "_blank");
-        }
+        startDesktopDownload(bestDownload.file_path);
       } else {
         window.location.assign("/download");
       }
@@ -84,11 +80,7 @@ export default function ImprovedDownloadHero() {
       const bestDownload = findBestDownload(latestDownloads, "windows", "x64");
 
       if (bestDownload) {
-        if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-          (window as any).gtag_report_conversion(bestDownload.file_path);
-        } else {
-          window.open(bestDownload.file_path, "_blank");
-        }
+        startDesktopDownload(bestDownload.file_path);
       } else {
         window.location.assign("/download");
       }

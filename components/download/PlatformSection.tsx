@@ -3,7 +3,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { Terminal } from "lucide-react";
-import { trackPlayStoreOutbound } from "@/lib/analytics";
+import { reportAdsConversion, trackPlayStoreOutbound } from "@/lib/analytics";
+import { detectVisitorDevice } from "@/lib/device";
 import type { DownloadData } from "@/lib/downloadApi";
 
 // Detect user's Mac architecture
@@ -68,11 +69,8 @@ type VisitorDevice = "windows" | "macos" | "android" | "ios" | null;
 function useVisitorDevice(): VisitorDevice {
   const [device, setDevice] = useState<VisitorDevice>(null);
   useEffect(() => {
-    const ua = navigator.userAgent.toLowerCase();
-    if (/android/.test(ua)) setDevice("android");
-    else if (/iphone|ipad|ipod/.test(ua)) setDevice("ios");
-    else if (ua.includes("mac")) setDevice("macos");
-    else if (ua.includes("win")) setDevice("windows");
+    const detected = detectVisitorDevice(navigator.userAgent, navigator.maxTouchPoints);
+    setDevice(detected === "mac" ? "macos" : detected === "other" ? null : detected);
   }, []);
   return device;
 }
@@ -294,6 +292,7 @@ export function PlatformSection({
                   href={download.file_path}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => reportAdsConversion("desktopDownload")}
                   className={`${recommended ? "btn-neutral" : "btn-secondary !border-line"} !h-10 w-full !px-4 !text-[13.5px] sm:w-auto`}
                 >
                   <DownloadIcon />
@@ -448,7 +447,7 @@ export function PlatformCards({ downloads }: { downloads: DownloadData[] }) {
           <Unavailable />
         ) : (
           windows.map((download) => (
-            <a key={download.id} href={download.file_path} target="_blank" rel="noopener noreferrer" className="btn-primary w-full !px-4">
+            <a key={download.id} href={download.file_path} target="_blank" rel="noopener noreferrer" onClick={() => reportAdsConversion("desktopDownload")} className="btn-primary w-full !px-4">
               <DownloadIcon />
               {windows.length > 1 ? `Windows ${download.architecture}` : "Download for Windows"}
             </a>
@@ -473,6 +472,7 @@ export function PlatformCards({ downloads }: { downloads: DownloadData[] }) {
                   href={download.file_path}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => reportAdsConversion("desktopDownload")}
                   className={`${solid ? "btn-primary" : "btn-secondary !border-line"} relative w-full !h-auto min-h-[56px] !justify-between gap-3 !whitespace-normal !px-4 py-2.5 text-left`}
                 >
                   {/* "Recommended" rides the top edge so the label never has to share its line. */}
